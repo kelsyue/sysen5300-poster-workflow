@@ -15,16 +15,42 @@ cp ../spec/config.example.yaml config/experiment.yaml   # then fill in the TBDs
 
 ### 2. Paper2Poster (pinned, with its own environment)
 
+Needs about 10 GB of free disk. Tested on macOS (Apple silicon) with Python 3.12.
+
 ```bash
-git clone https://github.com/Paper2Poster/Paper2Poster vendor/Paper2Poster
-git -C vendor/Paper2Poster checkout 623d042f283acee782b2644d6abd63f75eccfa1f
+# Code at the pinned commit. Git LFS files are skipped; they are only in demo/ and aren't used.
+mkdir -p vendor/Paper2Poster && cd vendor/Paper2Poster
+git init -q && git remote add origin https://github.com/Paper2Poster/Paper2Poster
+git config filter.lfs.smudge "" && git config filter.lfs.process "" && git config filter.lfs.required false
+git fetch --depth 1 origin 623d042f283acee782b2644d6abd63f75eccfa1f && git checkout -f FETCH_HEAD
+cd ../..
+
+# Python environment
 python3.12 -m venv vendor/Paper2Poster/.venv
-vendor/Paper2Poster/.venv/bin/pip install -r vendor/Paper2Poster/requirements.txt
+grep -v -E '^(vllm|triton|xformers|pandasai)([=<> ]|$)' vendor/Paper2Poster/requirements.txt > /tmp/p2p-req.txt
+vendor/Paper2Poster/.venv/bin/pip install --no-cache-dir -r /tmp/p2p-req.txt
+vendor/Paper2Poster/.venv/bin/pip install --no-cache-dir "scipy>1.15.1" "numpy==1.26.4" \
+    "docling-parse<5" "docling-ibm-models<4"
+
 brew install --cask libreoffice     # PPTX -> PNG (soffice must be on PATH)
 brew install poppler                # PDF parsing
+
+# Check: should print the pipeline's options
+cd vendor/Paper2Poster && .venv/bin/python -m PosterAgent.new_pipeline --help
 ```
 
-Paper2Poster's own Docker image uses Python 3.12. Don't edit anything inside `vendor/Paper2Poster`: the Runner refuses to start if the checkout has local changes.
+**Differences from Paper2Poster's `requirements.txt`.** These change the environment only; the Paper2Poster code is untouched.
+
+| Change | Why |
+|---|---|
+| Skip `vllm`, `triton`, `xformers` | Linux + NVIDIA GPU only. Used only for running local models; all our models go through the gateway |
+| Skip `pandasai` | Forces pandas 1.5.3, which won't install on Python 3.12. Only used by an optional camel data loader the poster pipeline never calls |
+| `scipy` 1.15.1 → 1.17.1 | The 1.15.1 macOS build fails to load on current macOS (`__thread_bss` dlopen error) |
+| `docling-parse` < 5, `docling-ibm-models` < 4 | Unpinned upstream; the newest releases removed modules (`pdf_parser_v2`, `layoutmodel`) that Paper2Poster's bundled docling imports |
+
+The exact resulting versions are in [`config/paper2poster-env.lock.txt`](config/paper2poster-env.lock.txt) (`pip freeze`). To rebuild the same environment: `pip install --no-cache-dir -r config/paper2poster-env.lock.txt`.
+
+Don't edit anything inside `vendor/Paper2Poster`: the Runner refuses to start if the checkout has local changes.
 
 ### 3. Gateway credentials
 

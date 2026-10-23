@@ -8,7 +8,7 @@ Usage:
     pip install openai pyyaml
     export CORNELL_AI_GATEWAY_URL="https://<host>/v1"   # from Cornell
     export CORNELL_AI_GATEWAY_KEY="<your key>"
-    python gateway_check.py --config config/experiment.yaml
+    python scripts/gateway_check.py --config config/experiment.yaml
 """
 import argparse
 import base64
@@ -41,7 +41,7 @@ def call(client, model, content):
     r = client.chat.completions.create(
         model=model,
         messages=[{"role": "user", "content": content}],
-        max_tokens=20,
+        max_tokens=1024,  # reasoning models spend tokens thinking before they answer
         temperature=0,
     )
     dt = time.time() - t0
@@ -61,9 +61,13 @@ def main():
     if not base_url or not api_key:
         sys.exit(f"Set {g['base_url_env']} and {g['api_key_env']} first.")
 
-    client = OpenAI(base_url=base_url, api_key=api_key, timeout=120)
+    # Fail fast: a listed model that never answers should show up as FAIL, not a hang.
+    client = OpenAI(base_url=base_url, api_key=api_key, timeout=60, max_retries=0)
 
     models = [c["id"] for c in cfg["candidates"]] + [j["id"] for j in cfg["judges"]["models"]]
+    vision = cfg.get("fixed", {}).get("paper2poster", {}).get("vision_model")
+    if vision and vision != "TBD" and vision not in models:
+        models.append(vision)
     ok = True
 
     try:
@@ -103,7 +107,11 @@ def main():
                 {"type": "image_url", "image_url": {"url": tiny_png()}},
             ]
             text, dt, _ = call(client, m, content)
-            print(f"  image  ok  {dt:.1f}s  reply={text!r}")
+            if text and text.strip():
+                print(f"  image  ok  {dt:.1f}s  reply={text!r}")
+            else:
+                print(f"  FAIL  image call returned an empty reply ({dt:.1f}s); image input not confirmed")
+                ok = False
         except Exception as e:
             print(f"  FAIL  image call: {e}")
             ok = False

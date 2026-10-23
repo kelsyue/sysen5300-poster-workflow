@@ -28,19 +28,20 @@ The harness holds everything constant except `llm_model`. It is the engineering 
 | [06_acceptance_gate.md](06_acceptance_gate.md) | Pass / fail / inconclusive rules, human-review routing, decision report |
 | [07_open_issues.md](07_open_issues.md) | Inconsistencies across source docs and decisions still needed |
 | [config.example.yaml](config.example.yaml) | Reference configuration for one experiment |
-| [gateway_check.py](gateway_check.py) | Smoke test for the Cornell AI Gateway connection and model IDs |
+
+The harness implementation lives in [`../harness/`](../harness/README.md), including `scripts/gateway_check.py` (Cornell AI Gateway smoke test) and `src/runner.py`.
 
 ## Fixed parameters (v0.1)
 
 | Parameter | Value |
 |---|---|
-| Application under test | Paper2Poster (Pang et al., 2025), pinned commit |
+| Application under test | Paper2Poster (Pang et al., 2025), [github.com/Paper2Poster/Paper2Poster](https://github.com/Paper2Poster/Paper2Poster) @ `623d042f283acee782b2644d6abd63f75eccfa1f` (2026-06-08) |
 | Candidate LLMs (4) | `claude-opus-5`, `gpt-5.6-sol`, `meta.llama-4-maverick-17b-instruct`, `qwen.qwen3-vl-235b-a22b` |
 | Model interface | Cornell AI Platform → AI Gateway (assumed LiteLLM, OpenAI-compatible) |
 | Input papers | 30 papers by Cornell researchers |
 | Attempts | 30 papers × 4 LLMs = 120 (fewer posters if attempts fail) |
-| Prompt | One fixed prompt, not tuned per model |
-| LLM judges | Gemini Flash, GPT-4o (used only after pilot validation) |
+| Prompt | Paper2Poster's built-in agent prompts at the pinned commit (`utils/prompt_templates/`), not tuned per model |
+| LLM judges | Gemini Flash (`gemini-3.5-flash`), GPT-4o (`openai.gpt-4o`) (used only after pilot validation) |
 | Human evaluators | Paper authors, blinded, target ≥ 2 per paper |
 | Analysis | R (ggplot2), per course SIGMA chapters (Fraser, n.d.) |
 

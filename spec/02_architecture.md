@@ -40,9 +40,25 @@
 
 ## 3. Paper2Poster integration
 
-- Pin Paper2Poster to one commit; record the hash in every run row (`p2p_commit`).
-- Paper2Poster takes separate text-model and vision-model settings. **[TBD — OI-1]** which of these the candidate replaces. Default in this spec: the candidate replaces the **text model**; the vision model is held fixed across all runs so `llm_model` stays the only factor. All four candidates accept image input, so swapping the vision model is technically possible, but it would make the candidate change two pipeline roles at once.
+- Upstream: <https://github.com/Paper2Poster/Paper2Poster>, pinned to commit `623d042f283acee782b2644d6abd63f75eccfa1f` (2026-06-08). Record the hash in every run row (`p2p_commit`). The Runner refuses to start if the checkout is on a different commit or has local changes.
+- Paper2Poster takes separate text-model and vision-model settings (`--model_name_t`, `--model_name_v`). **[TBD — OI-1]** which of these the candidate replaces. Default in this spec: the candidate replaces the **text model**; the vision model is held fixed across all runs so `llm_model` stays the only factor. All four candidates accept image input, so swapping the vision model is technically possible, but it would make the candidate change two pipeline roles at once.
 - Do not modify the Paper2Poster pipeline, prompts, or layout logic between models (scope rule).
+- **Prompt.** Paper2Poster has no single prompt. It runs several agents (parser, figure filter, outline, layout, content filler, critics), each with its own built-in prompt in `utils/prompt_templates/*.yaml`, plus style defaults in `config/poster.yaml`. The "fixed prompt" is these files at the pinned commit. `prompt_sha256` is the SHA-256 over those files (sorted by path), computed by the Runner from the checkout.
+- **Invocation.** One attempt is one process, run from the Paper2Poster root:
+
+```bash
+python -m PosterAgent.new_pipeline \
+  --poster_path="harness_input/<input_paper_id>/paper.pdf" \
+  --model_name_t="<llm_model>" --model_name_v="<fixed vision model>" \
+  --tmp_dir="tmp/<run_id>" \
+  --poster_width_inches=48 --poster_height_inches=36 \
+  --institution_logo_path=<fixed logo>          # OI-18
+```
+
+- **Model names.** `get_agent_config()` in `utils/wei_utils.py` maps a few built-in names (`4o`, `vllm_qwen`, …). Any other name falls through to camel's `OPENAI_COMPATIBLE_MODEL` platform, which reads its endpoint from environment variables. So gateway model IDs are passed as-is and no Paper2Poster code changes are needed (§4.1).
+- **Generation parameters.** For fall-through model names Paper2Poster passes no model config, so no temperature or max-token setting is sent and each provider's default applies. **[TBD — OI-17]**
+- **Outputs.** Paper2Poster writes to `<{model_t}_{model_v}>_generated_posters/<poster_path dir>/`: `<input_paper_id>.pptx`, PNG renders of the poster, `log.json` (total input/output tokens for the text and vision models, `time_taken`) and `detail_log.json` (tokens per pipeline step). The Runner moves this folder to `outputs/<run_id>/` right after each attempt so repeats don't overwrite each other.
+- **System dependencies.** LibreOffice (`soffice` on `PATH`, for PPTX → PNG) and Poppler (PDF parsing).
 - Wrap Paper2Poster in a single function:
 
 ```python
@@ -61,12 +77,19 @@ The Cornell AI Platform has two modules, AI Gateway and AI Agent Studio. The gat
 - Credentials come from environment variables, never from the repo:
 
 ```
-CORNELL_AI_GATEWAY_URL   # base URL issued by Cornell, e.g. https://<host>/v1  [TBD]
-CORNELL_AI_GATEWAY_KEY   # personal/virtual key issued by Cornell               [TBD]
+CORNELL_AI_GATEWAY_URL   # https://api.ai.it.cornell.edu/v1
+CORNELL_AI_GATEWAY_KEY   # personal LiteLLM API key issued by Cornell (not the key ID)
 ```
 
 - Client: the `openai` Python SDK pointed at the gateway (`base_url`, `api_key`). If Paper2Poster's internals need a provider-style config, route through LiteLLM's `litellm_proxy/<model>` prefix instead.
-- Paper2Poster's model calls MUST be redirected to the gateway by config/env (e.g., `OPENAI_BASE_URL`, `OPENAI_API_KEY`), without editing pipeline logic.
+- Paper2Poster's model calls MUST be redirected to the gateway by env, without editing pipeline logic. camel's OpenAI-compatible client reads these two variables. The names are misspelled upstream (`COMPATIBILIY`, no T) and must be used exactly as written:
+
+```
+OPENAI_COMPATIBILIY_API_KEY       = $CORNELL_AI_GATEWAY_KEY
+OPENAI_COMPATIBILIY_API_BASE_URL  = $CORNELL_AI_GATEWAY_URL
+```
+
+  The Runner sets them for each Paper2Poster process from the gateway variables above.
 - `scripts/gateway_check.py` (provided) MUST pass before the dry run. It lists available models, confirms every configured model ID exists, sends one text call and one image call per model, and checks that `usage` token counts are returned.
 
 ### 4.2 Models
@@ -77,8 +100,8 @@ CORNELL_AI_GATEWAY_KEY   # personal/virtual key issued by Cornell               
 | Candidate | gpt | `gpt-5.6-sol` | yes |
 | Candidate | llama | `meta.llama-4-maverick-17b-instruct` | yes |
 | Candidate | qwen | `qwen.qwen3-vl-235b-a22b` | yes |
-| Judge | gemini | Gemini Flash — exact ID **[TBD]** | yes |
-| Judge | gpt4o | `gpt-4o` (confirm with `gateway_check.py`) | yes |
+| Judge | gemini | `gemini-3.5-flash` | yes |
+| Judge | gpt4o | `openai.gpt-4o` | yes |
 
 Judges must accept image input because they score the rendered poster. GPT-4o shares a provider (OpenAI) with the candidate `gpt-5.6-sol`, so self-preference bias toward that candidate is possible (Panickssery et al., 2024). The pilot bias check in `04_experiment_protocol.md` §5 step 6 MUST test for it; Gemini Flash (Google) shares no provider with any candidate.
 
@@ -88,7 +111,7 @@ Judges must accept image input because they score the rendered poster. GPT-4o sh
 - Rate limits and quotas are not published **[TBD — OI-16]**. The Runner MUST handle HTTP 429 with backoff and log it.
 - Data: the 30 papers and evaluator details must fall within the gateway's moderate-risk approval. Unpublished papers should be cleared with their authors before upload.
 
-- Token counts come from the gateway response `usage` field. Cost = input tokens × input price + output tokens × output price (+ cached-token price where applicable), using `prices.yaml`.
+- Token counts come from Paper2Poster's `log.json`, which sums the gateway `usage` fields over every call in the attempt. Text-model (candidate) and vision-model tokens are recorded separately. Paper2Poster does not report cached tokens, so `cached_tokens` stays empty. Cost = input tokens × input price + output tokens × output price, using `prices.yaml`.
 - Retries: **[TBD — OI-6]** Default: up to 2 retries on transport errors (timeouts, 429, 5xx) with backoff; retries are logged and do not get a new `run_id`. Model output that is unusable is a workflow failure, not a retry.
 
 ## 5. Workflow success definition
@@ -115,13 +138,13 @@ harness/
 │   ├── experiment.yaml          # see config.example.yaml
 │   └── prices.yaml              # per-model token prices, with as_of date
 ├── prompts/
-│   ├── generation_prompt.txt    # fixed; SHA-256 stored per run
-│   └── judge_rubric.txt         # fixed before grading
-├── papers/                      # 30 PDFs, named <input_paper_id>.pdf
+│   └── judge_rubric.txt         # fixed before grading (generation prompts live in Paper2Poster)
+├── papers/                      # 30 PDFs, named <input_paper_id>.pdf (gitignored)
+├── vendor/Paper2Poster/         # pinned checkout + its own Python env (gitignored)
 ├── scripts/
 │   └── gateway_check.py         # connection smoke test (provided)
 ├── src/
-│   ├── runner.py
+│   ├── runner.py                # built (first version)
 │   ├── blinder.py
 │   ├── judges.py
 │   ├── sheets.py
@@ -141,7 +164,7 @@ harness/
 │   ├── review_queue.csv
 │   ├── effort_log.csv
 │   └── private/blind_key.csv   # team only, gitignored
-├── outputs/<run_id>/            # poster file, poster_text.txt, run.log
+├── outputs/<run_id>/            # poster .pptx + PNGs, log.json, detail_log.json, poster_text.txt, run.log
 └── reports/<llm_model>/decision_report.md
 ```
 

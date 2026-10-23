@@ -8,18 +8,25 @@ experiment:
 
 fixed:
   paper2poster:
-    repo: TBD                     # confirm upstream repo URL
-    commit: TBD                   # pin before first run
-    vision_model: TBD             # held constant across candidates (OI-1)
-  prompt_file: prompts/generation_prompt.txt
+    repo: https://github.com/Paper2Poster/Paper2Poster
+    commit: 623d042f283acee782b2644d6abd63f75eccfa1f   # 2026-06-08
+    path: vendor/Paper2Poster     # checkout location, relative to harness/
+    python: vendor/Paper2Poster/.venv/bin/python   # interpreter with Paper2Poster's requirements
+    vision_model: TBD             # gateway ID, held constant across candidates (OI-1)
+    poster_width_inches: 48
+    poster_height_inches: 36
+    institution_logo_path: TBD    # one fixed logo for every run (OI-18)
+    extra_args: []                # any other new_pipeline flags, identical for every run
+    timeout_s: 3600               # per attempt
+  # Generation prompts are Paper2Poster's own templates at the pinned commit;
+  # the Runner hashes them into prompt_sha256.
   rubric_file: prompts/judge_rubric.txt
   generation:
-    temperature: 0
-    max_output_tokens: TBD
-    prompt_caching: true
+    temperature: null             # not sent by Paper2Poster for gateway models (OI-17)
   papers_dir: papers/
   n_papers: 30
   attempts_per_pair: 1            # raise if budget allows (see OI-4)
+  prices_file: config/prices.yaml
 
 gateway:
   name: cornell-ai-gateway        # Cornell AI Platform -> AI Gateway (assumed LiteLLM proxy)
@@ -37,8 +44,8 @@ candidates:                       # run order = list order (alphabetical)
 
 judges:
   models:
-    - id: TBD-gemini-flash        # exact gateway ID
-    - id: gpt-4o                  # confirm exact gateway ID
+    - id: gemini-3.5-flash         # Gemini Flash
+    - id: openai.gpt-4o           # GPT-4o
   repeats: 2                      # test-retest on the pilot
 
 spec_limits:

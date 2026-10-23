@@ -10,12 +10,12 @@
 
 ## 2. Pre-run checklist
 
-1. Pin Paper2Poster commit; record hash.
-2. Freeze `generation_prompt.txt` and `judge_rubric.txt`; record SHA-256. No edits after the first run.
+1. Check out Paper2Poster at `623d042f283acee782b2644d6abd63f75eccfa1f` in `harness/vendor/Paper2Poster`, with no local changes. The Runner checks this and records the hash.
+2. Freeze `judge_rubric.txt` and record its SHA-256. The generation prompts are Paper2Poster's own templates at the pinned commit; the Runner hashes them per run. No edits to either after the first run.
 3. Collect 30 papers; assign `input_paper_id`; confirm each author agrees to evaluate.
 4. Fill `prices.yaml` from the gateway's current price list; set `as_of`.
-5. Dry run: 1 paper × 4 models. Confirm all four model IDs respond, usage is returned, and outputs parse. Dry-run posters are excluded from analysis.
-6. Run the cost estimator; confirm the total is within budget and set `spend_cap_usd`.
+5. Dry run: 1 paper × 4 models (`python src/runner.py --dry-run`). Confirm all four model IDs respond, usage is returned, and outputs parse. Dry-run posters go to `data/dry_run/` and are excluded from analysis.
+6. Run the cost estimator (`python src/runner.py --estimate`), which scales dry-run cost to the full run; confirm the total is within budget and set `spend_cap_usd`.
 
 ## 3. Run order
 

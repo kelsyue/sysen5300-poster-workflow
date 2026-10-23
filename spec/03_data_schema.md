@@ -27,20 +27,26 @@
 | `batch_id` | int | yes | `ceil(run_order / 5)`, for the p-chart |
 | `llm_model` | str | yes | Gateway ID |
 | `input_paper_id` | str | yes | |
-| `prompt_sha256` | str | yes | |
+| `attempt` | int | yes | 1…`attempts_per_pair` for this (model, paper) pair |
+| `prompt_sha256` | str | yes | SHA-256 over Paper2Poster's `utils/prompt_templates/*.yaml` and `config/poster.yaml` at the pinned commit |
 | `p2p_commit` | str | yes | |
-| `config_sha256` | str | yes | |
-| `temperature` | float | yes | Fixed across runs |
+| `config_sha256` | str | yes | Hash of the `fixed` section of the experiment config (candidates excluded, so adding a model keeps it stable) |
+| `vision_model` | str | yes | Fixed vision model (OI-1) |
+| `temperature` | float | no | Empty while Paper2Poster sends no temperature (provider default, OI-17) |
 | `seed` | int | no | If the model supports it |
 | `started_at` / `finished_at` | ISO-8601 UTC | yes | |
-| `latency` | float (s) | yes | `finished_at − started_at` of the generation step |
-| `input_tokens` / `output_tokens` / `cached_tokens` | int | yes* | *Null only if gateway returned no usage |
-| `token_usage` | int | yes* | Sum of input + output |
-| `generation_cost` | float (USD) | yes* | From `prices.yaml` |
+| `latency` | float (s) | yes | `finished_at − started_at` of the Paper2Poster process (final try) |
+| `input_tokens` / `output_tokens` | int | yes* | Text-model (candidate) tokens from Paper2Poster `log.json`. *Null if no log was written |
+| `cached_tokens` | int | no | Not reported by Paper2Poster; empty |
+| `vision_input_tokens` / `vision_output_tokens` | int | yes* | Fixed vision-model tokens, recorded but not attributed to the candidate |
+| `token_usage` | int | yes* | `input_tokens + output_tokens` (candidate only) |
+| `generation_cost` | float (USD) | yes* | Candidate tokens × `prices.yaml`; null if the price is not filled in |
+| `vision_cost` | float (USD) | no | Vision tokens × `prices.yaml` |
 | `price_table_as_of` | date | yes | |
 | `retries` | int | yes | Transport retries used |
-| `workflow_success` | 0/1 | yes | Per `02_architecture.md` §5 |
+| `workflow_success` | 0/1 | yes | Per `02_architecture.md` §5. Set by the Runner from the automatic checks; the team check can set it to 0 |
 | `failure_reason` | str | if failed | One code from §5 of architecture |
+| `visual_check` | str | if success | Empty = team check pending; `pass`, or the failure code (`E_TRUNCATED`, `E_OVERFLOW`, `E_NO_FIGURES`) (OI-7) |
 | `poster_path` | str | if success | |
 | `poster_word_count` | int | if success | Words of extracted poster text |
 

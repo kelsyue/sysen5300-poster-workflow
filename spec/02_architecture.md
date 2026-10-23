@@ -14,7 +14,7 @@
                                    │
               ┌────────────────────┴───────────────────┐
      [3a Author packets]                       [3b Judge runner]
-      randomized, blinded                       Gemini Flash + Llama 4 Maverick
+      randomized, blinded                       Gemini Flash + GPT-4o        
               │                                         │
       human_scores.csv                          judge_scores.csv
               └────────────────────┬───────────────────┘
@@ -41,7 +41,7 @@
 ## 3. Paper2Poster integration
 
 - Pin Paper2Poster to one commit; record the hash in every run row (`p2p_commit`).
-- Paper2Poster takes separate text-model and vision-model settings. **[TBD — OI-1]** which of these the candidate replaces. Default in this spec: the candidate replaces the **text model**; the vision model is held fixed across all runs so `llm_model` stays the only factor. `deepseek.v3.2` has no image input, so swapping the vision model would break that candidate.
+- Paper2Poster takes separate text-model and vision-model settings. **[TBD — OI-1]** which of these the candidate replaces. Default in this spec: the candidate replaces the **text model**; the vision model is held fixed across all runs so `llm_model` stays the only factor. All four candidates accept image input, so swapping the vision model is technically possible, but it would make the candidate change two pipeline roles at once.
 - Do not modify the Paper2Poster pipeline, prompts, or layout logic between models (scope rule).
 - Wrap Paper2Poster in a single function:
 
@@ -74,13 +74,13 @@ CORNELL_AI_GATEWAY_KEY   # personal/virtual key issued by Cornell               
 | Role | Alias | Gateway ID | Vision input |
 |---|---|---|---|
 | Candidate | claude | `claude-opus-5` | yes |
-| Candidate | deepseek | `deepseek.v3.2` | no |
 | Candidate | gpt | `gpt-5.6-sol` | yes |
+| Candidate | llama | `meta.llama-4-maverick-17b-instruct` | yes |
 | Candidate | qwen | `qwen.qwen3-vl-235b-a22b` | yes |
-| Judge | llama | `meta.llama-4-maverick-17b-instruct` | yes |
 | Judge | gemini | Gemini Flash — exact ID **[TBD]** | yes |
+| Judge | gpt4o | `gpt-4o` (confirm with `gateway_check.py`) | yes |
 
-Judges must accept image input because they score the rendered poster. Neither judge's provider (Meta, Google) matches a candidate's provider, which reduces the self-preference risk.
+Judges must accept image input because they score the rendered poster. GPT-4o shares a provider (OpenAI) with the candidate `gpt-5.6-sol`, so self-preference bias toward that candidate is possible (Panickssery et al., 2024). The pilot bias check in `04_experiment_protocol.md` §5 step 6 MUST test for it; Gemini Flash (Google) shares no provider with any candidate.
 
 ### 4.3 Cost and limits
 

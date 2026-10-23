@@ -52,7 +52,7 @@ Measures recorded without a specification limit (reported, not gated): `latency`
 - **FR-10** The harness MUST assign each poster an anonymous code and keep the code ↔ `llm_model` key in a file accessible only to the research team.
 - **FR-11** The harness MUST produce, per evaluator, a packet of that author's posters in randomized order with a scoring sheet.
 - **FR-12** The harness MUST ingest completed scoring sheets and compute coverage, hallucination, and quality per evaluator, then the mean across evaluators.
-- **FR-13** The harness MUST run both LLM judges (Gemini Flash, `meta.llama-4-maverick-17b-instruct`) on the same rendered posters with the same fixed rubric.
+- **FR-13** The harness MUST run both LLM judges (Gemini Flash, GPT-4o) on the same rendered posters with the same fixed rubric.
 - **FR-14** Judges MUST NOT be used to score the full experiment until they pass the pilot validation in `04_experiment_protocol.md` §5.
 
 ### Decision

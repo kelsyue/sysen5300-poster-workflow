@@ -21,7 +21,7 @@ import struct
 import yaml
 from openai import OpenAI
 
-TEXT_ONLY = {"deepseek.v3.2"}  # models without image input
+TEXT_ONLY: set[str] = set()  # models without image input (all current models accept images)
 
 
 def tiny_png() -> str:

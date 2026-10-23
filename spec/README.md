@@ -35,12 +35,12 @@ The harness holds everything constant except `llm_model`. It is the engineering 
 | Parameter | Value |
 |---|---|
 | Application under test | Paper2Poster (Pang et al., 2025), pinned commit |
-| Candidate LLMs (4) | `claude-opus-5`, `deepseek.v3.2`, `gpt-5.6-sol`, `qwen.qwen3-vl-235b-a22b` |
+| Candidate LLMs (4) | `claude-opus-5`, `gpt-5.6-sol`, `meta.llama-4-maverick-17b-instruct`, `qwen.qwen3-vl-235b-a22b` |
 | Model interface | Cornell AI Platform → AI Gateway (assumed LiteLLM, OpenAI-compatible) |
 | Input papers | 30 papers by Cornell researchers |
 | Attempts | 30 papers × 4 LLMs = 120 (fewer posters if attempts fail) |
 | Prompt | One fixed prompt, not tuned per model |
-| LLM judges | Gemini Flash, `meta.llama-4-maverick-17b-instruct` (used only after pilot validation) |
+| LLM judges | Gemini Flash, GPT-4o (used only after pilot validation) |
 | Human evaluators | Paper authors, blinded, target ≥ 2 per paper |
 | Analysis | R (ggplot2), per course SIGMA chapters (Fraser, n.d.) |
 

@@ -19,7 +19,7 @@
 
 ## 3. Run order
 
-- Models run in alphabetical order of gateway ID: `claude-opus-5` → `deepseek.v3.2` → `gpt-5.6-sol` → `qwen.qwen3-vl-235b-a22b`.
+- Models run in alphabetical order of gateway ID: `claude-opus-5` → `gpt-5.6-sol` → `meta.llama-4-maverick-17b-instruct` → `qwen.qwen3-vl-235b-a22b`.
 - Within each model, papers run in one fixed order (same for every model), recorded as `run_order` 1–30.
 - Finish all 30 papers for a model before switching.
 - Every attempt is a separate stateless call. No prompt iteration.
@@ -53,7 +53,7 @@ Based on Watson (2015) poster criteria and the codebook definition (layout, read
 
 ## 5. Judge validation pilot (before the full experiment)
 
-**Purpose:** confirm Gemini Flash and Llama 4 Maverick (`meta.llama-4-maverick-17b-instruct`) score posters closely enough to humans to be used for screening (Hashemi et al., 2024; Zheng et al., 2023).
+**Purpose:** confirm Gemini Flash and GPT-4o score posters closely enough to humans to be used for screening (Hashemi et al., 2024; Zheng et al., 2023).
 
 1. **Pilot set:** a subset of posters with completed human scores. Size **[TBD — OI-5]**; suggested ≥ 20 posters covering all 4 models.
 2. Both judges score the pilot set with the same rubric and checklist used by humans. Present posters in randomized order; run each judge twice to measure test–retest consistency.
@@ -62,7 +62,7 @@ Based on Watson (2015) poster criteria and the codebook definition (layout, read
    - Pass/fail classification against each spec limit: detection rate *d* (share of truly failing posters the judge flags) and false-flag rate.
 4. **Bayes check:** P(truly fails | judge flags) from pilot counts.
 5. **Parallel rule:** P(at least one judge flags a truly failing poster) = 1 − (1 − d₁)(1 − d₂). Check the independence assumption by comparing with the observed joint flag rate on the pilot.
-6. **Bias check:** neither judge shares a provider with a candidate, so direct self-preference is unlikely (Panickssery et al., 2024). Still compare each judge's error against humans by candidate model; a judge that is consistently lenient or harsh on one candidate is flagged. Human scores remain the reference throughout.
+6. **Bias check:** GPT-4o shares a provider (OpenAI) with the candidate `gpt-5.6-sol`, so self-preference is possible (Panickssery et al., 2024). Compare GPT-4o's error against humans on `gpt-5.6-sol` posters versus the other candidates; if it is more lenient there, use Gemini Flash alone (or human review) for `gpt-5.6-sol` posters. Also compare each judge's error against humans by candidate model; a judge that is consistently lenient or harsh on one candidate is flagged. Human scores remain the reference throughout.
 7. A judge is used in the full experiment only if it meets the threshold set in OI-5. If neither passes, all posters go to human review.
 
 ## 6. Effort timing (SR-5)

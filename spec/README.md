@@ -37,6 +37,8 @@ The harness implementation lives in [`../harness/`](../harness/README.md), inclu
 |---|---|
 | Application under test | Paper2Poster (Pang et al., 2025), [github.com/Paper2Poster/Paper2Poster](https://github.com/Paper2Poster/Paper2Poster) @ `623d042f283acee782b2644d6abd63f75eccfa1f` (2026-06-08) |
 | Candidate LLMs (4) | `claude-opus-5`, `gpt-5.6-sol`, `meta.llama-4-maverick-17b-instruct`, `qwen.qwen3-vl-235b-a22b` |
+| Vision (critic) model | Same as the candidate, so each poster comes from one model (OI-1) |
+| Institution logo | `assets/CornellLogo.png` for every run (OI-18) |
 | Model interface | Cornell AI Platform → AI Gateway (assumed LiteLLM, OpenAI-compatible) |
 | Input papers | 30 papers by Cornell researchers |
 | Attempts | 30 papers × 4 LLMs = 120 (fewer posters if attempts fail) |

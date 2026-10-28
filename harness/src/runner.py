@@ -1,7 +1,9 @@
 """Runner: one Paper2Poster attempt per (model, paper, attempt), logged to runs.csv.
 
 Implements component 1 of spec/02_architecture.md. Each attempt is a separate
-Paper2Poster process; only `llm_model` (the text model) changes between runs.
+Paper2Poster process; only `llm_model` changes between runs. With
+vision_model: same_as_candidate the candidate fills both the text and the
+vision (critic) slot.
 
 Usage (from harness/):
     python src/runner.py --dry-run           # 1 paper x all candidates -> data/dry_run/
@@ -57,6 +59,7 @@ TRANSPORT_ERRORS = re.compile(
 )
 PAPER_ID = re.compile(r"^[A-Za-z0-9_-]+$")
 BACKOFF_S = 30
+SAME_AS_CANDIDATE = "same_as_candidate"
 
 
 def now_utc() -> str:
@@ -66,6 +69,12 @@ def now_utc() -> str:
 def resolve(p: str) -> Path:
     path = Path(p)
     return path if path.is_absolute() else HARNESS / path
+
+
+def vision_for(model: str, p2c: dict) -> str:
+    """Vision (critic) model for a candidate: the candidate itself, or one fixed model (OI-1)."""
+    v = p2c["vision_model"]
+    return model if v == SAME_AS_CANDIDATE else v
 
 
 def config_sha256(cfg: dict) -> str:
@@ -163,7 +172,7 @@ def run_attempt(*, run_id: int, model: str, paper_id: str, pdf: Path, cfg: dict,
     """Run one Paper2Poster attempt. Never raises on model/pipeline failure."""
     p2c = cfg["fixed"]["paper2poster"]
     p2p = resolve(p2c["path"])
-    vision = p2c["vision_model"]
+    vision = vision_for(model, p2c)
     max_retries = cfg["gateway"].get("max_transport_retries", 2)
 
     staged = p2p / "harness_input" / paper_id
@@ -294,7 +303,12 @@ def main() -> None:
 
     fixed, p2c, g = cfg["fixed"], cfg["fixed"]["paper2poster"], cfg["gateway"]
     if p2c.get("vision_model") in (None, "", "TBD"):
-        sys.exit("Set fixed.paper2poster.vision_model in the config (OI-1).")
+        sys.exit(f"Set fixed.paper2poster.vision_model in the config: a gateway ID or {SAME_AS_CANDIDATE} (OI-1).")
+    logo = p2c.get("institution_logo_path")
+    if logo == "TBD":
+        sys.exit("Set fixed.paper2poster.institution_logo_path to a logo file, or null to let Paper2Poster find one (OI-18).")
+    if logo and not resolve(logo).is_file():
+        sys.exit(f"Logo file not found: {resolve(logo)}")
     base_url, api_key = os.environ.get(g["base_url_env"]), os.environ.get(g["api_key_env"])
     if not base_url or not api_key:
         sys.exit(f"Set {g['base_url_env']} and {g['api_key_env']} first.")
@@ -351,16 +365,17 @@ def main() -> None:
                     continue
                 if cap is not None and spent >= cap:
                     sys.exit(f"Spend cap reached: ${spent:.2f} >= ${cap} (NFR-5). Stopping.")
+                vision = vision_for(model, p2c)
                 print(f"[run {next_id}] {model} × {paper_id} (attempt {attempt}) ...", flush=True)
                 row = run_attempt(run_id=next_id, model=model, paper_id=paper_id, pdf=pdf,
                                   cfg=cfg, out_root=out_root, env=env)
                 row.update(hashes, run_id=next_id, run_order=order[paper_id],
                            batch_id=math.ceil(order[paper_id] / batch_size),
                            llm_model=model, input_paper_id=paper_id, attempt=attempt,
-                           vision_model=p2c["vision_model"],
+                           vision_model=vision,
                            temperature=fixed.get("generation", {}).get("temperature"),
                            generation_cost=token_cost(prices, model, row.get("input_tokens"), row.get("output_tokens")),
-                           vision_cost=token_cost(prices, p2c["vision_model"],
+                           vision_cost=token_cost(prices, vision,
                                                   row.get("vision_input_tokens"), row.get("vision_output_tokens")),
                            price_table_as_of=as_of)
                 append_run(runs_path, row)

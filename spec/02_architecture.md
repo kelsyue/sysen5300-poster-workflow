@@ -41,7 +41,7 @@
 ## 3. Paper2Poster integration
 
 - Upstream: <https://github.com/Paper2Poster/Paper2Poster>, pinned to commit `623d042f283acee782b2644d6abd63f75eccfa1f` (2026-06-08). Record the hash in every run row (`p2p_commit`). The Runner refuses to start if the checkout is on a different commit or has local changes.
-- Paper2Poster takes separate text-model and vision-model settings (`--model_name_t`, `--model_name_v`). **[TBD — OI-1]** which of these the candidate replaces. Default in this spec: the candidate replaces the **text model**; the vision model is held fixed across all runs so `llm_model` stays the only factor. All four candidates accept image input, so swapping the vision model is technically possible, but it would make the candidate change two pipeline roles at once.
+- Paper2Poster takes separate text-model and vision-model settings (`--model_name_t`, `--model_name_v`). The vision model is the critic: it looks at rendered panel images and tells the text model to fix overflow and overlap. **Decided (OI-1):** the candidate fills **both** slots (`vision_model: same_as_candidate`), so each poster comes from one model and the experiment tests a whole-model swap. The cost is that a candidate's results combine its writing and its visual critique, which can't be separated. All four candidates accept image input. Setting `vision_model` to a gateway ID instead holds one critic fixed across candidates.
 - Do not modify the Paper2Poster pipeline, prompts, or layout logic between models (scope rule).
 - **Prompt.** Paper2Poster has no single prompt. It runs several agents (parser, figure filter, outline, layout, content filler, critics), each with its own built-in prompt in `utils/prompt_templates/*.yaml`, plus style defaults in `config/poster.yaml`. The "fixed prompt" is these files at the pinned commit. `prompt_sha256` is the SHA-256 over those files (sorted by path), computed by the Runner from the checkout.
 - **Invocation.** One attempt is one process, run from the Paper2Poster root:
@@ -49,10 +49,10 @@
 ```bash
 python -m PosterAgent.new_pipeline \
   --poster_path="harness_input/<input_paper_id>/paper.pdf" \
-  --model_name_t="<llm_model>" --model_name_v="<fixed vision model>" \
+  --model_name_t="<llm_model>" --model_name_v="<llm_model>" \
   --tmp_dir="tmp/<run_id>" \
   --poster_width_inches=48 --poster_height_inches=36 \
-  --institution_logo_path=<fixed logo>          # OI-18
+  --institution_logo_path=assets/CornellLogo.png   # OI-18
 ```
 
 - **Model names.** `get_agent_config()` in `utils/wei_utils.py` maps a few built-in names (`4o`, `vllm_qwen`, …). Any other name falls through to camel's `OPENAI_COMPATIBLE_MODEL` platform, which reads its endpoint from environment variables. So gateway model IDs are passed as-is and no Paper2Poster code changes are needed (§4.1).
@@ -134,6 +134,8 @@ The visual checks (`E_TRUNCATED`, `E_OVERFLOW`, `E_NO_FIGURES`) come from failur
 
 ```
 harness/
+├── assets/
+│   └── CornellLogo.png          # fixed institution logo (OI-18)
 ├── config/
 │   ├── experiment.yaml          # see config.example.yaml
 │   └── prices.yaml              # per-model token prices, with as_of date

@@ -66,7 +66,7 @@ def main():
 
     models = [c["id"] for c in cfg["candidates"]] + [j["id"] for j in cfg["judges"]["models"]]
     vision = cfg.get("fixed", {}).get("paper2poster", {}).get("vision_model")
-    if vision and vision != "TBD" and vision not in models:
+    if vision and vision not in ("TBD", "same_as_candidate") and vision not in models:
         models.append(vision)
     ok = True
 

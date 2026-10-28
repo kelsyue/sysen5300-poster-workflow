@@ -31,14 +31,14 @@
 | `prompt_sha256` | str | yes | SHA-256 over Paper2Poster's `utils/prompt_templates/*.yaml` and `config/poster.yaml` at the pinned commit |
 | `p2p_commit` | str | yes | |
 | `config_sha256` | str | yes | Hash of the `fixed` section of the experiment config (candidates excluded, so adding a model keeps it stable) |
-| `vision_model` | str | yes | Fixed vision model (OI-1) |
+| `vision_model` | str | yes | Vision (critic) model; equals `llm_model` when `vision_model: same_as_candidate` (OI-1) |
 | `temperature` | float | no | Empty while Paper2Poster sends no temperature (provider default, OI-17) |
 | `seed` | int | no | If the model supports it |
 | `started_at` / `finished_at` | ISO-8601 UTC | yes | |
 | `latency` | float (s) | yes | `finished_at − started_at` of the Paper2Poster process (final try) |
 | `input_tokens` / `output_tokens` | int | yes* | Text-model (candidate) tokens from Paper2Poster `log.json`. *Null if no log was written |
 | `cached_tokens` | int | no | Not reported by Paper2Poster; empty |
-| `vision_input_tokens` / `vision_output_tokens` | int | yes* | Fixed vision-model tokens, recorded but not attributed to the candidate |
+| `vision_input_tokens` / `vision_output_tokens` | int | yes* | Vision-model tokens, kept separate from the text-model tokens |
 | `token_usage` | int | yes* | `input_tokens + output_tokens` (candidate only) |
 | `generation_cost` | float (USD) | yes* | Candidate tokens × `prices.yaml`; null if the price is not filled in |
 | `vision_cost` | float (USD) | no | Vision tokens × `prices.yaml` |

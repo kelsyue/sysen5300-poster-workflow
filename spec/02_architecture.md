@@ -42,7 +42,7 @@
 
 - Upstream: <https://github.com/Paper2Poster/Paper2Poster>, pinned to commit `623d042f283acee782b2644d6abd63f75eccfa1f` (2026-06-08). Record the hash in every run row (`p2p_commit`). The Runner refuses to start if the checkout is on a different commit or has local changes.
 - Paper2Poster takes separate text-model and vision-model settings (`--model_name_t`, `--model_name_v`). The vision model is the critic: it looks at rendered panel images and tells the text model to fix overflow and overlap. **Decided (OI-1):** the candidate fills **both** slots (`vision_model: same_as_candidate`), so each poster comes from one model and the experiment tests a whole-model swap. The cost is that a candidate's results combine its writing and its visual critique, which can't be separated. All four candidates accept image input. Setting `vision_model` to a gateway ID instead holds one critic fixed across candidates.
-- Do not modify the Paper2Poster pipeline, prompts, or layout logic between models (scope rule).
+- Do not modify the Paper2Poster pipeline, prompts, or layout logic between models (scope rule). The one exception is the output-cap patch below, identical for every model.
 - **Prompt.** Paper2Poster has no single prompt. It runs several agents (parser, figure filter, outline, layout, content filler, critics), each with its own built-in prompt in `utils/prompt_templates/*.yaml`, plus style defaults in `config/poster.yaml`. The "fixed prompt" is these files at the pinned commit. `prompt_sha256` is the SHA-256 over those files (sorted by path), computed by the Runner from the checkout.
 - **Invocation.** One attempt is one process, run from the Paper2Poster root:
 
@@ -56,9 +56,12 @@ python -m PosterAgent.new_pipeline \
 ```
 
 - **Model names.** `get_agent_config()` in `utils/wei_utils.py` maps a few built-in names (`4o`, `vllm_qwen`, …). Any other name falls through to camel's `OPENAI_COMPATIBLE_MODEL` platform, which reads its endpoint from environment variables. So gateway model IDs are passed as-is and no Paper2Poster code changes are needed (§4.1).
-- **Generation parameters.** For fall-through model names Paper2Poster passes no model config, so no temperature or max-token setting is sent and each provider's default applies. **[TBD — OI-17]**
+- **Generation parameters.** For fall-through model names Paper2Poster passes no model config, so no temperature or max-token setting is sent and each provider's default applies. That default capped Claude's parser output at 4,096 tokens in the first dry run, which cut the Discussion and Conclusion from P01's poster.
+- **Output-cap patch (OI-17, decided 2026-10-29).** `harness/patches/p2p-max-output-tokens.patch` changes one method, `OpenAICompatibleModel.run()` in camel: when `P2P_MAX_OUTPUT_TOKENS` is set, every gateway request carries `max_tokens` with that value. The Runner applies the patch to a clean checkout, sets the variable from `fixed.paper2poster.max_output_tokens` (8,192, the most `meta.llama-4-maverick-17b-instruct` allows), records the patch hash in `p2p_patch_sha256`, and refuses any other local change. The cap is not put in `model_config`, because camel also uses `model_config["max_tokens"]` as each agent's context limit and would then truncate or reject long inputs. Temperature is still not sent.
 - **Outputs.** Paper2Poster writes to `<{model_t}_{model_v}>_generated_posters/<poster_path dir>/`: `<input_paper_id>.pptx`, PNG renders of the poster, `log.json` (total input/output tokens for the text and vision models, `time_taken`) and `detail_log.json` (tokens per pipeline step). The Runner moves this folder to `outputs/<run_id>/` right after each attempt so repeats don't overwrite each other.
 - **System dependencies.** LibreOffice (`soffice` on `PATH`, for PPTX → PNG) and Poppler (PDF parsing).
+- **Intermediate files.** After each attempt the Runner copies Paper2Poster's parsed section summaries (`raw_content`), panel content, layout (`tree_split`), figure/table captions and the placed figures to `outputs/<run_id>/intermediate/`. Paper2Poster keys them by model and paper, so the next attempt of the same pair would overwrite them.
+- **LaTeX rendering (optional, added 2026-10-29).** Paper2Poster's README poster comes from its `demo/` builder, not from the PPTX: it typesets `raw_content` and the figure layout into a beamerposter (Gemini theme). `src/latex_poster.py` builds this version from `intermediate/` with fixed rules for every run (page size from the config, no footer, height-balanced columns, auto-fit font scale recorded in `fit.json`). The panel-writing and critic step does not reach this output. **[TBD — OI-19]** which output evaluators score.
 - Wrap Paper2Poster in a single function:
 
 ```python
@@ -89,7 +92,7 @@ OPENAI_COMPATIBILIY_API_KEY       = $CORNELL_AI_GATEWAY_KEY
 OPENAI_COMPATIBILIY_API_BASE_URL  = $CORNELL_AI_GATEWAY_URL
 ```
 
-  The Runner sets them for each Paper2Poster process from the gateway variables above.
+  The Runner sets them for each Paper2Poster process from the gateway variables above. **Found in the first dry run (2026-10-28):** camel's `OpenAICompatibleModel` reads these into `self.api_key`/`self.url` but builds the OpenAI client from the unset constructor arguments, so they have no effect and the SDK falls back to `OPENAI_API_KEY` / `OPENAI_BASE_URL`. The Runner therefore sets those too.
 - `scripts/gateway_check.py` (provided) MUST pass before the dry run. It lists available models, confirms every configured model ID exists, sends one text call and one image call per model, and checks that `usage` token counts are returned.
 
 ### 4.2 Models
@@ -111,7 +114,7 @@ Judges must accept image input because they score the rendered poster. GPT-4o sh
 - Rate limits and quotas are not published **[TBD — OI-16]**. The Runner MUST handle HTTP 429 with backoff and log it.
 - Data: the 30 papers and evaluator details must fall within the gateway's moderate-risk approval. Unpublished papers should be cleared with their authors before upload.
 
-- Token counts come from Paper2Poster's `log.json`, which sums the gateway `usage` fields over every call in the attempt. Text-model (candidate) and vision-model tokens are recorded separately. Paper2Poster does not report cached tokens, so `cached_tokens` stays empty. Cost = input tokens × input price + output tokens × output price, using `prices.yaml`.
+- Token counts are summed from Paper2Poster's `detail_log.json` (per-step gateway `usage` totals). Not from `log.json`: at the pinned commit `new_pipeline.py` adds the outline step's tokens a second time instead of the content step's, so its text totals leave out most of the tokens (found in the first dry run, 2026-10-28). Text-model (candidate) and vision-model tokens are recorded separately. Paper2Poster does not report cached tokens, so `cached_tokens` stays empty. Cost = input tokens × input price + output tokens × output price, using `prices.yaml`.
 - Retries: **[TBD — OI-6]** Default: up to 2 retries on transport errors (timeouts, 429, 5xx) with backoff; retries are logged and do not get a new `run_id`. Model output that is unusable is a workflow failure, not a retry.
 
 ## 5. Workflow success definition

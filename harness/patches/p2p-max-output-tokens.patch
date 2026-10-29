@@ -1,0 +1,20 @@
+diff --git a/camel/models/openai_compatible_model.py b/camel/models/openai_compatible_model.py
+index 6326600..26fbeda 100644
+--- a/camel/models/openai_compatible_model.py
++++ b/camel/models/openai_compatible_model.py
+@@ -83,10 +83,14 @@ class OpenAICompatibleModel(BaseModelBackend):
+                 `ChatCompletion` in the non-stream mode, or
+                 `Stream[ChatCompletionChunk]` in the stream mode.
+         """
++        # Harness patch (OI-17): same output cap for every gateway model.
++        # Not put in model_config_dict, which camel also uses as the context limit.
++        cap = os.environ.get("P2P_MAX_OUTPUT_TOKENS")
++        extra = {"max_tokens": int(cap)} if cap else {}
+         response = self._client.chat.completions.create(
+             messages=messages,
+             model=self.model_type,
+-            **self.model_config_dict,
++            **{**extra, **self.model_config_dict},
+         )
+         return response
+ 

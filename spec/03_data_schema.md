@@ -30,13 +30,14 @@
 | `attempt` | int | yes | 1…`attempts_per_pair` for this (model, paper) pair |
 | `prompt_sha256` | str | yes | SHA-256 over Paper2Poster's `utils/prompt_templates/*.yaml` and `config/poster.yaml` at the pinned commit |
 | `p2p_commit` | str | yes | |
+| `p2p_patch_sha256` | str | no | SHA-256 of the applied Paper2Poster patch (OI-17); empty if none |
 | `config_sha256` | str | yes | Hash of the `fixed` section of the experiment config (candidates excluded, so adding a model keeps it stable) |
 | `vision_model` | str | yes | Vision (critic) model; equals `llm_model` when `vision_model: same_as_candidate` (OI-1) |
 | `temperature` | float | no | Empty while Paper2Poster sends no temperature (provider default, OI-17) |
 | `seed` | int | no | If the model supports it |
 | `started_at` / `finished_at` | ISO-8601 UTC | yes | |
 | `latency` | float (s) | yes | `finished_at − started_at` of the Paper2Poster process (final try) |
-| `input_tokens` / `output_tokens` | int | yes* | Text-model (candidate) tokens from Paper2Poster `log.json`. *Null if no log was written |
+| `input_tokens` / `output_tokens` | int | yes* | Text-model tokens summed over the steps in Paper2Poster `detail_log.json` (not `log.json`, see `02_architecture.md` §4.3). *Null if no log was written |
 | `cached_tokens` | int | no | Not reported by Paper2Poster; empty |
 | `vision_input_tokens` / `vision_output_tokens` | int | yes* | Vision-model tokens, kept separate from the text-model tokens |
 | `token_usage` | int | yes* | `input_tokens + output_tokens` (candidate only) |

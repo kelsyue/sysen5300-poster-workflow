@@ -50,7 +50,7 @@ cd vendor/Paper2Poster && .venv/bin/python -m PosterAgent.new_pipeline --help
 
 The exact resulting versions are in [`config/paper2poster-env.lock.txt`](config/paper2poster-env.lock.txt) (`pip freeze`). To rebuild the same environment: `pip install --no-cache-dir -r config/paper2poster-env.lock.txt`.
 
-Don't edit anything inside `vendor/Paper2Poster`: the Runner refuses to start if the checkout has local changes.
+Don't edit anything inside `vendor/Paper2Poster`. The one allowed change is [`patches/p2p-max-output-tokens.patch`](patches/p2p-max-output-tokens.patch) (OI-17): the Runner applies it to a clean checkout, and refuses to start if the checkout has any other changes. Its hash goes in `p2p_patch_sha256`.
 
 ### 3. Gateway credentials
 
@@ -62,11 +62,11 @@ python scripts/gateway_check.py                     # must print ALL CHECKS PASS
 
 Use the **LiteLLM API key** as `CORNELL_AI_GATEWAY_KEY`. The key ID only identifies the key in Cornell's portal and isn't sent with requests.
 
-The Runner passes these to Paper2Poster as `OPENAI_COMPATIBILIY_API_KEY` / `OPENAI_COMPATIBILIY_API_BASE_URL`. The misspelling is Paper2Poster's (camel's), so keep it as written.
+The Runner passes these to Paper2Poster as `OPENAI_API_KEY` / `OPENAI_BASE_URL`, and also as camel's `OPENAI_COMPATIBILIY_API_KEY` / `OPENAI_COMPATIBILIY_API_BASE_URL` (misspelling is upstream). camel reads the COMPATIBILIY pair but never passes it to the OpenAI client, so the standard pair is the one that takes effect.
 
 ### 4. Papers
 
-Put the 30 PDFs in `papers/` as `<input_paper_id>.pdf` (e.g. `P01.pdf`). IDs may use letters, digits, `_` and `-`. Sorted ID order is the fixed `run_order`. PDFs are gitignored; keep them in team storage.
+Put the 30 PDFs in `papers/` as `<input_paper_id>.pdf` (e.g. `P01.pdf`). IDs may use letters, digits, `_` and `-`. Sorted ID order is the fixed `run_order`. The PDFs are committed in `papers/` (P01–P10 so far), so a clone has the same inputs.
 
 ## Running
 
@@ -80,8 +80,35 @@ python src/runner.py               # all candidates × all papers → data/runs.
 - **Subsets.** `--models <id> ...` and `--papers <id> ...`.
 - **Spend cap.** The run stops when `experiment.spend_cap_usd` is reached (counts only models with prices filled in).
 - **Retries.** Gateway errors (429, 5xx, timeouts) are retried up to `gateway.max_transport_retries` times with backoff, under the same `run_id`.
+- **Keep the machine awake and on one network.** Start long runs with `caffeinate -i python src/runner.py ...` on macOS. A run that sleeps or changes Wi-Fi mid-download can hang on a dead connection, and the timeout doesn't count sleep time.
+- **First run downloads models.** Paper2Poster fetches its PDF-parsing models (docling, ~530 MB; EasyOCR, ~100 MB) on first use. The Runner sets `HF_HUB_DISABLE_XET=1` and a 120 s download timeout because the default Xet transfer stalled on slow networks.
 
 Each `outputs/<run_id>/` holds the poster `.pptx` and PNGs, Paper2Poster's `log.json` / `detail_log.json`, the extracted `poster_text.txt`, and `run.log` (full Paper2Poster output).
+
+### LaTeX version of a poster (optional)
+
+Paper2Poster's README poster is not the PPTX above. It comes from the repo's `demo/` builder, which typesets the parser's section summaries and the figure layout into a LaTeX beamerposter (Gemini theme). To build that version of a run's poster, without new model calls:
+
+```bash
+python src/latex_poster.py outputs/dry_run/1      # -> outputs/dry_run/1/latex/poster.pdf, poster.png, fit.json
+```
+
+It uses the files the Runner saves in `outputs/<run_id>/intermediate/`, so it works for any run made after that was added. The rendering rules (page size from the config, no footer, column balancing, auto-fit scale) are the same for every run and are listed at the top of `src/latex_poster.py`. `fit.json` records the font scale it had to use: smaller means the model wrote more text.
+
+Needs XeLaTeX (TinyTeX or TeX Live) and Poppler's `pdftoppm`. Install the 52 TeX packages the build uses with:
+
+```bash
+bash scripts/install_latex_deps.sh     # no sudo with TinyTeX; falls back to the frozen archive for an older TeX Live
+```
+
+`assets/fonts/` holds the demo's Lato and Raleway fonts (SIL OFL, licenses alongside). The pinned checkout only has Git LFS pointers for them. To check the committed files against those pointers:
+
+```bash
+for p in vendor/Paper2Poster/demo/template/fonts/*/*.ttf; do
+  f=assets/fonts/${p#vendor/Paper2Poster/demo/template/fonts/}
+  [ "$(shasum -a 256 "$f" | cut -d' ' -f1)" = "$(grep oid "$p" | cut -d: -f2)" ] && echo "ok  $f" || echo "BAD $f"
+done
+```
 
 ### After a run: team visual check (OI-7)
 

@@ -17,6 +17,8 @@ fixed:
     poster_height_inches: 36
     institution_logo_path: assets/CornellLogo.png   # one fixed logo for every run (OI-18)
     extra_args: []                # any other new_pipeline flags, identical for every run
+    patch: patches/p2p-max-output-tokens.patch   # the only allowed change to Paper2Poster (OI-17)
+    max_output_tokens: 8192       # sent as max_tokens on every gateway call; Llama 4 Maverick allows at most 8192 (OI-17)
     timeout_s: 3600               # per attempt
   # Generation prompts are Paper2Poster's own templates at the pinned commit;
   # the Runner hashes them into prompt_sha256.

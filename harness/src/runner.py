@@ -41,7 +41,7 @@ HARNESS = Path(__file__).resolve().parent.parent
 
 RUN_COLUMNS = [
     "run_id", "run_order", "batch_id", "llm_model", "input_paper_id", "attempt",
-    "prompt_sha256", "p2p_commit", "config_sha256", "vision_model", "temperature", "seed",
+    "prompt_sha256", "p2p_commit", "p2p_patch_sha256", "config_sha256", "vision_model", "temperature", "seed",
     "started_at", "finished_at", "latency",
     "input_tokens", "output_tokens", "cached_tokens",
     "vision_input_tokens", "vision_output_tokens", "token_usage",
@@ -92,17 +92,29 @@ def prompt_sha256(p2p: Path) -> str:
     return h.hexdigest()
 
 
-def check_p2p_commit(p2p: Path, expected: str) -> str:
-    """Return HEAD of the Paper2Poster checkout; exit if it isn't the pinned, clean commit."""
-    git = ["git", "-C", str(p2p)]
+def check_p2p_commit(p2p: Path, expected: str, patch: Path | None) -> tuple[str, str]:
+    """Return (HEAD, patch sha256) of the Paper2Poster checkout.
+
+    Exit unless it is the pinned commit with exactly the configured patch applied
+    (applied here if the checkout is clean), or no changes at all if there is no patch.
+    """
+    # Pin every git setting that changes `git diff` output, so the comparison with the
+    # patch file doesn't depend on the user's git config.
+    git = ["git", "-C", str(p2p), "-c", "color.ui=never", "-c", "diff.noprefix=false",
+           "-c", "diff.mnemonicPrefix=false", "-c", "diff.algorithm=myers", "-c", "core.autocrlf=false"]
     head = subprocess.run(git + ["rev-parse", "HEAD"], capture_output=True, text=True, check=True).stdout.strip()
     if head != expected:
         sys.exit(f"Paper2Poster is at {head}, config pins {expected}. Run: git -C {p2p} checkout {expected}")
-    dirty = subprocess.run(git + ["status", "--porcelain", "--untracked-files=no"],
-                           capture_output=True, text=True, check=True).stdout.strip()
-    if dirty:
-        sys.exit(f"Paper2Poster checkout has local changes (scope rule: no pipeline edits):\n{dirty}")
-    return head
+    diff = lambda: subprocess.run(git + ["diff", "--no-ext-diff", "--unified=3", "--inter-hunk-context=0",
+                                         "--indent-heuristic", "--src-prefix=a/", "--dst-prefix=b/"],
+                                  capture_output=True, text=True, check=True).stdout
+    want = patch.read_text() if patch else ""
+    if patch and diff() == "":
+        subprocess.run(git + ["apply", str(patch)], check=True)
+    if diff() != want:
+        sys.exit(f"Paper2Poster checkout has local changes other than {patch or 'none'} "
+                 f"(scope rule: no pipeline edits). Inspect with: git -C {p2p} diff")
+    return head, hashlib.sha256(want.encode()).hexdigest() if patch else ""
 
 
 def list_papers(papers_dir: Path) -> list[tuple[str, Path]]:
@@ -167,6 +179,51 @@ def poster_text(pptx_path: Path) -> str:
     return "\n".join(t for slide in prs.slides for t in walk(slide.shapes) if t.strip())
 
 
+def read_tokens(out_dir: Path) -> dict:
+    """Token totals summed from detail_log.json's per-step `<step>_{in,out}_{t,v}` counts.
+
+    log.json's text totals are wrong at the pinned commit: new_pipeline.py adds the
+    outline step's tokens again where it should add the content step's, so the
+    content step (most of the text tokens) is missing.
+    """
+    detail = out_dir / "detail_log.json"
+    if not detail.exists():
+        return {}
+    d = json.loads(detail.read_text())
+    def total(suffix):
+        return sum(v for k, v in d.items() if k.endswith(suffix) and isinstance(v, (int, float)))
+    tin, tout = total("_in_t"), total("_out_t")
+    return {"input_tokens": tin, "output_tokens": tout,
+            "vision_input_tokens": total("_in_v"), "vision_output_tokens": total("_out_v"),
+            "token_usage": tin + tout}
+
+
+def archive_intermediates(p2p: Path, tag: str, paper_id: str, out_dir: Path) -> None:
+    """Copy the parsed content, layout, captions and placed figures into out_dir/intermediate/.
+
+    Paper2Poster keys these by model and paper name, so the next attempt of the same
+    pair overwrites them. src/latex_poster.py builds the LaTeX poster from this copy.
+    """
+    inter = out_dir / "intermediate"
+    files = {
+        f"contents/{tag}_{paper_id}_raw_content.json": "raw_content.json",
+        f"contents/{tag}_{paper_id}_bullet_point_content_0.json": "bullet_point_content.json",
+        f"tree_splits/{tag}_{paper_id}_tree_split_0.json": "tree_split.json",
+        f"{tag}_images_and_tables/{paper_id}_images.json": "images.json",
+        f"{tag}_images_and_tables/{paper_id}_tables.json": "tables.json",
+    }
+    for src, dst in files.items():
+        if (p2p / src).exists():
+            inter.mkdir(parents=True, exist_ok=True)
+            shutil.copyfile(p2p / src, inter / dst)
+    if (inter / "tree_split.json").exists():
+        for fig in json.loads((inter / "tree_split.json").read_text()).get("figure_arrangement", []):
+            rel = fig.get("figure_path")
+            if rel and (p2p / rel).exists():
+                (inter / rel).parent.mkdir(parents=True, exist_ok=True)
+                shutil.copyfile(p2p / rel, inter / rel)
+
+
 def run_attempt(*, run_id: int, model: str, paper_id: str, pdf: Path, cfg: dict,
                 out_root: Path, env: dict) -> dict:
     """Run one Paper2Poster attempt. Never raises on model/pipeline failure."""
@@ -229,16 +286,9 @@ def run_attempt(*, run_id: int, model: str, paper_id: str, pdf: Path, cfg: dict,
         for item in gen_dir.iterdir():
             shutil.move(str(item), str(out_dir / item.name))
         shutil.rmtree(gen_dir, ignore_errors=True)
+    archive_intermediates(p2p, f"<{model}_{vision}>", paper_id, out_dir)
 
-    log_json = out_dir / "log.json"
-    if log_json.exists():
-        tokens = json.loads(log_json.read_text())
-        row["input_tokens"] = tokens.get("input_tokens_t")
-        row["output_tokens"] = tokens.get("output_tokens_t")
-        row["vision_input_tokens"] = tokens.get("input_tokens_v")
-        row["vision_output_tokens"] = tokens.get("output_tokens_v")
-        if row["input_tokens"] is not None and row["output_tokens"] is not None:
-            row["token_usage"] = row["input_tokens"] + row["output_tokens"]
+    row.update(read_tokens(out_dir))
 
     if row.get("failure_reason"):
         return row
@@ -312,13 +362,27 @@ def main() -> None:
     base_url, api_key = os.environ.get(g["base_url_env"]), os.environ.get(g["api_key_env"])
     if not base_url or not api_key:
         sys.exit(f"Set {g['base_url_env']} and {g['api_key_env']} first.")
+    # camel's OpenAICompatibleModel reads the COMPATIBILIY variables (its spelling) but then
+    # builds the client from the unset constructor args, so the OpenAI SDK falls back to
+    # OPENAI_API_KEY / OPENAI_BASE_URL. Set both pairs.
     env = dict(os.environ,
-               OPENAI_COMPATIBILIY_API_KEY=api_key,  # spelling matches Paper2Poster's camel
-               OPENAI_COMPATIBILIY_API_BASE_URL=base_url)
+               OPENAI_COMPATIBILIY_API_KEY=api_key,
+               OPENAI_COMPATIBILIY_API_BASE_URL=base_url,
+               OPENAI_API_KEY=api_key,
+               OPENAI_BASE_URL=base_url)
+    # First-run model downloads (docling, EasyOCR): Hugging Face's Xet transfer timed out
+    # on slow networks; plain HTTP with a longer timeout didn't. Users can still override.
+    env.setdefault("HF_HUB_DISABLE_XET", "1")
+    env.setdefault("HF_HUB_DOWNLOAD_TIMEOUT", "120")
+    if p2c.get("max_output_tokens"):
+        if not p2c.get("patch"):
+            sys.exit("fixed.paper2poster.max_output_tokens needs the max-output-tokens patch (OI-17).")
+        env["P2P_MAX_OUTPUT_TOKENS"] = str(p2c["max_output_tokens"])  # read by the patch
 
     p2p = resolve(p2c["path"])
-    commit = check_p2p_commit(p2p, p2c["commit"])
-    hashes = {"prompt_sha256": prompt_sha256(p2p), "p2p_commit": commit, "config_sha256": config_sha256(cfg)}
+    commit, patch_sha = check_p2p_commit(p2p, p2c["commit"], resolve(p2c["patch"]) if p2c.get("patch") else None)
+    hashes = {"prompt_sha256": prompt_sha256(p2p), "p2p_commit": commit, "p2p_patch_sha256": patch_sha,
+              "config_sha256": config_sha256(cfg)}
 
     papers = list_papers(resolve(fixed["papers_dir"]))
     if not papers:
@@ -350,8 +414,9 @@ def main() -> None:
 
     runs = read_runs(runs_path)
     for r in runs:
-        if r["p2p_commit"] != commit or r["prompt_sha256"] != hashes["prompt_sha256"]:
-            sys.exit(f"{runs_path} has run {r['run_id']} from a different Paper2Poster commit or prompts (DR-6).")
+        if (r["p2p_commit"] != commit or r["prompt_sha256"] != hashes["prompt_sha256"]
+                or r.get("p2p_patch_sha256", "") != patch_sha):
+            sys.exit(f"{runs_path} has run {r['run_id']} from a different Paper2Poster commit, patch or prompts (DR-6).")
     done = {(r["llm_model"], r["input_paper_id"], int(r["attempt"])) for r in runs}
     next_id = max((int(r["run_id"]) for r in runs), default=0) + 1
     spent = sum(run_cost(r) for r in runs)

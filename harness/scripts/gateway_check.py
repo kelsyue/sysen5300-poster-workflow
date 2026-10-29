@@ -36,12 +36,12 @@ def tiny_png() -> str:
     return "data:image/png;base64," + base64.b64encode(png).decode()
 
 
-def call(client, model, content):
+def call(client, model, content, max_tokens=1024):  # reasoning models spend tokens thinking first
     t0 = time.time()
     r = client.chat.completions.create(
         model=model,
         messages=[{"role": "user", "content": content}],
-        max_tokens=1024,  # reasoning models spend tokens thinking before they answer
+        max_tokens=max_tokens,
         temperature=0,
     )
     dt = time.time() - t0
@@ -65,7 +65,11 @@ def main():
     client = OpenAI(base_url=base_url, api_key=api_key, timeout=60, max_retries=0)
 
     models = [c["id"] for c in cfg["candidates"]] + [j["id"] for j in cfg["judges"]["models"]]
-    vision = cfg.get("fixed", {}).get("paper2poster", {}).get("vision_model")
+    p2c = cfg.get("fixed", {}).get("paper2poster", {})
+    vision = p2c.get("vision_model")
+    # Candidates (and the vision model) run inside Paper2Poster with this output cap (OI-17).
+    capped = {c["id"] for c in cfg["candidates"]} | ({vision} - {"TBD", "same_as_candidate", None})
+    cap = p2c.get("max_output_tokens")
     if vision and vision not in ("TBD", "same_as_candidate") and vision not in models:
         models.append(vision)
     ok = True
@@ -98,6 +102,13 @@ def main():
             print(f"  FAIL  text call: {e}")
             ok = False
             continue
+        if cap and m in capped:
+            try:
+                call(client, m, "Reply with the single word: ok", max_tokens=cap)
+                print(f"  cap    ok  accepts max_tokens={cap}")
+            except Exception as e:
+                print(f"  FAIL  max_tokens={cap} rejected: {e}")
+                ok = False
         if m in TEXT_ONLY:
             print("  image  skipped (text-only model)")
             continue

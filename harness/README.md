@@ -70,6 +70,29 @@ Put the 30 PDFs in `papers/` as `<input_paper_id>.pdf` (e.g. `P01.pdf`). IDs may
 
 ## Running
 
+### Make one poster (quick reference)
+
+From a new terminal:
+
+```bash
+cd ~/sysen5300-poster-workflow/harness
+source .venv/bin/activate
+
+# PPTX poster: one paper, one candidate (~7 min, ~850k tokens for P01 × claude-opus-5)
+caffeinate -i python src/runner.py --dry-run --models claude-opus-5 --papers P01
+
+# LaTeX version of that run, no model calls (run ID is printed as "[run N]")
+python src/latex_poster.py outputs/dry_run/1
+
+open outputs/dry_run/1/latex/poster.pdf   # or the .pptx / PNGs in outputs/dry_run/1/
+```
+
+Candidate IDs for `--models`: `claude-opus-5`, `gpt-5.6-sol`, `meta.llama-4-maverick-17b-instruct`, `qwen.qwen3-vl-235b-a22b`. Leave out `--models` for all four.
+
+**Re-making a poster that already exists.** The Runner skips any (model, paper, attempt) already in the runs file, so the command above does nothing the second time. To redo a dry run, delete its row from `data/dry_run/runs.csv` (or delete `data/dry_run/` and `outputs/dry_run/` to start the dry run over) and run it again. Don't do this in the full run's `data/runs.csv`: failed attempts there are data (FR-7).
+
+### All commands
+
 ```bash
 python src/runner.py --dry-run     # 1 paper × 4 candidates → data/dry_run/runs.csv, outputs/dry_run/
 python src/runner.py --estimate    # full-run cost estimate from the dry run (fill config/prices.yaml first)

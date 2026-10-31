@@ -27,6 +27,7 @@ The harness holds everything constant except `llm_model`. It is the engineering 
 | [05_analysis_spec.md](05_analysis_spec.md) | Descriptive stats, SPC charts, capability analysis, probability methods (R) |
 | [06_acceptance_gate.md](06_acceptance_gate.md) | Pass / fail / inconclusive rules, human-review routing, decision report |
 | [07_open_issues.md](07_open_issues.md) | Inconsistencies across source docs and decisions still needed |
+| [08_llm_judge.md](08_llm_judge.md) | LLM-as-judge design: the four judge calls, inputs, reliability handling, pilot validation and prompt revision, token cost |
 | [config.example.yaml](config.example.yaml) | Reference configuration for one experiment |
 
 The harness implementation lives in [`../harness/`](../harness/README.md), including `scripts/gateway_check.py` (Cornell AI Gateway smoke test) and `src/runner.py`.
@@ -43,6 +44,17 @@ The harness owns the preparation adapter; upstream remains pinned with its exist
 token-cap patch. New CSVs and outputs live under `data/latex/` and `outputs/latex/`.
 Legacy runs remain separate. Older sections describing PPTX/vision generation are
 historical until revised; the harness README documents the active workflow.
+
+Revision 2026-10-31 (changes `prompt_sha256` and `config_sha256`, so runs made
+before it can't share a runs file with runs made after):
+- The paper-summary call is tried at most twice and every try's tokens are counted
+  (upstream retried without limit and counted only the last call); upstream's random
+  choice of sections, when a summary has more than 9, is seeded (`fixed.generation.seed`).
+- The figure-planning request states the task in the user message as well as the system
+  message, and an empty selection means "no figure". Before this, Llama 4 Maverick
+  summarized the input instead of planning and the attempt failed.
+- `latency` sums every try and the LaTeX build; `E_NO_FIGURES` is checked automatically;
+  `generation_cost` uses the gateway's price list (`scripts/fetch_prices.py`).
 
 ## Fixed parameters (v0.1; original experiment)
 

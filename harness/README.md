@@ -77,6 +77,31 @@ and compiles the existing LaTeX template locally.
 It does not generate PPTX, bullet-formatting JSON, or run visual critic loops.
 PDF and PNG previews are produced automatically; no separate export command is needed.
 
+Each poster costs two candidate calls: the paper summary (the whole paper goes in once)
+and the figure plan (summaries and captions only). Generation never calls a judge model;
+judging is a separate command (see "Judging the LaTeX posters"), so test runs of either
+step are independent.
+
+Every attempt is one row in `runs.csv`. The codebook variables:
+
+| Column | Meaning |
+|---|---|
+| `llm_model` | candidate that generated the poster (predictor) |
+| `input_paper_id` | paper used (control) |
+| `run_id` | unique number per attempt in that runs file, including repeats of the same pair |
+| `latency` | seconds of processing for the attempt: every try plus the LaTeX build, without back-off waits |
+| `generation_cost` | USD: `input_tokens` × input price + `output_tokens` × output price, from `config/prices.yaml` |
+| `workflow_success` | 1 if a usable poster was produced (automatic checks below), else 0 with `failure_reason` |
+| `token_usage` | all tokens of every candidate call in the attempt, including calls in failed tries |
+
+Automatic failure codes: `E_API` (gateway failed after retries), `E_BUDGET`, `E_PIPELINE`
+(parser or planner output unusable), `E_LATEX`, `E_OVERFLOW` (text still overflows at the
+smallest font scale), `E_UNREADABLE` (no extractable text), `E_NO_FIGURES` (no figure or
+table from the paper placed). The team check adds `E_TRUNCATED` (OI-7).
+
+Prices come from the gateway's own price list. Refresh them before a run with
+`python scripts/fetch_prices.py` (writes `config/prices.yaml` with the date).
+
 ### Quick start: generate new posters
 
 Run these commands from the repository root using the existing setup:
@@ -150,10 +175,12 @@ the vendor checkout remains unchanged. The old batch helper under `outputs/` is
 historical; use `src/runner.py` for new batches.
 
 Token totals include text and vision (vision is zero in this workflow). Completed
-preparation stages are logged even if a later stage fails; an interrupted call or
-failed internal retry can still have unreported usage. Prices remain unset until
-filled in `config/prices.yaml`; local spend caps need those prices. A gateway
-`budget_exceeded` error is recorded as `E_BUDGET` and stops the whole batch.
+preparation stages are logged even if a later stage fails. The paper-summary call is
+tried at most `max_parse_attempts` times (2) when its output is unusable, and every
+attempt's tokens are counted; upstream's parser retried without limit and reported only
+the last call. A call cut off by a dropped connection can still go unreported. A gateway
+`budget_exceeded` error is recorded as `E_BUDGET` and stops the whole batch;
+`experiment.spend_cap_usd` stops the run once the summed `generation_cost` reaches it.
 
 Local LaTeX fitting balances columns and tries a fixed set of scales without
 model calls. Remaining overflow fails the automatic check. The team still needs
@@ -201,13 +228,38 @@ For older archives without run metadata, the existing direct renderer remains:
 python src/latex_poster.py outputs/1
 ```
 
+### Collecting results for evaluation
+
+```bash
+python src/results.py --dry-run       # or without --dry-run for the full run
+```
+
+Writes `results/latex[/dry_run]/by_run.csv` (one row per attempt: codebook variables,
+failure reason, font scale, and judge and human means once those exist), `by_model.csv`
+(per candidate: success rate, latency, tokens, cost, mean scores) and
+`posters/<input_paper_id>/<llm_model>.pdf/.png`, links that put all candidates for one
+paper side by side. These name the model: team only, never for evaluators.
+
 ### After a run: team visual check (OI-7)
 
 The Runner sets `workflow_success` from the automatic checks only. For every successful row, a team member opens the LaTeX poster PNG/PDF and fills `visual_check` in `runs.csv` with `pass`, or with `E_TRUNCATED` / `E_OVERFLOW` / `E_NO_FIGURES`. For a failure, also set `workflow_success` to 0 and copy the code into `failure_reason`. Log each manual edit (protocol §7).
 
+### Judging the LaTeX posters
+
+The judges score the LaTeX PDF, never the PPTX. From `harness/`, with credentials loaded:
+
+```bash
+python judge/reference_sheet.py       # once per paper: papers/<id>.reference.json (commit these)
+python src/blinder.py --dry-run       # poster codes, blinded PDFs/text, judge manifest (drop --dry-run for the full run)
+python judge/judge.py --dry-run       # both judges -> data/latex/dry_run/judge_scores.csv
+```
+
+The blind key goes to `data/private/` (gitignored). With a reference sheet each poster costs about 35,000 tokens per judge (P01: GPT-4o 26,408 in / 7,909 out; Gemini 20,710 / 17,231); the sheet itself costs about 28,000 tokens once per paper. How to fill human scores, check reference sheets, run the pilot and revise the prompts: [`judge/README.md`](judge/README.md) and [`spec/08_llm_judge.md`](../spec/08_llm_judge.md).
+
 ## Validation
 
 Run `python -m unittest discover -s tests` for offline workflow checks.
+Run `python judge/tests/test_offline.py` for the judge and pilot-agreement checks (fake gateway, no key).
 Offline checks cover one-call planning, invalid figure references, checkpoint
 isolation/restoration, resumed preparation, zero-credential rebuilds and failure
 handling. A new gateway pilot is still required to measure v2 token use and quality.

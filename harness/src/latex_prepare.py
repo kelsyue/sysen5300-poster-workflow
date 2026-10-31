@@ -1,6 +1,9 @@
 """LaTeX preparation: upstream parsing, one combined planner and local tree layout.
 
 Parsing/layout adapted from PosterAgent/new_pipeline.py at the pinned commit.
+The parser call uses upstream's prompt, PDF conversion and output checks, but with a
+bounded number of attempts, every attempt's tokens recorded, and a seeded section
+selection (see parse_paper).
 The harness-owned planner merges figure filtering and section assignment.
 Completed generation stages are checkpointed per source PDF and candidate.
 Stops after saving tree_split: no bullet JSON generation, vision critics or PPTX.
@@ -9,8 +12,9 @@ Run from the Paper2Poster working directory using its Python environment.
 import sys
 from pathlib import Path
 sys.path.insert(0, str(Path.cwd()))
-from PosterAgent.parse_raw import parse_raw, gen_image_and_table
-from combined_planner import plan_figures, planning_input, SYSTEM_PROMPT
+from PosterAgent.parse_raw import gen_image_and_table
+from paper_parser import parse_paper
+from combined_planner import plan_figures, planning_input, SYSTEM_PROMPT, PLANNING_REQUEST
 from preparation_cache import StageCache, file_digest
 from utils.wei_utils import get_agent_config, scale_to_target_area, char_capacity
 from PosterAgent.tree_split_layout import main_train, main_inference, get_arrangments_in_inches, split_textbox, to_inches
@@ -19,10 +23,12 @@ import argparse
 import atexit
 import json
 import os
+import random
 import shutil
 import time
 
 units_per_inch = 25
+
 
 if __name__ == '__main__':
 
@@ -38,6 +44,8 @@ if __name__ == '__main__':
     parser.add_argument('--tmp_dir', type=str, default='tmp')
     parser.add_argument('--poster_width_inches', type=int, default=None)
     parser.add_argument('--poster_height_inches', type=int, default=None)
+    parser.add_argument('--max_parse_attempts', type=int, default=2)
+    parser.add_argument('--seed', type=int, default=0)
 
     args = parser.parse_args()
 
@@ -59,6 +67,8 @@ if __name__ == '__main__':
         'parser_code': file_digest('PosterAgent/parse_raw.py'),
         'parser_prompt': file_digest('utils/prompts/gen_poster_raw_content_v2.txt'),
         'parser_utils': file_digest('utils/wei_utils.py'),
+        'harness_parser': file_digest(Path(__file__).with_name('paper_parser.py')),
+        'max_parse_attempts': args.max_parse_attempts, 'seed': args.seed,
         'max_output_tokens': os.environ.get('P2P_MAX_OUTPUT_TOKENS'),
         'gateway': os.environ.get('OPENAI_BASE_URL'),
     }
@@ -109,13 +119,18 @@ if __name__ == '__main__':
     tables_path = Path(f'{tag}_images_and_tables/{poster_name}_tables.json')
     parsed = cache.load('parse', {}, destination=Path.cwd())
     if parsed is None:
-        input_token, output_token, raw_result = parse_raw(args, agent_config_t, version=2)
-        detail_log['parser_in_t'] = detail_log.get('parser_in_t', 0) + input_token
-        detail_log['parser_out_t'] = detail_log.get('parser_out_t', 0) + output_token
-        save_usage()
+        parse_usage = {'input_tokens': 0, 'output_tokens': 0}
+        def record_parse_usage(tin, tout):
+            parse_usage['input_tokens'] += tin
+            parse_usage['output_tokens'] += tout
+            detail_log['parser_in_t'] = detail_log.get('parser_in_t', 0) + tin
+            detail_log['parser_out_t'] = detail_log.get('parser_out_t', 0) + tout
+            save_usage()
+        rng = random.Random(f'{args.seed}-{args.poster_name}')
+        raw_result = parse_paper(args, agent_config_t, record_parse_usage, args.max_parse_attempts, rng)
         _, _, images, tables = gen_image_and_table(args, raw_result)
         assets = [v['image_path'] for v in images.values()] + [v['table_path'] for v in tables.values()]
-        parsed = {'input_tokens': input_token, 'output_tokens': output_token}
+        parsed = dict(parse_usage)
         cache.save('parse', {}, parsed, source=Path.cwd(),
                    files=[raw_path, images_path, tables_path, *assets])
     else:
@@ -141,7 +156,7 @@ if __name__ == '__main__':
 
     # One compact model request replaces filtering followed by planning.
     plan_inputs = {'content': planning_input(document, images, tables),
-                   'prompt': SYSTEM_PROMPT,
+                   'prompt': SYSTEM_PROMPT + PLANNING_REQUEST,
                    'implementation': file_digest(Path(__file__).with_name('combined_planner.py'))}
     planned = cache.load('plan', plan_inputs)
     if planned is None:
@@ -149,7 +164,8 @@ if __name__ == '__main__':
             detail_log['planning_in_t'] = detail_log.get('planning_in_t', 0) + tin
             detail_log['planning_out_t'] = detail_log.get('planning_out_t', 0) + tout
             save_usage()
-        panels, figures = plan_figures(document, images, tables, agent_config_t, record_usage)
+        panels, figures = plan_figures(document, images, tables, agent_config_t, record_usage,
+                                       raw_path=intermediate / 'planner_response.txt')
         planned = {'panels': panels, 'figures': figures}
         cache.save('plan', plan_inputs, planned)
     else:

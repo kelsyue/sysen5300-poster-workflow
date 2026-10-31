@@ -34,14 +34,14 @@
 | `config_sha256` | str | yes | Hash of the `fixed` section of the experiment config (candidates excluded, so adding a model keeps it stable) |
 | `vision_model` | str | yes | Vision (critic) model; equals `llm_model` when `vision_model: same_as_candidate` (OI-1) |
 | `temperature` | float | no | Empty while Paper2Poster sends no temperature (provider default, OI-17) |
-| `seed` | int | no | If the model supports it |
+| `seed` | int | no | `fixed.generation.seed`: seeds upstream's section selection when a summary has more than 9 sections. Not sent to the model |
 | `started_at` / `finished_at` | ISO-8601 UTC | yes | |
-| `latency` | float (s) | yes | `finished_at − started_at` of the Paper2Poster process (final try) |
+| `latency` | float (s) | yes | Processing time of the attempt: every try of the preparation process plus the local LaTeX build, excluding back-off waits between tries. Retries reuse completed stages, so the final try alone would understate it |
 | `input_tokens` / `output_tokens` | int | yes* | Text-model tokens summed over the steps in Paper2Poster `detail_log.json` (not `log.json`, see `02_architecture.md` §4.3). *Null if no log was written |
 | `cached_tokens` | int | no | Not reported by Paper2Poster; empty |
 | `vision_input_tokens` / `vision_output_tokens` | int | yes* | Vision-model tokens, kept separate from the text-model tokens |
-| `token_usage` | int | yes* | `input_tokens + output_tokens` (candidate only) |
-| `generation_cost` | float (USD) | yes* | Candidate tokens × `prices.yaml`; null if the price is not filled in |
+| `token_usage` | int | yes* | `input_tokens + output_tokens` (+ vision tokens, zero in the LaTeX workflow), over every candidate call of every try |
+| `generation_cost` | float (USD) | yes* | Candidate tokens × `prices.yaml` (the gateway's own price list, fetched by `scripts/fetch_prices.py`; `price_table_as_of` records its date); null if a price is missing |
 | `vision_cost` | float (USD) | no | Vision tokens × `prices.yaml` |
 | `price_table_as_of` | date | yes | |
 | `retries` | int | yes | Transport retries used |
@@ -77,7 +77,7 @@
 
 ### 2.4 `judge_scores` — one row per (poster, judge, repeat)
 
-Same scoring fields as `human_scores`, with `judge_model` instead of `evaluator_id`, plus `judge_repeat` (for test–retest), `raw_response`, and `parse_ok` (0/1).
+Same scoring fields as `human_scores`, with `judge_model` instead of `evaluator_id`, plus `judge_repeat` (for test–retest), `judge_prompt_sha256` (rubric version), `parse_ok` (0/1) and `failed_tasks`, the per-measure detail (`coverage_pct`, `n_claims_contradicted`, `halluc_per1k`, `quality_layout` / `_readability` / `_fidelity`), `evidence_found_rate`, `paper_truncated`, `used_reference_sheet`, `latency_s`, `tokens_in` / `tokens_out` and `judged_at`. Raw responses are stored in `judge_raw/` rather than in the CSV. Exact columns: `OUT_COLUMNS` in `harness/judge/judge.py`.
 
 ### 2.5 `review_queue`
 

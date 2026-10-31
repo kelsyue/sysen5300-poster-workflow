@@ -1,15 +1,23 @@
-# List prices (USD per million tokens). The gateway is free during its pilot, so
-# generation_cost is what the run would cost on each provider's own API
-# (spec/02_architecture.md §4.3). Leave a price as null until it is known;
-# cost is then left empty for that model.
-
-as_of: null        # date the prices were looked up, e.g. 2026-10-23
-source: null       # where they came from (provider pricing pages / gateway price list)
-
+# List prices (USD per million tokens), written by scripts/fetch_prices.py.
+# generation_cost = input_tokens x input price + output_tokens x output price.
+as_of: '2026-10-31'
+source: https://api.ai.it.cornell.edu/model/info (LiteLLM model_info)
 models:
-  claude-opus-5:                       { input_per_mtok: null, output_per_mtok: null }
-  gpt-5.6-sol:                         { input_per_mtok: null, output_per_mtok: null }
-  meta.llama-4-maverick-17b-instruct:  { input_per_mtok: null, output_per_mtok: null }
-  qwen.qwen3-vl-235b-a22b:             { input_per_mtok: null, output_per_mtok: null }
-  gemini-3.5-flash:                    { input_per_mtok: null, output_per_mtok: null }
-  openai.gpt-4o:                       { input_per_mtok: null, output_per_mtok: null }
+  claude-opus-5:
+    input_per_mtok: 5.0
+    output_per_mtok: 25.0
+  gpt-5.6-sol:
+    input_per_mtok: 4.0
+    output_per_mtok: 20.0
+  meta.llama-4-maverick-17b-instruct:
+    input_per_mtok: 0.24
+    output_per_mtok: 0.97
+  qwen.qwen3-vl-235b-a22b:
+    input_per_mtok: 0.53
+    output_per_mtok: 2.66
+  gemini-3.5-flash:
+    input_per_mtok: 1.5
+    output_per_mtok: 9.0
+  openai.gpt-4o:
+    input_per_mtok: 2.5
+    output_per_mtok: 10.0

@@ -14,8 +14,13 @@ Usage (from harness/):
 Re-running resumes: (model, paper, attempt) triples already in the runs file are
 skipped. Failed attempts are kept as data (FR-7) and are not retried on resume.
 
-workflow_success here covers the automatic checks only (E_API, E_PIPELINE,
-E_NO_FILE, E_UNREADABLE). The team fills `visual_check` afterwards (OI-7).
+workflow_success here covers the automatic checks only (E_API, E_PIPELINE, E_LATEX,
+E_OVERFLOW, E_UNREADABLE, E_NO_FIGURES). The team fills `visual_check` afterwards (OI-7).
+
+latency is the processing time of the attempt: every try plus the local LaTeX build,
+excluding the back-off waits between tries. token_usage and generation_cost count
+every model call of every try (detail_log.json is cumulative). No judge model is ever
+called here; judging is a separate step (judge/judge.py).
 """
 from __future__ import annotations
 
@@ -170,6 +175,15 @@ def run_cost(row: dict) -> float:
     return sum(float(row[k]) for k in ("generation_cost", "vision_cost") if row.get(k) not in (None, ""))
 
 
+FIGURE = re.compile(r"\\includegraphics\[[^\]]*\]\{figures/")
+
+
+def has_figure(run_dir: Path) -> bool:
+    """At least one figure or table image from the paper is placed (logos excluded)."""
+    tex = run_dir / "latex" / "poster.tex"
+    return tex.exists() and bool(FIGURE.search(tex.read_text(errors="replace")))
+
+
 def poster_text(pdf_path: Path) -> str:
     """Extract the delivered PDF text for scoring."""
     return subprocess.run(["pdftotext", str(pdf_path), "-"],
@@ -232,6 +246,8 @@ def rebuild_saved(run_dir: Path, config_path: Path | None = None) -> dict:
             result['failure_reason'] = 'E_OVERFLOW'
         elif not text.strip():
             result['failure_reason'] = 'E_UNREADABLE'
+        elif not has_figure(run_dir):
+            result['failure_reason'] = 'E_NO_FIGURES'
         else:
             result['workflow_success'] = 1
     except (subprocess.SubprocessError, OSError, ValueError) as exc:
@@ -257,7 +273,9 @@ def run_attempt(*, run_id: int, model: str, paper_id: str, pdf: Path, cfg: dict,
            f"--poster_path={poster_rel}", f"--model_name_t={model}", f"--model_name_v={vision}",
            f"--tmp_dir={tmp_rel}",
            f"--poster_width_inches={p2c['poster_width_inches']}",
-           f"--poster_height_inches={p2c['poster_height_inches']}"]
+           f"--poster_height_inches={p2c['poster_height_inches']}",
+           f"--max_parse_attempts={p2c.get('max_parse_attempts', 2)}",
+           f"--seed={cfg['fixed'].get('generation', {}).get('seed') or 0}"]
     cmd += [str(a) for a in p2c.get("extra_args") or []]
 
     out_dir = out_root / str(run_id)
@@ -272,8 +290,9 @@ def run_attempt(*, run_id: int, model: str, paper_id: str, pdf: Path, cfg: dict,
     (out_dir / "run_config.yaml").write_text(yaml.safe_dump(cfg))
 
     row = {"retries": 0, "workflow_success": 0}
+    busy = 0.0  # seconds spent working, summed over tries; back-off waits excluded
     for attempt_try in range(max_retries + 1):
-        row["started_at"] = now_utc()
+        row.setdefault("started_at", now_utc())
         t0 = time.monotonic()
         with open(log_path, "a") as log:
             log.write(f"=== try {attempt_try + 1} {row['started_at']}\n$ {' '.join(cmd)}\n")
@@ -284,7 +303,8 @@ def run_attempt(*, run_id: int, model: str, paper_id: str, pdf: Path, cfg: dict,
             except subprocess.TimeoutExpired:
                 rc = None
                 log.write("\n=== harness: attempt timed out\n")
-        row["latency"] = round(time.monotonic() - t0, 2)
+        busy += time.monotonic() - t0
+        row["latency"] = round(busy, 2)
         row["finished_at"] = now_utc()
         if rc == 0:
             break
@@ -308,22 +328,28 @@ def run_attempt(*, run_id: int, model: str, paper_id: str, pdf: Path, cfg: dict,
         return row
 
     pdf_path = out_dir / "latex" / f"{name}.pdf"
+    t0 = time.monotonic()
     try:
         fit, text = render_saved(out_dir, cfg)
-        if not fit["fits"]:
-            row["failure_reason"] = "E_OVERFLOW"
-            return row
     except (subprocess.SubprocessError, OSError, ValueError) as e:
         with open(log_path, "a") as log:
             log.write(f"\n=== harness: LaTeX rendering/text extraction failed: {e!r}\n")
+        fit, text = None, ""
+    row["latency"] = round(busy + time.monotonic() - t0, 2)
+    row["finished_at"] = now_utc()
+    if fit is None:
         row["failure_reason"] = "E_LATEX"
         return row
-    row["latency"] = round(time.monotonic() - t0, 2)
-    row["finished_at"] = now_utc()
+    if not fit["fits"]:
+        row["failure_reason"] = "E_OVERFLOW"
+        return row
     (out_dir / "poster_text.txt").write_text(text)
     words = len(text.split())
     if words == 0:
         row["failure_reason"] = "E_UNREADABLE"
+        return row
+    if not has_figure(out_dir):
+        row["failure_reason"] = "E_NO_FIGURES"
         return row
 
     row.update(workflow_success=1, poster_path=str(pdf_path.relative_to(HARNESS)), poster_word_count=words)
@@ -474,6 +500,7 @@ def main() -> None:
                            llm_model=model, input_paper_id=paper_id, attempt=attempt,
                            vision_model="",
                            temperature=fixed.get("generation", {}).get("temperature"),
+                           seed=fixed.get("generation", {}).get("seed"),
                            generation_cost=token_cost(prices, model, row.get("input_tokens"), row.get("output_tokens")),
                            vision_cost=token_cost(prices, vision,
                                                   row.get("vision_input_tokens"), row.get("vision_output_tokens")),

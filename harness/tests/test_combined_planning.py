@@ -52,6 +52,11 @@ class CombinedPlanning(unittest.TestCase):
                 validate_plan(plan, DOCUMENT, IMAGES, {})
         self.assertEqual(make_panels(DOCUMENT, {}, {}, {})[1]['gp'], 0)
 
+    def test_empty_selection_means_no_visual(self):
+        # Llama 4 Maverick lists every section, with {} where it chose no visual.
+        plan = {'Poster Title & Authors': {}, 'Results': {'image': '1'}}
+        self.assertEqual(validate_plan(plan, DOCUMENT, IMAGES, {}), {'Results': {'image': '1'}})
+
     def test_usage_recorded_before_bad_json_is_rejected(self):
         response = types.SimpleNamespace(msgs=[types.SimpleNamespace(content='bad json')])
         agent = Mock()
@@ -108,6 +113,7 @@ class Rebuild(unittest.TestCase):
                     return subprocess.CompletedProcess(cmd, 0, stdout='Results and conclusions')
                 self.assertTrue(cmd[1].endswith('latex_poster.py'))
                 (run / 'latex').mkdir()
+                (run / 'latex/poster.tex').write_text(r'\includegraphics[width=0.8\linewidth]{figures/P01-table-1.png}')
                 (run / 'latex/fit.json').write_text('{"fits":true}')
                 return subprocess.CompletedProcess(cmd, 0)
             with patch.dict('os.environ', {}, clear=True), patch.object(runner.subprocess, 'run', side_effect=execute):

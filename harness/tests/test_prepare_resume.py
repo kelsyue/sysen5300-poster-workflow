@@ -31,10 +31,11 @@ class PrepareResume(unittest.TestCase):
                                      {'title': 'Results', 'content': 'A measured result'}]}
             images = {'1': {'image_path': f'{tag}_images_and_tables/P01/figure.png',
                              'caption': 'Results', 'figure_size': 100, 'figure_aspect': 1}}
-            def parse(*args, **kwargs):
+            def parse(args, config, record_usage, max_attempts, rng):
+                record_usage(100, 20)
                 raw.parent.mkdir(parents=True, exist_ok=True)
                 raw.write_text(json.dumps(document))
-                return 100, 20, object()
+                return object()
             def extract(*args):
                 figure = root / images['1']['image_path']
                 figure.parent.mkdir(parents=True, exist_ok=True)
@@ -42,7 +43,7 @@ class PrepareResume(unittest.TestCase):
                 (directory / 'P01_images.json').write_text(json.dumps(images))
                 (directory / 'P01_tables.json').write_text('{}')
                 return 0, 0, images, {}
-            def plan(doc, ims, tables, config, record):
+            def plan(doc, ims, tables, config, record, raw_path=None):
                 record(40, 5)
                 chosen = {'Results': {'image': '1'}}
                 return make_panels(doc, ims, tables, chosen), chosen
@@ -53,7 +54,7 @@ class PrepareResume(unittest.TestCase):
                 get_arrangments_in_inches=lambda w,h,p,f,t,u: (w/u,h/u,p,f,t),
                 split_textbox=lambda t,r: (dict(t), dict(t)), to_inches=lambda v,u:v/u)
             modules = {
-                'PosterAgent.parse_raw': types.SimpleNamespace(parse_raw=parsed, gen_image_and_table=extracted),
+                'PosterAgent.parse_raw': types.SimpleNamespace(gen_image_and_table=extracted),
                 'PosterAgent.tree_split_layout': tree,
                 'utils.wei_utils': types.SimpleNamespace(get_agent_config=lambda m: {},
                     scale_to_target_area=lambda w,h:(w,h), char_capacity=lambda **kw: 50),
@@ -66,6 +67,7 @@ class PrepareResume(unittest.TestCase):
             try:
                 os.chdir(root)
                 with patch.dict(sys.modules, modules), patch('combined_planner.plan_figures', planned), \
+                     patch('paper_parser.parse_paper', parsed), \
                      patch.object(sys, 'argv', argv), patch('atexit.register'):
                     with self.assertRaises(RuntimeError):
                         runpy.run_path(str(ENTRY), run_name='__main__')

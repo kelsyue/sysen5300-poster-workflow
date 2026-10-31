@@ -11,7 +11,7 @@
 ## 2. Pre-run checklist
 
 1. Check out Paper2Poster at `623d042f283acee782b2644d6abd63f75eccfa1f` in `harness/vendor/Paper2Poster`, with no local changes. The Runner checks this and records the hash.
-2. Freeze `judge_rubric.txt` and record its SHA-256. The generation prompts are Paper2Poster's own templates at the pinned commit; the Runner hashes them per run. No edits to either after the first run.
+2. Freeze the judge prompts (`harness/judge/prompts/`; `judge.py` records their SHA-256 as `judge_prompt_sha256` on every row, and the one allowed revision after the pilot gets a new hash, see `08_llm_judge.md` §5). The generation prompts are Paper2Poster's own templates at the pinned commit; the Runner hashes them per run. No edits to either after the first run.
 3. Collect 30 papers; assign `input_paper_id`; confirm each author agrees to evaluate.
 4. Fill `prices.yaml` from the gateway's current price list; set `as_of`.
 5. Dry run: 1 paper × 4 models (`python src/runner.py --dry-run`). Confirm all four model IDs respond, usage is returned, and outputs parse. Dry-run posters go to `data/dry_run/` and are excluded from analysis.

@@ -42,6 +42,7 @@ class LatexWorkflow(unittest.TestCase):
                 work = out / 'latex'
                 work.mkdir()
                 (work / 'p01 x candidate.pdf').write_bytes(b'%PDF-placeholder')
+                (work / 'poster.tex').write_text(r'\includegraphics[width=0.8\linewidth]{figures/P01-picture-1.png}')
                 (work / 'fit.json').write_text('{"fits": true}')
             elif cmd[0] == 'pdftotext':
                 return subprocess.CompletedProcess(cmd, 0, stdout='Methods Results Conclusion')
@@ -78,6 +79,18 @@ class LatexWorkflow(unittest.TestCase):
             row = self.attempt()
         self.assertEqual(row['workflow_success'], 0)
         self.assertEqual(row['failure_reason'], 'E_OVERFLOW')
+
+
+class FigureCheck(unittest.TestCase):
+    def test_logo_alone_is_not_a_figure(self):
+        with tempfile.TemporaryDirectory() as d:
+            run = Path(d)
+            (run / 'latex').mkdir()
+            tex = run / 'latex' / 'poster.tex'
+            tex.write_text(r'\logoleft{\includegraphics[height=4cm]{logos/left_logo.png}}')
+            self.assertFalse(runner.has_figure(run))
+            tex.write_text(tex.read_text() + r'\includegraphics[width=0.6\linewidth]{figures/P01-picture-1.png}')
+            self.assertTrue(runner.has_figure(run))
 
 
 if __name__ == '__main__':

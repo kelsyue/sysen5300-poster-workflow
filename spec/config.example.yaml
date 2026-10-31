@@ -21,11 +21,12 @@ fixed:
     patch: patches/p2p-max-output-tokens.patch   # the only allowed change to Paper2Poster (OI-17)
     max_output_tokens: 8192       # sent as max_tokens on every gateway call; Llama 4 Maverick allows at most 8192 (OI-17)
     timeout_s: 3600               # per attempt
+    max_parse_attempts: 2         # paper-summary calls per try if the output is unusable (upstream: unbounded)
   # Generation prompts are Paper2Poster's own templates at the pinned commit;
   # the Runner hashes them into prompt_sha256.
-  rubric_file: prompts/judge_rubric.txt
   generation:
     temperature: null             # not sent by Paper2Poster for gateway models (OI-17)
+    seed: 5300                    # seeds upstream's section selection when a summary has > 9 sections
   papers_dir: papers/
   n_papers: 30
   attempts_per_pair: 1            # raise if budget allows (see OI-4)
@@ -50,6 +51,28 @@ judges:
     - id: gemini-3.5-flash         # Gemini Flash
     - id: openai.gpt-4o           # GPT-4o
   repeats: 2                      # test-retest on the pilot
+
+judge_settings:                   # judge/judge.py; see spec/08_llm_judge.md
+  temperature: 0
+  max_output_tokens: 8192         # thinking tokens count toward this on Gemini 3.5 Flash
+  max_image_px: 2000              # long side of the PNG rendered from the poster PDF
+  claims_batch_size: 40           # claims per verification call (the paper is resent per batch)
+  paper_char_limit: 400000        # papers longer than this are truncated and flagged
+  reference_fallback_chars: 100000  # paper text given to coverage/quality when no reference sheet exists
+
+judge_validation:                 # proposed pass thresholds for the pilot (OI-5)
+  item_kappa_min: 0.60
+  coverage_icc_min: 0.75
+  halluc_icc_min: 0.60
+  quality_wkappa_min: 0.60
+  quality_within1_min: 0.90
+  detection_min: 0.80
+  retest_icc_min: 0.80
+  evidence_found_min: 0.90
+
+reference_sheets:                 # judge/reference_sheet.py: per-paper checklist answers (OI-20)
+  models: [gemini-3.5-flash, openai.gpt-4o]   # both draft each sheet and cross-check the drafts
+  excerpt_chars: 2500             # paper text per verified quote, given to the judge for an uncertain item
 
 spec_limits:
   key_information_coverage: { lsl: 90 }

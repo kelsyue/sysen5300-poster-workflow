@@ -30,9 +30,9 @@
 | # | Component | Language | Responsibility |
 |---|---|---|---|
 | 1 | Runner | Python | Iterate (model, paper) pairs in protocol order; call Paper2Poster; capture timing, tokens, cost, outputs, success flag |
-| 2 | Blinder | Python | Assign anonymous `poster_code`; write key file; build randomized evaluator packets |
+| 2 | Blinder | Python | `src/blinder.py`. Assign anonymous `poster_code`; write key file; copy each LaTeX poster and its text under its code; write the judge manifest and a human scoring template. Evaluator packets per author: not built yet |
 | 3a | Scoring sheet I/O | Python | Generate scoring sheets (spreadsheet/form); ingest completed sheets into `human_scores` |
-| 3b | Judge runner | Python | Send each poster image + source paper to both judges with the fixed rubric; parse structured responses into `judge_scores` |
+| 3b | Judge runner | Python | `judge/judge.py`, see `08_llm_judge.md`. Send each poster image + source paper to both judges with the fixed rubric; parse structured responses into `judge_scores`. `judge/pilot_agreement.py` validates the judges against human scores |
 | 4 | Review router | Python | Apply flag rules (`06_acceptance_gate.md` §3); write review queue |
 | 5 | Analysis | R | Everything in `05_analysis_spec.md` |
 | 6 | Acceptance gate | R | Apply decision rules; render one report per candidate plus a comparison summary |
@@ -61,7 +61,7 @@ python -m PosterAgent.new_pipeline \
 - **Outputs.** Paper2Poster writes to `<{model_t}_{model_v}>_generated_posters/<poster_path dir>/`: `<input_paper_id>.pptx`, PNG renders of the poster, `log.json` (total input/output tokens for the text and vision models, `time_taken`) and `detail_log.json` (tokens per pipeline step). The Runner moves this folder to `outputs/<run_id>/` right after each attempt so repeats don't overwrite each other.
 - **System dependencies.** LibreOffice (`soffice` on `PATH`, for PPTX → PNG) and Poppler (PDF parsing).
 - **Intermediate files.** After each attempt the Runner copies Paper2Poster's parsed section summaries (`raw_content`), panel content, layout (`tree_split`), figure/table captions and the placed figures to `outputs/<run_id>/intermediate/`. Paper2Poster keys them by model and paper, so the next attempt of the same pair would overwrite them.
-- **LaTeX rendering (optional, added 2026-10-29).** Paper2Poster's README poster comes from its `demo/` builder, not from the PPTX: it typesets `raw_content` and the figure layout into a beamerposter (Gemini theme). `src/latex_poster.py` builds this version from `intermediate/` with fixed rules for every run (page size from the config, no footer, height-balanced columns, auto-fit font scale recorded in `fit.json`). The panel-writing and critic step does not reach this output. **[TBD — OI-19]** which output evaluators score.
+- **LaTeX rendering (optional, added 2026-10-29).** Paper2Poster's README poster comes from its `demo/` builder, not from the PPTX: it typesets `raw_content` and the figure layout into a beamerposter (Gemini theme). `src/latex_poster.py` builds this version from `intermediate/` with fixed rules for every run (page size from the config, no footer, height-balanced columns, auto-fit font scale recorded in `fit.json`). The panel-writing and critic step does not reach this output. Evaluators and judges score this LaTeX version (OI-19, decided 2026-10-30).
 - Wrap Paper2Poster in a single function:
 
 ```python
@@ -121,17 +121,18 @@ Judges must accept image input because they score the rendered poster. GPT-4o sh
 
 An attempt is `workflow_success = 1` only if all of the following hold; otherwise 0 with a `failure_reason` code:
 
-| Code | Check |
-|---|---|
-| `E_API` | Gateway call completed after allowed retries |
-| `E_PIPELINE` | Paper2Poster finished without an exception |
-| `E_NO_FILE` | A poster file was written |
-| `E_UNREADABLE` | Poster text can be extracted / text is legible |
-| `E_TRUNCATED` | Content is not cut off at poster edges |
-| `E_OVERFLOW` | Text does not run outside its boxes |
-| `E_NO_FIGURES` | Poster contains at least one figure from the paper |
+| Code | Check | By |
+|---|---|---|
+| `E_API` | Gateway call completed after allowed retries | Runner |
+| `E_BUDGET` | Gateway budget not exhausted | Runner |
+| `E_PIPELINE` | Preparation finished: parser output usable within `max_parse_attempts`, figure plan valid | Runner |
+| `E_LATEX` | The LaTeX poster compiled | Runner |
+| `E_OVERFLOW` | Text fits its columns at some font scale down to 0.6 (overflow ≤ 5 pt in the LaTeX log) | Runner |
+| `E_UNREADABLE` | Poster text can be extracted | Runner |
+| `E_NO_FIGURES` | At least one figure or table image from the paper is placed (`\includegraphics{figures/…}`; logos excluded) | Runner |
+| `E_TRUNCATED` | Content is not cut off at poster edges, text is legible | Team (`visual_check`) |
 
-The visual checks (`E_TRUNCATED`, `E_OVERFLOW`, `E_NO_FIGURES`) come from failure modes reported by Pang et al. (2025). **[TBD — OI-7]** whether these are checked automatically, by the team, or both.
+The visual checks (`E_TRUNCATED`, `E_OVERFLOW`, `E_NO_FIGURES`) come from failure modes reported by Pang et al. (2025). In the LaTeX workflow, overflow and missing figures are checked automatically; the team check covers what code can't see (OI-7).
 
 ## 6. Directory layout
 
@@ -143,7 +144,7 @@ harness/
 │   ├── experiment.yaml          # see config.example.yaml
 │   └── prices.yaml              # per-model token prices, with as_of date
 ├── prompts/
-│   └── judge_rubric.txt         # fixed before grading (generation prompts live in Paper2Poster)
+│   └── judge_rubric.txt         # superseded by judge/prompts/ (08_llm_judge.md)
 ├── papers/                      # 30 PDFs, named <input_paper_id>.pdf (gitignored)
 ├── vendor/Paper2Poster/         # pinned checkout + its own Python env (gitignored)
 ├── scripts/
@@ -151,7 +152,7 @@ harness/
 ├── src/
 │   ├── runner.py                # built (first version)
 │   ├── blinder.py
-│   ├── judges.py
+│   ├── judges.py                # built as judge/judge.py + judge/pilot_agreement.py
 │   ├── sheets.py
 │   ├── router.py
 │   └── effort_log.py

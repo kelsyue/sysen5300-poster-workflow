@@ -12,6 +12,14 @@ exact section titles to {"image": "ID"} or {"table": "ID"}. Omit sections with n
 suitable visual. Return {} if no supplied visual is useful. No reasons or layout
 coordinates are needed: code computes layout and sizing."""
 
+# The task is restated in the user turn: with only the system message, Llama 4 Maverick
+# summarized the input instead of planning (first LaTeX dry run, P01). Same text for every model.
+PLANNING_REQUEST = """Task: choose the figures for the poster sections below, following the rules in the system message.
+Output: only a JSON object whose keys are section titles copied exactly and whose values are {"image": "ID"} or {"table": "ID"} with IDs from the lists below, for example {"Results": {"image": "2"}}. No other text.
+
+Input:
+"""
+
 
 def planning_input(document, images, tables):
     """Send scientific content once; leave paths and styling out of the prompt."""
@@ -30,6 +38,8 @@ def validate_plan(plan, document, images, tables):
     titles = {s['title'] for s in document['sections']}
     used, clean = set(), {}
     for title, selection in plan.items():
+        if selection in ({}, None, ''):
+            continue  # "no visual for this section", which some models state explicitly
         if title not in titles or title.lower().startswith('poster title'):
             raise ValueError(f'Invalid figure section: {title}')
         if not isinstance(selection, dict) or len(selection) != 1:
@@ -66,7 +76,7 @@ def make_panels(document, images, tables, plan):
     return panels
 
 
-def plan_figures(document, images, tables, actor_config, record_usage):
+def plan_figures(document, images, tables, actor_config, record_usage, raw_path=None):
     # Imports resolve in Paper2Poster's environment, not the harness environment.
     from camel.models import ModelFactory
     from camel.agents import ChatAgent
@@ -79,9 +89,11 @@ def plan_figures(document, images, tables, actor_config, record_usage):
         kwargs['url'] = actor_config['url']
     agent = ChatAgent(system_message=SYSTEM_PROMPT, model=ModelFactory.create(**kwargs),
                       message_window_size=1)
-    response = agent.step(json.dumps(planning_input(document, images, tables),
-                                    ensure_ascii=False, separators=(',', ':')))
+    response = agent.step(PLANNING_REQUEST + json.dumps(planning_input(document, images, tables),
+                                                       ensure_ascii=False, separators=(',', ':')))
     record_usage(*account_token(response))  # record even if JSON validation fails
+    if raw_path is not None:  # kept for audit, and to see why a plan was rejected
+        raw_path.write_text(response.msgs[0].content or '')
     plan = validate_plan(get_json_from_response(response.msgs[0].content),
                          document, images, tables)
     return make_panels(document, images, tables, plan), plan

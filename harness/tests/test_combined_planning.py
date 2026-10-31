@@ -72,6 +72,23 @@ class CombinedPlanning(unittest.TestCase):
         record.assert_called_once_with(50, 10)
         self.assertEqual(agent.step.call_count, 1)
 
+    def test_recovery_feedback_is_sent_only_when_requested(self):
+        response = types.SimpleNamespace(msgs=[types.SimpleNamespace(content='{"Results":{"image":"1"}}')])
+        agent = Mock()
+        agent.step.return_value = response
+        modules = {'camel.models': types.SimpleNamespace(ModelFactory=Mock()),
+                   'camel.agents': types.SimpleNamespace(ChatAgent=Mock(return_value=agent)),
+                   'utils.src.utils': types.SimpleNamespace(get_json_from_response=json.loads),
+                   'utils.wei_utils': types.SimpleNamespace(account_token=lambda r: (50, 10))}
+        with patch.dict(sys.modules, modules):
+            plan_figures(DOCUMENT, IMAGES, {},
+                {'model_platform': 'gateway', 'model_type': 'candidate', 'model_config': {}}, Mock(),
+                feedback={'failure': 'duplicate figure', 'previous_response': 'rejected mapping'})
+        prompt = agent.step.call_args.args[0]
+        self.assertIn('duplicate figure', prompt)
+        self.assertIn('rejected mapping', prompt)
+        self.assertIn('Exclude title/authors sections entirely', prompt)
+
 
 class Checkpoints(unittest.TestCase):
     def test_artifacts_restore_and_never_cross_candidates_or_papers(self):

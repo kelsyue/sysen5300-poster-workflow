@@ -46,6 +46,7 @@ if __name__ == '__main__':
     parser.add_argument('--poster_height_inches', type=int, default=None)
     parser.add_argument('--max_parse_attempts', type=int, default=2)
     parser.add_argument('--seed', type=int, default=0)
+    parser.add_argument('--planning_feedback', type=str, default=None)
 
     args = parser.parse_args()
 
@@ -75,6 +76,13 @@ if __name__ == '__main__':
     }
     cache = StageCache(args.checkpoint_dir, identity)
     cache_hits = []
+    def save_cache_usage():
+        usage_path.with_name('cache_usage.json').write_text(json.dumps({
+            'reused_stages': cache_hits, 'candidate': args.model_name_t,
+            'pdf_sha256': identity['pdf_sha256'],
+            'token_accounting': 'detail_log includes cumulative generation usage, including earlier tries'
+        }, indent=2))
+    save_cache_usage()
 
     agent_config_t = get_agent_config(args.model_name_t)
     poster_name = args.poster_path.split('/')[-2].replace(' ', '_')
@@ -137,6 +145,7 @@ if __name__ == '__main__':
     else:
         print('Reusing saved summaries and extracted figures; no parser API call.', flush=True)
         cache_hits.append('parse')
+        save_cache_usage()
         detail_log.setdefault('parser_in_t', parsed['input_tokens'])
         detail_log.setdefault('parser_out_t', parsed['output_tokens'])
         images = json.loads(images_path.read_text())
@@ -156,28 +165,29 @@ if __name__ == '__main__':
     detail_log['parser_time'] = time.time() - start_time
 
     # One compact model request replaces filtering followed by planning.
+    feedback = json.loads(Path(args.planning_feedback).read_text()) if args.planning_feedback else None
     plan_inputs = {'content': planning_input(document, images, tables),
                    'prompt': SYSTEM_PROMPT + PLANNING_REQUEST,
                    'implementation': file_digest(Path(__file__).with_name('combined_planner.py'))}
+    if feedback:
+        plan_inputs['recovery_feedback'] = feedback
     planned = cache.load('plan', plan_inputs)
     if planned is None:
         def record_usage(tin, tout):
             detail_log['planning_in_t'] = detail_log.get('planning_in_t', 0) + tin
             detail_log['planning_out_t'] = detail_log.get('planning_out_t', 0) + tout
             save_usage()
+        extra = {'feedback': feedback} if feedback else {}
         panels, figures = plan_figures(document, images, tables, agent_config_t, record_usage,
-                                       raw_path=intermediate / 'planner_response.txt')
+                                       raw_path=intermediate / 'planner_response.txt', **extra)
         planned = {'panels': panels, 'figures': figures}
         cache.save('plan', plan_inputs, planned)
     else:
         print('Reusing saved figure selections and outline; no planning API call.', flush=True)
         cache_hits.append('plan')
+        save_cache_usage()
         panels, figures = planned['panels'], planned['figures']
-    usage_path.with_name('cache_usage.json').write_text(json.dumps({
-        'reused_stages': cache_hits, 'candidate': args.model_name_t,
-        'pdf_sha256': identity['pdf_sha256'],
-        'token_accounting': 'detail_log includes cumulative generation usage, including earlier tries'
-    }, indent=2))
+    save_cache_usage()
     save_usage()
     outline_time = time.time()
 

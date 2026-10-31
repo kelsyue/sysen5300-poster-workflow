@@ -26,6 +26,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import fcntl
 import datetime as dt
 import hashlib
 import json
@@ -155,6 +156,18 @@ def append_run(path: Path, row: dict) -> None:
         w.writerow({k: "" if row.get(k) is None else row.get(k) for k in RUN_COLUMNS})
 
 
+def acquire_run_lock(data_dir: Path):
+    """Keep one generation/recovery writer per run set."""
+    data_dir.mkdir(parents=True, exist_ok=True)
+    handle = (data_dir / '.runner.lock').open('a')
+    try:
+        fcntl.flock(handle.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
+    except BlockingIOError:
+        handle.close()
+        raise RuntimeError('Another generation/recovery command is using this run set')
+    return handle
+
+
 def load_prices(path: Path) -> tuple[dict, str]:
     if not path.exists():
         return {}, ""
@@ -257,7 +270,7 @@ def rebuild_saved(run_dir: Path, config_path: Path | None = None) -> dict:
 
 
 def run_attempt(*, run_id: int, model: str, paper_id: str, pdf: Path, cfg: dict,
-                out_root: Path, env: dict) -> dict:
+                out_root: Path, env: dict, planning_feedback: Path | None = None) -> dict:
     """Run one Paper2Poster attempt. Never raises on model/pipeline failure."""
     p2c = cfg["fixed"]["paper2poster"]
     p2p = resolve(p2c["path"])
@@ -277,6 +290,8 @@ def run_attempt(*, run_id: int, model: str, paper_id: str, pdf: Path, cfg: dict,
            f"--max_parse_attempts={p2c.get('max_parse_attempts', 2)}",
            f"--seed={cfg['fixed'].get('generation', {}).get('seed') or 0}"]
     cmd += [str(a) for a in p2c.get("extra_args") or []]
+    if planning_feedback:
+        cmd.append(f"--planning_feedback={planning_feedback}")
 
     out_dir = out_root / str(run_id)
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -390,7 +405,23 @@ def main() -> None:
     ap.add_argument("--estimate", action="store_true", help="estimate full-run cost from the dry run, then exit")
     ap.add_argument("--models", nargs="+", help="subset of candidate IDs")
     ap.add_argument("--papers", nargs="+", help="subset of input_paper_ids")
+    recovery = ap.add_mutually_exclusive_group()
+    recovery.add_argument("--retry-failed", action="store_true",
+                          help="retry each unfinished poster once from its own checkpoints; preserve original rows")
+    recovery.add_argument("--summary", action="store_true",
+                          help="write initial/recovery outcomes and token/cost totals; no API calls")
     args = ap.parse_args()
+
+    if args.retry_failed or args.summary:
+        if args.rebuild or args.estimate:
+            ap.error("--retry-failed/--summary cannot be combined with --rebuild/--estimate")
+        from recovery import recover_batch, write_summary
+        if args.summary:
+            write_summary(HARNESS, dry_run=args.dry_run, papers=args.papers, models=args.models)
+        else:
+            recover_batch(HARNESS, dry_run=args.dry_run, papers=args.papers,
+                          models=args.models, config_path=resolve(args.config) if args.config else None)
+        return
 
     if args.rebuild:
         failed = False
@@ -401,6 +432,7 @@ def main() -> None:
         if failed:
             sys.exit("Some local rebuilds failed; see rebuild_result.json and run.log.")
         return
+    run_lock = acquire_run_lock(HARNESS / 'data' / 'latex' / ('dry_run' if args.dry_run else ''))
     cfg = yaml.safe_load(open(resolve(args.config or "config/experiment.yaml")))
     if args.estimate:
         return estimate(cfg)
@@ -482,13 +514,14 @@ def main() -> None:
                 or r.get("config_sha256") != hashes["config_sha256"]):
             sys.exit(f"{runs_path} has run {r['run_id']} from a different commit, patch, prompts or fixed configuration (DR-6).")
     done = {(r["llm_model"], r["input_paper_id"], int(r["attempt"])) for r in runs}
-    next_id = max((int(r["run_id"]) for r in runs), default=0) + 1
-    spent = sum(run_cost(r) for r in runs)
+    output_ids = [int(p.name) for p in out_root.iterdir() if p.name.isdigit() and p.is_dir()] if out_root.exists() else []
+    next_id = max([int(r["run_id"]) for r in runs] + output_ids, default=0) + 1
+    spent = sum(run_cost(r) for r in runs + read_runs(data_dir / 'recovery_attempts.csv'))
     if cap is not None and any(not (prices.get(m) or {}).get("input_per_mtok") for m in models):
         print("WARNING: spend_cap_usd is set but prices.yaml is incomplete; the cap can't count those models.")
 
-    for model in models:
-        for paper_id, pdf in papers:
+    for paper_id, pdf in papers:
+        for model in models:
             for attempt in range(1, fixed.get("attempts_per_pair", 1) + 1):
                 if (model, paper_id, attempt) in done:
                     continue
@@ -515,6 +548,7 @@ def main() -> None:
                 if row.get("failure_reason") == "E_BUDGET":
                     sys.exit("Gateway budget exhausted. Attempt saved; batch stopped.")
                 next_id += 1
+    run_lock.close()
 
 
 if __name__ == "__main__":

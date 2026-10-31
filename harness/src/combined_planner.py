@@ -76,7 +76,7 @@ def make_panels(document, images, tables, plan):
     return panels
 
 
-def plan_figures(document, images, tables, actor_config, record_usage, raw_path=None):
+def plan_figures(document, images, tables, actor_config, record_usage, raw_path=None, feedback=None):
     # Imports resolve in Paper2Poster's environment, not the harness environment.
     from camel.models import ModelFactory
     from camel.agents import ChatAgent
@@ -89,8 +89,16 @@ def plan_figures(document, images, tables, actor_config, record_usage, raw_path=
         kwargs['url'] = actor_config['url']
     agent = ChatAgent(system_message=SYSTEM_PROMPT, model=ModelFactory.create(**kwargs),
                       message_window_size=1)
-    response = agent.step(PLANNING_REQUEST + json.dumps(planning_input(document, images, tables),
-                                                       ensure_ascii=False, separators=(',', ':')))
+    prompt = PLANNING_REQUEST + json.dumps(planning_input(document, images, tables),
+                                          ensure_ascii=False, separators=(',', ':'))
+    if feedback:
+        prompt += ('\n\nRecovery of this same model\'s failed attempt. The previous response '
+                   'below was rejected. Return a corrected mapping using only the supplied '
+                   'IDs and exact section titles. Exclude title/authors sections entirely. '
+                   'Use each image/table at most once; leave sections without a suitable '
+                   'unused visual out. Return only the corrected JSON.\n'
+                   + json.dumps(feedback, ensure_ascii=False, separators=(',', ':')))
+    response = agent.step(prompt)
     record_usage(*account_token(response))  # record even if JSON validation fails
     if raw_path is not None:  # kept for audit, and to see why a plan was rejected
         raw_path.write_text(response.msgs[0].content or '')

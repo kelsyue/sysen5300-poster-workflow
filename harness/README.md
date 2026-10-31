@@ -123,8 +123,10 @@ set +a
 caffeinate -i python src/runner.py --models claude-opus-5 --papers P03
 ```
 
-The runner prints `[run N]`; use that number to find the result:
-`outputs/latex/N/latex/p03 x claude-opus-5.pdf`. The PNG preview is alongside it.
+Find the result in `outputs/latex/posters/p03/p03 x claude-opus-5.pdf`.
+The PNG preview and all other models' posters for P03 are in that same folder.
+The runner also prints `[run N]`; the archived result is in
+`outputs/latex/N/latex/p03 x claude-opus-5.pdf`.
 `caffeinate -i` keeps a Mac awake; omit it on other operating systems.
 Generation makes real API calls and needs available gateway budget.
 
@@ -136,6 +138,9 @@ caffeinate -i python src/runner.py --models claude-opus-5 --papers P03 P04 P05
 
 # The selected papers with all four configured candidates.
 caffeinate -i python src/runner.py --papers P03 P04 P05
+
+# Papers P01–P15: all four models for each paper before the next paper.
+caffeinate -i python src/runner.py --papers P{01..15}
 
 # All 30 papers with all four configured candidates.
 caffeinate -i python src/runner.py
@@ -151,11 +156,18 @@ python src/runner.py --estimate
 Use `--models` with one or more of: `claude-opus-5`, `gpt-5.6-sol`,
 `meta.llama-4-maverick-17b-instruct`, `qwen.qwen3-vl-235b-a22b`.
 Omit `--models` to use all four. Paper IDs match filenames under `papers/`.
+Generation processes papers in sorted ID order, running all selected candidates
+in configuration order for each paper before moving to the next paper.
 
 New results are isolated from the original PPTX experiment:
 
 - Full runs: `data/latex/runs.csv`, `outputs/latex/<run_id>/`
 - Dry runs: `data/latex/dry_run/runs.csv`, `outputs/latex/dry_run/<run_id>/`
+- Grouped exports: `outputs/latex/posters/<paper_id lowercase>/`, containing
+  `<paper_id lowercase> x <model>.pdf` and `.png` for every generated model.
+  Dry-run exports go in `outputs/latex/dry_run/posters/<paper_id lowercase>/`.
+  Generation and rebuilds refresh these copies automatically; repeated attempts
+  replace that model's grouped copy while preserving each run's archive.
 - Poster: `latex/<paper_id lowercase> x <model>.pdf` inside each run folder,
   alongside a PNG preview, `poster.tex`, `fit.json` and `build.log`.
 
@@ -195,6 +207,13 @@ candidate, generation settings and prompt/code hashes; candidate summaries are
 never shared across models. `cache_usage.json` records reused stages. Fresh,
 explicit experiment attempts have their own checkpoints.
 
+Each paper–model pair generates its own summaries and figure selections from the
+source paper with fresh model agents. A different model never receives another
+model's summaries, selections, or poster. The source paper, prompts, template and
+layout rules are common experimental inputs. Grouped export folders are only for
+viewing results; generation does not read them. Layout rebuilds reuse only the
+selected run's saved content, and retry checkpoints are scoped to that attempt.
+
 If compilation fails or you want to change the local layout, rebuild the saved run.
 From a fresh terminal at the repository root, activate the harness environment;
 there is no need to load credentials:
@@ -227,6 +246,61 @@ For older archives without run metadata, the existing direct renderer remains:
 ```bash
 python src/latex_poster.py outputs/1
 ```
+
+### Recover failed posters from their checkpoints
+
+With the same environment and gateway credentials loaded, run:
+
+```bash
+# Retry each unfinished poster once. Successful posters are skipped.
+caffeinate -i python src/runner.py --retry-failed --papers P{01..15}
+
+# Recreate the completion/token/cost report without any API calls.
+python src/runner.py --summary --papers P{01..15}
+```
+
+`--models` and `--dry-run` also work with these commands. Recovery uses each
+original run's saved configuration, source paper and model. A new numbered output
+folder receives a copy of only that run's checkpoints, intermediate artifacts and
+cumulative usage counters. Original run folders and `data/latex/runs.csv` remain
+unchanged. Recovery runs cannot share checkpoints across candidates or papers.
+
+Completed summaries are reused when their checkpoint identity validates. Failed
+figure plans are retried with their own previous response and validation error as
+explicit recovery feedback. This extra prompt is saved and hashed. If a complete
+layout already exists, recovery only rebuilds locally, with no API calls. All
+automatic success checks still apply: an invalid plan, overflow, compilation error,
+empty PDF text or missing scientific figures leaves the recovery marked failed.
+This is a separate recovery condition; it does not change the first-attempt result.
+
+Each invocation makes at most one recovery attempt per unfinished original run.
+Run the command again only when you intend to make another recovery attempt.
+It stops on exhausted gateway budget or the configured spend cap. Generation and
+recovery use an advisory lock to avoid concurrent writes. Unrecorded output folders
+from an interrupted process must be resolved before starting another recovery.
+
+Records and reports:
+
+- `data/latex/recovery_attempts.csv`: one row per recovery, linked to its original
+  and parent run; success/failure reason, detailed error, checkpoint use, timestamps,
+  new input/output/total tokens, new cost and cumulative totals.
+- `outputs/latex/<new_run_id>/recovery_attempt.json`: the attempt audit, including
+  baseline/cumulative token counters and status; `run.log` has processing details.
+- `results/latex/completion_attempts.csv`: original and recovery attempt history.
+- `results/latex/completion_by_poster.csv`: first-attempt success, success on a later
+  attempt or final failure, failure history, checkpoint runs and total tokens/cost.
+- `results/latex/completion_summary.md` and `.json`: overall completion and usage totals.
+
+Recovery CSV token/cost fields count **only new usage**. `detail_log.json` remains
+cumulative for checkpoint accounting, so do not add its totals across recovery
+folders. The summary adds original usage plus recovery increments exactly once.
+If an interrupted recovery folder was deleted, the next recovery falls back to the
+latest surviving archive for that original run. Its parent still references the
+interrupted attempt; `checkpoint_source` and `checkpoint_fallback_reason` identify
+the older archive used. Recorded usage and interrupted-attempt history are retained.
+Missing cost data is reported as unknown; a request interrupted before the provider
+returns usage can be undercounted. Human visual review remains a separate check.
+Dry-run records/reports use the corresponding `latex/dry_run/` locations.
 
 ### Collecting results for evaluation
 

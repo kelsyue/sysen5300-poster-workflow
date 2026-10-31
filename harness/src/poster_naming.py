@@ -2,6 +2,7 @@
 import csv
 import json
 import re
+import shutil
 from pathlib import Path
 
 
@@ -24,3 +25,18 @@ def run_poster_stem(run_dir: Path) -> str:
                 if row["run_id"] == run_dir.name:
                     return poster_stem(row["input_paper_id"], row["llm_model"])
     raise ValueError(f"Cannot identify paper and model for {run_dir}: missing run metadata and runs.csv entry")
+
+
+def group_poster_exports(run_dir: Path) -> Path:
+    """Copy rendered PDFs/previews into a shared paper folder for this run set.
+
+    Repeated builds/attempts replace that model's export; original attempts stay
+    in their run folders. Dry runs stay under their separate output root.
+    """
+    stem = run_poster_stem(run_dir)
+    destination = run_dir.parent / "posters" / stem.partition(" x ")[0]
+    destination.mkdir(parents=True, exist_ok=True)
+    for suffix in (".pdf", ".png"):
+        filename = f"{stem}{suffix}"
+        shutil.copyfile(run_dir / "latex" / filename, destination / filename)
+    return destination

@@ -28,7 +28,8 @@ Rendering rules, identical for every run:
 Usage (from harness/):
     python src/latex_poster.py outputs/dry_run/1 [outputs/dry_run/2 ...]
 Writes outputs/<run_id>/latex/<paper_id> x <model>.pdf and .png,
-plus poster.tex, fit.json and build.log.
+plus poster.tex, fit.json and build.log. Copies the PDF and PNG into
+outputs/posters/<paper_id lowercase>/ alongside the other models' posters.
 """
 from __future__ import annotations
 
@@ -45,7 +46,7 @@ from pathlib import Path
 import yaml
 from PIL import Image
 
-from poster_naming import run_poster_stem
+from poster_naming import group_poster_exports, run_poster_stem
 
 HARNESS = Path(__file__).resolve().parent.parent
 SCALES = [1.1, 1.0, 0.95, 0.9, 0.85, 0.8, 0.76, 0.72, 0.68, 0.64, 0.6]
@@ -249,6 +250,7 @@ def build(run_dir: Path, demo: Path, logo: Path | None, size_in: tuple[float, fl
                    check=True)
     for suffix in (".pdf", ".png"):
         (work / f"poster{suffix}").rename(work / f"{export_stem}{suffix}")
+    print(f"  Poster exports: {group_poster_exports(run_dir)}", flush=True)
     return result
 
 

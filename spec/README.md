@@ -31,7 +31,20 @@ The harness holds everything constant except `llm_model`. It is the engineering 
 
 The harness implementation lives in [`../harness/`](../harness/README.md), including `scripts/gateway_check.py` (Cornell AI Gateway smoke test) and `src/runner.py`.
 
-## Fixed parameters (v0.1)
+## LaTeX-only workflow revision (2026-10-30)
+
+New runs use `latex-only-v2`: candidate-generated summaries, one combined figure
+selection/section assignment call, followed by local LaTeX rendering. Per-run
+checkpoints reuse completed generation stages, keyed to PDF, candidate and
+prompts. `runner.py --rebuild` renders saved content without API credentials
+or further model calls. PPTX generation and vision correction
+loops are removed. No vision model calls or judge calls occur during generation.
+The harness owns the preparation adapter; upstream remains pinned with its existing
+token-cap patch. New CSVs and outputs live under `data/latex/` and `outputs/latex/`.
+Legacy runs remain separate. Older sections describing PPTX/vision generation are
+historical until revised; the harness README documents the active workflow.
+
+## Fixed parameters (v0.1; original experiment)
 
 | Parameter | Value |
 |---|---|

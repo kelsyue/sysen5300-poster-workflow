@@ -27,13 +27,15 @@ Rendering rules, identical for every run:
 
 Usage (from harness/):
     python src/latex_poster.py outputs/dry_run/1 [outputs/dry_run/2 ...]
-Writes outputs/<run_id>/latex/poster.tex, poster.pdf, poster.png, fit.json, build.log.
+Writes outputs/<run_id>/latex/<paper_id> x <model>.pdf and .png,
+plus poster.tex, fit.json and build.log.
 """
 from __future__ import annotations
 
 import argparse
 import importlib
 import json
+import os
 import re
 import shutil
 import subprocess
@@ -43,6 +45,8 @@ from pathlib import Path
 import yaml
 from PIL import Image
 
+from poster_naming import run_poster_stem
+
 HARNESS = Path(__file__).resolve().parent.parent
 SCALES = [1.1, 1.0, 0.95, 0.9, 0.85, 0.8, 0.76, 0.72, 0.68, 0.64, 0.6]
 FIT_TOLERANCE_PT = 5.0
@@ -51,6 +55,14 @@ FIT_TOLERANCE_PT = 5.0
 CHARS_PER_COLWIDTH = 3000
 CHARS_PER_TITLE = 150
 CHARS_PER_TABLE_ROW = 80
+
+
+def configure_tex_path() -> None:
+    """Use the project-local TinyTeX when TeX is absent from PATH."""
+    if not shutil.which("latexmk"):
+        for executable in sorted((HARNESS / "vendor/TinyTeX/bin").glob("*/latexmk")):
+            os.environ["PATH"] = str(executable.parent) + os.pathsep + os.environ.get("PATH", "")
+            break
 
 
 def resolve(p: str) -> Path:
@@ -148,6 +160,8 @@ def compile_once(work: Path) -> float | None:
 
 
 def build(run_dir: Path, demo: Path, logo: Path | None, size_in: tuple[float, float]) -> dict:
+    configure_tex_path()
+    export_stem = run_poster_stem(run_dir)
     inter = run_dir / "intermediate"
     if not (inter / "raw_content.json").exists() or not (inter / "tree_split.json").exists():
         sys.exit(f"{inter} is missing raw_content.json or tree_split.json (run predates archiving?)")
@@ -233,6 +247,8 @@ def build(run_dir: Path, demo: Path, logo: Path | None, size_in: tuple[float, fl
     (work / "fit.json").write_text(json.dumps(result, indent=2))
     subprocess.run(["pdftoppm", "-png", "-r", "40", "-singlefile", str(work / "poster.pdf"), str(work / "poster")],
                    check=True)
+    for suffix in (".pdf", ".png"):
+        (work / f"poster{suffix}").rename(work / f"{export_stem}{suffix}")
     return result
 
 

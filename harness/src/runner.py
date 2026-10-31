@@ -1,15 +1,15 @@
 """Runner: one Paper2Poster attempt per (model, paper, attempt), logged to runs.csv.
 
 Implements component 1 of spec/02_architecture.md. Each attempt is a separate
-Paper2Poster process; only `llm_model` changes between runs. With
-vision_model: same_as_candidate the candidate fills both the text and the
-vision (critic) slot.
+preparation process followed by local LaTeX rendering. Only `llm_model`
+changes between runs. No vision critic or PPTX generation is executed.
 
 Usage (from harness/):
-    python src/runner.py --dry-run           # 1 paper x all candidates -> data/dry_run/
+    python src/runner.py --dry-run           # 1 paper x all candidates -> data/latex/dry_run/
     python src/runner.py --estimate          # scale dry-run cost/latency to the full run
-    python src/runner.py                     # full run -> data/runs.csv, outputs/<run_id>/
+    python src/runner.py                     # full run -> data/latex/runs.csv, outputs/latex/<run_id>/
     python src/runner.py --models gpt-5.6-sol --papers P01 P02   # subset
+    python src/runner.py --rebuild outputs/latex/1   # saved results; no API calls
 
 Re-running resumes: (model, paper, attempt) triples already in the runs file are
 skipped. Failed attempts are kept as data (FR-7) and are not retried on resume.
@@ -34,8 +34,9 @@ import time
 from pathlib import Path
 
 import yaml
-from pptx import Presentation
-from pptx.enum.shapes import MSO_SHAPE_TYPE
+
+from poster_naming import poster_stem
+from latex_poster import configure_tex_path
 
 HARNESS = Path(__file__).resolve().parent.parent
 
@@ -84,11 +85,17 @@ def config_sha256(cfg: dict) -> str:
 
 def prompt_sha256(p2p: Path) -> str:
     """Hash of Paper2Poster's agent prompts and style defaults (the "fixed prompt")."""
-    files = sorted((p2p / "utils" / "prompt_templates").glob("*.yaml")) + [p2p / "config" / "poster.yaml"]
+    files = (sorted((p2p / "utils" / "prompt_templates").glob("*.yaml"))
+             + sorted((p2p / "utils" / "prompts").glob("*.txt"))
+             + [p2p / "config" / "poster.yaml"])
     h = hashlib.sha256()
     for f in files:
         h.update(str(f.relative_to(p2p)).encode())
         h.update(f.read_bytes())
+    h.update((HARNESS / "src/combined_planner.py").read_bytes())
+    h.update((HARNESS / "src/preparation_cache.py").read_bytes())
+    h.update((HARNESS / "src/latex_prepare.py").read_bytes())
+    h.update((HARNESS / "src/latex_poster.py").read_bytes())
     return h.hexdigest()
 
 
@@ -163,20 +170,10 @@ def run_cost(row: dict) -> float:
     return sum(float(row[k]) for k in ("generation_cost", "vision_cost") if row.get(k) not in (None, ""))
 
 
-def poster_text(pptx_path: Path) -> str:
-    """All text on the poster slide(s), including grouped shapes and tables."""
-    def walk(shapes):
-        for s in shapes:
-            if s.shape_type == MSO_SHAPE_TYPE.GROUP:
-                yield from walk(s.shapes)
-            elif s.has_text_frame:
-                yield s.text_frame.text
-            elif getattr(s, "has_table", False):
-                for r in s.table.rows:
-                    for c in r.cells:
-                        yield c.text
-    prs = Presentation(str(pptx_path))
-    return "\n".join(t for slide in prs.slides for t in walk(slide.shapes) if t.strip())
+def poster_text(pdf_path: Path) -> str:
+    """Extract the delivered PDF text for scoring."""
+    return subprocess.run(["pdftotext", str(pdf_path), "-"],
+                          capture_output=True, text=True, check=True).stdout
 
 
 def read_tokens(out_dir: Path) -> dict:
@@ -195,33 +192,52 @@ def read_tokens(out_dir: Path) -> dict:
     tin, tout = total("_in_t"), total("_out_t")
     return {"input_tokens": tin, "output_tokens": tout,
             "vision_input_tokens": total("_in_v"), "vision_output_tokens": total("_out_v"),
-            "token_usage": tin + tout}
+            "token_usage": tin + tout + total("_in_v") + total("_out_v")}
 
 
-def archive_intermediates(p2p: Path, tag: str, paper_id: str, out_dir: Path) -> None:
-    """Copy the parsed content, layout, captions and placed figures into out_dir/intermediate/.
+def render_saved(run_dir: Path, cfg: dict) -> tuple[dict, str]:
+    """Render only archived intermediate files. This function makes no model calls."""
+    config_path = run_dir / "render_config.yaml"
+    config_path.write_text(yaml.safe_dump(cfg))
+    cmd = [sys.executable, str(HARNESS / "src/latex_poster.py"), str(run_dir),
+           "--config", str(config_path)]
+    with open(run_dir / "run.log", "a") as log:
+        subprocess.run(cmd, stdout=log, stderr=subprocess.STDOUT,
+                       timeout=cfg["fixed"]["paper2poster"].get("timeout_s", 3600), check=True)
+    fit = json.loads((run_dir / "latex/fit.json").read_text())
+    metadata = json.loads((run_dir / "run_metadata.json").read_text())
+    pdf_path = run_dir / "latex" / f"{poster_stem(metadata['input_paper_id'], metadata['llm_model'])}.pdf"
+    text = poster_text(pdf_path) if fit['fits'] else ''
+    if text:
+        (run_dir / "poster_text.txt").write_text(text)
+    return fit, text
 
-    Paper2Poster keys these by model and paper name, so the next attempt of the same
-    pair overwrites them. src/latex_poster.py builds the LaTeX poster from this copy.
-    """
-    inter = out_dir / "intermediate"
-    files = {
-        f"contents/{tag}_{paper_id}_raw_content.json": "raw_content.json",
-        f"contents/{tag}_{paper_id}_bullet_point_content_0.json": "bullet_point_content.json",
-        f"tree_splits/{tag}_{paper_id}_tree_split_0.json": "tree_split.json",
-        f"{tag}_images_and_tables/{paper_id}_images.json": "images.json",
-        f"{tag}_images_and_tables/{paper_id}_tables.json": "tables.json",
-    }
-    for src, dst in files.items():
-        if (p2p / src).exists():
-            inter.mkdir(parents=True, exist_ok=True)
-            shutil.copyfile(p2p / src, inter / dst)
-    if (inter / "tree_split.json").exists():
-        for fig in json.loads((inter / "tree_split.json").read_text()).get("figure_arrangement", []):
-            rel = fig.get("figure_path")
-            if rel and (p2p / rel).exists():
-                (inter / rel).parent.mkdir(parents=True, exist_ok=True)
-                shutil.copyfile(p2p / rel, inter / rel)
+
+def rebuild_saved(run_dir: Path, config_path: Path | None = None) -> dict:
+    """Rebuild locally, preserving the original experiment row and generation usage."""
+    if not run_dir.is_dir():
+        raise ValueError(f"Run directory not found: {run_dir}")
+    saved_config = run_dir / "run_config.yaml"
+    config_path = config_path or (saved_config if saved_config.exists() else resolve("config/experiment.yaml"))
+    cfg = yaml.safe_load(config_path.read_text())
+    # Older runs identify their paper/model via the legacy runs.csv.
+    metadata_path = run_dir / "run_metadata.json"
+    if not metadata_path.exists():
+        raise ValueError(f"Missing run metadata: {metadata_path}; use latex_poster.py for legacy exports")
+    result = {"api_tokens_used": 0, "rebuilt_at": now_utc(), "workflow_success": 0}
+    try:
+        fit, text = render_saved(run_dir, cfg)
+        result.update(fit=fit, poster_word_count=len(text.split()))
+        if not fit['fits']:
+            result['failure_reason'] = 'E_OVERFLOW'
+        elif not text.strip():
+            result['failure_reason'] = 'E_UNREADABLE'
+        else:
+            result['workflow_success'] = 1
+    except (subprocess.SubprocessError, OSError, ValueError) as exc:
+        result.update(failure_reason='E_LATEX', error=str(exc))
+    (run_dir / "rebuild_result.json").write_text(json.dumps(result, indent=2))
+    return result
 
 
 def run_attempt(*, run_id: int, model: str, paper_id: str, pdf: Path, cfg: dict,
@@ -237,23 +253,23 @@ def run_attempt(*, run_id: int, model: str, paper_id: str, pdf: Path, cfg: dict,
     shutil.copyfile(pdf, staged / "paper.pdf")
     poster_rel = f"harness_input/{paper_id}/paper.pdf"
     tmp_rel = f"tmp/run_{run_id}"
-    # Same expression Paper2Poster uses for its output folder (new_pipeline.py, step 8).
-    gen_dir = p2p / f"<{model}_{vision}>_generated_posters" / poster_rel.replace("paper.pdf", "")
-    if gen_dir.exists():
-        shutil.rmtree(gen_dir)  # left over from an interrupted attempt
-
-    cmd = [str(resolve(p2c["python"])), "-m", "PosterAgent.new_pipeline",
+    cmd = [str(resolve(p2c["python"])), str(HARNESS / "src/latex_prepare.py"),
            f"--poster_path={poster_rel}", f"--model_name_t={model}", f"--model_name_v={vision}",
            f"--tmp_dir={tmp_rel}",
            f"--poster_width_inches={p2c['poster_width_inches']}",
            f"--poster_height_inches={p2c['poster_height_inches']}"]
-    if p2c.get("institution_logo_path"):
-        cmd.append(f"--institution_logo_path={resolve(p2c['institution_logo_path'])}")
     cmd += [str(a) for a in p2c.get("extra_args") or []]
 
     out_dir = out_root / str(run_id)
     out_dir.mkdir(parents=True, exist_ok=True)
+    name = poster_stem(paper_id, model)
+    (out_dir / "run_metadata.json").write_text(json.dumps(
+        {"input_paper_id": paper_id, "llm_model": model, "workflow": p2c.get("workflow", "latex-only-v2")}, indent=2))
     log_path = out_dir / "run.log"
+    cmd.append(f"--usage_path={out_dir / 'detail_log.json'}")
+    cmd.append(f"--checkpoint_dir={out_dir / 'preparation'}")
+    cmd.append(f"--intermediate_dir={out_dir / 'intermediate'}")
+    (out_dir / "run_config.yaml").write_text(yaml.safe_dump(cfg))
 
     row = {"retries": 0, "workflow_success": 0}
     for attempt_try in range(max_retries + 1):
@@ -273,6 +289,9 @@ def run_attempt(*, run_id: int, model: str, paper_id: str, pdf: Path, cfg: dict,
         if rc == 0:
             break
         this_try = log_path.read_text(errors="replace").rsplit("=== try ", 1)[-1]
+        if "ExceededBudget" in this_try or "budget_exceeded" in this_try:
+            row["failure_reason"] = "E_BUDGET"
+            break
         transport = rc is not None and bool(TRANSPORT_ERRORS.search(this_try))
         if transport and attempt_try < max_retries:
             row["retries"] += 1
@@ -282,42 +301,40 @@ def run_attempt(*, run_id: int, model: str, paper_id: str, pdf: Path, cfg: dict,
         break
 
     shutil.rmtree(p2p / tmp_rel, ignore_errors=True)
-    if gen_dir.exists():
-        for item in gen_dir.iterdir():
-            shutil.move(str(item), str(out_dir / item.name))
-        shutil.rmtree(gen_dir, ignore_errors=True)
-    archive_intermediates(p2p, f"<{model}_{vision}>", paper_id, out_dir)
 
     row.update(read_tokens(out_dir))
 
     if row.get("failure_reason"):
         return row
 
-    pptx = out_dir / f"{paper_id}.pptx"
-    if not pptx.exists():
-        row["failure_reason"] = "E_NO_FILE"
-        return row
+    pdf_path = out_dir / "latex" / f"{name}.pdf"
     try:
-        text = poster_text(pptx)
-    except Exception as e:  # corrupt or unreadable PPTX
+        fit, text = render_saved(out_dir, cfg)
+        if not fit["fits"]:
+            row["failure_reason"] = "E_OVERFLOW"
+            return row
+    except (subprocess.SubprocessError, OSError, ValueError) as e:
         with open(log_path, "a") as log:
-            log.write(f"\n=== harness: text extraction failed: {e!r}\n")
-        text = ""
+            log.write(f"\n=== harness: LaTeX rendering/text extraction failed: {e!r}\n")
+        row["failure_reason"] = "E_LATEX"
+        return row
+    row["latency"] = round(time.monotonic() - t0, 2)
+    row["finished_at"] = now_utc()
     (out_dir / "poster_text.txt").write_text(text)
     words = len(text.split())
     if words == 0:
         row["failure_reason"] = "E_UNREADABLE"
         return row
 
-    row.update(workflow_success=1, poster_path=str(pptx.relative_to(HARNESS)), poster_word_count=words)
+    row.update(workflow_success=1, poster_path=str(pdf_path.relative_to(HARNESS)), poster_word_count=words)
     return row
 
 
 def estimate(cfg: dict) -> None:
     """Scale mean dry-run cost and latency per model to the full run (NFR-5)."""
-    rows = [r for r in read_runs(HARNESS / "data" / "dry_run" / "runs.csv") if r["workflow_success"] == "1"]
+    rows = [r for r in read_runs(HARNESS / "data" / "latex" / "dry_run" / "runs.csv") if r["workflow_success"] == "1"]
     if not rows:
-        sys.exit("No successful dry-run attempts in data/dry_run/runs.csv. Run --dry-run first.")
+        sys.exit("No successful dry-run attempts in data/latex/dry_run/runs.csv. Run --dry-run first.")
     n = cfg["fixed"]["n_papers"] * cfg["fixed"].get("attempts_per_pair", 1)
     total, missing = 0.0, []
     print(f"{'model':40} {'cost/poster':>12} {'latency/poster':>15} {'full run cost':>14}")
@@ -340,23 +357,40 @@ def estimate(cfg: dict) -> None:
 
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--config", default="config/experiment.yaml")
-    ap.add_argument("--dry-run", action="store_true", help="first paper only; results go to data/dry_run/")
+    ap.add_argument("--config", help="configuration (saved run configuration is used for --rebuild)")
+    ap.add_argument("--rebuild", nargs="+", metavar="RUN_DIR",
+                    help="rebuild saved LaTeX locally; no credentials or API calls")
+    ap.add_argument("--dry-run", action="store_true", help="first paper only; results go to data/latex/dry_run/")
     ap.add_argument("--estimate", action="store_true", help="estimate full-run cost from the dry run, then exit")
     ap.add_argument("--models", nargs="+", help="subset of candidate IDs")
     ap.add_argument("--papers", nargs="+", help="subset of input_paper_ids")
     args = ap.parse_args()
 
-    cfg = yaml.safe_load(open(resolve(args.config)))
+    if args.rebuild:
+        failed = False
+        for directory in args.rebuild:
+            result = rebuild_saved(resolve(directory), resolve(args.config) if args.config else None)
+            print(f"{directory}: {json.dumps(result)}")
+            failed |= not result['workflow_success']
+        if failed:
+            sys.exit("Some local rebuilds failed; see rebuild_result.json and run.log.")
+        return
+    cfg = yaml.safe_load(open(resolve(args.config or "config/experiment.yaml")))
     if args.estimate:
         return estimate(cfg)
 
     fixed, p2c, g = cfg["fixed"], cfg["fixed"]["paper2poster"], cfg["gateway"]
+    if p2c.get("workflow") != "latex-only-v2":
+        sys.exit("Set fixed.paper2poster.workflow to latex-only-v2.")
+    configure_tex_path()
+    for executable in ("latexmk", "xelatex", "pdftoppm", "pdftotext"):
+        if not shutil.which(executable):
+            sys.exit(f"Missing {executable}; add your TeX Live/TinyTeX and Poppler binaries to PATH before running.")
     if p2c.get("vision_model") in (None, "", "TBD"):
         sys.exit(f"Set fixed.paper2poster.vision_model in the config: a gateway ID or {SAME_AS_CANDIDATE} (OI-1).")
     logo = p2c.get("institution_logo_path")
     if logo == "TBD":
-        sys.exit("Set fixed.paper2poster.institution_logo_path to a logo file, or null to let Paper2Poster find one (OI-18).")
+        sys.exit("Set fixed.paper2poster.institution_logo_path to a logo file, or null to omit the logo (OI-18).")
     if logo and not resolve(logo).is_file():
         sys.exit(f"Logo file not found: {resolve(logo)}")
     base_url, api_key = os.environ.get(g["base_url_env"]), os.environ.get(g["api_key_env"])
@@ -405,9 +439,9 @@ def main() -> None:
             sys.exit(f"Not in config candidates: {sorted(unknown)}")
         models = [m for m in models if m in args.models]
 
-    data_dir = HARNESS / "data" / ("dry_run" if args.dry_run else "")
+    data_dir = HARNESS / "data" / "latex" / ("dry_run" if args.dry_run else "")
     runs_path = data_dir / "runs.csv"
-    out_root = HARNESS / "outputs" / ("dry_run" if args.dry_run else "")
+    out_root = HARNESS / "outputs" / "latex" / ("dry_run" if args.dry_run else "")
     prices, as_of = load_prices(resolve(fixed.get("prices_file", "config/prices.yaml")))
     cap = cfg["experiment"].get("spend_cap_usd")
     batch_size = cfg.get("spc", {}).get("p_chart_batch_size", 5)
@@ -415,8 +449,9 @@ def main() -> None:
     runs = read_runs(runs_path)
     for r in runs:
         if (r["p2p_commit"] != commit or r["prompt_sha256"] != hashes["prompt_sha256"]
-                or r.get("p2p_patch_sha256", "") != patch_sha):
-            sys.exit(f"{runs_path} has run {r['run_id']} from a different Paper2Poster commit, patch or prompts (DR-6).")
+                or r.get("p2p_patch_sha256", "") != patch_sha
+                or r.get("config_sha256") != hashes["config_sha256"]):
+            sys.exit(f"{runs_path} has run {r['run_id']} from a different commit, patch, prompts or fixed configuration (DR-6).")
     done = {(r["llm_model"], r["input_paper_id"], int(r["attempt"])) for r in runs}
     next_id = max((int(r["run_id"]) for r in runs), default=0) + 1
     spent = sum(run_cost(r) for r in runs)
@@ -437,7 +472,7 @@ def main() -> None:
                 row.update(hashes, run_id=next_id, run_order=order[paper_id],
                            batch_id=math.ceil(order[paper_id] / batch_size),
                            llm_model=model, input_paper_id=paper_id, attempt=attempt,
-                           vision_model=vision,
+                           vision_model="",
                            temperature=fixed.get("generation", {}).get("temperature"),
                            generation_cost=token_cost(prices, model, row.get("input_tokens"), row.get("output_tokens")),
                            vision_cost=token_cost(prices, vision,
@@ -447,6 +482,8 @@ def main() -> None:
                 spent += run_cost(row)
                 status = "ok" if row["workflow_success"] else row["failure_reason"]
                 print(f"[run {next_id}] {status}  {row['latency']}s  tokens={row.get('token_usage')}", flush=True)
+                if row.get("failure_reason") == "E_BUDGET":
+                    sys.exit("Gateway budget exhausted. Attempt saved; batch stopped.")
                 next_id += 1
 
 

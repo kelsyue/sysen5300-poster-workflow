@@ -49,7 +49,7 @@ cd vendor/Paper2Poster && .venv/bin/python -m PosterAgent.new_pipeline --help
 
 The exact resulting versions are in [`config/paper2poster-env.lock.txt`](config/paper2poster-env.lock.txt) (`pip freeze`). To rebuild the same environment: `pip install --no-cache-dir -r config/paper2poster-env.lock.txt`.
 
-Don't edit anything inside `vendor/Paper2Poster`. The one allowed change is [`patches/p2p-max-output-tokens.patch`](patches/p2p-max-output-tokens.patch) (OI-17): the Runner applies it to a clean checkout, and refuses to start if the checkout has any other changes. Its hash goes in `p2p_patch_sha256`.
+Don't edit anything inside `vendor/Paper2Poster`. The one allowed change is [`patches/p2p-generation-params.patch`](patches/p2p-generation-params.patch) (OI-17), which sends the same `max_tokens` (8192) and `temperature` (0) on every candidate call: the Runner applies it to a clean checkout, and refuses to start if the checkout has any other changes. Its hash goes in `p2p_patch_sha256`.
 
 ### 3. Gateway credentials
 
@@ -169,7 +169,7 @@ The runner checks for `latexmk`, `xelatex`, `pdftoppm` and `pdftotext` on PATH b
 making model calls. Install TeX dependencies with `bash scripts/install_latex_deps.sh`
 and Poppler with `brew install poppler`. The runner also detects the project-local vendor/TinyTeX installation.
 
-Generation still needs Paper2Poster's pinned environment and the token-cap patch.
+Generation still needs Paper2Poster's pinned environment and the generation-params patch.
 The harness-owned `src/latex_prepare.py` adapts upstream's preparation stages;
 the vendor checkout remains unchanged. The old batch helper under `outputs/` is
 historical; use `src/runner.py` for new batches.

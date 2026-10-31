@@ -434,10 +434,13 @@ def main() -> None:
     # on slow networks; plain HTTP with a longer timeout didn't. Users can still override.
     env.setdefault("HF_HUB_DISABLE_XET", "1")
     env.setdefault("HF_HUB_DOWNLOAD_TIMEOUT", "120")
+    temperature = fixed.get("generation", {}).get("temperature")
+    if (p2c.get("max_output_tokens") or temperature is not None) and not p2c.get("patch"):
+        sys.exit("max_output_tokens and generation.temperature need the generation-params patch (OI-17).")
     if p2c.get("max_output_tokens"):
-        if not p2c.get("patch"):
-            sys.exit("fixed.paper2poster.max_output_tokens needs the max-output-tokens patch (OI-17).")
         env["P2P_MAX_OUTPUT_TOKENS"] = str(p2c["max_output_tokens"])  # read by the patch
+    if temperature is not None:
+        env["P2P_TEMPERATURE"] = str(temperature)  # read by the patch
 
     p2p = resolve(p2c["path"])
     commit, patch_sha = check_p2p_commit(p2p, p2c["commit"], resolve(p2c["patch"]) if p2c.get("patch") else None)

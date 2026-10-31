@@ -33,7 +33,7 @@
 | `p2p_patch_sha256` | str | no | SHA-256 of the applied Paper2Poster patch (OI-17); empty if none |
 | `config_sha256` | str | yes | Hash of the `fixed` section of the experiment config (candidates excluded, so adding a model keeps it stable) |
 | `vision_model` | str | yes | Vision (critic) model; equals `llm_model` when `vision_model: same_as_candidate` (OI-1) |
-| `temperature` | float | no | Empty while Paper2Poster sends no temperature (provider default, OI-17) |
+| `temperature` | float | yes | `fixed.generation.temperature` (0), sent on every candidate call by the generation-params patch (OI-17) |
 | `seed` | int | no | `fixed.generation.seed`: seeds upstream's section selection when a summary has more than 9 sections. Not sent to the model |
 | `started_at` / `finished_at` | ISO-8601 UTC | yes | |
 | `latency` | float (s) | yes | Processing time of the attempt: every try of the preparation process plus the local LaTeX build, excluding back-off waits between tries. Retries reuse completed stages, so the final try alone would understate it |

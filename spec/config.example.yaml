@@ -18,14 +18,14 @@ fixed:
     poster_height_inches: 36
     institution_logo_path: assets/CornellLogo.png   # one fixed logo for every LaTeX poster (OI-18)
     extra_args: []                # any other new_pipeline flags, identical for every run
-    patch: patches/p2p-max-output-tokens.patch   # the only allowed change to Paper2Poster (OI-17)
+    patch: patches/p2p-generation-params.patch   # the only allowed change to Paper2Poster (OI-17)
     max_output_tokens: 8192       # sent as max_tokens on every gateway call; Llama 4 Maverick allows at most 8192 (OI-17)
     timeout_s: 3600               # per attempt
     max_parse_attempts: 2         # paper-summary calls per try if the output is unusable (upstream: unbounded)
   # Generation prompts are Paper2Poster's own templates at the pinned commit;
   # the Runner hashes them into prompt_sha256.
   generation:
-    temperature: null             # not sent by Paper2Poster for gateway models (OI-17)
+    temperature: 0                # sent on every candidate call by the patch (OI-17, decided 2026-10-31)
     seed: 5300                    # seeds upstream's section selection when a summary has > 9 sections
   papers_dir: papers/
   n_papers: 30

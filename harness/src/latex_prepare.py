@@ -70,6 +70,7 @@ if __name__ == '__main__':
         'harness_parser': file_digest(Path(__file__).with_name('paper_parser.py')),
         'max_parse_attempts': args.max_parse_attempts, 'seed': args.seed,
         'max_output_tokens': os.environ.get('P2P_MAX_OUTPUT_TOKENS'),
+        'temperature': os.environ.get('P2P_TEMPERATURE'),
         'gateway': os.environ.get('OPENAI_BASE_URL'),
     }
     cache = StageCache(args.checkpoint_dir, identity)

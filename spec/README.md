@@ -41,7 +41,7 @@ prompts. `runner.py --rebuild` renders saved content without API credentials
 or further model calls. PPTX generation and vision correction
 loops are removed. No vision model calls or judge calls occur during generation.
 The harness owns the preparation adapter; upstream remains pinned with its existing
-token-cap patch. New CSVs and outputs live under `data/latex/` and `outputs/latex/`.
+generation-params patch (output cap and, since 2026-10-31, temperature 0). New CSVs and outputs live under `data/latex/` and `outputs/latex/`.
 Legacy runs remain separate. Older sections describing PPTX/vision generation are
 historical until revised; the harness README documents the active workflow.
 

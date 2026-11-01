@@ -1,0 +1,202 @@
+{
+  "paper_id": "P11",
+  "created_at": "2026-11-01T18:26:29+00:00",
+  "models": [
+    "gemini-3.5-flash",
+    "openai.gpt-4o"
+  ],
+  "reference_prompt_sha256": "a63f2a103bd381061f0d6560fdaf2e1bd28c503af09ee38a529d0648f4594fd3",
+  "paper_text_sha256": "0e1461c40f9a3515524e2450e25b6dc7a7d32469d4dc20b9d86dd25d471e075c",
+  "summary": "This paper evaluates the feasibility of using quadruped robots, specifically the Unitree Go2, for automated tasks in roof environments. Using a custom-built test rig with standard roof tiles, the authors found that standard ball feet are inadequate for sloped roofs, with slippage increasing quadratically and critical failures occurring regularly at a 25-degree incline. The study concludes that safe roof locomotion will require a combination of terrain-aware control strategies and customized foot designs.",
+  "items": {
+    "chk_problem": {
+      "status": "accepted",
+      "value": "Investigating the feasibility of using quadruped walking robots to automate hazardous and repetitive construction and maintenance tasks in roof environments.",
+      "paper_quote": "This paper investigates the feasibility of deploying quadruped walking robots for the automation of work in roof environments.",
+      "drafts": [
+        {
+          "value": "Investigating the feasibility of using quadruped walking robots to automate hazardous and repetitive construction and maintenance tasks in roof environments.",
+          "paper_quote": "This paper investigates the feasibility of deploying quadruped walking robots for the automation of work in roof environments.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "Feasibility of deploying quadruped robots for construction work on roofs.",
+          "paper_quote": "This paper investigates the feasibility of deploying quadruped walking robots for the automation of work in roof environments.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ]
+    },
+    "chk_method": {
+      "status": "accepted",
+      "value": "Designing a dedicated roof surface test rig to evaluate the baseline performance of a commercial Unitree Go2 quadruped robot.",
+      "paper_quote": "A dedicated test rig of a roof’s surface was designed to evaluate the baseline performance of a commercial quadruped, the Unitree Go2, in this new environment.",
+      "drafts": [
+        {
+          "value": "Designing a dedicated roof surface test rig to evaluate the baseline performance of a commercial Unitree Go2 quadruped robot.",
+          "paper_quote": "A dedicated test rig of a roof’s surface was designed to evaluate the baseline performance of a commercial quadruped, the Unitree Go2, in this new environment.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "Systematic experimental evaluation of the Unitree Go2 quadruped robot on a roof test rig.",
+          "paper_quote": "A dedicated test rig of a roof’s surface was designed to evaluate the baseline performance of a commercial quadruped, the Unitree Go2, in this new environment.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ]
+    },
+    "chk_data": {
+      "status": "uncertain",
+      "why": "drafts differ",
+      "drafts": [
+        {
+          "value": "The Frankfurter Pfanne roof tiles, which are the most common type of roof tile in Germany, used as the surface material on the test rig.",
+          "paper_quote": "As surface material the Frankfurther Pfanne was chosen, which is the most common type of roof tile in Germany [2].",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "Data collected from experiments on a roof test rig using the Unitree Go2 robot and OptiTrack motion capture system.",
+          "paper_quote": "To objectively evaluate and compare quadruped locomotion, an accurate measurement methodology is required. In this work the main focus is placed on friction as the primary performance indicator, while loss of stability, referred to as critical failure, marks the upper performance limit when the robot falls.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ],
+      "paper_excerpt": "Evaluating Quadruped Locomotion in Roof\nEnvironments\n\nIn roof environments, quadruped locomotion performance is primarily determined by two factors: friction and stability. To objectively evaluate and compare quadruped locomotion, an accurate measurement methodology is required.\nIn this work the main focus is placed on friction as the primary performance\nindicator, while loss of stability, referred to as critical failure, marks the upper\nperformance limit when the robot falls. Friction can be estimated by measuring\nslippage on a defined incline angle. This necessitates an external measurement\nsystem. For this purpose, the OptiTrack system – a motion capture system based\non infrared light and reflective markers – is employed. The system can be calibrated to achieve a measurement accuracy of below 1.0 mm [13].\nThe feet of a quadruped robot are the primary, and often only, components\nthat directly interact with the environment [10]. While other end-effectors in\nrobotics, such as hands and grippers, have received considerable attention, the\ndevelopment of non-humanoid feet has received less focus [4, 5]. Currently, most\nmajor manufacturers and research institutes employ a simple round foot geometry [9, 14]. This design is widely adopted due to its simplicity, robustness, and\nreliable performance across diverse environments [9]. Further, the ball-shaped design allows for a simplified contact modeling approach, reducing the simulated\ncontact to a point or line [5]. However, such feet provide a limited contact area,\nresulting in high stress concentrations and an increased risk of slippage, particularly on inclined surfaces, as rubber friction is area dependent [9, 14, 15]. Moreover, ball feet lack adaptability to varying terrains, restricting their effectiveness\nin complex environments [14]. Due to these drawbacks and the highly difficult\nroof environment, the development of customized and environment adapted feet\nis worth investigating in future work.\n\n4\n\n(1)\n\nTo objectively assess the performance of the Go2 (software version 1.4.4) and\ncreate a baseline for future comparison with custom feet, an adjustable test\nrig of a roof environment was developed (see Fig. 1). As surface material the\nFrankfurther Pfanne was chosen, which is the most common type of roof tile in\nGermany [2]. With the Go2, three core skills were examined: balancing on continuously increasing inclines, get-up/lie-down sequences, and incline walking. To\ncreate statistical significance every experiment is repeated ten times. For balancing, the robot was placed facing uphill on a 0◦ incline, which was gradually\nincreased until balance was lost, revealing failure modes under static conditions.\nGet-up and lie-down performance was assessed on progressively steeper inclines\nin three orientations (uphill, downhill, sideways), with success defined as completing both actions in each configuration. Incline walking was evaluated by\nrepeatedly ascending increasingly higher slopes while measuring slippage using\nthe OptiTrack system to track reflective markers positioned at the sides of the\nball feet. Slippage of the front and rear feet, SFLF/RLF , was defined as the cumulative incremental marker displacement opposing the walking direction X.\nThe incremental displacement was calculated as ∆xi (t) = xi (t + 1) − xi (t), and\nonly backward movements were accumulated. To exclude movements during the\nswing phase, only increments with negligible vertical displacement, defined as\n|∆zi (t)| < ztol = 1.0mm, where ∆zi (t) = zi (t + 1) − zi (t), were considered. The\nresulting slippage calculation is given in Eq. (2).\n(\nN\n−2\nX\n1, |∆z(t)| < ztol ,\nSFLF/RLF =\nCi (t) · max[0, − (∆xi (t))] , Ci (t) =\n(2)\n0, otherwise.\nt=0\nFor high repeatability reasons, all trials were controlled via Python using the\nWebRTC implementation provided by Severov [16]. The robot was set to standard walking mode and a target speed of 1.0 m s−1 . This speed was chosen,\nbecause it represents a realistic speed at which the robot should operate to be\nviable in real world applications.\n\nWalking on Roofs"
+    },
+    "chk_setup": {
+      "status": "uncertain",
+      "why": "drafts differ",
+      "drafts": [
+        {
+          "value": "Evaluating the robot's balancing, get-up/lie-down sequences, and incline walking on the test rig, with trials controlled via Python at 1.0 m/s.",
+          "paper_quote": "With the Go2, three core skills were examined: balancing on continuously increasing inclines, get-up/lie-down sequences, and incline walking.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "Adjustable roof test rig with Frankfurter Pfanne tiles, OptiTrack motion capture system, and controlled experiments with the Unitree Go2 robot.",
+          "paper_quote": "To objectively assess the performance of the Go2 (software version 1.4.4) and create a baseline for future comparison with custom feet, an adjustable test rig of a roof environment was developed (see Fig. 1).",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ],
+      "paper_excerpt": "(1)\n\nTo objectively assess the performance of the Go2 (software version 1.4.4) and\ncreate a baseline for future comparison with custom feet, an adjustable test\nrig of a roof environment was developed (see Fig. 1). As surface material the\nFrankfurther Pfanne was chosen, which is the most common type of roof tile in\nGermany [2]. With the Go2, three core skills were examined: balancing on continuously increasing inclines, get-up/lie-down sequences, and incline walking. To\ncreate statistical significance every experiment is repeated ten times. For balancing, the robot was placed facing uphill on a 0◦ incline, which was gradually\nincreased until balance was lost, revealing failure modes under static conditions.\nGet-up and lie-down performance was assessed on progressively steeper inclines\nin three orientations (uphill, downhill, sideways), with success defined as completing both actions in each configuration. Incline walking was evaluated by\nrepeatedly ascending increasingly higher slopes while measuring slippage using\nthe OptiTrack system to track reflective markers positioned at the sides of the\nball feet. Slippage of the front and rear feet, SFLF/RLF , was defined as the cumulative incremental marker displacement opposing the walking direction X.\nThe incremental displacement was calculated as ∆xi (t) = xi (t + 1) − xi (t), and\nonly backward movements were accumulated. To exclude movements during the\nswing phase, only increments with negligible vertical displacement, defined as\n|∆zi (t)| < ztol = 1.0mm, where ∆zi (t) = zi (t + 1) − zi (t), were considered. The\nresulting slippage calculation is given in Eq. (2).\n(\nN\n−2\nX\n1, |∆z(t)| < ztol ,\nSFLF/RLF =\nCi (t) · max[0, − (∆xi (t))] , Ci (t) =\n(2)\n0, otherwise.\nt=0\nFor high repeatability reasons, all trials were controlled via Python using the\nWebRTC implementation provided by Severov [16]. The robot was set to standard walking mode and a target speed of 1.0 m s−1 . This speed was chosen,\nbecause it represents a realistic speed at which the robot should operate to be\nviable in real world applications.\n\nWalking on Roofs"
+    },
+    "chk_primary_result": {
+      "status": "uncertain",
+      "why": "drafts differ",
+      "drafts": [
+        {
+          "value": "Slippage increased quadratically with incline angle, and critical failures occurred regularly on moderate inclines of 25°.",
+          "paper_quote": "Experiments revealed that standard ball feet are inherently inadequate for locomotion on sloped roofs: slippage increased quadratically with incline angle, get-up and lie-down sequences were only possible on small inclines, and critical failures already occurred regularly on moderate inclines of 25◦ .",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "Critical failure during incline walking at 25°; measured friction coefficients of 1.144 ± 0.1299 (flat) and 1.430 ± 0.1298 (curved).",
+          "paper_quote": "The coefficient of friction for a rubber ball foot on a roof tile was measured at 1.144 ± 0.1299 on flat and 1.430 ± 0.1298 on curved sections of the roof.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ],
+      "paper_excerpt": "Machine Intelligence and Robotics Lab at Karlsruhe Institute of Technology (KIT),\nGermany\ndettmar@kit.edu\n\nAbstract. This paper investigates the feasibility of deploying quadruped\nwalking robots for the automation of work in roof environments. While\nquadrupeds have demonstrated versatility across various domains, their\nlarge-scale deployment remains limited, partly due to lack of applicationspecific designs. Roof environments represent a novel and unexplored\nuse case, combining high safety risks for human workers with repetitive,\nstrenuous tasks that could benefit from robotic assistance. A dedicated\ntest rig of a roof’s surface was designed to evaluate the baseline performance of a commercial quadruped, the Unitree Go2, in this new environment. Experiments revealed that standard ball feet are inherently\ninadequate for locomotion on sloped roofs: slippage increased quadratically with incline angle, get-up and lie-down sequences were only possible\non small inclines, and critical failures already occurred regularly on moderate inclines of 25◦ . This work provides the first systematic assessment\nof quadruped locomotion in roof environments, highlighting both the\npotential and the current limitations of this application and establishes\na baseline for future research. Effective solutions will require a combination of task-oriented foot designs, advanced contact mechanics and\nenvironment-specific control strategies, such as reinforcement learning\nfor roof-adapted gaits.\nKeywords: walking robots, quadruped, roof environment, construction,\nlocomotion, friction, stability, motion capture\n\nFig. 1. Examples of the Unitree Go2 on the test rig while balancing (left), walking\n(middle) and overview of the test rig setup (right).\n\nBaseline Results\n\nOverall, the results indicate that, without significant modifications, the Go2 is\nnot suited for operation within roof environments. Manufacturer claims of slopeclimbing capabilities of up to 40◦ were not achieved under the test conditions [18].\nThe coefficient of friction for a rubber ball foot on a roof tile was measured\nat 1.144 ± 0.1299 on flat and 1.430 ± 0.1298 on curved sections of the roof. Using\nEq. (1), this leads to respective maximum material specific incline angles ρ of\n(48.84 ± 3.22)◦ and (55.03 ± 2.44)◦ .\nFor standing on an incline, the critical angle was measured at (27.58 ± 0.72)◦\non average. Failures were primarily caused by automatic limb repositioning,\nwhich appears to be triggered by slippage of individual limbs or atypical joint\nangles.\nGet-up and lie-down experiments revealed additional limitations. Full task\nsuccess was achieved only at low inclines: up to 11.0◦ for head-up and head-down\norientations, and up to 7.0◦ for the sideways orientation. In all cases, failures\noccurred when the center of mass (COM) exited the support polygon during the\npre-programmed motion.\nIncline walking performance was quantified by measuring mean slippage, calculated from positional data of reflective markers on front and rear feet. The\nrobot was tested on inclines ranging from 0◦ to 25◦ , with frequent falls observed\nat 25◦ . Experiment runs that ended in critical failure were excluded from later\nstatistical analysis. Example trajectories of the experimental setup are provided\nin Fig. 2. The tracking data of each run in the roofs surface coordinate system\nis depicted in Fig. 3.\nThe first column of Fig. 3 shows the absolute position of the front left foot\n(FLF) and rear left foot (RLF) in the walking direction (X -direction). As the\nrobot starts on flat ground, the first second of the plots is very similar, independent of the current inclination. The overall trajectory does change with higher\ninclines, though. On steeper slopes, slippage – especially of the rear foot – can be\nidentified in areas where the absolute position decreases. The detected slippage\nis not a continuous sliding of the foot but rather an abrupt slip-off, often followed by an instantaneous follow-up step to regain ground contact. Furthermore,\nthe plots show a greater variation in runtime. As the robot needs to rebalance\nmore on higher inclinations, full standstill is sometimes reached later. The X -\n\nFig. 2. Motion capture view of the Unitree Go2 on the test rig at 25◦ incline angle."
+    },
+    "chk_secondary_result": {
+      "status": "uncertain",
+      "why": "drafts differ",
+      "drafts": [
+        {
+          "value": "The critical angle for standing on an incline was measured at 27.58 ± 0.72° on average, and get-up/lie-down sequences succeeded only up to 11°.",
+          "paper_quote": "For standing on an incline, the critical angle was measured at (27.58 ± 0.72)◦ on average.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "Quadratic relationship between slippage and incline angle; dynamic locomotion limited by stability, control, and material friction.",
+          "paper_quote": "Regression analysis revealed a highly significant (p < 0.0035) linear relationship between incline angle and traveled distance, a highly significant (p(F ) < 0.001) quadratic relationship between incline angle and slippage, but no explainable correlation between incline angle and trajectory deviation.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ],
+      "paper_excerpt": "Baseline Results\n\nOverall, the results indicate that, without significant modifications, the Go2 is\nnot suited for operation within roof environments. Manufacturer claims of slopeclimbing capabilities of up to 40◦ were not achieved under the test conditions [18].\nThe coefficient of friction for a rubber ball foot on a roof tile was measured\nat 1.144 ± 0.1299 on flat and 1.430 ± 0.1298 on curved sections of the roof. Using\nEq. (1), this leads to respective maximum material specific incline angles ρ of\n(48.84 ± 3.22)◦ and (55.03 ± 2.44)◦ .\nFor standing on an incline, the critical angle was measured at (27.58 ± 0.72)◦\non average. Failures were primarily caused by automatic limb repositioning,\nwhich appears to be triggered by slippage of individual limbs or atypical joint\nangles.\nGet-up and lie-down experiments revealed additional limitations. Full task\nsuccess was achieved only at low inclines: up to 11.0◦ for head-up and head-down\norientations, and up to 7.0◦ for the sideways orientation. In all cases, failures\noccurred when the center of mass (COM) exited the support polygon during the\npre-programmed motion.\nIncline walking performance was quantified by measuring mean slippage, calculated from positional data of reflective markers on front and rear feet. The\nrobot was tested on inclines ranging from 0◦ to 25◦ , with frequent falls observed\nat 25◦ . Experiment runs that ended in critical failure were excluded from later\nstatistical analysis. Example trajectories of the experimental setup are provided\nin Fig. 2. The tracking data of each run in the roofs surface coordinate system\nis depicted in Fig. 3.\nThe first column of Fig. 3 shows the absolute position of the front left foot\n(FLF) and rear left foot (RLF) in the walking direction (X -direction). As the\nrobot starts on flat ground, the first second of the plots is very similar, independent of the current inclination. The overall trajectory does change with higher\ninclines, though. On steeper slopes, slippage – especially of the rear foot – can be\nidentified in areas where the absolute position decreases. The detected slippage\nis not a continuous sliding of the foot but rather an abrupt slip-off, often followed by an instantaneous follow-up step to regain ground contact. Furthermore,\nthe plots show a greater variation in runtime. As the robot needs to rebalance\nmore on higher inclinations, full standstill is sometimes reached later. The X -\n\nFig. 2. Motion capture view of the Unitree Go2 on the test rig at 25◦ incline angle.\n\n7\n\ndirection plots also show that the roof environment makes the robot slip even on\nflat ground, due to the small steps between individual rows of tiles. When the\nrobot steps on the edge of one of these steps, the foot can easily slip off, either\nduring initial placement or at the start of the next step when the foot rotates\nforward and pushes off. Lastly, increasing the incline angle leads to a decrease in\ntotal traveled distance. This can be directly calculated from the diagram data,\nas the X -direction is always set to be in-plane with the roof’s surface, and distance measurements for calculation start only when all four feet are on the roof –\ncutting off the part on the palette where movement is not directly in X -direction\nfor incline angles above 0◦ .\nThe second column shows the deviation in Y -direction, perpendicular to\nthe X -direction. These graphs indicate how well the robot maintains its given\ntrajectory. Generally, the robot does not walk perfectly straight, even on flat\nground. This can be seen in the beginning of the trajectory: starting on flat\nground, both the FLF and RLF drift to the right, probably due to accelerationinduced imbalances. The roof environment further increases trajectory deviation,\nas the curved areas of the tiles promote slippage in Y -direction. An increase in\nincline angle seems to correlate with greater trajectory deviation. Additionally,\nthe robot might change its orientation on steeper inclines, as observed by the\nRLF drifting to the left side while the FLF drifts to the right side.\nThe third column depicts the robot’s gait pattern in Z -direction. The horizontal areas of the graphs show phases in which the foot stays on the roof’s\nsurface. These horizontal areas increase with each first or second step, indicating that the foot is placed on the next row of tiles. Because the ground plane\nis always set to align with the lowest row of tiles, an increase in incline angle\nleads to an initial decrease in the Z -position, as the Z -axis points partially into\nnegative X -direction on flat ground. The increase in incline angle also correlates\nwith a smaller increase in height, as the robot does not walk as far. Furthermore,\nthe plots show greater variance, as the robot slips more often and deviates from\nits standard gait pattern.\nFor better comparison the metrics mean distance moved in walking direction (X-direction), mean slippage in walking direction (X-direction) and mean\ntrajectory deviation from expected tra"
+    },
+    "chk_baseline": {
+      "status": "uncertain",
+      "why": "drafts differ",
+      "drafts": [
+        {
+          "value": "The robot's performance was compared against the manufacturer's claims of slope-climbing capabilities of up to 40°.",
+          "paper_quote": "Manufacturer claims of slopeclimbing capabilities of up to 40◦ were not achieved under the test conditions [18].",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "Baseline performance of Unitree Go2 robot on roof test rig with standard ball feet.",
+          "paper_quote": "This work provides the first systematic assessment of quadruped locomotion in roof environments, highlighting both the potential and the current limitations of this application and establishes a baseline for future research.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ],
+      "paper_excerpt": "Machine Intelligence and Robotics Lab at Karlsruhe Institute of Technology (KIT),\nGermany\ndettmar@kit.edu\n\nAbstract. This paper investigates the feasibility of deploying quadruped\nwalking robots for the automation of work in roof environments. While\nquadrupeds have demonstrated versatility across various domains, their\nlarge-scale deployment remains limited, partly due to lack of applicationspecific designs. Roof environments represent a novel and unexplored\nuse case, combining high safety risks for human workers with repetitive,\nstrenuous tasks that could benefit from robotic assistance. A dedicated\ntest rig of a roof’s surface was designed to evaluate the baseline performance of a commercial quadruped, the Unitree Go2, in this new environment. Experiments revealed that standard ball feet are inherently\ninadequate for locomotion on sloped roofs: slippage increased quadratically with incline angle, get-up and lie-down sequences were only possible\non small inclines, and critical failures already occurred regularly on moderate inclines of 25◦ . This work provides the first systematic assessment\nof quadruped locomotion in roof environments, highlighting both the\npotential and the current limitations of this application and establishes\na baseline for future research. Effective solutions will require a combination of task-oriented foot designs, advanced contact mechanics and\nenvironment-specific control strategies, such as reinforcement learning\nfor roof-adapted gaits.\nKeywords: walking robots, quadruped, roof environment, construction,\nlocomotion, friction, stability, motion capture\n\nFig. 1. Examples of the Unitree Go2 on the test rig while balancing (left), walking\n(middle) and overview of the test rig setup (right).\n\nBaseline Results\n\nOverall, the results indicate that, without significant modifications, the Go2 is\nnot suited for operation within roof environments. Manufacturer claims of slopeclimbing capabilities of up to 40◦ were not achieved under the test conditions [18].\nThe coefficient of friction for a rubber ball foot on a roof tile was measured\nat 1.144 ± 0.1299 on flat and 1.430 ± 0.1298 on curved sections of the roof. Using\nEq. (1), this leads to respective maximum material specific incline angles ρ of\n(48.84 ± 3.22)◦ and (55.03 ± 2.44)◦ .\nFor standing on an incline, the critical angle was measured at (27.58 ± 0.72)◦\non average. Failures were primarily caused by automatic limb repositioning,\nwhich appears to be triggered by slippage of individual limbs or atypical joint\nangles.\nGet-up and lie-down experiments revealed additional limitations. Full task\nsuccess was achieved only at low inclines: up to 11.0◦ for head-up and head-down\norientations, and up to 7.0◦ for the sideways orientation. In all cases, failures\noccurred when the center of mass (COM) exited the support polygon during the\npre-programmed motion.\nIncline walking performance was quantified by measuring mean slippage, calculated from positional data of reflective markers on front and rear feet. The\nrobot was tested on inclines ranging from 0◦ to 25◦ , with frequent falls observed\nat 25◦ . Experiment runs that ended in critical failure were excluded from later\nstatistical analysis. Example trajectories of the experimental setup are provided\nin Fig. 2. The tracking data of each run in the roofs surface coordinate system\nis depicted in Fig. 3.\nThe first column of Fig. 3 shows the absolute position of the front left foot\n(FLF) and rear left foot (RLF) in the walking direction (X -direction). As the\nrobot starts on flat ground, the first second of the plots is very similar, independent of the current inclination. The overall trajectory does change with higher\ninclines, though. On steeper slopes, slippage – especially of the rear foot – can be\nidentified in areas where the absolute position decreases. The detected slippage\nis not a continuous sliding of the foot but rather an abrupt slip-off, often followed by an instantaneous follow-up step to regain ground contact. Furthermore,\nthe plots show a greater variation in runtime. As the robot needs to rebalance\nmore on higher inclinations, full standstill is sometimes reached later. The X -\n\nFig. 2. Motion capture view of the Unitree Go2 on the test rig at 25◦ incline angle."
+    },
+    "chk_conclusion": {
+      "status": "accepted",
+      "value": "Unmodified quadrupeds are currently not capable of safe and reliable operation in roof environments.",
+      "paper_quote": "These results underscore that, without appropriate adaptations, quadrupeds are not yet capable of safe and reliable operation in roof environments.",
+      "drafts": [
+        {
+          "value": "Unmodified quadrupeds are currently not capable of safe and reliable operation in roof environments.",
+          "paper_quote": "These results underscore that, without appropriate adaptations, quadrupeds are not yet capable of safe and reliable operation in roof environments.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "Quadrupeds are not yet capable of safe and reliable operation on roofs without significant adaptations.",
+          "paper_quote": "These results underscore that, without appropriate adaptations, quadrupeds are not yet capable of safe and reliable operation in roof environments.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ]
+    },
+    "chk_limitation": {
+      "status": "accepted",
+      "value": "The experiments were conducted under ideal conditions without any debris, vegetation, weather, or additional payloads.",
+      "paper_quote": "Lastly, all experiments have been conducted under ideal conditions, no additional debris, vegetation, weather or additional payloads were added.",
+      "drafts": [
+        {
+          "value": "The experiments were conducted under ideal conditions without any debris, vegetation, weather, or additional payloads.",
+          "paper_quote": "Lastly, all experiments have been conducted under ideal conditions, no additional debris, vegetation, weather or additional payloads were added.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "Experiments were conducted under ideal conditions with a single robot model and standard settings.",
+          "paper_quote": "Lastly, all experiments have been conducted under ideal conditions, no additional debris, vegetation, weather or additional payloads were added.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ]
+    }
+  }
+}

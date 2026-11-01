@@ -1,0 +1,202 @@
+{
+  "paper_id": "P06",
+  "created_at": "2026-11-01T18:25:54+00:00",
+  "models": [
+    "gemini-3.5-flash",
+    "openai.gpt-4o"
+  ],
+  "reference_prompt_sha256": "a63f2a103bd381061f0d6560fdaf2e1bd28c503af09ee38a529d0648f4594fd3",
+  "paper_text_sha256": "c9471d4343fefca75dc134d3144d4550c3df2f5184cd8464116b7bf31ef0736b",
+  "summary": "This paper presents a note-grounded approach to normalize treatment-context medication mentions from clinic notes and compare them with structured EHR medication history. Using an LLM-bootstrapped, human-audited reference set, the authors show that deterministic normalization improves exact canonical agreement to 0.8429 on a held-out test set. They find that most note-to-structured-record mismatches are explained by semantic relatedness or temporal displacement rather than complete documentation failure.",
+  "items": {
+    "chk_problem": {
+      "status": "accepted",
+      "value": "Disagreement between clinic notes and structured EHR medication history due to normalization errors, terminology differences, or timing.",
+      "paper_quote": "Same-visit disagreement between these sources may result from note-side normalization errors, differences in terminology or timing, or actual differences in documentation.",
+      "drafts": [
+        {
+          "value": "Disagreement between clinic notes and structured EHR medication history due to normalization errors, terminology differences, or timing.",
+          "paper_quote": "Same-visit disagreement between these sources may result from note-side normalization errors, differences in terminology or timing, or actual differences in documentation.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "Discrepancies between clinic notes and structured EHR medication history due to normalization errors, terminology differences, and documentation timing.",
+          "paper_quote": "Same-visit disagreement between these sources may result from note-side normalization errors, differences in terminology or timing, or actual differences in documentation.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ]
+    },
+    "chk_method": {
+      "status": "accepted",
+      "value": "A note-grounded approach combining LLM-assisted reference construction, human review, deterministic normalization, and semantic-temporal comparisons.",
+      "paper_quote": "We developed a note-grounded approach that uses large language model (LLM)-assisted reference construction, targeted and random human review, deterministic medication normalization, and semantic and temporal comparisons with structured medication history.",
+      "drafts": [
+        {
+          "value": "A note-grounded approach combining LLM-assisted reference construction, human review, deterministic normalization, and semantic-temporal comparisons.",
+          "paper_quote": "We developed a note-grounded approach that uses large language model (LLM)-assisted reference construction, targeted and random human review, deterministic medication normalization, and semantic and temporal comparisons with structured medication history.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "Note-grounded approach using LLM-assisted reference construction, human review, deterministic normalization, and semantic-temporal comparisons.",
+          "paper_quote": "We developed a note-grounded approach that uses large language model (LLM)-assisted reference construction, targeted and random human review, deterministic medication normalization, and semantic and temporal comparisons with structured medication history.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ]
+    },
+    "chk_data": {
+      "status": "uncertain",
+      "why": "drafts differ",
+      "drafts": [
+        {
+          "value": "A frozen cohort of 11,812 eligible visits from 761 patients and 22,483 clinic notes.",
+          "paper_quote": "We conducted a clinic-note-only evaluation of treatment-context medication normalization using a frozen cohort run of 11,812 eligible visits from 761 patients and 22,483 manifest notes.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "11,812 eligible visits, 761 patients, 22,483 manifest notes, and 27,752 reference mention rows.",
+          "paper_quote": "We conducted a clinic-note-only evaluation of treatment-context medication normalization using a frozen cohort run of 11,812 eligible visits from 761 patients and 22,483 manifest notes.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ],
+      "paper_excerpt": "Medication extraction from clinical narratives is an established clinical natural language processing (NLP) problem.\nRule-based systems such as MedEx, the Informatics for Integrating Biology and the Bedside (i2b2) medication extraction\nchallenge, and extensions such as MedEx-Unstructured Information Management Architecture (MedEx-UIMA) have evaluated medication extraction and normalization from narrative\nclinical text [1]–[3]. Later systems, such as MedXN, medExtractR and staged extraction-plus-harmonization workflows,\nfurther showed that medication extraction and normalization\ncan be made practical for research workflows with different\nscopes and operating assumptions [4], [5], [10].\nHowever, the reference definition for evaluating notederived medication information remains crucial. Structured\nmedication records and narrative clinic notes capture overlapping but different aspects of medication use and treatment\ndecisions. Prior work comparing structured and narrative medication information has shown that discrepancies may reflect\nworkflow, timing, medication reconciliation practices, or documentation conventions rather than simple extraction error [6],\n[7]. As a result, evaluating clinic-note extraction only against\nstructured medication fields can confound note-understanding\nerror with cross-source documentation mismatch, especially\nwhen the note describes a treatment decision or clarification\nthat is absent from the structured record at the same encounter.\nNormalization itself also deserves explicit evaluation.\nCanonical mapping depends on synonym coverage, brand and\ngeneric names, formulation language, ambiguous abbreviations, and vocabulary coverage. RxNorm provides a standardized nomenclature for clinical drugs and has become a central\nnormalization target in medication informatics [8]. Even with\na normalized target vocabulary, medical concept normalization\nremains vulnerable to ambiguity and incomplete coverage, and\ncanonical mapping errors can persist even when the mention\nspan is correctly identified [9].\nLarge language models (LLMs) can support medication\nextraction and reference construction from clinic-note text\nat scale. In the present study, the bootstrap layer used\nQwen2.5-32B-Instruct [13] deployed locally through vLLM\n[14] with deterministic decoding (temperature = 0) and\nschema-constrained JavaScript Object Notation (JSON) output. Recent studies have applied computational and LLM-\n\nbased methods to extract and characterize clinically relevant\ninformation from unstructured EHR and patient-generated\nhealth text [11], [19], [21]. However, clinical LLM use raises\nconcerns about reliability, hallucination, bias, privacy, and\noutput consistency [12], [20]. We therefore used the LLM\noutputs to construct an auditable initial reference set and did\nnot consider them manually verified labels.\nAccordingly, we study clinic-note-only treatment-context\nmedication normalization under an LLM-bootstrapped,\nhuman-audited evaluation design. We examined how\nnormalized note-derived medication evidence relates to\nstructured medication history while accounting for note-side\nambiguity and differences in terminology and timing. We\nconstructed a note-grounded reference set using targeted\nreview of difficult cases and random review of previously\nunaudited rows. We then evaluated how lexical cleanup and\ncurated aliases affected exact canonical agreement relative to\nsurface matching, generic lexical retrieval, and ontology-only\ncomparators. Finally, we examined note-to-structured-record\ndisagreement across exact, ingredient, broad-category, and\ntemporal matching levels. Because an LLM contributed to\nreference construction, we report its output only as part of\nthe reference-building process and not as an independent\nbenchmark.\nII. M ATERIALS AND M ETHODS\nA. Cohort, note grounding, and audit design\nWe conducted a clinic-note-only evaluation of treatmentcontext medication normalization using a frozen cohort run of\n11,812 eligible visits from 761 patients and 22,483 manifest\nnotes. We restricted the analysis to clinic-like notes because\nwe focused on outpatient documentation of medication starts,\nstops, holds, regimen changes, and formulation details. The\ncohort was not filtered on extraction success, preserving a fixed\ndenominator for candidate generation and normalization.\nThe analysis uses several linked units. A manifest note\nwas a retained clinic-like note; a packet note was a manifest\nnote represented in the adjudication packet layer; a packet\nmention was an upstream candidate mention carried forward\nfor review or reference construction; and a reference mention\nrow was a packet-note-based, note-grounded mention row with\na non-empty project-specific canonical medication label. The\nprimary evaluation unit was the mention row, and the primary\nendpoint was mention-level exact canonical agreement with\nthe note-grounded reference label.\nBefore reference construction, we organized clinic-note\nsnippets into candidate packets f"
+    },
+    "chk_setup": {
+      "status": "uncertain",
+      "why": "drafts differ",
+      "drafts": [
+        {
+          "value": "Evaluation of the deterministic canonicalization pipeline on a held-out test split of 5,403 reference mention rows.",
+          "paper_quote": "We evaluated the deterministic canonicalization pipeline and its calibration comparators on the held-out test split of 5,403 reference mention rows with non-empty project-specific canonical medication labels.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "Evaluation on a patient-level held-out test set with 5,403 mention rows and a fixed random seed for patient split.",
+          "paper_quote": "To reduce within-cohort adaptation risk for technical performance claims, we introduced a patient-level held-out evaluation track.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ],
+      "paper_excerpt": "based methods to extract and characterize clinically relevant\ninformation from unstructured EHR and patient-generated\nhealth text [11], [19], [21]. However, clinical LLM use raises\nconcerns about reliability, hallucination, bias, privacy, and\noutput consistency [12], [20]. We therefore used the LLM\noutputs to construct an auditable initial reference set and did\nnot consider them manually verified labels.\nAccordingly, we study clinic-note-only treatment-context\nmedication normalization under an LLM-bootstrapped,\nhuman-audited evaluation design. We examined how\nnormalized note-derived medication evidence relates to\nstructured medication history while accounting for note-side\nambiguity and differences in terminology and timing. We\nconstructed a note-grounded reference set using targeted\nreview of difficult cases and random review of previously\nunaudited rows. We then evaluated how lexical cleanup and\ncurated aliases affected exact canonical agreement relative to\nsurface matching, generic lexical retrieval, and ontology-only\ncomparators. Finally, we examined note-to-structured-record\ndisagreement across exact, ingredient, broad-category, and\ntemporal matching levels. Because an LLM contributed to\nreference construction, we report its output only as part of\nthe reference-building process and not as an independent\nbenchmark.\nII. M ATERIALS AND M ETHODS\nA. Cohort, note grounding, and audit design\nWe conducted a clinic-note-only evaluation of treatmentcontext medication normalization using a frozen cohort run of\n11,812 eligible visits from 761 patients and 22,483 manifest\nnotes. We restricted the analysis to clinic-like notes because\nwe focused on outpatient documentation of medication starts,\nstops, holds, regimen changes, and formulation details. The\ncohort was not filtered on extraction success, preserving a fixed\ndenominator for candidate generation and normalization.\nThe analysis uses several linked units. A manifest note\nwas a retained clinic-like note; a packet note was a manifest\nnote represented in the adjudication packet layer; a packet\nmention was an upstream candidate mention carried forward\nfor review or reference construction; and a reference mention\nrow was a packet-note-based, note-grounded mention row with\na non-empty project-specific canonical medication label. The\nprimary evaluation unit was the mention row, and the primary\nendpoint was mention-level exact canonical agreement with\nthe note-grounded reference label.\nBefore reference construction, we organized clinic-note\nsnippets into candidate packets for review. We identified candidate spans using medication and treatment-action patterns,\nseeded medication strings, and cues produced by an upstream\nmedspaCy-based clinical text processing module [15]. These\ncandidates were generated from clinic-note context rather than\nfrom structured EHR medication fields. In the frozen run,\nthis process produced 10,543 packet notes and 31,282 packet\nmentions.\nReference mention rows were constructed from clinic-note\ncontext through an LLM-bootstrapped, note-grounded work-\n\nflow. For each packeted clinic-note context, Qwen2.5-32BInstruct [13], deployed locally through vLLM [14], generated\nschema-constrained JSON output under deterministic decoding (temperature = 0). For this medication study, we retained\nonly the medication-output branch. The model proposed notelevel medication mention strings while excluding dosage,\nroute, and frequency. These proposed strings were then normalized, deduplicated within note, aligned to packet mentions,\nand projected into project-specific canonical medication labels.\nThe resulting resource is an auditable note-grounded reference\nlayer, but it remains packet-note-based rather than a fully\nindependent span-annotated corpus over all manifest notes.\nA targeted subset of rows was human-audited to improve\nreference credibility and make the construction process inspectable. In the frozen run, 3,188 of 27,752 reference mention\nrows were human-audited, corresponding to 11.49% of the\nreference rows. This queue was enriched for difficult or\nambiguous rows and should not be interpreted as a random estimate of global bootstrap quality. The remaining 24,564 rows\nretained bootstrap-derived note-grounded labels after downstream projection into the project canonical label space. We\ndescribe this resource as an LLM-assisted, human-reviewed\nreference set. It does not provide exhaustive manual annotation\nof every row. To estimate residual reliability of previously\nunaudited rows, we also drew a stratified random sample of\n1,000 rows from the unaudited pool using note type, candidate\ncategory, and action cue. Rows were reviewed in bounded\nnote context without structured EHR medication fields, and\ncanonical agreement was summarized on rows adjudicated as\nvalid medication mentions with acceptable spans.\nB. Held-out evaluation and normalization analysis\nReference rows were aligned back to extracted candidate\nrows to construct a mention-level alignment table"
+    },
+    "chk_primary_result": {
+      "status": "accepted",
+      "value": "Exact canonical agreement improved from 0.7226 with surface-exact matching to 0.8429 after lexical cleanup and curated alias mapping.",
+      "paper_quote": "On 5,403 held-out mention rows, exact canonical agreement improved from 0.7226 with surface-exact matching to 0.8429 after lexical cleanup and curated alias mapping.",
+      "drafts": [
+        {
+          "value": "Exact canonical agreement improved from 0.7226 with surface-exact matching to 0.8429 after lexical cleanup and curated alias mapping.",
+          "paper_quote": "On 5,403 held-out mention rows, exact canonical agreement improved from 0.7226 with surface-exact matching to 0.8429 after lexical cleanup and curated alias mapping.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "Exact canonical agreement improved from 0.7226 to 0.8429 after lexical cleanup and curated alias mapping.",
+          "paper_quote": "On 5,403 held-out mention rows, exact canonical agreement improved from 0.7226 with surface-exact matching to 0.8429 after lexical cleanup and curated alias mapping.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ]
+    },
+    "chk_secondary_result": {
+      "status": "uncertain",
+      "why": "drafts differ",
+      "drafts": [
+        {
+          "value": "Only 16.44% of note-derived rows had same-visit exact overlap with structured history, but 55.17% had same-visit semantic overlap and 90.34% had same-visit or ±30-day overlap.",
+          "paper_quote": "In the full-cohort characterization analysis, only 16.44% of note-derived rows had same-visit exact overlap with structured medication history, but 55.17% had same-visit semantic overlap, 90.34% had same-visit or ±30-day overlap, and only 3.97% remained in the strict no-structured-overlap bucket under broad project-level mapping.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "55.17% of note-derived rows had same-visit semantic overlap, and 90.34% had same-visit or ±30-day overlap with structured medication history.",
+          "paper_quote": "In the full-cohort characterization analysis, only 16.44% of note-derived rows had same-visit exact overlap with structured medication history, but 55.17% had same-visit semantic overlap, 90.34% had same-visit or ±30-day overlap, and only 3.97% remained in the strict no-structured-overlap bucket under broad project-level mapping.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ],
+      "paper_excerpt": "† Department of Biomedical Informatics, Vanderbilt University Medical Center, Nashville, TN, USA\n\nAbstract—Clinic notes and structured electronic health record\n(EHR) medication history often contain different medication\ninformation. Same-visit disagreement between these sources may\nresult from note-side normalization errors, differences in terminology or timing, or actual differences in documentation. We\ndeveloped a note-grounded approach that uses large language\nmodel (LLM)-assisted reference construction, targeted and random human review, deterministic medication normalization, and\nsemantic and temporal comparisons with structured medication\nhistory. We evaluated all normalization results on a patientlevel held-out test set to limit adaptation to the study cohort.\nOn 5,403 held-out mention rows, exact canonical agreement\nimproved from 0.7226 with surface-exact matching to 0.8429\nafter lexical cleanup and curated alias mapping. In a random\naudit of previously unaudited rows, canonical-label agreement\nwas 0.9210 among evaluable valid medication mentions, whereas\ntreatment-action attribution was lower at 0.5326. In the fullcohort characterization analysis, only 16.44% of note-derived\nrows had same-visit exact overlap with structured medication\nhistory, but 55.17% had same-visit semantic overlap, 90.34%\nhad same-visit or ±30-day overlap, and only 3.97% remained\nin the strict no-structured-overlap bucket under broad projectlevel mapping. An ontology-backed sensitivity analysis further\nshowed that held-out strict Observational Medical Outcomes\nPartnership (OMOP)-backed no-overlap fell from 43.99% to\n36.68% after a development-derived alias supplement. These\nresults show that note-to-structured-medication mismatch can\narise from normalization errors, differences in terminology, and\ndifferences in documentation timing.\nIndex Terms—clinical natural language processing, medication\nnormalization, clinic notes, note-grounded evaluation, electronic\nhealth records\n\nI. I NTRODUCTION\nMedication information relevant to treatment decisions appears in both structured medication records and narrative clinic\nnotes. Outpatient notes often record medication starts, stops,\nholds, regimen changes, and formulation details that may not\nappear in the structured medication list at the same time. For\ndownstream analysis, these note expressions must be mapped\nto canonical medication labels so that related mentions can\nbe aggregated, compared, and interpreted consistently across\nnotes and visits.\nThis work has been submitted to the IEEE for possible publication.\nCopyright may be transferred without notice, after which this version may\nno longer be accessible."
+    },
+    "chk_baseline": {
+      "status": "uncertain",
+      "why": "drafts differ",
+      "drafts": [
+        {
+          "value": "Public OMOP/RxNorm synonym matching and generic nearest-canonical lexical retrieval based on character n-grams, edit similarity, and token overlap.",
+          "paper_quote": "To calibrate the deterministic gain, we also evaluated public OMOP/RxNorm synonym matching without project-specific alias refinement and generic nearest-canonical lexical retrieval based on character n-grams, edit similarity, and token overlap.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "Surface-exact matching and generic lexical retrieval methods, including MedXN as an external baseline.",
+          "paper_quote": "As one recognizable external baseline, we also ran untuned MedXN [4] on held-out notes and compared note-level recovery of unique note and normalized-medication-label pairs on a predefined treatment-context subset.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ],
+      "paper_excerpt": "Fig. 1. Clinic-note packets are converted into an auditable note-grounded reference set through Qwen2.5-32B-Instruct bootstrap output and human review.\nDeterministic canonicalization is then evaluated on held-out test patients, after which note-derived labels are compared with structured medication history\nthrough downstream semantic-temporal characterization.\n\nspecific canonical medication labels. The deterministic canonicalization pipeline consisted of surface-exact comparison,\nlexical cleanup, curated alias mapping, and conservative safe\ndecomposition. The surface-exact baseline compared normalized raw mention strings directly with reference canonical\nlabels; lexical cleanup standardized whitespace, punctuation,\nand token-level variants; curated alias mapping applied oneto-one deterministic aliases while excluding known ambiguous\nmappings; and safe decomposition accepted only unambiguous multipart expressions. This endpoint measures mentionlevel canonicalization among note-grounded reference rows\nand does not measure end-to-end extraction performance. To\ncalibrate the deterministic gain, we also evaluated public\nOMOP/RxNorm synonym matching without project-specific\nalias refinement and generic nearest-canonical lexical retrieval\nbased on character n-grams, edit similarity, and token overlap.\nAs one recognizable external baseline, we also ran untuned\nMedXN [4] on held-out notes and compared note-level recovery of unique note and normalized-medication-label pairs on\na predefined treatment-context subset.\n\nproject-specific clinical categories for semantic comparison\nand interpretability."
+    },
+    "chk_conclusion": {
+      "status": "accepted",
+      "value": "Evidence characterization should precede downstream clinical inference when comparing clinic-note medication evidence with structured medication history.",
+      "paper_quote": "These results suggest that evidence characterization should precede downstream clinical inference when clinic-note medication evidence is compared with structured medication history.",
+      "drafts": [
+        {
+          "value": "Evidence characterization should precede downstream clinical inference when comparing clinic-note medication evidence with structured medication history.",
+          "paper_quote": "These results suggest that evidence characterization should precede downstream clinical inference when clinic-note medication evidence is compared with structured medication history.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "Evidence characterization should precede clinical inference when comparing clinic-note medication evidence with structured medication history.",
+          "paper_quote": "These results suggest that evidence characterization should precede downstream clinical inference when clinic-note medication evidence is compared with structured medication history.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ]
+    },
+    "chk_limitation": {
+      "status": "uncertain",
+      "why": "drafts differ",
+      "drafts": [
+        {
+          "value": "The cohort is from a private single-center clinic-note environment, and the canonical label space and categories are project-specific.",
+          "paper_quote": "The cohort comes from a private single-center clinic-note environment, and both the canonical label space and broad medication categories are project-specific.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "Single-center cohort, project-specific canonical label space, and non-exhaustive manual annotation of reference set.",
+          "paper_quote": "The cohort comes from a private single-center clinic-note environment, and both the canonical label space and broad medication categories are project-specific.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ],
+      "paper_excerpt": "study.\nE. Semantic note-to-structured-record concordance remains\nsecondary\nStructured medication history was retained only as a secondary concordance analysis. To test whether the two documentation layers were related despite low exact agreement,\nwe summarized visit-level concordance across exact, ingredient, and broad-category semantic levels. Across 5,329 note–\nstructured-record visit pairs, exact-set agreement and overlap\nwere low at exact and ingredient levels, with exact-set-match\nrate 0.0060 at both levels, overlap rate 0.1918 at exact canonical level, overlap rate 0.1927 at ingredient level, and mean\nJaccard values near 0.044.\nAt broad clinical-category level, concordance was materially\nhigher: overlap rate 0.4980, exact-set-match rate 0.1657, and\nmean Jaccard 0.3077. The higher overlap and Jaccard values\nat the broad-category level indicate that the sources often refer\nto similar medication classes despite low exact agreement.\nF. Residual deterministic-pipeline error interpretation\nAmong 4,280 unresolved rows after the full deterministic pipeline, missing alias accounted for 3,823 (89.32%),\nlab/substance or non-medication rows for 345 (8.06%), combination or formulation mismatch for 108 (2.52%), and ambiguous abbreviation for 4 (0.09%). The unresolved raw\nmentions were also dominated by a small recurring set of\nmedication names: the ten most frequent unresolved terms, led\nby acetaminophen, oxycodone, ondansetron, dexamethasone,\nand gabapentin, accounted for 3,751 of 4,280 residual rows\n(87.64%). This pattern makes the remaining error surface\ninterpretable and actionable for pipeline revision: a relatively\nsmall alias and vocabulary expansion effort could address a\nsubstantial share of the remaining unresolved mention rows\nwithout changing the overall evaluation framing.\nOverall, the remaining mismatches reflected differences\nin terminology and timing, note-side normalization errors,\nincomplete structured records, extraction or reference errors,\nand a small number of possible note-only medication events.\nIV. D ISCUSSION\nWe developed and evaluated a note-grounded approach\nfor comparing treatment-context medication evidence with\nstructured medication history. The results show that low samevisit exact agreement does not imply a single type of documentation failure. Much of the apparent mismatch remains\nsemantically related within the same visit or temporally related\n\nwithin a short follow-up window, and a substantial share of\nstrict residual mismatch reflects note-side mapping limitations.\nThese findings argue against collapsing note-to-structuredmedication disagreement into a binary match-versus-mismatch\noutcome.\nThe technical implication is that transparent normalization\nremains a high-yield intervention for clinical text pipelines.\nOn held-out patients, the measurable gain came almost entirely\nfrom lexical cleanup and curated alias coverage, while generic\nlexical retrieval and ontology-only matching recovered less.\nThis suggests that medication normalization errors in clinic\nnotes are not merely generic string-matching failures; they\nalso reflect institution- and context-specific alias coverage.\nThe external MedXN comparison supports the same practical\nconclusion: treatment-context evidence depends not only on\nmedication mention recall but also on note-side canonicalization and control of false positive note-label assignments.\nThe calibration layers further bound the clinical interpretation. Random audit supported high canonical agreement among evaluable valid medication mentions, whereas\ntreatment-action attribution remained materially harder. The\nOMOP/RxNorm sensitivity and the held-out alias-supplement\nrerun showed that a substantial share of strict no-overlap\nwas reducible through note-side standardization, while manual\nreview indicated that only a smaller remainder persisted as\ncandidate note-only evidence after accounting for note-side\nmapping failure, structured-side undercapture, and extraction\nor reference noise. The strongest supported claim is therefore\nnot that no-overlap proves undocumented medication use, but\nthat the framework distinguishes several reasons why notederived medication evidence may fail to align exactly with\nsame-visit structured medication history.\nSeveral limitations remain. The cohort comes from a private\nsingle-center clinic-note environment, and both the canonical\nlabel space and broad medication categories are projectspecific. We constructed the reference resource with LLM\nassistance and targeted and random human review, but did\nnot manually annotate every row. In addition, the reference\nlayer is packet-note-based rather than an independent spanannotated corpus over every manifest note. Therefore, the main\nnormalization endpoint should be interpreted as controlled\nnote-side canonicalization performance within the constructed\nreference universe rather than as a fully independent corpuslevel extraction benchmark.\nThe audit and alias-refinement design also impose constra"
+    }
+  }
+}

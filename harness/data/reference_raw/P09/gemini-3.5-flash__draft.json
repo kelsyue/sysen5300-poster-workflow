@@ -1,0 +1,49 @@
+{
+  "model": "gemini-3.5-flash",
+  "reference_prompt_sha256": "a63f2a103bd381061f0d6560fdaf2e1bd28c503af09ee38a529d0648f4594fd3",
+  "error": null,
+  "tokens_in": 18182,
+  "tokens_out": 4677,
+  "parsed": {
+    "summary": "This paper introduces DeFiFusion, a dual-modal framework designed to detect Price Manipulation Attacks (PMAs) in Decentralized Finance (DeFi) by jointly modeling transaction events and smart contract semantics. By utilizing a Dual-Modal Projection-Fusion Transformer with T5-style relative positional encoding, the framework captures cyclic execution patterns. Evaluated on a dataset of 225 real-world PMA incidents, DeFiFusion achieves state-of-the-art performance, recalling 222 cases with 96.10% precision.",
+    "items": {
+      "chk_problem": {
+        "value": "Existing price manipulation attack detection paradigms suffer from a disconnect between transaction-centric methods and static contract analyses, undermining their reliability.",
+        "paper_quote": "This disconnect undermines the reliability and practicality of PMA detection."
+      },
+      "chk_method": {
+        "value": "DeFiFusion, a dual-modal detection framework that combines price-manipulation-aware event encoding, LLM-based contract semantic extraction, and a Dual-Modal Projection-Fusion Transformer (DPF-Transformer) with T5-style relative positional encoding.",
+        "paper_quote": "We present DeFiFusion, a dual-modal PMA detection framework that closes this gap by jointly modeling transaction events and smart contract semantics within a unified pipeline."
+      },
+      "chk_data": {
+        "value": "Two datasets: D1, containing 225 real-world PMA incidents from 2020 to 2026 across 6 networks, and D2, containing 1,150 benign transactions across 435 DeFi applications.",
+        "paper_quote": "The first dataset, denoted as D1, encompasses 225 DeFi applications across 6 blockchain networks that fell victim to PMA between 2020 and 2026, involving a cumulative financial loss of $804.3M."
+      },
+      "chk_setup": {
+        "value": "The framework was implemented using DeepSeek-Coder-7B-Instruct-v1.5 as the frozen LLM, trained with a batch size of 4, dropout rate of 0.3, and initial learning rate of 10^-5.",
+        "paper_quote": "We employ DeepSeek-Coder-7B-Instruct-v1.5 [14] as the default LLM (kept frozen)."
+      },
+      "chk_primary_result": {
+        "value": "DeFiFusion achieved state-of-the-art performance, recalling 222 out of 225 PMA cases with a precision of 96.10%.",
+        "paper_quote": "Extensive experiments demonstrate that DeFiFusion consistently achieves state-of-the-art detection performance, effectively recalling 222 of the 225 PMA cases while maintaining a precision of 96.10%."
+      },
+      "chk_secondary_result": {
+        "value": "In a forward-looking evaluation on 2026 DeFi activity, DeFiFusion achieved 100% recall on 18 real-world PMA incidents.",
+        "paper_quote": "Moreover, in a forward-looking evaluation on 2026 DeFi activity, DeFiFusion attains 100% recall on 18 real-world PMA incidents, demonstrating its practicality for real-world DeFi security monitoring."
+      },
+      "chk_baseline": {
+        "value": "DeFiFusion was compared against three state-of-the-art tools: DeFiRanger, DeFort, and DeFiScope.",
+        "paper_quote": "To address RQ1, we evaluated DeFiFusion and compared it against three SOTA tools: DeFiRanger [6], DeFort [11], and DeFiScope [9]."
+      },
+      "chk_conclusion": {
+        "value": "DeFiFusion consistently outperforms state-of-the-art methods in accuracy, robustness, and practical effectiveness by successfully combining transaction events and smart contract semantics.",
+        "paper_quote": "Extensive evaluation on two datasets, including 225 real-world PMA incidents newly collected in this study and 1,150 benign transactions, demonstrates that DeFiFusion consistently surpasses SOTA methods in accuracy, robustness, and practical effectiveness for detecting complex price manipulations."
+      },
+      "chk_limitation": {
+        "value": "The model's capability is limited when dealing with unverified or closed-source contracts that only disclose bytecode, as it degenerates into a unimodal detector.",
+        "paper_quote": "For unverified or closed-source contracts that disclose only bytecode, the model degenerates into a unimodal detector, limiting its capacity to capture complex manipulation logic."
+      }
+    }
+  },
+  "raw": "```json\n{\n  \"summary\": \"This paper introduces DeFiFusion, a dual-modal framework designed to detect Price Manipulation Attacks (PMAs) in Decentralized Finance (DeFi) by jointly modeling transaction events and smart contract semantics. By utilizing a Dual-Modal Projection-Fusion Transformer with T5-style relative positional encoding, the framework captures cyclic execution patterns. Evaluated on a dataset of 225 real-world PMA incidents, DeFiFusion achieves state-of-the-art performance, recalling 222 cases with 96.10% precision.\",\n  \"items\": {\n    \"chk_problem\": {\n      \"value\": \"Existing price manipulation attack detection paradigms suffer from a disconnect between transaction-centric methods and static contract analyses, undermining their reliability.\",\n      \"paper_quote\": \"This disconnect undermines the reliability and practicality of PMA detection.\"\n    },\n    \"chk_method\": {\n      \"value\": \"DeFiFusion, a dual-modal detection framework that combines price-manipulation-aware event encoding, LLM-based contract semantic extraction, and a Dual-Modal Projection-Fusion Transformer (DPF-Transformer) with T5-style relative positional encoding.\",\n      \"paper_quote\": \"We present DeFiFusion, a dual-modal PMA detection framework that closes this gap by jointly modeling transaction events and smart contract semantics within a unified pipeline.\"\n    },\n    \"chk_data\": {\n      \"value\": \"Two datasets: D1, containing 225 real-world PMA incidents from 2020 to 2026 across 6 networks, and D2, containing 1,150 benign transactions across 435 DeFi applications.\",\n      \"paper_quote\": \"The first dataset, denoted as D1, encompasses 225 DeFi applications across 6 blockchain networks that fell victim to PMA between 2020 and 2026, involving a cumulative financial loss of $804.3M.\"\n    },\n    \"chk_setup\": {\n      \"value\": \"The framework was implemented using DeepSeek-Coder-7B-Instruct-v1.5 as the frozen LLM, trained with a batch size of 4, dropout rate of 0.3, and initial learning rate of 10^-5.\",\n      \"paper_quote\": \"We employ DeepSeek-Coder-7B-Instruct-v1.5 [14] as the default LLM (kept frozen).\"\n    },\n    \"chk_primary_result\": {\n      \"value\": \"DeFiFusion achieved state-of-the-art performance, recalling 222 out of 225 PMA cases with a precision of 96.10%.\",\n      \"paper_quote\": \"Extensive experiments demonstrate that DeFiFusion consistently achieves state-of-the-art detection performance, effectively recalling 222 of the 225 PMA cases while maintaining a precision of 96.10%.\"\n    },\n    \"chk_secondary_result\": {\n      \"value\": \"In a forward-looking evaluation on 2026 DeFi activity, DeFiFusion achieved 100% recall on 18 real-world PMA incidents.\",\n      \"paper_quote\": \"Moreover, in a forward-looking evaluation on 2026 DeFi activity, DeFiFusion attains 100% recall on 18 real-world PMA incidents, demonstrating its practicality for real-world DeFi security monitoring.\"\n    },\n    \"chk_baseline\": {\n      \"value\": \"DeFiFusion was compared against three state-of-the-art tools: DeFiRanger, DeFort, and DeFiScope.\",\n      \"paper_quote\": \"To address RQ1, we evaluated DeFiFusion and compared it against three SOTA tools: DeFiRanger [6], DeFort [11], and DeFiScope [9].\"\n    },\n    \"chk_conclusion\": {\n      \"value\": \"DeFiFusion consistently outperforms state-of-the-art methods in accuracy, robustness, and practical effectiveness by successfully combining transaction events and smart contract semantics.\",\n      \"paper_quote\": \"Extensive evaluation on two datasets, including 225 real-world PMA incidents newly collected in this study and 1,150 benign transactions, demonstrates that DeFiFusion consistently surpasses SOTA methods in accuracy, robustness, and practical effectiveness for detecting complex price manipulations.\"\n    },\n    \"chk_limitation\": {\n      \"value\": \"The model's capability is limited when dealing with unverified or closed-source contracts that only disclose bytecode, as it degenerates into a unimodal detector.\",\n      \"paper_quote\": \"For unverified or closed-source contracts that disclose only bytecode, the model degenerates into a unimodal detector, limiting its capacity to capture complex manipulation logic.\"\n    }\n  }\n}\n```"
+}

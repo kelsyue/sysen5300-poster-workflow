@@ -1,0 +1,49 @@
+{
+  "model": "openai.gpt-4o",
+  "reference_prompt_sha256": "a63f2a103bd381061f0d6560fdaf2e1bd28c503af09ee38a529d0648f4594fd3",
+  "error": null,
+  "tokens_in": 10732,
+  "tokens_out": 837,
+  "parsed": {
+    "summary": "This paper presents a note-grounded framework for normalizing treatment-context medication evidence from clinic notes and comparing it with structured electronic health record (EHR) medication history. The study uses a large language model (LLM)-assisted reference construction, human review, and deterministic medication normalization to improve canonical agreement. Results show that normalization errors, differences in terminology, and documentation timing contribute to note-to-structured-medication mismatches, with significant semantic and temporal overlap between the two sources.",
+    "items": {
+      "chk_problem": {
+        "value": "Discrepancies between clinic notes and structured EHR medication history due to normalization errors, terminology differences, and documentation timing.",
+        "paper_quote": "Same-visit disagreement between these sources may result from note-side normalization errors, differences in terminology or timing, or actual differences in documentation."
+      },
+      "chk_method": {
+        "value": "Note-grounded approach using LLM-assisted reference construction, human review, deterministic normalization, and semantic-temporal comparisons.",
+        "paper_quote": "We developed a note-grounded approach that uses large language model (LLM)-assisted reference construction, targeted and random human review, deterministic medication normalization, and semantic and temporal comparisons with structured medication history."
+      },
+      "chk_data": {
+        "value": "11,812 eligible visits, 761 patients, 22,483 manifest notes, and 27,752 reference mention rows.",
+        "paper_quote": "We conducted a clinic-note-only evaluation of treatment-context medication normalization using a frozen cohort run of 11,812 eligible visits from 761 patients and 22,483 manifest notes."
+      },
+      "chk_setup": {
+        "value": "Evaluation on a patient-level held-out test set with 5,403 mention rows and a fixed random seed for patient split.",
+        "paper_quote": "To reduce within-cohort adaptation risk for technical performance claims, we introduced a patient-level held-out evaluation track."
+      },
+      "chk_primary_result": {
+        "value": "Exact canonical agreement improved from 0.7226 to 0.8429 after lexical cleanup and curated alias mapping.",
+        "paper_quote": "On 5,403 held-out mention rows, exact canonical agreement improved from 0.7226 with surface-exact matching to 0.8429 after lexical cleanup and curated alias mapping."
+      },
+      "chk_secondary_result": {
+        "value": "55.17% of note-derived rows had same-visit semantic overlap, and 90.34% had same-visit or ±30-day overlap with structured medication history.",
+        "paper_quote": "In the full-cohort characterization analysis, only 16.44% of note-derived rows had same-visit exact overlap with structured medication history, but 55.17% had same-visit semantic overlap, 90.34% had same-visit or ±30-day overlap, and only 3.97% remained in the strict no-structured-overlap bucket under broad project-level mapping."
+      },
+      "chk_baseline": {
+        "value": "Surface-exact matching and generic lexical retrieval methods, including MedXN as an external baseline.",
+        "paper_quote": "As one recognizable external baseline, we also ran untuned MedXN [4] on held-out notes and compared note-level recovery of unique note and normalized-medication-label pairs on a predefined treatment-context subset."
+      },
+      "chk_conclusion": {
+        "value": "Evidence characterization should precede clinical inference when comparing clinic-note medication evidence with structured medication history.",
+        "paper_quote": "These results suggest that evidence characterization should precede downstream clinical inference when clinic-note medication evidence is compared with structured medication history."
+      },
+      "chk_limitation": {
+        "value": "Single-center cohort, project-specific canonical label space, and non-exhaustive manual annotation of reference set.",
+        "paper_quote": "The cohort comes from a private single-center clinic-note environment, and both the canonical label space and broad medication categories are project-specific."
+      }
+    }
+  },
+  "raw": "{\n  \"summary\": \"This paper presents a note-grounded framework for normalizing treatment-context medication evidence from clinic notes and comparing it with structured electronic health record (EHR) medication history. The study uses a large language model (LLM)-assisted reference construction, human review, and deterministic medication normalization to improve canonical agreement. Results show that normalization errors, differences in terminology, and documentation timing contribute to note-to-structured-medication mismatches, with significant semantic and temporal overlap between the two sources.\",\n  \"items\": {\n    \"chk_problem\": {\n      \"value\": \"Discrepancies between clinic notes and structured EHR medication history due to normalization errors, terminology differences, and documentation timing.\",\n      \"paper_quote\": \"Same-visit disagreement between these sources may result from note-side normalization errors, differences in terminology or timing, or actual differences in documentation.\"\n    },\n    \"chk_method\": {\n      \"value\": \"Note-grounded approach using LLM-assisted reference construction, human review, deterministic normalization, and semantic-temporal comparisons.\",\n      \"paper_quote\": \"We developed a note-grounded approach that uses large language model (LLM)-assisted reference construction, targeted and random human review, deterministic medication normalization, and semantic and temporal comparisons with structured medication history.\"\n    },\n    \"chk_data\": {\n      \"value\": \"11,812 eligible visits, 761 patients, 22,483 manifest notes, and 27,752 reference mention rows.\",\n      \"paper_quote\": \"We conducted a clinic-note-only evaluation of treatment-context medication normalization using a frozen cohort run of 11,812 eligible visits from 761 patients and 22,483 manifest notes.\"\n    },\n    \"chk_setup\": {\n      \"value\": \"Evaluation on a patient-level held-out test set with 5,403 mention rows and a fixed random seed for patient split.\",\n      \"paper_quote\": \"To reduce within-cohort adaptation risk for technical performance claims, we introduced a patient-level held-out evaluation track.\"\n    },\n    \"chk_primary_result\": {\n      \"value\": \"Exact canonical agreement improved from 0.7226 to 0.8429 after lexical cleanup and curated alias mapping.\",\n      \"paper_quote\": \"On 5,403 held-out mention rows, exact canonical agreement improved from 0.7226 with surface-exact matching to 0.8429 after lexical cleanup and curated alias mapping.\"\n    },\n    \"chk_secondary_result\": {\n      \"value\": \"55.17% of note-derived rows had same-visit semantic overlap, and 90.34% had same-visit or ±30-day overlap with structured medication history.\",\n      \"paper_quote\": \"In the full-cohort characterization analysis, only 16.44% of note-derived rows had same-visit exact overlap with structured medication history, but 55.17% had same-visit semantic overlap, 90.34% had same-visit or ±30-day overlap, and only 3.97% remained in the strict no-structured-overlap bucket under broad project-level mapping.\"\n    },\n    \"chk_baseline\": {\n      \"value\": \"Surface-exact matching and generic lexical retrieval methods, including MedXN as an external baseline.\",\n      \"paper_quote\": \"As one recognizable external baseline, we also ran untuned MedXN [4] on held-out notes and compared note-level recovery of unique note and normalized-medication-label pairs on a predefined treatment-context subset.\"\n    },\n    \"chk_conclusion\": {\n      \"value\": \"Evidence characterization should precede clinical inference when comparing clinic-note medication evidence with structured medication history.\",\n      \"paper_quote\": \"These results suggest that evidence characterization should precede downstream clinical inference when clinic-note medication evidence is compared with structured medication history.\"\n    },\n    \"chk_limitation\": {\n      \"value\": \"Single-center cohort, project-specific canonical label space, and non-exhaustive manual annotation of reference set.\",\n      \"paper_quote\": \"The cohort comes from a private single-center clinic-note environment, and both the canonical label space and broad medication categories are project-specific.\"\n    }\n  }\n}"
+}

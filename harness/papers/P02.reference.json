@@ -1,0 +1,202 @@
+{
+  "paper_id": "P02",
+  "created_at": "2026-11-01T18:27:35+00:00",
+  "models": [
+    "gemini-3.5-flash",
+    "openai.gpt-4o"
+  ],
+  "reference_prompt_sha256": "a63f2a103bd381061f0d6560fdaf2e1bd28c503af09ee38a529d0648f4594fd3",
+  "paper_text_sha256": "4260340c8fc992f6e4f6cfdb713f1f35531a1108c64544ec310052bfe971ec2b",
+  "summary": "This paper proposes a channel-aware framework for selecting OR-folded Bloom filter representations based on time-varying communication conditions. Using two phishing URL datasets, the authors evaluate the approach under three channel models and demonstrate that it improves communication efficiency and receiver freshness compared to complete-filter and lossless-compression baselines.",
+  "items": {
+    "chk_problem": {
+      "status": "accepted",
+      "value": "Periodic transmission of Bloom filters in communication-constrained distributed systems can cause substantial overhead and stale receiver states when channel conditions vary.",
+      "paper_quote": "Periodic Bloom-filter transmission can impose substantial overhead in communication-constrained distributed systems.",
+      "drafts": [
+        {
+          "value": "Periodic transmission of Bloom filters in communication-constrained distributed systems can cause substantial overhead and stale receiver states when channel conditions vary.",
+          "paper_quote": "Periodic Bloom-filter transmission can impose substantial overhead in communication-constrained distributed systems.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "Investigating channel-aware selection of OR-folded Bloom filter representations to improve communication efficiency and receiver freshness in distributed systems with constrained or time-varying communication resources.",
+          "paper_quote": "This paper investigates channel-aware selection among OR-folded representations.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ]
+    },
+    "chk_method": {
+      "status": "accepted",
+      "value": "An online policy that selects the largest FPR-qualified OR-folded Bloom filter representation from a catalog of fine-grained folded views based on time-varying communication conditions.",
+      "paper_quote": "The sender retains an unchanged canonical filter, constructs a catalog satisfying a maximum FPR, and selects the FPR-qualified representation with the largest retained length supported by the communication resources available at each reporting opportunity.",
+      "drafts": [
+        {
+          "value": "An online policy that selects the largest FPR-qualified OR-folded Bloom filter representation from a catalog of fine-grained folded views based on time-varying communication conditions.",
+          "paper_quote": "The sender retains an unchanged canonical filter, constructs a catalog satisfying a maximum FPR, and selects the FPR-qualified representation with the largest retained length supported by the communication resources available at each reporting opportunity.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "Channel-aware selection of FPR-qualified OR-folded Bloom filter views based on time-varying communication constraints.",
+          "paper_quote": "The sender retains the canonical filter, constructs a catalog of FPR-qualified folded views, and selects the view with the largest retained length supported at each reporting opportunity.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ]
+    },
+    "chk_data": {
+      "status": "accepted",
+      "value": "The PhiUSIIL and URL-Phish datasets, using 5,000 malicious URLs for insertion and 50,000 disjoint benign URLs for absent queries.",
+      "paper_quote": "The PhiUSIIL [14] and URL-Phish [15] datasets are evaluated using 5,000 malicious URLs for insertion and 50,000 disjoint benign URLs as absent queries.",
+      "drafts": [
+        {
+          "value": "The PhiUSIIL and URL-Phish datasets, using 5,000 malicious URLs for insertion and 50,000 disjoint benign URLs for absent queries.",
+          "paper_quote": "The PhiUSIIL [14] and URL-Phish [15] datasets are evaluated using 5,000 malicious URLs for insertion and 50,000 disjoint benign URLs as absent queries.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "Two phishing URL datasets: PhiUSIIL and URL-Phish, with 5,000 malicious URLs for insertion and 50,000 disjoint benign URLs as absent queries.",
+          "paper_quote": "The PhiUSIIL [14] and URL-Phish [15] datasets are evaluated using 5,000 malicious URLs for insertion and 50,000 disjoint benign URLs as absent queries.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ]
+    },
+    "chk_setup": {
+      "status": "uncertain",
+      "why": "drafts differ",
+      "drafts": [
+        {
+          "value": "Evaluation using 20 repetitions of 500 transmission opportunities under Five-State Markov Capacity, Gilbert–Elliott burst-error, and Rayleigh block-fading channel models.",
+          "paper_quote": "Using two phishing URL datasets, the framework is evaluated under Five-State Markov Capacity, Gilbert–Elliott burst-error, and Rayleigh block-fading models.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "Evaluation uses two phishing URL datasets, 12 retained-length ratios, four lossless-compression baselines, and three time-varying channel models (Five-State Markov Capacity, Gilbert–Elliott burst-error, and Rayleigh block-fading).",
+          "paper_quote": "The evaluation uses two phishing URL datasets, twelve retained-length ratios, four lossless-compression baselines, and three time-varying channel models.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ],
+      "paper_excerpt": "arXiv:2609.14458v1 [cs.IT] 13 Sep 2026\n\nAbstract—Periodic Bloom-filter transmission can impose substantial overhead in communication-constrained distributed systems. Lossless compression preserves membership behavior but\nprovides a single transmission size, whereas established OR folding produces smaller representations with higher false-positive\nrates (FPRs) while preserving the no-false-negative property.\nThis paper investigates channel-aware selection among ORfolded representations. The sender retains an unchanged canonical filter, constructs a catalog satisfying a maximum FPR, and\nselects the FPR-qualified representation with the largest retained\nlength supported by the communication resources available at\neach reporting opportunity. Unlike folding driven principally by\ncardinality and false-positive constraints, selection is driven by\ntime-varying communication conditions.\nUsing two phishing URL datasets, the framework is evaluated under Five-State Markov Capacity, Gilbert–Elliott bursterror, and Rayleigh block-fading models. Channel-aware folding\nimproves communication efficiency and receiver freshness relative to complete-filter and lossless-compression baselines when\ncommunication opportunities vary substantially. Under the more\nfavorable Gilbert–Elliott model, it remains competitive in efficiency while maintaining the freshest receiver state. These results\nshow that FPR-qualified folded views provide useful transmission\noperating points when a recent lower-fidelity update is preferable\nto delaying a larger representation.\nIndex Terms—Bloom filters, channel-aware transmission, distributed systems, Internet of Things, lossless compression, OR\nfolding.\n\nI. I NTRODUCTION\n\nEquations (7)–(9) provide intuition rather than an exact prediction because modulo folding can produce unequal preimage\nsizes when m′ does not divide m, and the merged positions are\nnot strictly independent. The experiments therefore measure\nthe FPR of every candidate representation directly.\nE. Channel-Adaptive Transmission\nThe channel-adaptive framework is illustrated in Figure 1.\nEach sender retains a complete canonical Bloom filter and\ngenerates or caches a catalog of representations at the retainedlength ratios supported by the system. The catalog includes the\ncomplete canonical representation and progressively smaller\nOR-folded representations. Each candidate is associated with\n\nits retained length and measured FPR, and representations exceeding the application-defined maximum FPR are excluded.\nAt each reporting opportunity, the sender obtains an estimate\nof the current communication conditions from the underlying\ncommunication system and selects the highest-fidelity FPRqualified representation supported under those conditions. For\na capacity-limited channel, this is the representation with the\nlargest retained length whose total transmitted size, including\nthe Bloom-filter payload and packet headers, fits within the\navailable capacity. Favorable conditions may support the complete canonical representation or a lightly folded view, whereas\nconstrained conditions may require a smaller representation.\nIf no qualified representation can be delivered, the update is\ndeferred.\nFor a loss-based channel without an explicit byte-capacity\nlimit, selection instead considers the probability of completereport delivery. Smaller representations require fewer packets\nand may therefore have a greater delivery probability. The specific capacity- and loss-based policies used in the experiments\nare described in Section IV.\nEach transmitted update contains the selected Bloom-filter\nrepresentation, its retained length m′ , and a timestamp that\nserves as its report version. The receiver installs only a completely delivered update newer than its currently stored view\nand queries it using the coordinate mapping in Equation (5).\nStale, duplicate, or incomplete reports are not installed; after\na failed or deferred update, the receiver retains its previous\nvalid view. Reconstruction of the canonical filter is neither\nrequired nor attempted, and the canonical filter retained by\nthe sender is not modified by selection or transmission. The\nexperiments model complete-report delivery within individual\nreporting opportunities and do not separately model packet\nreordering.\nTo isolate the effect of time-varying communication conditions, the experiments hold the inserted set, canonical filter\nlength, hash count, and candidate catalog constant. Each\nreporting opportunity is treated as a new timestamped update,\nwhile only the channel conditions and selected transmitted\nview vary. This controlled design ensures that differences in\ndelivery, communication efficiency, and receiver age arise from\nthe channel and representation-selection policy rather than\nfrom changes in Bloom-filter contents or cardinality.\nIV. E XPERIMENTAL S ETUP\nThe evaluation uses two phishing URL datasets, twelve\nretained-length ratios, four lossless-compression baselines, and\nthree time-varying channel mo"
+    },
+    "chk_primary_result": {
+      "status": "accepted",
+      "value": "Under the Five-State Markov Capacity model, adaptive folding achieves 191.6 successful deliveries per MB, compared with 66.9 for the strongest compression baseline and 27.7 for the classical full filter.",
+      "paper_quote": "Under the Five-State Markov Capacity model, adaptive folding achieves 191.6 successful deliveries per MB, compared with 66.9 for the strongest compression baseline and 27.7 for the classical full filter.",
+      "drafts": [
+        {
+          "value": "Under the Five-State Markov Capacity model, adaptive folding achieves 191.6 successful deliveries per MB, compared with 66.9 for the strongest compression baseline and 27.7 for the classical full filter.",
+          "paper_quote": "Under the Five-State Markov Capacity model, adaptive folding achieves 191.6 successful deliveries per MB, compared with 66.9 for the strongest compression baseline and 27.7 for the classical full filter.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "Adaptive folding achieves 191.6 successful deliveries per MB under the Five-State Markov Capacity model, compared to 66.9 for the strongest compression baseline and 27.7 for the classical full filter.",
+          "paper_quote": "Under the Five-State Markov Capacity model, adaptive folding achieves 191.6 successful deliveries per MB, compared with 66.9 for the strongest compression baseline and 27.7 for the classical full filter.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ]
+    },
+    "chk_secondary_result": {
+      "status": "accepted",
+      "value": "Under the Five-State Markov Capacity model, adaptive folding reduces mean receiver age to 1.24 intervals, compared with 13.5 for the strongest compression baseline and 31.6 for the classical filter.",
+      "paper_quote": "Under the Five-State Markov Capacity model, adaptive folding reduces mean receiver age to 1.24 intervals, compared with 13.5 for the strongest compression baseline and 31.6 for the classical filter.",
+      "drafts": [
+        {
+          "value": "Under the Five-State Markov Capacity model, adaptive folding reduces mean receiver age to 1.24 intervals, compared with 13.5 for the strongest compression baseline and 31.6 for the classical filter.",
+          "paper_quote": "Under the Five-State Markov Capacity model, adaptive folding reduces mean receiver age to 1.24 intervals, compared with 13.5 for the strongest compression baseline and 31.6 for the classical filter.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "Adaptive folding reduces mean receiver age to 1.24 intervals under the Five-State Markov Capacity model, compared to 13.5 for the strongest compression baseline and 31.6 for the classical full filter.",
+          "paper_quote": "Under the Five-State Markov Capacity model, adaptive folding reduces mean receiver age to 1.24 intervals, compared with 13.5 for the strongest compression baseline and 31.6 for the classical filter.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ]
+    },
+    "chk_baseline": {
+      "status": "accepted",
+      "value": "Classical uncompressed filters, sparse uncompressed filters, and four lossless-compression baselines (gzip, zlib, bzip2, and LZMA).",
+      "paper_quote": "The sparse canonical bit array is compared with gzip [17], zlib [18], bzip2 [19], and LZMA [20].",
+      "drafts": [
+        {
+          "value": "Classical uncompressed filters, sparse uncompressed filters, and four lossless-compression baselines (gzip, zlib, bzip2, and LZMA).",
+          "paper_quote": "The sparse canonical bit array is compared with gzip [17], zlib [18], bzip2 [19], and LZMA [20].",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "Complete-filter and lossless-compression baselines (gzip, zlib, bzip2, and LZMA) are used for comparison.",
+          "paper_quote": "The sparse canonical bit array is compared with gzip [17], zlib [18], bzip2 [19], and LZMA [20].",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ]
+    },
+    "chk_conclusion": {
+      "status": "accepted",
+      "value": "Channel-aware folding improves communication efficiency and receiver freshness relative to complete-filter and lossless-compression baselines when communication opportunities vary substantially.",
+      "paper_quote": "Channel-aware folding improves communication efficiency and receiver freshness relative to complete-filter and lossless-compression baselines when communication opportunities vary substantially.",
+      "drafts": [
+        {
+          "value": "Channel-aware folding improves communication efficiency and receiver freshness relative to complete-filter and lossless-compression baselines when communication opportunities vary substantially.",
+          "paper_quote": "Channel-aware folding improves communication efficiency and receiver freshness relative to complete-filter and lossless-compression baselines when communication opportunities vary substantially.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "Channel-aware selection of OR-folded views improves communication efficiency and receiver freshness under varying communication conditions, complementing lossless compression.",
+          "paper_quote": "This paper evaluated a channel-aware framework that selects the largest FPR-qualified OR-folded view supported at each reporting opportunity while retaining the canonical Bloom filter.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ]
+    },
+    "chk_limitation": {
+      "status": "uncertain",
+      "why": "drafts differ",
+      "drafts": [
+        {
+          "value": "The controlled design uses fixed contents and cardinalities, which isolates channel-driven selection but does not establish generality across other workloads, cardinalities, occupancies, or changing contents.",
+          "paper_quote": "This isolates channel-driven selection but does not establish generality across other workloads, cardinalities, occupancies, or changing contents.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "The study uses fixed datasets, cardinalities, and contents, and does not include real-world channel traces, multiple senders, or imperfect channel estimates.",
+          "paper_quote": "The controlled design uses two URL datasets at the same cardinality with fixed contents.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ],
+      "paper_excerpt": "The relative behavior is consistent across the two URL\ndatasets. Adaptive folding provides its largest gains under the\nFive-State Markov Capacity and Rayleigh models, where the\nresources available to an individual reporting opportunity vary\nsubstantially. Under the more favorable Gilbert–Elliott parameters, it remains comparable in communication efficiency\nwhile producing the lowest receiver age.\nThese results do not show that folding universally outperforms lossless compression. Rather, they identify the conditions under which channel-aware selection is useful. Fixed\nlossless compression is effective when a single representation\ncan be delivered reliably, whereas channel-aware folding is\nmost beneficial when communication opportunities vary and\nsmaller FPR-qualified representations can prevent missed updates. The canonical filter and inserted set remain unchanged;\nadaptation affects only the transmitted representation and the\nquery-coordinate mapping associated with its retained length.\nVI. D ISCUSSION\nA. Relationship to Prior Folding\nOR folding is established prior art [2], [7]. Sailhan and\nStehr [7] select among integer-factor representations as cardinality changes while maintaining a prescribed FPR range;\nChen et al. [11] similarly select reduced sizes from element\ncount and maximum FPR. These approaches respond principally to the filter’s internal state.\nThe present experiments instead fix the inserted set, canonical length, and hash count while selecting the transmitted\nview from current communication conditions. At the fixed\ncardinality of 5,000 elements, a cardinality-driven controller\nhas no changing set-size signal; the complete-filter baseline\nrepresents its fixed operating point only if the selected FPR\ntarget requires that size. This is not a complete evaluation of\nthe Sailhan–Stehr algorithm. The mechanisms could be combined in a two-stage controller that first selects an operative\nsize from cardinality and FPR requirements and then selects\na transmitted view from the communication opportunity.\nB. Folding, Compression, and Deployment\nLossless compression produces one exactly recoverable\npayload for a given bit array, whereas folding exposes multiple\ndirectly queryable sizes with different FPRs. Folding is useful\nwhen a fixed compressed payload cannot be supported but\na smaller FPR-qualified view can. The methods could be\ncombined, although increased occupancy may reduce compressibility; this combination was not evaluated.\nIn deployment, the sender may generate or cache folded\nviews. Candidate ratios should reflect the application’s FPR\ntolerance and anticipated communication conditions, and only\nqualified representations should be retained. If a fixed compressed payload is consistently supportable, adaptive folding\nis unlikely to justify its selection logic and metadata.\n\nC. Limitations and Future Work\nThe controlled design uses two URL datasets at the\nsame cardinality with fixed contents. This isolates channeldriven selection but does not establish generality across other\nworkloads, cardinalities, occupancies, or changing contents.\nThe simulated channel models provide repeatable capacityvariation, burst-loss, and fading conditions on paired traces,\nbut are normalized to the complete sparse-filter wire size. Measured traces or a physical testbed would strengthen external\nvalidity. The controller also assumes timely communicationstate information and does not model estimation error, delayed\nfeedback, or metadata explicitly.\nFixed folded representations are not included as baselines.\nSuch a representation could reduce communication cost and\nimprove delivery under constrained conditions, but would\nincur its higher FPR even when the channel supports greater\nfidelity. Adaptive folding varies this tradeoff across reporting\nopportunities. The results therefore establish performance relative to complete-filter and lossless-compression baselines, but\ndo not quantify the incremental benefit over the best fixed\nratio.\nThe single sender–receiver configuration also excludes contention, retransmission, congestion, and fairness effects. Priorities for future work are direct comparison with fixed folded\nbaselines; integration with cardinality/FPR-driven resizing [7];\nand evaluation with changing contents, measured channels,\nmultiple senders, imperfect channel estimates, energy costs,\ndownstream false-positive costs, and combined folding and\ncompression.\nVII. C ONCLUSION\nThis paper evaluated a channel-aware framework that selects\nthe largest FPR-qualified OR-folded view supported at each reporting opportunity while retaining the canonical Bloom filter.\nAcross two phishing URL datasets and three channel models,\nadaptive folding improved communication efficiency and receiver freshness over complete-filter and lossless-compression\nbaselines under the Five-State and Rayleigh models. Under\nGilbert–Elliott, it remained competitive in efficiency and produced the freshest receiver state.\nSmaller views trade increased FP"
+    }
+  }
+}

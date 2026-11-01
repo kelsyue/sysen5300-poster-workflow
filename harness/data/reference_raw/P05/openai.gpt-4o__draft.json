@@ -1,0 +1,49 @@
+{
+  "model": "openai.gpt-4o",
+  "reference_prompt_sha256": "a63f2a103bd381061f0d6560fdaf2e1bd28c503af09ee38a529d0648f4594fd3",
+  "error": null,
+  "tokens_in": 9639,
+  "tokens_out": 857,
+  "parsed": {
+    "summary": "This paper investigates systematic errors in neural morphological generation for Japanese past-tense verb inflection, focusing on rare morphological subclasses. It identifies a specific irregular subtype, Type 4-2 verbs, as disproportionately error-prone and demonstrates through controlled ablation experiments that removing this subtype improves model accuracy more than removing all irregular verbs combined. The study highlights the importance of fine-grained subclass analysis in morphological evaluation.",
+    "items": {
+      "chk_problem": {
+        "value": "Neural morphological generation systems achieve high aggregate accuracy but fail systematically in rare morphological subclasses.",
+        "paper_quote": "Neural morphological generation systems often achieve high aggregate accuracy on benchmark datasets, yet such performance can conceal systematic errors clustered in rare morphological subclasses."
+      },
+      "chk_method": {
+        "value": "Orthography-aware diagnosis and causal isolation using controlled ablation experiments.",
+        "paper_quote": "We present an orthography-aware diagnosis of Japanese past-tense verb inflection, treating hiragana not merely as a transcriptional medium but as a representational system that encodes morphophonological structure."
+      },
+      "chk_data": {
+        "value": "Japanese verb inflection dataset in morphological transduction format, converted to hiragana, with 3,958 verbs.",
+        "paper_quote": "We use a Japanese verb inflection dataset in standard morphological transduction format, following the setup of Vylomova et al. (2020) and Goldman et al. (2023)."
+      },
+      "chk_setup": {
+        "value": "Two character-level Transformer architectures (PGT and LST) trained on Japanese past-tense inflection data with five random seeds and eight ablation conditions.",
+        "paper_quote": "We evaluate two character-level Transformer encoder–decoder architectures for Japanese past-tense inflection, both operating over hiragana strings and generating inflected forms autoregressively."
+      },
+      "chk_primary_result": {
+        "value": "Type 4-2 verbs, comprising <1% of data, account for 30–43% of residual errors and contribute 34–48× their prevalence to total errors.",
+        "paper_quote": "Using two character-level Transformer architectures evaluated across five random seeds, we show that although both systems exceed 97% aggregate accuracy, a single structurally specific irregular subtype, verbs whose stems end in /e/ and require gemination before the past-tense suffix and make up fewer than 1% of the data, accounts for a disproportionate 30–43% share of residual errors and contributes roughly 34–48× its prevalence to total errors."
+      },
+      "chk_secondary_result": {
+        "value": "Removing Type 4-2 verbs alone improves accuracy more than removing all irregular verbs combined.",
+        "paper_quote": "Controlled ablation experiments show that removing this subtype alone produces larger accuracy gains than removing all irregular verbs combined."
+      },
+      "chk_baseline": {
+        "value": "Baseline accuracy of 97.98% (PGT) and 97.73% (LST) on the full dataset.",
+        "paper_quote": "On the primary run, both systems achieve high aggregate accuracy on the full dataset: 97.98% (PGT) and 97.73% (LST)."
+      },
+      "chk_conclusion": {
+        "value": "Not all irregularity is equally destabilizing; fine-grained, subgroup-aware evaluation is necessary for morphological learning.",
+        "paper_quote": "These results demonstrate that high aggregate accuracy can mask structurally localized failures, that not all irregularity is equally destabilizing to neural generalization, and that fine-grained, subgroup-aware evaluation is necessary to reveal and causally test such effects."
+      },
+      "chk_limitation": {
+        "value": "Study focuses on a single language, paradigm, and two architectures; cross-linguistic validation and replication are needed.",
+        "paper_quote": "Cross-linguistic validation is necessary to determine whether comparable low-frequency structural subtypes produce similar disparities in other morphologically rich languages, and whether larger pretrained models exhibit different sensitivity to the patterns we identify."
+      }
+    }
+  },
+  "raw": "{\n  \"summary\": \"This paper investigates systematic errors in neural morphological generation for Japanese past-tense verb inflection, focusing on rare morphological subclasses. It identifies a specific irregular subtype, Type 4-2 verbs, as disproportionately error-prone and demonstrates through controlled ablation experiments that removing this subtype improves model accuracy more than removing all irregular verbs combined. The study highlights the importance of fine-grained subclass analysis in morphological evaluation.\",\n  \"items\": {\n    \"chk_problem\": {\n      \"value\": \"Neural morphological generation systems achieve high aggregate accuracy but fail systematically in rare morphological subclasses.\",\n      \"paper_quote\": \"Neural morphological generation systems often achieve high aggregate accuracy on benchmark datasets, yet such performance can conceal systematic errors clustered in rare morphological subclasses.\"\n    },\n    \"chk_method\": {\n      \"value\": \"Orthography-aware diagnosis and causal isolation using controlled ablation experiments.\",\n      \"paper_quote\": \"We present an orthography-aware diagnosis of Japanese past-tense verb inflection, treating hiragana not merely as a transcriptional medium but as a representational system that encodes morphophonological structure.\"\n    },\n    \"chk_data\": {\n      \"value\": \"Japanese verb inflection dataset in morphological transduction format, converted to hiragana, with 3,958 verbs.\",\n      \"paper_quote\": \"We use a Japanese verb inflection dataset in standard morphological transduction format, following the setup of Vylomova et al. (2020) and Goldman et al. (2023).\"\n    },\n    \"chk_setup\": {\n      \"value\": \"Two character-level Transformer architectures (PGT and LST) trained on Japanese past-tense inflection data with five random seeds and eight ablation conditions.\",\n      \"paper_quote\": \"We evaluate two character-level Transformer encoder–decoder architectures for Japanese past-tense inflection, both operating over hiragana strings and generating inflected forms autoregressively.\"\n    },\n    \"chk_primary_result\": {\n      \"value\": \"Type 4-2 verbs, comprising <1% of data, account for 30–43% of residual errors and contribute 34–48× their prevalence to total errors.\",\n      \"paper_quote\": \"Using two character-level Transformer architectures evaluated across five random seeds, we show that although both systems exceed 97% aggregate accuracy, a single structurally specific irregular subtype, verbs whose stems end in /e/ and require gemination before the past-tense suffix and make up fewer than 1% of the data, accounts for a disproportionate 30–43% share of residual errors and contributes roughly 34–48× its prevalence to total errors.\"\n    },\n    \"chk_secondary_result\": {\n      \"value\": \"Removing Type 4-2 verbs alone improves accuracy more than removing all irregular verbs combined.\",\n      \"paper_quote\": \"Controlled ablation experiments show that removing this subtype alone produces larger accuracy gains than removing all irregular verbs combined.\"\n    },\n    \"chk_baseline\": {\n      \"value\": \"Baseline accuracy of 97.98% (PGT) and 97.73% (LST) on the full dataset.\",\n      \"paper_quote\": \"On the primary run, both systems achieve high aggregate accuracy on the full dataset: 97.98% (PGT) and 97.73% (LST).\"\n    },\n    \"chk_conclusion\": {\n      \"value\": \"Not all irregularity is equally destabilizing; fine-grained, subgroup-aware evaluation is necessary for morphological learning.\",\n      \"paper_quote\": \"These results demonstrate that high aggregate accuracy can mask structurally localized failures, that not all irregularity is equally destabilizing to neural generalization, and that fine-grained, subgroup-aware evaluation is necessary to reveal and causally test such effects.\"\n    },\n    \"chk_limitation\": {\n      \"value\": \"Study focuses on a single language, paradigm, and two architectures; cross-linguistic validation and replication are needed.\",\n      \"paper_quote\": \"Cross-linguistic validation is necessary to determine whether comparable low-frequency structural subtypes produce similar disparities in other morphologically rich languages, and whether larger pretrained models exhibit different sensitivity to the patterns we identify.\"\n    }\n  }\n}"
+}

@@ -1,0 +1,202 @@
+{
+  "paper_id": "P03",
+  "created_at": "2026-11-01T18:28:10+00:00",
+  "models": [
+    "gemini-3.5-flash",
+    "openai.gpt-4o"
+  ],
+  "reference_prompt_sha256": "a63f2a103bd381061f0d6560fdaf2e1bd28c503af09ee38a529d0648f4594fd3",
+  "paper_text_sha256": "c022ae2e625325576a8813bc10685b19a65ecf5dafb7cafe22f301855ad4014f",
+  "summary": "This paper investigates whether temporal trajectories of routine biomarkers can predict pre-clinical functional mobility decline in older adults. Using data from 297,861 participants in the All of Us Research Program, the authors engineered trajectory features for twelve biomarkers and trained machine learning models. The LightGBM model incorporating trajectories achieved an AUROC of 0.797, significantly outperforming static baseline summaries and maintaining predictive signal up to 12 months before diagnosis.",
+  "items": {
+    "chk_problem": {
+      "status": "accepted",
+      "value": "Predicting pre-clinical functional mobility decline in older adults using longitudinal trajectories of routine biomarkers before observable impairment or falls occur.",
+      "paper_quote": "A critical gap therefore exists: no large-scale study has systematically evaluated whether temporal trajectory features derived exclusively from routine laboratory measurements, without diagnosis codes, medications, or functional assessments, can predict pre-clinical functional decline.",
+      "drafts": [
+        {
+          "value": "Predicting pre-clinical functional mobility decline in older adults using longitudinal trajectories of routine biomarkers before observable impairment or falls occur.",
+          "paper_quote": "A critical gap therefore exists: no large-scale study has systematically evaluated whether temporal trajectory features derived exclusively from routine laboratory measurements, without diagnosis codes, medications, or functional assessments, can predict pre-clinical functional decline.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "Functional decline in older adults is typically recognized only after falls or observable gait impairment, closing the window for prevention.",
+          "paper_quote": "Functional decline in older adults is typically recognized only after falls or observable gait impairment, closing the window for prevention.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ]
+    },
+    "chk_method": {
+      "status": "accepted",
+      "value": "Feature engineering of longitudinal trajectory descriptors (mean, standard deviation, delta, count, linear slope) from twelve routine biomarkers, modeled using LightGBM and other machine learning algorithms.",
+      "paper_quote": "Trajectory features captured five per-biomarker descriptors: mean, standard deviation (intra-individual variability), delta (last minus first, directional change), count (measurement frequency), and linear slope (rate of change per day).",
+      "drafts": [
+        {
+          "value": "Feature engineering of longitudinal trajectory descriptors (mean, standard deviation, delta, count, linear slope) from twelve routine biomarkers, modeled using LightGBM and other machine learning algorithms.",
+          "paper_quote": "Trajectory features captured five per-biomarker descriptors: mean, standard deviation (intra-individual variability), delta (last minus first, directional change), count (measurement frequency), and linear slope (rate of change per day).",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "LightGBM models using trajectory features of twelve biomarkers over a three-year pre-index window.",
+          "paper_quote": "Using the All of Us Research Program (N = 297,861; 11.1% cases), we derived trajectory features (slope, variability, delta, mean) for twelve biomarkers over a three-year pre-index window.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ]
+    },
+    "chk_data": {
+      "status": "accepted",
+      "value": "A cohort of 297,861 participants (including 33,088 cases of mobility decline) from the All of Us Research Program Controlled Tier Dataset version 8.",
+      "paper_quote": "The primary modeling cohort contained 297,861 participants (33,088 cases, 11.1%).",
+      "drafts": [
+        {
+          "value": "A cohort of 297,861 participants (including 33,088 cases of mobility decline) from the All of Us Research Program Controlled Tier Dataset version 8.",
+          "paper_quote": "The primary modeling cohort contained 297,861 participants (33,088 cases, 11.1%).",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "All of Us Research Program Controlled Tier Dataset version 8 with 297,861 participants.",
+          "paper_quote": "We used the All of Us Research Program Controlled Tier Dataset version 8, a de-identified longitudinal EHR repository harmonized to the OMOP Common Data Model.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ]
+    },
+    "chk_setup": {
+      "status": "accepted",
+      "value": "Five-fold stratified cross-validation with out-of-fold predictions evaluated using AUROC and AUPRC, comparing four machine learning algorithms (logistic regression, random forest, XGBoost, LightGBM).",
+      "paper_quote": "All models were trained with 5-fold stratified cross-validation; out-of-fold (OOF) predictions across all folds were aggregated for unbiased evaluation.",
+      "drafts": [
+        {
+          "value": "Five-fold stratified cross-validation with out-of-fold predictions evaluated using AUROC and AUPRC, comparing four machine learning algorithms (logistic regression, random forest, XGBoost, LightGBM).",
+          "paper_quote": "All models were trained with 5-fold stratified cross-validation; out-of-fold (OOF) predictions across all folds were aggregated for unbiased evaluation.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "Four algorithms evaluated with 5-fold cross-validation using trajectory features and baseline features.",
+          "paper_quote": "Four algorithms were evaluated: (1) ℓ2 -penalized logistic regression (SAGA solver, max iter = 1000, class weight = ‘balanced’); (2) random forest (200 estimators, balanced class weights, n jobs = −1); (3) XGBoost (300 estimators, learning rate 0.05, eval metric = ‘auc’); and (4) LightGBM (300 estimators, learning rate 0.05).",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ]
+    },
+    "chk_primary_result": {
+      "status": "accepted",
+      "value": "LightGBM models incorporating trajectory features achieved an AUROC of 0.797 and an AUPRC of 0.380, significantly outperforming static baseline summaries.",
+      "paper_quote": "LightGBM models incorporating trajectories significantly outperformed static laboratory summaries (AUROC 0.797 vs. 0.755; DeLong p < 0.001; AUPRC 0.380 vs. 0.304).",
+      "drafts": [
+        {
+          "value": "LightGBM models incorporating trajectory features achieved an AUROC of 0.797 and an AUPRC of 0.380, significantly outperforming static baseline summaries.",
+          "paper_quote": "LightGBM models incorporating trajectories significantly outperformed static laboratory summaries (AUROC 0.797 vs. 0.755; DeLong p < 0.001; AUPRC 0.380 vs. 0.304).",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "LightGBM model with trajectory features achieved AUROC 0.797 and AUPRC 0.380.",
+          "paper_quote": "LightGBM models incorporating trajectories significantly outperformed static laboratory summaries (AUROC 0.797 vs. 0.755; DeLong p < 0.001; AUPRC 0.380 vs. 0.304).",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ]
+    },
+    "chk_secondary_result": {
+      "status": "accepted",
+      "value": "A prediction horizon analysis demonstrated sustained prediction of mobility decline 3 to 12 months before onset, with AUROCs ranging from 0.768 to 0.740.",
+      "paper_quote": "AUROC declined gradually from 0.768 at the 3-month horizon to 0.740 at the 12-month horizon, demonstrating that biomarker trajectories contain predictive signal up to one year before diagnosis (Table 2).",
+      "drafts": [
+        {
+          "value": "A prediction horizon analysis demonstrated sustained prediction of mobility decline 3 to 12 months before onset, with AUROCs ranging from 0.768 to 0.740.",
+          "paper_quote": "AUROC declined gradually from 0.768 at the 3-month horizon to 0.740 at the 12-month horizon, demonstrating that biomarker trajectories contain predictive signal up to one year before diagnosis (Table 2).",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "Prediction horizon analysis showed sustained discrimination 3–12 months before decline onset (AUROC 0.768–0.740).",
+          "paper_quote": "A horizon analysis demonstrated sustained prediction 3–12 months before decline onset (AUROC 0.768–0.740).",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ]
+    },
+    "chk_baseline": {
+      "status": "uncertain",
+      "why": "drafts differ",
+      "drafts": [
+        {
+          "value": "Static laboratory summaries (baseline means) and demographics-only models.",
+          "paper_quote": "Baseline features used each biomarker’s mean value within the window.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "Static laboratory summaries with AUROC 0.755 and AUPRC 0.304.",
+          "paper_quote": "LightGBM models incorporating trajectories significantly outperformed static laboratory summaries (AUROC 0.797 vs. 0.755; DeLong p < 0.001; AUPRC 0.380 vs. 0.304).",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ],
+      "paper_excerpt": "arXiv:2608.21589v1 [cs.LG] 21 Aug 2026\n\nAbstract\nFunctional decline in older adults is typically recognized only after falls or observable gait impairment, closing the\nwindow for prevention. We investigated whether temporal trajectories of routine biomarkers — already recorded but\nrarely analyzed longitudinally — can identify patients in the pre-clinical phase of mobility decline. Using the All of\nUs Research Program (N = 297,861; 11.1% cases), we derived trajectory features (slope, variability, delta, mean)\nfor twelve biomarkers over a three-year pre-index window. LightGBM models incorporating trajectories significantly\noutperformed static laboratory summaries (AUROC 0.797 vs. 0.755; DeLong p < 0.001; AUPRC 0.380 vs. 0.304). A\n1:1 age- and sex-matched analysis confirmed an independent trajectory signal (AUROC 0.727 vs. demographics-only\n0.680). A horizon analysis demonstrated sustained prediction 3–12 months before decline onset (AUROC 0.768–\n0.740). Because the model uses only measurements already ordered in routine care, it supports passive, zero-burden\nEHR integration for early detection of pre-clinical functional decline.\nIntroduction\nConsider a 67-year-old patient seen in primary care. Her hemoglobin has declined from 13.2 to 11.8 g/dL over three\nyears - each value individually unremarkable, never triggering a clinical alert. Her albumin has drifted from 4.1 to\n3.6 g/dL. Her diastolic blood pressure variability has gradually increased. At each visit, these measurements were\ninterpreted in isolation, assessed for acute abnormalities, and set aside. Two years later, she presents after a fall. The\nwarning signals had been accumulating in the EHR the entire time.\nFunctional decline - encompassing gait impairment, reduced mobility, and fall risk - affects more than one-third of\nadults over 65 and contributes to approximately three million emergency visits and $50 billion in annual U.S. healthcare expenditures.1 Despite this burden, functional decline lacks an automated early warning system embedded in\nroutine clinical workflows.2 It is typically recognized only after observable impairment or a fall event, when the\npre-clinical prevention window has closed. Existing frailty tools, such as the Fried phenotype,3 the Short Physical\nPerformance Battery,4 and the Timed Up-and-Go, require structured functional assessments, manual scoring, or dedicated patient interaction not consistently embedded in primary care workflows. Even when administered, they capture\na single timepoint rather than the trajectory of physiologic change.\nMultiple pathways underlying mobility decline leave measurable traces in routine laboratory data: anemia-related\nfatigue, vitamin D deficiency affecting neuromuscular function, hyponatremia impairing balance, glycemic dysregulation driving neuropathy, and albumin-mediated sarcopenia.5, 6 Yet, clinical interpretation focuses on whether individual\nvalues exceed reference thresholds, not on how they evolve longitudinally. The central insight motivating this work\nis that the trajectory of a biomarker may carry more predictive information than any single value. A hemoglobin of\n11.5 g/dL that has been stable for three years represents a fundamentally different risk than one that declined from\n13.5 g/dL over the same period. Yet, both appear identical at a single timepoint.\nRecent work in EHR-based temporal modeling supports this hypothesis across other clinical domains. Transformerbased architectures modeling sequential diagnosis codes have improved the prediction of ICU mortality, heart failure\nreadmission, and dementia onset by explicitly capturing temporal dependencies.7 In fall prediction specifically, multihorizon explainable AI models using EHR features achieve AUROCs of 0.70–0.87, with SHAP-based temporal analysis revealing that acute factors drive short-term risk, while long-term risk reflects chronic physiologic deterioration.8\nHowever, these models rely on broad feature sets: prior falls, medications, diagnoses, comorbidity scores, and functional assessments, rather than isolating the specific contribution of biomarker trajectories. Meanwhile, statistical joint\n\nmodeling frameworks for longitudinal biomarker data and survival outcomes face computational limitations when the\nnumber of markers exceeds five.9 A critical gap therefore exists: no large-scale study has systematically evaluated\nwhether temporal trajectory features derived exclusively from routine laboratory measurements, without diagnosis\ncodes, medications, or functional assessments, can predict pre-clinical functional decline.\nThe All of Us Research Program provides an unprecedented opportunity to address this gap at a national scale, with\ndeliberate oversampling of populations historically underrepresented in biomedical research.10 Our contributions are:\n(1) a pseudo-index cohort design preventing immortal time bias;11 (2) trajectory features including slope, variability,\nand directional change for twelve routine biomarkers; (3"
+    },
+    "chk_conclusion": {
+      "status": "accepted",
+      "value": "Longitudinal trajectory features of routine biomarkers significantly improve the prediction of functional mobility decline, serving as a passive, zero-burden digital biomarker for early detection.",
+      "paper_quote": "Because the model relies exclusively on measurements already ordered in routine primary care, trajectory-based risk monitoring functions as a passive digital biomarker supporting equitable, zero-burden integration into EHR workflows for early detection of pre-clinical functional decline.",
+      "drafts": [
+        {
+          "value": "Longitudinal trajectory features of routine biomarkers significantly improve the prediction of functional mobility decline, serving as a passive, zero-burden digital biomarker for early detection.",
+          "paper_quote": "Because the model relies exclusively on measurements already ordered in routine primary care, trajectory-based risk monitoring functions as a passive digital biomarker supporting equitable, zero-burden integration into EHR workflows for early detection of pre-clinical functional decline.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "Longitudinal trajectory features from routine biomarkers significantly outperform static summaries for predicting functional mobility decline.",
+          "paper_quote": "Longitudinal trajectory features from twelve routine biomarkers significantly outperform static laboratory summaries for predicting functional mobility decline (AUROC 0.797 vs. 0.755; p < 0.001; AUPRC 0.380 vs. 0.304).",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ]
+    },
+    "chk_limitation": {
+      "status": "uncertain",
+      "why": "drafts differ",
+      "drafts": [
+        {
+          "value": "Use of ICD-10 codes to define outcomes, high missingness in certain biomarkers, median imputation, cross-sectional splits, lack of comorbidity adjustment, and the need for external validation.",
+          "paper_quote": "ICD-10-coded outcomes capture documented recognition rather than objective functional performance, introducing potential detection bias.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "ICD-10-coded outcomes may introduce detection bias, and CRP and 25-hydroxyvitamin D have limited trajectory signal due to high missingness.",
+          "paper_quote": "ICD-10-coded outcomes capture documented recognition rather than objective functional performance, introducing potential detection bias.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ],
+      "paper_excerpt": "key temporal dynamics (slope, variability, directional change) that distinguish declining patients while remaining\ncompatible with standard tabular classifiers deployable in any EHR environment.\nMechanistic interpretation. Among non-count features, BMI mean was the highest-ranked predictor\n(mean |SHAP| = 0.141), consistent with the central role of body composition in sarcopenia-mediated mobility decline: both obesity (reduced mobility, joint loading) and low BMI (muscle wasting) represent distinct but convergent\npathways to functional impairment.2 Diastolic blood pressure slope, the leading trajectory-specific feature (0.104),\nconnects to a well-characterized autonomic pathway. Orthostatic hypotension affects ∼20% of community-dwelling\nolder adults and is significantly associated with fall risk (meta-analytic OR = 1.73; 95% CI 1.50–1.99).20 A declining\ndiastolic trajectory captured from routine seated recordings may reflect progressive autonomic dysregulation before\northostatic symptoms become clinically apparent.25 RDW mean (0.094) is a notable finding: elevated RDW reflects\nerythropoietic instability driven by chronic inflammation, iron deficiency, and oxidative stress, and has been independently associated with frailty, all-cause mortality, and functional decline in older adults.18 Unlike hemoglobin, which\ncaptures oxygen-carrying capacity, RDW captures the heterogeneity of the red cell population, a marker of systemic\nphysiologic dysregulation that may precede overt anemia. The co-presence of trajectory-specific features (slope, std)\nand static means in the SHAP top-15 directly confirms that the same biomarker level carries different risk depending\non its trajectory.\nWhy AUPRC improvement matters more than AUROC improvement. The relative gain in AUPRC (+0.076,\n25%) substantially exceeds the relative gain in AUROC (+0.042, 6%), and this asymmetry is clinically informative.\nWith 11% case prevalence, AUROC can remain high even when positive-class detection is poor, because it is dominated by the large number of true negatives among controls. AUPRC specifically rewards improved precision at any\ngiven recall level - meaning that the trajectory model correctly identifies more true mobility decline cases while generating fewer false positive alerts per true positive detected. In EHR-integrated alert systems, where clinician alert\nfatigue is a primary barrier to adoption,24 this distinction directly predicts greater real-world utility. The trajectory\nmodel’s AUPRC of 0.380 - approximately 3.4× the no-skill baseline of 0.111 - suggests that at moderate recall levels,\nroughly one in three flagged patients would be a true positive, a ratio far more compatible with clinical workflow\nintegration than the baseline model’s one-in-four rate.\nInformative observation as confounder and signal. A distinctive finding is the high SHAP importance of measurement count features (sodium count: 0.198; BMI count: 0.189; RDW count: 0.161), which outranked all physiologic\ntrajectory features. This reflects the EHR-specific phenomenon of informative observation: measurement frequency in\nEHR data is not random but driven by patient health status, creating a two-stage missingness mechanism where both\nthe visiting process and the biomarker observation process correlate with the outcome.13 Our sensitivity analysis removing count features (AUROC 0.789, ∆ = −0.009) demonstrates that while the model can exploit this signal, it does\nnot depend on it. This finding has direct implications for health equity: it means the model retains strong performance\neven when applied to patients with infrequent healthcare contact, a critical requirement for deployment in safety-net\nsettings, federally qualified health centers, and rural practices serving populations with the highest functional decline\nburden.\nComparison with prior work. Prior ML models for functional impairment report AUROCs of 0.87–0.92 using\nfeature sets incorporating falls history, hospitalization data, comorbidity problem lists, and social determinants.27, 28\nOur model achieves its discrimination using only structured biomarkers, without free-text processing or specialist\nassessments. The All of Us cohort’s deliberate oversampling of Black or African American (15.5%), Hispanic, and\nrural participants10 addresses a recognized generalizability limitation of prior work, which is largely derived from\npredominantly White academic medical center populations.\nToward clinical deployment. The model requires no new tests, no patient interaction, and no additional documentation. It runs as a background process, updating risk scores each time a new laboratory result is filed. At a clinical visit,\nthe physician sees a single alert - “Elevated functional decline risk - consider physical therapy referral or geriatric\nassessment” - while the pre-clinical intervention window remains open. The AUROC 0.789 retained after count feature removal means this workflow performs comparably even for patients seen "
+    }
+  }
+}

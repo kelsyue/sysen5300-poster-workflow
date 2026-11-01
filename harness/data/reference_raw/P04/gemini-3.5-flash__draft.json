@@ -1,0 +1,49 @@
+{
+  "model": "gemini-3.5-flash",
+  "reference_prompt_sha256": "a63f2a103bd381061f0d6560fdaf2e1bd28c503af09ee38a529d0648f4594fd3",
+  "error": null,
+  "tokens_in": 24672,
+  "tokens_out": 4007,
+  "parsed": {
+    "summary": "The paper introduces A LBIREO, an adaptive, detector-agnostic, and codec-free frame-skipping framework designed to improve the energy efficiency of video object detection on edge devices. By utilizing a Kalman filter uncertainty trigger, a detector-flicker rescue mechanism, and an empty-scene screen, the system decides when detector invocations can be safely skipped. Evaluation on the BDD100K dataset shows that A LBIREO reduces total energy consumption by 12.1–17.6% while keeping detection accuracy within ±1.2 pp of per-frame inference.",
+    "items": {
+      "chk_problem": {
+        "value": "High energy consumption and sustained GPU utilization of running computationally expensive video object detectors on edge devices.",
+        "paper_quote": "Video object detection on edge devices requires running computationally expensive detectors over long frame streams, leading to high energy consumption and sustained GPU utilization."
+      },
+      "chk_method": {
+        "value": "A LBIREO, a detector-agnostic, codec-free adaptive inference framework that uses Kalman filter uncertainty, detector-flicker rescue, and empty-scene screening to skip redundant detector calls.",
+        "paper_quote": "We present A LBIREO, a detector-agnostic, codec-free, adaptive inference framework that wraps off-the-shelf object detectors and decides when detector invocation can be safely skipped based on scene content and per-object temporal state."
+      },
+      "chk_data": {
+        "value": "The BDD100K dataset's multi-object tracking (MOT) validation split, consisting of 200 dashcam clips and 7 object classes.",
+        "paper_quote": "We evaluate A LBIREO on the BDD100K dataset’s multiobject tracking (MOT) validation split using three architecturally distinct detectors (YOLO11x, YOLO26x, and RF-DETR-Large) on two NVIDIA Jetson platforms (AGX Thor and AGX Orin)."
+      },
+      "chk_setup": {
+        "value": "Evaluating three distinct detectors (YOLO11x, YOLO26x, RF-DETR-Large) on two NVIDIA Jetson platforms (AGX Thor and AGX Orin).",
+        "paper_quote": "We evaluate A LBIREO on the BDD100K dataset’s multiobject tracking (MOT) validation split using three architecturally distinct detectors (YOLO11x, YOLO26x, and RF-DETR-Large) on two NVIDIA Jetson platforms (AGX Thor and AGX Orin)."
+      },
+      "chk_primary_result": {
+        "value": "A LBIREO keeps AP@50 within ±1.2 pp of per-frame inference while reducing total energy by 12.1–17.6% across all configurations.",
+        "paper_quote": "Across all detector–platform configurations, A LBIREO keeps AP@50 (average precision at IoU 0.5) within ±1.2 pp of per-frame inference while reducing total energy by 12.1–17.6%."
+      },
+      "chk_secondary_result": {
+        "value": "On the primary YOLO26x configuration, A LBIREO improves AP@50 by +0.8 pp while reducing energy by 17.6% on Thor and 14.4% on Orin.",
+        "paper_quote": "On the primary YOLO26x configuration, A LBIREO improves AP@50 by +0.8 pp while reducing energy by 17.6% on Thor and 14.4% on Orin."
+      },
+      "chk_baseline": {
+        "value": "Compared against five families of frame-skipping baselines, including Vanilla per-frame inference, FixedSkip-N, Confidence-Triggered Detection (CTD), Statues, and ERD-only.",
+        "paper_quote": "We compare A LBIREO against five families of frame-skipping baselines."
+      },
+      "chk_conclusion": {
+        "value": "Using object-level temporal state via A LBIREO serves as a practical drop-in efficiency layer for off-the-shelf edge video detection pipelines.",
+        "paper_quote": "These results show that using the object-level temporal state can serve as a practical drop-in efficiency layer for off-the-shelf edge video detection pipelines."
+      },
+      "chk_limitation": {
+        "value": "The constant-acceleration Kalman dynamics can drift under highly erratic motion, such as a pedestrian making an abrupt lateral move.",
+        "paper_quote": "First, the constant-acceleration Kalman dynamics fit many vehicle-dominated dashcam scenes, but can drift under highly erratic motion, such as a pedestrian making an abrupt lateral move at a crosswalk."
+      }
+    }
+  },
+  "raw": "```json\n{\n  \"summary\": \"The paper introduces A LBIREO, an adaptive, detector-agnostic, and codec-free frame-skipping framework designed to improve the energy efficiency of video object detection on edge devices. By utilizing a Kalman filter uncertainty trigger, a detector-flicker rescue mechanism, and an empty-scene screen, the system decides when detector invocations can be safely skipped. Evaluation on the BDD100K dataset shows that A LBIREO reduces total energy consumption by 12.1–17.6% while keeping detection accuracy within ±1.2 pp of per-frame inference.\",\n  \"items\": {\n    \"chk_problem\": {\n      \"value\": \"High energy consumption and sustained GPU utilization of running computationally expensive video object detectors on edge devices.\",\n      \"paper_quote\": \"Video object detection on edge devices requires running computationally expensive detectors over long frame streams, leading to high energy consumption and sustained GPU utilization.\"\n    },\n    \"chk_method\": {\n      \"value\": \"A LBIREO, a detector-agnostic, codec-free adaptive inference framework that uses Kalman filter uncertainty, detector-flicker rescue, and empty-scene screening to skip redundant detector calls.\",\n      \"paper_quote\": \"We present A LBIREO, a detector-agnostic, codec-free, adaptive inference framework that wraps off-the-shelf object detectors and decides when detector invocation can be safely skipped based on scene content and per-object temporal state.\"\n    },\n    \"chk_data\": {\n      \"value\": \"The BDD100K dataset's multi-object tracking (MOT) validation split, consisting of 200 dashcam clips and 7 object classes.\",\n      \"paper_quote\": \"We evaluate A LBIREO on the BDD100K dataset’s multiobject tracking (MOT) validation split using three architecturally distinct detectors (YOLO11x, YOLO26x, and RF-DETR-Large) on two NVIDIA Jetson platforms (AGX Thor and AGX Orin).\"\n    },\n    \"chk_setup\": {\n      \"value\": \"Evaluating three distinct detectors (YOLO11x, YOLO26x, RF-DETR-Large) on two NVIDIA Jetson platforms (AGX Thor and AGX Orin).\",\n      \"paper_quote\": \"We evaluate A LBIREO on the BDD100K dataset’s multiobject tracking (MOT) validation split using three architecturally distinct detectors (YOLO11x, YOLO26x, and RF-DETR-Large) on two NVIDIA Jetson platforms (AGX Thor and AGX Orin).\"\n    },\n    \"chk_primary_result\": {\n      \"value\": \"A LBIREO keeps AP@50 within ±1.2 pp of per-frame inference while reducing total energy by 12.1–17.6% across all configurations.\",\n      \"paper_quote\": \"Across all detector–platform configurations, A LBIREO keeps AP@50 (average precision at IoU 0.5) within ±1.2 pp of per-frame inference while reducing total energy by 12.1–17.6%.\"\n    },\n    \"chk_secondary_result\": {\n      \"value\": \"On the primary YOLO26x configuration, A LBIREO improves AP@50 by +0.8 pp while reducing energy by 17.6% on Thor and 14.4% on Orin.\",\n      \"paper_quote\": \"On the primary YOLO26x configuration, A LBIREO improves AP@50 by +0.8 pp while reducing energy by 17.6% on Thor and 14.4% on Orin.\"\n    },\n    \"chk_baseline\": {\n      \"value\": \"Compared against five families of frame-skipping baselines, including Vanilla per-frame inference, FixedSkip-N, Confidence-Triggered Detection (CTD), Statues, and ERD-only.\",\n      \"paper_quote\": \"We compare A LBIREO against five families of frame-skipping baselines.\"\n    },\n    \"chk_conclusion\": {\n      \"value\": \"Using object-level temporal state via A LBIREO serves as a practical drop-in efficiency layer for off-the-shelf edge video detection pipelines.\",\n      \"paper_quote\": \"These results show that using the object-level temporal state can serve as a practical drop-in efficiency layer for off-the-shelf edge video detection pipelines.\"\n    },\n    \"chk_limitation\": {\n      \"value\": \"The constant-acceleration Kalman dynamics can drift under highly erratic motion, such as a pedestrian making an abrupt lateral move.\",\n      \"paper_quote\": \"First, the constant-acceleration Kalman dynamics fit many vehicle-dominated dashcam scenes, but can drift under highly erratic motion, such as a pedestrian making an abrupt lateral move at a crosswalk.\"\n    }\n  }\n}\n```"
+}

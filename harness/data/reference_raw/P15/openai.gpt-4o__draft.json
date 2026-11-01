@@ -1,0 +1,49 @@
+{
+  "model": "openai.gpt-4o",
+  "reference_prompt_sha256": "a63f2a103bd381061f0d6560fdaf2e1bd28c503af09ee38a529d0648f4594fd3",
+  "error": null,
+  "tokens_in": 30682,
+  "tokens_out": 881,
+  "parsed": {
+    "summary": "The paper introduces Agent-Reflex, a training framework designed to enhance the reflective capabilities of language agents in noisy, real-world environments. It comprises three stages: Environment Reflection Skill Discovery (RSD), Reflective Supervised Fine-Tuning (ReSFT), and On-Policy Reflective Policy Optimization (ORPO). Experiments demonstrate that Agent-Reflex improves long-horizon tool use, robustness to noise, and training stability across multiple benchmarks.",
+    "items": {
+      "chk_problem": {
+        "value": "Existing methods lack supervision for reflection learning and failure recovery in noisy environments.",
+        "paper_quote": "In real deployments, MCP tool services can return noisy feedback and users may intervene to correct the agent, but existing methods provide limited supervision for reflection learning and failure recovery."
+      },
+      "chk_method": {
+        "value": "Agent-Reflex framework with RSD, ReSFT, and ORPO stages to train reflective agents.",
+        "paper_quote": "To bridge this gap, we propose Agent-Reflex, a general training framework for incentivizing proactive reflection in agents."
+      },
+      "chk_data": {
+        "value": "557 MCP environments, 24,510 error returns, and 1,170 reflection meta-skills.",
+        "paper_quote": "Specifically, Agent-Reflex comprises three stages. First, Environment Reflection Skill Discovery (RSD) injects grounded tool-feedback perturbations into environment scaling, samples a capability-diverse LLM pool, mines matched success–failure pairs, and summarizes reusable reflection meta-skills."
+      },
+      "chk_setup": {
+        "value": "Experiments on six benchmarks with noisy and long-horizon tasks using Qwen3-8B.",
+        "paper_quote": "Experiments on six challenging agent benchmark suites demonstrate the effectiveness of Agent-Reflex."
+      },
+      "chk_primary_result": {
+        "value": "Agent-Reflex achieves 58.6 overall on five long-horizon tool-use benchmarks and 29.1 on AgentNoiseBench.",
+        "paper_quote": "Built on Qwen3-8B, Agent-Reflex reaches 58.6 overall on five long-horizon tool-use benchmarks and 29.1 on AgentNoiseBench, surpassing strong environment-scaling and reflection baselines."
+      },
+      "chk_secondary_result": {
+        "value": "Agent-Reflex improves agents’ robustness to noise while maintaining stable training dynamics.",
+        "paper_quote": "Further analyses show that Agent-Reflex improves agents’ robustness to noise while maintaining stable training dynamics, supporting scalable agent training."
+      },
+      "chk_baseline": {
+        "value": "Compared against reflection methods (e.g., Reflexion, ExpeL) and environment-scaling methods (e.g., EnvScaler, Agent-World).",
+        "paper_quote": "We compare three families: reflection methods (Shinn et al., 2023; Zhao et al., 2024; Yuan et al., 2025; Chen et al., 2026), environment-scaling methods (Li et al., 2025; Xu et al., 2025; Song et al., 2026; Wang et al., 2026b; Xu et al., 2026; Dong et al., 2026a), and trajectory-level RL algorithms (Shao et al., 2024; Yu et al., 2025; Hu et al., 2025; Wu et al., 2026)."
+      },
+      "chk_conclusion": {
+        "value": "Agent-Reflex improves long-horizon tool use and robustness under noise, supporting scalable agent training.",
+        "paper_quote": "Across six challenging agent benchmark suites, Agent-Reflex improves long-horizon tool use and robustness under tool and user noise with stable training dynamics, supporting scalable agent training."
+      },
+      "chk_limitation": {
+        "value": "The skill library does not automatically adapt to changes in tool interfaces or environment dynamics.",
+        "paper_quote": "Our reflection skill library is mined offline from a fixed snapshot of a large collection of executable environments. Consequently, it does not automatically adapt to changes in tool interfaces, service behavior, or environment dynamics."
+      }
+    }
+  },
+  "raw": "{\n  \"summary\": \"The paper introduces Agent-Reflex, a training framework designed to enhance the reflective capabilities of language agents in noisy, real-world environments. It comprises three stages: Environment Reflection Skill Discovery (RSD), Reflective Supervised Fine-Tuning (ReSFT), and On-Policy Reflective Policy Optimization (ORPO). Experiments demonstrate that Agent-Reflex improves long-horizon tool use, robustness to noise, and training stability across multiple benchmarks.\",\n  \"items\": {\n    \"chk_problem\": {\n      \"value\": \"Existing methods lack supervision for reflection learning and failure recovery in noisy environments.\",\n      \"paper_quote\": \"In real deployments, MCP tool services can return noisy feedback and users may intervene to correct the agent, but existing methods provide limited supervision for reflection learning and failure recovery.\"\n    },\n    \"chk_method\": {\n      \"value\": \"Agent-Reflex framework with RSD, ReSFT, and ORPO stages to train reflective agents.\",\n      \"paper_quote\": \"To bridge this gap, we propose Agent-Reflex, a general training framework for incentivizing proactive reflection in agents.\"\n    },\n    \"chk_data\": {\n      \"value\": \"557 MCP environments, 24,510 error returns, and 1,170 reflection meta-skills.\",\n      \"paper_quote\": \"Specifically, Agent-Reflex comprises three stages. First, Environment Reflection Skill Discovery (RSD) injects grounded tool-feedback perturbations into environment scaling, samples a capability-diverse LLM pool, mines matched success–failure pairs, and summarizes reusable reflection meta-skills.\"\n    },\n    \"chk_setup\": {\n      \"value\": \"Experiments on six benchmarks with noisy and long-horizon tasks using Qwen3-8B.\",\n      \"paper_quote\": \"Experiments on six challenging agent benchmark suites demonstrate the effectiveness of Agent-Reflex.\"\n    },\n    \"chk_primary_result\": {\n      \"value\": \"Agent-Reflex achieves 58.6 overall on five long-horizon tool-use benchmarks and 29.1 on AgentNoiseBench.\",\n      \"paper_quote\": \"Built on Qwen3-8B, Agent-Reflex reaches 58.6 overall on five long-horizon tool-use benchmarks and 29.1 on AgentNoiseBench, surpassing strong environment-scaling and reflection baselines.\"\n    },\n    \"chk_secondary_result\": {\n      \"value\": \"Agent-Reflex improves agents’ robustness to noise while maintaining stable training dynamics.\",\n      \"paper_quote\": \"Further analyses show that Agent-Reflex improves agents’ robustness to noise while maintaining stable training dynamics, supporting scalable agent training.\"\n    },\n    \"chk_baseline\": {\n      \"value\": \"Compared against reflection methods (e.g., Reflexion, ExpeL) and environment-scaling methods (e.g., EnvScaler, Agent-World).\",\n      \"paper_quote\": \"We compare three families: reflection methods (Shinn et al., 2023; Zhao et al., 2024; Yuan et al., 2025; Chen et al., 2026), environment-scaling methods (Li et al., 2025; Xu et al., 2025; Song et al., 2026; Wang et al., 2026b; Xu et al., 2026; Dong et al., 2026a), and trajectory-level RL algorithms (Shao et al., 2024; Yu et al., 2025; Hu et al., 2025; Wu et al., 2026).\"\n    },\n    \"chk_conclusion\": {\n      \"value\": \"Agent-Reflex improves long-horizon tool use and robustness under noise, supporting scalable agent training.\",\n      \"paper_quote\": \"Across six challenging agent benchmark suites, Agent-Reflex improves long-horizon tool use and robustness under tool and user noise with stable training dynamics, supporting scalable agent training.\"\n    },\n    \"chk_limitation\": {\n      \"value\": \"The skill library does not automatically adapt to changes in tool interfaces or environment dynamics.\",\n      \"paper_quote\": \"Our reflection skill library is mined offline from a fixed snapshot of a large collection of executable environments. Consequently, it does not automatically adapt to changes in tool interfaces, service behavior, or environment dynamics.\"\n    }\n  }\n}"
+}

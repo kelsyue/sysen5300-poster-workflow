@@ -1,0 +1,50 @@
+{
+  "model": "gemini-3.5-flash",
+  "reference_prompt_sha256": "a63f2a103bd381061f0d6560fdaf2e1bd28c503af09ee38a529d0648f4594fd3",
+  "error": null,
+  "tokens_in": 14678,
+  "tokens_out": 3941,
+  "parsed": {
+    "summary": "This paper investigates how the choice of gold standard reference affects multilingual benchmark scores and model rankings. By holding system outputs fixed and exchanging the reference between delivered gold and expert reviewer gold, the authors demonstrate that scores can shift by up to 4.95 F1 points pooled (and 7.55 points in Hindi), sometimes reversing model rankings. They recommend that benchmarks retain annotation records and report a reference-sensitivity band alongside headline scores.",
+    "items": {
+      "chk_problem": {
+        "value": "Measuring how reference choice affects scores and model rankings in multilingual span extraction benchmarks.",
+        "paper_quote": "For a multilingual span extraction benchmark, we are not aware of prior work measuring how far a score moves and whether a ranking survives when the reference is exchanged for an equally defensible alternative from the same production pipeline."
+      },
+      "chk_method": {
+        "value": "Holding the system output fixed and varying the reference to isolate the effect of reference choice.",
+        "paper_quote": "We invert the usual arrangement: instead of varying the system and fixing the reference, we hold the system output fixed and vary the reference, so any movement is attributable to reference choice alone."
+      },
+      "chk_data": {
+        "value": "The annotation record of a production multilingual PII extraction benchmark covering six languages and 24,939 prompts.",
+        "paper_quote": "We use the annotation record of a production multilingual benchmark for personally identifiable information (PII) extraction, covering six languages and 24,939 prompts."
+      },
+      "chk_setup": {
+        "value": "Scoring two annotator labellings against delivered gold and reviewer gold references using strict and relaxed span F1.",
+        "paper_quote": "The unit of analysis is the prompt, the outputs are the two annotator labellings, the references are the delivered gold and the reviewer gold, and the metric is span F1 under two matching rules."
+      },
+      "chk_primary_result": {
+        "value": "Exchanging the reference moves the score by 4.95 F1 points for one output and 2.00 for the other, and up to 7.55 in the worst language.",
+        "paper_quote": "The score moves by 4.95 F1 points for one output and 2.00 for the other (95% CIs [3.23, 6.27] and [0.26, 3.37]), and by 7.55 in the worst language."
+      },
+      "chk_secondary_result": {
+        "value": "The paired interaction between reference and system is +2.95 points, and the Hindi margin changes sign.",
+        "paper_quote": "The comparison between two outputs moves as well: the paired interaction between reference and system is +2.95 points (CI [+1.97, +3.87]), survives correction for multiple testing, and changes one language’s margin outright."
+      },
+      "chk_baseline": {
+        "value": null,
+        "paper_quote": null,
+        "reason": "The paper does not compare its proposed evaluation procedure against any baseline methods, as it focuses on auditing an existing benchmark's reference-construction process."
+      },
+      "chk_conclusion": {
+        "value": "Benchmarks should report a reference-sensitivity band alongside the score to reflect evaluation uncertainty.",
+        "paper_quote": "We suggest benchmarks report a reference-sensitivity band alongside the score."
+      },
+      "chk_limitation": {
+        "value": "The findings are based on a single annotation record and pipeline, and the scored outputs are human passes rather than model predictions.",
+        "paper_quote": "Every measurement comes from a single annotation record, and the size of the effect depends on properties of that record, in particular an aggregation rule that favours one annotator."
+      }
+    }
+  },
+  "raw": "```json\n{\n  \"summary\": \"This paper investigates how the choice of gold standard reference affects multilingual benchmark scores and model rankings. By holding system outputs fixed and exchanging the reference between delivered gold and expert reviewer gold, the authors demonstrate that scores can shift by up to 4.95 F1 points pooled (and 7.55 points in Hindi), sometimes reversing model rankings. They recommend that benchmarks retain annotation records and report a reference-sensitivity band alongside headline scores.\",\n  \"items\": {\n    \"chk_problem\": {\n      \"value\": \"Measuring how reference choice affects scores and model rankings in multilingual span extraction benchmarks.\",\n      \"paper_quote\": \"For a multilingual span extraction benchmark, we are not aware of prior work measuring how far a score moves and whether a ranking survives when the reference is exchanged for an equally defensible alternative from the same production pipeline.\"\n    },\n    \"chk_method\": {\n      \"value\": \"Holding the system output fixed and varying the reference to isolate the effect of reference choice.\",\n      \"paper_quote\": \"We invert the usual arrangement: instead of varying the system and fixing the reference, we hold the system output fixed and vary the reference, so any movement is attributable to reference choice alone.\"\n    },\n    \"chk_data\": {\n      \"value\": \"The annotation record of a production multilingual PII extraction benchmark covering six languages and 24,939 prompts.\",\n      \"paper_quote\": \"We use the annotation record of a production multilingual benchmark for personally identifiable information (PII) extraction, covering six languages and 24,939 prompts.\"\n    },\n    \"chk_setup\": {\n      \"value\": \"Scoring two annotator labellings against delivered gold and reviewer gold references using strict and relaxed span F1.\",\n      \"paper_quote\": \"The unit of analysis is the prompt, the outputs are the two annotator labellings, the references are the delivered gold and the reviewer gold, and the metric is span F1 under two matching rules.\"\n    },\n    \"chk_primary_result\": {\n      \"value\": \"Exchanging the reference moves the score by 4.95 F1 points for one output and 2.00 for the other, and up to 7.55 in the worst language.\",\n      \"paper_quote\": \"The score moves by 4.95 F1 points for one output and 2.00 for the other (95% CIs [3.23, 6.27] and [0.26, 3.37]), and by 7.55 in the worst language.\"\n    },\n    \"chk_secondary_result\": {\n      \"value\": \"The paired interaction between reference and system is +2.95 points, and the Hindi margin changes sign.\",\n      \"paper_quote\": \"The comparison between two outputs moves as well: the paired interaction between reference and system is +2.95 points (CI [+1.97, +3.87]), survives correction for multiple testing, and changes one language’s margin outright.\"\n    },\n    \"chk_baseline\": {\n      \"value\": null,\n      \"paper_quote\": null,\n      \"reason\": \"The paper does not compare its proposed evaluation procedure against any baseline methods, as it focuses on auditing an existing benchmark's reference-construction process.\"\n    },\n    \"chk_conclusion\": {\n      \"value\": \"Benchmarks should report a reference-sensitivity band alongside the score to reflect evaluation uncertainty.\",\n      \"paper_quote\": \"We suggest benchmarks report a reference-sensitivity band alongside the score.\"\n    },\n    \"chk_limitation\": {\n      \"value\": \"The findings are based on a single annotation record and pipeline, and the scored outputs are human passes rather than model predictions.\",\n      \"paper_quote\": \"Every measurement comes from a single annotation record, and the size of the effect depends on properties of that record, in particular an aggregation rule that favours one annotator.\"\n    }\n  }\n}\n```"
+}

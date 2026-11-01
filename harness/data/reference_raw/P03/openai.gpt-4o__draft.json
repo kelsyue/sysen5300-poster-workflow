@@ -1,0 +1,58 @@
+{
+  "model": "openai.gpt-4o",
+  "reference_prompt_sha256": "a63f2a103bd381061f0d6560fdaf2e1bd28c503af09ee38a529d0648f4594fd3",
+  "error": null,
+  "tokens_in": 8697,
+  "tokens_out": 917,
+  "parsed": {
+    "summary": "This paper investigates whether longitudinal trajectories of routine biomarkers can predict pre-clinical functional decline in older adults. Using the All of Us Research Program dataset, the study demonstrates that trajectory features significantly improve prediction performance compared to static laboratory summaries. The findings suggest that biomarker trajectories can serve as passive digital biomarkers for early detection of functional decline, enabling preventive interventions.",
+    "items": {
+      "chk_problem": {
+        "value": "Functional decline in older adults is typically recognized only after falls or observable gait impairment, closing the window for prevention.",
+        "paper_quote": "Functional decline in older adults is typically recognized only after falls or observable gait impairment, closing the window for prevention.",
+        "reason": null
+      },
+      "chk_method": {
+        "value": "LightGBM models using trajectory features of twelve biomarkers over a three-year pre-index window.",
+        "paper_quote": "Using the All of Us Research Program (N = 297,861; 11.1% cases), we derived trajectory features (slope, variability, delta, mean) for twelve biomarkers over a three-year pre-index window.",
+        "reason": null
+      },
+      "chk_data": {
+        "value": "All of Us Research Program Controlled Tier Dataset version 8 with 297,861 participants.",
+        "paper_quote": "We used the All of Us Research Program Controlled Tier Dataset version 8, a de-identified longitudinal EHR repository harmonized to the OMOP Common Data Model.",
+        "reason": null
+      },
+      "chk_setup": {
+        "value": "Four algorithms evaluated with 5-fold cross-validation using trajectory features and baseline features.",
+        "paper_quote": "Four algorithms were evaluated: (1) ℓ2 -penalized logistic regression (SAGA solver, max iter = 1000, class weight = ‘balanced’); (2) random forest (200 estimators, balanced class weights, n jobs = −1); (3) XGBoost (300 estimators, learning rate 0.05, eval metric = ‘auc’); and (4) LightGBM (300 estimators, learning rate 0.05).",
+        "reason": null
+      },
+      "chk_primary_result": {
+        "value": "LightGBM model with trajectory features achieved AUROC 0.797 and AUPRC 0.380.",
+        "paper_quote": "LightGBM models incorporating trajectories significantly outperformed static laboratory summaries (AUROC 0.797 vs. 0.755; DeLong p < 0.001; AUPRC 0.380 vs. 0.304).",
+        "reason": null
+      },
+      "chk_secondary_result": {
+        "value": "Prediction horizon analysis showed sustained discrimination 3–12 months before decline onset (AUROC 0.768–0.740).",
+        "paper_quote": "A horizon analysis demonstrated sustained prediction 3–12 months before decline onset (AUROC 0.768–0.740).",
+        "reason": null
+      },
+      "chk_baseline": {
+        "value": "Static laboratory summaries with AUROC 0.755 and AUPRC 0.304.",
+        "paper_quote": "LightGBM models incorporating trajectories significantly outperformed static laboratory summaries (AUROC 0.797 vs. 0.755; DeLong p < 0.001; AUPRC 0.380 vs. 0.304).",
+        "reason": null
+      },
+      "chk_conclusion": {
+        "value": "Longitudinal trajectory features from routine biomarkers significantly outperform static summaries for predicting functional mobility decline.",
+        "paper_quote": "Longitudinal trajectory features from twelve routine biomarkers significantly outperform static laboratory summaries for predicting functional mobility decline (AUROC 0.797 vs. 0.755; p < 0.001; AUPRC 0.380 vs. 0.304).",
+        "reason": null
+      },
+      "chk_limitation": {
+        "value": "ICD-10-coded outcomes may introduce detection bias, and CRP and 25-hydroxyvitamin D have limited trajectory signal due to high missingness.",
+        "paper_quote": "ICD-10-coded outcomes capture documented recognition rather than objective functional performance, introducing potential detection bias.",
+        "reason": null
+      }
+    }
+  },
+  "raw": "```json\n{\n  \"summary\": \"This paper investigates whether longitudinal trajectories of routine biomarkers can predict pre-clinical functional decline in older adults. Using the All of Us Research Program dataset, the study demonstrates that trajectory features significantly improve prediction performance compared to static laboratory summaries. The findings suggest that biomarker trajectories can serve as passive digital biomarkers for early detection of functional decline, enabling preventive interventions.\",\n  \"items\": {\n    \"chk_problem\": {\n      \"value\": \"Functional decline in older adults is typically recognized only after falls or observable gait impairment, closing the window for prevention.\",\n      \"paper_quote\": \"Functional decline in older adults is typically recognized only after falls or observable gait impairment, closing the window for prevention.\",\n      \"reason\": null\n    },\n    \"chk_method\": {\n      \"value\": \"LightGBM models using trajectory features of twelve biomarkers over a three-year pre-index window.\",\n      \"paper_quote\": \"Using the All of Us Research Program (N = 297,861; 11.1% cases), we derived trajectory features (slope, variability, delta, mean) for twelve biomarkers over a three-year pre-index window.\",\n      \"reason\": null\n    },\n    \"chk_data\": {\n      \"value\": \"All of Us Research Program Controlled Tier Dataset version 8 with 297,861 participants.\",\n      \"paper_quote\": \"We used the All of Us Research Program Controlled Tier Dataset version 8, a de-identified longitudinal EHR repository harmonized to the OMOP Common Data Model.\",\n      \"reason\": null\n    },\n    \"chk_setup\": {\n      \"value\": \"Four algorithms evaluated with 5-fold cross-validation using trajectory features and baseline features.\",\n      \"paper_quote\": \"Four algorithms were evaluated: (1) ℓ2 -penalized logistic regression (SAGA solver, max iter = 1000, class weight = ‘balanced’); (2) random forest (200 estimators, balanced class weights, n jobs = −1); (3) XGBoost (300 estimators, learning rate 0.05, eval metric = ‘auc’); and (4) LightGBM (300 estimators, learning rate 0.05).\",\n      \"reason\": null\n    },\n    \"chk_primary_result\": {\n      \"value\": \"LightGBM model with trajectory features achieved AUROC 0.797 and AUPRC 0.380.\",\n      \"paper_quote\": \"LightGBM models incorporating trajectories significantly outperformed static laboratory summaries (AUROC 0.797 vs. 0.755; DeLong p < 0.001; AUPRC 0.380 vs. 0.304).\",\n      \"reason\": null\n    },\n    \"chk_secondary_result\": {\n      \"value\": \"Prediction horizon analysis showed sustained discrimination 3–12 months before decline onset (AUROC 0.768–0.740).\",\n      \"paper_quote\": \"A horizon analysis demonstrated sustained prediction 3–12 months before decline onset (AUROC 0.768–0.740).\",\n      \"reason\": null\n    },\n    \"chk_baseline\": {\n      \"value\": \"Static laboratory summaries with AUROC 0.755 and AUPRC 0.304.\",\n      \"paper_quote\": \"LightGBM models incorporating trajectories significantly outperformed static laboratory summaries (AUROC 0.797 vs. 0.755; DeLong p < 0.001; AUPRC 0.380 vs. 0.304).\",\n      \"reason\": null\n    },\n    \"chk_conclusion\": {\n      \"value\": \"Longitudinal trajectory features from routine biomarkers significantly outperform static summaries for predicting functional mobility decline.\",\n      \"paper_quote\": \"Longitudinal trajectory features from twelve routine biomarkers significantly outperform static laboratory summaries for predicting functional mobility decline (AUROC 0.797 vs. 0.755; p < 0.001; AUPRC 0.380 vs. 0.304).\",\n      \"reason\": null\n    },\n    \"chk_limitation\": {\n      \"value\": \"ICD-10-coded outcomes may introduce detection bias, and CRP and 25-hydroxyvitamin D have limited trajectory signal due to high missingness.\",\n      \"paper_quote\": \"ICD-10-coded outcomes capture documented recognition rather than objective functional performance, introducing potential detection bias.\",\n      \"reason\": null\n    }\n  }\n}\n```"
+}

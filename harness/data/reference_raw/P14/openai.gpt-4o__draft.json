@@ -1,0 +1,58 @@
+{
+  "model": "openai.gpt-4o",
+  "reference_prompt_sha256": "a63f2a103bd381061f0d6560fdaf2e1bd28c503af09ee38a529d0648f4594fd3",
+  "error": null,
+  "tokens_in": 18931,
+  "tokens_out": 1030,
+  "parsed": {
+    "summary": "The paper introduces LLM4AIGQ, a framework for generating AI guidance queries tailored to users' multi-interests in e-commerce. It employs a three-stage training pipeline (SFT, RL, DPO) to improve the quality and relevance of generated queries. The framework demonstrates strong performance in both offline evaluations and online A/B tests, showing significant improvements in user engagement metrics.",
+    "items": {
+      "chk_problem": {
+        "value": "Traditional AI-generated queries suffer from semantic drift and fail to capture user multi-interests, leading to low-value guidance queries.",
+        "paper_quote": "This approach suffers from semantic drift due to information cascade loss; additionally, primary search query derivation heavily depends on 'user-item' co-occurrence relationships, lacking exploration of user multi-interests, resulting in guidance queries with low value and mismatched purchase intent.",
+        "reason": null
+      },
+      "chk_method": {
+        "value": "LLM4AIGQ framework with a three-stage SFT–RL–DPO training pipeline for multi-interest-aware AI guidance query generation.",
+        "paper_quote": "In summary, we propose LLM4AIGQ, an LLM-based framework for multi-interest-aware AI guidance query generation, with a three-stage SFT–RL–DPO training pipeline.",
+        "reason": null
+      },
+      "chk_data": {
+        "value": "Datasets sampled from Taobao and Tmall user interaction logs from June to July 2026, with 8,000 instances for short-title fine-tuning and 11,259 instances for SFT training.",
+        "paper_quote": "Our datasets are sampled from multi-behavior user interaction logs on the Taobao and Tmall e-commerce platforms, covering the period from June to July 2026.",
+        "reason": null
+      },
+      "chk_setup": {
+        "value": "LLM4AIGQ uses Qwen3-30B-A3B as the backbone model, trained on NVIDIA H20 GPUs with specific configurations for SFT, RL, and DPO stages.",
+        "paper_quote": "LLM4AIGQ adopts Qwen3-30B-A3B as the backbone model and is trained on NVIDIA H20 GPUs.",
+        "reason": null
+      },
+      "chk_primary_result": {
+        "value": "LLM4AIGQ-ONESFT+RL+DPO achieves Recall@10 of 0.2101 and S ratio of 0.8616 on the Taobao dataset.",
+        "paper_quote": "LLM4AIGQ-ONESFT+RL+DPO 0.2101 0.2377 0.2684 0.2658 0.3709 0.3047 0.8616 0.0274 0.1109",
+        "reason": null
+      },
+      "chk_secondary_result": {
+        "value": "LLM4AIGQ-ONESFT+RL+DPO achieved a 4.46% improvement in uCTR in a 10% traffic online A/B test and maintained a 2.53% gain in a 40% traffic test over six days.",
+        "paper_quote": "In the initial 10% traffic experiment, the experimental group achieved a 4.46% improvement in uCTR compared with the baseline bucket. After scaling the traffic to 40%, the overall uCTR still maintained a positive gain of 2.53% over six days of online validation, demonstrating strong generalization capability and online stability under larger-scale deployment.",
+        "reason": null
+      },
+      "chk_baseline": {
+        "value": "LLM4AIGQ is compared against zero-shot LLMs and variants of itself, including Qwen3-30B-A3B, Qwen3.5-122B-A10B, and Deepseek-V4-Pro.",
+        "paper_quote": "We compare LLM4AIGQ with two major types of baselines: (1) zero-shot LLMs, including several advanced models and larger variants from the same model family, all evaluated without any domain adaptation; and (2) variants of LLM4AIGQ.",
+        "reason": null
+      },
+      "chk_conclusion": {
+        "value": "LLM4AIGQ effectively generates high-quality, multi-interest-aware AI guidance queries and demonstrates strong performance in both offline and online evaluations.",
+        "paper_quote": "In this work, to address issues in traditional shopping guidance query generation pipelines, such as semantic drift and the inability to capture personalized user intent, we propose an LLM-based AI guidance query generation framework for multi-interest users.",
+        "reason": null
+      },
+      "chk_limitation": {
+        "value": null,
+        "paper_quote": null,
+        "reason": "The paper does not explicitly discuss limitations or implications of the proposed method."
+      }
+    }
+  },
+  "raw": "{\n  \"summary\": \"The paper introduces LLM4AIGQ, a framework for generating AI guidance queries tailored to users' multi-interests in e-commerce. It employs a three-stage training pipeline (SFT, RL, DPO) to improve the quality and relevance of generated queries. The framework demonstrates strong performance in both offline evaluations and online A/B tests, showing significant improvements in user engagement metrics.\",\n  \"items\": {\n    \"chk_problem\": {\n      \"value\": \"Traditional AI-generated queries suffer from semantic drift and fail to capture user multi-interests, leading to low-value guidance queries.\",\n      \"paper_quote\": \"This approach suffers from semantic drift due to information cascade loss; additionally, primary search query derivation heavily depends on 'user-item' co-occurrence relationships, lacking exploration of user multi-interests, resulting in guidance queries with low value and mismatched purchase intent.\",\n      \"reason\": null\n    },\n    \"chk_method\": {\n      \"value\": \"LLM4AIGQ framework with a three-stage SFT–RL–DPO training pipeline for multi-interest-aware AI guidance query generation.\",\n      \"paper_quote\": \"In summary, we propose LLM4AIGQ, an LLM-based framework for multi-interest-aware AI guidance query generation, with a three-stage SFT–RL–DPO training pipeline.\",\n      \"reason\": null\n    },\n    \"chk_data\": {\n      \"value\": \"Datasets sampled from Taobao and Tmall user interaction logs from June to July 2026, with 8,000 instances for short-title fine-tuning and 11,259 instances for SFT training.\",\n      \"paper_quote\": \"Our datasets are sampled from multi-behavior user interaction logs on the Taobao and Tmall e-commerce platforms, covering the period from June to July 2026.\",\n      \"reason\": null\n    },\n    \"chk_setup\": {\n      \"value\": \"LLM4AIGQ uses Qwen3-30B-A3B as the backbone model, trained on NVIDIA H20 GPUs with specific configurations for SFT, RL, and DPO stages.\",\n      \"paper_quote\": \"LLM4AIGQ adopts Qwen3-30B-A3B as the backbone model and is trained on NVIDIA H20 GPUs.\",\n      \"reason\": null\n    },\n    \"chk_primary_result\": {\n      \"value\": \"LLM4AIGQ-ONESFT+RL+DPO achieves Recall@10 of 0.2101 and S ratio of 0.8616 on the Taobao dataset.\",\n      \"paper_quote\": \"LLM4AIGQ-ONESFT+RL+DPO 0.2101 0.2377 0.2684 0.2658 0.3709 0.3047 0.8616 0.0274 0.1109\",\n      \"reason\": null\n    },\n    \"chk_secondary_result\": {\n      \"value\": \"LLM4AIGQ-ONESFT+RL+DPO achieved a 4.46% improvement in uCTR in a 10% traffic online A/B test and maintained a 2.53% gain in a 40% traffic test over six days.\",\n      \"paper_quote\": \"In the initial 10% traffic experiment, the experimental group achieved a 4.46% improvement in uCTR compared with the baseline bucket. After scaling the traffic to 40%, the overall uCTR still maintained a positive gain of 2.53% over six days of online validation, demonstrating strong generalization capability and online stability under larger-scale deployment.\",\n      \"reason\": null\n    },\n    \"chk_baseline\": {\n      \"value\": \"LLM4AIGQ is compared against zero-shot LLMs and variants of itself, including Qwen3-30B-A3B, Qwen3.5-122B-A10B, and Deepseek-V4-Pro.\",\n      \"paper_quote\": \"We compare LLM4AIGQ with two major types of baselines: (1) zero-shot LLMs, including several advanced models and larger variants from the same model family, all evaluated without any domain adaptation; and (2) variants of LLM4AIGQ.\",\n      \"reason\": null\n    },\n    \"chk_conclusion\": {\n      \"value\": \"LLM4AIGQ effectively generates high-quality, multi-interest-aware AI guidance queries and demonstrates strong performance in both offline and online evaluations.\",\n      \"paper_quote\": \"In this work, to address issues in traditional shopping guidance query generation pipelines, such as semantic drift and the inability to capture personalized user intent, we propose an LLM-based AI guidance query generation framework for multi-interest users.\",\n      \"reason\": null\n    },\n    \"chk_limitation\": {\n      \"value\": null,\n      \"paper_quote\": null,\n      \"reason\": \"The paper does not explicitly discuss limitations or implications of the proposed method.\"\n    }\n  }\n}"
+}

@@ -1,0 +1,49 @@
+{
+  "model": "openai.gpt-4o",
+  "reference_prompt_sha256": "a63f2a103bd381061f0d6560fdaf2e1bd28c503af09ee38a529d0648f4594fd3",
+  "error": null,
+  "tokens_in": 22707,
+  "tokens_out": 1008,
+  "parsed": {
+    "summary": "The paper introduces ALBIREO, a detector-agnostic, codec-free, adaptive inference framework for video object detection on edge devices. ALBIREO uses a Kalman filter-based uncertainty trigger, a rescue mechanism, and an empty-scene screen to improve the accuracy-energy-latency tradeoff. Evaluated on the BDD100K dataset with three detectors and two Jetson platforms, ALBIREO achieves up to 17.6% energy savings while maintaining AP@50 within ±1.2 percentage points of per-frame inference.",
+    "items": {
+      "chk_problem": {
+        "value": "Video object detection on edge devices is computationally expensive and energy-intensive due to the need to process long frame streams with high temporal redundancy.",
+        "paper_quote": "Video object detection on edge devices requires running computationally expensive detectors over long frame streams, leading to high energy consumption and sustained GPU utilization."
+      },
+      "chk_method": {
+        "value": "ALBIREO uses a Kalman filter-based uncertainty trigger, a rescue mechanism, and an empty-scene screen to adaptively skip frames and improve efficiency.",
+        "paper_quote": "We present ALBIREO, a detector-agnostic, codec-free, adaptive inference framework that wraps off-the-shelf object detectors and decides when detector invocation can be safely skipped based on scene content and per-object temporal state."
+      },
+      "chk_data": {
+        "value": "BDD100K dataset’s multi-object tracking (MOT) validation split with 200 dashcam clips and 7 object classes.",
+        "paper_quote": "We evaluate ALBIREO on the BDD100K dataset’s multi-object tracking (MOT) validation split using three architecturally distinct detectors (YOLO11x, YOLO26x, and RF-DETR-Large) on two NVIDIA Jetson platforms (AGX Thor and AGX Orin)."
+      },
+      "chk_setup": {
+        "value": "Evaluation on NVIDIA Jetson AGX Thor and AGX Orin platforms using YOLO11x, YOLO26x, and RF-DETR-Large detectors.",
+        "paper_quote": "We evaluate ALBIREO on the BDD100K MOT across three architecturally distinct detectors (YOLO11x, YOLO26x, RF-DETR-Large) and two Jetson SoC generations (AGX Thor and AGX Orin)."
+      },
+      "chk_primary_result": {
+        "value": "ALBIREO improves AP@50 by +0.8 pp while reducing energy by 17.6% on Thor and 14.4% on Orin.",
+        "paper_quote": "On the primary YOLO26x configuration, at its default operating point, ALBIREO improves the accuracy–energy–latency tradeoff over Vanilla per-frame inference: on Thor, it improves AP@50 by +0.8 pp while reducing energy by 17.6%, frame time by 8.8%, and per-frame energy-delay product (EDP) by 24.9%; on Orin, it achieves the same AP@50 gain with 14.4% lower energy and 26.1% lower EDP."
+      },
+      "chk_secondary_result": {
+        "value": "ALBIREO forms the upper AP@50–EDP Pareto frontier over evaluated baselines in the target operating region (AP@50 ≥ 0.50).",
+        "paper_quote": "Sweeping the primary uncertainty threshold on YOLO26x traces an AP@50–EDP Pareto frontier that dominates the evaluated frame-skipping baselines (FixedSkip-N, CTD, Statues) within the target operating region (AP@50 ≥ 0.50)."
+      },
+      "chk_baseline": {
+        "value": "Compared against FixedSkip-N, CTD, Statues, and ERD-only baselines.",
+        "paper_quote": "We compare ALBIREO against five families of frame-skipping baselines."
+      },
+      "chk_conclusion": {
+        "value": "ALBIREO is a practical drop-in efficiency layer for off-the-shelf edge video detection pipelines, improving the accuracy-energy-latency tradeoff.",
+        "paper_quote": "These results show that using the object-level temporal state can serve as a practical drop-in efficiency layer for off-the-shelf edge video detection pipelines."
+      },
+      "chk_limitation": {
+        "value": "Kalman dynamics may drift under erratic motion, and the empty-scene screen is domain-dependent.",
+        "paper_quote": "The constant-acceleration Kalman dynamics fit many vehicle-dominated dashcam scenes, but can drift under highly erratic motion, such as a pedestrian making an abrupt lateral move at a crosswalk."
+      }
+    }
+  },
+  "raw": "{\n  \"summary\": \"The paper introduces ALBIREO, a detector-agnostic, codec-free, adaptive inference framework for video object detection on edge devices. ALBIREO uses a Kalman filter-based uncertainty trigger, a rescue mechanism, and an empty-scene screen to improve the accuracy-energy-latency tradeoff. Evaluated on the BDD100K dataset with three detectors and two Jetson platforms, ALBIREO achieves up to 17.6% energy savings while maintaining AP@50 within ±1.2 percentage points of per-frame inference.\",\n  \"items\": {\n    \"chk_problem\": {\n      \"value\": \"Video object detection on edge devices is computationally expensive and energy-intensive due to the need to process long frame streams with high temporal redundancy.\",\n      \"paper_quote\": \"Video object detection on edge devices requires running computationally expensive detectors over long frame streams, leading to high energy consumption and sustained GPU utilization.\"\n    },\n    \"chk_method\": {\n      \"value\": \"ALBIREO uses a Kalman filter-based uncertainty trigger, a rescue mechanism, and an empty-scene screen to adaptively skip frames and improve efficiency.\",\n      \"paper_quote\": \"We present ALBIREO, a detector-agnostic, codec-free, adaptive inference framework that wraps off-the-shelf object detectors and decides when detector invocation can be safely skipped based on scene content and per-object temporal state.\"\n    },\n    \"chk_data\": {\n      \"value\": \"BDD100K dataset’s multi-object tracking (MOT) validation split with 200 dashcam clips and 7 object classes.\",\n      \"paper_quote\": \"We evaluate ALBIREO on the BDD100K dataset’s multi-object tracking (MOT) validation split using three architecturally distinct detectors (YOLO11x, YOLO26x, and RF-DETR-Large) on two NVIDIA Jetson platforms (AGX Thor and AGX Orin).\"\n    },\n    \"chk_setup\": {\n      \"value\": \"Evaluation on NVIDIA Jetson AGX Thor and AGX Orin platforms using YOLO11x, YOLO26x, and RF-DETR-Large detectors.\",\n      \"paper_quote\": \"We evaluate ALBIREO on the BDD100K MOT across three architecturally distinct detectors (YOLO11x, YOLO26x, RF-DETR-Large) and two Jetson SoC generations (AGX Thor and AGX Orin).\"\n    },\n    \"chk_primary_result\": {\n      \"value\": \"ALBIREO improves AP@50 by +0.8 pp while reducing energy by 17.6% on Thor and 14.4% on Orin.\",\n      \"paper_quote\": \"On the primary YOLO26x configuration, at its default operating point, ALBIREO improves the accuracy–energy–latency tradeoff over Vanilla per-frame inference: on Thor, it improves AP@50 by +0.8 pp while reducing energy by 17.6%, frame time by 8.8%, and per-frame energy-delay product (EDP) by 24.9%; on Orin, it achieves the same AP@50 gain with 14.4% lower energy and 26.1% lower EDP.\"\n    },\n    \"chk_secondary_result\": {\n      \"value\": \"ALBIREO forms the upper AP@50–EDP Pareto frontier over evaluated baselines in the target operating region (AP@50 ≥ 0.50).\",\n      \"paper_quote\": \"Sweeping the primary uncertainty threshold on YOLO26x traces an AP@50–EDP Pareto frontier that dominates the evaluated frame-skipping baselines (FixedSkip-N, CTD, Statues) within the target operating region (AP@50 ≥ 0.50).\"\n    },\n    \"chk_baseline\": {\n      \"value\": \"Compared against FixedSkip-N, CTD, Statues, and ERD-only baselines.\",\n      \"paper_quote\": \"We compare ALBIREO against five families of frame-skipping baselines.\"\n    },\n    \"chk_conclusion\": {\n      \"value\": \"ALBIREO is a practical drop-in efficiency layer for off-the-shelf edge video detection pipelines, improving the accuracy-energy-latency tradeoff.\",\n      \"paper_quote\": \"These results show that using the object-level temporal state can serve as a practical drop-in efficiency layer for off-the-shelf edge video detection pipelines.\"\n    },\n    \"chk_limitation\": {\n      \"value\": \"Kalman dynamics may drift under erratic motion, and the empty-scene screen is domain-dependent.\",\n      \"paper_quote\": \"The constant-acceleration Kalman dynamics fit many vehicle-dominated dashcam scenes, but can drift under highly erratic motion, such as a pedestrian making an abrupt lateral move at a crosswalk.\"\n    }\n  }\n}"
+}

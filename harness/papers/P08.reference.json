@@ -1,0 +1,202 @@
+{
+  "paper_id": "P08",
+  "created_at": "2026-11-01T18:30:12+00:00",
+  "models": [
+    "gemini-3.5-flash",
+    "openai.gpt-4o"
+  ],
+  "reference_prompt_sha256": "a63f2a103bd381061f0d6560fdaf2e1bd28c503af09ee38a529d0648f4594fd3",
+  "paper_text_sha256": "048dad5de95d2aae9179ddfd7d45c673c0039825f2e27b07966865ae9b6aecc5",
+  "summary": "This paper introduces CLASVS, a continuous-latent autoregressive model for melody-preserving lyric editing in singing voice synthesis. It utilizes State-Control-Transition (SCT) routing and Progressive State-Control Grounding (PSCG) to resolve the conflict between target lyrics and reference melody without requiring paired counterfactual edit recordings. The model achieves a 46.2% reduction in macro-phoneme error rate (macro-PER) compared to the discrete-AR Vevo2 baseline while maintaining high naturalness and lyric intelligibility.",
+  "items": {
+    "chk_problem": {
+      "status": "uncertain",
+      "why": "drafts differ",
+      "drafts": [
+        {
+          "value": "Removing score annotations in melody-preserving lyric editing creates a selective-preservation problem where the model must retain reference performance characteristics while rejecting source lyrics.",
+          "paper_quote": "Removing score annotations, however, creates a selective-preservation problem: the model must retain the performance characteristics carried by the reference while rejecting its source lyrics.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "The challenge of editing lyrics in singing voice synthesis while preserving melody, timing, singer identity, and naturalness.",
+          "paper_quote": "Melody-preserving lyric editing changes the words of a singing performance while retaining its melody, timing, singer identity, and naturalness.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ],
+      "paper_excerpt": "Abstract\nReference-conditioned melody-preserving lyric editing replaces words while retaining a performance’s timing, singer\nidentity, and naturalness. Continuous-latent autoregression\navoids finite codebooks and offers stepwise generation with\nlearned stopping. Editing creates a conflict absent from ordinary reconstruction: training pairs reference cues with original lyrics, whereas inference asks revised lyrics to override\nsource-lyric-correlated cues; one source-following patch can\npropagate through AR history. We introduce CLASVS. Its\nState–Control–Transition (SCT) routing keeps target-lyric and\nreference-melody controls persistent, returns semantic feedback on phonetic progress to the causal planner, and confines the previous latent patch to the local Transition. Progressive State–Control Grounding (PSCG) learns this contract through paired-edit-free, content-consistent Mandarin\nreconstruction. On two Mandarin benchmarks, CLASVS improves all four operations over discrete-AR Vevo2 and reduces\nmacro-PER by 46.2%, while maintaining melody, singer similarity, and perceptual quality. Together, these results establish a strong continuous-AR operating point for scoreannotation-free lyric edits and a basis for broader stepwise\ncontrol. Audio demonstrations are available on our project\npage: https://piedpiperg.github.io/clasvs-demo/.\n\nIntroduction\nMelody-preserving lyric editing changes the words of a\nsinging performance while retaining its melody, timing,\nsinger identity, and naturalness. Score-conditioned singing\nvoice synthesis provides precise control through aligned\nphonemes, notes, and durations, but such annotations are\ncostly for arbitrary recordings (Liu et al. 2022; Zhang et al.\n2023; Chunhui, Zeng, and He 2023; Kim, Cho, and Lee\n2024; Wang et al. 2024; Zhang et al. 2024b; Wang et al.\n2022; Zhang et al. 2022a, 2024a; Bai et al. 2026). Referenceconditioned lyric editing instead accepts a singing recording\nand revised lyrics directly (Zhang et al. 2022b, 2026; Hao\net al. 2026; Park, Im, and Nam 2026). Removing score annotations, however, creates a selective-preservation problem:\nthe model must retain the performance characteristics carried\nby the reference while rejecting its source lyrics.\n∗\n†\n\nEqual contribution.\nCorresponding authors."
+    },
+    "chk_method": {
+      "status": "accepted",
+      "value": "CLASVS uses State-Control-Transition (SCT) routing to separate global lyric planning from local acoustic continuity, and Progressive State-Control Grounding (PSCG) to learn this routing without paired counterfactual edit recordings.",
+      "paper_quote": "Its State–Control–Transition (SCT) routing keeps target-lyric and reference-melody controls persistent, returns semantic feedback on phonetic progress to the causal planner, and confines the previous latent patch to the local Transition.",
+      "drafts": [
+        {
+          "value": "CLASVS uses State-Control-Transition (SCT) routing to separate global lyric planning from local acoustic continuity, and Progressive State-Control Grounding (PSCG) to learn this routing without paired counterfactual edit recordings.",
+          "paper_quote": "Its State–Control–Transition (SCT) routing keeps target-lyric and reference-melody controls persistent, returns semantic feedback on phonetic progress to the causal planner, and confines the previous latent patch to the local Transition.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "CLASVS uses a State–Control–Transition (SCT) editing contract and Progressive State–Control Grounding (PSCG) for melody-preserving lyric editing.",
+          "paper_quote": "CLASVS addresses this challenge with a State–Control–Transition (SCT) editing contract.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ]
+    },
+    "chk_data": {
+      "status": "accepted",
+      "value": "The model is trained on approximately 8,000 hours of Mandarin singing, 2,000 hours of Mandarin Emilia speech, and 300 hours of curated open-source singing.",
+      "paper_quote": "Training audio comprises about 8,000 hours of permission-documented Mandarin singing, 2,000 hours of Mandarin Emilia speech (He et al. 2024), and 300 hours of curated open-source singing; all data are Mandarin.",
+      "drafts": [
+        {
+          "value": "The model is trained on approximately 8,000 hours of Mandarin singing, 2,000 hours of Mandarin Emilia speech, and 300 hours of curated open-source singing.",
+          "paper_quote": "Training audio comprises about 8,000 hours of permission-documented Mandarin singing, 2,000 hours of Mandarin Emilia speech (He et al. 2024), and 300 hours of curated open-source singing; all data are Mandarin.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "About 8,000 hours of Mandarin singing, 2,000 hours of Mandarin Emilia speech, and 300 hours of curated open-source singing.",
+          "paper_quote": "Training audio comprises about 8,000 hours of permission-documented Mandarin singing, 2,000 hours of Mandarin Emilia speech (He et al. 2024), and 300 hours of curated open-source singing; all data are Mandarin.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ]
+    },
+    "chk_setup": {
+      "status": "uncertain",
+      "why": "drafts differ",
+      "drafts": [
+        {
+          "value": "The experimental setup uses three 120K-update seeds trained with BF16, ZeRO-2, AdamW, and a global batch size of 128.",
+          "paper_quote": "Three 120K-update seeds use BF16, ZeRO-2, AdamW, and global batch 128.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "Evaluation on two Mandarin benchmarks using reference audio and target lyrics under a common automatic-input protocol.",
+          "paper_quote": "We evaluate two Mandarin benchmarks under a common automatic-input protocol using reference audio and target lyrics.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ],
+      "paper_excerpt": "Two architectural axes shape selective preservation. Discrete codecs compact acoustic streams for autoregressive\n(AR) modeling (Zeghidour et al. 2022; Défossez et al. 2023;\nKumar et al. 2023; Wu et al. 2024; Zhang et al. 2026), but\nfinite codebooks may lose subtle variation, whereas continuous or tokenizer free latent models reduce dependence on\nfixed codebooks and offer strong fidelity or scalable generation (Le et al. 2023; Shen et al. 2024; Mehta et al. 2024; Meng\net al. 2025; Yang et al. 2025b). Generation order adds a complementary tradeoff: continuous nonautoregressive (NAR)\nsystems such as YingMusic-Singer-Plus (YingMusic+) enable parallel generation, whereas AR provides stepwise state\nand learned stopping. Existing continuous AR models such\nas DiTAR and SemaVoice mainly target content consistent\nsynthesis (Jia et al. 2025; Wang et al. 2026), leaving unresolved the supervision mismatch in reference-conditioned\nlyric editing under reconstruction only supervision.\nThis mismatch is especially severe in singing. Recent continuous or tokenizer free AR speech systems learn content\nconsistent synthesis (Lian et al. 2026; Peng et al. 2025; Zhou\net al. 2025), while unified speech editors rely on explicit instruction based editing supervision (Yan et al. 2025); neither\nsetting directly provides singing counterfactuals, because\nresinging different lyrics also changes timing, phrasing, and\nacoustics. We therefore train on same-recording tuples whose\nreference, transcript, and acoustic target come from one performance, but this scalable reconstruction never exposes a\nconflict between reference and target lyrics or an edit template. At inference, revised lyrics create this unseen conflict,\nand one patch that follows the source lyrics can bias later AR\nhistory, requiring generalization without paired edits rather\nthan memorized edit transformations.\nCLASVS addresses this challenge with a State–Control–\nTransition (SCT) editing contract. Target lyrics and reference\nmelody remain persistent Control; a frozen causal semantic encoder returns feedback on realized phonetic progress\nas recurrent State (Qian et al. 2022; Chen et al. 2022; Li\net al. 2024); and the previous AudioVAE latent patch enters\nonly the local Transition. This separates global lyric planning from local acoustic continuity. Latent patches never\nre-enter the causal planner, preserving continuity without\nbiasing lyric planning. Progressive State–Control Grounding (PSCG) grounds this routing through paired-edit-free,\n\ncontent-consistent reconstruction. State Grounding pretrains\nthen freezes the semantic encoder, Control Grounding perturbs melody cues and the previous latent patch, and Task\nGrounding transfers Mandarin coverage to curated singing.\nIt needs no paired counterfactual edit recordings.\nWe evaluate two Mandarin benchmarks under a common\nautomatic-input protocol using reference audio and target\nlyrics. Vevo2 is the primary comparator because it shares\nCLASVS’s sequential interface but predicts discrete acoustic tokens rather than continuous AudioVAE latent patches\n(Zhang et al. 2026). CLASVS improves all four operations over Vevo2, reducing macro-PER from .0699 to .0376\n(46.2%); the profile transfers to the public benchmark. YingMusic+ is the complementary continuous-NAR comparator (Hao et al. 2026): it remains stronger on substitution,\nglobal duration, and steady-tail speed, while Vevo2 has the\nlowest cold-start RTF; CLASVS leads deletion, insertion,\nmacro-PER, voiced-onset MAE, naturalness, and lyric intelligibility. The two comparators expose complementary\nsystem trade-offs. Matched ablations provide within-stack\nSCT/PSCG evidence. Our contributions are:\n\nTraining Tuples and the Content Conflict\n\nLtext is causally shifted cross-entropy on nonpadding targetlyric positions during prefix teacher forcing; melody tokens,\nseparators, and recurrent semantic feedback are excluded. It\nis a planner-side target-content regularizer, not direct acoustic or counterfactual supervision; its effect on generated audio is tested by ablation. Lstop is balanced cross-entropy\nwith the final valid patch labeled stop. Joint lyric–melody–\nsinger dropout (p = .10) trains the unconditional guidance\nbranch (Ho and Salimans 2022), which supports classifierfree guidance during sampling. We optimize the planner,\nadapters, Flow-DiT, and heads while freezing all frontends.\nEach patch starts from Gaussian noise and uses 24 Euler steps\nwith guidance 2.0. We emit one candidate, stop at posterior\n.5 or the rollout budget, concatenate the patches, and decode\nonce; the companion archive includes executable reference\ncode and module cards.\n\nExperiments\nData, Comparators, and Statistics\nTraining audio comprises about 8,000 hours of permissiondocumented Mandarin singing, 2,000 hours of Mandarin\nEmilia speech (He et al. 2024), and 300 hours of curated\nopen-source singing; all data are Mandarin. Study-specific\nevaluation recordings came from consenting singers and\ncontain no private information"
+    },
+    "chk_primary_result": {
+      "status": "accepted",
+      "value": "CLASVS reduces macro-PER by 46.2% compared to the discrete-AR Vevo2 baseline across two Mandarin benchmarks.",
+      "paper_quote": "On two Mandarin benchmarks, CLASVS improves all four operations over discrete-AR Vevo2 and reduces macro-PER by 46.2%, while maintaining melody, singer similarity, and perceptual quality.",
+      "drafts": [
+        {
+          "value": "CLASVS reduces macro-PER by 46.2% compared to the discrete-AR Vevo2 baseline across two Mandarin benchmarks.",
+          "paper_quote": "On two Mandarin benchmarks, CLASVS improves all four operations over discrete-AR Vevo2 and reduces macro-PER by 46.2%, while maintaining melody, singer similarity, and perceptual quality.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "CLASVS reduces macro-PER by 46.2% versus discrete-AR Vevo2 across two Mandarin benchmarks, from 0.0699 to 0.0376.",
+          "paper_quote": "CLASVS improves all four operations over Vevo2, reducing macro-PER from .0699 to .0376 (46.2%).",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ]
+    },
+    "chk_secondary_result": {
+      "status": "accepted",
+      "value": "CLASVS improves naturalness (N-MOS) by +.48 and lyric intelligibility (L-MOS) by +.32 over the continuous-NAR comparator YingMusic+.",
+      "paper_quote": "CLASVS improves N-MOS by +.48 [+.34, +.62] and L-MOS by +.32 [+.20, +.44] over YingMusic+ under the same listening protocol; M-MOS differs by an undetectable +.01.",
+      "drafts": [
+        {
+          "value": "CLASVS improves naturalness (N-MOS) by +.48 and lyric intelligibility (L-MOS) by +.32 over the continuous-NAR comparator YingMusic+.",
+          "paper_quote": "CLASVS improves N-MOS by +.48 [+.34, +.62] and L-MOS by +.32 [+.20, +.44] over YingMusic+ under the same listening protocol; M-MOS differs by an undetectable +.01.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "CLASVS improves naturalness (N-MOS) by +0.48 and lyric intelligibility (L-MOS) by +0.32 over YingMusic+.",
+          "paper_quote": "CLASVS N-MOS rises from 3.65 to 4.13 (+.48 [+.34, +.62], adjusted p < .001), reflecting a marked listener preference in naturalness and acoustic clarity.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ]
+    },
+    "chk_baseline": {
+      "status": "accepted",
+      "value": "The primary baseline is Vevo2, a discrete autoregressive model, and the complementary baseline is YingMusic+, a continuous non-autoregressive model.",
+      "paper_quote": "Vevo2 is the primary comparator because it shares CLASVS’s sequential interface but predicts discrete acoustic tokens rather than continuous AudioVAE latent patches (Zhang et al. 2026).",
+      "drafts": [
+        {
+          "value": "The primary baseline is Vevo2, a discrete autoregressive model, and the complementary baseline is YingMusic+, a continuous non-autoregressive model.",
+          "paper_quote": "Vevo2 is the primary comparator because it shares CLASVS’s sequential interface but predicts discrete acoustic tokens rather than continuous AudioVAE latent patches (Zhang et al. 2026).",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "Compared against Vevo2 (discrete-AR) and YingMusic+ (continuous-NAR) under the common automatic-input protocol.",
+          "paper_quote": "Vevo2 is the primary discrete-AR comparator because it shares CLASVS’s sequential interface but predicts discrete acoustic tokens rather than continuous AudioVAE latent patches (Zhang et al. 2026).",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ]
+    },
+    "chk_conclusion": {
+      "status": "uncertain",
+      "why": "drafts differ",
+      "drafts": [
+        {
+          "value": "CLASVS successfully establishes continuous-latent autoregression for melody-preserving Mandarin lyric editing without requiring manual score annotations.",
+          "paper_quote": "CLASVS establishes continuous-latent autoregression for melody-preserving Mandarin lyric editing without manual score annotations.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "CLASVS establishes a continuous-AR foundation for melody-preserving lyric editing with improved accuracy and naturalness.",
+          "paper_quote": "These results provide a continuous-AR foundation for broader controllable singing performance.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ],
+      "paper_excerpt": "Limitations, Reproducibility, and Ethics\nEvaluation uses one recognizer and reference-timing metrics on Mandarin 2–6-syllable edits; cross-lingual and longedit validation remain open. Upon publication, we will release training, inference, and evaluation code/configurations,\nper-item scores, CLA-LyricEdit-320 annotations and permitted audio, plus identity-authorized inference checkpoints; restricted training audio cannot be redistributed.\nRecognizable-voice editing can enable impersonation\n(Zang et al. 2024). Source-level permissions, opt-out and removal procedures, identity-authorized access, and localized\nprovenance therefore govern data use, checkpoint release,\nand responses to misuse reports (Roman et al. 2024).\n\nConclusion\nCLASVS establishes continuous-latent autoregression for\nmelody-preserving Mandarin lyric editing without manual\nscore annotations. Its SCT editing contract separates targetlyric and reference-melody controls, semantic feedback on\nphonetic progress, and the previous AudioVAE latent patch;\nPSCG grounds this routing through content-consistent reconstruction. It follows revised lyrics without paired counterfactual edit recordings. Under the common automatic-input protocol, CLASVS improves every Vevo2 operation and attains\nthe lowest macro-PER, especially on deletion and insertion.\nIt preserves melody and singer identity while improving naturalness and lyric intelligibility over the continuous-NAR\ncomparator, though parallel generation is faster and stronger\non substitution. Interventions show semantic feedback guides\nprogress while the previous latent patch preserves local continuity. These results provide a continuous-AR foundation\nfor broader controllable singing performance.\n\nReferences\nBai, B.; Geng, Y.; Wang, F.; Wang, C.; Guo, P.; Gao, Y.;\nand Li, Y. 2026. HQ-SVC: Towards High-Quality Zero-Shot\nSinging Voice Conversion in Low-Resource Scenarios. In\nProceedings of the 40th Conference on Artificial Intelligence,\nvolume 40(36), 30013–30021.\nCamp, J.; Kenter, T.; Finkelstein, L.; and Clark, R. 2023.\nMOS vs. AB: Evaluating Text-to-Speech Systems Reliably\nUsing Clustered Standard Errors. In Proceedings of Interspeech 2023, 1090–1094.\nChen, S.; Wang, C.; Chen, Z.; Wu, Y.; Liu, S.; et al. 2022.\nWavLM: Large-Scale Self-Supervised Pre-Training for Full\nStack Speech Processing. IEEE Journal of Selected Topics\nin Signal Processing, 16(6): 1505–1518.\nChunhui, W.; Zeng, C.; and He, X. 2023. XiaoiceSing 2:\nA High-Fidelity Singing Voice Synthesizer Based on Generative Adversarial Network. In Proceedings of Interspeech\n2023, 5401–5405.\nDéfossez, A.; Copet, J.; Synnaeve, G.; and Adi, Y. 2023.\nHigh Fidelity Neural Audio Compression. Transactions on\nMachine Learning Research.\nGeng, Y.; Li, Y.; Yang, J.; Jiang, T.; An, B.; Li, Y.; and Shen,\nX. 2026. Bridging the Stability-Expressivity Gap: Synthetic\nData Scaling and Preference Alignment for Low-Resource\nSpoken Language Models. arXiv preprint arXiv:2605.27383.\nHao, C.; Zheng, J.; Ma, G.; Jiang, Y.; Chen, H.; et al.\n2026. YingMusic-Singer: Controllable Singing Voice Synthesis with Flexible Lyric Manipulation and Annotationfree Melody Guidance. Forthcoming in Interspeech 2026,\narXiv:2603.24589.\nHe, H.; et al. 2024. Emilia: An Extensive, Multilingual, and\nDiverse Speech Dataset for Large-Scale Speech Generation.\nIn 2024 IEEE Spoken Language Technology Workshop (SLT),\n885–890. IEEE.\nHo, J.; and Salimans, T. 2022. Classifier-Free Diffusion\nGuidance. arXiv:2207.12598.\nJia, D.; et al. 2025. DiTAR: Diffusion Transformer Autoregressive Modeling for Speech Generation. In Proceedings\nof the 42nd International Conference on Machine Learning,\nvolume 267 of Proceedings of Machine Learning Research,\n27255–27270. PMLR.\nKim, T.; Cho, C.; and Lee, Y. H. 2024. Period Singer: Integrating Periodic and Aperiodic Variational Autoencoders\nfor Natural-Sounding End-to-End Singing Voice Synthesis.\nIn Proceedings of Interspeech 2024, 1875–1879.\nKirkland, A.; Mehta, S.; Lameris, H.; Henter, G. E.; Szekely,\nE.; and Gustafson, J. 2023. Stuck in the MOS Pit: A Critical\nAnalysis of MOS Test Methodology in TTS Evaluation. In\nProceedings of the 12th ISCA Speech Synthesis Workshop,\n41–47.\nKumar, R.; Seetharaman, P.; Luebs, A.; Kumar, I.; and Kumar, K. 2023. High-Fidelity Audio Compression with Improved RVQGAN. In Advances in Neural Information Processing Systems, volume 36."
+    },
+    "chk_limitation": {
+      "status": "accepted",
+      "value": "The evaluation is limited to a single recognizer and reference-timing metrics on Mandarin 2–6-syllable edits, leaving cross-lingual and long-edit validation as open challenges.",
+      "paper_quote": "Evaluation uses one recognizer and reference-timing metrics on Mandarin 2–6-syllable edits; cross-lingual and long-edit validation remain open.",
+      "drafts": [
+        {
+          "value": "The evaluation is limited to a single recognizer and reference-timing metrics on Mandarin 2–6-syllable edits, leaving cross-lingual and long-edit validation as open challenges.",
+          "paper_quote": "Evaluation uses one recognizer and reference-timing metrics on Mandarin 2–6-syllable edits; cross-lingual and long-edit validation remain open.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "Evaluation is limited to Mandarin 2–6-syllable edits, and cross-lingual and long-edit validation remain open.",
+          "paper_quote": "Evaluation uses one recognizer and reference-timing metrics on Mandarin 2–6-syllable edits; cross-lingual and long-edit validation remain open.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ]
+    }
+  }
+}

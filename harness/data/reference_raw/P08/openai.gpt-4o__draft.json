@@ -1,0 +1,49 @@
+{
+  "model": "openai.gpt-4o",
+  "reference_prompt_sha256": "a63f2a103bd381061f0d6560fdaf2e1bd28c503af09ee38a529d0648f4594fd3",
+  "error": null,
+  "tokens_in": 11670,
+  "tokens_out": 832,
+  "parsed": {
+    "summary": "The paper introduces CLASVS, a continuous-latent autoregressive model for melody-preserving lyric editing in singing voice synthesis. It uses a State–Control–Transition (SCT) editing contract and Progressive State–Control Grounding (PSCG) to address the challenge of editing lyrics while preserving melody, singer identity, and naturalness. CLASVS demonstrates significant improvements over existing models like Vevo2 and YingMusic+ in terms of macro-PER, naturalness, and lyric intelligibility, particularly excelling in deletion and insertion tasks.",
+    "items": {
+      "chk_problem": {
+        "value": "The challenge of editing lyrics in singing voice synthesis while preserving melody, timing, singer identity, and naturalness.",
+        "paper_quote": "Melody-preserving lyric editing changes the words of a singing performance while retaining its melody, timing, singer identity, and naturalness."
+      },
+      "chk_method": {
+        "value": "CLASVS uses a State–Control–Transition (SCT) editing contract and Progressive State–Control Grounding (PSCG) for melody-preserving lyric editing.",
+        "paper_quote": "CLASVS addresses this challenge with a State–Control–Transition (SCT) editing contract."
+      },
+      "chk_data": {
+        "value": "About 8,000 hours of Mandarin singing, 2,000 hours of Mandarin Emilia speech, and 300 hours of curated open-source singing.",
+        "paper_quote": "Training audio comprises about 8,000 hours of permission-documented Mandarin singing, 2,000 hours of Mandarin Emilia speech (He et al. 2024), and 300 hours of curated open-source singing; all data are Mandarin."
+      },
+      "chk_setup": {
+        "value": "Evaluation on two Mandarin benchmarks using reference audio and target lyrics under a common automatic-input protocol.",
+        "paper_quote": "We evaluate two Mandarin benchmarks under a common automatic-input protocol using reference audio and target lyrics."
+      },
+      "chk_primary_result": {
+        "value": "CLASVS reduces macro-PER by 46.2% versus discrete-AR Vevo2 across two Mandarin benchmarks, from 0.0699 to 0.0376.",
+        "paper_quote": "CLASVS improves all four operations over Vevo2, reducing macro-PER from .0699 to .0376 (46.2%)."
+      },
+      "chk_secondary_result": {
+        "value": "CLASVS improves naturalness (N-MOS) by +0.48 and lyric intelligibility (L-MOS) by +0.32 over YingMusic+.",
+        "paper_quote": "CLASVS N-MOS rises from 3.65 to 4.13 (+.48 [+.34, +.62], adjusted p < .001), reflecting a marked listener preference in naturalness and acoustic clarity."
+      },
+      "chk_baseline": {
+        "value": "Compared against Vevo2 (discrete-AR) and YingMusic+ (continuous-NAR) under the common automatic-input protocol.",
+        "paper_quote": "Vevo2 is the primary discrete-AR comparator because it shares CLASVS’s sequential interface but predicts discrete acoustic tokens rather than continuous AudioVAE latent patches (Zhang et al. 2026)."
+      },
+      "chk_conclusion": {
+        "value": "CLASVS establishes a continuous-AR foundation for melody-preserving lyric editing with improved accuracy and naturalness.",
+        "paper_quote": "These results provide a continuous-AR foundation for broader controllable singing performance."
+      },
+      "chk_limitation": {
+        "value": "Evaluation is limited to Mandarin 2–6-syllable edits, and cross-lingual and long-edit validation remain open.",
+        "paper_quote": "Evaluation uses one recognizer and reference-timing metrics on Mandarin 2–6-syllable edits; cross-lingual and long-edit validation remain open."
+      }
+    }
+  },
+  "raw": "{\n  \"summary\": \"The paper introduces CLASVS, a continuous-latent autoregressive model for melody-preserving lyric editing in singing voice synthesis. It uses a State–Control–Transition (SCT) editing contract and Progressive State–Control Grounding (PSCG) to address the challenge of editing lyrics while preserving melody, singer identity, and naturalness. CLASVS demonstrates significant improvements over existing models like Vevo2 and YingMusic+ in terms of macro-PER, naturalness, and lyric intelligibility, particularly excelling in deletion and insertion tasks.\",\n  \"items\": {\n    \"chk_problem\": {\n      \"value\": \"The challenge of editing lyrics in singing voice synthesis while preserving melody, timing, singer identity, and naturalness.\",\n      \"paper_quote\": \"Melody-preserving lyric editing changes the words of a singing performance while retaining its melody, timing, singer identity, and naturalness.\"\n    },\n    \"chk_method\": {\n      \"value\": \"CLASVS uses a State–Control–Transition (SCT) editing contract and Progressive State–Control Grounding (PSCG) for melody-preserving lyric editing.\",\n      \"paper_quote\": \"CLASVS addresses this challenge with a State–Control–Transition (SCT) editing contract.\"\n    },\n    \"chk_data\": {\n      \"value\": \"About 8,000 hours of Mandarin singing, 2,000 hours of Mandarin Emilia speech, and 300 hours of curated open-source singing.\",\n      \"paper_quote\": \"Training audio comprises about 8,000 hours of permission-documented Mandarin singing, 2,000 hours of Mandarin Emilia speech (He et al. 2024), and 300 hours of curated open-source singing; all data are Mandarin.\"\n    },\n    \"chk_setup\": {\n      \"value\": \"Evaluation on two Mandarin benchmarks using reference audio and target lyrics under a common automatic-input protocol.\",\n      \"paper_quote\": \"We evaluate two Mandarin benchmarks under a common automatic-input protocol using reference audio and target lyrics.\"\n    },\n    \"chk_primary_result\": {\n      \"value\": \"CLASVS reduces macro-PER by 46.2% versus discrete-AR Vevo2 across two Mandarin benchmarks, from 0.0699 to 0.0376.\",\n      \"paper_quote\": \"CLASVS improves all four operations over Vevo2, reducing macro-PER from .0699 to .0376 (46.2%).\"\n    },\n    \"chk_secondary_result\": {\n      \"value\": \"CLASVS improves naturalness (N-MOS) by +0.48 and lyric intelligibility (L-MOS) by +0.32 over YingMusic+.\",\n      \"paper_quote\": \"CLASVS N-MOS rises from 3.65 to 4.13 (+.48 [+.34, +.62], adjusted p < .001), reflecting a marked listener preference in naturalness and acoustic clarity.\"\n    },\n    \"chk_baseline\": {\n      \"value\": \"Compared against Vevo2 (discrete-AR) and YingMusic+ (continuous-NAR) under the common automatic-input protocol.\",\n      \"paper_quote\": \"Vevo2 is the primary discrete-AR comparator because it shares CLASVS’s sequential interface but predicts discrete acoustic tokens rather than continuous AudioVAE latent patches (Zhang et al. 2026).\"\n    },\n    \"chk_conclusion\": {\n      \"value\": \"CLASVS establishes a continuous-AR foundation for melody-preserving lyric editing with improved accuracy and naturalness.\",\n      \"paper_quote\": \"These results provide a continuous-AR foundation for broader controllable singing performance.\"\n    },\n    \"chk_limitation\": {\n      \"value\": \"Evaluation is limited to Mandarin 2–6-syllable edits, and cross-lingual and long-edit validation remain open.\",\n      \"paper_quote\": \"Evaluation uses one recognizer and reference-timing metrics on Mandarin 2–6-syllable edits; cross-lingual and long-edit validation remain open.\"\n    }\n  }\n}"
+}

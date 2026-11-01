@@ -1,0 +1,49 @@
+{
+  "model": "gemini-3.5-flash",
+  "reference_prompt_sha256": "a63f2a103bd381061f0d6560fdaf2e1bd28c503af09ee38a529d0648f4594fd3",
+  "error": null,
+  "tokens_in": 17904,
+  "tokens_out": 6113,
+  "parsed": {
+    "summary": "This paper proposes LLM4AIGQ, an LLM-based framework for generating personalized AI guidance queries by mining users' multi-interests. The framework uses a three-stage SFT-RL-DPO training pipeline with multi-level rewards to optimize interest segmentation and query generation. Experimental results show that LLM4AIGQ significantly improves user click-through rates in online A/B tests and outperforms various baseline models in offline evaluations.",
+    "items": {
+      "chk_problem": {
+        "value": "Traditional AI-generated query generation suffers from semantic drift and fails to capture users' diverse interests, leading to low-value guidance queries.",
+        "paper_quote": "This approach suffers from semantic drift due to information cascade loss; additionally, primary search query derivation heavily depends on \"user-item\" co-occurrence relationships, lacking exploration of user multi-interests, resulting in guidance queries with low value and mismatched purchase intent."
+      },
+      "chk_method": {
+        "value": "LLM4AIGQ, an LLM-based framework that uses a three-stage SFT-RL-DPO training pipeline to segment user interests and generate personalized AI guidance queries.",
+        "paper_quote": "We propose LLM4AIGQ, an LLM-based framework for multi-interest-aware AI guidance query generation, addressing cascading information loss and insufficient personalized intent modeling in traditional pipelines."
+      },
+      "chk_data": {
+        "value": "User interaction logs from Taobao and Tmall (June-July 2026), including 8,000 short-title instances, 11,259 SFT instances, 3,000 RL samples, 3,500 DPO samples, and 1,000 test samples.",
+        "paper_quote": "Our datasets are sampled from multi-behavior user interaction logs on the Taobao and Tmall e-commerce platforms, covering the period from June to July 2026."
+      },
+      "chk_setup": {
+        "value": "Qwen3-30B-A3B backbone trained on NVIDIA H20 GPUs with LoRA rank 16, using specific batch sizes and learning rates across SFT, RL, and DPO stages.",
+        "paper_quote": "LLM4AIGQ adopts Qwen3-30B-A3B as the backbone model and is trained on NVIDIA H20 GPUs."
+      },
+      "chk_primary_result": {
+        "value": "In online A/B tests, the proposed method achieved a 4.46% improvement in uCTR in the initial 10% traffic experiment, and a 2.53% gain at 40% traffic.",
+        "paper_quote": "In the initial 10% traffic experiment, the experimental group achieved a 4.46% improvement in uCTR compared with the baseline bucket."
+      },
+      "chk_secondary_result": {
+        "value": "In pairwise evaluations against the teacher model, the RL-trained model achieved a win rate of 57.53%, outperforming the teacher model.",
+        "paper_quote": "After RL, the win rate further increases to 57.53%, allowing the student model to surpass the teacher."
+      },
+      "chk_baseline": {
+        "value": "Zero-shot LLMs (such as Qwen3, GPT-oss, and Deepseek-V4-Pro) and different SFT/RL variants of the proposed LLM4AIGQ model.",
+        "paper_quote": "We compare LLM4AIGQ with two major types of baselines: (1) zero-shot LLMs, including several advanced models and larger variants from the same model family, all evaluated without any domain adaptation; and (2) variants of LLM4AIGQ."
+      },
+      "chk_conclusion": {
+        "value": "The LLM4AIGQ framework successfully segments user interests and generates high-quality shopping guidance queries, achieving significant performance gains in online deployment.",
+        "paper_quote": "The framework can autonomously disentangle user interests and generate high-quality shopping guidance queries tailored to users’ consumption intentions, and capabilities."
+      },
+      "chk_limitation": {
+        "value": "There is a trade-off between reasoning quality and inference efficiency when transitioning from thinking mode to non-thinking mode.",
+        "paper_quote": "The small decline reflects a trade-off between reasoning quality and inference efficiency, while most RL-acquired capability is preserved."
+      }
+    }
+  },
+  "raw": "{\n  \"summary\": \"This paper proposes LLM4AIGQ, an LLM-based framework for generating personalized AI guidance queries by mining users' multi-interests. The framework uses a three-stage SFT-RL-DPO training pipeline with multi-level rewards to optimize interest segmentation and query generation. Experimental results show that LLM4AIGQ significantly improves user click-through rates in online A/B tests and outperforms various baseline models in offline evaluations.\",\n  \"items\": {\n    \"chk_problem\": {\n      \"value\": \"Traditional AI-generated query generation suffers from semantic drift and fails to capture users' diverse interests, leading to low-value guidance queries.\",\n      \"paper_quote\": \"This approach suffers from semantic drift due to information cascade loss; additionally, primary search query derivation heavily depends on \\\"user-item\\\" co-occurrence relationships, lacking exploration of user multi-interests, resulting in guidance queries with low value and mismatched purchase intent.\"\n    },\n    \"chk_method\": {\n      \"value\": \"LLM4AIGQ, an LLM-based framework that uses a three-stage SFT-RL-DPO training pipeline to segment user interests and generate personalized AI guidance queries.\",\n      \"paper_quote\": \"We propose LLM4AIGQ, an LLM-based framework for multi-interest-aware AI guidance query generation, addressing cascading information loss and insufficient personalized intent modeling in traditional pipelines.\"\n    },\n    \"chk_data\": {\n      \"value\": \"User interaction logs from Taobao and Tmall (June-July 2026), including 8,000 short-title instances, 11,259 SFT instances, 3,000 RL samples, 3,500 DPO samples, and 1,000 test samples.\",\n      \"paper_quote\": \"Our datasets are sampled from multi-behavior user interaction logs on the Taobao and Tmall e-commerce platforms, covering the period from June to July 2026.\"\n    },\n    \"chk_setup\": {\n      \"value\": \"Qwen3-30B-A3B backbone trained on NVIDIA H20 GPUs with LoRA rank 16, using specific batch sizes and learning rates across SFT, RL, and DPO stages.\",\n      \"paper_quote\": \"LLM4AIGQ adopts Qwen3-30B-A3B as the backbone model and is trained on NVIDIA H20 GPUs.\"\n    },\n    \"chk_primary_result\": {\n      \"value\": \"In online A/B tests, the proposed method achieved a 4.46% improvement in uCTR in the initial 10% traffic experiment, and a 2.53% gain at 40% traffic.\",\n      \"paper_quote\": \"In the initial 10% traffic experiment, the experimental group achieved a 4.46% improvement in uCTR compared with the baseline bucket.\"\n    },\n    \"chk_secondary_result\": {\n      \"value\": \"In pairwise evaluations against the teacher model, the RL-trained model achieved a win rate of 57.53%, outperforming the teacher model.\",\n      \"paper_quote\": \"After RL, the win rate further increases to 57.53%, allowing the student model to surpass the teacher.\"\n    },\n    \"chk_baseline\": {\n      \"value\": \"Zero-shot LLMs (such as Qwen3, GPT-oss, and Deepseek-V4-Pro) and different SFT/RL variants of the proposed LLM4AIGQ model.\",\n      \"paper_quote\": \"We compare LLM4AIGQ with two major types of baselines: (1) zero-shot LLMs, including several advanced models and larger variants from the same model family, all evaluated without any domain adaptation; and (2) variants of LLM4AIGQ.\"\n    },\n    \"chk_conclusion\": {\n      \"value\": \"The LLM4AIGQ framework successfully segments user interests and generates high-quality shopping guidance queries, achieving significant performance gains in online deployment.\",\n      \"paper_quote\": \"The framework can autonomously disentangle user interests and generate high-quality shopping guidance queries tailored to users’ consumption intentions, and capabilities.\"\n    },\n    \"chk_limitation\": {\n      \"value\": \"There is a trade-off between reasoning quality and inference efficiency when transitioning from thinking mode to non-thinking mode.\",\n      \"paper_quote\": \"The small decline reflects a trade-off between reasoning quality and inference efficiency, while most RL-acquired capability is preserved.\"\n    }\n  }\n}"
+}

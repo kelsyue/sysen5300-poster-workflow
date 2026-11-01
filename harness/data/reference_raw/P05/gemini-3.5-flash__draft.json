@@ -1,0 +1,49 @@
+{
+  "model": "gemini-3.5-flash",
+  "reference_prompt_sha256": "a63f2a103bd381061f0d6560fdaf2e1bd28c503af09ee38a529d0648f4594fd3",
+  "error": null,
+  "tokens_in": 10056,
+  "tokens_out": 4232,
+  "parsed": {
+    "summary": "This paper investigates systematic errors in neural morphological generation for Japanese past-tense verb inflection. It shows that a single rare irregular verb subtype (Type 4-2, <1% of the data) accounts for 30–43% of residual errors. Controlled ablation experiments demonstrate that removing this specific subtype yields larger accuracy gains than removing all irregular verbs combined, indicating that structural factors rather than irregularity itself drive these failures.",
+    "items": {
+      "chk_problem": {
+        "value": "High aggregate accuracy in neural morphological generation systems can conceal systematic errors clustered in rare morphological subclasses, particularly in Japanese past-tense verb inflection.",
+        "paper_quote": "Neural morphological generation systems often achieve high aggregate accuracy on benchmark datasets, yet such performance can conceal systematic errors clustered in rare morphological subclasses."
+      },
+      "chk_method": {
+        "value": "An orthography-aware diagnosis using a fine-grained error taxonomy and subgroup-level accuracy analysis, combined with controlled ablation experiments to causally isolate the failure mode.",
+        "paper_quote": "First, we conduct an orthography-aware diagnosis, using a fine-grained error taxonomy and subgroup-level accuracy analysis, aggregated across five random seeds and two architectures, to characterize where models fail."
+      },
+      "chk_data": {
+        "value": "A Japanese verb inflection dataset in standard morphological transduction format, with all 3,958 verb forms converted to hiragana to eliminate kanji homography.",
+        "paper_quote": "We use a Japanese verb inflection dataset in standard morphological transduction format, following the setup of Vylomova et al. (2020) and Goldman et al. (2023)."
+      },
+      "chk_setup": {
+        "value": "Two character-level Transformer architectures (PGT and LST) trained five times with different random seeds using an 80/10/10 train/development/test split.",
+        "paper_quote": "To reduce selective-reporting bias, we train each model on the full dataset five times with different random seeds, using an 80/10/10 train/development/test split."
+      },
+      "chk_primary_result": {
+        "value": "A single irregular subtype (Type 4-2) comprising <1% of the data accounts for 30–43% of residual errors and contributes 34–48× its prevalence to total errors.",
+        "paper_quote": "Using two character-level Transformer architectures evaluated across five random seeds, we show that although both systems exceed 97% aggregate accuracy, a single structurally specific irregular subtype, verbs whose stems end in /e/ and require gemination before the past-tense suﬀix and make up fewer than 1% of the data, accounts for a disproportionate 30–43% share of residual errors and contributes roughly 34–48× its prevalence to total errors."
+      },
+      "chk_secondary_result": {
+        "value": "Removing the Type 4-2 irregular subtype alone produces larger accuracy gains than removing all irregular verbs combined.",
+        "paper_quote": "Controlled ablation experiments show that selective removal of this subtype alone produces larger accuracy gains than removing all irregular verbs combined, suggesting that structural position, not frequency alone, is the primary driver of the effect."
+      },
+      "chk_baseline": {
+        "value": "The ablation conditions are compared against the full-data baseline performance of the PGT and LST models.",
+        "paper_quote": "Table 6 and Figure 3 summarize the accuracy gain over the full-data baseline for each condition."
+      },
+      "chk_conclusion": {
+        "value": "Error concentration in neural morphological learning is driven by the interaction between extreme low-frequency morphological patterns and specific orthographic processes, rather than irregularity per se.",
+        "paper_quote": "These findings indicate that error concentration in neural morphological learning is not driven by irregularity per se, but by the interaction between extreme low-frequency morphological patterns and specific orthographic processes."
+      },
+      "chk_limitation": {
+        "value": "Ablation experiments were run only once per condition, the study is limited to one language and paradigm, and the analysis is correlational regarding the underlying mechanism.",
+        "paper_quote": "First, our ablation experiments were each run once per condition; replication across multiple training runs would strengthen the causal claim."
+      }
+    }
+  },
+  "raw": "{\n  \"summary\": \"This paper investigates systematic errors in neural morphological generation for Japanese past-tense verb inflection. It shows that a single rare irregular verb subtype (Type 4-2, <1% of the data) accounts for 30–43% of residual errors. Controlled ablation experiments demonstrate that removing this specific subtype yields larger accuracy gains than removing all irregular verbs combined, indicating that structural factors rather than irregularity itself drive these failures.\",\n  \"items\": {\n    \"chk_problem\": {\n      \"value\": \"High aggregate accuracy in neural morphological generation systems can conceal systematic errors clustered in rare morphological subclasses, particularly in Japanese past-tense verb inflection.\",\n      \"paper_quote\": \"Neural morphological generation systems often achieve high aggregate accuracy on benchmark datasets, yet such performance can conceal systematic errors clustered in rare morphological subclasses.\"\n    },\n    \"chk_method\": {\n      \"value\": \"An orthography-aware diagnosis using a fine-grained error taxonomy and subgroup-level accuracy analysis, combined with controlled ablation experiments to causally isolate the failure mode.\",\n      \"paper_quote\": \"First, we conduct an orthography-aware diagnosis, using a fine-grained error taxonomy and subgroup-level accuracy analysis, aggregated across five random seeds and two architectures, to characterize where models fail.\"\n    },\n    \"chk_data\": {\n      \"value\": \"A Japanese verb inflection dataset in standard morphological transduction format, with all 3,958 verb forms converted to hiragana to eliminate kanji homography.\",\n      \"paper_quote\": \"We use a Japanese verb inflection dataset in standard morphological transduction format, following the setup of Vylomova et al. (2020) and Goldman et al. (2023).\"\n    },\n    \"chk_setup\": {\n      \"value\": \"Two character-level Transformer architectures (PGT and LST) trained five times with different random seeds using an 80/10/10 train/development/test split.\",\n      \"paper_quote\": \"To reduce selective-reporting bias, we train each model on the full dataset five times with different random seeds, using an 80/10/10 train/development/test split.\"\n    },\n    \"chk_primary_result\": {\n      \"value\": \"A single irregular subtype (Type 4-2) comprising <1% of the data accounts for 30–43% of residual errors and contributes 34–48× its prevalence to total errors.\",\n      \"paper_quote\": \"Using two character-level Transformer architectures evaluated across five random seeds, we show that although both systems exceed 97% aggregate accuracy, a single structurally specific irregular subtype, verbs whose stems end in /e/ and require gemination before the past-tense suﬀix and make up fewer than 1% of the data, accounts for a disproportionate 30–43% share of residual errors and contributes roughly 34–48× its prevalence to total errors.\"\n    },\n    \"chk_secondary_result\": {\n      \"value\": \"Removing the Type 4-2 irregular subtype alone produces larger accuracy gains than removing all irregular verbs combined.\",\n      \"paper_quote\": \"Controlled ablation experiments show that selective removal of this subtype alone produces larger accuracy gains than removing all irregular verbs combined, suggesting that structural position, not frequency alone, is the primary driver of the effect.\"\n    },\n    \"chk_baseline\": {\n      \"value\": \"The ablation conditions are compared against the full-data baseline performance of the PGT and LST models.\",\n      \"paper_quote\": \"Table 6 and Figure 3 summarize the accuracy gain over the full-data baseline for each condition.\"\n    },\n    \"chk_conclusion\": {\n      \"value\": \"Error concentration in neural morphological learning is driven by the interaction between extreme low-frequency morphological patterns and specific orthographic processes, rather than irregularity per se.\",\n      \"paper_quote\": \"These findings indicate that error concentration in neural morphological learning is not driven by irregularity per se, but by the interaction between extreme low-frequency morphological patterns and specific orthographic processes.\"\n    },\n    \"chk_limitation\": {\n      \"value\": \"Ablation experiments were run only once per condition, the study is limited to one language and paradigm, and the analysis is correlational regarding the underlying mechanism.\",\n      \"paper_quote\": \"First, our ablation experiments were each run once per condition; replication across multiple training runs would strengthen the causal claim.\"\n    }\n  }\n}"
+}

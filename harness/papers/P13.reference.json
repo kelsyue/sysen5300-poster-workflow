@@ -1,0 +1,202 @@
+{
+  "paper_id": "P13",
+  "created_at": "2026-11-01T18:27:07+00:00",
+  "models": [
+    "gemini-3.5-flash",
+    "openai.gpt-4o"
+  ],
+  "reference_prompt_sha256": "a63f2a103bd381061f0d6560fdaf2e1bd28c503af09ee38a529d0648f4594fd3",
+  "paper_text_sha256": "83aeac4d078ffc2883e0eb9107be587b4b57624e918d07f95289c833de4b34bd",
+  "summary": "This paper presents an anatomy-aware multimodal framework for predicting the T-stage of laryngopharyngeal cancer using 3D CT scans and paired radiology reports. The framework constructs an Anatomy-Structured Organ Graph (AOG) to model spatial relationships, aligns organ features with textual descriptions via Organ-Anchored Cross-Modal Alignment (OCA), and refines the graph using Report-Enhanced Graph-Refinement (REG). Evaluated on a multi-center cohort of 656 patients, the proposed method consistently outperforms state-of-the-art unimodal and multimodal baselines in both binary and three-class staging tasks.",
+  "items": {
+    "chk_problem": {
+      "status": "uncertain",
+      "why": "drafts differ",
+      "drafts": [
+        {
+          "value": "Accurate T-staging of laryngopharyngeal cancer is critical for treatment planning, but CT-based staging is difficult due to complex tumor invasion patterns, and existing computer-aided methods lack structural relationship modeling and fine-grained cross-modal alignment.",
+          "paper_quote": "Accurate T-staging is crucial for guiding personalized treatment strategies for laryngopharyngeal cancer.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "Current clinical practice for laryngopharyngeal cancer T-staging relies on invasive biopsies, while CT-based staging is challenging due to complex tumor invasion patterns and limitations of existing computational methods.",
+          "paper_quote": "Accurate T-staging is crucial for guiding personalized treatment strategies for laryngopharyngeal cancer. However, current clinical practice relies on invasive biopsy procedures, whereas CT-based staging remains challenging due to the complex patterns of tumor invasion.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ],
+      "paper_excerpt": "Image\nEncoder\n\nAbstract— Accurate T-staging is crucial for guiding personalized treatment strategies for laryngopharyngeal cancer. However, current clinical practice relies on invasive\nbiopsy procedures, whereas CT-based staging remains\nchallenging due to the complex patterns of tumor invasion. Recent computer-aided approaches face two key\nchallenges: 1) Structural relationship modeling: existing\nmethods underrepresent anatomically structured patterns\nof tumor invasion, as they either process whole CT volumes without tumor-specific anatomical constraints or rely\non labor-intensive tumor segmentation. 2) Fine-grained\ncross-modal alignment: while radiology reports contain\norgan-specific invasion details, current methods that apply global feature fusion struggle to accurately align individual anatomical structures with their corresponding\ntextual descriptions. To address these issues, we propose\nan anatomy-aware multimodal framework that integrates\norgan-level CT context and radiology reports into a unified representation for laryngopharyngeal T-staging. The\nframework first constructs an Anatomy-Structured Organ\nGraph (AOG) that captures invasion patterns between primary sites and surrounding organs, then performs OrganAnchored Cross-Modal Alignment (OCA) so that each organ\nnode aggregates textual evidence from the radiology report, and finally refines this graph representation by injecting organ-specific invasion cues extracted from the report\nvia Report-Enhanced Graph-Refinement (REG), yielding a\nmultimodal organ graph that combines spatial and textual evidence. Extensive experiments demonstrate that the\n\nInvolved site"
+    },
+    "chk_method": {
+      "status": "accepted",
+      "value": "The proposed anatomy-aware multimodal framework integrates organ-level CT context and radiology reports using an Anatomy-Structured Organ Graph (AOG), Organ-Anchored Cross-Modal Alignment (OCA), and Report-Enhanced Graph-Refinement (REG).",
+      "paper_quote": "To address these issues, we propose an anatomy-aware multimodal framework that integrates organ-level CT context and radiology reports into a unified representation for laryngopharyngeal T-staging.",
+      "drafts": [
+        {
+          "value": "The proposed anatomy-aware multimodal framework integrates organ-level CT context and radiology reports using an Anatomy-Structured Organ Graph (AOG), Organ-Anchored Cross-Modal Alignment (OCA), and Report-Enhanced Graph-Refinement (REG).",
+          "paper_quote": "To address these issues, we propose an anatomy-aware multimodal framework that integrates organ-level CT context and radiology reports into a unified representation for laryngopharyngeal T-staging.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "An anatomy-aware multimodal framework using an Anatomy-Structured Organ Graph (AOG), Organ-Anchored Cross-Modal Alignment (OCA), and Report-Enhanced Graph-Refinement (REG).",
+          "paper_quote": "To address these issues, we propose an anatomy-aware multimodal framework that integrates organ-level CT context and radiology reports into a unified representation for laryngopharyngeal T-staging.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ]
+    },
+    "chk_data": {
+      "status": "uncertain",
+      "why": "drafts differ",
+      "drafts": [
+        {
+          "value": "A multi-center dataset of 656 patients across four medical centers (FUZH, CGMH, EENT, and TCGA) with paired CT scans and radiology reports.",
+          "paper_quote": "We conduct extensive experiments on a cohort of 656 patients from four hospitals (to our knowledge, the largest laryngopharyngeal T-staging dataset with paired CT and radiology reports), in both binary (T1–T2 vs. T3–T4) and three-class settings, and evaluate generalization on internal and external test sets, demonstrating consistent improvements over strong imaging-only and multimodal baselines.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "A dataset of 656 patients from four medical centers, including CT scans and paired radiology reports, with 439 cases used for training and 217 for external testing.",
+          "paper_quote": "To the best of our knowledge, we collect the first and largest dataset for CT-based laryngopharyngeal cancer T-staging, comprising 656 patients across four medical centers.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ],
+      "paper_excerpt": "AUTHOR et al.: PREPARATION OF PAPERS FOR IEEE TRANSACTIONS ON MEDICAL IMAGING\n\ncohort. We conduct extensive experiments on a cohort of\n656 patients from four hospitals (to our knowledge, the\nlargest laryngopharyngeal T-staging dataset with paired\nCT and radiology reports), in both binary (T1–T2 vs.\nT3–T4) and three-class settings, and evaluate generalization on internal and external test sets, demonstrating\nconsistent improvements over strong imaging-only and\nmultimodal baselines.\nII. R ELATED W ORK\nA. T-staging\nT-staging is a key component of cancer staging, describing\nthe size, extent, and invasion depth of the primary tumor.\nAccurate staging is vital for diagnosis, treatment planning,\nand prognosis evaluation. CT, MRI, PET and endoscopic\nultrasound are widely applied in clinical practice. Recent\nadvances in deep learning have spurred interest in automating\nT-staging of cancers based on various imaging modalities.\nFor rectal cancer, Han et al. [16] employ a convolutional\nneural network (CNN) to predict T-stage from CT, capturing\nsubtle infiltration cues. Zhang et al. [17] propose a tensor\ngraph network exploiting spatial–structural information for\nimproved segmentation-based staging. Dong et al. [18] develop\na cross-domain mutual-assistance framework for nasopharyngeal cancer, and further introduced interpretable dual-branch\nnetworks (IPNet) for endoscopic ultrasound-based rectal Tstaging. In prostate cancer, Ogino et al. [19] present a feature\nspace transfer model using MRI to address domain adaptation\nand enhance robustness. For head and neck cancers, Gilbert\net al. [20] compare standard and dedicated laryngopharyngeal CT for staging accuracy, while Kuno et al. [9] review\nCT, MRI, and dual-energy CT applications. Liu et al. [11]\nbuild a radiomics-based classifier to distinguish T2 from T3\nin laryngopharyngeal cancer (LHSCC), and Chen et al. [6]\nachieve improved laryngopharyngeal cancer staging via multimodal fusion of radiomics and deep learning using CT.\nThese laryngopharyngeal and head-and-neck staging studies,\nhowever, are single-center, limited in scale (118–319 patients),\nand rely on imaging features alone without exploiting paired\nradiology reports. Despite the progress, laryngopharyngeal\ncancer staging remains challenging due to complex invasion\npatterns, limited CT resolution and contrast, and insufficient\nstructural modeling in current algorithms. We address these\ngaps with a multimodal framework that integrates anatomical\nrelationship modeling and textual evidence, aiming to enhance\nfine-grained invasion characterization and T-staging accuracy.\nB. Multi-modal Learning\nMulti-modal learning leverages complementary information\nfrom diverse data modalities and has shown strong potential\nin clinical diagnosis and medical image analysis [21], [22].\nBy integrating medical images with textual reports, such\nmodels capture richer semantic representations, improving\nboth diagnostic accuracy and interpretability [23], [24]. Recent\nstudies have explored vision–language integration for medical\nimaging. TP-DRSeg [25] injects medical prior knowledge\nfrom text into a vision-only segmentation network, while\n\n3\n\nc=1\n\nwhere yc denotes the ground truth label and ŷc represents the\npredicted probability for class c.\nIV. E XPERIMENTS\nA. Dataset\nTo the best of our knowledge, we collect the first and\nlargest dataset for CT-based laryngopharyngeal cancer Tstaging, comprising 656 patients across four medical centers.\nMore importantly, all cases are paired with CT reports for\nmultimodal T-staging assessment. Our dataset substantially\nexceeds the scale of previous studies: prior laryngopharyngeal\n\nAUTHOR et al.: PREPARATION OF PAPERS FOR IEEE TRANSACTIONS ON MEDICAL IMAGING"
+    },
+    "chk_setup": {
+      "status": "uncertain",
+      "why": "drafts differ",
+      "drafts": [
+        {
+          "value": "Experiments were conducted using PyTorch on an NVIDIA H20 GPU, with CT volumes resampled to 1mm3, resized to 128x128x128, and normalized using a Hounsfield Unit window center of 50 and width of 450.",
+          "paper_quote": "All experiments are conducted using PyTorch [41] on an NVIDIA H20 GPU.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "CT volumes resampled to 1mm3 isotropic spacing, resized to 128×128×128, and processed with a pre-trained organ segmentation model; experiments conducted using PyTorch on an NVIDIA H20 GPU.",
+          "paper_quote": "All experiments are conducted using PyTorch [41] on an NVIDIA H20 GPU. For data preprocessing, all CT volumes are resampled to an isotropic spacing of 1mm3 and resized to a unified spatial dimension of 128×128×128.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ],
+      "paper_excerpt": "Three Class\nF1 (macro)\nAcc\n39.16 ± 1.60 40.15 ± 1.74\n52.80 ± 2.31 53.41 ± 2.27\n58.47 ± 1.06 59.09 ± 1.14\n61.52 ± 1.04 64.02 ± 1.31\n64.53 ± 0.70 65.53 ± 0.66\n\nprocedures while advanced cases require aggressive interventions; (2) Three-class classification: T1 vs. T2 vs. T3–T4,\nwhere T1 and T2 are distinguished due to different tumor\ninfiltration patterns and recurrence risks, while T3 and T4 are\nmerged considering similar treatment protocols.\nB. Experimental Setup\n1) Implementation Details: All experiments are conducted\nusing PyTorch [41] on an NVIDIA H20 GPU. For data\npreprocessing, all CT volumes are resampled to an isotropic\nspacing of 1mm3 and resized to a unified spatial dimension\nof 128×128×128. The intensity values are normalized to the\nrange [0, 1], with Hounsfield Unit normalization applied using\na window center of 50 and a window width of 450 to enhance\nthe visibility of soft tissues in clinical settings. We train our\nmodel with a batch size of 8 using the Adam optimizer. The\nlearning rate starts at 1×10−6 and decays to 1×10−7 following\na cosine decay schedule, with a weight decay of 1 × 10−5 .\nOrgan masks for all four cohorts are produced by the same\npublicly available pre-trained segmentation model (Continual\nSegment [15], a single unified model covering 143 whole-body\norgans in CT), applied without any site-specific fine-tuning or\nadaptation.\n2) Evaluation Criteria: We evaluate model performance using Accuracy and Macro F1-score. Accuracy reflects the\nproportion of correct predictions, F1-score balances precision\nand recall, and the macro-averaged F1-score treats all classes\n\n8"
+    },
+    "chk_primary_result": {
+      "status": "uncertain",
+      "why": "drafts differ",
+      "drafts": [
+        {
+          "value": "In binary classification (early T1-T2 vs. late T3-T4), the proposed method achieved an F1 score of 80.83% and an accuracy of 81.53% on the internal test set.",
+          "paper_quote": "For internal testing, we achieve an F1 score of 80.83% and accuracy of 81.53%, surpassing the second-best method MMI [3] (77.59% F1 score and 78.57% accuracy).",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "Binary classification F1 score of 80.83% and accuracy of 81.53% on internal test set; F1 score of 76.46% and accuracy of 76.50% on external test set.",
+          "paper_quote": "In the binary classification task (Early T1–T2 vs. Late T3–T4), our method achieves the highest performance on both internal and external test sets. For internal testing, we achieve an F1 score of 80.83% and accuracy of 81.53%, surpassing the second-best method MMI [3] (77.59% F1 score and 78.57% accuracy). On the external test set, our method maintains its leading position with an F1 score of 76.46% and accuracy of 76.50%.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ],
+      "paper_excerpt": "8\n\nequally by computing the unweighted mean of class-wise F1scores.\nC. Comparison to State-of-the-Arts\nWe compare the proposed method with image-based classification approaches, such as SwinViT [37], VDPF [38],\nMRSN [39], and several state-of-the-art multimodal learning\nmethods (CPAM [5], TGCAM [2], MMBCD [1], LViT [4],\nMMI [3]). The results are summarized in Table II. Our method\ndemonstrates superior performance across all experimental\nsettings. In the binary classification task (Early T1–T2 vs. Late\nT3–T4), our method achieves the highest performance on both\ninternal and external test sets. For internal testing, we achieve\nan F1 score of 80.83% and accuracy of 81.53%, surpassing the\nsecond-best method MMI [3] (77.59% F1 score and 78.57%\naccuracy). On the external test set, our method maintains its\nleading position with an F1 score of 76.46% and accuracy\nof 76.50%, outperforming TGCAM [2] (74.09% F1 score\nand 74.38% accuracy) by a significant margin. For the more\nchallenging three-class classification task (T1, T2, T3–T4),\nour method also achieves consistent superior performance.\nOn the internal test set, we achieve an F1 score of 61.43%\nand accuracy of 63.33%, showing notable improvements over\nMMBCD [1] (58.44% F1 score and 61.14% accuracy). The\nadvantage is even more prominent on the external test set,\nwhere our method achieves an F1 score of 60.27% and\naccuracy of 63.78%, significantly outperforming the second\nbest method by a large margin of 8.73% F1 score and 7.78%\naccuracy.\nD. Ablation Study\n1) Effectiveness of Individual Components: We conduct\ncomprehensive ablation studies to evaluate the contribution\nof each key component in our framework. As shown in\nTable IV, we systematically analyze different combinations\nof the three main modules: Anatomy-Structured Organ Graph\n(AOG), Organ-Anchored Cross-Modal Alignment (OCA),\nand Report-Enhanced Graph-Refinement (REG). The baseline model, which directly processes the whole CT volume\nfor prediction without any anatomical guidance or textual\ninformation, achieves only 58.76% and 39.16% macro F1scores in binary and three-class settings, respectively. Adding\nAOG substantially improves the performance (77.96% and\n52.80% F1-scores), demonstrating that explicitly modeling\norgan-level relationships helps capture tumor invasion patterns.\nWhen applying the OCA module alone, the performance\nfurther increases to 80.97% and 58.47% for binary and threeclass settings, which validates our hypothesis that fine-grained\norgan–text alignment provides valuable diagnostic evidence\nfrom radiology reports. When combining AOG and OCA, we\nobserve further performance gains (81.63% and 61.52% F1scores), suggesting that anatomical structure and textual evidence complement each other. Finally, incorporating REG on\ntop of both AOG and OCA yields the best overall performance,\nwith macro F1-scores of 83.96% and 64.53% in binary and\nthree-class settings, indicating that the structured parsing of\n\nIEEE TRANSACTIONS ON MEDICAL IMAGING, VOL. XX, NO. XX, XXXX 2025"
+    },
+    "chk_secondary_result": {
+      "status": "uncertain",
+      "why": "drafts differ",
+      "drafts": [
+        {
+          "value": "In the three-class classification task (T1 vs. T2 vs. T3-T4), the proposed method achieved an F1 score of 61.43% and an accuracy of 63.33% on the internal test set.",
+          "paper_quote": "On the internal test set, we achieve an F1 score of 61.43% and accuracy of 63.33%, showing notable improvements over MMBCD [1] (58.44% F1 score and 61.14% accuracy).",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "Three-class classification F1 score of 61.43% and accuracy of 63.33% on internal test set; F1 score of 60.27% and accuracy of 63.78% on external test set.",
+          "paper_quote": "For the more challenging three-class classification task (T1, T2, T3–T4), our method also achieves consistent superior performance. On the internal test set, we achieve an F1 score of 61.43% and accuracy of 63.33%, showing notable improvements over MMBCD [1] (58.44% F1 score and 61.14% accuracy). The advantage is even more prominent on the external test set, where our method achieves an F1 score of 60.27% and accuracy of 63.78%.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ],
+      "paper_excerpt": "8\n\nequally by computing the unweighted mean of class-wise F1scores.\nC. Comparison to State-of-the-Arts\nWe compare the proposed method with image-based classification approaches, such as SwinViT [37], VDPF [38],\nMRSN [39], and several state-of-the-art multimodal learning\nmethods (CPAM [5], TGCAM [2], MMBCD [1], LViT [4],\nMMI [3]). The results are summarized in Table II. Our method\ndemonstrates superior performance across all experimental\nsettings. In the binary classification task (Early T1–T2 vs. Late\nT3–T4), our method achieves the highest performance on both\ninternal and external test sets. For internal testing, we achieve\nan F1 score of 80.83% and accuracy of 81.53%, surpassing the\nsecond-best method MMI [3] (77.59% F1 score and 78.57%\naccuracy). On the external test set, our method maintains its\nleading position with an F1 score of 76.46% and accuracy\nof 76.50%, outperforming TGCAM [2] (74.09% F1 score\nand 74.38% accuracy) by a significant margin. For the more\nchallenging three-class classification task (T1, T2, T3–T4),\nour method also achieves consistent superior performance.\nOn the internal test set, we achieve an F1 score of 61.43%\nand accuracy of 63.33%, showing notable improvements over\nMMBCD [1] (58.44% F1 score and 61.14% accuracy). The\nadvantage is even more prominent on the external test set,\nwhere our method achieves an F1 score of 60.27% and\naccuracy of 63.78%, significantly outperforming the second\nbest method by a large margin of 8.73% F1 score and 7.78%\naccuracy.\nD. Ablation Study\n1) Effectiveness of Individual Components: We conduct\ncomprehensive ablation studies to evaluate the contribution\nof each key component in our framework. As shown in\nTable IV, we systematically analyze different combinations\nof the three main modules: Anatomy-Structured Organ Graph\n(AOG), Organ-Anchored Cross-Modal Alignment (OCA),\nand Report-Enhanced Graph-Refinement (REG). The baseline model, which directly processes the whole CT volume\nfor prediction without any anatomical guidance or textual\ninformation, achieves only 58.76% and 39.16% macro F1scores in binary and three-class settings, respectively. Adding\nAOG substantially improves the performance (77.96% and\n52.80% F1-scores), demonstrating that explicitly modeling\norgan-level relationships helps capture tumor invasion patterns.\nWhen applying the OCA module alone, the performance\nfurther increases to 80.97% and 58.47% for binary and threeclass settings, which validates our hypothesis that fine-grained\norgan–text alignment provides valuable diagnostic evidence\nfrom radiology reports. When combining AOG and OCA, we\nobserve further performance gains (81.63% and 61.52% F1scores), suggesting that anatomical structure and textual evidence complement each other. Finally, incorporating REG on\ntop of both AOG and OCA yields the best overall performance,\nwith macro F1-scores of 83.96% and 64.53% in binary and\nthree-class settings, indicating that the structured parsing of\n\nIEEE TRANSACTIONS ON MEDICAL IMAGING, VOL. XX, NO. XX, XXXX 2025"
+    },
+    "chk_baseline": {
+      "status": "accepted",
+      "value": "The method was compared against image-only models (SwinViT, VDPF, MRSN) and state-of-the-art multimodal learning methods (CPAM, TGCAM, MMBCD, LViT, MMI).",
+      "paper_quote": "We compare the proposed method with image-based classification approaches, such as SwinViT [37], VDPF [38], MRSN [39], and several state-of-the-art multimodal learning methods (CPAM [5], TGCAM [2], MMBCD [1], LViT [4], MMI [3]).",
+      "drafts": [
+        {
+          "value": "The method was compared against image-only models (SwinViT, VDPF, MRSN) and state-of-the-art multimodal learning methods (CPAM, TGCAM, MMBCD, LViT, MMI).",
+          "paper_quote": "We compare the proposed method with image-based classification approaches, such as SwinViT [37], VDPF [38], MRSN [39], and several state-of-the-art multimodal learning methods (CPAM [5], TGCAM [2], MMBCD [1], LViT [4], MMI [3]).",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "Compared against image-based methods (e.g., SwinViT, VDPF) and multimodal methods (e.g., CPAM, TGCAM, MMBCD, MMI), achieving superior performance in both binary and three-class classification tasks.",
+          "paper_quote": "We compare the proposed method with image-based classification approaches, such as SwinViT [37], VDPF [38], MRSN [39], and several state-of-the-art multimodal learning methods (CPAM [5], TGCAM [2], MMBCD [1], LViT [4], MMI [3]). The results are summarized in Table II. Our method demonstrates superior performance across all experimental settings.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ]
+    },
+    "chk_conclusion": {
+      "status": "uncertain",
+      "why": "drafts differ",
+      "drafts": [
+        {
+          "value": "The proposed anatomy-structured multimodal framework consistently outperforms state-of-the-art unimodal and multimodal baselines in both binary and multi-class laryngopharyngeal cancer T-staging tasks, achieving performance on par with or exceeding experienced radiologists.",
+          "paper_quote": "Extensive experiments on the largest curated laryngopharyngeal cancer T-staging dataset, as well as on public benchmarks, demonstrated that our proposed framework consistently outperforms state-of-the-art unimodal and multimodal baselines in both binary and multi-class staging tasks, achieving notable gains over radiologist assessments.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "The proposed framework outperforms state-of-the-art baselines and radiologist assessments in T-staging tasks, offering improved interpretability and potential for real-world adoption.",
+          "paper_quote": "Extensive experiments on the largest curated laryngopharyngeal cancer T-staging dataset, as well as on public benchmarks, demonstrated that our proposed framework consistently outperforms state-of-the-art unimodal and multimodal baselines in both binary and multi-class staging tasks, achieving notable gains over radiologist assessments.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ],
+      "paper_excerpt": "mask perturbation experiment (Fig. 5(a)) confirms this robustness, with only 2.8% F1 degradation under ±10% proportional\nboundary noise.\nReport–T-stage Independence. Under AJCC 8th edition criteria, thyroid cartilage invasion is a hallmark of advanced\nT-stage in laryngopharyngeal cancer. To examine whether\ninvasion descriptions in reports could implicitly encode Tstage, we analyzed thyroid cartilage-related descriptions across\nthe 439 FUZH reports (Table IX). Of 147 reports with positive\ninvasion descriptions, 45 (30.6%) are from pathologically\nconfirmed early-stage (T1–T2) patients; conversely, among\n172 advanced-stage (T3–T4) patients, 70 (40.7%) lack any\npositive description. This is because invasion descriptions reflect CT-visible findings — an imaging observation rather than\na pathological diagnosis — and CT alone cannot determine\nwhether true cartilage invasion has occurred [7], [14], [20].\nThis substantial discordance confirms that invasion descriptions do not encode T-stage, ruling out information circularity\nin our framework.\nReport Quality and Cross-Institutional Robustness. All\nradiology reports in our study are routine clinical documents,\nnot research-curated texts. The 439 FUZH training reports\nvary in detail and phrasing across radiologists while sharing\na common reporting template, and the three external test\nsets (CGMH, EENT, TCGA) follow their own institutional\nconventions. Among the three modules, AOG operates entirely\non CT features and is report-independent; OCA aligns reports\nto organs through learned cross-attention rather than keyword\nmatching; and REG extracts structural invasion relations from\nreport text that are typically documented even in brief reports\nwhen clinically relevant. The stable cross-institutional performance (Table II) is consistent with the design accommodating\nreporting variation in practice.\nA controlled report-detail perturbation experiment\n(Fig. 5(b)) provides direct support for this: keeping the\nsame images and the frozen model while rewriting each\nreport to be less- or more-detailed changes macro-F1 by at\n\nmost 1.7 points and accuracy by at most 1.2 points.\nClinical Deployment Considerations. Several practical challenges should be considered for clinical deployment. First,\nthe framework depends on a pre-trained organ segmentation\nmodel, whose performance may vary across imaging protocols\nand scanner vendors; validating or fine-tuning the segmentation model on site-specific data is advisable before deployment. Second, differences in reporting terminology and detail\nacross institutions may affect the OCA and REG modules,\nthough our cross-institutional evaluation suggests the learned\ncross-attention mechanism accommodates such variation reasonably well. Third, prospective validation on independent\ncohorts with different disease distributions is essential before\nintegration into clinical decision-support workflows.\nVI. C ONCLUSION\nIn this work, we introduced an anatomy-structured multimodal framework for laryngopharyngeal cancer T-staging that\nintegrates CT volumes and paired radiology reports. By explicitly modeling anatomical topology through the AnatomyStructured Organ Graph (AOG), performing organ-level crossmodal alignment via the Organ-Anchored Cross-Modal Alignment (OCA) module, and incorporating structured clinical invasion knowledge using the Report-Enhanced GraphRefinement (REG) module, our method effectively captures\norgan-specific invasion patterns and their textual evidence. Extensive experiments on the largest curated laryngopharyngeal\ncancer T-staging dataset, as well as on public benchmarks,\ndemonstrated that our proposed framework consistently outperforms state-of-the-art unimodal and multimodal baselines\nin both binary and multi-class staging tasks, achieving notable gains over radiologist assessments. Beyond performance,\nour framework offers improved interpretability by aligning\ndecision-making with clinically meaningful invasion pathways, thereby enhancing its potential for real-world adoption.\nFuture work will explore extending the proposed topologyaware design to other head-and-neck and thoracic malignancies, as well as integrating longitudinal imaging and follow-up\nreports to enable dynamic tumor progression modeling.\n\nR EFERENCES\n[1] K. Jain, A. Bansal, K. Rangarajan, and C. Arora, “Mmbcd: multimodal\nbreast cancer detection from mammograms with clinical history,” in\nMICCAI. Springer, 2024, pp. 144–154. 1, 2, 3, 7, 8\n[2] Y. Guo, X. Zeng, P. Zeng, Y. Fei, L. Wen, J. Zhou, and Y. Wang,\n“Common vision-language attention for text-guided medical image\nsegmentation of pneumonia,” in MICCAI. Springer, 2024, pp. 192–\n201. 1, 2, 3, 7, 8\n[3] P.-N. Bui, D.-T. Le, and H. Choo, “Visual-textual matching attention for\nlesion segmentation in chest images,” in MICCAI. Springer, 2024, pp.\n702–711. 1, 2, 3, 7, 8\n[4] Z. Li, Y. Li, Q. Li, P. Wang, D. Guo, L. Lu, D. Jin, Y. Zhang, and\nQ. Hong, “Lvit: language meets vision transformer in medical image\nsegmentation,” I"
+    },
+    "chk_limitation": {
+      "status": "uncertain",
+      "why": "drafts differ",
+      "drafts": [
+        {
+          "value": "The framework is limited by the inherent challenges of CT-based assessment, which can both over-estimate and under-estimate tumor invasion relative to pathological ground truth.",
+          "paper_quote": "These complementary failure modes highlight an inherent challenge: CT-based assessment can both over-estimate and under-estimate invasion relative to pathological ground truth.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "The framework depends on pre-trained organ segmentation models and may be affected by differences in imaging protocols and reporting styles across institutions.",
+          "paper_quote": "First, the framework depends on a pre-trained organ segmentation model, whose performance may vary across imaging protocols and scanner vendors; validating or fine-tuning the segmentation model on site-specific data is advisable before deployment. Second, differences in reporting terminology and detail across institutions may affect the OCA and REG modules, though our cross-institutional evaluation suggests the learned cross-attention mechanism accommodates such variation reasonably well.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ],
+      "paper_excerpt": "H. Clinical Validation\nTable VII shows the comparison results of our method and\ntwo radiologists on an external test set. For this evaluation, we\nrandomly selected 20 samples from each class, comprising 80\nsamples in total for the comparison. The proposed method\ndemonstrates competitive performance with the radiologists in\nboth experimental settings. In the Early vs Late classification,\nour method achieves an F1 score of 76.25% and accuracy of\n\n76.25%, performing comparably to Radiologists 1 and 2, who\nachieve F1 scores of 76.16% and 74.98%, and accuracies of\n76.25% and 75.00%, respectively. In the T1, T2, Late (T3–T4)\nclassification, our method achieves an F1 score of 59.71% and\nan accuracy of 62.50%, outperforming both radiologists by at\nleast 6.08% in F1 score and 2.50% in accuracy. These results\nconfirm the effectiveness of our method in predicting laryngopharyngeal cancer T-staging, demonstrating performance on\npar with or exceeding experienced radiologists. The three representative cases in Fig. 7 demonstrate that, despite potential\nerrors by experienced clinicians, our model correctly performs\nthe T-staging task, showing strong precision and robustness.\nWe analyzed the 16 misclassified cases (out of 88 test\nsamples) in Fold 1 and identified two dominant failure patterns\ninherently linked to the limitations of CT-based invasion\nassessment. Over-staging (9/16 cases, 56%): the model predicted T3–T4 for pathologically confirmed T1–T2 cases. In\n7 of these 9 cases, the radiology report explicitly described\ncartilage invasion that was not confirmed by pathological examination, reflecting CT’s known limitation in distinguishing\ntumor contact from true cartilage invasion [7], [14]. Understaging (7/16 cases, 44%): the model predicted T1–T2 for\npathologically confirmed T3–T4 cases. In 5 of these 7 cases,\nthe report contained no invasion description or explicitly stated\n“no evidence of invasion,” despite pathological confirmation.\nThese complementary failure modes highlight an inherent\nchallenge: CT-based assessment can both over-estimate and\nunder-estimate invasion relative to pathological ground truth.\nThree representative failure cases are shown in Fig. 7.\nCross-modal alignment analysis of failures. We further\nexamine the misclassified cases in the shared representation\nspace, quantifying the OCA cross-attention mass that the\npotentially-invaded organ nodes (esophagus, thyroid gland,\ntrachea, oral cavity) place on invasion-related report tokens\n(Table VIII). On correctly classified cases the alignment\nbehaves as intended, with low values for true early-stage\n(0.058) and high values for true advanced-stage cases (0.105).\nNotably, over-staged cases do exhibit an elevated invasiontoken alignment (0.088); this arises because the corresponding\nreports genuinely contain invasion descriptions that are CTderived false positives (cf. the cartilage discordance in Table IX), which the cross-modal fusion faithfully incorporates,\nrather than over-associating invasion with unrelated features.\nIn under-staged cases the alignment is as low as in true\nearly-stage cases (0.058), consistent with these being CT false\nnegatives in which the report records no positive invasion\nfinding and the CT shows none, so no genuine invasion\n\nAUTHOR et al.: PREPARATION OF PAPERS FOR IEEE TRANSACTIONS ON MEDICAL IMAGING\n\nmask perturbation experiment (Fig. 5(a)) confirms this robustness, with only 2.8% F1 degradation under ±10% proportional\nboundary noise.\nReport–T-stage Independence. Under AJCC 8th edition criteria, thyroid cartilage invasion is a hallmark of advanced\nT-stage in laryngopharyngeal cancer. To examine whether\ninvasion descriptions in reports could implicitly encode Tstage, we analyzed thyroid cartilage-related descriptions across\nthe 439 FUZH reports (Table IX). Of 147 reports with positive\ninvasion descriptions, 45 (30.6%) are from pathologically\nconfirmed early-stage (T1–T2) patients; conversely, among\n172 advanced-stage (T3–T4) patients, 70 (40.7%) lack any\npositive description. This is because invasion descriptions reflect CT-visible findings — an imaging observation rather than\na pathological diagnosis — and CT alone cannot determine\nwhether true cartilage invasion has occurred [7], [14], [20].\nThis substantial discordance confirms that invasion descriptions do not encode T-stage, ruling out information circularity\nin our framework.\nReport Quality and Cross-Institutional Robustness. All\nradiology reports in our study are routine clinical documents,\nnot research-curated texts. The 439 FUZH training reports\nvary in detail and phrasing across radiologists while sharing\na common reporting template, and the three external test\nsets (CGMH, EENT, TCGA) follow their own institutional\nconventions. Among the three modules, AOG operates entirely\non CT features and is report-independent; OCA aligns reports\nto organs through learned cross-attention rather than keyword\nmatching; and REG extracts structural invasion relations from\nreport text th"
+    }
+  }
+}

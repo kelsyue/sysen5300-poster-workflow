@@ -1,0 +1,202 @@
+{
+  "paper_id": "P07",
+  "created_at": "2026-11-01T18:29:43+00:00",
+  "models": [
+    "gemini-3.5-flash",
+    "openai.gpt-4o"
+  ],
+  "reference_prompt_sha256": "a63f2a103bd381061f0d6560fdaf2e1bd28c503af09ee38a529d0648f4594fd3",
+  "paper_text_sha256": "1cd26f76ed88f508455e4a1cbfa56657e90b9c4faeebdf76397e46e68e695e26",
+  "summary": "This paper presents MaxKernel, a multi-agent framework designed to automate and optimize TPU kernel engineering. It supports three orchestration paradigms: Human-in-the-Loop, Autonomous Loop, and Graph-Based Autonomous Search. Evaluating on JaxBench and real-world workloads, MaxKernel achieves a 1.58× geometric mean speedup over XLA baselines and outperforms human-written kernels on production workloads.",
+  "items": {
+    "chk_problem": {
+      "status": "accepted",
+      "value": "Designing and authoring high-performance custom kernels for accelerators is a complex task requiring deep hardware-level expertise.",
+      "paper_quote": "Designing and authoring high-performance custom kernels for accelerators is a complex task that requires deep hardware-level expertise.",
+      "drafts": [
+        {
+          "value": "Designing and authoring high-performance custom kernels for accelerators is a complex task requiring deep hardware-level expertise.",
+          "paper_quote": "Designing and authoring high-performance custom kernels for accelerators is a complex task that requires deep hardware-level expertise.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "Designing high-performance custom kernels for accelerators is complex and requires deep hardware-level expertise.",
+          "paper_quote": "Designing and authoring high-performance custom kernels for accelerators is a complex task that requires deep hardware-level expertise.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ]
+    },
+    "chk_method": {
+      "status": "accepted",
+      "value": "MaxKernel, a multi-agent system implementing three paradigms: Human-in-the-Loop, Autonomous Loop, and Graph-Based Autonomous Search.",
+      "paper_quote": "In this work, we present MaxKernel, a multi-agent system that implements three distinct paradigms for TPU kernel development: (1) a Human-in-the-Loop (HITL) agent for collaborative, step-by-step design; (2) an Autonomous (Auto) agent that executes a fully automated, metric/trace-driven optimization loop; and (3) a Graph-Based Autonomous Search that scales the Auto agent for global exploration of the design space.",
+      "drafts": [
+        {
+          "value": "MaxKernel, a multi-agent system implementing three paradigms: Human-in-the-Loop, Autonomous Loop, and Graph-Based Autonomous Search.",
+          "paper_quote": "In this work, we present MaxKernel, a multi-agent system that implements three distinct paradigms for TPU kernel development: (1) a Human-in-the-Loop (HITL) agent for collaborative, step-by-step design; (2) an Autonomous (Auto) agent that executes a fully automated, metric/trace-driven optimization loop; and (3) a Graph-Based Autonomous Search that scales the Auto agent for global exploration of the design space.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "MaxKernel, a multi-agent system with three paradigms: Human-in-the-Loop, Autonomous Loop, and Graph-Based Autonomous Search.",
+          "paper_quote": "In this work, we present MaxKernel, a multi-agent system that implements three distinct paradigms for TPU kernel development: (1) a Human-in-the-Loop (HITL) agent for collaborative, step-by-step design; (2) an Autonomous (Auto) agent that executes a fully automated, metric/trace-driven optimization loop; and (3) a Graph-Based Autonomous Search that scales the Auto agent for global exploration of the design space.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ]
+    },
+    "chk_data": {
+      "status": "accepted",
+      "value": "JaxBench, a suite of 50 diverse TPU kernel tasks, and real-world workloads from state-of-the-art open-source models.",
+      "paper_quote": "We evaluate MaxKernel on JaxBench, a comprehensive suite of 50 diverse kernel tasks for TPUs, alongside complex, real-world workloads from state-of-the-art open-source models.",
+      "drafts": [
+        {
+          "value": "JaxBench, a suite of 50 diverse TPU kernel tasks, and real-world workloads from state-of-the-art open-source models.",
+          "paper_quote": "We evaluate MaxKernel on JaxBench, a comprehensive suite of 50 diverse kernel tasks for TPUs, alongside complex, real-world workloads from state-of-the-art open-source models.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "JaxBench, a suite of 50 diverse kernel tasks for TPUs, and state-of-the-art open-source models.",
+          "paper_quote": "We evaluate MaxKernel on JaxBench, a comprehensive suite of 50 diverse kernel tasks for TPUs, alongside complex, real-world workloads from state-of-the-art open-source models.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ]
+    },
+    "chk_setup": {
+      "status": "uncertain",
+      "why": "drafts differ",
+      "drafts": [
+        {
+          "value": "Empirical evaluations conducted on TPU v6e hardware using MaxKernel's dedicated evaluation harness.",
+          "paper_quote": "All empirical evaluations are conducted on TPU v6e hardware using MaxKernel’s dedicated evaluation harness.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "Evaluations conducted on TPU v6e hardware using MaxKernel’s dedicated evaluation harness with XProf profiling.",
+          "paper_quote": "All empirical evaluations are conducted on TPU v6e hardware using MaxKernel’s dedicated evaluation harness.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ],
+      "paper_excerpt": "𝑖=1\n\nAll empirical evaluations are conducted on TPU v6e hardware using MaxKernel’s dedicated evaluation harness. For each generated kernel, the framework dynamically synthesizes an isolated testing\nenvironment that validates functional correctness against the unoptimized reference implementation.\nNumerical equivalence is checked using jnp.allclose with both absolute and relative tolerances set\nto 10−2 (atol = rtol = 10−2 ) for most cases. To safely account for standard bf16 variance in custom\nhardware-accelerated math, certain tasks’ tolerance are relaxed to at most 10−1 . For a complete list\nof the tolerance we set for each problem, please refer to the appendix A. To measure true hardware\nperformance, the harness integrates directly with XProf profiling tool. This allows the system to\ncapture precise on-device execution times while explicitly filtering out host-side JAX dispatch and\ncompilation overheads. By relying exclusively on these strict, XProf-backed measurements on TPU\nv6e, we guarantee that all reported speedups reflect authentic hardware-level acceleration rather\nthan artifactual host or framework variances.\nWe compare the following four generation methods:\n• Best-of- 𝑁 (Zero-Shot): Independent zero-shot completions conditioned on the JAX reference.\nThe fastest correct sample out of 𝑁 is selected (in our experiments, we set 𝑁 = 100).\n• MaxKernel Auto: A single-trajectory iterative refinement agent restricted to 5 iterations. To\naccount for generation variance, we execute 5 independent runs per workload and report the\nmedian performance with its upper and lower bounds.\n\n7"
+    },
+    "chk_primary_result": {
+      "status": "accepted",
+      "value": "MaxKernel achieves a 1.58× geometric mean speedup across the JAXBench workloads.",
+      "paper_quote": "MaxKernel successfully bridges the gap between static LLM code generation and high-performance kernel engineering, achieving a 1.58× geometric mean speedup across the JAXBench workloads.",
+      "drafts": [
+        {
+          "value": "MaxKernel achieves a 1.58× geometric mean speedup across the JAXBench workloads.",
+          "paper_quote": "MaxKernel successfully bridges the gap between static LLM code generation and high-performance kernel engineering, achieving a 1.58× geometric mean speedup across the JAXBench workloads.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "MaxKernel achieves a 1.58× geometric mean speedup across JaxBench workloads.",
+          "paper_quote": "MaxKernel successfully bridges the gap between static LLM code generation and high-performance kernel engineering, achieving a 1.58× geometric mean speedup across the JAXBench workloads.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ]
+    },
+    "chk_secondary_result": {
+      "status": "uncertain",
+      "why": "drafts differ",
+      "drafts": [
+        {
+          "value": "On eight production workloads, MaxKernel achieves a 2.32× geometric mean speedup over reference code, outperforming human-written ones (2.02×).",
+          "paper_quote": "Furthermore, on the eight production kernels where human-written kernels exist, MaxKernel achieves a 2.32× geometric mean speedup over the reference code, outperforming human-written ones (2.02×).",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "MaxKernel achieves a 2.32× geometric mean speedup over human-written kernels on eight production kernels.",
+          "paper_quote": "Furthermore, on the eight production kernels where human-written kernels exist, MaxKernel achieves a 2.32× geometric mean speedup over the reference code, outperforming human-written ones (2.02×).",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ],
+      "paper_excerpt": "MaxKernel: Agentic Kernel Generation for TPUs\n\n3. Rigorous Empirical Evaluation: We evaluate our framework on TPU optimization workloads\nusing the JAXBench benchmark suite and SOTA OSS kernels. MaxKernel successfully bridges the\ngap between static LLM code generation and high-performance kernel engineering, achieving a\n1.58× geometric mean speedup across the JAXBench workloads. Furthermore, on the eight\nproduction kernels where human-written kernels exist, MaxKernel achieves a 2.32× geometric\nmean speedup over the reference code, outperforming human-written ones (2.02×).\n\n2. System Architecture & Agent Paradigms\nMaxKernel is a modular, agent-based system that tackles complex kernel optimization by breaking\nit into focused tasks. A schematic is provided in Figure 1. At its core, the architecture relies on\na suite of specialized sub-agents dedicated to planning, implementation, testing, autotuning, and\nprofiling. To accommodate varying levels of user control and task complexity, MaxKernel operates\nunder three distinct execution paradigms: an interactive Human-in-the-Loop (HITL) modality for\ndeveloper-guided exploration, an Autonomous Loop (Auto) for closed-loop iterative optimization, and\na highly scalable Graph-Based Autonomous Search for systematic, parallel exploration of the kernel\ndesign space.\n2.1. Specialized Subagents\nThe foundation of MaxKernel lies in its collection of task-specific sub-agents. By decomposing the\ncomplex process of kernel generation into manageable, specialized tasks, the system achieves higher\nreliability and allows for flexible orchestration. The key sub-agents include:\n• Kernel Generation and Fix Agents: Responsible for the core synthesis logic. This module is\nsubdivided into a Planning Agent, which creates a high-level algorithmic optimization plan\nbased on hardware specifications and the reference implementation, and an Implementation\nAgent, which translates the plan into valid Pallas code. To ensure syntactic and structural\ncorrectness, the validation and fix loop operates iteratively. The loop attempts to compile the\ngenerated code, interprets compiler feedback, and resolves errors before advancing to execution.\n• Testing and Verification Agents: Ensure the numerical correctness of the generated kernels.\nA Test Synthesis Agent constructs comprehensive test suites, while an Execution Agent runs\nthese tests securely on the target hardware (e.g., TPU). This module validates the optimized\nkernel against the reference implementation, strictly enforcing dynamically specified numerical\ntolerances for a given TPU generation.\n• Autotuning Agent: Dedicated to hyperparameter optimization, this agent systematically explores the configuration space (e.g., block sizes, tile dimensions, etc) to discover the most\nperformant hardware-specific parameters for a given kernel structure.\n• Profiling Agent: Focused on performance extraction and bottleneck identification, the Profiling\nAgent captures and analyzes low-level trace data. By extracting key empirical metrics—such as\nexecution latency, memory bandwidth utilization, and compute density—it provides actionable\nfeedback to inform subsequent algorithmic optimization iterations. We leverage XProf for this\npurpose.\n2.2. Knowledge Store\nIncorporating hardware-specific information, low-level framework documentation and technical\nreports is critical for enabling agents to effectively generate, debug, profile, and iteratively refine\ncode. However, loading the comprehensive specifications into the context window is computationally\n3"
+    },
+    "chk_baseline": {
+      "status": "uncertain",
+      "why": "drafts differ",
+      "drafts": [
+        {
+          "value": "The standard XLA compiler baseline, as well as expert-written, hand-tuned Pallas references and zero-shot Best-of-N.",
+          "paper_quote": "To measure aggregate performance, we report the (3) geometric mean speedup across all tasks relative to the standard XLA compiler baseline (with performance regressions floored at 1.0x).",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "Compared against XLA compiler baseline and human-written Pallas kernels.",
+          "paper_quote": "To measure aggregate performance, we report the (3) geometric mean speedup across all tasks relative to the standard XLA compiler baseline (with performance regressions floored at 1.0x).",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ],
+      "paper_excerpt": "MaxKernel: Agentic Kernel Generation for TPUs\n\n3. Experiments and Results\nWe systematically evaluate the MaxKernel system on JaxBench [16], a curated suite of 50 diverse\nhardware-accelerated workloads. This benchmark comprises 17 widely used operators adapted from\npopular LLM architectures (e.g., complex attention mechanisms) and 33 fused operators adapted from\nthe KernelBench dataset. Spanning attention variants, dense and sparse linear algebra, complex loss\nfunctions, and highly fused operations, JaxBench provides a rigorous testbed to evaluate MaxKernel’s\ncapability for end-to-end kernel generation and hardware-specific optimization. Beyond this standard\nbenchmark, we also demonstrate MaxKernel’s robust capability to accelerate state-of-the-art (SOTA)\nopen-source (OSS) kernels from recent architectures. By automatically generating highly efficient Pallas implementations for complex real-world workloads—such as Multi-Head Latent Attention (MLA),\nQwen3-Next Gated DeltaNet, and DeepSeek-V4 Sparse Attention—MaxKernel achieves significant\nimprovements in latency and throughput over heavily optimized JAX and human-authored baselines.\n3.1. Evaluation Metrics and Methods\nTo assess both the robustness and the optimization quality of the generated kernels, we report\nfour primary metrics: (1) The compilation rate measures the percentage of generated kernels that\nsuccessfully compile without target-specific hardware errors (e.g., VMEM allocation failures, etc). (2)\nThe correctness rate measures the percentage of compiled kernels that yield numerically equivalent\noutputs compared to the unoptimized JAX reference implementation over a suite of test inputs. To\nmeasure aggregate performance, we report the (3) geometric mean speedup across all tasks relative\nto the standard XLA compiler baseline (with performance regressions floored at 1.0x). Finally, we\nuse the (4) fast- 𝑝 fraction (fast 𝑝 ), which quantifies the proportion of tasks that both achieve strict\nfunctional correctness and exceed a specific speedup threshold 𝑝:\n𝑁\n\nfast 𝑝 ="
+    },
+    "chk_conclusion": {
+      "status": "uncertain",
+      "why": "drafts differ",
+      "drafts": [
+        {
+          "value": "Agentic systems can successfully handle the complexities of low-level accelerator programming.",
+          "paper_quote": "MaxKernel demonstrates that agentic systems can successfully handle the complexities of low-level accelerator programming.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "MaxKernel demonstrates that agentic systems can handle low-level accelerator programming complexities and achieve state-of-the-art performance.",
+          "paper_quote": "MaxKernel demonstrates that agentic systems can successfully handle the complexities of low-level accelerator programming.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ],
+      "paper_excerpt": "MaxKernel: Agentic Kernel Generation for TPUs\n\n4. Conclusion\nMaxKernel demonstrates that agentic systems can successfully handle the complexities of low-level\naccelerator programming. In particular, we showed how a harness comprising of context synthesis,\nautomated diagnosis, bottleneck identification via XProf profiling, and structured optimization heuristics can accelerate hillclimbing on TPUs. We demonstrated state-of-the-art performance numbers on\nJaxBench, reaching a geometric mean speedup of 1.58x on top of XLA optimizations.\nIn the future, we want to explore other optimization algorithms too, such as evolutionary search\nor greedy search via the Auto Research approach. In addition, dynamic and evolving knowledge bases\nfrom past experiments could offer additional improvements. Finally, we believe stateful hybrid optimizations could help address the exploration exploitation tradeoffs across the different optimization\nmethods.\n\nReferences\n[1] James Bradbury, Roy Frostig, Peter Hawkins, Matthew James Johnson, Chris Leary, Dougal\nMaclaurin, George Necula, Adam Paszke, Jake VanderPlas, Skye Wanderman-Milne, et al. Jax:\ncomposable transformations of python+ numpy programs. 2018.\n[2] Spencer H Bryngelson. Apple neural engine: Architecture, programming, and performance.\narXiv preprint arXiv:2606.22283, 2026.\n[3] Tianqi Chen, Thierry Moreau, Ziheng Jiang, Lianmin Zheng, Eddie Yan, Haichen Shen, Meghan\nCowan, Leyuan Wang, Yuwei Hu, Luis Ceze, et al. {TVM}: An automated {End-to-End}\noptimizing compiler for deep learning. In 13th USENIX symposium on operating systems design\nand implementation (OSDI 18), pages 578–594, 2018.\n[4] Yiqun Chen, Lingyong Yan, Zixuan Yang, Erhan Zhang, Jiashu Zhao, Shuaiqiang Wang, Dawei\nYin, and Jiaxin Mao. Beyond monolithic architectures: A multi-agent search and knowledge\noptimization framework for agentic search. arXiv preprint arXiv:2601.04703, 2026.\n[5] Charles Hong, Sahil Bhatia, Alvin Cheung, and Sophia Shao. Autocomp: Llm-driven code\noptimization for tensor accelerators. In Machine Learning for Computer Architecture and Systems\n2025, 2025.\n[6] Robert Hundt, Naveen Kumar, Jose B Paredes, Scott Goodson, Clive Verghese, Prasanna Rengasamy, Kelvin Le, Jiya Zhang, Charles Alaras, Yin Zhang, et al. Xprof: An open, scalable,\nand extensible profiling system for the modern ml stack. Proceedings of Machine Learning and\nSystems, 8:214–232, 2026.\n[7] Patrick Lewis, Ethan Perez, Aleksandra Piktus, Fabio Petroni, Vladimir Karpukhin, Naman\nGoyal, Heinrich Küttler, Mike Lewis, Wen-tau Yih, Tim Rocktäschel, et al. Retrieval-augmented\ngeneration for knowledge-intensive nlp tasks. Advances in neural information processing systems,\n33:9459–9474, 2020.\n[8] Gang Liao, Hongsen Qin, Ying Wang, Alicia Golden, Michael Kuchnik, Yavuz Yetim, Ruichao\nXiao, Jia Jiunn Ang, Chunli Fu, Yihan He, et al. Kernelevolve: Scaling agentic kernel coding for\nheterogeneous ai accelerators at meta. In 2026 ACM/IEEE 53rd Annual International Symposium\non Computer Architecture (ISCA), pages 733–747. IEEE, 2026.\n[9] Erik Lindholm, John Nickolls, Stuart Oberman, and John Montrym. Nvidia tesla: A unified\ngraphics and computing architecture. IEEE micro, 28(2):39–55, 2008.\n12"
+    },
+    "chk_limitation": {
+      "status": "uncertain",
+      "why": "drafts differ",
+      "drafts": [
+        {
+          "value": "The Auto Agent performs linear, iterative improvements but remains susceptible to local optima.",
+          "paper_quote": "While the Auto Agent performs linear, iterative improvements, it remains susceptible to local optima.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "Dynamic and evolving knowledge bases and hybrid optimizations could further improve performance.",
+          "paper_quote": "In addition, dynamic and evolving knowledge bases from past experiments could offer additional improvements.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ],
+      "paper_excerpt": "Figure 3 | The closed-loop optimization workflow of the Auto Agent.\n\n2.5. Graph-Based Autonomous Search\nWhile the Auto Agent performs linear, iterative improvements, it remains susceptible to local optima. To\nexplore the optimization space more systematically, MaxKernel introduces a Graph-Based Autonomous\nSearch (Figure 4), which encapsulates the Auto Agent within a broader search algorithm. The\nkernel generation process is modeled as a formal search problem where the orchestrator maintains\n5\n\nMaxKernel: Agentic Kernel Generation for TPUs\n\nMaxKernel: Agentic Kernel Generation for TPUs\n\n4. Conclusion\nMaxKernel demonstrates that agentic systems can successfully handle the complexities of low-level\naccelerator programming. In particular, we showed how a harness comprising of context synthesis,\nautomated diagnosis, bottleneck identification via XProf profiling, and structured optimization heuristics can accelerate hillclimbing on TPUs. We demonstrated state-of-the-art performance numbers on\nJaxBench, reaching a geometric mean speedup of 1.58x on top of XLA optimizations.\nIn the future, we want to explore other optimization algorithms too, such as evolutionary search\nor greedy search via the Auto Research approach. In addition, dynamic and evolving knowledge bases\nfrom past experiments could offer additional improvements. Finally, we believe stateful hybrid optimizations could help address the exploration exploitation tradeoffs across the different optimization\nmethods.\n\nReferences\n[1] James Bradbury, Roy Frostig, Peter Hawkins, Matthew James Johnson, Chris Leary, Dougal\nMaclaurin, George Necula, Adam Paszke, Jake VanderPlas, Skye Wanderman-Milne, et al. Jax:\ncomposable transformations of python+ numpy programs. 2018.\n[2] Spencer H Bryngelson. Apple neural engine: Architecture, programming, and performance.\narXiv preprint arXiv:2606.22283, 2026.\n[3] Tianqi Chen, Thierry Moreau, Ziheng Jiang, Lianmin Zheng, Eddie Yan, Haichen Shen, Meghan\nCowan, Leyuan Wang, Yuwei Hu, Luis Ceze, et al. {TVM}: An automated {End-to-End}\noptimizing compiler for deep learning. In 13th USENIX symposium on operating systems design\nand implementation (OSDI 18), pages 578–594, 2018.\n[4] Yiqun Chen, Lingyong Yan, Zixuan Yang, Erhan Zhang, Jiashu Zhao, Shuaiqiang Wang, Dawei\nYin, and Jiaxin Mao. Beyond monolithic architectures: A multi-agent search and knowledge\noptimization framework for agentic search. arXiv preprint arXiv:2601.04703, 2026.\n[5] Charles Hong, Sahil Bhatia, Alvin Cheung, and Sophia Shao. Autocomp: Llm-driven code\noptimization for tensor accelerators. In Machine Learning for Computer Architecture and Systems\n2025, 2025.\n[6] Robert Hundt, Naveen Kumar, Jose B Paredes, Scott Goodson, Clive Verghese, Prasanna Rengasamy, Kelvin Le, Jiya Zhang, Charles Alaras, Yin Zhang, et al. Xprof: An open, scalable,\nand extensible profiling system for the modern ml stack. Proceedings of Machine Learning and\nSystems, 8:214–232, 2026.\n[7] Patrick Lewis, Ethan Perez, Aleksandra Piktus, Fabio Petroni, Vladimir Karpukhin, Naman\nGoyal, Heinrich Küttler, Mike Lewis, Wen-tau Yih, Tim Rocktäschel, et al. Retrieval-augmented\ngeneration for knowledge-intensive nlp tasks. Advances in neural information processing systems,\n33:9459–9474, 2020.\n[8] Gang Liao, Hongsen Qin, Ying Wang, Alicia Golden, Michael Kuchnik, Yavuz Yetim, Ruichao\nXiao, Jia Jiunn Ang, Chunli Fu, Yihan He, et al. Kernelevolve: Scaling agentic kernel coding for\nheterogeneous ai accelerators at meta. In 2026 ACM/IEEE 53rd Annual International Symposium\non Computer Architecture (ISCA), pages 733–747. IEEE, 2026.\n[9] Erik Lindholm, John Nickolls, Stuart Oberman, and John Montrym. Nvidia tesla: A unified\ngraphics and computing architecture. IEEE micro, 28(2):39–55, 2008.\n12"
+    }
+  }
+}

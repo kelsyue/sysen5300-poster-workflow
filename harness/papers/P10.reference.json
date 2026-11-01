@@ -1,0 +1,202 @@
+{
+  "paper_id": "P10",
+  "created_at": "2026-11-01T18:31:16+00:00",
+  "models": [
+    "gemini-3.5-flash",
+    "openai.gpt-4o"
+  ],
+  "reference_prompt_sha256": "a63f2a103bd381061f0d6560fdaf2e1bd28c503af09ee38a529d0648f4594fd3",
+  "paper_text_sha256": "0593be41b7f53d71565eb179e05dfc68e888eb730c1bec43bd10ddf2bb83418e",
+  "summary": "This paper investigates how the choice of gold standard reference affects multilingual benchmark scores and model rankings. By holding system outputs fixed and exchanging the reference between delivered gold and expert reviewer gold, the authors demonstrate that scores can shift by up to 4.95 F1 points pooled (and 7.55 points in Hindi), sometimes reversing model rankings. They recommend that benchmarks retain annotation records and report a reference-sensitivity band alongside headline scores.",
+  "items": {
+    "chk_problem": {
+      "status": "accepted",
+      "value": "Measuring how reference choice affects scores and model rankings in multilingual span extraction benchmarks.",
+      "paper_quote": "For a multilingual span extraction benchmark, we are not aware of prior work measuring how far a score moves and whether a ranking survives when the reference is exchanged for an equally defensible alternative from the same production pipeline.",
+      "drafts": [
+        {
+          "value": "Measuring how reference choice affects scores and model rankings in multilingual span extraction benchmarks.",
+          "paper_quote": "For a multilingual span extraction benchmark, we are not aware of prior work measuring how far a score moves and whether a ranking survives when the reference is exchanged for an equally defensible alternative from the same production pipeline.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "The paper examines how benchmark scores are affected by the choice of reference, which is often treated as a fixed property but can vary based on annotation processes.",
+          "paper_quote": "A benchmark score compares a system output against a reference, and methodological attention falls almost entirely on the first term. We measure the second.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ]
+    },
+    "chk_method": {
+      "status": "accepted",
+      "value": "Holding the system output fixed and varying the reference to isolate the effect of reference choice.",
+      "paper_quote": "We invert the usual arrangement: instead of varying the system and fixing the reference, we hold the system output fixed and vary the reference, so any movement is attributable to reference choice alone.",
+      "drafts": [
+        {
+          "value": "Holding the system output fixed and varying the reference to isolate the effect of reference choice.",
+          "paper_quote": "We invert the usual arrangement: instead of varying the system and fixing the reference, we hold the system output fixed and vary the reference, so any movement is attributable to reference choice alone.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "The study holds system outputs fixed and varies the reference to measure the impact of reference choice on benchmark scores.",
+          "paper_quote": "We invert the usual arrangement: instead of varying the system and fixing the reference, we hold the system output fixed and vary the reference, so any movement is attributable to reference choice alone.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ]
+    },
+    "chk_data": {
+      "status": "accepted",
+      "value": "The annotation record of a production multilingual PII extraction benchmark covering six languages and 24,939 prompts.",
+      "paper_quote": "We use the annotation record of a production multilingual benchmark for personally identifiable information (PII) extraction, covering six languages and 24,939 prompts.",
+      "drafts": [
+        {
+          "value": "The annotation record of a production multilingual PII extraction benchmark covering six languages and 24,939 prompts.",
+          "paper_quote": "We use the annotation record of a production multilingual benchmark for personally identifiable information (PII) extraction, covering six languages and 24,939 prompts.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "The dataset is a multilingual benchmark for PII span extraction, covering six languages and 24,939 prompts, with retained annotation records including two annotator labellings and an expert re-annotation.",
+          "paper_quote": "We use the annotation record of a production multilingual benchmark for personally identifiable information (PII) extraction, covering six languages and 24,939 prompts.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ]
+    },
+    "chk_setup": {
+      "status": "uncertain",
+      "why": "drafts differ",
+      "drafts": [
+        {
+          "value": "Scoring two annotator labellings against delivered gold and reviewer gold references using strict and relaxed span F1.",
+          "paper_quote": "The unit of analysis is the prompt, the outputs are the two annotator labellings, the references are the delivered gold and the reviewer gold, and the metric is span F1 under two matching rules.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "The study uses the audited subset of 2,628 prompts where all four labellings coexist, scoring outputs against two references under strict and relaxed matching rules.",
+          "paper_quote": "Every measurement is computed on the audited subset of Section 2.3, the only items on which all four labellings coexist.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ],
+      "paper_excerpt": "Method\n\nThe design holds one thing fixed and varies exactly one other. The scored output stays constant; only\nthe reference against which it is scored changes. The unit of analysis is the prompt, the outputs are\nthe two annotator labellings, the references are the delivered gold and the reviewer gold, and the\nmetric is span F1 under two matching rules. All uncertainty is a paired prompt-level bootstrap, and\nthe ranking claim is tested as an interaction rather than as two separate verdicts. Figure 1 shows the\npipeline the references come from. The rest of this section defines each of those in turn: the setting\nand matching rules, agreement between labellings, the reference substitution itself, and uncertainty.\n3.1\n\nSetting and matching rules\n\nEvery measurement is computed on the audited subset of Section 2.3, the only items on which all\nfour labellings coexist. A labelling assigns a set of spans, each a character start offset, an end offset,\nand one type; duplicates collapse, and no span carries two types, so a start–end pair identifies at most\none span per set.\nWe score under two matching rules. Under S TRICT a span is the triple (start, end , type) and two\nspans match only if all three parts are equal; under R ELAXED a span is the pair (start, end ) and type\nis ignored. Both require exact boundary equality, so R ELAXED is type-agnostic exact-boundary F1\nand the gap between the rules isolates the cost of type disagreement among spans whose boundaries\nalready agree. Neither credits a partial overlap, so we cannot decompose the remainder into boundary\ndrift and missed detections, and do not claim to. S TRICT is the standard rule for span extraction; we\nreport R ELAXED beside it so the type component can be read off directly.\n4\n\nFigure 1: The annotation pipeline as designed: two independent passes, a third on disagreement, and\na reviewer pool that re-annotates a sample. In practice the third pass skipped some disagreements and\ncovered some agreed prompts (Section 2). Both references are outputs of this one process.\n3.2"
+    },
+    "chk_primary_result": {
+      "status": "accepted",
+      "value": "Exchanging the reference moves the score by 4.95 F1 points for one output and 2.00 for the other, and up to 7.55 in the worst language.",
+      "paper_quote": "The score moves by 4.95 F1 points for one output and 2.00 for the other (95% CIs [3.23, 6.27] and [0.26, 3.37]), and by 7.55 in the worst language.",
+      "drafts": [
+        {
+          "value": "Exchanging the reference moves the score by 4.95 F1 points for one output and 2.00 for the other, and up to 7.55 in the worst language.",
+          "paper_quote": "The score moves by 4.95 F1 points for one output and 2.00 for the other (95% CIs [3.23, 6.27] and [0.26, 3.37]), and by 7.55 in the worst language.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "Exchanging the reference moves the score by 4.95 F1 points for one annotator’s output and 2.00 for the other (95% CIs [3.23, 6.27] and [0.26, 3.37]).",
+          "paper_quote": "The score moves by 4.95 F1 points for one output and 2.00 for the other (95% CIs [3.23, 6.27] and [0.26, 3.37]).",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ]
+    },
+    "chk_secondary_result": {
+      "status": "accepted",
+      "value": "The paired interaction between reference and system is +2.95 points, and the Hindi margin changes sign.",
+      "paper_quote": "The comparison between two outputs moves as well: the paired interaction between reference and system is +2.95 points (CI [+1.97, +3.87]), survives correction for multiple testing, and changes one language’s margin outright.",
+      "drafts": [
+        {
+          "value": "The paired interaction between reference and system is +2.95 points, and the Hindi margin changes sign.",
+          "paper_quote": "The comparison between two outputs moves as well: the paired interaction between reference and system is +2.95 points (CI [+1.97, +3.87]), survives correction for multiple testing, and changes one language’s margin outright.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "The comparison between two outputs moves as well, with a paired interaction of +2.95 points (CI [+1.97, +3.87]), which changes one language’s margin outright.",
+          "paper_quote": "The comparison between two outputs moves as well: the paired interaction between reference and system is +2.95 points (CI [+1.97, +3.87]), survives correction for multiple testing, and changes one language’s margin outright.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ]
+    },
+    "chk_baseline": {
+      "status": "uncertain",
+      "why": "one draft says the item does not apply",
+      "drafts": [
+        {
+          "value": null,
+          "paper_quote": null,
+          "reason": "The paper does not compare its proposed evaluation procedure against any baseline methods, as it focuses on auditing an existing benchmark's reference-construction process.",
+          "quote_found": false,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "The study compares scores obtained using the delivered gold reference versus the reviewer gold reference.",
+          "paper_quote": "The delivered gold and the expert re-annotation are both defensible; a practitioner could have adopted either.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ],
+      "paper_excerpt": "40th Conference on Neural Information Processing Systems (NeurIPS 2026). Workshop: TAE (Trust-AI-Eval): Can We Trust\nAI Evaluation?.\n\nthan noise [Aroyo and Welty, 2015, Plank, 2022, Uma et al., 2021]; that work asks what disagreement\nmeans for training, whereas we ask what it means for scoring. Closest to us, Northcutt et al. [2021]\nshow that correcting test-set label errors can reorder model rankings, but they reconstruct references\nalgorithmically after the fact, and they address classification, where a label error is a substitution\nrather than a differing boundary. Bonagiri et al. [2026] find leaderboard orderings shifting more with\nthe choice of rater than with system capability, though their references are subsamples of one rater\npool, in English, for preference judgement. A parallel literature asks what scores license us to claim\n[Jacobs and Wallach, 2021, Bowman and Dahl, 2021, Raji et al., 2021], while within span extraction\nthe question has been treated as data quality rather than evaluation sensitivity [Bernier-Colborne\nand Vajjala, 2024, Martinez Iraola and Jimeno Yepes, 2021, Frénay and Verleysen, 2014]. For a\nmultilingual span extraction benchmark, we are not aware of prior work measuring how far a score\nmoves and whether a ranking survives when the reference is exchanged for an equally defensible\nalternative from the same production pipeline.\nOur design. We invert the usual arrangement: instead of varying the system and fixing the reference,\nwe hold the system output fixed and vary the reference, so any movement is attributable to reference\nchoice alone. The measurement needs a dataset in which the same items carry several independent,\nequally defensible references. We use the annotation record of a production multilingual benchmark\nfor personally identifiable information (PII) extraction, covering six languages and 24,939 prompts. It\nretains three things normally discarded: two independent annotator labellings of nearly every prompt,\nthe aggregate shipped as gold, and an independent expert re-annotation of a sample. The delivered\ngold and the expert re-annotation are both defensible; a practitioner could have adopted either.\nThe two references are not interchangeable: the delivered gold reproduces one annotator’s span set\nmore often than the other’s in every one of the six languages, while the expert re-annotation has no\nsuch preference, so the difference is structural rather than sampling noise (Section 4.1). Exchanging\nthe reference moves th"
+    },
+    "chk_conclusion": {
+      "status": "accepted",
+      "value": "Benchmarks should report a reference-sensitivity band alongside the score to reflect evaluation uncertainty.",
+      "paper_quote": "We suggest benchmarks report a reference-sensitivity band alongside the score.",
+      "drafts": [
+        {
+          "value": "Benchmarks should report a reference-sensitivity band alongside the score to reflect evaluation uncertainty.",
+          "paper_quote": "We suggest benchmarks report a reference-sensitivity band alongside the score.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "Benchmark scores measure both system performance and reference choice, and benchmarks should report a reference-sensitivity band alongside scores.",
+          "paper_quote": "We suggest benchmarks report a reference-sensitivity band alongside the score.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ]
+    },
+    "chk_limitation": {
+      "status": "uncertain",
+      "why": "drafts differ",
+      "drafts": [
+        {
+          "value": "The findings are based on a single annotation record and pipeline, and the scored outputs are human passes rather than model predictions.",
+          "paper_quote": "Every measurement comes from a single annotation record, and the size of the effect depends on properties of that record, in particular an aggregation rule that favours one annotator.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "The study is based on a single annotation record, and the magnitude of reference sensitivity for model outputs remains an empirical question.",
+          "paper_quote": "These are measurements of one annotation record, not a general law, and a pipeline with a neutral aggregation rule would show less.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ],
+      "paper_excerpt": "40th Conference on Neural Information Processing Systems (NeurIPS 2026). Workshop: TAE (Trust-AI-Eval): Can We Trust\nAI Evaluation?.\n\nthan noise [Aroyo and Welty, 2015, Plank, 2022, Uma et al., 2021]; that work asks what disagreement\nmeans for training, whereas we ask what it means for scoring. Closest to us, Northcutt et al. [2021]\nshow that correcting test-set label errors can reorder model rankings, but they reconstruct references\nalgorithmically after the fact, and they address classification, where a label error is a substitution\nrather than a differing boundary. Bonagiri et al. [2026] find leaderboard orderings shifting more with\nthe choice of rater than with system capability, though their references are subsamples of one rater\npool, in English, for preference judgement. A parallel literature asks what scores license us to claim\n[Jacobs and Wallach, 2021, Bowman and Dahl, 2021, Raji et al., 2021], while within span extraction\nthe question has been treated as data quality rather than evaluation sensitivity [Bernier-Colborne\nand Vajjala, 2024, Martinez Iraola and Jimeno Yepes, 2021, Frénay and Verleysen, 2014]. For a\nmultilingual span extraction benchmark, we are not aware of prior work measuring how far a score\nmoves and whether a ranking survives when the reference is exchanged for an equally defensible\nalternative from the same production pipeline.\nOur design. We invert the usual arrangement: instead of varying the system and fixing the reference,\nwe hold the system output fixed and vary the reference, so any movement is attributable to reference\nchoice alone. The measurement needs a dataset in which the same items carry several independent,\nequally defensible references. We use the annotation record of a production multilingual benchmark\nfor personally identifiable information (PII) extraction, covering six languages and 24,939 prompts. It\nretains three things normally discarded: two independent annotator labellings of nearly every prompt,\nthe aggregate shipped as gold, and an independent expert re-annotation of a sample. The delivered\ngold and the expert re-annotation are both defensible; a practitioner could have adopted either.\nThe two references are not interchangeable: the delivered gold reproduces one annotator’s span set\nmore often than the other’s in every one of the six languages, while the expert re-annotation has no\nsuch preference, so the difference is structural rather than sampling noise (Section 4.1). Exchanging\nthe reference moves the score by 4.95 F1 points for one annotator’s output (95% CI [3.23, 6.27]) and\n2.00 for the other (CI [0.26, 3.37]), with each output held fixed. Most consequentially, it changes the\ncomparison between two outputs: the paired interaction is +2.95 points, 95% CI [+1.97, +3.87], and\nsurvives Holm correction over all 14 tests we report; the Hindi margin changes sign (Section 4.3).\nThe cause is not exotic. On 94.9% of audited prompts the shipped reference is identical to one of the\ntwo annotator labellings, because an undocumented aggregation default usually kept Annotator A\nwhen adjudication did not fire. The reference was therefore partly copied from the outputs being\ncompared. We report the resulting movement as a reference-sensitivity band and show how to\ncompute one from any retained annotation record.\nWe make three contributions. First, a procedure for measuring reference sensitivity that requires no\nnew annotation, only an annotation record that was retained rather than discarded. Second, evidence\nthat an aggregation default resolving ties by position is an evaluation bias rather than an annotation\ndetail: it is testable in two lines of code, and in this pipeline it put a measurable thumb on every\nscore the benchmark reported. Third, a measurement of what that bias costs on a six-language span\nextraction benchmark, with bootstrap intervals throughout and the limits of the estimate stated.\nA note on scope. The outputs we score are human annotation passes, not model predictions. The\nobject we audit, however, is the benchmark evaluation protocol: the same reference-construction\nprocess determines the gold against which model outputs would be scored. Human passes are the\nonly outputs this record supports, so whether the magnitude of reference sensitivity transfers to model\noutputs remains an empirical question. These are measurements of one annotation record, not a\ngeneral law, and a pipeline with a neutral aggregation rule would show less. That is the point: the\nsize of the effect is a property of the pipeline, and it is currently unreported.\n\n2\n\nLimitations\n\nOne benchmark, one pipeline. Every measurement comes from a single annotation record, and the\nsize of the effect depends on properties of that record, in particular an aggregation rule that favours\none annotator. We claim the method transfers, not the number. The reviewer sample is documented,\nnot observed. The data-preparation record states the reviewed prompts were randomly selected; we\ncould not verify t"
+    }
+  }
+}

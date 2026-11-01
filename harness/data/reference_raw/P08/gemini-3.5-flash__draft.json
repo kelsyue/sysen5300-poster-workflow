@@ -1,0 +1,58 @@
+{
+  "model": "gemini-3.5-flash",
+  "reference_prompt_sha256": "a63f2a103bd381061f0d6560fdaf2e1bd28c503af09ee38a529d0648f4594fd3",
+  "error": null,
+  "tokens_in": 12731,
+  "tokens_out": 5130,
+  "parsed": {
+    "summary": "This paper introduces CLASVS, a continuous-latent autoregressive model for melody-preserving lyric editing in singing voice synthesis. It utilizes State-Control-Transition (SCT) routing and Progressive State-Control Grounding (PSCG) to resolve the conflict between target lyrics and reference melody without requiring paired counterfactual edit recordings. The model achieves a 46.2% reduction in macro-phoneme error rate (macro-PER) compared to the discrete-AR Vevo2 baseline while maintaining high naturalness and lyric intelligibility.",
+    "items": {
+      "chk_problem": {
+        "value": "Removing score annotations in melody-preserving lyric editing creates a selective-preservation problem where the model must retain reference performance characteristics while rejecting source lyrics.",
+        "paper_quote": "Removing score annotations, however, creates a selective-preservation problem: the model must retain the performance characteristics carried by the reference while rejecting its source lyrics.",
+        "reason": null
+      },
+      "chk_method": {
+        "value": "CLASVS uses State-Control-Transition (SCT) routing to separate global lyric planning from local acoustic continuity, and Progressive State-Control Grounding (PSCG) to learn this routing without paired counterfactual edit recordings.",
+        "paper_quote": "Its State–Control–Transition (SCT) routing keeps target-lyric and reference-melody controls persistent, returns semantic feedback on phonetic progress to the causal planner, and confines the previous latent patch to the local Transition.",
+        "reason": null
+      },
+      "chk_data": {
+        "value": "The model is trained on approximately 8,000 hours of Mandarin singing, 2,000 hours of Mandarin Emilia speech, and 300 hours of curated open-source singing.",
+        "paper_quote": "Training audio comprises about 8,000 hours of permission-documented Mandarin singing, 2,000 hours of Mandarin Emilia speech (He et al. 2024), and 300 hours of curated open-source singing; all data are Mandarin.",
+        "reason": null
+      },
+      "chk_setup": {
+        "value": "The experimental setup uses three 120K-update seeds trained with BF16, ZeRO-2, AdamW, and a global batch size of 128.",
+        "paper_quote": "Three 120K-update seeds use BF16, ZeRO-2, AdamW, and global batch 128.",
+        "reason": null
+      },
+      "chk_primary_result": {
+        "value": "CLASVS reduces macro-PER by 46.2% compared to the discrete-AR Vevo2 baseline across two Mandarin benchmarks.",
+        "paper_quote": "On two Mandarin benchmarks, CLASVS improves all four operations over discrete-AR Vevo2 and reduces macro-PER by 46.2%, while maintaining melody, singer similarity, and perceptual quality.",
+        "reason": null
+      },
+      "chk_secondary_result": {
+        "value": "CLASVS improves naturalness (N-MOS) by +.48 and lyric intelligibility (L-MOS) by +.32 over the continuous-NAR comparator YingMusic+.",
+        "paper_quote": "CLASVS improves N-MOS by +.48 [+.34, +.62] and L-MOS by +.32 [+.20, +.44] over YingMusic+ under the same listening protocol; M-MOS differs by an undetectable +.01.",
+        "reason": null
+      },
+      "chk_baseline": {
+        "value": "The primary baseline is Vevo2, a discrete autoregressive model, and the complementary baseline is YingMusic+, a continuous non-autoregressive model.",
+        "paper_quote": "Vevo2 is the primary comparator because it shares CLASVS’s sequential interface but predicts discrete acoustic tokens rather than continuous AudioVAE latent patches (Zhang et al. 2026).",
+        "reason": null
+      },
+      "chk_conclusion": {
+        "value": "CLASVS successfully establishes continuous-latent autoregression for melody-preserving Mandarin lyric editing without requiring manual score annotations.",
+        "paper_quote": "CLASVS establishes continuous-latent autoregression for melody-preserving Mandarin lyric editing without manual score annotations.",
+        "reason": null
+      },
+      "chk_limitation": {
+        "value": "The evaluation is limited to a single recognizer and reference-timing metrics on Mandarin 2–6-syllable edits, leaving cross-lingual and long-edit validation as open challenges.",
+        "paper_quote": "Evaluation uses one recognizer and reference-timing metrics on Mandarin 2–6-syllable edits; cross-lingual and long-edit validation remain open.",
+        "reason": null
+      }
+    }
+  },
+  "raw": "{\n  \"summary\": \"This paper introduces CLASVS, a continuous-latent autoregressive model for melody-preserving lyric editing in singing voice synthesis. It utilizes State-Control-Transition (SCT) routing and Progressive State-Control Grounding (PSCG) to resolve the conflict between target lyrics and reference melody without requiring paired counterfactual edit recordings. The model achieves a 46.2% reduction in macro-phoneme error rate (macro-PER) compared to the discrete-AR Vevo2 baseline while maintaining high naturalness and lyric intelligibility.\",\n  \"items\": {\n    \"chk_problem\": {\n      \"value\": \"Removing score annotations in melody-preserving lyric editing creates a selective-preservation problem where the model must retain reference performance characteristics while rejecting source lyrics.\",\n      \"paper_quote\": \"Removing score annotations, however, creates a selective-preservation problem: the model must retain the performance characteristics carried by the reference while rejecting its source lyrics.\",\n      \"reason\": null\n    },\n    \"chk_method\": {\n      \"value\": \"CLASVS uses State-Control-Transition (SCT) routing to separate global lyric planning from local acoustic continuity, and Progressive State-Control Grounding (PSCG) to learn this routing without paired counterfactual edit recordings.\",\n      \"paper_quote\": \"Its State–Control–Transition (SCT) routing keeps target-lyric and reference-melody controls persistent, returns semantic feedback on phonetic progress to the causal planner, and confines the previous latent patch to the local Transition.\",\n      \"reason\": null\n    },\n    \"chk_data\": {\n      \"value\": \"The model is trained on approximately 8,000 hours of Mandarin singing, 2,000 hours of Mandarin Emilia speech, and 300 hours of curated open-source singing.\",\n      \"paper_quote\": \"Training audio comprises about 8,000 hours of permission-documented Mandarin singing, 2,000 hours of Mandarin Emilia speech (He et al. 2024), and 300 hours of curated open-source singing; all data are Mandarin.\",\n      \"reason\": null\n    },\n    \"chk_setup\": {\n      \"value\": \"The experimental setup uses three 120K-update seeds trained with BF16, ZeRO-2, AdamW, and a global batch size of 128.\",\n      \"paper_quote\": \"Three 120K-update seeds use BF16, ZeRO-2, AdamW, and global batch 128.\",\n      \"reason\": null\n    },\n    \"chk_primary_result\": {\n      \"value\": \"CLASVS reduces macro-PER by 46.2% compared to the discrete-AR Vevo2 baseline across two Mandarin benchmarks.\",\n      \"paper_quote\": \"On two Mandarin benchmarks, CLASVS improves all four operations over discrete-AR Vevo2 and reduces macro-PER by 46.2%, while maintaining melody, singer similarity, and perceptual quality.\",\n      \"reason\": null\n    },\n    \"chk_secondary_result\": {\n      \"value\": \"CLASVS improves naturalness (N-MOS) by +.48 and lyric intelligibility (L-MOS) by +.32 over the continuous-NAR comparator YingMusic+.\",\n      \"paper_quote\": \"CLASVS improves N-MOS by +.48 [+.34, +.62] and L-MOS by +.32 [+.20, +.44] over YingMusic+ under the same listening protocol; M-MOS differs by an undetectable +.01.\",\n      \"reason\": null\n    },\n    \"chk_baseline\": {\n      \"value\": \"The primary baseline is Vevo2, a discrete autoregressive model, and the complementary baseline is YingMusic+, a continuous non-autoregressive model.\",\n      \"paper_quote\": \"Vevo2 is the primary comparator because it shares CLASVS’s sequential interface but predicts discrete acoustic tokens rather than continuous AudioVAE latent patches (Zhang et al. 2026).\",\n      \"reason\": null\n    },\n    \"chk_conclusion\": {\n      \"value\": \"CLASVS successfully establishes continuous-latent autoregression for melody-preserving Mandarin lyric editing without requiring manual score annotations.\",\n      \"paper_quote\": \"CLASVS establishes continuous-latent autoregression for melody-preserving Mandarin lyric editing without manual score annotations.\",\n      \"reason\": null\n    },\n    \"chk_limitation\": {\n      \"value\": \"The evaluation is limited to a single recognizer and reference-timing metrics on Mandarin 2–6-syllable edits, leaving cross-lingual and long-edit validation as open challenges.\",\n      \"paper_quote\": \"Evaluation uses one recognizer and reference-timing metrics on Mandarin 2–6-syllable edits; cross-lingual and long-edit validation remain open.\",\n      \"reason\": null\n    }\n  }\n}"
+}

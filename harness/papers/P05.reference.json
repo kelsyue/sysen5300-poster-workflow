@@ -1,0 +1,202 @@
+{
+  "paper_id": "P05",
+  "created_at": "2026-11-01T18:29:07+00:00",
+  "models": [
+    "gemini-3.5-flash",
+    "openai.gpt-4o"
+  ],
+  "reference_prompt_sha256": "a63f2a103bd381061f0d6560fdaf2e1bd28c503af09ee38a529d0648f4594fd3",
+  "paper_text_sha256": "33546ca8ee20e17d783813adf2a4c1bcb00283fda1714eab88441d69d584d934",
+  "summary": "This paper investigates systematic errors in neural morphological generation for Japanese past-tense verb inflection. It shows that a single rare irregular verb subtype (Type 4-2, <1% of the data) accounts for 30–43% of residual errors. Controlled ablation experiments demonstrate that removing this specific subtype yields larger accuracy gains than removing all irregular verbs combined, indicating that structural factors rather than irregularity itself drive these failures.",
+  "items": {
+    "chk_problem": {
+      "status": "accepted",
+      "value": "High aggregate accuracy in neural morphological generation systems can conceal systematic errors clustered in rare morphological subclasses, particularly in Japanese past-tense verb inflection.",
+      "paper_quote": "Neural morphological generation systems often achieve high aggregate accuracy on benchmark datasets, yet such performance can conceal systematic errors clustered in rare morphological subclasses.",
+      "drafts": [
+        {
+          "value": "High aggregate accuracy in neural morphological generation systems can conceal systematic errors clustered in rare morphological subclasses, particularly in Japanese past-tense verb inflection.",
+          "paper_quote": "Neural morphological generation systems often achieve high aggregate accuracy on benchmark datasets, yet such performance can conceal systematic errors clustered in rare morphological subclasses.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "Neural morphological generation systems achieve high aggregate accuracy but fail systematically in rare morphological subclasses.",
+          "paper_quote": "Neural morphological generation systems often achieve high aggregate accuracy on benchmark datasets, yet such performance can conceal systematic errors clustered in rare morphological subclasses.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ]
+    },
+    "chk_method": {
+      "status": "accepted",
+      "value": "An orthography-aware diagnosis using a fine-grained error taxonomy and subgroup-level accuracy analysis, combined with controlled ablation experiments to causally isolate the failure mode.",
+      "paper_quote": "First, we conduct an orthography-aware diagnosis, using a fine-grained error taxonomy and subgroup-level accuracy analysis, aggregated across five random seeds and two architectures, to characterize where models fail.",
+      "drafts": [
+        {
+          "value": "An orthography-aware diagnosis using a fine-grained error taxonomy and subgroup-level accuracy analysis, combined with controlled ablation experiments to causally isolate the failure mode.",
+          "paper_quote": "First, we conduct an orthography-aware diagnosis, using a fine-grained error taxonomy and subgroup-level accuracy analysis, aggregated across five random seeds and two architectures, to characterize where models fail.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "Orthography-aware diagnosis and causal isolation using controlled ablation experiments.",
+          "paper_quote": "We present an orthography-aware diagnosis of Japanese past-tense verb inflection, treating hiragana not merely as a transcriptional medium but as a representational system that encodes morphophonological structure.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ]
+    },
+    "chk_data": {
+      "status": "accepted",
+      "value": "A Japanese verb inflection dataset in standard morphological transduction format, with all 3,958 verb forms converted to hiragana to eliminate kanji homography.",
+      "paper_quote": "We use a Japanese verb inflection dataset in standard morphological transduction format, following the setup of Vylomova et al. (2020) and Goldman et al. (2023).",
+      "drafts": [
+        {
+          "value": "A Japanese verb inflection dataset in standard morphological transduction format, with all 3,958 verb forms converted to hiragana to eliminate kanji homography.",
+          "paper_quote": "We use a Japanese verb inflection dataset in standard morphological transduction format, following the setup of Vylomova et al. (2020) and Goldman et al. (2023).",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "Japanese verb inflection dataset in morphological transduction format, converted to hiragana, with 3,958 verbs.",
+          "paper_quote": "We use a Japanese verb inflection dataset in standard morphological transduction format, following the setup of Vylomova et al. (2020) and Goldman et al. (2023).",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ]
+    },
+    "chk_setup": {
+      "status": "uncertain",
+      "why": "drafts differ",
+      "drafts": [
+        {
+          "value": "Two character-level Transformer architectures (PGT and LST) trained five times with different random seeds using an 80/10/10 train/development/test split.",
+          "paper_quote": "To reduce selective-reporting bias, we train each model on the full dataset five times with different random seeds, using an 80/10/10 train/development/test split.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "Two character-level Transformer architectures (PGT and LST) trained on Japanese past-tense inflection data with five random seeds and eight ablation conditions.",
+          "paper_quote": "We evaluate two character-level Transformer encoder–decoder architectures for Japanese past-tense inflection, both operating over hiragana strings and generating inflected forms autoregressively.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ],
+      "paper_excerpt": "Models\n\nWe evaluate two character-level Transformer\nencoder–decoder architectures for Japanese pasttense inflection, both operating over hiragana\nstrings and generating inflected forms autoregressively. The first is a Pointer-Generator\nTransformer (henceforth PGT), incorporating a\npointer-generator copying mechanism (See et al.,\n2017) with attention over the input lemma, trained\nand evaluated on the morphological inflection\n\nVerb Type\n\ndata (Vylomova et al., 2020). The second follows\nthe architecture of Goldman et al. (2023), a\nLemma-Split Transformer (henceforth LST)\nthat additionally uses a lemma-split training and\nevaluation regime, preventing a lemma from\nappearing in both training and test data and\nimproving generalization to unseen lemmas.\n\n5 Experimental Setup\n5.1 Training Regime\nBoth models are trained with cross-entropy loss\nand teacher forcing, using the default hyperparameter configurations from their respective sharedtask baselines (Vylomova et al., 2020; Goldman\net al., 2023), optimized with Adam (Kingma and\nBa, 2015) and standard Transformer learning-rate\nscheduling (Vaswani et al., 2017).\n5.2 Multi-Seed Baseline Evaluation\nNeural model performance is sensitive to random\ninitialization, data shuffling, and optimization dynamics (Reimers and Gurevych, 2017). To reduce\nselective-reporting bias, we train each model on\nthe full dataset five times with different random\nseeds, using an 80/10/10 train/development/test\nsplit. The error taxonomy and quantitative errordistribution analyses (§6.2–6.4) are aggregated\nacross all five seeds. The controlled ablation experiments (§6.7) involve eight training conditions\nper model and are conducted on the primary seed.\n5.3 Controlled Ablation Conditions\nTo causally test the contribution of individual irregular subtypes, we train both architectures under\neight controlled data conditions: the full dataset;\nregular verbs only (Types 1–2); the full dataset minus one irregular subtype (removing 4-1, 4-2, or\n4-3 individually); and the full dataset minus each\npairwise combination of subtypes. For every con-\n\ndition, the same verb types are removed from both\ntraining and test data."
+    },
+    "chk_primary_result": {
+      "status": "accepted",
+      "value": "A single irregular subtype (Type 4-2) comprising <1% of the data accounts for 30–43% of residual errors and contributes 34–48× its prevalence to total errors.",
+      "paper_quote": "Using two character-level Transformer architectures evaluated across five random seeds, we show that although both systems exceed 97% aggregate accuracy, a single structurally specific irregular subtype, verbs whose stems end in /e/ and require gemination before the past-tense suﬀix and make up fewer than 1% of the data, accounts for a disproportionate 30–43% share of residual errors and contributes roughly 34–48× its prevalence to total errors.",
+      "drafts": [
+        {
+          "value": "A single irregular subtype (Type 4-2) comprising <1% of the data accounts for 30–43% of residual errors and contributes 34–48× its prevalence to total errors.",
+          "paper_quote": "Using two character-level Transformer architectures evaluated across five random seeds, we show that although both systems exceed 97% aggregate accuracy, a single structurally specific irregular subtype, verbs whose stems end in /e/ and require gemination before the past-tense suﬀix and make up fewer than 1% of the data, accounts for a disproportionate 30–43% share of residual errors and contributes roughly 34–48× its prevalence to total errors.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "Type 4-2 verbs, comprising <1% of data, account for 30–43% of residual errors and contribute 34–48× their prevalence to total errors.",
+          "paper_quote": "Using two character-level Transformer architectures evaluated across five random seeds, we show that although both systems exceed 97% aggregate accuracy, a single structurally specific irregular subtype, verbs whose stems end in /e/ and require gemination before the past-tense suffix and make up fewer than 1% of the data, accounts for a disproportionate 30–43% share of residual errors and contributes roughly 34–48× its prevalence to total errors.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ]
+    },
+    "chk_secondary_result": {
+      "status": "accepted",
+      "value": "Removing the Type 4-2 irregular subtype alone produces larger accuracy gains than removing all irregular verbs combined.",
+      "paper_quote": "Controlled ablation experiments show that selective removal of this subtype alone produces larger accuracy gains than removing all irregular verbs combined, suggesting that structural position, not frequency alone, is the primary driver of the effect.",
+      "drafts": [
+        {
+          "value": "Removing the Type 4-2 irregular subtype alone produces larger accuracy gains than removing all irregular verbs combined.",
+          "paper_quote": "Controlled ablation experiments show that selective removal of this subtype alone produces larger accuracy gains than removing all irregular verbs combined, suggesting that structural position, not frequency alone, is the primary driver of the effect.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "Removing Type 4-2 verbs alone improves accuracy more than removing all irregular verbs combined.",
+          "paper_quote": "Controlled ablation experiments show that removing this subtype alone produces larger accuracy gains than removing all irregular verbs combined.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ]
+    },
+    "chk_baseline": {
+      "status": "uncertain",
+      "why": "drafts differ",
+      "drafts": [
+        {
+          "value": "The ablation conditions are compared against the full-data baseline performance of the PGT and LST models.",
+          "paper_quote": "Table 6 and Figure 3 summarize the accuracy gain over the full-data baseline for each condition.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "Baseline accuracy of 97.98% (PGT) and 97.73% (LST) on the full dataset.",
+          "paper_quote": "On the primary run, both systems achieve high aggregate accuracy on the full dataset: 97.98% (PGT) and 97.73% (LST).",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ],
+      "paper_excerpt": "Baseline Performance\n\nOn the primary run, both systems achieve high aggregate accuracy on the full dataset: 97.98% (PGT)\nand 97.73% (LST). Averaged across all five seeds,\naccuracy is 97.17% ± 0.65 (PGT) and 96.97% ±\n0.82 (LST) (mean ± sample standard deviation),\nconfirming that high aggregate accuracy is a stable\nproperty of both architectures. Despite this overall\nstability, errors cluster in specific low-frequency\nsubclasses, as we show next.\n6.2\n\nError Taxonomy\n\nFigure 2: Disparity Ratio by verb type for PGT and LST\nsystems. Type 4-2 shows a dramatically higher disparity\nratio than all other subtypes, contributing 34–48× its\nproportional share to total errors.\n\nほめたえた hometaeta.\n6.7 Causal Ablation: Isolating Type 4-2\nThe analyses above are descriptive: they show\nwhere errors concentrate, but not whether removing the implicated subtype actually improves generalization more than removing irregularity broadly.\nTable 6 and Figure 3 summarize the accuracy gain\nover the full-data baseline for each condition. Table 7 reports test accuracy under all eight ablation\nconditions. Because the same verb types are removed from both training and test across all conditions, accuracy differences between conditions\nreflect differences in which subtypes destabilize\nlearning of the remaining vocabulary, not differences in test set composition.\nFor the LST system, removing only Type 4-\n\nCondition"
+    },
+    "chk_conclusion": {
+      "status": "uncertain",
+      "why": "drafts differ",
+      "drafts": [
+        {
+          "value": "Error concentration in neural morphological learning is driven by the interaction between extreme low-frequency morphological patterns and specific orthographic processes, rather than irregularity per se.",
+          "paper_quote": "These findings indicate that error concentration in neural morphological learning is not driven by irregularity per se, but by the interaction between extreme low-frequency morphological patterns and specific orthographic processes.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "Not all irregularity is equally destabilizing; fine-grained, subgroup-aware evaluation is necessary for morphological learning.",
+          "paper_quote": "These results demonstrate that high aggregate accuracy can mask structurally localized failures, that not all irregularity is equally destabilizing to neural generalization, and that fine-grained, subgroup-aware evaluation is necessary to reveal and causally test such effects.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ],
+      "paper_excerpt": "arXiv:2609.21179v1 [cs.CL] 18 Sep 2026\n\nNeural morphological generation systems often achieve high aggregate accuracy on benchmark datasets, yet such performance can conceal systematic errors clustered in rare morphological subclasses. We present an orthographyaware diagnosis of Japanese past-tense verb\ninflection, treating hiragana not merely as a\ntranscriptional medium but as a representational system that encodes morphophonological structure. Using two character-level Transformer architectures evaluated across five random seeds, we show that although both systems exceed 97% aggregate accuracy, a single\nstructurally specific irregular subtype, verbs\nwhose stems end in /e/ and require gemination before the past-tense suﬀix and make up\nfewer than 1% of the data, accounts for a disproportionate 30–43% share of residual errors\nand contributes roughly 34–48× its prevalence\nto total errors. We then move from diagnosis\nto causal isolation: controlled ablation experiments show that removing this subtype alone\nproduces larger accuracy gains than removing\nall irregular verbs combined. These findings\nindicate that error concentration in neural morphological learning is not driven by irregularity\nper se, but by the interaction between extreme\nlow-frequency morphological patterns and specific orthographic processes. We argue that\nmorphological evaluation should incorporate\nfine-grained subclass analysis, and discuss implications for data-eﬀicient, developmentally\nplausible language model pretraining.1\n\n1\n\nConclusion\n\nWe presented a combined diagnostic and causal\nanalysis of Japanese past-tense inflection. Aggregating over five seeds and two architectures, we\nshowed that a single irregular subtype comprising under 1% of the data accounts for 30–43% of\nresidual errors (a 34–48× disparity ratio), concentrated in gemination-related failures. Controlled\nablation experiments show that removing only this\nsubtype improves generalization more than removing all irregular verbs. These results demonstrate\nthat high aggregate accuracy can mask structurally\nlocalized failures, that not all irregularity is equally\ndestabilizing to neural generalization, and that finegrained, subgroup-aware evaluation is necessary\nto reveal and causally test such effects. We argue this evaluation practice is particularly relevant\nto sample-eﬀicient, developmentally plausible language modeling. Future work will test whether\nthe same structural confusability effects appear in\nlarge language models, asking whether scale alone\nis suﬀicient to overcome the inductive biases identified here.\n\nLimitations\nSeveral limitations qualify our findings. First,\nour ablation experiments were each run once\nper condition; replication across multiple training runs would strengthen the causal claim. Second, our study focuses on a single language, a single morphological paradigm, and two Transformerbased architectures. Cross-linguistic validation is\nnecessary to determine whether comparable lowfrequency structural subtypes produce similar dis-"
+    },
+    "chk_limitation": {
+      "status": "uncertain",
+      "why": "drafts differ",
+      "drafts": [
+        {
+          "value": "Ablation experiments were run only once per condition, the study is limited to one language and paradigm, and the analysis is correlational regarding the underlying mechanism.",
+          "paper_quote": "First, our ablation experiments were each run once per condition; replication across multiple training runs would strengthen the causal claim.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "Study focuses on a single language, paradigm, and two architectures; cross-linguistic validation and replication are needed.",
+          "paper_quote": "Cross-linguistic validation is necessary to determine whether comparable low-frequency structural subtypes produce similar disparities in other morphologically rich languages, and whether larger pretrained models exhibit different sensitivity to the patterns we identify.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ],
+      "paper_excerpt": "We presented a combined diagnostic and causal\nanalysis of Japanese past-tense inflection. Aggregating over five seeds and two architectures, we\nshowed that a single irregular subtype comprising under 1% of the data accounts for 30–43% of\nresidual errors (a 34–48× disparity ratio), concentrated in gemination-related failures. Controlled\nablation experiments show that removing only this\nsubtype improves generalization more than removing all irregular verbs. These results demonstrate\nthat high aggregate accuracy can mask structurally\nlocalized failures, that not all irregularity is equally\ndestabilizing to neural generalization, and that finegrained, subgroup-aware evaluation is necessary\nto reveal and causally test such effects. We argue this evaluation practice is particularly relevant\nto sample-eﬀicient, developmentally plausible language modeling. Future work will test whether\nthe same structural confusability effects appear in\nlarge language models, asking whether scale alone\nis suﬀicient to overcome the inductive biases identified here.\n\nLimitations\nSeveral limitations qualify our findings. First,\nour ablation experiments were each run once\nper condition; replication across multiple training runs would strengthen the causal claim. Second, our study focuses on a single language, a single morphological paradigm, and two Transformerbased architectures. Cross-linguistic validation is\nnecessary to determine whether comparable lowfrequency structural subtypes produce similar dis-\n\nparities in other morphologically rich languages,\nand whether larger pretrained models exhibit different sensitivity to the patterns we identify. Third,\nour analysis is correlational with respect to the specific mechanism (frequency vs. structural complexity vs. their interaction) underlying Type 4-2’s distinctiveness; the ablation results support a causal\nrole for this subtype’s presence in training data, but\ndo not isolate frequency from structural complexity as independent factors. We leave controlled\nfrequency-matched comparisons, and evaluation\nunder alternative input representations (e.g., IPA or\nromanization), to future work.\n\nEthics Statement\nThis work involves no sensitive data, human\nsubjects, or personally identifiable information.\nData and models are derived from publicly available databases and SIGMORPHON shared-task resources."
+    }
+  }
+}

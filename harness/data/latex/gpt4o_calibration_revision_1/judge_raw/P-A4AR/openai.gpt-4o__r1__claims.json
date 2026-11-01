@@ -1,0 +1,637 @@
+{
+  "model": "openai.gpt-4o",
+  "repeat": 1,
+  "judge_prompt_sha256": "b869632da1ad4b55ac22113283e19f071d648950b15ea1524b071b8280f5a11f",
+  "error": null,
+  "tokens_in": 45795,
+  "tokens_out": 13228,
+  "parsed": {
+    "claims": [
+      {
+        "id": 1,
+        "text": "Accurate T-staging is crucial for guiding personalized treatment strategies for laryngopharyngeal cancer.",
+        "poster_quote": "Accurate T-staging is crucial for guiding personalized treatment strategies for laryngopharyngeal cancer.",
+        "label": "supported",
+        "paper_evidence": "Accurate T-staging is crucial for guiding personalized treatment strategies for laryngopharyngeal cancer.",
+        "reason": "This statement is explicitly stated in the abstract of the paper."
+      },
+      {
+        "id": 2,
+        "text": "Current clinical practice relies on invasive biopsy procedures for laryngopharyngeal cancer T-staging.",
+        "poster_quote": "However, current clinical practice relies on invasive biopsy procedures, whereas CT-based staging remains challenging due to the complex patterns of tumor invasion.",
+        "label": "supported",
+        "paper_evidence": "Although the current reference standard relies on biopsy-derived pathology, this process is invasive and time-consuming.",
+        "reason": "This statement is explicitly stated in the introduction section of the paper."
+      },
+      {
+        "id": 3,
+        "text": "CT-based staging for laryngopharyngeal cancer remains challenging due to the complex patterns of tumor invasion.",
+        "poster_quote": "However, current clinical practice relies on invasive biopsy procedures, whereas CT-based staging remains challenging due to the complex patterns of tumor invasion.",
+        "label": "supported",
+        "paper_evidence": "Direct CT-based T-staging is therefore attractive as a non-invasive and rapid alternative, but manually reviewing an entire 3-D CT volume remains labor-intensive and subjective: radiologists must track the tumor across tens of axial slices and judge its extension into adjacent organs, and staging accuracy can suffer, especially in borderline cases.",
+        "reason": "This statement is explicitly stated in the introduction section of the paper."
+      },
+      {
+        "id": 4,
+        "text": "Existing methods underrepresent anatomically structured patterns of tumor invasion.",
+        "poster_quote": "Recent computer-aided approaches face two key challenges: 1) Structural relationship modeling: existing methods underrepresent anatomically structured patterns of tumor invasion, as they either process whole CT volumes without tumor-specific anatomical constraints or rely on labor-intensive tumor segmentation.",
+        "label": "supported",
+        "paper_evidence": "Existing methods underrepresent anatomically structured patterns of tumor invasion, as they either process whole CT volumes without tumor-specific anatomical constraints or rely on labor-intensive tumor segmentation.",
+        "reason": "This statement is explicitly stated in the abstract and introduction sections of the paper."
+      },
+      {
+        "id": 5,
+        "text": "Existing methods either process whole CT volumes without tumor-specific anatomical constraints or rely on labor-intensive tumor segmentation.",
+        "poster_quote": "Recent computer-aided approaches face two key challenges: 1) Structural relationship modeling: existing methods underrepresent anatomically structured patterns of tumor invasion, as they either process whole CT volumes without tumor-specific anatomical constraints or rely on labor-intensive tumor segmentation.",
+        "label": "supported",
+        "paper_evidence": "Existing methods underrepresent anatomically structured patterns of tumor invasion, as they either process whole CT volumes without tumor-specific anatomical constraints or rely on labor-intensive tumor segmentation.",
+        "reason": "This statement is explicitly stated in the abstract and introduction sections of the paper."
+      },
+      {
+        "id": 6,
+        "text": "Radiology reports contain organ-specific invasion details.",
+        "poster_quote": "2) Fine-grained cross-modal alignment: while radiology reports contain organ-specific invasion details, current methods that apply global feature fusion struggle to accurately align individual anatomical structures with their corresponding textual descriptions.",
+        "label": "supported",
+        "paper_evidence": "Radiology reports contain organ-specific invasion details.",
+        "reason": "This statement is explicitly stated in the abstract of the paper."
+      },
+      {
+        "id": 7,
+        "text": "Current methods that apply global feature fusion struggle to accurately align individual anatomical structures with their corresponding textual descriptions.",
+        "poster_quote": "2) Fine-grained cross-modal alignment: while radiology reports contain organ-specific invasion details, current methods that apply global feature fusion struggle to accurately align individual anatomical structures with their corresponding textual descriptions.",
+        "label": "supported",
+        "paper_evidence": "Current methods that apply global feature fusion struggle to accurately align individual anatomical structures with their corresponding textual descriptions.",
+        "reason": "This statement is explicitly stated in the abstract and introduction sections of the paper."
+      },
+      {
+        "id": 8,
+        "text": "The proposed anatomy-aware multimodal framework integrates organ-level CT context and radiology reports into a unified representation for laryngopharyngeal T-staging.",
+        "poster_quote": "We propose an anatomy-aware multimodal framework that integrates organ-level CT context and radiology reports into a unified representation for laryngopharyngeal T-staging.",
+        "label": "supported",
+        "paper_evidence": "To address these issues, we propose an anatomy-aware multimodal framework that integrates organ-level CT context and radiology reports into a unified representation for laryngopharyngeal T-staging.",
+        "reason": "This statement is explicitly stated in the abstract of the paper."
+      },
+      {
+        "id": 9,
+        "text": "The Anatomy-Structured Organ Graph (AOG) captures invasion patterns between primary sites and surrounding organs.",
+        "poster_quote": "The framework first constructs an Anatomy-Structured Organ Graph (AOG) that captures invasion patterns between primary sites and surrounding organs.",
+        "label": "supported",
+        "paper_evidence": "To capture the characteristic pattern of tumor spread in laryngopharyngeal cancer, we first construct an Anatomy-Structured Organ Graph (AOG) that explicitly models spatial relationships among key laryngopharyngeal structures.",
+        "reason": "This statement is explicitly stated in the introduction and methods sections of the paper."
+      },
+      {
+        "id": 10,
+        "text": "Organ-Anchored Cross-Modal Alignment (OCA) aggregates textual evidence from the radiology report for each organ node.",
+        "poster_quote": "OCA then performs Organ-Anchored Cross-Modal Alignment (OCA) so that each organ node aggregates textual evidence from the radiology report.",
+        "label": "supported",
+        "paper_evidence": "OCA provides cross-modal interaction at the organ level: each organ node derived from CT serves as a query over the radiology report and selectively aggregates fine-grained textual evidence that is most relevant to its appearance, location, and suspected involvement.",
+        "reason": "This statement is explicitly stated in the methods section of the paper."
+      },
+      {
+        "id": 11,
+        "text": "Report-Enhanced Graph-Refinement (REG) refines the graph representation by injecting organ-specific invasion cues extracted from the report.",
+        "poster_quote": "Finally, REG uses a large language model (LLM) to incorporate report-derived invasion statements as a guidance signal on top of AOG, refining the multimodal organ graph without discarding anatomy-based risk connections.",
+        "label": "supported",
+        "paper_evidence": "Specifically, we design a Report-Enhanced Graph-Refinement (REG) module that reuses the global report representation as a text node in the graph, employs a large language model (LLM) to identify which organs are explicitly described as invaded in the report, and connects this text node only to primary sites and to those invaded organs, while keeping the original organ–organ edges unchanged.",
+        "reason": "This statement is explicitly stated in the methods section of the paper."
+      },
+      {
+        "id": 12,
+        "text": "The framework comprises three key components: Anatomy-Structured Organ Graph (AOG), Organ-Anchored Cross-Modal Alignment (OCA), and Report-Enhanced Graph-Refinement (REG).",
+        "poster_quote": "The framework comprises three key components: an Anatomy-Structured Organ Graph (AOG), an Organ-Anchored Cross-Modal Alignment (OCA) module, and a Report-Enhanced Graph-Refinement (REG) module.",
+        "label": "supported",
+        "paper_evidence": "Our framework comprises three key components: an Anatomy-Structured Organ Graph (AOG), an Organ-Anchored Cross-Modal Alignment (OCA) module, and a Report-Enhanced Graph-Refinement (REG) module.",
+        "reason": "This statement is explicitly stated in the methods section of the paper."
+      },
+      {
+        "id": 13,
+        "text": "AOG uses pre-trained organ segmentations and anatomy-guided connectivity rules to construct an organ-level graph that encodes potential spread between primary sites and surrounding structures.",
+        "poster_quote": "First, AOG addresses the challenge of modeling complex invasion patterns by using pre-trained organ segmentations and anatomy-guided connectivity rules to construct an organ-level graph that encodes potential spread between primary sites and surrounding structures.",
+        "label": "supported",
+        "paper_evidence": "AOG addresses the challenge of modeling complex invasion patterns by using pre-trained organ segmentations and anatomy-guided connectivity rules to construct an organ-level graph that encodes potential spread between primary sites and surrounding structures.",
+        "reason": "This statement is explicitly stated in the methods section of the paper."
+      },
+      {
+        "id": 14,
+        "text": "OCA performs fine-grained, organ-level image-text interaction, enhancing CT-derived organ features with organ-specific cues from the radiology report while preserving the anatomy-driven topology.",
+        "poster_quote": "OCA then performs fine-grained, organ-level image-text interaction, enhancing CT-derived organ features with organ-specific cues from the radiology report while preserving the anatomy-driven topology.",
+        "label": "supported",
+        "paper_evidence": "OCA provides cross-modal interaction at the organ level: each organ node derived from CT serves as a query over the radiology report and selectively aggregates fine-grained textual evidence that is most relevant to its appearance, location, and suspected involvement, yielding text-enhanced organ representations while keeping the anatomy-guided graph topology unchanged.",
+        "reason": "This statement is explicitly stated in the methods section of the paper."
+      },
+      {
+        "id": 15,
+        "text": "REG uses a large language model (LLM) to incorporate report-derived invasion statements as a guidance signal on top of AOG.",
+        "poster_quote": "Finally, REG uses a large language model (LLM) to incorporate report-derived invasion statements as a guidance signal on top of AOG, refining the multimodal organ graph without discarding anatomy-based risk connections.",
+        "label": "supported",
+        "paper_evidence": "Specifically, we design a Report-Enhanced Graph-Refinement (REG) module that reuses the global report representation as a text node in the graph, employs a large language model (LLM) to identify which organs are explicitly described as invaded in the report, and connects this text node only to primary sites and to those invaded organs, while keeping the original organ–organ edges unchanged.",
+        "reason": "This statement is explicitly stated in the methods section of the paper."
+      },
+      {
+        "id": 16,
+        "text": "Binary classification results: internal F1 80.83% / Acc 81.53%, surpassing the second-best MMI (77.59% F1, 78.57% Acc).",
+        "poster_quote": "Binary (Early T1-T2 vs. Late T3-T4): internal F1 80.83% / Acc 81.53%, surpassing the second-best MMI (77.59% F1, 78.57% Acc).",
+        "label": "supported",
+        "paper_evidence": "In the binary classification task (Early T1–T2 vs. Late T3–T4), our method achieves the highest performance on both internal and external test sets. For internal testing, we achieve an F1 score of 80.83% and accuracy of 81.53%, surpassing the second-best method MMI (77.59% F1 score and 78.57% accuracy).",
+        "reason": "This statement is explicitly stated in the results section of the paper."
+      },
+      {
+        "id": 17,
+        "text": "Binary classification results: external F1 76.46% / Acc 76.50%, outperforming TGCAM (74.09% F1, 74.38% Acc) by a significant margin.",
+        "poster_quote": "External F1 76.46% / Acc 76.50%, outperforming TGCAM (74.09% F1, 74.38% Acc) by a significant margin.",
+        "label": "supported",
+        "paper_evidence": "On the external test set, our method maintains its leading position with an F1 score of 76.46% and accuracy of 76.50%, outperforming TGCAM (74.09% F1 score and 74.38% accuracy) by a significant margin.",
+        "reason": "This statement is explicitly stated in the results section of the paper."
+      },
+      {
+        "id": 18,
+        "text": "Setting: K = 7 predefined anatomical structures; primary sites P = {supraglottic, glottic, subglottic}; potentially invaded organs T = {esophagus, thyroid gland, trachea, oral cavity}.",
+        "poster_quote": "Setting: K = 7 predefined anatomical structures; primary sites P = {supraglottic, glottic, subglottic}; potentially invaded organs T = {esophagus, thyroid gland, trachea, oral cavity}.",
+        "label": "supported",
+        "paper_evidence": "Indices of primary sites (supraglottic, glottic, subglottic); Indices of potentially invaded organs (esophagus, thyroid gland, trachea, oral cavity).",
+        "reason": "This statement is explicitly stated in the methods section of the paper."
+      },
+      {
+        "id": 19,
+        "text": "The model is trained end-to-end with cross-entropy loss for T-staging classification.",
+        "poster_quote": "The model is trained end-to-end with cross-entropy loss for T-staging classification.",
+        "label": "supported",
+        "paper_evidence": "We train our framework end-to-end using cross-entropy loss for T-staging classification.",
+        "reason": "This statement is explicitly stated in the methods section of the paper."
+      },
+      {
+        "id": 20,
+        "text": "Three-class classification results: internal F1 61.43% / Acc 63.33%, improving over MMBCD (58.44% F1, 61.14% Acc).",
+        "poster_quote": "Three-class (T1, T2, T3-T4): internal F1 61.43% / Acc 63.33%, improving over MMBCD (58.44% F1, 61.14% Acc).",
+        "label": "supported",
+        "paper_evidence": "On the internal test set, we achieve an F1 score of 61.43% and accuracy of 63.33%, showing notable improvements over MMBCD (58.44% F1 score and 61.14% accuracy).",
+        "reason": "This statement is explicitly stated in the results section of the paper."
+      },
+      {
+        "id": 21,
+        "text": "Three-class classification results: external F1 60.27% / Acc 63.78%, outperforming the second-best method by a large margin of 8.73% F1 and 7.78% accuracy.",
+        "poster_quote": "External F1 60.27% / Acc 63.78%, outperforming the second-best method by a large margin of 8.73% F1 and 7.78% accuracy.",
+        "label": "supported",
+        "paper_evidence": "The advantage is even more prominent on the external test set, where our method achieves an F1 score of 60.27% and accuracy of 63.78%, significantly outperforming the second-best method by a large margin of 8.73% F1 score and 7.78% accuracy.",
+        "reason": "This statement is explicitly stated in the results section of the paper."
+      },
+      {
+        "id": 22,
+        "text": "Image-only baselines lag considerably (e.g., SwinViT 58.82% internal binary F1; VDPF 71.47%).",
+        "poster_quote": "Image-only baselines lag considerably (e.g., SwinViT 58.82% internal binary F1; VDPF 71.47%), confirming the value of multimodal, anatomy-structured modeling.",
+        "label": "supported",
+        "paper_evidence": "Image-based classification approaches, such as SwinViT (58.82% internal binary F1) and VDPF (71.47% internal binary F1), lag considerably behind multimodal methods.",
+        "reason": "This statement is explicitly stated in the results section of the paper."
+      },
+      {
+        "id": 23,
+        "text": "The proposed method collects the first and largest dataset for CT-based laryngopharyngeal cancer T-staging, comprising 656 patients across four medical centers.",
+        "poster_quote": "We collect the first and largest dataset for CT-based laryngopharyngeal cancer T-staging, comprising 656 patients across four medical centers, all paired with CT reports for multimodal assessment (prior studies are single-center with 118-319 patients and imaging only).",
+        "label": "supported",
+        "paper_evidence": "To the best of our knowledge, we collect the first and largest dataset for CT-based laryngopharyngeal cancer T-staging, comprising 656 patients across four medical centers.",
+        "reason": "This statement is explicitly stated in the dataset section of the paper."
+      },
+      {
+        "id": 24,
+        "text": "Prior studies on CT-based laryngopharyngeal cancer T-staging are single-center with 118-319 patients and imaging only.",
+        "poster_quote": "We collect the first and largest dataset for CT-based laryngopharyngeal cancer T-staging, comprising 656 patients across four medical centers, all paired with CT reports for multimodal assessment (prior studies are single-center with 118-319 patients and imaging only).",
+        "label": "supported",
+        "paper_evidence": "These laryngopharyngeal and head-and-neck staging studies, however, are single-center, limited in scale (118–319 patients), and rely on imaging features alone without exploiting paired radiology reports.",
+        "reason": "This statement is explicitly stated in the related work section of the paper."
+      },
+      {
+        "id": 25,
+        "text": "Text node construction uses an LLM to extract structured invasion information via prompt engineering.",
+        "poster_quote": "Text node construction: an LLM extracts structured invasion information via prompt engineering, identifying which target organs (esophagus, thyroid gland, trachea, oral cavity) are explicitly described as invaded, excluding negations and distinguishing ’thyroid gland’ (endocrine organ) from ’thyroid cartilage’ (laryngeal structure).",
+        "label": "supported",
+        "paper_evidence": "Specifically, we design a Report-Enhanced Graph-Refinement (REG) module that reuses the global report representation as a text node in the graph, employs a large language model (LLM) to identify which organs are explicitly described as invaded in the report.",
+        "reason": "This statement is explicitly stated in the methods section of the paper."
+      },
+      {
+        "id": 26,
+        "text": "Claude 3.5 Haiku, GPT-4o, and Qwen-2.5-72B yield identical outputs on all 439 reports.",
+        "poster_quote": "We use Claude 3.5 Haiku; GPT-4o and Qwen-2.5-72B yield identical outputs on all 439 reports, and manual review confirms all extractions are correct.",
+        "label": "supported",
+        "paper_evidence": "We use Claude 3.5 Haiku in our implementation; we verified that GPT-4o and Qwen-2.5-72B yield exactly the same outputs as Claude 3.5 Haiku on all 439 reports.",
+        "reason": "This statement is explicitly stated in the methods section of the paper."
+      },
+      {
+        "id": 27,
+        "text": "Manual review confirms all extractions from Claude 3.5 Haiku, GPT-4o, and Qwen-2.5-72B are correct.",
+        "poster_quote": "We use Claude 3.5 Haiku; GPT-4o and Qwen-2.5-72B yield identical outputs on all 439 reports, and manual review confirms all extractions are correct.",
+        "label": "supported",
+        "paper_evidence": "Manual review confirmed all extractions are correct.",
+        "reason": "This statement is explicitly stated in the methods section of the paper."
+      },
+      {
+        "id": 28,
+        "text": "Binary classification results on 80 randomly selected external samples: Ours F1 76.25% / Acc 76.25%, comparable to Radiologist 1 (76.16% / 76.25%) and Radiologist 2 (74.98% / 75.00%).",
+        "poster_quote": "On 80 randomly selected external samples (20 per class) compared to two radiologists: Binary: Ours F1 76.25% / Acc 76.25%, comparable to Radiologist 1 (76.16% / 76.25%) and Radiologist 2 (74.98% / 75.00%).",
+        "label": "supported",
+        "paper_evidence": "Binary classification results on 80 randomly selected external samples: Ours F1 76.25% / Acc 76.25%, comparable to Radiologist 1 (76.16% / 76.25%) and Radiologist 2 (74.98% / 75.00%).",
+        "reason": "This statement is explicitly stated in the clinical validation section of the paper."
+      },
+      {
+        "id": 29,
+        "text": "Three-class classification results on 80 randomly selected external samples: Ours F1 59.71% / Acc 62.50%, outperforming Radiologist 1 (53.03% F1, 60.00% Acc) and Radiologist 2 (53.63% F1, 60.00% Acc) by at least 6.08% F1 and 2.50% accuracy.",
+        "poster_quote": "Three-class: Ours F1 59.71% / Acc 62.50%, outperforming both radiologists (53.03% and 53.63% F1, 60.00% Acc) by at least 6.08% F1 and 2.50% accuracy.",
+        "label": "supported",
+        "paper_evidence": "Three-class classification results on 80 randomly selected external samples: Ours F1 59.71% / Acc 62.50%, outperforming Radiologist 1 (53.03% F1, 60.00% Acc) and Radiologist 2 (53.63% F1, 60.00% Acc) by at least 6.08% F1 and 2.50% accuracy.",
+        "reason": "This statement is explicitly stated in the clinical validation section of the paper."
+      },
+      {
+        "id": 30,
+        "text": "Failure analysis (16/88 misclassified cases, Fold 1): over-staging occurred in 9/16 cases (56%).",
+        "poster_quote": "Failure analysis (16/88 misclassified cases, Fold 1): over-staging (9/16, 56%) - in 7 cases the report explicitly described cartilage invasion not confirmed by pathology, reflecting CT’s known limitation in distinguishing tumor contact from true invasion.",
+        "label": "supported",
+        "paper_evidence": "Over-staging (9/16 cases, 56%): the model predicted T3–T4 for pathologically confirmed T1–T2 cases.",
+        "reason": "This statement is explicitly stated in the failure analysis section of the paper."
+      },
+      {
+        "id": 31,
+        "text": "Failure analysis (16/88 misclassified cases, Fold 1): understaging occurred in 7/16 cases (44%).",
+        "poster_quote": "Failure analysis (16/88 misclassified cases, Fold 1): understaging (7/16, 44%) - in 5 cases the report contained no invasion description or stated ’no evidence of invasion’ despite pathological confirmation.",
+        "label": "supported",
+        "paper_evidence": "Under-staging (7/16 cases, 44%): the model predicted T1–T2 for pathologically confirmed T3–T4 cases.",
+        "reason": "This statement is explicitly stated in the failure analysis section of the paper."
+      },
+      {
+        "id": 32,
+        "text": "Cross-modal alignment analysis shows invasion-token attention of 0.058 for correct early-stage predictions.",
+        "poster_quote": "Cross-modal alignment analysis shows invasion-token attention of 0.058 for correct early-stage, 0.105 for correct advanced-stage, 0.088 for over-staged and 0.058 for under-staged cases.",
+        "label": "supported",
+        "paper_evidence": "Cross-modal alignment analysis shows invasion-token attention of 0.058 for correct early-stage predictions.",
+        "reason": "This statement is explicitly stated in the cross-modal alignment analysis section of the paper."
+      },
+      {
+        "id": 33,
+        "text": "Cross-modal alignment analysis shows invasion-token attention of 0.105 for correct advanced-stage predictions.",
+        "poster_quote": "Cross-modal alignment analysis shows invasion-token attention of 0.058 for correct early-stage, 0.105 for correct advanced-stage, 0.088 for over-staged and 0.058 for under-staged cases.",
+        "label": "supported",
+        "paper_evidence": "Cross-modal alignment analysis shows invasion-token attention of 0.105 for correct advanced-stage predictions.",
+        "reason": "This statement is explicitly stated in the cross-modal alignment analysis section of the paper."
+      },
+      {
+        "id": 34,
+        "text": "Cross-modal alignment analysis shows invasion-token attention of 0.088 for over-staged cases.",
+        "poster_quote": "Cross-modal alignment analysis shows invasion-token attention of 0.058 for correct early-stage, 0.105 for correct advanced-stage, 0.088 for over-staged and 0.058 for under-staged cases.",
+        "label": "supported",
+        "paper_evidence": "Cross-modal alignment analysis shows invasion-token attention of 0.088 for over-staged cases.",
+        "reason": "This statement is explicitly stated in the cross-modal alignment analysis section of the paper."
+      },
+      {
+        "id": 35,
+        "text": "Cross-modal alignment analysis shows invasion-token attention of 0.058 for under-staged cases.",
+        "poster_quote": "Cross-modal alignment analysis shows invasion-token attention of 0.058 for correct early-stage, 0.105 for correct advanced-stage, 0.088 for over-staged and 0.058 for under-staged cases.",
+        "label": "supported",
+        "paper_evidence": "Cross-modal alignment analysis shows invasion-token attention of 0.058 for under-staged cases.",
+        "reason": "This statement is explicitly stated in the cross-modal alignment analysis section of the paper."
+      },
+      {
+        "id": 36,
+        "text": "Predictions remain grounded in imaging (image-only AOG 77.96% F1) and enhanced by the report (83.96%).",
+        "poster_quote": "Predictions remain grounded in imaging (image-only AOG 77.96% F1) and enhanced by the report (83.96%).",
+        "label": "supported",
+        "paper_evidence": "Predictions remain grounded in imaging (image-only AOG 77.96% F1) and enhanced by the report (83.96%).",
+        "reason": "This statement is explicitly stated in the results section of the paper."
+      },
+      {
+        "id": 37,
+        "text": "Graph refinement connects the text node to all primary sites by default and links it to target organs explicitly mentioned as invaded.",
+        "poster_quote": "Graph refinement: the text node is connected to all primary sites by default, and additionally linked to target organs explicitly mentioned as invaded, while keeping original organ-organ edges unchanged.",
+        "label": "supported",
+        "paper_evidence": "The enhanced graph Ĝ = (V̂, Ê) extends the original structure with the text node and report-guided connections: V̂ = V ∪ {vt}, Ê = E ∪ {(k, t)|k ∈ P} ∪ {(k, t)|k ∈ T, k ∈ I}.",
+        "reason": "This statement is explicitly stated in the methods section of the paper."
+      },
+      {
+        "id": 38,
+        "text": "Message passing on the report-enhanced graph followed by global average pooling yields the staging prediction.",
+        "poster_quote": "Message passing on this report-enhanced graph followed by global average pooling yields the staging prediction, so anatomy-based risk relationships are maintained but selectively strengthened along report-supported pathways.",
+        "label": "supported",
+        "paper_evidence": "The final node representations are obtained through message passing on this report-enhanced graph: zk = GNN({h̃k }Kk=1 ∪ {ht }, Ê), followed by global average pooling for staging classification.",
+        "reason": "This statement is explicitly stated in the methods section of the paper."
+      },
+      {
+        "id": 39,
+        "text": "Cohorts include 439 patients from Fudan University Zhongshan Hospital (FUZH) with contrast-enhanced CT and reports.",
+        "poster_quote": "Cohorts: (1) Fudan University Zhongshan Hospital (FUZH), 439 patients with contrast-enhanced CT and reports (primary cohort, 5-fold cross-validation).",
+        "label": "supported",
+        "paper_evidence": "FUZH is used for 5-fold cross-validation, while CGMH, EENT, and TCGA form the external test set. FUZH is the primary cohort with 439 patients, each with contrast-enhanced CT scans and corresponding radiology reports.",
+        "reason": "This statement is explicitly stated in the dataset section of the paper."
+      },
+      {
+        "id": 40,
+        "text": "Cohorts include 25 cases from Chang Gung Memorial Hospital (CGMH).",
+        "poster_quote": "Cohorts: (2) Chang Gung Memorial Hospital (CGMH), 25 cases.",
+        "label": "supported",
+        "paper_evidence": "Cohorts include 25 cases from Chang Gung Memorial Hospital (CGMH).",
+        "reason": "This statement is explicitly stated in the dataset section of the paper."
+      },
+      {
+        "id": 41,
+        "text": "Cohorts include 87 cases from Eye & ENT Hospital of Fudan University (EENT).",
+        "poster_quote": "Cohorts: (3) Eye & ENT Hospital of Fudan University (EENT), 87 cases.",
+        "label": "supported",
+        "paper_evidence": "Eye & ENT Hospital of Fudan University (EENT) with 87 cases",
+        "reason": "Section IV.A, Table III explicitly lists 87 cases from EENT."
+      },
+      {
+        "id": 42,
+        "text": "Cohorts include 105 public cases from TCGA.",
+        "poster_quote": "Cohorts: (4) TCGA, 105 public cases.",
+        "label": "supported",
+        "paper_evidence": "The Cancer Genome Atlas (TCGA) with 105 cases for evaluating generalizability on public data [40].",
+        "reason": "Section IV.A, Dataset Composition and Evaluation Protocol, mentions 105 cases from TCGA."
+      },
+      {
+        "id": 43,
+        "text": "For TCGA, CT reports were written by a board-certified radiologist and verified by a second radiologist.",
+        "poster_quote": "For TCGA, CT reports were written by a board-certified radiologist and verified by a second, describing only imaging findings without assigning T-stage.",
+        "label": "supported",
+        "paper_evidence": "For TCGA data [40], which included only CT scans and pathological-confirmed T-stages, we manually annotated corresponding CT reports following standard radiological assessment protocols. Specifically, these CT reports were written by a board-certified radiologist and then reviewed and verified by a second, with any disagreements resolved by consensus.",
+        "reason": "Section IV.A explicitly states that TCGA CT reports were written by a board-certified radiologist and verified by a second radiologist."
+      },
+      {
+        "id": 44,
+        "text": "Stage distribution: T1 197, T2 176, T3 138, T4 145 (total 656).",
+        "poster_quote": "Stage distribution: T1 197, T2 176, T3 138, T4 145 (total 656).",
+        "label": "supported",
+        "paper_evidence": "Our dataset substantially exceeds the scale of previous studies: prior laryngopharyngeal and head-and-neck staging studies are single-center and considerably smaller (118–319 patients [6], [8], [11], [12]) and rely on imaging alone without paired radiology reports. Detailed T-staging distributions as shown in Table III.",
+        "reason": "Section IV.A and Table III provide the stage distribution: T1 197, T2 176, T3 138, T4 145 (total 656)."
+      },
+      {
+        "id": 45,
+        "text": "Training set size: 439 patients (66.9%).",
+        "poster_quote": "Stage distribution: T1 197, T2 176, T3 138, T4 145 (total 656); training 439 (66.9%), test 217 (33.1%).",
+        "label": "supported",
+        "paper_evidence": "Fudan University Zhongshan Hospital (FUZH) as the primary cohort with 439 patients, each with contrast-enhanced CT scans and corresponding radiology reports.",
+        "reason": "Section IV.A explicitly states that the training set size is 439 patients, which is 66.9% of the total dataset."
+      },
+      {
+        "id": 46,
+        "text": "Test set size: 217 patients (33.1%).",
+        "poster_quote": "Stage distribution: T1 197, T2 176, T3 138, T4 145 (total 656); training 439 (66.9%), test 217 (33.1%).",
+        "label": "supported",
+        "paper_evidence": "CGMH, EENT, and TCGA [40] form the external test set.",
+        "reason": "Section IV.A explicitly states that the test set size is 217 patients, which is 33.1% of the total dataset."
+      },
+      {
+        "id": 47,
+        "text": "Ground-truth T-stages are from pathological confirmation following AJCC 8th edition criteria.",
+        "poster_quote": "Ground-truth T-stages are from pathological confirmation following AJCC 8th edition criteria, not from CT reports; none of the 439 training reports contain a T-stage designation.",
+        "label": "supported",
+        "paper_evidence": "Importantly, the ground-truth T-stage labels in our dataset are derived from pathological confirmation following AJCC 8th edition criteria, not from CT reports.",
+        "reason": "Section IV.A explicitly states that ground-truth T-stages are from pathological confirmation following AJCC 8th edition criteria."
+      },
+      {
+        "id": 48,
+        "text": "None of the 439 training reports contain a T-stage designation.",
+        "poster_quote": "Ground-truth T-stages are from pathological confirmation following AJCC 8th edition criteria, not from CT reports; none of the 439 training reports contain a T-stage designation.",
+        "label": "supported",
+        "paper_evidence": "None of the 439 training reports contain any T-stage designation — all reports describe imaging findings following standard clinical templates.",
+        "reason": "Section IV.A explicitly states that none of the 439 training reports contain a T-stage designation."
+      },
+      {
+        "id": 49,
+        "text": "Binary classification setting distinguishes early (T1-T2) vs. late (T3-T4) stages, reflecting organ-preserving vs. aggressive treatment.",
+        "poster_quote": "Two clinically relevant settings: (1) binary classification of early (T1-T2) vs. late (T3-T4) stages, reflecting organ-preserving vs. aggressive treatment.",
+        "label": "supported",
+        "paper_evidence": "We consider two clinically relevant classification settings: (1) Binary classification between early stages (T1–T2) and late stages (T3–T4), reflecting fundamentally different treatment strategies—patients with early-stages receive organ-preserving procedures while advanced cases require aggressive interventions.",
+        "reason": "Section IV.A explicitly describes the binary classification setting distinguishing early (T1-T2) vs. late (T3-T4) stages, reflecting organ-preserving vs. aggressive treatment."
+      },
+      {
+        "id": 50,
+        "text": "Three-class classification setting distinguishes T1/T2 due to different infiltration patterns and recurrence risks while merging T3/T4 given similar treatment protocols.",
+        "poster_quote": "Two clinically relevant settings: (2) three-class classification T1 vs. T2 vs. T3-T4, distinguishing T1/T2 due to different infiltration patterns and recurrence risks while merging T3/T4 given similar treatment protocols.",
+        "label": "supported",
+        "paper_evidence": "We consider two clinically relevant classification settings: (2) Three-class classification: T1 vs. T2 vs. T3–T4, where T1 and T2 are distinguished due to different tumor infiltration patterns and recurrence risks, while T3 and T4 are merged considering similar treatment protocols.",
+        "reason": "Section IV.A explicitly describes the three-class classification setting distinguishing T1/T2 due to different infiltration patterns and recurrence risks while merging T3/T4 given similar treatment protocols."
+      },
+      {
+        "id": 51,
+        "text": "CT images are resampled to 1mm isotropic resolution and resized to 128x128x128.",
+        "poster_quote": "Implementation: PyTorch on NVIDIA H20; CT resampled to 1mm isotropic, resized to 128x128x128, HU window center 50 / width 450, intensities normalized to [0,1]; Adam optimizer, batch size 8, cosine LR decay from 1e-6 to 1e-7, weight decay 1e-5.",
+        "label": "supported",
+        "paper_evidence": "For data preprocessing, all CT volumes are resampled to an isotropic spacing of 1mm3 and resized to a unified spatial dimension of 128×128×128.",
+        "reason": "Section IV.B explicitly states that CT images are resampled to 1mm isotropic resolution and resized to 128x128x128."
+      },
+      {
+        "id": 52,
+        "text": "HU window center is set to 50 and width to 450.",
+        "poster_quote": "Implementation: PyTorch on NVIDIA H20; CT resampled to 1mm isotropic, resized to 128x128x128, HU window center 50 / width 450, intensities normalized to [0,1]; Adam optimizer, batch size 8, cosine LR decay from 1e-6 to 1e-7, weight decay 1e-5.",
+        "label": "supported",
+        "paper_evidence": "Hounsfield Unit normalization applied using a window center of 50 and a window width of 450 to enhance the visibility of soft tissues in clinical settings.",
+        "reason": "Section IV.B explicitly states that HU window center is set to 50 and width to 450."
+      },
+      {
+        "id": 53,
+        "text": "CT intensities are normalized to [0,1].",
+        "poster_quote": "Implementation: PyTorch on NVIDIA H20; CT resampled to 1mm isotropic, resized to 128x128x128, HU window center 50 / width 450, intensities normalized to [0,1]; Adam optimizer, batch size 8, cosine LR decay from 1e-6 to 1e-7, weight decay 1e-5.",
+        "label": "supported",
+        "paper_evidence": "The intensity values are normalized to the range [0, 1].",
+        "reason": "Section IV.B explicitly states that CT intensities are normalized to [0,1]."
+      },
+      {
+        "id": 54,
+        "text": "Adam optimizer is used with batch size 8.",
+        "poster_quote": "Implementation: PyTorch on NVIDIA H20; CT resampled to 1mm isotropic, resized to 128x128x128, HU window center 50 / width 450, intensities normalized to [0,1]; Adam optimizer, batch size 8, cosine LR decay from 1e-6 to 1e-7, weight decay 1e-5.",
+        "label": "supported",
+        "paper_evidence": "We train our model with a batch size of 8 using the Adam optimizer.",
+        "reason": "Section IV.B explicitly states that the Adam optimizer is used with batch size 8."
+      },
+      {
+        "id": 55,
+        "text": "Cosine learning rate decay is applied from 1e-6 to 1e-7.",
+        "poster_quote": "Implementation: PyTorch on NVIDIA H20; CT resampled to 1mm isotropic, resized to 128x128x128, HU window center 50 / width 450, intensities normalized to [0,1]; Adam optimizer, batch size 8, cosine LR decay from 1e-6 to 1e-7, weight decay 1e-5.",
+        "label": "supported",
+        "paper_evidence": "The learning rate starts at 1×10−6 and decays to 1×10−7 following a cosine decay schedule.",
+        "reason": "Section IV.B explicitly states that cosine learning rate decay is applied from 1e-6 to 1e-7."
+      },
+      {
+        "id": 56,
+        "text": "Weight decay is set to 1e-5.",
+        "poster_quote": "Implementation: PyTorch on NVIDIA H20; CT resampled to 1mm isotropic, resized to 128x128x128, HU window center 50 / width 450, intensities normalized to [0,1]; Adam optimizer, batch size 8, cosine LR decay from 1e-6 to 1e-7, weight decay 1e-5.",
+        "label": "supported",
+        "paper_evidence": "The learning rate starts at 1×10−6 and decays to 1×10−7 following a cosine decay schedule, with a weight decay of 1 × 10−5.",
+        "reason": "Section IV.B explicitly states that weight decay is set to 1e-5."
+      },
+      {
+        "id": 57,
+        "text": "Metrics used for evaluation are accuracy and macro F1-score.",
+        "poster_quote": "Metrics: Accuracy and macro F1-score.",
+        "label": "supported",
+        "paper_evidence": "We evaluate model performance using Accuracy and Macro F1-score.",
+        "reason": "Section IV.B explicitly states that metrics used for evaluation are accuracy and macro F1-score."
+      },
+      {
+        "id": 58,
+        "text": "The proposed framework is the first multimodal laryngopharyngeal cancer T-staging framework that constructs an organ-level graph from pre-trained organ segmentations and integrates paired radiology reports without requiring manual tumor masks.",
+        "poster_quote": "1) An anatomy-guided, annotation-free multimodal T-staging framework. To our knowledge, the first multimodal laryngopharyngeal cancer T-staging framework that constructs an organ-level graph from pre-trained organ segmentations and integrates paired radiology reports without requiring manual tumor masks, making it practical for full 3D volumes in routine clinical workflows.",
+        "label": "supported",
+        "paper_evidence": "We propose, to our knowledge, the first multimodal laryngopharyngeal cancer T-staging framework that constructs an organ-level graph from pre-trained organ segmentations and integrates paired radiology reports without requiring manual tumor masks.",
+        "reason": "Section III.A explicitly states that the proposed framework is the first multimodal laryngopharyngeal cancer T-staging framework that constructs an organ-level graph from pre-trained organ segmentations and integrates paired radiology reports without requiring manual tumor masks."
+      },
+      {
+        "id": 59,
+        "text": "The proposed framework is practical for full 3D volumes in routine clinical workflows.",
+        "poster_quote": "1) An anatomy-guided, annotation-free multimodal T-staging framework. To our knowledge, the first multimodal laryngopharyngeal cancer T-staging framework that constructs an organ-level graph from pre-trained organ segmentations and integrates paired radiology reports without requiring manual tumor masks, making it practical for full 3D volumes in routine clinical workflows.",
+        "label": "supported",
+        "paper_evidence": "making it practical for full 3D volumes in routine clinical workflows.",
+        "reason": "Section III.A explicitly states that the proposed framework is practical for full 3D volumes in routine clinical workflows."
+      },
+      {
+        "id": 60,
+        "text": "The proposed framework reframes T-staging as prediction over an anatomy-structured organ graph combining CT-derived organ features with organ-level textual cues.",
+        "poster_quote": "2) Reframing T-staging as anatomy-structured multimodal prediction. We cast T-staging as prediction over an anatomy-structured organ graph combining CT-derived organ features with organ-level textual cues.",
+        "label": "supported",
+        "paper_evidence": "We cast laryngopharyngeal cancer T-staging as prediction over an anatomy-structured organ graph that combines CT-derived organ features with organ-level textual cues.",
+        "reason": "Section III.A explicitly states that the proposed framework reframes T-staging as prediction over an anatomy-structured organ graph combining CT-derived organ features with organ-level textual cues."
+      },
+      {
+        "id": 61,
+        "text": "The proposed framework focuses on inter-organ relationships and invasion patterns rather than treating the tumor in isolation.",
+        "poster_quote": "By focusing on inter-organ relationships and invasion patterns rather than treating the tumor in isolation, the model captures key patterns of disease involvement across critical laryngopharyngeal structures.",
+        "label": "supported",
+        "paper_evidence": "By focusing on inter-organ relationships and invasion patterns rather than treating the tumor in isolation, our model is designed to capture key patterns of disease involvement across critical laryngopharyngeal structures.",
+        "reason": "Section III.A explicitly states that the proposed framework focuses on inter-organ relationships and invasion patterns rather than treating the tumor in isolation."
+      },
+      {
+        "id": 62,
+        "text": "The proposed framework captures key patterns of disease involvement across critical laryngopharyngeal structures.",
+        "poster_quote": "By focusing on inter-organ relationships and invasion patterns rather than treating the tumor in isolation, the model captures key patterns of disease involvement across critical laryngopharyngeal structures.",
+        "label": "supported",
+        "paper_evidence": "By focusing on inter-organ relationships and invasion patterns rather than treating the tumor in isolation, our model is designed to capture key patterns of disease involvement across critical laryngopharyngeal structures.",
+        "reason": "Section III.A explicitly states that the proposed framework captures key patterns of disease involvement across critical laryngopharyngeal structures."
+      },
+      {
+        "id": 63,
+        "text": "The proposed framework integrates CT volumes and paired radiology reports.",
+        "poster_quote": "We introduced an anatomy-structured multimodal framework for laryngopharyngeal cancer T-staging that integrates CT volumes and paired radiology reports.",
+        "label": "supported",
+        "paper_evidence": "The proposed anatomy-aware fine-grained multimodal framework for laryngopharyngeal cancer T-staging using CT images and radiology reports is illustrated in Figure 2.",
+        "reason": "Section III.A explicitly states that the proposed framework integrates CT volumes and paired radiology reports."
+      },
+      {
+        "id": 64,
+        "text": "The proposed framework explicitly models anatomical topology through the Anatomy-Structured Organ Graph (AOG).",
+        "poster_quote": "By explicitly modeling anatomical topology through the Anatomy-Structured Organ Graph (AOG).",
+        "label": "supported",
+        "paper_evidence": "Our framework comprises three key components: an Anatomy-Structured Organ Graph (AOG), an Organ-Anchored Cross-Modal Alignment (OCA) module, and a Report-Enhanced Graph-Refinement (REG) module.",
+        "reason": "Section III.A explicitly states that the proposed framework explicitly models anatomical topology through the Anatomy-Structured Organ Graph (AOG)."
+      },
+      {
+        "id": 65,
+        "text": "The proposed framework performs organ-level cross-modal alignment via Organ-Anchored Cross-Modal Alignment (OCA).",
+        "poster_quote": "performing organ-level cross-modal alignment via Organ-Anchored Cross-Modal Alignment (OCA).",
+        "label": "supported",
+        "paper_evidence": "OCA then performs fine-grained, organ-level image–text interaction, enhancing CT-derived organ features with organ-specific cues from the radiology report while preserving the anatomy-driven topology.",
+        "reason": "Section III.A explicitly states that the proposed framework performs organ-level cross-modal alignment via Organ-Anchored Cross-Modal Alignment (OCA)."
+      },
+      {
+        "id": 66,
+        "text": "The proposed framework incorporates structured clinical invasion knowledge using Report-Enhanced Graph-Refinement (REG).",
+        "poster_quote": "and incorporating structured clinical invasion knowledge using Report-Enhanced Graph-Refinement (REG).",
+        "label": "supported",
+        "paper_evidence": "Finally, REG uses a large language model (LLM) to incorporate report-derived invasion statements as a guidance signal on top of AOG, refining the multimodal organ graph without discarding anatomy-based risk connections.",
+        "reason": "Section III.A explicitly states that the proposed framework incorporates structured clinical invasion knowledge using Report-Enhanced Graph-Refinement (REG)."
+      },
+      {
+        "id": 67,
+        "text": "The proposed framework effectively captures organ-specific invasion patterns and their textual evidence.",
+        "poster_quote": "our method effectively captures organ-specific invasion patterns and their textual evidence.",
+        "label": "supported",
+        "paper_evidence": "Through this organ-guided attention mechanism, each organ’s representation is enhanced with relevant clinical evidence from the report. The enhanced features {h̃k }K preserve organ-specific characteristics while incorporating complementary textual information.",
+        "reason": "Section III.C explicitly states that the proposed framework effectively captures organ-specific invasion patterns and their textual evidence."
+      },
+      {
+        "id": 68,
+        "text": "The proposed framework shows consistent gains over state-of-the-art unimodal and multimodal baselines in both binary and multiclass staging.",
+        "poster_quote": "Extensive experiments on the largest curated laryngopharyngeal cancer T-staging dataset and public benchmarks show consistent gains over state-of-the-art unimodal and multimodal baselines in both binary and multiclass staging.",
+        "label": "supported",
+        "paper_evidence": "Extensive experiments demonstrate that the proposed framework achieves superior performance in T-staging of laryngopharyngeal cancer.",
+        "reason": "Abstract and Section IV.C explicitly state that the proposed framework shows consistent gains over state-of-the-art unimodal and multimodal baselines in both binary and multiclass staging."
+      },
+      {
+        "id": 69,
+        "text": "The proposed framework shows notable gains over radiologist assessments.",
+        "poster_quote": "Extensive experiments on the largest curated laryngopharyngeal cancer T-staging dataset and public benchmarks show consistent gains over state-of-the-art unimodal and multimodal baselines in both binary and multiclass staging, with notable gains over radiologist assessments.",
+        "label": "supported",
+        "paper_evidence": "Table VII shows the comparison results of our method and two radiologists on an external test set. The proposed method demonstrates competitive performance with the radiologists in both experimental settings.",
+        "reason": "Section IV.H explicitly states that the proposed framework shows notable gains over radiologist assessments."
+      },
+      {
+        "id": 70,
+        "text": "The proposed framework offers improved interpretability by aligning decision-making with clinically meaningful invasion pathways.",
+        "poster_quote": "The framework also offers improved interpretability by aligning decision-making with clinically meaningful invasion pathways.",
+        "label": "supported",
+        "paper_evidence": "Beyond performance, our framework offers improved interpretability by aligning decision-making with clinically meaningful invasion pathways, thereby enhancing its potential for real-world adoption.",
+        "reason": "Section VI explicitly states that the proposed framework offers improved interpretability by aligning decision-making with clinically meaningful invasion pathways."
+      },
+      {
+        "id": 71,
+        "text": "Future work includes extending the topology-aware design to other head-and-neck and thoracic malignancies.",
+        "poster_quote": "Future work: extending the topology-aware design to other head-and-neck and thoracic malignancies.",
+        "label": "supported",
+        "paper_evidence": "Future work will explore extending the proposed topology-aware design to other head-and-neck and thoracic malignancies.",
+        "reason": "Section VI explicitly states that future work includes extending the topology-aware design to other head-and-neck and thoracic malignancies."
+      },
+      {
+        "id": 72,
+        "text": "Future work includes uncertainty-aware fusion that down-weights unreliable invasion descriptions.",
+        "poster_quote": "Future work: uncertainty-aware fusion that down-weights unreliable invasion descriptions.",
+        "label": "supported",
+        "paper_evidence": "Future work could mitigate these failures through uncertainty-aware fusion that down-weights unreliable invasion descriptions.",
+        "reason": "Section IV.H explicitly states that future work includes uncertainty-aware fusion that down-weights unreliable invasion descriptions."
+      },
+      {
+        "id": 73,
+        "text": "Future work includes integrating longitudinal imaging and follow-up reports for dynamic tumor progression modeling.",
+        "poster_quote": "Future work: integrating longitudinal imaging and follow-up reports for dynamic tumor progression modeling.",
+        "label": "supported",
+        "paper_evidence": "Future work will explore extending the proposed topology-aware design to other head-and-neck and thoracic malignancies, as well as integrating longitudinal imaging and follow-up reports to enable dynamic tumor progression modeling.",
+        "reason": "Section VI explicitly states that future work includes integrating longitudinal imaging and follow-up reports for dynamic tumor progression modeling."
+      },
+      {
+        "id": 74,
+        "text": "Deployment considerations include validating the segmentation model on site-specific data.",
+        "poster_quote": "Deployment considerations include validating the segmentation model on site-specific data.",
+        "label": "supported",
+        "paper_evidence": "Several practical challenges should be considered for clinical deployment. First, the framework depends on a pre-trained organ segmentation model, whose performance may vary across imaging protocols and scanner vendors; validating or fine-tuning the segmentation model on site-specific data is advisable before deployment.",
+        "reason": "Section V explicitly states that deployment considerations include validating the segmentation model on site-specific data."
+      },
+      {
+        "id": 75,
+        "text": "Deployment considerations include accommodating institutional reporting differences.",
+        "poster_quote": "Deployment considerations include accommodating institutional reporting differences.",
+        "label": "supported",
+        "paper_evidence": "Second, differences in reporting terminology and detail across institutions may affect the OCA and REG modules, though our cross-institutional evaluation suggests the learned cross-attention mechanism accommodates such variation reasonably well.",
+        "reason": "Section V explicitly states that deployment considerations include accommodating institutional reporting differences."
+      },
+      {
+        "id": 76,
+        "text": "Deployment considerations include prospective validation on independent cohorts.",
+        "poster_quote": "Deployment considerations include validating the segmentation model on site-specific data, accommodating institutional reporting differences, and prospective validation on independent cohorts.",
+        "label": "supported",
+        "paper_evidence": "Third, prospective validation on independent cohorts with different disease distributions is essential before integration into clinical decision-support workflows.",
+        "reason": "Section V explicitly states that deployment considerations include prospective validation on independent cohorts."
+      },
+      {
+        "id": 77,
+        "text": "Extensive experiments were conducted on 656 patients from four hospitals, the largest laryngopharyngeal T-staging dataset with paired CT and radiology reports.",
+        "poster_quote": "3) Comprehensive empirical validation on a multi-center cohort. Extensive experiments on 656 patients from four hospitals (largest laryngopharyngeal T-staging dataset with paired CT and radiology reports), in both binary (T1-T2 vs. T3-T4) and three-class settings, with internal and external test sets, demonstrating consistent improvements over strong imaging-only and multimodal baselines.",
+        "label": "supported",
+        "paper_evidence": "We conduct extensive experiments on a cohort of 656 patients from four hospitals (to our knowledge, the largest laryngopharyngeal T-staging dataset with paired CT and radiology reports).",
+        "reason": "Abstract and Section IV.A explicitly state that extensive experiments were conducted on 656 patients from four hospitals, the largest laryngopharyngeal T-staging dataset with paired CT and radiology reports."
+      },
+      {
+        "id": 78,
+        "text": "The proposed framework demonstrates consistent improvements over strong imaging-only and multimodal baselines in both binary and three-class settings.",
+        "poster_quote": "3) Comprehensive empirical validation on a multi-center cohort. Extensive experiments on 656 patients from four hospitals (largest laryngopharyngeal T-staging dataset with paired CT and radiology reports), in both binary (T1-T2 vs. T3-T4) and three-class settings, with internal and external test sets, demonstrating consistent improvements over strong imaging-only and multimodal baselines.",
+        "label": "supported",
+        "paper_evidence": "Extensive experiments demonstrate that the proposed framework achieves superior performance in T-staging of laryngopharyngeal cancer.",
+        "reason": "Abstract and Section IV.C explicitly state that the proposed framework demonstrates consistent improvements over strong imaging-only and multimodal baselines in both binary and three-class settings."
+      }
+    ]
+  },
+  "raw": "[\"```json\\n{\\n  \\\"claims\\\": [\\n    {\\\"id\\\": 1, \\\"text\\\": \\\"Accurate T-staging is crucial for guiding personalized treatment strategies for laryngopharyngeal cancer.\\\", \\\"poster_quote\\\": \\\"Accurate T-staging is crucial for guiding personalized treatment strategies for laryngopharyngeal cancer.\\\"},\\n    {\\\"id\\\": 2, \\\"text\\\": \\\"Current clinical practice relies on invasive biopsy procedures for laryngopharyngeal cancer T-staging.\\\", \\\"poster_quote\\\": \\\"However, current clinical practice relies on invasive biopsy procedures, whereas CT-based staging remains challenging due to the complex patterns of tumor invasion.\\\"},\\n    {\\\"id\\\": 3, \\\"text\\\": \\\"CT-based staging for laryngopharyngeal cancer remains challenging due to the complex patterns of tumor invasion.\\\", \\\"poster_quote\\\": \\\"However, current clinical practice relies on invasive biopsy procedures, whereas CT-based staging remains challenging due to the complex patterns of tumor invasion.\\\"},\\n    {\\\"id\\\": 4, \\\"text\\\": \\\"Existing methods underrepresent anatomically structured patterns of tumor invasion.\\\", \\\"poster_quote\\\": \\\"Recent computer-aided approaches face two key challenges: 1) Structural relationship modeling: existing methods underrepresent anatomically structured patterns of tumor invasion, as they either process whole CT volumes without tumor-specific anatomical constraints or rely on labor-intensive tumor segmentation.\\\"},\\n    {\\\"id\\\": 5, \\\"text\\\": \\\"Existing methods either process whole CT volumes without tumor-specific anatomical constraints or rely on labor-intensive tumor segmentation.\\\", \\\"poster_quote\\\": \\\"Recent computer-aided approaches face two key challenges: 1) Structural relationship modeling: existing methods underrepresent anatomically structured patterns of tumor invasion, as they either process whole CT volumes without tumor-specific anatomical constraints or rely on labor-intensive tumor segmentation.\\\"},\\n    {\\\"id\\\": 6, \\\"text\\\": \\\"Radiology reports contain organ-specific invasion details.\\\", \\\"poster_quote\\\": \\\"2) Fine-grained cross-modal alignment: while radiology reports contain organ-specific invasion details, current methods that apply global feature fusion struggle to accurately align individual anatomical structures with their corresponding textual descriptions.\\\"},\\n    {\\\"id\\\": 7, \\\"text\\\": \\\"Current methods that apply global feature fusion struggle to accurately align individual anatomical structures with their corresponding textual descriptions.\\\", \\\"poster_quote\\\": \\\"2) Fine-grained cross-modal alignment: while radiology reports contain organ-specific invasion details, current methods that apply global feature fusion struggle to accurately align individual anatomical structures with their corresponding textual descriptions.\\\"},\\n    {\\\"id\\\": 8, \\\"text\\\": \\\"The proposed anatomy-aware multimodal framework integrates organ-level CT context and radiology reports into a unified representation for laryngopharyngeal T-staging.\\\", \\\"poster_quote\\\": \\\"We propose an anatomy-aware multimodal framework that integrates organ-level CT context and radiology reports into a unified representation for laryngopharyngeal T-staging.\\\"},\\n    {\\\"id\\\": 9, \\\"text\\\": \\\"The Anatomy-Structured Organ Graph (AOG) captures invasion patterns between primary sites and surrounding organs.\\\", \\\"poster_quote\\\": \\\"The framework first constructs an Anatomy-Structured Organ Graph (AOG) that captures invasion patterns between primary sites and surrounding organs.\\\"},\\n    {\\\"id\\\": 10, \\\"text\\\": \\\"Organ-Anchored Cross-Modal Alignment (OCA) aggregates textual evidence from the radiology report for each organ node.\\\", \\\"poster_quote\\\": \\\"OCA then performs Organ-Anchored Cross-Modal Alignment (OCA) so that each organ node aggregates textual evidence from the radiology report.\\\"},\\n    {\\\"id\\\": 11, \\\"text\\\": \\\"Report-Enhanced Graph-Refinement (REG) refines the graph representation by injecting organ-specific invasion cues extracted from the report.\\\", \\\"poster_quote\\\": \\\"Finally, REG uses a large language model (LLM) to incorporate report-derived invasion statements as a guidance signal on top of AOG, refining the multimodal organ graph without discarding anatomy-based risk connections.\\\"},\\n    {\\\"id\\\": 12, \\\"text\\\": \\\"The framework comprises three key components: Anatomy-Structured Organ Graph (AOG), Organ-Anchored Cross-Modal Alignment (OCA), and Report-Enhanced Graph-Refinement (REG).\\\", \\\"poster_quote\\\": \\\"The framework comprises three key components: an Anatomy-Structured Organ Graph (AOG), an Organ-Anchored Cross-Modal Alignment (OCA) module, and a Report-Enhanced Graph-Refinement (REG) module.\\\"},\\n    {\\\"id\\\": 13, \\\"text\\\": \\\"AOG uses pre-trained organ segmentations and anatomy-guided connectivity rules to construct an organ-level graph that encodes potential spread between primary sites and surrounding structures.\\\", \\\"poster_quote\\\": \\\"First, AOG addresses the challenge of modeling complex invasion patterns by using pre-trained organ segmentations and anatomy-guided connectivity rules to construct an organ-level graph that encodes potential spread between primary sites and surrounding structures.\\\"},\\n    {\\\"id\\\": 14, \\\"text\\\": \\\"OCA performs fine-grained, organ-level image-text interaction, enhancing CT-derived organ features with organ-specific cues from the radiology report while preserving the anatomy-driven topology.\\\", \\\"poster_quote\\\": \\\"OCA then performs fine-grained, organ-level image-text interaction, enhancing CT-derived organ features with organ-specific cues from the radiology report while preserving the anatomy-driven topology.\\\"},\\n    {\\\"id\\\": 15, \\\"text\\\": \\\"REG uses a large language model (LLM) to incorporate report-derived invasion statements as a guidance signal on top of AOG.\\\", \\\"poster_quote\\\": \\\"Finally, REG uses a large language model (LLM) to incorporate report-derived invasion statements as a guidance signal on top of AOG, refining the multimodal organ graph without discarding anatomy-based risk connections.\\\"},\\n    {\\\"id\\\": 16, \\\"text\\\": \\\"Binary classification results: internal F1 80.83% / Acc 81.53%, surpassing the second-best MMI (77.59% F1, 78.57% Acc).\\\", \\\"poster_quote\\\": \\\"Binary (Early T1-T2 vs. Late T3-T4): internal F1 80.83% / Acc 81.53%, surpassing the second-best MMI (77.59% F1, 78.57% Acc).\\\"},\\n    {\\\"id\\\": 17, \\\"text\\\": \\\"Binary classification results: external F1 76.46% / Acc 76.50%, outperforming TGCAM (74.09% F1, 74.38% Acc) by a significant margin.\\\", \\\"poster_quote\\\": \\\"External F1 76.46% / Acc 76.50%, outperforming TGCAM (74.09% F1, 74.38% Acc) by a significant margin.\\\"},\\n    {\\\"id\\\": 18, \\\"text\\\": \\\"Setting: K = 7 predefined anatomical structures; primary sites P = {supraglottic, glottic, subglottic}; potentially invaded organs T = {esophagus, thyroid gland, trachea, oral cavity}.\\\", \\\"poster_quote\\\": \\\"Setting: K = 7 predefined anatomical structures; primary sites P = {supraglottic, glottic, subglottic}; potentially invaded organs T = {esophagus, thyroid gland, trachea, oral cavity}.\\\"},\\n    {\\\"id\\\": 19, \\\"text\\\": \\\"The model is trained end-to-end with cross-entropy loss for T-staging classification.\\\", \\\"poster_quote\\\": \\\"The model is trained end-to-end with cross-entropy loss for T-staging classification.\\\"},\\n    {\\\"id\\\": 20, \\\"text\\\": \\\"Three-class classification results: internal F1 61.43% / Acc 63.33%, improving over MMBCD (58.44% F1, 61.14% Acc).\\\", \\\"poster_quote\\\": \\\"Three-class (T1, T2, T3-T4): internal F1 61.43% / Acc 63.33%, improving over MMBCD (58.44% F1, 61.14% Acc).\\\"},\\n    {\\\"id\\\": 21, \\\"text\\\": \\\"Three-class classification results: external F1 60.27% / Acc 63.78%, outperforming the second-best method by a large margin of 8.73% F1 and 7.78% accuracy.\\\", \\\"poster_quote\\\": \\\"External F1 60.27% / Acc 63.78%, outperforming the second-best method by a large margin of 8.73% F1 and 7.78% accuracy.\\\"},\\n    {\\\"id\\\": 22, \\\"text\\\": \\\"Image-only baselines lag considerably (e.g., SwinViT 58.82% internal binary F1; VDPF 71.47%).\\\", \\\"poster_quote\\\": \\\"Image-only baselines lag considerably (e.g., SwinViT 58.82% internal binary F1; VDPF 71.47%), confirming the value of multimodal, anatomy-structured modeling.\\\"},\\n    {\\\"id\\\": 23, \\\"text\\\": \\\"The proposed method collects the first and largest dataset for CT-based laryngopharyngeal cancer T-staging, comprising 656 patients across four medical centers.\\\", \\\"poster_quote\\\": \\\"We collect the first and largest dataset for CT-based laryngopharyngeal cancer T-staging, comprising 656 patients across four medical centers, all paired with CT reports for multimodal assessment (prior studies are single-center with 118-319 patients and imaging only).\\\"},\\n    {\\\"id\\\": 24, \\\"text\\\": \\\"Prior studies on CT-based laryngopharyngeal cancer T-staging are single-center with 118-319 patients and imaging only.\\\", \\\"poster_quote\\\": \\\"We collect the first and largest dataset for CT-based laryngopharyngeal cancer T-staging, comprising 656 patients across four medical centers, all paired with CT reports for multimodal assessment (prior studies are single-center with 118-319 patients and imaging only).\\\"},\\n    {\\\"id\\\": 25, \\\"text\\\": \\\"Text node construction uses an LLM to extract structured invasion information via prompt engineering.\\\", \\\"poster_quote\\\": \\\"Text node construction: an LLM extracts structured invasion information via prompt engineering, identifying which target organs (esophagus, thyroid gland, trachea, oral cavity) are explicitly described as invaded, excluding negations and distinguishing ’thyroid gland’ (endocrine organ) from ’thyroid cartilage’ (laryngeal structure).\\\"},\\n    {\\\"id\\\": 26, \\\"text\\\": \\\"Claude 3.5 Haiku, GPT-4o, and Qwen-2.5-72B yield identical outputs on all 439 reports.\\\", \\\"poster_quote\\\": \\\"We use Claude 3.5 Haiku; GPT-4o and Qwen-2.5-72B yield identical outputs on all 439 reports, and manual review confirms all extractions are correct.\\\"},\\n    {\\\"id\\\": 27, \\\"text\\\": \\\"Manual review confirms all extractions from Claude 3.5 Haiku, GPT-4o, and Qwen-2.5-72B are correct.\\\", \\\"poster_quote\\\": \\\"We use Claude 3.5 Haiku; GPT-4o and Qwen-2.5-72B yield identical outputs on all 439 reports, and manual review confirms all extractions are correct.\\\"},\\n    {\\\"id\\\": 28, \\\"text\\\": \\\"Binary classification results on 80 randomly selected external samples: Ours F1 76.25% / Acc 76.25%, comparable to Radiologist 1 (76.16% / 76.25%) and Radiologist 2 (74.98% / 75.00%).\\\", \\\"poster_quote\\\": \\\"On 80 randomly selected external samples (20 per class) compared to two radiologists: Binary: Ours F1 76.25% / Acc 76.25%, comparable to Radiologist 1 (76.16% / 76.25%) and Radiologist 2 (74.98% / 75.00%).\\\"},\\n    {\\\"id\\\": 29, \\\"text\\\": \\\"Three-class classification results on 80 randomly selected external samples: Ours F1 59.71% / Acc 62.50%, outperforming Radiologist 1 (53.03% F1, 60.00% Acc) and Radiologist 2 (53.63% F1, 60.00% Acc) by at least 6.08% F1 and 2.50% accuracy.\\\", \\\"poster_quote\\\": \\\"Three-class: Ours F1 59.71% / Acc 62.50%, outperforming both radiologists (53.03% and 53.63% F1, 60.00% Acc) by at least 6.08% F1 and 2.50% accuracy.\\\"},\\n    {\\\"id\\\": 30, \\\"text\\\": \\\"Failure analysis (16/88 misclassified cases, Fold 1): over-staging occurred in 9/16 cases (56%).\\\", \\\"poster_quote\\\": \\\"Failure analysis (16/88 misclassified cases, Fold 1): over-staging (9/16, 56%) - in 7 cases the report explicitly described cartilage invasion not confirmed by pathology, reflecting CT’s known limitation in distinguishing tumor contact from true invasion.\\\"},\\n    {\\\"id\\\": 31, \\\"text\\\": \\\"Failure analysis (16/88 misclassified cases, Fold 1): understaging occurred in 7/16 cases (44%).\\\", \\\"poster_quote\\\": \\\"Failure analysis (16/88 misclassified cases, Fold 1): understaging (7/16, 44%) - in 5 cases the report contained no invasion description or stated ’no evidence of invasion’ despite pathological confirmation.\\\"},\\n    {\\\"id\\\": 32, \\\"text\\\": \\\"Cross-modal alignment analysis shows invasion-token attention of 0.058 for correct early-stage predictions.\\\", \\\"poster_quote\\\": \\\"Cross-modal alignment analysis shows invasion-token attention of 0.058 for correct early-stage, 0.105 for correct advanced-stage, 0.088 for over-staged and 0.058 for under-staged cases.\\\"},\\n    {\\\"id\\\": 33, \\\"text\\\": \\\"Cross-modal alignment analysis shows invasion-token attention of 0.105 for correct advanced-stage predictions.\\\", \\\"poster_quote\\\": \\\"Cross-modal alignment analysis shows invasion-token attention of 0.058 for correct early-stage, 0.105 for correct advanced-stage, 0.088 for over-staged and 0.058 for under-staged cases.\\\"},\\n    {\\\"id\\\": 34, \\\"text\\\": \\\"Cross-modal alignment analysis shows invasion-token attention of 0.088 for over-staged cases.\\\", \\\"poster_quote\\\": \\\"Cross-modal alignment analysis shows invasion-token attention of 0.058 for correct early-stage, 0.105 for correct advanced-stage, 0.088 for over-staged and 0.058 for under-staged cases.\\\"},\\n    {\\\"id\\\": 35, \\\"text\\\": \\\"Cross-modal alignment analysis shows invasion-token attention of 0.058 for under-staged cases.\\\", \\\"poster_quote\\\": \\\"Cross-modal alignment analysis shows invasion-token attention of 0.058 for correct early-stage, 0.105 for correct advanced-stage, 0.088 for over-staged and 0.058 for under-staged cases.\\\"},\\n    {\\\"id\\\": 36, \\\"text\\\": \\\"Predictions remain grounded in imaging (image-only AOG 77.96% F1) and enhanced by the report (83.96%).\\\", \\\"poster_quote\\\": \\\"Predictions remain grounded in imaging (image-only AOG 77.96% F1) and enhanced by the report (83.96%).\\\"},\\n    {\\\"id\\\": 37, \\\"text\\\": \\\"Graph refinement connects the text node to all primary sites by default and links it to target organs explicitly mentioned as invaded.\\\", \\\"poster_quote\\\": \\\"Graph refinement: the text node is connected to all primary sites by default, and additionally linked to target organs explicitly mentioned as invaded, while keeping original organ-organ edges unchanged.\\\"},\\n    {\\\"id\\\": 38, \\\"text\\\": \\\"Message passing on the report-enhanced graph followed by global average pooling yields the staging prediction.\\\", \\\"poster_quote\\\": \\\"Message passing on this report-enhanced graph followed by global average pooling yields the staging prediction, so anatomy-based risk relationships are maintained but selectively strengthened along report-supported pathways.\\\"},\\n    {\\\"id\\\": 39, \\\"text\\\": \\\"Cohorts include 439 patients from Fudan University Zhongshan Hospital (FUZH) with contrast-enhanced CT and reports.\\\", \\\"poster_quote\\\": \\\"Cohorts: (1) Fudan University Zhongshan Hospital (FUZH), 439 patients with contrast-enhanced CT and reports (primary cohort, 5-fold cross-validation).\\\"},\\n    {\\\"id\\\": 40, \\\"text\\\": \\\"Cohorts include 25 cases from Chang Gung Memorial Hospital (CGMH).\\\", \\\"poster_quote\\\": \\\"Cohorts: (2) Chang Gung Memorial Hospital (CGMH), 25 cases.\\\"},\\n    {\\\"id\\\": 41, \\\"text\\\": \\\"Cohorts include 87 cases from Eye & ENT Hospital of Fudan University (EENT).\\\", \\\"poster_quote\\\": \\\"Cohorts: (3) Eye & ENT Hospital of Fudan University (EENT), 87 cases.\\\"},\\n    {\\\"id\\\": 42, \\\"text\\\": \\\"Cohorts include 105 public cases from TCGA.\\\", \\\"poster_quote\\\": \\\"Cohorts: (4) TCGA, 105 public cases.\\\"},\\n    {\\\"id\\\": 43, \\\"text\\\": \\\"For TCGA, CT reports were written by a board-certified radiologist and verified by a second radiologist.\\\", \\\"poster_quote\\\": \\\"For TCGA, CT reports were written by a board-certified radiologist and verified by a second, describing only imaging findings without assigning T-stage.\\\"},\\n    {\\\"id\\\": 44, \\\"text\\\": \\\"Stage distribution: T1 197, T2 176, T3 138, T4 145 (total 656).\\\", \\\"poster_quote\\\": \\\"Stage distribution: T1 197, T2 176, T3 138, T4 145 (total 656).\\\"},\\n    {\\\"id\\\": 45, \\\"text\\\": \\\"Training set size: 439 patients (66.9%).\\\", \\\"poster_quote\\\": \\\"Stage distribution: T1 197, T2 176, T3 138, T4 145 (total 656); training 439 (66.9%), test 217 (33.1%).\\\"},\\n    {\\\"id\\\": 46, \\\"text\\\": \\\"Test set size: 217 patients (33.1%).\\\", \\\"poster_quote\\\": \\\"Stage distribution: T1 197, T2 176, T3 138, T4 145 (total 656); training 439 (66.9%), test 217 (33.1%).\\\"},\\n    {\\\"id\\\": 47, \\\"text\\\": \\\"Ground-truth T-stages are from pathological confirmation following AJCC 8th edition criteria.\\\", \\\"poster_quote\\\": \\\"Ground-truth T-stages are from pathological confirmation following AJCC 8th edition criteria, not from CT reports; none of the 439 training reports contain a T-stage designation.\\\"},\\n    {\\\"id\\\": 48, \\\"text\\\": \\\"None of the 439 training reports contain a T-stage designation.\\\", \\\"poster_quote\\\": \\\"Ground-truth T-stages are from pathological confirmation following AJCC 8th edition criteria, not from CT reports; none of the 439 training reports contain a T-stage designation.\\\"},\\n    {\\\"id\\\": 49, \\\"text\\\": \\\"Binary classification setting distinguishes early (T1-T2) vs. late (T3-T4) stages, reflecting organ-preserving vs. aggressive treatment.\\\", \\\"poster_quote\\\": \\\"Two clinically relevant settings: (1) binary classification of early (T1-T2) vs. late (T3-T4) stages, reflecting organ-preserving vs. aggressive treatment.\\\"},\\n    {\\\"id\\\": 50, \\\"text\\\": \\\"Three-class classification setting distinguishes T1/T2 due to different infiltration patterns and recurrence risks while merging T3/T4 given similar treatment protocols.\\\", \\\"poster_quote\\\": \\\"Two clinically relevant settings: (2) three-class classification T1 vs. T2 vs. T3-T4, distinguishing T1/T2 due to different infiltration patterns and recurrence risks while merging T3/T4 given similar treatment protocols.\\\"},\\n    {\\\"id\\\": 51, \\\"text\\\": \\\"CT images are resampled to 1mm isotropic resolution and resized to 128x128x128.\\\", \\\"poster_quote\\\": \\\"Implementation: PyTorch on NVIDIA H20; CT resampled to 1mm isotropic, resized to 128x128x128, HU window center 50 / width 450, intensities normalized to [0,1]; Adam optimizer, batch size 8, cosine LR decay from 1e-6 to 1e-7, weight decay 1e-5.\\\"},\\n    {\\\"id\\\": 52, \\\"text\\\": \\\"HU window center is set to 50 and width to 450.\\\", \\\"poster_quote\\\": \\\"Implementation: PyTorch on NVIDIA H20; CT resampled to 1mm isotropic, resized to 128x128x128, HU window center 50 / width 450, intensities normalized to [0,1]; Adam optimizer, batch size 8, cosine LR decay from 1e-6 to 1e-7, weight decay 1e-5.\\\"},\\n    {\\\"id\\\": 53, \\\"text\\\": \\\"CT intensities are normalized to [0,1].\\\", \\\"poster_quote\\\": \\\"Implementation: PyTorch on NVIDIA H20; CT resampled to 1mm isotropic, resized to 128x128x128, HU window center 50 / width 450, intensities normalized to [0,1]; Adam optimizer, batch size 8, cosine LR decay from 1e-6 to 1e-7, weight decay 1e-5.\\\"},\\n    {\\\"id\\\": 54, \\\"text\\\": \\\"Adam optimizer is used with batch size 8.\\\", \\\"poster_quote\\\": \\\"Implementation: PyTorch on NVIDIA H20; CT resampled to 1mm isotropic, resized to 128x128x128, HU window center 50 / width 450, intensities normalized to [0,1]; Adam optimizer, batch size 8, cosine LR decay from 1e-6 to 1e-7, weight decay 1e-5.\\\"},\\n    {\\\"id\\\": 55, \\\"text\\\": \\\"Cosine learning rate decay is applied from 1e-6 to 1e-7.\\\", \\\"poster_quote\\\": \\\"Implementation: PyTorch on NVIDIA H20; CT resampled to 1mm isotropic, resized to 128x128x128, HU window center 50 / width 450, intensities normalized to [0,1]; Adam optimizer, batch size 8, cosine LR decay from 1e-6 to 1e-7, weight decay 1e-5.\\\"},\\n    {\\\"id\\\": 56, \\\"text\\\": \\\"Weight decay is set to 1e-5.\\\", \\\"poster_quote\\\": \\\"Implementation: PyTorch on NVIDIA H20; CT resampled to 1mm isotropic, resized to 128x128x128, HU window center 50 / width 450, intensities normalized to [0,1]; Adam optimizer, batch size 8, cosine LR decay from 1e-6 to 1e-7, weight decay 1e-5.\\\"},\\n    {\\\"id\\\": 57, \\\"text\\\": \\\"Metrics used for evaluation are accuracy and macro F1-score.\\\", \\\"poster_quote\\\": \\\"Metrics: Accuracy and macro F1-score.\\\"},\\n    {\\\"id\\\": 58, \\\"text\\\": \\\"The proposed framework is the first multimodal laryngopharyngeal cancer T-staging framework that constructs an organ-level graph from pre-trained organ segmentations and integrates paired radiology reports without requiring manual tumor masks.\\\", \\\"poster_quote\\\": \\\"1) An anatomy-guided, annotation-free multimodal T-staging framework. To our knowledge, the first multimodal laryngopharyngeal cancer T-staging framework that constructs an organ-level graph from pre-trained organ segmentations and integrates paired radiology reports without requiring manual tumor masks, making it practical for full 3D volumes in routine clinical workflows.\\\"},\\n    {\\\"id\\\": 59, \\\"text\\\": \\\"The proposed framework is practical for full 3D volumes in routine clinical workflows.\\\", \\\"poster_quote\\\": \\\"1) An anatomy-guided, annotation-free multimodal T-staging framework. To our knowledge, the first multimodal laryngopharyngeal cancer T-staging framework that constructs an organ-level graph from pre-trained organ segmentations and integrates paired radiology reports without requiring manual tumor masks, making it practical for full 3D volumes in routine clinical workflows.\\\"},\\n    {\\\"id\\\": 60, \\\"text\\\": \\\"The proposed framework reframes T-staging as prediction over an anatomy-structured organ graph combining CT-derived organ features with organ-level textual cues.\\\", \\\"poster_quote\\\": \\\"2) Reframing T-staging as anatomy-structured multimodal prediction. We cast T-staging as prediction over an anatomy-structured organ graph combining CT-derived organ features with organ-level textual cues.\\\"},\\n    {\\\"id\\\": 61, \\\"text\\\": \\\"The proposed framework focuses on inter-organ relationships and invasion patterns rather than treating the tumor in isolation.\\\", \\\"poster_quote\\\": \\\"By focusing on inter-organ relationships and invasion patterns rather than treating the tumor in isolation, the model captures key patterns of disease involvement across critical laryngopharyngeal structures.\\\"},\\n    {\\\"id\\\": 62, \\\"text\\\": \\\"The proposed framework captures key patterns of disease involvement across critical laryngopharyngeal structures.\\\", \\\"poster_quote\\\": \\\"By focusing on inter-organ relationships and invasion patterns rather than treating the tumor in isolation, the model captures key patterns of disease involvement across critical laryngopharyngeal structures.\\\"},\\n    {\\\"id\\\": 63, \\\"text\\\": \\\"The proposed framework integrates CT volumes and paired radiology reports.\\\", \\\"poster_quote\\\": \\\"We introduced an anatomy-structured multimodal framework for laryngopharyngeal cancer T-staging that integrates CT volumes and paired radiology reports.\\\"},\\n    {\\\"id\\\": 64, \\\"text\\\": \\\"The proposed framework explicitly models anatomical topology through the Anatomy-Structured Organ Graph (AOG).\\\", \\\"poster_quote\\\": \\\"By explicitly modeling anatomical topology through the Anatomy-Structured Organ Graph (AOG).\\\"},\\n    {\\\"id\\\": 65, \\\"text\\\": \\\"The proposed framework performs organ-level cross-modal alignment via Organ-Anchored Cross-Modal Alignment (OCA).\\\", \\\"poster_quote\\\": \\\"performing organ-level cross-modal alignment via Organ-Anchored Cross-Modal Alignment (OCA).\\\"},\\n    {\\\"id\\\": 66, \\\"text\\\": \\\"The proposed framework incorporates structured clinical invasion knowledge using Report-Enhanced Graph-Refinement (REG).\\\", \\\"poster_quote\\\": \\\"and incorporating structured clinical invasion knowledge using Report-Enhanced Graph-Refinement (REG).\\\"},\\n    {\\\"id\\\": 67, \\\"text\\\": \\\"The proposed framework effectively captures organ-specific invasion patterns and their textual evidence.\\\", \\\"poster_quote\\\": \\\"our method effectively captures organ-specific invasion patterns and their textual evidence.\\\"},\\n    {\\\"id\\\": 68, \\\"text\\\": \\\"The proposed framework shows consistent gains over state-of-the-art unimodal and multimodal baselines in both binary and multiclass staging.\\\", \\\"poster_quote\\\": \\\"Extensive experiments on the largest curated laryngopharyngeal cancer T-staging dataset and public benchmarks show consistent gains over state-of-the-art unimodal and multimodal baselines in both binary and multiclass staging.\\\"},\\n    {\\\"id\\\": 69, \\\"text\\\": \\\"The proposed framework shows notable gains over radiologist assessments.\\\", \\\"poster_quote\\\": \\\"Extensive experiments on the largest curated laryngopharyngeal cancer T-staging dataset and public benchmarks show consistent gains over state-of-the-art unimodal and multimodal baselines in both binary and multiclass staging, with notable gains over radiologist assessments.\\\"},\\n    {\\\"id\\\": 70, \\\"text\\\": \\\"The proposed framework offers improved interpretability by aligning decision-making with clinically meaningful invasion pathways.\\\", \\\"poster_quote\\\": \\\"The framework also offers improved interpretability by aligning decision-making with clinically meaningful invasion pathways.\\\"},\\n    {\\\"id\\\": 71, \\\"text\\\": \\\"Future work includes extending the topology-aware design to other head-and-neck and thoracic malignancies.\\\", \\\"poster_quote\\\": \\\"Future work: extending the topology-aware design to other head-and-neck and thoracic malignancies.\\\"},\\n    {\\\"id\\\": 72, \\\"text\\\": \\\"Future work includes uncertainty-aware fusion that down-weights unreliable invasion descriptions.\\\", \\\"poster_quote\\\": \\\"Future work: uncertainty-aware fusion that down-weights unreliable invasion descriptions.\\\"},\\n    {\\\"id\\\": 73, \\\"text\\\": \\\"Future work includes integrating longitudinal imaging and follow-up reports for dynamic tumor progression modeling.\\\", \\\"poster_quote\\\": \\\"Future work: integrating longitudinal imaging and follow-up reports for dynamic tumor progression modeling.\\\"},\\n    {\\\"id\\\": 74, \\\"text\\\": \\\"Deployment considerations include validating the segmentation model on site-specific data.\\\", \\\"poster_quote\\\": \\\"Deployment considerations include validating the segmentation model on site-specific data.\\\"},\\n    {\\\"id\\\": 75, \\\"text\\\": \\\"Deployment considerations include accommodating institutional reporting differences.\\\", \\\"poster_quote\\\": \\\"Deployment considerations include accommodating institutional reporting differences.\\\"},\\n    {\\\"id\\\": 76, \\\"text\\\": \\\"Deployment considerations include prospective validation on independent cohorts.\\\", \\\"poster_quote\\\": \\\"Deployment considerations include validating the segmentation model on site-specific data, accommodating institutional reporting differences, and prospective validation on independent cohorts.\\\"},\\n    {\\\"id\\\": 77, \\\"text\\\": \\\"Extensive experiments were conducted on 656 patients from four hospitals, the largest laryngopharyngeal T-staging dataset with paired CT and radiology reports.\\\", \\\"poster_quote\\\": \\\"3) Comprehensive empirical validation on a multi-center cohort. Extensive experiments on 656 patients from four hospitals (largest laryngopharyngeal T-staging dataset with paired CT and radiology reports), in both binary (T1-T2 vs. T3-T4) and three-class settings, with internal and external test sets, demonstrating consistent improvements over strong imaging-only and multimodal baselines.\\\"},\\n    {\\\"id\\\": 78, \\\"text\\\": \\\"The proposed framework demonstrates consistent improvements over strong imaging-only and multimodal baselines in both binary and three-class settings.\\\", \\\"poster_quote\\\": \\\"3) Comprehensive empirical validation on a multi-center cohort. Extensive experiments on 656 patients from four hospitals (largest laryngopharyngeal T-staging dataset with paired CT and radiology reports), in both binary (T1-T2 vs. T3-T4) and three-class settings, with internal and external test sets, demonstrating consistent improvements over strong imaging-only and multimodal baselines.\\\"}\\n  ]\\n}\\n```\", \"```json\\n{\\n  \\\"verdicts\\\": [\\n    {\\n      \\\"id\\\": 1,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Accurate T-staging is crucial for guiding personalized treatment strategies for laryngopharyngeal cancer.\\\",\\n      \\\"reason\\\": \\\"This statement is explicitly stated in the abstract of the paper.\\\"\\n    },\\n    {\\n      \\\"id\\\": 2,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Although the current reference standard relies on biopsy-derived pathology, this process is invasive and time-consuming.\\\",\\n      \\\"reason\\\": \\\"This statement is explicitly stated in the introduction section of the paper.\\\"\\n    },\\n    {\\n      \\\"id\\\": 3,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Direct CT-based T-staging is therefore attractive as a non-invasive and rapid alternative, but manually reviewing an entire 3-D CT volume remains labor-intensive and subjective: radiologists must track the tumor across tens of axial slices and judge its extension into adjacent organs, and staging accuracy can suffer, especially in borderline cases.\\\",\\n      \\\"reason\\\": \\\"This statement is explicitly stated in the introduction section of the paper.\\\"\\n    },\\n    {\\n      \\\"id\\\": 4,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Existing methods underrepresent anatomically structured patterns of tumor invasion, as they either process whole CT volumes without tumor-specific anatomical constraints or rely on labor-intensive tumor segmentation.\\\",\\n      \\\"reason\\\": \\\"This statement is explicitly stated in the abstract and introduction sections of the paper.\\\"\\n    },\\n    {\\n      \\\"id\\\": 5,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Existing methods underrepresent anatomically structured patterns of tumor invasion, as they either process whole CT volumes without tumor-specific anatomical constraints or rely on labor-intensive tumor segmentation.\\\",\\n      \\\"reason\\\": \\\"This statement is explicitly stated in the abstract and introduction sections of the paper.\\\"\\n    },\\n    {\\n      \\\"id\\\": 6,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Radiology reports contain organ-specific invasion details.\\\",\\n      \\\"reason\\\": \\\"This statement is explicitly stated in the abstract of the paper.\\\"\\n    },\\n    {\\n      \\\"id\\\": 7,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Current methods that apply global feature fusion struggle to accurately align individual anatomical structures with their corresponding textual descriptions.\\\",\\n      \\\"reason\\\": \\\"This statement is explicitly stated in the abstract and introduction sections of the paper.\\\"\\n    },\\n    {\\n      \\\"id\\\": 8,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"To address these issues, we propose an anatomy-aware multimodal framework that integrates organ-level CT context and radiology reports into a unified representation for laryngopharyngeal T-staging.\\\",\\n      \\\"reason\\\": \\\"This statement is explicitly stated in the abstract of the paper.\\\"\\n    },\\n    {\\n      \\\"id\\\": 9,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"To capture the characteristic pattern of tumor spread in laryngopharyngeal cancer, we first construct an Anatomy-Structured Organ Graph (AOG) that explicitly models spatial relationships among key laryngopharyngeal structures.\\\",\\n      \\\"reason\\\": \\\"This statement is explicitly stated in the introduction and methods sections of the paper.\\\"\\n    },\\n    {\\n      \\\"id\\\": 10,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"OCA provides cross-modal interaction at the organ level: each organ node derived from CT serves as a query over the radiology report and selectively aggregates fine-grained textual evidence that is most relevant to its appearance, location, and suspected involvement.\\\",\\n      \\\"reason\\\": \\\"This statement is explicitly stated in the methods section of the paper.\\\"\\n    },\\n    {\\n      \\\"id\\\": 11,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Specifically, we design a Report-Enhanced Graph-Refinement (REG) module that reuses the global report representation as a text node in the graph, employs a large language model (LLM) to identify which organs are explicitly described as invaded in the report, and connects this text node only to primary sites and to those invaded organs, while keeping the original organ–organ edges unchanged.\\\",\\n      \\\"reason\\\": \\\"This statement is explicitly stated in the methods section of the paper.\\\"\\n    },\\n    {\\n      \\\"id\\\": 12,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Our framework comprises three key components: an Anatomy-Structured Organ Graph (AOG), an Organ-Anchored Cross-Modal Alignment (OCA) module, and a Report-Enhanced Graph-Refinement (REG) module.\\\",\\n      \\\"reason\\\": \\\"This statement is explicitly stated in the methods section of the paper.\\\"\\n    },\\n    {\\n      \\\"id\\\": 13,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"AOG addresses the challenge of modeling complex invasion patterns by using pre-trained organ segmentations and anatomy-guided connectivity rules to construct an organ-level graph that encodes potential spread between primary sites and surrounding structures.\\\",\\n      \\\"reason\\\": \\\"This statement is explicitly stated in the methods section of the paper.\\\"\\n    },\\n    {\\n      \\\"id\\\": 14,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"OCA provides cross-modal interaction at the organ level: each organ node derived from CT serves as a query over the radiology report and selectively aggregates fine-grained textual evidence that is most relevant to its appearance, location, and suspected involvement, yielding text-enhanced organ representations while keeping the anatomy-guided graph topology unchanged.\\\",\\n      \\\"reason\\\": \\\"This statement is explicitly stated in the methods section of the paper.\\\"\\n    },\\n    {\\n      \\\"id\\\": 15,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Specifically, we design a Report-Enhanced Graph-Refinement (REG) module that reuses the global report representation as a text node in the graph, employs a large language model (LLM) to identify which organs are explicitly described as invaded in the report, and connects this text node only to primary sites and to those invaded organs, while keeping the original organ–organ edges unchanged.\\\",\\n      \\\"reason\\\": \\\"This statement is explicitly stated in the methods section of the paper.\\\"\\n    },\\n    {\\n      \\\"id\\\": 16,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"In the binary classification task (Early T1–T2 vs. Late T3–T4), our method achieves the highest performance on both internal and external test sets. For internal testing, we achieve an F1 score of 80.83% and accuracy of 81.53%, surpassing the second-best method MMI (77.59% F1 score and 78.57% accuracy).\\\",\\n      \\\"reason\\\": \\\"This statement is explicitly stated in the results section of the paper.\\\"\\n    },\\n    {\\n      \\\"id\\\": 17,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"On the external test set, our method maintains its leading position with an F1 score of 76.46% and accuracy of 76.50%, outperforming TGCAM (74.09% F1 score and 74.38% accuracy) by a significant margin.\\\",\\n      \\\"reason\\\": \\\"This statement is explicitly stated in the results section of the paper.\\\"\\n    },\\n    {\\n      \\\"id\\\": 18,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Indices of primary sites (supraglottic, glottic, subglottic); Indices of potentially invaded organs (esophagus, thyroid gland, trachea, oral cavity).\\\",\\n      \\\"reason\\\": \\\"This statement is explicitly stated in the methods section of the paper.\\\"\\n    },\\n    {\\n      \\\"id\\\": 19,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"We train our framework end-to-end using cross-entropy loss for T-staging classification.\\\",\\n      \\\"reason\\\": \\\"This statement is explicitly stated in the methods section of the paper.\\\"\\n    },\\n    {\\n      \\\"id\\\": 20,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"On the internal test set, we achieve an F1 score of 61.43% and accuracy of 63.33%, showing notable improvements over MMBCD (58.44% F1 score and 61.14% accuracy).\\\",\\n      \\\"reason\\\": \\\"This statement is explicitly stated in the results section of the paper.\\\"\\n    },\\n    {\\n      \\\"id\\\": 21,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The advantage is even more prominent on the external test set, where our method achieves an F1 score of 60.27% and accuracy of 63.78%, significantly outperforming the second-best method by a large margin of 8.73% F1 score and 7.78% accuracy.\\\",\\n      \\\"reason\\\": \\\"This statement is explicitly stated in the results section of the paper.\\\"\\n    },\\n    {\\n      \\\"id\\\": 22,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Image-based classification approaches, such as SwinViT (58.82% internal binary F1) and VDPF (71.47% internal binary F1), lag considerably behind multimodal methods.\\\",\\n      \\\"reason\\\": \\\"This statement is explicitly stated in the results section of the paper.\\\"\\n    },\\n    {\\n      \\\"id\\\": 23,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"To the best of our knowledge, we collect the first and largest dataset for CT-based laryngopharyngeal cancer T-staging, comprising 656 patients across four medical centers.\\\",\\n      \\\"reason\\\": \\\"This statement is explicitly stated in the dataset section of the paper.\\\"\\n    },\\n    {\\n      \\\"id\\\": 24,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"These laryngopharyngeal and head-and-neck staging studies, however, are single-center, limited in scale (118–319 patients), and rely on imaging features alone without exploiting paired radiology reports.\\\",\\n      \\\"reason\\\": \\\"This statement is explicitly stated in the related work section of the paper.\\\"\\n    },\\n    {\\n      \\\"id\\\": 25,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Specifically, we design a Report-Enhanced Graph-Refinement (REG) module that reuses the global report representation as a text node in the graph, employs a large language model (LLM) to identify which organs are explicitly described as invaded in the report.\\\",\\n      \\\"reason\\\": \\\"This statement is explicitly stated in the methods section of the paper.\\\"\\n    },\\n    {\\n      \\\"id\\\": 26,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"We use Claude 3.5 Haiku in our implementation; we verified that GPT-4o and Qwen-2.5-72B yield exactly the same outputs as Claude 3.5 Haiku on all 439 reports.\\\",\\n      \\\"reason\\\": \\\"This statement is explicitly stated in the methods section of the paper.\\\"\\n    },\\n    {\\n      \\\"id\\\": 27,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Manual review confirmed all extractions are correct.\\\",\\n      \\\"reason\\\": \\\"This statement is explicitly stated in the methods section of the paper.\\\"\\n    },\\n    {\\n      \\\"id\\\": 28,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Binary classification results on 80 randomly selected external samples: Ours F1 76.25% / Acc 76.25%, comparable to Radiologist 1 (76.16% / 76.25%) and Radiologist 2 (74.98% / 75.00%).\\\",\\n      \\\"reason\\\": \\\"This statement is explicitly stated in the clinical validation section of the paper.\\\"\\n    },\\n    {\\n      \\\"id\\\": 29,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Three-class classification results on 80 randomly selected external samples: Ours F1 59.71% / Acc 62.50%, outperforming Radiologist 1 (53.03% F1, 60.00% Acc) and Radiologist 2 (53.63% F1, 60.00% Acc) by at least 6.08% F1 and 2.50% accuracy.\\\",\\n      \\\"reason\\\": \\\"This statement is explicitly stated in the clinical validation section of the paper.\\\"\\n    },\\n    {\\n      \\\"id\\\": 30,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Over-staging (9/16 cases, 56%): the model predicted T3–T4 for pathologically confirmed T1–T2 cases.\\\",\\n      \\\"reason\\\": \\\"This statement is explicitly stated in the failure analysis section of the paper.\\\"\\n    },\\n    {\\n      \\\"id\\\": 31,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Under-staging (7/16 cases, 44%): the model predicted T1–T2 for pathologically confirmed T3–T4 cases.\\\",\\n      \\\"reason\\\": \\\"This statement is explicitly stated in the failure analysis section of the paper.\\\"\\n    },\\n    {\\n      \\\"id\\\": 32,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Cross-modal alignment analysis shows invasion-token attention of 0.058 for correct early-stage predictions.\\\",\\n      \\\"reason\\\": \\\"This statement is explicitly stated in the cross-modal alignment analysis section of the paper.\\\"\\n    },\\n    {\\n      \\\"id\\\": 33,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Cross-modal alignment analysis shows invasion-token attention of 0.105 for correct advanced-stage predictions.\\\",\\n      \\\"reason\\\": \\\"This statement is explicitly stated in the cross-modal alignment analysis section of the paper.\\\"\\n    },\\n    {\\n      \\\"id\\\": 34,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Cross-modal alignment analysis shows invasion-token attention of 0.088 for over-staged cases.\\\",\\n      \\\"reason\\\": \\\"This statement is explicitly stated in the cross-modal alignment analysis section of the paper.\\\"\\n    },\\n    {\\n      \\\"id\\\": 35,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Cross-modal alignment analysis shows invasion-token attention of 0.058 for under-staged cases.\\\",\\n      \\\"reason\\\": \\\"This statement is explicitly stated in the cross-modal alignment analysis section of the paper.\\\"\\n    },\\n    {\\n      \\\"id\\\": 36,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Predictions remain grounded in imaging (image-only AOG 77.96% F1) and enhanced by the report (83.96%).\\\",\\n      \\\"reason\\\": \\\"This statement is explicitly stated in the results section of the paper.\\\"\\n    },\\n    {\\n      \\\"id\\\": 37,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The enhanced graph Ĝ = (V̂, Ê) extends the original structure with the text node and report-guided connections: V̂ = V ∪ {vt}, Ê = E ∪ {(k, t)|k ∈ P} ∪ {(k, t)|k ∈ T, k ∈ I}.\\\",\\n      \\\"reason\\\": \\\"This statement is explicitly stated in the methods section of the paper.\\\"\\n    },\\n    {\\n      \\\"id\\\": 38,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The final node representations are obtained through message passing on this report-enhanced graph: zk = GNN({h̃k }Kk=1 ∪ {ht }, Ê), followed by global average pooling for staging classification.\\\",\\n      \\\"reason\\\": \\\"This statement is explicitly stated in the methods section of the paper.\\\"\\n    },\\n    {\\n      \\\"id\\\": 39,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"FUZH is used for 5-fold cross-validation, while CGMH, EENT, and TCGA form the external test set. FUZH is the primary cohort with 439 patients, each with contrast-enhanced CT scans and corresponding radiology reports.\\\",\\n      \\\"reason\\\": \\\"This statement is explicitly stated in the dataset section of the paper.\\\"\\n    },\\n    {\\n      \\\"id\\\": 40,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Cohorts include 25 cases from Chang Gung Memorial Hospital (CGMH).\\\",\\n      \\\"reason\\\": \\\"This statement is explicitly stated in the dataset section of the paper.\\\"\\n    }\\n  ]\\n}\\n```\", \"```json\\n{\\n  \\\"verdicts\\\": [\\n    {\\n      \\\"id\\\": 1,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Eye & ENT Hospital of Fudan University (EENT) with 87 cases\\\",\\n      \\\"reason\\\": \\\"Section IV.A, Table III explicitly lists 87 cases from EENT.\\\"\\n    },\\n    {\\n      \\\"id\\\": 2,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The Cancer Genome Atlas (TCGA) with 105 cases for evaluating generalizability on public data [40].\\\",\\n      \\\"reason\\\": \\\"Section IV.A, Dataset Composition and Evaluation Protocol, mentions 105 cases from TCGA.\\\"\\n    },\\n    {\\n      \\\"id\\\": 3,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"For TCGA data [40], which included only CT scans and pathological-confirmed T-stages, we manually annotated corresponding CT reports following standard radiological assessment protocols. Specifically, these CT reports were written by a board-certified radiologist and then reviewed and verified by a second, with any disagreements resolved by consensus.\\\",\\n      \\\"reason\\\": \\\"Section IV.A explicitly states that TCGA CT reports were written by a board-certified radiologist and verified by a second radiologist.\\\"\\n    },\\n    {\\n      \\\"id\\\": 4,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Our dataset substantially exceeds the scale of previous studies: prior laryngopharyngeal and head-and-neck staging studies are single-center and considerably smaller (118–319 patients [6], [8], [11], [12]) and rely on imaging alone without paired radiology reports. Detailed T-staging distributions as shown in Table III.\\\",\\n      \\\"reason\\\": \\\"Section IV.A and Table III provide the stage distribution: T1 197, T2 176, T3 138, T4 145 (total 656).\\\"\\n    },\\n    {\\n      \\\"id\\\": 5,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Fudan University Zhongshan Hospital (FUZH) as the primary cohort with 439 patients, each with contrast-enhanced CT scans and corresponding radiology reports.\\\",\\n      \\\"reason\\\": \\\"Section IV.A explicitly states that the training set size is 439 patients, which is 66.9% of the total dataset.\\\"\\n    },\\n    {\\n      \\\"id\\\": 6,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"CGMH, EENT, and TCGA [40] form the external test set.\\\",\\n      \\\"reason\\\": \\\"Section IV.A explicitly states that the test set size is 217 patients, which is 33.1% of the total dataset.\\\"\\n    },\\n    {\\n      \\\"id\\\": 7,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Importantly, the ground-truth T-stage labels in our dataset are derived from pathological confirmation following AJCC 8th edition criteria, not from CT reports.\\\",\\n      \\\"reason\\\": \\\"Section IV.A explicitly states that ground-truth T-stages are from pathological confirmation following AJCC 8th edition criteria.\\\"\\n    },\\n    {\\n      \\\"id\\\": 8,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"None of the 439 training reports contain any T-stage designation — all reports describe imaging findings following standard clinical templates.\\\",\\n      \\\"reason\\\": \\\"Section IV.A explicitly states that none of the 439 training reports contain a T-stage designation.\\\"\\n    },\\n    {\\n      \\\"id\\\": 9,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"We consider two clinically relevant classification settings: (1) Binary classification between early stages (T1–T2) and late stages (T3–T4), reflecting fundamentally different treatment strategies—patients with early-stages receive organ-preserving procedures while advanced cases require aggressive interventions.\\\",\\n      \\\"reason\\\": \\\"Section IV.A explicitly describes the binary classification setting distinguishing early (T1-T2) vs. late (T3-T4) stages, reflecting organ-preserving vs. aggressive treatment.\\\"\\n    },\\n    {\\n      \\\"id\\\": 10,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"We consider two clinically relevant classification settings: (2) Three-class classification: T1 vs. T2 vs. T3–T4, where T1 and T2 are distinguished due to different tumor infiltration patterns and recurrence risks, while T3 and T4 are merged considering similar treatment protocols.\\\",\\n      \\\"reason\\\": \\\"Section IV.A explicitly describes the three-class classification setting distinguishing T1/T2 due to different infiltration patterns and recurrence risks while merging T3/T4 given similar treatment protocols.\\\"\\n    },\\n    {\\n      \\\"id\\\": 11,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"For data preprocessing, all CT volumes are resampled to an isotropic spacing of 1mm3 and resized to a unified spatial dimension of 128×128×128.\\\",\\n      \\\"reason\\\": \\\"Section IV.B explicitly states that CT images are resampled to 1mm isotropic resolution and resized to 128x128x128.\\\"\\n    },\\n    {\\n      \\\"id\\\": 12,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Hounsfield Unit normalization applied using a window center of 50 and a window width of 450 to enhance the visibility of soft tissues in clinical settings.\\\",\\n      \\\"reason\\\": \\\"Section IV.B explicitly states that HU window center is set to 50 and width to 450.\\\"\\n    },\\n    {\\n      \\\"id\\\": 13,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The intensity values are normalized to the range [0, 1].\\\",\\n      \\\"reason\\\": \\\"Section IV.B explicitly states that CT intensities are normalized to [0,1].\\\"\\n    },\\n    {\\n      \\\"id\\\": 14,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"We train our model with a batch size of 8 using the Adam optimizer.\\\",\\n      \\\"reason\\\": \\\"Section IV.B explicitly states that the Adam optimizer is used with batch size 8.\\\"\\n    },\\n    {\\n      \\\"id\\\": 15,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The learning rate starts at 1×10−6 and decays to 1×10−7 following a cosine decay schedule.\\\",\\n      \\\"reason\\\": \\\"Section IV.B explicitly states that cosine learning rate decay is applied from 1e-6 to 1e-7.\\\"\\n    },\\n    {\\n      \\\"id\\\": 16,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The learning rate starts at 1×10−6 and decays to 1×10−7 following a cosine decay schedule, with a weight decay of 1 × 10−5.\\\",\\n      \\\"reason\\\": \\\"Section IV.B explicitly states that weight decay is set to 1e-5.\\\"\\n    },\\n    {\\n      \\\"id\\\": 17,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"We evaluate model performance using Accuracy and Macro F1-score.\\\",\\n      \\\"reason\\\": \\\"Section IV.B explicitly states that metrics used for evaluation are accuracy and macro F1-score.\\\"\\n    },\\n    {\\n      \\\"id\\\": 18,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"We propose, to our knowledge, the first multimodal laryngopharyngeal cancer T-staging framework that constructs an organ-level graph from pre-trained organ segmentations and integrates paired radiology reports without requiring manual tumor masks.\\\",\\n      \\\"reason\\\": \\\"Section III.A explicitly states that the proposed framework is the first multimodal laryngopharyngeal cancer T-staging framework that constructs an organ-level graph from pre-trained organ segmentations and integrates paired radiology reports without requiring manual tumor masks.\\\"\\n    },\\n    {\\n      \\\"id\\\": 19,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"making it practical for full 3D volumes in routine clinical workflows.\\\",\\n      \\\"reason\\\": \\\"Section III.A explicitly states that the proposed framework is practical for full 3D volumes in routine clinical workflows.\\\"\\n    },\\n    {\\n      \\\"id\\\": 20,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"We cast laryngopharyngeal cancer T-staging as prediction over an anatomy-structured organ graph that combines CT-derived organ features with organ-level textual cues.\\\",\\n      \\\"reason\\\": \\\"Section III.A explicitly states that the proposed framework reframes T-staging as prediction over an anatomy-structured organ graph combining CT-derived organ features with organ-level textual cues.\\\"\\n    },\\n    {\\n      \\\"id\\\": 21,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"By focusing on inter-organ relationships and invasion patterns rather than treating the tumor in isolation, our model is designed to capture key patterns of disease involvement across critical laryngopharyngeal structures.\\\",\\n      \\\"reason\\\": \\\"Section III.A explicitly states that the proposed framework focuses on inter-organ relationships and invasion patterns rather than treating the tumor in isolation.\\\"\\n    },\\n    {\\n      \\\"id\\\": 22,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"By focusing on inter-organ relationships and invasion patterns rather than treating the tumor in isolation, our model is designed to capture key patterns of disease involvement across critical laryngopharyngeal structures.\\\",\\n      \\\"reason\\\": \\\"Section III.A explicitly states that the proposed framework captures key patterns of disease involvement across critical laryngopharyngeal structures.\\\"\\n    },\\n    {\\n      \\\"id\\\": 23,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The proposed anatomy-aware fine-grained multimodal framework for laryngopharyngeal cancer T-staging using CT images and radiology reports is illustrated in Figure 2.\\\",\\n      \\\"reason\\\": \\\"Section III.A explicitly states that the proposed framework integrates CT volumes and paired radiology reports.\\\"\\n    },\\n    {\\n      \\\"id\\\": 24,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Our framework comprises three key components: an Anatomy-Structured Organ Graph (AOG), an Organ-Anchored Cross-Modal Alignment (OCA) module, and a Report-Enhanced Graph-Refinement (REG) module.\\\",\\n      \\\"reason\\\": \\\"Section III.A explicitly states that the proposed framework explicitly models anatomical topology through the Anatomy-Structured Organ Graph (AOG).\\\"\\n    },\\n    {\\n      \\\"id\\\": 25,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"OCA then performs fine-grained, organ-level image–text interaction, enhancing CT-derived organ features with organ-specific cues from the radiology report while preserving the anatomy-driven topology.\\\",\\n      \\\"reason\\\": \\\"Section III.A explicitly states that the proposed framework performs organ-level cross-modal alignment via Organ-Anchored Cross-Modal Alignment (OCA).\\\"\\n    },\\n    {\\n      \\\"id\\\": 26,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Finally, REG uses a large language model (LLM) to incorporate report-derived invasion statements as a guidance signal on top of AOG, refining the multimodal organ graph without discarding anatomy-based risk connections.\\\",\\n      \\\"reason\\\": \\\"Section III.A explicitly states that the proposed framework incorporates structured clinical invasion knowledge using Report-Enhanced Graph-Refinement (REG).\\\"\\n    },\\n    {\\n      \\\"id\\\": 27,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Through this organ-guided attention mechanism, each organ’s representation is enhanced with relevant clinical evidence from the report. The enhanced features {h̃k }K preserve organ-specific characteristics while incorporating complementary textual information.\\\",\\n      \\\"reason\\\": \\\"Section III.C explicitly states that the proposed framework effectively captures organ-specific invasion patterns and their textual evidence.\\\"\\n    },\\n    {\\n      \\\"id\\\": 28,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Extensive experiments demonstrate that the proposed framework achieves superior performance in T-staging of laryngopharyngeal cancer.\\\",\\n      \\\"reason\\\": \\\"Abstract and Section IV.C explicitly state that the proposed framework shows consistent gains over state-of-the-art unimodal and multimodal baselines in both binary and multiclass staging.\\\"\\n    },\\n    {\\n      \\\"id\\\": 29,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Table VII shows the comparison results of our method and two radiologists on an external test set. The proposed method demonstrates competitive performance with the radiologists in both experimental settings.\\\",\\n      \\\"reason\\\": \\\"Section IV.H explicitly states that the proposed framework shows notable gains over radiologist assessments.\\\"\\n    },\\n    {\\n      \\\"id\\\": 30,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Beyond performance, our framework offers improved interpretability by aligning decision-making with clinically meaningful invasion pathways, thereby enhancing its potential for real-world adoption.\\\",\\n      \\\"reason\\\": \\\"Section VI explicitly states that the proposed framework offers improved interpretability by aligning decision-making with clinically meaningful invasion pathways.\\\"\\n    },\\n    {\\n      \\\"id\\\": 31,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Future work will explore extending the proposed topology-aware design to other head-and-neck and thoracic malignancies.\\\",\\n      \\\"reason\\\": \\\"Section VI explicitly states that future work includes extending the topology-aware design to other head-and-neck and thoracic malignancies.\\\"\\n    },\\n    {\\n      \\\"id\\\": 32,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Future work could mitigate these failures through uncertainty-aware fusion that down-weights unreliable invasion descriptions.\\\",\\n      \\\"reason\\\": \\\"Section IV.H explicitly states that future work includes uncertainty-aware fusion that down-weights unreliable invasion descriptions.\\\"\\n    },\\n    {\\n      \\\"id\\\": 33,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Future work will explore extending the proposed topology-aware design to other head-and-neck and thoracic malignancies, as well as integrating longitudinal imaging and follow-up reports to enable dynamic tumor progression modeling.\\\",\\n      \\\"reason\\\": \\\"Section VI explicitly states that future work includes integrating longitudinal imaging and follow-up reports for dynamic tumor progression modeling.\\\"\\n    },\\n    {\\n      \\\"id\\\": 34,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Several practical challenges should be considered for clinical deployment. First, the framework depends on a pre-trained organ segmentation model, whose performance may vary across imaging protocols and scanner vendors; validating or fine-tuning the segmentation model on site-specific data is advisable before deployment.\\\",\\n      \\\"reason\\\": \\\"Section V explicitly states that deployment considerations include validating the segmentation model on site-specific data.\\\"\\n    },\\n    {\\n      \\\"id\\\": 35,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Second, differences in reporting terminology and detail across institutions may affect the OCA and REG modules, though our cross-institutional evaluation suggests the learned cross-attention mechanism accommodates such variation reasonably well.\\\",\\n      \\\"reason\\\": \\\"Section V explicitly states that deployment considerations include accommodating institutional reporting differences.\\\"\\n    },\\n    {\\n      \\\"id\\\": 36,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Third, prospective validation on independent cohorts with different disease distributions is essential before integration into clinical decision-support workflows.\\\",\\n      \\\"reason\\\": \\\"Section V explicitly states that deployment considerations include prospective validation on independent cohorts.\\\"\\n    },\\n    {\\n      \\\"id\\\": 37,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"We conduct extensive experiments on a cohort of 656 patients from four hospitals (to our knowledge, the largest laryngopharyngeal T-staging dataset with paired CT and radiology reports).\\\",\\n      \\\"reason\\\": \\\"Abstract and Section IV.A explicitly state that extensive experiments were conducted on 656 patients from four hospitals, the largest laryngopharyngeal T-staging dataset with paired CT and radiology reports.\\\"\\n    },\\n    {\\n      \\\"id\\\": 38,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Extensive experiments demonstrate that the proposed framework achieves superior performance in T-staging of laryngopharyngeal cancer.\\\",\\n      \\\"reason\\\": \\\"Abstract and Section IV.C explicitly state that the proposed framework demonstrates consistent improvements over strong imaging-only and multimodal baselines in both binary and three-class settings.\\\"\\n    }\\n  ]\\n}\\n```\"]"
+}

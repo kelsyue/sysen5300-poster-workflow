@@ -1,0 +1,58 @@
+{
+  "model": "openai.gpt-4o",
+  "repeat": 1,
+  "judge_prompt_sha256": "b869632da1ad4b55ac22113283e19f071d648950b15ea1524b071b8280f5a11f",
+  "error": null,
+  "tokens_in": 7112,
+  "tokens_out": 851,
+  "parsed": {
+    "items": {
+      "chk_problem": {
+        "label": "accurate",
+        "poster_evidence": "Medication information relevant to treatment decisions appears in both structured medication records and narrative clinic notes. Outpatient notes often record medication starts, stops, holds, regimen changes, and formulation details that may not appear in the structured medication list at the same time.",
+        "reason": "The poster accurately describes the research problem as the disagreement between clinic notes and structured EHR medication history due to normalization errors, terminology differences, or timing."
+      },
+      "chk_method": {
+        "label": "accurate",
+        "poster_evidence": "We conducted a clinic-note-only evaluation of treatment-context medication normalization using a frozen cohort run of 11,812 eligible visits from 761 patients and 22,483 manifest notes. We restricted the analysis to clinic-like notes because we focused on outpatient documentation of medication starts, stops, holds, regimen changes, and formulation details.",
+        "reason": "The poster describes the note-grounded approach combining deterministic normalization and semantic-temporal comparisons, aligning with the reference."
+      },
+      "chk_data": {
+        "label": "accurate",
+        "poster_evidence": "We conducted a clinic-note-only evaluation of treatment-context medication normalization using a frozen cohort run of 11,812 eligible visits from 761 patients and 22,483 manifest notes.",
+        "reason": "The poster provides the dataset details matching the reference, including the number of visits, patients, and notes."
+      },
+      "chk_setup": {
+        "label": "missing",
+        "poster_evidence": "",
+        "reason": "The poster does not describe the evaluation setup, such as the held-out test split of 5,403 reference mention rows or the fixed random seed for patient split."
+      },
+      "chk_primary_result": {
+        "label": "accurate",
+        "poster_evidence": "On 5,403 held-out mention rows, exact canonical agreement improved from 0.7226 with surface-exact matching to 0.8429 after lexical cleanup and curated alias mapping.",
+        "reason": "The poster correctly reports the primary result of exact canonical agreement improvement from 0.7226 to 0.8429, matching the reference."
+      },
+      "chk_secondary_result": {
+        "label": "accurate",
+        "poster_evidence": "In the full-cohort characterization analysis, only 16.44% of note-derived rows had same-visit exact overlap with structured medication history, but 55.17% had same-visit semantic overlap, 90.34% had same-visit or ± 30-day overlap, and only 3.97% remained in the strict no-structured-overlap bucket under broad project-level mapping.",
+        "reason": "The poster provides the secondary result of semantic and temporal overlap percentages, which align with the reference."
+      },
+      "chk_baseline": {
+        "label": "accurate",
+        "poster_evidence": "On held-out patients, deterministic alias-aware normalization improved exact canonical agreement from 0.7226 to 0.8429, outperforming generic lexical and ontology-only comparators.",
+        "reason": "The poster mentions generic lexical and ontology-only comparators, which aligns with the reference description of baseline methods."
+      },
+      "chk_conclusion": {
+        "label": "accurate",
+        "poster_evidence": "Semantic-temporal decomposition showed that apparent mismatch between note-derived medication evidence and structured medication history often reflects semantic relatedness, temporal displacement, and note-side mapping limits rather than one undifferentiated missing-medication category.",
+        "reason": "The poster accurately conveys the paper's conclusion that evidence characterization should precede downstream clinical inference when comparing clinic-note medication evidence with structured medication history."
+      },
+      "chk_limitation": {
+        "label": "missing",
+        "poster_evidence": "",
+        "reason": "The poster does not mention the limitations of the single-center cohort, project-specific canonical label space, or non-exhaustive manual annotation of the reference set."
+      }
+    }
+  },
+  "raw": "```json\n{\n  \"items\": {\n    \"chk_problem\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Medication information relevant to treatment decisions appears in both structured medication records and narrative clinic notes. Outpatient notes often record medication starts, stops, holds, regimen changes, and formulation details that may not appear in the structured medication list at the same time.\",\n      \"reason\": \"The poster accurately describes the research problem as the disagreement between clinic notes and structured EHR medication history due to normalization errors, terminology differences, or timing.\"\n    },\n    \"chk_method\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"We conducted a clinic-note-only evaluation of treatment-context medication normalization using a frozen cohort run of 11,812 eligible visits from 761 patients and 22,483 manifest notes. We restricted the analysis to clinic-like notes because we focused on outpatient documentation of medication starts, stops, holds, regimen changes, and formulation details.\",\n      \"reason\": \"The poster describes the note-grounded approach combining deterministic normalization and semantic-temporal comparisons, aligning with the reference.\"\n    },\n    \"chk_data\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"We conducted a clinic-note-only evaluation of treatment-context medication normalization using a frozen cohort run of 11,812 eligible visits from 761 patients and 22,483 manifest notes.\",\n      \"reason\": \"The poster provides the dataset details matching the reference, including the number of visits, patients, and notes.\"\n    },\n    \"chk_setup\": {\n      \"label\": \"missing\",\n      \"poster_evidence\": \"\",\n      \"reason\": \"The poster does not describe the evaluation setup, such as the held-out test split of 5,403 reference mention rows or the fixed random seed for patient split.\"\n    },\n    \"chk_primary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"On 5,403 held-out mention rows, exact canonical agreement improved from 0.7226 with surface-exact matching to 0.8429 after lexical cleanup and curated alias mapping.\",\n      \"reason\": \"The poster correctly reports the primary result of exact canonical agreement improvement from 0.7226 to 0.8429, matching the reference.\"\n    },\n    \"chk_secondary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"In the full-cohort characterization analysis, only 16.44% of note-derived rows had same-visit exact overlap with structured medication history, but 55.17% had same-visit semantic overlap, 90.34% had same-visit or ± 30-day overlap, and only 3.97% remained in the strict no-structured-overlap bucket under broad project-level mapping.\",\n      \"reason\": \"The poster provides the secondary result of semantic and temporal overlap percentages, which align with the reference.\"\n    },\n    \"chk_baseline\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"On held-out patients, deterministic alias-aware normalization improved exact canonical agreement from 0.7226 to 0.8429, outperforming generic lexical and ontology-only comparators.\",\n      \"reason\": \"The poster mentions generic lexical and ontology-only comparators, which aligns with the reference description of baseline methods.\"\n    },\n    \"chk_conclusion\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Semantic-temporal decomposition showed that apparent mismatch between note-derived medication evidence and structured medication history often reflects semantic relatedness, temporal displacement, and note-side mapping limits rather than one undifferentiated missing-medication category.\",\n      \"reason\": \"The poster accurately conveys the paper's conclusion that evidence characterization should precede downstream clinical inference when comparing clinic-note medication evidence with structured medication history.\"\n    },\n    \"chk_limitation\": {\n      \"label\": \"missing\",\n      \"poster_evidence\": \"\",\n      \"reason\": \"The poster does not mention the limitations of the single-center cohort, project-specific canonical label space, or non-exhaustive manual annotation of the reference set.\"\n    }\n  }\n}\n```"
+}

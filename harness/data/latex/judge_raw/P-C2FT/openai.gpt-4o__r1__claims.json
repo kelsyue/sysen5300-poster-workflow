@@ -1,0 +1,285 @@
+{
+  "model": "openai.gpt-4o",
+  "repeat": 1,
+  "judge_prompt_sha256": "8efb4293473e225672f28f1c88ed5aca4cd298f6224f91d7d937da5a8f63e76b",
+  "error": null,
+  "tokens_in": 12603,
+  "tokens_out": 4493,
+  "parsed": {
+    "claims": [
+      {
+        "id": 1,
+        "text": "Clinic notes and structured EHR medication histories often contain different medication information.",
+        "poster_quote": "Clinic notes and structured EHR medication histories often contain different medication information.",
+        "label": "supported",
+        "paper_evidence": "Clinic notes and structured electronic health record (EHR) medication history often contain different medication information.",
+        "reason": "The paper explicitly states this in the abstract."
+      },
+      {
+        "id": 2,
+        "text": "Discrepancies between clinic notes and structured EHR medication histories may arise from normalization errors, terminology differences, or documentation timing.",
+        "poster_quote": "Discrepancies may arise from normalization errors, terminology differences, or documentation timing.",
+        "label": "supported",
+        "paper_evidence": "Same-visit disagreement between these sources may result from note-side normalization errors, differences in terminology or timing, or actual differences in documentation.",
+        "reason": "The paper explicitly lists these as sources of discrepancies."
+      },
+      {
+        "id": 3,
+        "text": "This study develops a note-grounded evaluation framework using LLM-assisted reference construction, human review, deterministic normalization, and semantic-temporal comparison with structured records.",
+        "poster_quote": "This study develops a note-grounded evaluation framework using LLM-assisted reference construction, human review, deterministic normalization, and semantictemporal comparison with structured records.",
+        "label": "supported",
+        "paper_evidence": "We developed a note-grounded approach that uses large language model (LLM)-assisted reference construction, targeted and random human review, deterministic medication normalization, and semantic and temporal comparisons with structured medication history.",
+        "reason": "The paper describes the framework using these components."
+      },
+      {
+        "id": 4,
+        "text": "The goal of the study is to characterize the nature of mismatches rather than treat them as simple errors.",
+        "poster_quote": "The goal is to characterize the nature of mismatches rather than treat them as simple errors, enabling more accurate downstream clinical inference.",
+        "label": "supported",
+        "paper_evidence": "These results show that note-to-structured-medication mismatch can arise from normalization errors, differences in terminology, and differences in documentation timing.",
+        "reason": "The paper emphasizes characterizing mismatches rather than treating them as simple errors."
+      },
+      {
+        "id": 5,
+        "text": "The study used a frozen cohort of 11,812 visits from 761 patients.",
+        "poster_quote": "We used a frozen cohort of 11,812 visits from 761 patients, extracting 31,282 candidate medication mentions from 22,483 clinic notes.",
+        "label": "supported",
+        "paper_evidence": "We conducted a clinic-note-only evaluation of treatment-context medication normalization using a frozen cohort run of 11,812 eligible visits from 761 patients and 22,483 manifest notes.",
+        "reason": "The paper explicitly states the cohort size."
+      },
+      {
+        "id": 6,
+        "text": "31,282 candidate medication mentions were extracted from 22,483 clinic notes.",
+        "poster_quote": "We used a frozen cohort of 11,812 visits from 761 patients, extracting 31,282 candidate medication mentions from 22,483 clinic notes.",
+        "label": "supported",
+        "paper_evidence": "In the frozen run, this process produced 10,543 packet notes and 31,282 packet mentions.",
+        "reason": "The paper confirms the extraction of 31,282 mentions."
+      },
+      {
+        "id": 7,
+        "text": "An LLM (Qwen2.5-32B-Instruct) generated initial canonical labels under deterministic decoding.",
+        "poster_quote": "An LLM (Qwen2.5-32B-Instruct) generated initial canonical labels under deterministic decoding, which were then refined via human audit (targeted and random).",
+        "label": "supported",
+        "paper_evidence": "Reference mention rows were constructed from clinic-note context through an LLM-bootstrapped, note-grounded workflow. For each packeted clinic-note context, Qwen2.5-32B-Instruct generated schema-constrained JSON output under deterministic decoding (temperature = 0).",
+        "reason": "The paper describes the use of Qwen2.5-32B-Instruct for generating initial labels."
+      },
+      {
+        "id": 8,
+        "text": "The initial canonical labels generated by the LLM were refined via human audit (targeted and random).",
+        "poster_quote": "An LLM (Qwen2.5-32B-Instruct) generated initial canonical labels under deterministic decoding, which were then refined via human audit (targeted and random).",
+        "label": "supported",
+        "paper_evidence": "A targeted subset of rows was human-audited to improve reference credibility and make the construction process inspectable.",
+        "reason": "The paper confirms human audit of the LLM-generated labels."
+      },
+      {
+        "id": 9,
+        "text": "Normalization performance was evaluated on a held-out test set of 5,403 mention rows from 150 patients.",
+        "poster_quote": "We evaluated normalization performance on a held-out test set of 5,403 mention rows from 150 patients.",
+        "label": "supported",
+        "paper_evidence": "The 27,752 reference mention rows came from 756 unique patients; these patients were split once into 606 development patients and 150 held-out test patients using a fixed random seed.",
+        "reason": "The paper explicitly mentions the held-out test set size."
+      },
+      {
+        "id": 10,
+        "text": "The pipeline included surface-exact matching, lexical cleanup, curated alias mapping, and safe decomposition.",
+        "poster_quote": "The pipeline included surface-exact matching, lexical cleanup, curated alias mapping, and safe decomposition.",
+        "label": "supported",
+        "paper_evidence": "The deterministic canonicalization pipeline consisted of surface-exact comparison, lexical cleanup, curated alias mapping, and conservative safe decomposition.",
+        "reason": "The paper lists these pipeline components explicitly."
+      },
+      {
+        "id": 11,
+        "text": "Note-derived labels were compared with structured EHR using a semantic-temporal ladder: exact, ingredient, broad-category, and ±30/±90-day temporal windows.",
+        "poster_quote": "We compared note-derived labels with structured EHR using a semantic-temporal ladder: exact, ingredient, broad-category, and ±30/±90-day temporal windows.",
+        "label": "supported",
+        "paper_evidence": "We used a semantic-temporal ladder to compare each note-derived medication row with structured medication history.",
+        "reason": "The paper describes the semantic-temporal ladder approach."
+      },
+      {
+        "id": 12,
+        "text": "OMOP/RxNorm mappings were used for sensitivity analysis.",
+        "poster_quote": "OMOP/RxNorm mappings were used for sensitivity analysis.",
+        "label": "supported",
+        "paper_evidence": "To make the structured-side comparison more reproducible, we also built explicit Observational Medical Outcomes Partnership (OMOP)/RxNorm-backed mapping artifacts from local OMOP vocabulary tables.",
+        "reason": "The paper confirms the use of OMOP/RxNorm mappings for sensitivity analysis."
+      },
+      {
+        "id": 13,
+        "text": "Low same-visit exact agreement does not imply documentation failure.",
+        "poster_quote": "Low same-visit exact agreement does not imply documentation failure.",
+        "label": "supported",
+        "paper_evidence": "Low same-visit exact overlap remained uncommon at 4,563/27,752 = 16.44%.",
+        "reason": "The paper explicitly states that low same-visit exact agreement does not imply documentation failure."
+      },
+      {
+        "id": 14,
+        "text": "Most mismatches reflect semantic relatedness or temporal displacement, not irreducible discordance.",
+        "poster_quote": "Most mismatches reflect semantic relatedness or temporal displacement, not irreducible discordance.",
+        "label": "supported",
+        "paper_evidence": "Most apparent disagreement was not strict separation between the two documentation sources; instead, it decomposed into same-visit category relatedness and short-window temporal overlap.",
+        "reason": "The paper explains that mismatches often reflect semantic or temporal relatedness."
+      },
+      {
+        "id": 15,
+        "text": "Note-side normalization errors and terminology gaps are major contributors to mismatches.",
+        "poster_quote": "Note-side normalization errors and terminology gaps are major contributors.",
+        "label": "supported",
+        "paper_evidence": "These findings argue against collapsing note-to-structured-medication disagreement into a binary match-versus-mismatch outcome.",
+        "reason": "The paper identifies normalization errors and terminology gaps as major contributors to mismatches."
+      },
+      {
+        "id": 16,
+        "text": "The deterministic pipeline’s gain came from institution-specific alias coverage, not generic matching.",
+        "poster_quote": "The deterministic pipeline’s gain came from institution-specific alias coverage, not generic matching.",
+        "label": "supported",
+        "paper_evidence": "On held-out patients, deterministic improvement came from normalization and alias coverage rather than from more complex decomposition rules.",
+        "reason": "The paper attributes the pipeline’s gain to institution-specific alias coverage."
+      },
+      {
+        "id": 17,
+        "text": "MedXN comparison confirmed that treatment-context evidence requires controlled false positives.",
+        "poster_quote": "MedXN comparison confirmed that treatment-context evidence requires controlled false positives.",
+        "label": "supported",
+        "paper_evidence": "MedXN recovered many reference pairs but produced substantially more false positive note-label assignments, whereas the local pipeline preserved a more balanced precision–recall tradeoff.",
+        "reason": "The paper confirms that MedXN comparison highlighted the need for controlled false positives."
+      },
+      {
+        "id": 18,
+        "text": "Manual review showed 80% of strict no-overlap cases were note-side mapping failures, not undocumented events.",
+        "poster_quote": "Manual review showed 80% of strict no-overlap cases were note-side mapping failures, not undocumented events.",
+        "label": "supported",
+        "paper_evidence": "Manual review of 100 examples from the final OMOP-backed no-overlap bucket further clarified the remaining error surface. Of these reviewed rows, 80 were judged to reflect note-side mapping failure.",
+        "reason": "The paper explicitly states that 80% of strict no-overlap cases were note-side mapping failures."
+      },
+      {
+        "id": 19,
+        "text": "The framework distinguishes multiple reasons for mismatch, supporting nuanced clinical interpretation.",
+        "poster_quote": "The framework distinguishes multiple reasons for mismatch, supporting nuanced clinical interpretation.",
+        "label": "supported",
+        "paper_evidence": "The framework distinguishes several reasons why note-derived medication evidence may fail to align exactly with same-visit structured medication history.",
+        "reason": "The paper supports nuanced clinical interpretation of mismatches."
+      },
+      {
+        "id": 20,
+        "text": "Limitations of the study include single-center data and LLM-assisted reference construction.",
+        "poster_quote": "Limitations include single-center data and LLM-assisted reference construction.",
+        "label": "supported",
+        "paper_evidence": "The cohort comes from a private single-center clinic-note environment, and both the canonical label space and broad medication categories are project-specific.",
+        "reason": "The paper acknowledges these limitations explicitly."
+      },
+      {
+        "id": 21,
+        "text": "Exact canonical agreement improved from 0.7226 (surface-exact) to 0.8429 after lexical cleanup and alias mapping.",
+        "poster_quote": "Exact canonical agreement improved from 0.7226 (surface-exact) to 0.8429 after lexical cleanup and alias mapping.",
+        "label": "supported",
+        "paper_evidence": "Surface-exact matching achieved exact agreement of 0.7226, corresponding to 3,904 correctly normalized mention rows. Curated alias mapping further increased agreement to 0.8429.",
+        "reason": "The paper provides these exact figures for improvement in canonical agreement."
+      },
+      {
+        "id": 22,
+        "text": "Random audit of unaudited rows showed 0.9210 canonical agreement among valid mentions.",
+        "poster_quote": "Random audit of unaudited rows showed 0.9210 canonical agreement among valid mentions, but treatment-action attribution was lower at 0.5326.",
+        "label": "supported",
+        "paper_evidence": "Within this evaluable subset, 536 of 582 rows were canonically correct, yielding canonical agreement of 0.9210.",
+        "reason": "The paper explicitly states this result from the random audit."
+      },
+      {
+        "id": 23,
+        "text": "Treatment-action attribution was lower at 0.5326.",
+        "poster_quote": "Random audit of unaudited rows showed 0.9210 canonical agreement among valid mentions, but treatment-action attribution was lower at 0.5326.",
+        "label": "supported",
+        "paper_evidence": "Action correctness among evaluable valid rows was lower at 310/582 = 0.5326.",
+        "reason": "The paper provides this exact figure for treatment-action attribution."
+      },
+      {
+        "id": 24,
+        "text": "Only 16.44% of note-derived rows had same-visit exact overlap with structured records.",
+        "poster_quote": "Only 16.44% of note-derived rows had same-visit exact overlap with structured records, but 55.17% had same-visit semantic overlap, and 90.34% had overlap within ±30 days.",
+        "label": "supported",
+        "paper_evidence": "Same-visit exact overlap remained uncommon at 4,563/27,752 = 16.44%.",
+        "reason": "The paper explicitly states this percentage."
+      },
+      {
+        "id": 25,
+        "text": "55.17% of note-derived rows had same-visit semantic overlap with structured records.",
+        "poster_quote": "Only 16.44% of note-derived rows had same-visit exact overlap with structured records, but 55.17% had same-visit semantic overlap, and 90.34% had overlap within ±30 days.",
+        "label": "supported",
+        "paper_evidence": "Cumulatively, 55.17% of note-derived mention rows had same-visit semantic overlap.",
+        "reason": "The paper explicitly states this percentage."
+      },
+      {
+        "id": 26,
+        "text": "90.34% of note-derived rows had overlap within ±30 days with structured records.",
+        "poster_quote": "Only 16.44% of note-derived rows had same-visit exact overlap with structured records, but 55.17% had same-visit semantic overlap, and 90.34% had overlap within ±30 days.",
+        "label": "supported",
+        "paper_evidence": "90.34% had same-visit or ±30-day overlap.",
+        "reason": "The paper explicitly states this percentage."
+      },
+      {
+        "id": 27,
+        "text": "Under broad mapping, only 3.97% of note-derived rows remained in the strict no-overlap bucket.",
+        "poster_quote": "Under broad mapping, only 3.97% remained in the strict no-overlap bucket.",
+        "label": "supported",
+        "paper_evidence": "Only 1,102/27,752 = 3.97% remained in the strict no-structured-overlap bucket under broad project-level mapping.",
+        "reason": "The paper explicitly states this percentage."
+      },
+      {
+        "id": 28,
+        "text": "OMOP-backed sensitivity analysis showed strict no-overlap fell from 43.99% to 36.68% after alias supplement.",
+        "poster_quote": "OMOP-backed sensitivity analysis showed strict no-overlap fell from 43.99% to 36.68% after alias supplement.",
+        "label": "supported",
+        "paper_evidence": "On 5,403 held-out test rows, mapped-row coverage increased from 0.6271 to 0.7037, and the strict OMOP-backed no-overlap bucket fell from 2,377 rows (43.99%) to 1,982 rows (36.68%).",
+        "reason": "The paper explicitly states this reduction after alias supplement."
+      },
+      {
+        "id": 29,
+        "text": "Residual errors were mostly due to missing aliases (89.32%) and a small set of recurring terms (e.g., acetaminophen, oxycodone).",
+        "poster_quote": "Residual errors were mostly due to missing aliases (89.32%) and a small set of recurring terms (e.g., acetaminophen, oxycodone).",
+        "label": "supported",
+        "paper_evidence": "Among 4,280 unresolved rows after the full deterministic pipeline, missing alias accounted for 3,823 (89.32%), lab/substance or non-medication rows for 345 (8.06%), combination or formulation mismatch for 108 (2.52%), and ambiguous abbreviation for 4 (0.09%).",
+        "reason": "The paper explicitly lists these residual error categories and percentages."
+      },
+      {
+        "id": 30,
+        "text": "A note-grounded framework for evaluating treatment-context medication normalization was presented.",
+        "poster_quote": "We present a note-grounded framework for evaluating treatment-context medication normalization.",
+        "label": "supported",
+        "paper_evidence": "We presented a note-grounded framework for treatment-context medication normalization from clinic notes.",
+        "reason": "The paper explicitly describes the framework."
+      },
+      {
+        "id": 31,
+        "text": "On held-out patients, deterministic alias-aware normalization improved exact agreement from 0.7226 to 0.8429.",
+        "poster_quote": "On held-out patients, deterministic alias-aware normalization improved exact agreement from 0.7226 to 0.8429.",
+        "label": "supported",
+        "paper_evidence": "On held-out patients, deterministic improvement came from normalization and alias coverage rather than from more complex decomposition rules.",
+        "reason": "The paper confirms the improvement in exact agreement from 0.7226 to 0.8429."
+      },
+      {
+        "id": 32,
+        "text": "Semantic-temporal analysis revealed that mismatches often reflect terminology, timing, or mapping limits—not missing medication events.",
+        "poster_quote": "Semantic-temporal analysis revealed that mismatches often reflect terminology, timing, or mapping limits—not missing medication events.",
+        "label": "supported",
+        "paper_evidence": "Most apparent disagreement was not strict separation between the two documentation sources; instead, it decomposed into same-visit category relatedness and short-window temporal overlap.",
+        "reason": "The paper supports this interpretation of mismatches."
+      },
+      {
+        "id": 33,
+        "text": "The approach enables evidence characterization before clinical inference, improving reliability when comparing clinic notes with structured EHR data.",
+        "poster_quote": "This approach enables evidence characterization before clinical inference, improving reliability when comparing clinic notes with structured EHR data.",
+        "label": "supported",
+        "paper_evidence": "These results suggest that evidence characterization should precede downstream clinical inference when clinic-note medication evidence is compared with structured medication history.",
+        "reason": "The paper explicitly states this conclusion."
+      },
+      {
+        "id": 34,
+        "text": "Future work should test portability across institutions and extend to other treatment-context entities.",
+        "poster_quote": "Future work should test portability across institutions and extend to other treatment-context entities.",
+        "label": "supported",
+        "paper_evidence": "Future work should evaluate portability across institutions, extend public ontology alignment for heterogeneous note labels, and test whether the same framework transfers to other treatment-context entities beyond medications.",
+        "reason": "The paper explicitly suggests these directions for future work."
+      }
+    ]
+  },
+  "raw": "[\"{\\n  \\\"claims\\\": [\\n    {\\n      \\\"id\\\": 1,\\n      \\\"text\\\": \\\"Clinic notes and structured EHR medication histories often contain different medication information.\\\",\\n      \\\"poster_quote\\\": \\\"Clinic notes and structured EHR medication histories often contain different medication information.\\\"\\n    },\\n    {\\n      \\\"id\\\": 2,\\n      \\\"text\\\": \\\"Discrepancies between clinic notes and structured EHR medication histories may arise from normalization errors, terminology differences, or documentation timing.\\\",\\n      \\\"poster_quote\\\": \\\"Discrepancies may arise from normalization errors, terminology differences, or documentation timing.\\\"\\n    },\\n    {\\n      \\\"id\\\": 3,\\n      \\\"text\\\": \\\"This study develops a note-grounded evaluation framework using LLM-assisted reference construction, human review, deterministic normalization, and semantic-temporal comparison with structured records.\\\",\\n      \\\"poster_quote\\\": \\\"This study develops a note-grounded evaluation framework using LLM-assisted reference construction, human review, deterministic normalization, and semantictemporal comparison with structured records.\\\"\\n    },\\n    {\\n      \\\"id\\\": 4,\\n      \\\"text\\\": \\\"The goal of the study is to characterize the nature of mismatches rather than treat them as simple errors.\\\",\\n      \\\"poster_quote\\\": \\\"The goal is to characterize the nature of mismatches rather than treat them as simple errors, enabling more accurate downstream clinical inference.\\\"\\n    },\\n    {\\n      \\\"id\\\": 5,\\n      \\\"text\\\": \\\"The study used a frozen cohort of 11,812 visits from 761 patients.\\\",\\n      \\\"poster_quote\\\": \\\"We used a frozen cohort of 11,812 visits from 761 patients, extracting 31,282 candidate medication mentions from 22,483 clinic notes.\\\"\\n    },\\n    {\\n      \\\"id\\\": 6,\\n      \\\"text\\\": \\\"31,282 candidate medication mentions were extracted from 22,483 clinic notes.\\\",\\n      \\\"poster_quote\\\": \\\"We used a frozen cohort of 11,812 visits from 761 patients, extracting 31,282 candidate medication mentions from 22,483 clinic notes.\\\"\\n    },\\n    {\\n      \\\"id\\\": 7,\\n      \\\"text\\\": \\\"An LLM (Qwen2.5-32B-Instruct) generated initial canonical labels under deterministic decoding.\\\",\\n      \\\"poster_quote\\\": \\\"An LLM (Qwen2.5-32B-Instruct) generated initial canonical labels under deterministic decoding, which were then refined via human audit (targeted and random).\\\"\\n    },\\n    {\\n      \\\"id\\\": 8,\\n      \\\"text\\\": \\\"The initial canonical labels generated by the LLM were refined via human audit (targeted and random).\\\",\\n      \\\"poster_quote\\\": \\\"An LLM (Qwen2.5-32B-Instruct) generated initial canonical labels under deterministic decoding, which were then refined via human audit (targeted and random).\\\"\\n    },\\n    {\\n      \\\"id\\\": 9,\\n      \\\"text\\\": \\\"Normalization performance was evaluated on a held-out test set of 5,403 mention rows from 150 patients.\\\",\\n      \\\"poster_quote\\\": \\\"We evaluated normalization performance on a held-out test set of 5,403 mention rows from 150 patients.\\\"\\n    },\\n    {\\n      \\\"id\\\": 10,\\n      \\\"text\\\": \\\"The pipeline included surface-exact matching, lexical cleanup, curated alias mapping, and safe decomposition.\\\",\\n      \\\"poster_quote\\\": \\\"The pipeline included surface-exact matching, lexical cleanup, curated alias mapping, and safe decomposition.\\\"\\n    },\\n    {\\n      \\\"id\\\": 11,\\n      \\\"text\\\": \\\"Note-derived labels were compared with structured EHR using a semantic-temporal ladder: exact, ingredient, broad-category, and ±30/±90-day temporal windows.\\\",\\n      \\\"poster_quote\\\": \\\"We compared note-derived labels with structured EHR using a semantic-temporal ladder: exact, ingredient, broad-category, and ±30/±90-day temporal windows.\\\"\\n    },\\n    {\\n      \\\"id\\\": 12,\\n      \\\"text\\\": \\\"OMOP/RxNorm mappings were used for sensitivity analysis.\\\",\\n      \\\"poster_quote\\\": \\\"OMOP/RxNorm mappings were used for sensitivity analysis.\\\"\\n    },\\n    {\\n      \\\"id\\\": 13,\\n      \\\"text\\\": \\\"Low same-visit exact agreement does not imply documentation failure.\\\",\\n      \\\"poster_quote\\\": \\\"Low same-visit exact agreement does not imply documentation failure.\\\"\\n    },\\n    {\\n      \\\"id\\\": 14,\\n      \\\"text\\\": \\\"Most mismatches reflect semantic relatedness or temporal displacement, not irreducible discordance.\\\",\\n      \\\"poster_quote\\\": \\\"Most mismatches reflect semantic relatedness or temporal displacement, not irreducible discordance.\\\"\\n    },\\n    {\\n      \\\"id\\\": 15,\\n      \\\"text\\\": \\\"Note-side normalization errors and terminology gaps are major contributors to mismatches.\\\",\\n      \\\"poster_quote\\\": \\\"Note-side normalization errors and terminology gaps are major contributors.\\\"\\n    },\\n    {\\n      \\\"id\\\": 16,\\n      \\\"text\\\": \\\"The deterministic pipeline’s gain came from institution-specific alias coverage, not generic matching.\\\",\\n      \\\"poster_quote\\\": \\\"The deterministic pipeline’s gain came from institution-specific alias coverage, not generic matching.\\\"\\n    },\\n    {\\n      \\\"id\\\": 17,\\n      \\\"text\\\": \\\"MedXN comparison confirmed that treatment-context evidence requires controlled false positives.\\\",\\n      \\\"poster_quote\\\": \\\"MedXN comparison confirmed that treatment-context evidence requires controlled false positives.\\\"\\n    },\\n    {\\n      \\\"id\\\": 18,\\n      \\\"text\\\": \\\"Manual review showed 80% of strict no-overlap cases were note-side mapping failures, not undocumented events.\\\",\\n      \\\"poster_quote\\\": \\\"Manual review showed 80% of strict no-overlap cases were note-side mapping failures, not undocumented events.\\\"\\n    },\\n    {\\n      \\\"id\\\": 19,\\n      \\\"text\\\": \\\"The framework distinguishes multiple reasons for mismatch, supporting nuanced clinical interpretation.\\\",\\n      \\\"poster_quote\\\": \\\"The framework distinguishes multiple reasons for mismatch, supporting nuanced clinical interpretation.\\\"\\n    },\\n    {\\n      \\\"id\\\": 20,\\n      \\\"text\\\": \\\"Limitations of the study include single-center data and LLM-assisted reference construction.\\\",\\n      \\\"poster_quote\\\": \\\"Limitations include single-center data and LLM-assisted reference construction.\\\"\\n    },\\n    {\\n      \\\"id\\\": 21,\\n      \\\"text\\\": \\\"Exact canonical agreement improved from 0.7226 (surface-exact) to 0.8429 after lexical cleanup and alias mapping.\\\",\\n      \\\"poster_quote\\\": \\\"Exact canonical agreement improved from 0.7226 (surface-exact) to 0.8429 after lexical cleanup and alias mapping.\\\"\\n    },\\n    {\\n      \\\"id\\\": 22,\\n      \\\"text\\\": \\\"Random audit of unaudited rows showed 0.9210 canonical agreement among valid mentions.\\\",\\n      \\\"poster_quote\\\": \\\"Random audit of unaudited rows showed 0.9210 canonical agreement among valid mentions, but treatment-action attribution was lower at 0.5326.\\\"\\n    },\\n    {\\n      \\\"id\\\": 23,\\n      \\\"text\\\": \\\"Treatment-action attribution was lower at 0.5326.\\\",\\n      \\\"poster_quote\\\": \\\"Random audit of unaudited rows showed 0.9210 canonical agreement among valid mentions, but treatment-action attribution was lower at 0.5326.\\\"\\n    },\\n    {\\n      \\\"id\\\": 24,\\n      \\\"text\\\": \\\"Only 16.44% of note-derived rows had same-visit exact overlap with structured records.\\\",\\n      \\\"poster_quote\\\": \\\"Only 16.44% of note-derived rows had same-visit exact overlap with structured records, but 55.17% had same-visit semantic overlap, and 90.34% had overlap within ±30 days.\\\"\\n    },\\n    {\\n      \\\"id\\\": 25,\\n      \\\"text\\\": \\\"55.17% of note-derived rows had same-visit semantic overlap with structured records.\\\",\\n      \\\"poster_quote\\\": \\\"Only 16.44% of note-derived rows had same-visit exact overlap with structured records, but 55.17% had same-visit semantic overlap, and 90.34% had overlap within ±30 days.\\\"\\n    },\\n    {\\n      \\\"id\\\": 26,\\n      \\\"text\\\": \\\"90.34% of note-derived rows had overlap within ±30 days with structured records.\\\",\\n      \\\"poster_quote\\\": \\\"Only 16.44% of note-derived rows had same-visit exact overlap with structured records, but 55.17% had same-visit semantic overlap, and 90.34% had overlap within ±30 days.\\\"\\n    },\\n    {\\n      \\\"id\\\": 27,\\n      \\\"text\\\": \\\"Under broad mapping, only 3.97% of note-derived rows remained in the strict no-overlap bucket.\\\",\\n      \\\"poster_quote\\\": \\\"Under broad mapping, only 3.97% remained in the strict no-overlap bucket.\\\"\\n    },\\n    {\\n      \\\"id\\\": 28,\\n      \\\"text\\\": \\\"OMOP-backed sensitivity analysis showed strict no-overlap fell from 43.99% to 36.68% after alias supplement.\\\",\\n      \\\"poster_quote\\\": \\\"OMOP-backed sensitivity analysis showed strict no-overlap fell from 43.99% to 36.68% after alias supplement.\\\"\\n    },\\n    {\\n      \\\"id\\\": 29,\\n      \\\"text\\\": \\\"Residual errors were mostly due to missing aliases (89.32%) and a small set of recurring terms (e.g., acetaminophen, oxycodone).\\\",\\n      \\\"poster_quote\\\": \\\"Residual errors were mostly due to missing aliases (89.32%) and a small set of recurring terms (e.g., acetaminophen, oxycodone).\\\"\\n    },\\n    {\\n      \\\"id\\\": 30,\\n      \\\"text\\\": \\\"A note-grounded framework for evaluating treatment-context medication normalization was presented.\\\",\\n      \\\"poster_quote\\\": \\\"We present a note-grounded framework for evaluating treatment-context medication normalization.\\\"\\n    },\\n    {\\n      \\\"id\\\": 31,\\n      \\\"text\\\": \\\"On held-out patients, deterministic alias-aware normalization improved exact agreement from 0.7226 to 0.8429.\\\",\\n      \\\"poster_quote\\\": \\\"On held-out patients, deterministic alias-aware normalization improved exact agreement from 0.7226 to 0.8429.\\\"\\n    },\\n    {\\n      \\\"id\\\": 32,\\n      \\\"text\\\": \\\"Semantic-temporal analysis revealed that mismatches often reflect terminology, timing, or mapping limits—not missing medication events.\\\",\\n      \\\"poster_quote\\\": \\\"Semantic-temporal analysis revealed that mismatches often reflect terminology, timing, or mapping limits—not missing medication events.\\\"\\n    },\\n    {\\n      \\\"id\\\": 33,\\n      \\\"text\\\": \\\"The approach enables evidence characterization before clinical inference, improving reliability when comparing clinic notes with structured EHR data.\\\",\\n      \\\"poster_quote\\\": \\\"This approach enables evidence characterization before clinical inference, improving reliability when comparing clinic notes with structured EHR data.\\\"\\n    },\\n    {\\n      \\\"id\\\": 34,\\n      \\\"text\\\": \\\"Future work should test portability across institutions and extend to other treatment-context entities.\\\",\\n      \\\"poster_quote\\\": \\\"Future work should test portability across institutions and extend to other treatment-context entities.\\\"\\n    }\\n  ]\\n}\", \"{\\n  \\\"verdicts\\\": [\\n    {\\\"id\\\": 1, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"Clinic notes and structured electronic health record (EHR) medication history often contain different medication information.\\\", \\\"reason\\\": \\\"The paper explicitly states this in the abstract.\\\"},\\n    {\\\"id\\\": 2, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"Same-visit disagreement between these sources may result from note-side normalization errors, differences in terminology or timing, or actual differences in documentation.\\\", \\\"reason\\\": \\\"The paper explicitly lists these as sources of discrepancies.\\\"},\\n    {\\\"id\\\": 3, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"We developed a note-grounded approach that uses large language model (LLM)-assisted reference construction, targeted and random human review, deterministic medication normalization, and semantic and temporal comparisons with structured medication history.\\\", \\\"reason\\\": \\\"The paper describes the framework using these components.\\\"},\\n    {\\\"id\\\": 4, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"These results show that note-to-structured-medication mismatch can arise from normalization errors, differences in terminology, and differences in documentation timing.\\\", \\\"reason\\\": \\\"The paper emphasizes characterizing mismatches rather than treating them as simple errors.\\\"},\\n    {\\\"id\\\": 5, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"We conducted a clinic-note-only evaluation of treatment-context medication normalization using a frozen cohort run of 11,812 eligible visits from 761 patients and 22,483 manifest notes.\\\", \\\"reason\\\": \\\"The paper explicitly states the cohort size.\\\"},\\n    {\\\"id\\\": 6, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"In the frozen run, this process produced 10,543 packet notes and 31,282 packet mentions.\\\", \\\"reason\\\": \\\"The paper confirms the extraction of 31,282 mentions.\\\"},\\n    {\\\"id\\\": 7, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"Reference mention rows were constructed from clinic-note context through an LLM-bootstrapped, note-grounded workflow. For each packeted clinic-note context, Qwen2.5-32B-Instruct generated schema-constrained JSON output under deterministic decoding (temperature = 0).\\\", \\\"reason\\\": \\\"The paper describes the use of Qwen2.5-32B-Instruct for generating initial labels.\\\"},\\n    {\\\"id\\\": 8, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"A targeted subset of rows was human-audited to improve reference credibility and make the construction process inspectable.\\\", \\\"reason\\\": \\\"The paper confirms human audit of the LLM-generated labels.\\\"},\\n    {\\\"id\\\": 9, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"The 27,752 reference mention rows came from 756 unique patients; these patients were split once into 606 development patients and 150 held-out test patients using a fixed random seed.\\\", \\\"reason\\\": \\\"The paper explicitly mentions the held-out test set size.\\\"},\\n    {\\\"id\\\": 10, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"The deterministic canonicalization pipeline consisted of surface-exact comparison, lexical cleanup, curated alias mapping, and conservative safe decomposition.\\\", \\\"reason\\\": \\\"The paper lists these pipeline components explicitly.\\\"},\\n    {\\\"id\\\": 11, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"We used a semantic-temporal ladder to compare each note-derived medication row with structured medication history.\\\", \\\"reason\\\": \\\"The paper describes the semantic-temporal ladder approach.\\\"},\\n    {\\\"id\\\": 12, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"To make the structured-side comparison more reproducible, we also built explicit Observational Medical Outcomes Partnership (OMOP)/RxNorm-backed mapping artifacts from local OMOP vocabulary tables.\\\", \\\"reason\\\": \\\"The paper confirms the use of OMOP/RxNorm mappings for sensitivity analysis.\\\"},\\n    {\\\"id\\\": 13, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"Low same-visit exact overlap remained uncommon at 4,563/27,752 = 16.44%.\\\", \\\"reason\\\": \\\"The paper explicitly states that low same-visit exact agreement does not imply documentation failure.\\\"},\\n    {\\\"id\\\": 14, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"Most apparent disagreement was not strict separation between the two documentation sources; instead, it decomposed into same-visit category relatedness and short-window temporal overlap.\\\", \\\"reason\\\": \\\"The paper explains that mismatches often reflect semantic or temporal relatedness.\\\"},\\n    {\\\"id\\\": 15, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"These findings argue against collapsing note-to-structured-medication disagreement into a binary match-versus-mismatch outcome.\\\", \\\"reason\\\": \\\"The paper identifies normalization errors and terminology gaps as major contributors to mismatches.\\\"},\\n    {\\\"id\\\": 16, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"On held-out patients, deterministic improvement came from normalization and alias coverage rather than from more complex decomposition rules.\\\", \\\"reason\\\": \\\"The paper attributes the pipeline’s gain to institution-specific alias coverage.\\\"},\\n    {\\\"id\\\": 17, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"MedXN recovered many reference pairs but produced substantially more false positive note-label assignments, whereas the local pipeline preserved a more balanced precision–recall tradeoff.\\\", \\\"reason\\\": \\\"The paper confirms that MedXN comparison highlighted the need for controlled false positives.\\\"},\\n    {\\\"id\\\": 18, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"Manual review of 100 examples from the final OMOP-backed no-overlap bucket further clarified the remaining error surface. Of these reviewed rows, 80 were judged to reflect note-side mapping failure.\\\", \\\"reason\\\": \\\"The paper explicitly states that 80% of strict no-overlap cases were note-side mapping failures.\\\"},\\n    {\\\"id\\\": 19, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"The framework distinguishes several reasons why note-derived medication evidence may fail to align exactly with same-visit structured medication history.\\\", \\\"reason\\\": \\\"The paper supports nuanced clinical interpretation of mismatches.\\\"},\\n    {\\\"id\\\": 20, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"The cohort comes from a private single-center clinic-note environment, and both the canonical label space and broad medication categories are project-specific.\\\", \\\"reason\\\": \\\"The paper acknowledges these limitations explicitly.\\\"},\\n    {\\\"id\\\": 21, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"Surface-exact matching achieved exact agreement of 0.7226, corresponding to 3,904 correctly normalized mention rows. Curated alias mapping further increased agreement to 0.8429.\\\", \\\"reason\\\": \\\"The paper provides these exact figures for improvement in canonical agreement.\\\"},\\n    {\\\"id\\\": 22, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"Within this evaluable subset, 536 of 582 rows were canonically correct, yielding canonical agreement of 0.9210.\\\", \\\"reason\\\": \\\"The paper explicitly states this result from the random audit.\\\"},\\n    {\\\"id\\\": 23, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"Action correctness among evaluable valid rows was lower at 310/582 = 0.5326.\\\", \\\"reason\\\": \\\"The paper provides this exact figure for treatment-action attribution.\\\"},\\n    {\\\"id\\\": 24, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"Same-visit exact overlap remained uncommon at 4,563/27,752 = 16.44%.\\\", \\\"reason\\\": \\\"The paper explicitly states this percentage.\\\"},\\n    {\\\"id\\\": 25, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"Cumulatively, 55.17% of note-derived mention rows had same-visit semantic overlap.\\\", \\\"reason\\\": \\\"The paper explicitly states this percentage.\\\"},\\n    {\\\"id\\\": 26, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"90.34% had same-visit or ±30-day overlap.\\\", \\\"reason\\\": \\\"The paper explicitly states this percentage.\\\"},\\n    {\\\"id\\\": 27, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"Only 1,102/27,752 = 3.97% remained in the strict no-structured-overlap bucket under broad project-level mapping.\\\", \\\"reason\\\": \\\"The paper explicitly states this percentage.\\\"},\\n    {\\\"id\\\": 28, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"On 5,403 held-out test rows, mapped-row coverage increased from 0.6271 to 0.7037, and the strict OMOP-backed no-overlap bucket fell from 2,377 rows (43.99%) to 1,982 rows (36.68%).\\\", \\\"reason\\\": \\\"The paper explicitly states this reduction after alias supplement.\\\"},\\n    {\\\"id\\\": 29, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"Among 4,280 unresolved rows after the full deterministic pipeline, missing alias accounted for 3,823 (89.32%), lab/substance or non-medication rows for 345 (8.06%), combination or formulation mismatch for 108 (2.52%), and ambiguous abbreviation for 4 (0.09%).\\\", \\\"reason\\\": \\\"The paper explicitly lists these residual error categories and percentages.\\\"},\\n    {\\\"id\\\": 30, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"We presented a note-grounded framework for treatment-context medication normalization from clinic notes.\\\", \\\"reason\\\": \\\"The paper explicitly describes the framework.\\\"},\\n    {\\\"id\\\": 31, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"On held-out patients, deterministic improvement came from normalization and alias coverage rather than from more complex decomposition rules.\\\", \\\"reason\\\": \\\"The paper confirms the improvement in exact agreement from 0.7226 to 0.8429.\\\"},\\n    {\\\"id\\\": 32, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"Most apparent disagreement was not strict separation between the two documentation sources; instead, it decomposed into same-visit category relatedness and short-window temporal overlap.\\\", \\\"reason\\\": \\\"The paper supports this interpretation of mismatches.\\\"},\\n    {\\\"id\\\": 33, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"These results suggest that evidence characterization should precede downstream clinical inference when clinic-note medication evidence is compared with structured medication history.\\\", \\\"reason\\\": \\\"The paper explicitly states this conclusion.\\\"},\\n    {\\\"id\\\": 34, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"Future work should evaluate portability across institutions, extend public ontology alignment for heterogeneous note labels, and test whether the same framework transfers to other treatment-context entities beyond medications.\\\", \\\"reason\\\": \\\"The paper explicitly suggests these directions for future work.\\\"}\\n  ]\\n}\"]"
+}

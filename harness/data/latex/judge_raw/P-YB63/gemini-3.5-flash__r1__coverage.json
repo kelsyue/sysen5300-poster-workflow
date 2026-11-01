@@ -1,0 +1,58 @@
+{
+  "model": "gemini-3.5-flash",
+  "repeat": 1,
+  "judge_prompt_sha256": "8efb4293473e225672f28f1c88ed5aca4cd298f6224f91d7d937da5a8f63e76b",
+  "error": null,
+  "tokens_in": 9626,
+  "tokens_out": 3180,
+  "parsed": {
+    "items": {
+      "chk_problem": {
+        "label": "accurate",
+        "poster_evidence": "Clinic notes and structured electronic health record (EHR) medication history often contain different medication information. Same-visit disagreement between these sources may result from note-side normalization errors, differences in terminology or timing, or actual differences in documentation.",
+        "reason": "The poster accurately states the research problem as described in the paper."
+      },
+      "chk_method": {
+        "label": "accurate",
+        "poster_evidence": "We developed a note-grounded approach that uses large language model (LLM)-assisted reference construction, targeted and random human review, deterministic medication normalization, and semantic and temporal comparisons with structured medication history.",
+        "reason": "The poster accurately describes the proposed method."
+      },
+      "chk_data": {
+        "label": "missing",
+        "poster_evidence": "",
+        "reason": "The poster does not mention the cohort size of 11,812 eligible visits, 761 patients, or 22,483 clinic notes."
+      },
+      "chk_setup": {
+        "label": "accurate",
+        "poster_evidence": "On 5,403 held-out mention rows, exact canonical agreement improved...",
+        "reason": "The poster accurately states the evaluation setup on 5,403 held-out mention rows."
+      },
+      "chk_primary_result": {
+        "label": "accurate",
+        "poster_evidence": "exact canonical agreement improved from 0.7226 with surface-exact matching to 0.8429 after lexical cleanup and curated alias mapping.",
+        "reason": "The primary quantitative result matches the paper exactly."
+      },
+      "chk_secondary_result": {
+        "label": "accurate",
+        "poster_evidence": "only 16.44% of note-derived rows had same-visit exact overlap with structured medication history, but 55.17% had same-visit semantic overlap, 90.34% had same-visit or ±30-day overlap",
+        "reason": "The secondary results match the paper exactly."
+      },
+      "chk_baseline": {
+        "label": "accurate",
+        "poster_evidence": "Calibration comparators on the same held-out denominator: public OMOP/RxNorm synonym matching without project-specific alias refinement, and generic nearest-canonical lexical retrieval based on character n-grams, edit similarity, and token overlap. As a recognizable external baseline, untuned MedXN was run on held-out notes...",
+        "reason": "The poster accurately describes the baselines used for comparison."
+      },
+      "chk_conclusion": {
+        "label": "accurate",
+        "poster_evidence": "Evidence characterization should therefore precede downstream clinical inference when clinic-note medication evidence is compared with structured medication history.",
+        "reason": "The main conclusion matches the paper exactly."
+      },
+      "chk_limitation": {
+        "label": "accurate",
+        "poster_evidence": "Limitations: single-center private clinic-note environment; project-specific canonical label space and categories; LLM-assisted reference with targeted and random (not exhaustive) human review; packet-note-based rather than fully span-annotated corpus.",
+        "reason": "The limitations match the paper's description."
+      }
+    }
+  },
+  "raw": "```json\n{\n  \"items\": {\n    \"chk_problem\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Clinic notes and structured electronic health record (EHR) medication history often contain different medication information. Same-visit disagreement between these sources may result from note-side normalization errors, differences in terminology or timing, or actual differences in documentation.\",\n      \"reason\": \"The poster accurately states the research problem as described in the paper.\"\n    },\n    \"chk_method\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"We developed a note-grounded approach that uses large language model (LLM)-assisted reference construction, targeted and random human review, deterministic medication normalization, and semantic and temporal comparisons with structured medication history.\",\n      \"reason\": \"The poster accurately describes the proposed method.\"\n    },\n    \"chk_data\": {\n      \"label\": \"missing\",\n      \"poster_evidence\": \"\",\n      \"reason\": \"The poster does not mention the cohort size of 11,812 eligible visits, 761 patients, or 22,483 clinic notes.\"\n    },\n    \"chk_setup\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"On 5,403 held-out mention rows, exact canonical agreement improved...\",\n      \"reason\": \"The poster accurately states the evaluation setup on 5,403 held-out mention rows.\"\n    },\n    \"chk_primary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"exact canonical agreement improved from 0.7226 with surface-exact matching to 0.8429 after lexical cleanup and curated alias mapping.\",\n      \"reason\": \"The primary quantitative result matches the paper exactly.\"\n    },\n    \"chk_secondary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"only 16.44% of note-derived rows had same-visit exact overlap with structured medication history, but 55.17% had same-visit semantic overlap, 90.34% had same-visit or ±30-day overlap\",\n      \"reason\": \"The secondary results match the paper exactly.\"\n    },\n    \"chk_baseline\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Calibration comparators on the same held-out denominator: public OMOP/RxNorm synonym matching without project-specific alias refinement, and generic nearest-canonical lexical retrieval based on character n-grams, edit similarity, and token overlap. As a recognizable external baseline, untuned MedXN was run on held-out notes...\",\n      \"reason\": \"The poster accurately describes the baselines used for comparison.\"\n    },\n    \"chk_conclusion\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Evidence characterization should therefore precede downstream clinical inference when clinic-note medication evidence is compared with structured medication history.\",\n      \"reason\": \"The main conclusion matches the paper exactly.\"\n    },\n    \"chk_limitation\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Limitations: single-center private clinic-note environment; project-specific canonical label space and categories; LLM-assisted reference with targeted and random (not exhaustive) human review; packet-note-based rather than fully span-annotated corpus.\",\n      \"reason\": \"The limitations match the paper's description.\"\n    }\n  }\n}\n```"
+}

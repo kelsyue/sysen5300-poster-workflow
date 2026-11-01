@@ -1,0 +1,197 @@
+{
+  "model": "gemini-3.5-flash",
+  "repeat": 1,
+  "judge_prompt_sha256": "8efb4293473e225672f28f1c88ed5aca4cd298f6224f91d7d937da5a8f63e76b",
+  "error": null,
+  "tokens_in": 22002,
+  "tokens_out": 9340,
+  "parsed": {
+    "claims": [
+      {
+        "id": 1,
+        "text": "Treatment strategies for laryngopharyngeal cancer differ markedly between T stages.",
+        "poster_quote": "treatment strategies differ markedly between T stages.",
+        "label": "supported",
+        "paper_evidence": "Accurate T-staging in laryngopharyngeal cancer is pivotal for clinical decision-making, as treatment strategies differ markedly between T stages [6]–[8].",
+        "reason": "The paper explicitly states that treatment strategies differ markedly between T stages."
+      },
+      {
+        "id": 2,
+        "text": "The current reference standard for laryngopharyngeal cancer T-staging relies on biopsy-derived pathology.",
+        "poster_quote": "The current reference standard relies on biopsy-derived pathology",
+        "label": "supported",
+        "paper_evidence": "Although the current reference standard relies on biopsy-derived pathology, this process is invasive and time-consuming.",
+        "reason": "The paper states that the current reference standard relies on biopsy-derived pathology."
+      },
+      {
+        "id": 3,
+        "text": "Biopsy-derived pathology is invasive and time-consuming.",
+        "poster_quote": "biopsy-derived pathology, which is invasive and time-consuming.",
+        "label": "supported",
+        "paper_evidence": "Although the current reference standard relies on biopsy-derived pathology, this process is invasive and time-consuming.",
+        "reason": "The paper states that biopsy-derived pathology is invasive and time-consuming."
+      },
+      {
+        "id": 4,
+        "text": "Recent computer-aided approaches face challenges in structural relationship modeling and fine-grained cross-modal alignment.",
+        "poster_quote": "Recent computer-aided approaches face challenges in structural relationship modeling and fine-grained cross-modal alignment.",
+        "label": "supported",
+        "paper_evidence": "Recent computer-aided approaches face two key challenges: 1) Structural relationship modeling: existing methods underrepresent anatomically structured patterns of tumor invasion, as they either process whole CT volumes without tumor-specific anatomical constraints or rely on labor-intensive tumor segmentation. 2) Fine-grained cross-modal alignment: while radiology reports contain organ-specific invasion details, current methods that apply global feature fusion struggle to accurately align individual anatomical structures with their corresponding textual descriptions.",
+        "reason": "The paper outlines these two key challenges faced by recent computer-aided approaches."
+      },
+      {
+        "id": 5,
+        "text": "The proposed framework comprises three key components: AnatomyStructured Organ Graph (AOG), Organ-Anchored Cross-Modal Alignment (OCA), and Report-Enhanced Graph-Refinement (REG).",
+        "poster_quote": "The proposed framework comprises three key components: AnatomyStructured Organ Graph (AOG), Organ-Anchored Cross-Modal Alignment (OCA), and Report-Enhanced Graph-Refinement (REG).",
+        "label": "supported",
+        "paper_evidence": "Our framework comprises three key components: an Anatomy-Structured Organ Graph (AOG), an Organ-Anchored Cross-Modal Alignment (OCA), and a Report-Enhanced Graph-Refinement (REG) module.",
+        "reason": "The paper lists these three key components of the proposed framework."
+      },
+      {
+        "id": 6,
+        "text": "AOG constructs an organ-level graph from pre-trained organ segmentations and anatomy-guided connectivity rules.",
+        "poster_quote": "AOG constructs an organ-level graph from pre-trained organ segmentations and anatomyguided connectivity rules.",
+        "label": "supported",
+        "paper_evidence": "First, AOG addresses the challenge of modeling complex invasion patterns by using pre-trained organ segmentations and anatomy-guided connectivity rules to construct an organ-level graph that encodes potential spread between primary sites and surrounding structures.",
+        "reason": "The paper describes how AOG constructs an organ-level graph using pre-trained segmentations and connectivity rules."
+      },
+      {
+        "id": 7,
+        "text": "OCA performs fine-grained image-text interaction at the organ level.",
+        "poster_quote": "OCA performs fine-grained image-text interaction at the organ level.",
+        "label": "supported",
+        "paper_evidence": "OCA then performs fine-grained, organ-level image–text interaction, enhancing CT-derived organ features with organ-specific cues from the radiology report while preserving the anatomy-driven topology.",
+        "reason": "The paper states that OCA performs fine-grained, organ-level image-text interaction."
+      },
+      {
+        "id": 8,
+        "text": "REG incorporates report-derived invasion statements into the graph topology.",
+        "poster_quote": "REG incorporates report-derived invasion statements into the graph topology.",
+        "label": "supported",
+        "paper_evidence": "Finally, REG uses a large language model (LLM) to incorporate report-derived invasion statements as a guidance signal on top of AOG, refining the multimodal organ graph without discarding anatomy-based risk connections.",
+        "reason": "The paper explains that REG incorporates report-derived invasion statements into the graph topology."
+      },
+      {
+        "id": 9,
+        "text": "The dataset consists of 656 patients.",
+        "poster_quote": "The dataset consists of 656 patients across four medical centers.",
+        "label": "supported",
+        "paper_evidence": "To the best of our knowledge, we collect the first and largest dataset for CT-based laryngopharyngeal cancer T-staging, comprising 656 patients across four medical centers.",
+        "reason": "The paper states that the dataset comprises 656 patients."
+      },
+      {
+        "id": 10,
+        "text": "The dataset spans across four medical centers.",
+        "poster_quote": "The dataset consists of 656 patients across four medical centers.",
+        "label": "supported",
+        "paper_evidence": "To the best of our knowledge, we collect the first and largest dataset for CT-based laryngopharyngeal cancer T-staging, comprising 656 patients across four medical centers.",
+        "reason": "The paper states that the dataset spans across four medical centers."
+      },
+      {
+        "id": 11,
+        "text": "The proposed method achieves an F1 score of 80.83% in binary classification.",
+        "poster_quote": "achieving an F1 score of 80.83% and accuracy of 81.53% in binary classification",
+        "label": "supported",
+        "paper_evidence": "For internal testing, we achieve an F1 score of 80.83% and accuracy of 81.53%, surpassing the second-best method MMI [3] (77.59% F1 score and 78.57% accuracy).",
+        "reason": "The paper reports an F1 score of 80.83% for internal testing in the binary classification task."
+      },
+      {
+        "id": 12,
+        "text": "The proposed method achieves an accuracy of 81.53% in binary classification.",
+        "poster_quote": "achieving an F1 score of 80.83% and accuracy of 81.53% in binary classification",
+        "label": "supported",
+        "paper_evidence": "For internal testing, we achieve an F1 score of 80.83% and accuracy of 81.53%, surpassing the second-best method MMI [3] (77.59% F1 score and 78.57% accuracy).",
+        "reason": "The paper reports an accuracy of 81.53% for internal testing in the binary classification task."
+      },
+      {
+        "id": 13,
+        "text": "The proposed method achieves an F1 score of 61.43% in three-class classification.",
+        "poster_quote": "and F1 score of 61.43% and accuracy of 63.33% in three-class classification.",
+        "label": "supported",
+        "paper_evidence": "On the internal test set, we achieve an F1 score of 61.43% and accuracy of 63.33%, showing notable improvements over MMBCD [1] (58.44% F1 score and 61.14% accuracy).",
+        "reason": "The paper reports an F1 score of 61.43% for internal testing in the three-class classification task."
+      },
+      {
+        "id": 14,
+        "text": "The proposed method achieves an accuracy of 63.33% in three-class classification.",
+        "poster_quote": "and F1 score of 61.43% and accuracy of 63.33% in three-class classification.",
+        "label": "supported",
+        "paper_evidence": "On the internal test set, we achieve an F1 score of 61.43% and accuracy of 63.33%, showing notable improvements over MMBCD [1] (58.44% F1 score and 61.14% accuracy).",
+        "reason": "The paper reports an accuracy of 63.33% for internal testing in the three-class classification task."
+      },
+      {
+        "id": 15,
+        "text": "Binary classification settings compare Early T1-T2 vs. Late T3-T4.",
+        "poster_quote": "binary (Early T1-T2 vs. Late T3-T4)",
+        "label": "supported",
+        "paper_evidence": "We evaluate different methods across binary (Early T1–T2 vs. Late T3–T4) and three-class (T1, T2, T3–T4) classification settings.",
+        "reason": "The paper defines the binary classification setting as Early T1-T2 vs. Late T3-T4."
+      },
+      {
+        "id": 16,
+        "text": "Three-class classification settings compare T1, T2, and T3-T4.",
+        "poster_quote": "three-class (T1, T2, T3-T4)",
+        "label": "supported",
+        "paper_evidence": "We evaluate different methods across binary (Early T1–T2 vs. Late T3–T4) and three-class (T1, T2, T3–T4) classification settings.",
+        "reason": "The paper defines the three-class classification setting as T1, T2, T3-T4."
+      },
+      {
+        "id": 17,
+        "text": "The proposed framework integrates CT images and radiology reports.",
+        "poster_quote": "integrating CT images and radiology reports through three modules",
+        "label": "supported",
+        "paper_evidence": "Anatomy-aware Fine-grained Multimodal Fusion for Laryngopharyngeal Cancer T-Staging Prediction Using CT and Radiology Report",
+        "reason": "The title and text confirm that the framework integrates CT images and radiology reports."
+      },
+      {
+        "id": 18,
+        "text": "Anatomy-Structured Organ Graph (AOG) is used for organ-level feature extraction and graph construction.",
+        "poster_quote": "(a) Anatomy-Structured Organ Graph (AOG) for organ-level feature extraction and graph construction",
+        "label": "supported",
+        "paper_evidence": "Fig. 2: Overview of the proposed framework for laryngopharyngeal cancer T-staging, integrating CT images and radiology reports through three modules: (a) Anatomy-Structured Organ Graph (AOG) for organ-level feature extraction and graph construction, (b) Organ-Anchored Cross-Modal Alignment (OCA) for fine-grained cross-modal alignment, and (c) Report-Enhanced Graph-Refinement (REG) module for structural refinement using clinical invasion information.",
+        "reason": "The figure caption explicitly states that AOG is used for organ-level feature extraction and graph construction."
+      },
+      {
+        "id": 19,
+        "text": "Organ-Anchored Cross-Modal Alignment (OCA) is used for fine-grained cross-modal alignment.",
+        "poster_quote": "(b) Organ-Anchored Cross-Modal Alignment (OCA) for fine-grained cross-modal alignment",
+        "label": "supported",
+        "paper_evidence": "Fig. 2: Overview of the proposed framework for laryngopharyngeal cancer T-staging, integrating CT images and radiology reports through three modules: (a) Anatomy-Structured Organ Graph (AOG) for organ-level feature extraction and graph construction, (b) Organ-Anchored Cross-Modal Alignment (OCA) for fine-grained cross-modal alignment, and (c) Report-Enhanced Graph-Refinement (REG) module for structural refinement using clinical invasion information.",
+        "reason": "The figure caption explicitly states that OCA is used for fine-grained cross-modal alignment."
+      },
+      {
+        "id": 20,
+        "text": "Report-Enhanced Graph-Refinement (REG) module is used for structural refinement using clinical invasion information.",
+        "poster_quote": "(c) ReportEnhanced Graph-Refinement (REG) module for structural refinement using clinical invasion information.",
+        "label": "supported",
+        "paper_evidence": "Fig. 2: Overview of the proposed framework for laryngopharyngeal cancer T-staging, integrating CT images and radiology reports through three modules: (a) Anatomy-Structured Organ Graph (AOG) for organ-level feature extraction and graph construction, (b) Organ-Anchored Cross-Modal Alignment (OCA) for fine-grained cross-modal alignment, and (c) Report-Enhanced Graph-Refinement (REG) module for structural refinement using clinical invasion information.",
+        "reason": "The figure caption explicitly states that the REG module is used for structural refinement using clinical invasion information."
+      },
+      {
+        "id": 21,
+        "text": "The proposed anatomy-structured multimodal framework captures organ-specific invasion patterns and their textual evidence.",
+        "poster_quote": "The proposed anatomy-structured multimodal framework effectively captures organ-specific invasion patterns and their textual evidence",
+        "label": "supported",
+        "paper_evidence": "By explicitly modeling anatomical topology through the Anatomy-Structured Organ Graph (AOG), performing organ-level cross-modal alignment via the Organ-Anchored Cross-Modal Alignment (OCA) module, and incorporating structured clinical invasion knowledge using the Report-Enhanced Graph-Refinement (REG) module, our method effectively captures organ-specific invasion patterns and their textual evidence.",
+        "reason": "The paper states that the method captures organ-specific invasion patterns and their textual evidence."
+      },
+      {
+        "id": 22,
+        "text": "The proposed framework achieves state-of-the-art performance in laryngopharyngeal cancer T-staging.",
+        "poster_quote": "achieving state-of-the-art performance in laryngopharyngeal cancer T-staging.",
+        "label": "supported",
+        "paper_evidence": "Extensive experiments demonstrate that the proposed framework achieves superior performance in T-staging of laryngopharyngeal cancer.",
+        "reason": "The paper states that the proposed framework achieves superior (state-of-the-art) performance."
+      },
+      {
+        "id": 23,
+        "text": "The framework aligns decision-making with clinically meaningful invasion pathways.",
+        "poster_quote": "aligning decision-making with clinically meaningful invasion pathways.",
+        "label": "supported",
+        "paper_evidence": "Beyond performance, our framework offers improved interpretability by aligning decision-making with clinically meaningful invasion pathways, thereby enhancing its potential for real-world adoption.",
+        "reason": "The paper states that the framework aligns decision-making with clinically meaningful invasion pathways."
+      }
+    ]
+  },
+  "raw": "[\"```json\\n{\\n  \\\"claims\\\": [\\n    {\\n      \\\"id\\\": 1,\\n      \\\"text\\\": \\\"Treatment strategies for laryngopharyngeal cancer differ markedly between T stages.\\\",\\n      \\\"poster_quote\\\": \\\"treatment strategies differ markedly between T stages.\\\"\\n    },\\n    {\\n      \\\"id\\\": 2,\\n      \\\"text\\\": \\\"The current reference standard for laryngopharyngeal cancer T-staging relies on biopsy-derived pathology.\\\",\\n      \\\"poster_quote\\\": \\\"The current reference standard relies on biopsy-derived pathology\\\"\\n    },\\n    {\\n      \\\"id\\\": 3,\\n      \\\"text\\\": \\\"Biopsy-derived pathology is invasive and time-consuming.\\\",\\n      \\\"poster_quote\\\": \\\"biopsy-derived pathology, which is invasive and time-consuming.\\\"\\n    },\\n    {\\n      \\\"id\\\": 4,\\n      \\\"text\\\": \\\"Recent computer-aided approaches face challenges in structural relationship modeling and fine-grained cross-modal alignment.\\\",\\n      \\\"poster_quote\\\": \\\"Recent computer-aided approaches face challenges in structural relationship modeling and fine-grained cross-modal alignment.\\\"\\n    },\\n    {\\n      \\\"id\\\": 5,\\n      \\\"text\\\": \\\"The proposed framework comprises three key components: AnatomyStructured Organ Graph (AOG), Organ-Anchored Cross-Modal Alignment (OCA), and Report-Enhanced Graph-Refinement (REG).\\\",\\n      \\\"poster_quote\\\": \\\"The proposed framework comprises three key components: AnatomyStructured Organ Graph (AOG), Organ-Anchored Cross-Modal Alignment (OCA), and Report-Enhanced Graph-Refinement (REG).\\\"\\n    },\\n    {\\n      \\\"id\\\": 6,\\n      \\\"text\\\": \\\"AOG constructs an organ-level graph from pre-trained organ segmentations and anatomy-guided connectivity rules.\\\",\\n      \\\"poster_quote\\\": \\\"AOG constructs an organ-level graph from pre-trained organ segmentations and anatomyguided connectivity rules.\\\"\\n    },\\n    {\\n      \\\"id\\\": 7,\\n      \\\"text\\\": \\\"OCA performs fine-grained image-text interaction at the organ level.\\\",\\n      \\\"poster_quote\\\": \\\"OCA performs fine-grained image-text interaction at the organ level.\\\"\\n    },\\n    {\\n      \\\"id\\\": 8,\\n      \\\"text\\\": \\\"REG incorporates report-derived invasion statements into the graph topology.\\\",\\n      \\\"poster_quote\\\": \\\"REG incorporates report-derived invasion statements into the graph topology.\\\"\\n    },\\n    {\\n      \\\"id\\\": 9,\\n      \\\"text\\\": \\\"The dataset consists of 656 patients.\\\",\\n      \\\"poster_quote\\\": \\\"The dataset consists of 656 patients across four medical centers.\\\"\\n    },\\n    {\\n      \\\"id\\\": 10,\\n      \\\"text\\\": \\\"The dataset spans across four medical centers.\\\",\\n      \\\"poster_quote\\\": \\\"The dataset consists of 656 patients across four medical centers.\\\"\\n    },\\n    {\\n      \\\"id\\\": 11,\\n      \\\"text\\\": \\\"The proposed method achieves an F1 score of 80.83% in binary classification.\\\",\\n      \\\"poster_quote\\\": \\\"achieving an F1 score of 80.83% and accuracy of 81.53% in binary classification\\\"\\n    },\\n    {\\n      \\\"id\\\": 12,\\n      \\\"text\\\": \\\"The proposed method achieves an accuracy of 81.53% in binary classification.\\\",\\n      \\\"poster_quote\\\": \\\"achieving an F1 score of 80.83% and accuracy of 81.53% in binary classification\\\"\\n    },\\n    {\\n      \\\"id\\\": 13,\\n      \\\"text\\\": \\\"The proposed method achieves an F1 score of 61.43% in three-class classification.\\\",\\n      \\\"poster_quote\\\": \\\"and F1 score of 61.43% and accuracy of 63.33% in three-class classification.\\\"\\n    },\\n    {\\n      \\\"id\\\": 14,\\n      \\\"text\\\": \\\"The proposed method achieves an accuracy of 63.33% in three-class classification.\\\",\\n      \\\"poster_quote\\\": \\\"and F1 score of 61.43% and accuracy of 63.33% in three-class classification.\\\"\\n    },\\n    {\\n      \\\"id\\\": 15,\\n      \\\"text\\\": \\\"Binary classification settings compare Early T1-T2 vs. Late T3-T4.\\\",\\n      \\\"poster_quote\\\": \\\"binary (Early T1-T2 vs. Late T3-T4)\\\"\\n    },\\n    {\\n      \\\"id\\\": 16,\\n      \\\"text\\\": \\\"Three-class classification settings compare T1, T2, and T3-T4.\\\",\\n      \\\"poster_quote\\\": \\\"three-class (T1, T2, T3-T4)\\\"\\n    },\\n    {\\n      \\\"id\\\": 17,\\n      \\\"text\\\": \\\"The proposed framework integrates CT images and radiology reports.\\\",\\n      \\\"poster_quote\\\": \\\"integrating CT images and radiology reports through three modules\\\"\\n    },\\n    {\\n      \\\"id\\\": 18,\\n      \\\"text\\\": \\\"Anatomy-Structured Organ Graph (AOG) is used for organ-level feature extraction and graph construction.\\\",\\n      \\\"poster_quote\\\": \\\"(a) Anatomy-Structured Organ Graph (AOG) for organ-level feature extraction and graph construction\\\"\\n    },\\n    {\\n      \\\"id\\\": 19,\\n      \\\"text\\\": \\\"Organ-Anchored Cross-Modal Alignment (OCA) is used for fine-grained cross-modal alignment.\\\",\\n      \\\"poster_quote\\\": \\\"(b) Organ-Anchored Cross-Modal Alignment (OCA) for fine-grained cross-modal alignment\\\"\\n    },\\n    {\\n      \\\"id\\\": 20,\\n      \\\"text\\\": \\\"Report-Enhanced Graph-Refinement (REG) module is used for structural refinement using clinical invasion information.\\\",\\n      \\\"poster_quote\\\": \\\"(c) ReportEnhanced Graph-Refinement (REG) module for structural refinement using clinical invasion information.\\\"\\n    },\\n    {\\n      \\\"id\\\": 21,\\n      \\\"text\\\": \\\"The proposed anatomy-structured multimodal framework captures organ-specific invasion patterns and their textual evidence.\\\",\\n      \\\"poster_quote\\\": \\\"The proposed anatomy-structured multimodal framework effectively captures organ-specific invasion patterns and their textual evidence\\\"\\n    },\\n    {\\n      \\\"id\\\": 22,\\n      \\\"text\\\": \\\"The proposed framework achieves state-of-the-art performance in laryngopharyngeal cancer T-staging.\\\",\\n      \\\"poster_quote\\\": \\\"achieving state-of-the-art performance in laryngopharyngeal cancer T-staging.\\\"\\n    },\\n    {\\n      \\\"id\\\": 23,\\n      \\\"text\\\": \\\"The framework aligns decision-making with clinically meaningful invasion pathways.\\\",\\n      \\\"poster_quote\\\": \\\"aligning decision-making with clinically meaningful invasion pathways.\\\"\\n    }\\n  ]\\n}\\n```\", \"```json\\n{\\n  \\\"verdicts\\\": [\\n    {\\n      \\\"id\\\": 1,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Accurate T-staging in laryngopharyngeal cancer is pivotal for clinical decision-making, as treatment strategies differ markedly between T stages [6]–[8].\\\",\\n      \\\"reason\\\": \\\"The paper explicitly states that treatment strategies differ markedly between T stages.\\\"\\n    },\\n    {\\n      \\\"id\\\": 2,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Although the current reference standard relies on biopsy-derived pathology, this process is invasive and time-consuming.\\\",\\n      \\\"reason\\\": \\\"The paper states that the current reference standard relies on biopsy-derived pathology.\\\"\\n    },\\n    {\\n      \\\"id\\\": 3,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Although the current reference standard relies on biopsy-derived pathology, this process is invasive and time-consuming.\\\",\\n      \\\"reason\\\": \\\"The paper states that biopsy-derived pathology is invasive and time-consuming.\\\"\\n    },\\n    {\\n      \\\"id\\\": 4,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Recent computer-aided approaches face two key challenges: 1) Structural relationship modeling: existing methods underrepresent anatomically structured patterns of tumor invasion, as they either process whole CT volumes without tumor-specific anatomical constraints or rely on labor-intensive tumor segmentation. 2) Fine-grained cross-modal alignment: while radiology reports contain organ-specific invasion details, current methods that apply global feature fusion struggle to accurately align individual anatomical structures with their corresponding textual descriptions.\\\",\\n      \\\"reason\\\": \\\"The paper outlines these two key challenges faced by recent computer-aided approaches.\\\"\\n    },\\n    {\\n      \\\"id\\\": 5,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Our framework comprises three key components: an Anatomy-Structured Organ Graph (AOG), an Organ-Anchored Cross-Modal Alignment (OCA), and a Report-Enhanced Graph-Refinement (REG) module.\\\",\\n      \\\"reason\\\": \\\"The paper lists these three key components of the proposed framework.\\\"\\n    },\\n    {\\n      \\\"id\\\": 6,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"First, AOG addresses the challenge of modeling complex invasion patterns by using pre-trained organ segmentations and anatomy-guided connectivity rules to construct an organ-level graph that encodes potential spread between primary sites and surrounding structures.\\\",\\n      \\\"reason\\\": \\\"The paper describes how AOG constructs an organ-level graph using pre-trained segmentations and connectivity rules.\\\"\\n    },\\n    {\\n      \\\"id\\\": 7,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"OCA then performs fine-grained, organ-level image–text interaction, enhancing CT-derived organ features with organ-specific cues from the radiology report while preserving the anatomy-driven topology.\\\",\\n      \\\"reason\\\": \\\"The paper states that OCA performs fine-grained, organ-level image-text interaction.\\\"\\n    },\\n    {\\n      \\\"id\\\": 8,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Finally, REG uses a large language model (LLM) to incorporate report-derived invasion statements as a guidance signal on top of AOG, refining the multimodal organ graph without discarding anatomy-based risk connections.\\\",\\n      \\\"reason\\\": \\\"The paper explains that REG incorporates report-derived invasion statements into the graph topology.\\\"\\n    },\\n    {\\n      \\\"id\\\": 9,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"To the best of our knowledge, we collect the first and largest dataset for CT-based laryngopharyngeal cancer T-staging, comprising 656 patients across four medical centers.\\\",\\n      \\\"reason\\\": \\\"The paper states that the dataset comprises 656 patients.\\\"\\n    },\\n    {\\n      \\\"id\\\": 10,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"To the best of our knowledge, we collect the first and largest dataset for CT-based laryngopharyngeal cancer T-staging, comprising 656 patients across four medical centers.\\\",\\n      \\\"reason\\\": \\\"The paper states that the dataset spans across four medical centers.\\\"\\n    },\\n    {\\n      \\\"id\\\": 11,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"For internal testing, we achieve an F1 score of 80.83% and accuracy of 81.53%, surpassing the second-best method MMI [3] (77.59% F1 score and 78.57% accuracy).\\\",\\n      \\\"reason\\\": \\\"The paper reports an F1 score of 80.83% for internal testing in the binary classification task.\\\"\\n    },\\n    {\\n      \\\"id\\\": 12,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"For internal testing, we achieve an F1 score of 80.83% and accuracy of 81.53%, surpassing the second-best method MMI [3] (77.59% F1 score and 78.57% accuracy).\\\",\\n      \\\"reason\\\": \\\"The paper reports an accuracy of 81.53% for internal testing in the binary classification task.\\\"\\n    },\\n    {\\n      \\\"id\\\": 13,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"On the internal test set, we achieve an F1 score of 61.43% and accuracy of 63.33%, showing notable improvements over MMBCD [1] (58.44% F1 score and 61.14% accuracy).\\\",\\n      \\\"reason\\\": \\\"The paper reports an F1 score of 61.43% for internal testing in the three-class classification task.\\\"\\n    },\\n    {\\n      \\\"id\\\": 14,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"On the internal test set, we achieve an F1 score of 61.43% and accuracy of 63.33%, showing notable improvements over MMBCD [1] (58.44% F1 score and 61.14% accuracy).\\\",\\n      \\\"reason\\\": \\\"The paper reports an accuracy of 63.33% for internal testing in the three-class classification task.\\\"\\n    },\\n    {\\n      \\\"id\\\": 15,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"We evaluate different methods across binary (Early T1–T2 vs. Late T3–T4) and three-class (T1, T2, T3–T4) classification settings.\\\",\\n      \\\"reason\\\": \\\"The paper defines the binary classification setting as Early T1-T2 vs. Late T3-T4.\\\"\\n    },\\n    {\\n      \\\"id\\\": 16,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"We evaluate different methods across binary (Early T1–T2 vs. Late T3–T4) and three-class (T1, T2, T3–T4) classification settings.\\\",\\n      \\\"reason\\\": \\\"The paper defines the three-class classification setting as T1, T2, T3-T4.\\\"\\n    },\\n    {\\n      \\\"id\\\": 17,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Anatomy-aware Fine-grained Multimodal Fusion for Laryngopharyngeal Cancer T-Staging Prediction Using CT and Radiology Report\\\",\\n      \\\"reason\\\": \\\"The title and text confirm that the framework integrates CT images and radiology reports.\\\"\\n    },\\n    {\\n      \\\"id\\\": 18,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Fig. 2: Overview of the proposed framework for laryngopharyngeal cancer T-staging, integrating CT images and radiology reports through three modules: (a) Anatomy-Structured Organ Graph (AOG) for organ-level feature extraction and graph construction, (b) Organ-Anchored Cross-Modal Alignment (OCA) for fine-grained cross-modal alignment, and (c) Report-Enhanced Graph-Refinement (REG) module for structural refinement using clinical invasion information.\\\",\\n      \\\"reason\\\": \\\"The figure caption explicitly states that AOG is used for organ-level feature extraction and graph construction.\\\"\\n    },\\n    {\\n      \\\"id\\\": 19,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Fig. 2: Overview of the proposed framework for laryngopharyngeal cancer T-staging, integrating CT images and radiology reports through three modules: (a) Anatomy-Structured Organ Graph (AOG) for organ-level feature extraction and graph construction, (b) Organ-Anchored Cross-Modal Alignment (OCA) for fine-grained cross-modal alignment, and (c) Report-Enhanced Graph-Refinement (REG) module for structural refinement using clinical invasion information.\\\",\\n      \\\"reason\\\": \\\"The figure caption explicitly states that OCA is used for fine-grained cross-modal alignment.\\\"\\n    },\\n    {\\n      \\\"id\\\": 20,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Fig. 2: Overview of the proposed framework for laryngopharyngeal cancer T-staging, integrating CT images and radiology reports through three modules: (a) Anatomy-Structured Organ Graph (AOG) for organ-level feature extraction and graph construction, (b) Organ-Anchored Cross-Modal Alignment (OCA) for fine-grained cross-modal alignment, and (c) Report-Enhanced Graph-Refinement (REG) module for structural refinement using clinical invasion information.\\\",\\n      \\\"reason\\\": \\\"The figure caption explicitly states that the REG module is used for structural refinement using clinical invasion information.\\\"\\n    },\\n    {\\n      \\\"id\\\": 21,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"By explicitly modeling anatomical topology through the Anatomy-Structured Organ Graph (AOG), performing organ-level cross-modal alignment via the Organ-Anchored Cross-Modal Alignment (OCA) module, and incorporating structured clinical invasion knowledge using the Report-Enhanced Graph-Refinement (REG) module, our method effectively captures organ-specific invasion patterns and their textual evidence.\\\",\\n      \\\"reason\\\": \\\"The paper states that the method captures organ-specific invasion patterns and their textual evidence.\\\"\\n    },\\n    {\\n      \\\"id\\\": 22,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Extensive experiments demonstrate that the proposed framework achieves superior performance in T-staging of laryngopharyngeal cancer.\\\",\\n      \\\"reason\\\": \\\"The paper states that the proposed framework achieves superior (state-of-the-art) performance.\\\"\\n    },\\n    {\\n      \\\"id\\\": 23,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Beyond performance, our framework offers improved interpretability by aligning decision-making with clinically meaningful invasion pathways, thereby enhancing its potential for real-world adoption.\\\",\\n      \\\"reason\\\": \\\"The paper states that the framework aligns decision-making with clinically meaningful invasion pathways.\\\"\\n    }\\n  ]\\n}\\n```\"]"
+}

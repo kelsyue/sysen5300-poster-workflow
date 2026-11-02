@@ -49,12 +49,14 @@ candidates:                       # run order = list order (alphabetical)
 judges:
   models:
     - id: gemini-3.5-flash         # Gemini Flash
+      max_output_tokens: 32768     # thinking counts toward the cap: 8,192 truncated 14 claim checks (2026-11-02)
     - id: openai.gpt-4o           # GPT-4o
+      max_output_tokens: 16384     # GPT-4o's maximum
   repeats: 2                      # test-retest on the pilot
 
 judge_settings:                   # judge/judge.py; see spec/08_llm_judge.md
   temperature: 0
-  max_output_tokens: 8192         # thinking tokens count toward this on Gemini 3.5 Flash
+  max_output_tokens: 8192         # default; a judge's own max_output_tokens (judges.models) overrides it
   max_image_px: 2000              # long side of the PNG rendered from the poster PDF
   claims_batch_size: 40           # claims per verification call (the paper is resent per batch)
   paper_char_limit: 400000        # papers longer than this are truncated and flagged

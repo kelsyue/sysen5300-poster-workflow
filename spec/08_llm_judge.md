@@ -59,10 +59,10 @@ Since judge prompt revision 2 (2026-11-01), before scoring the quality judge rec
 ## 4. Reliability handling
 
 - **Invalid JSON:** one repair turn ("return only the JSON object"); if still invalid, the task is recorded in `failed_tasks`, `parse_ok = 0`, and the poster is routed to human review as `PARSE_FAIL`.
-- **Truncated reply** (`finish_reason = length`): recorded as a failed task without a repair turn. `max_output_tokens` is 8,192 because Gemini 3.5 Flash's thinking tokens count toward it.
+- **Truncated reply** (`finish_reason = length`): recorded as a failed task without a repair turn. The output cap is set per judge (`judges.models[].max_output_tokens`, default `judge_settings.max_output_tokens` 8,192). Gemini 3.5 Flash's thinking tokens count toward it: at 8,192 its claim extraction or verification was cut off on 14 of 35 main posters (mostly long ones), so its cap was raised to 32,768 on 2026-11-02; GPT-4o's is 16,384, its maximum. The cap limits only the reply length, so it changes no rubric, prompt or score definition (`judge_prompt_sha256` is unchanged). Raw files record the cap used.
 - **Claim batches:** claims are numbered 1…n within each verification batch and mapped back. On the first real run GPT-4o renumbered a later batch from 1, which left 15 claims without a verdict.
 - **Transport errors:** retried with backoff per gateway config; `budget_exceeded` is not retried.
-- **Resume:** reruns skip (poster, judge, repeat, prompt hash) rows already scored with `parse_ok = 1`. A failed row is re-scored and the new row appended; readers keep the last row per key.
+- **Resume:** reruns skip (poster, judge, repeat, prompt hash) rows already scored with `parse_ok = 1`. A failed row is re-scored and the new row appended; readers keep the last row per key. Only the failed tasks are called again: tasks that succeeded with the same prompt version are reused from `judge_raw/` (`--redo-all-tasks` calls all three), and the replaced raw file is kept as `*.prev.json`. The new row's `latency_s` and tokens count only the calls made in that run.
 - **Prompt revision:** editing any file in `judge/prompts/` changes `judge_prompt_sha256`; the next run scores every poster again as new rows, and old rows stay as the record of the earlier version.
 - **Audit:** raw responses, parsed output and per-task tokens are saved to `judge_raw/<poster_code>/<judge>__r<k>__<task>.json`.
 - **Long papers:** truncated at `paper_char_limit` and flagged (`paper_truncated = 1`).

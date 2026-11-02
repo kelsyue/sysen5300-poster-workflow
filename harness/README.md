@@ -328,6 +328,14 @@ python src/blinder.py --dry-run       # poster codes, blinded PDFs/text, judge m
 python judge/judge.py --dry-run       # both judges -> data/latex/dry_run/judge_scores.csv
 ```
 
+**Finishing the main judging after the budget stop (2026-11-02).** The run stops at the first "budget exceeded" error. Run the same command again once the key has budget. It skips posters already scored and re-calls only the failed tasks of the others. Tasks that already succeeded are reused from `judge_raw/`.
+
+```bash
+python judge/judge.py --data-dir data/latex/remaining_p01_p15 --manifest data/latex/judge_manifest.csv --main-only
+```
+
+The output caps are set per judge in `judges.models`: Gemini 32,768 (its thinking counts toward the cap, and 8,192 truncated 14 claim checks) and GPT-4o 16,384.
+
 The blind key goes to `data/private/` (gitignored). With a reference sheet each poster costs about 35,000 tokens per judge (P01: GPT-4o 26,408 in / 7,909 out; Gemini 20,710 / 17,231); the sheet itself costs about 28,000 tokens once per paper. How to fill human scores, check reference sheets, run the pilot and revise the prompts: [`judge/README.md`](judge/README.md) and [`spec/08_llm_judge.md`](../spec/08_llm_judge.md).
 
 ### Analysing the model replacement

@@ -36,12 +36,21 @@ class FakeCompletions:
         self.calls = 0
         self.broke_once = False
         self.drop_verdict = False   # True: verifier skips one claim, as truncated replies do
+        self.truncate_claims = False  # True: claim extraction hits max_output_tokens
+        self.max_tokens = {}        # judge model -> max_tokens it was sent
+        self.tasks = []             # task of every call, in order
 
     def create(self, model, messages, temperature, max_tokens):
         self.calls += 1
+        self.max_tokens[model] = max_tokens
         user = messages[1]["content"]
         text = user if isinstance(user, str) else user[0]["text"]
         has_image = not isinstance(user, str) and any(p["type"] == "image_url" for p in user)
+        self.tasks.append(next(t for t in ("COVERAGE", "EXTRACTION", "VERIFICATION", "QUALITY", "") if t in text))
+        if self.truncate_claims and "CLAIM EXTRACTION" in text:
+            r = self._resp('{"claims": [{"id": 1, "text": "GP is')
+            r.choices[0].finish_reason = "length"
+            return r
         if "KEY-INFORMATION COVERAGE" in text:
             assert has_image and "chk_setup: UNCERTAIN" in text and "single A100 GPU" in text
             # chk_secondary_result is "na" in the reference (forced NA); "na" on chk_limitation,
@@ -177,6 +186,50 @@ def test_judge_run(tmp: Path):
         assert "budget exceeded" in str(e)
     assert Broke.calls == 1 and len(list(csv.DictReader(open(out)))) == before
     print("judge.py budget stop: OK")
+
+    # each judge gets its own output cap from judges.models
+    assert fake.max_tokens == {"gemini-3.5-flash": 32768, "openai.gpt-4o": 16384}, fake.max_tokens
+
+    # re-runs call only the failed tasks: (1) the budget runs out after coverage, (2) the claim
+    # check is truncated, (3) it succeeds; coverage and quality are never paid for twice
+    class HalfBroke:
+        def create(self, **kw):
+            if "KEY-INFORMATION COVERAGE" not in str(kw["messages"][1]["content"]):
+                raise RuntimeError("Error code: 422 - Budget has been exceeded! Key=TEST (sk-...0000)")
+            return fake.create(**kw)
+    one = args + ["--repeats", "1", "--only-codes", "P-AAAA", "--judges", "openai.gpt-4o"]
+    judge.prompt_sha256 = lambda: "rerun"
+    try:
+        try:
+            judge.main(one, client=SimpleNamespace(chat=SimpleNamespace(completions=HalfBroke())))
+            raise AssertionError("budget error did not stop the run")
+        except SystemExit:
+            pass
+        raw = tmp / "data" / "judge_raw" / "P-AAAA"
+        assert json.loads((raw / "openai.gpt-4o__r1__coverage.json").read_text())["error"] is None
+        fake.tasks.clear()
+        fake.truncate_claims = True
+        judge.main(one, client=client)
+        assert fake.tasks == ["EXTRACTION", "QUALITY"], fake.tasks
+        fake.tasks.clear()
+        fake.truncate_claims = False
+        judge.main(one, client=client)
+        assert fake.tasks == ["EXTRACTION", "VERIFICATION", "VERIFICATION", "VERIFICATION"], fake.tasks
+        judge.main(one, client=client)                                    # complete: nothing to do
+        assert len(fake.tasks) == 4
+    finally:
+        judge.prompt_sha256 = real
+        fake.truncate_claims = False
+    rerun = [x for x in csv.DictReader(open(out)) if x["judge_prompt_sha256"] == "rerun"]
+    assert [x["failed_tasks"] for x in rerun] == ["claims", ""], rerun
+    done = rerun[-1]
+    assert done["parse_ok"] == "1" and done["n_claims_total"] == "5" and done["n_claims_unsupported"] == "2"
+    assert done["coverage_pct"] == rows[0]["coverage_pct"] and done["quality_score"] == "4"
+    assert done["tokens_in"] == str(4 * 1000)                               # only this run's calls
+    saved = json.loads((raw / "openai.gpt-4o__r1__claims.json").read_text())
+    assert saved["max_output_tokens"] == 16384 and saved["claims_batch_size"] == 2
+    assert "truncated" in json.loads((raw / "openai.gpt-4o__r1__claims.prev.json").read_text())["error"]
+    print("judge.py re-run of failed tasks only: OK")
 
 
 def test_canvas_map(tmp: Path):

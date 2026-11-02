@@ -21,6 +21,13 @@ Usage (from harness/)
   python judge/judge.py --dry-run                     # every poster in the dry-run manifest
   python judge/judge.py --only-codes P-7K3Q,P-2M9X    # subset (e.g. the pilot set)
   python judge/judge.py --repeats 2                   # test-retest on the pilot
+  python judge/judge.py --main-only                   # skip the calibration papers
+
+Resume and re-runs: posters already scored (parse_ok = 1) for this judge, repeat and prompt
+version are skipped. A poster whose earlier row failed is judged again, but only its failed
+tasks are called; tasks that succeeded are reused from judge_raw/ (--redo-all-tasks to call
+all three). The new row is appended, readers keep the last row per poster, and its
+latency_s / tokens_in / tokens_out count only the calls made in that run.
 
 Editing anything in judge/prompts/ changes judge_prompt_sha256: earlier rows are kept,
 and the new prompt version is scored as fresh rows instead of being skipped on resume.
@@ -324,7 +331,10 @@ class JudgeClient:
 # --------------------------------------------------------------------------- tasks
 
 def task_coverage(j: JudgeClient, png, poster_text, ref_text, ref):
-    res = j.ask(load_prompt("coverage", reference=ref_text, poster_text=poster_text), [png])
+    return coverage_from(j.ask(load_prompt("coverage", reference=ref_text, poster_text=poster_text), [png]), ref)
+
+
+def coverage_from(res: CallResult, ref):
     out, quotes = {}, []
     if res.data:
         items = res.data.get("items")
@@ -393,6 +403,10 @@ def task_quality(j: JudgeClient, png, ref_text, size_in):
                             width_in=f"{size_in[0]:g}", height_in=f"{size_in[1]:g}",
                             canvas_map="\n".join(lines), blank_pct=f"{100 * blank:.0f}",
                             cell_in=f"{size_in[0] / CANVAS_GRID[0]:g} × {size_in[1] / CANVAS_GRID[1]:g}"), [png])
+    return quality_from(res)
+
+
+def quality_from(res: CallResult):
     out = {}
     if res.data:
         for key, col in [("holistic", "quality_score"), ("layout", "quality_layout"),
@@ -408,6 +422,20 @@ def task_quality(j: JudgeClient, png, ref_text, size_in):
 
 
 # --------------------------------------------------------------------------- per poster
+
+TASKS = ("coverage", "claims", "quality")
+
+
+def reusable(path: Path, prompt_sha: str) -> CallResult | None:
+    """The saved result of a task that succeeded with this prompt version, else None.
+    Its tokens and latency were counted in the earlier row, so they are 0 here."""
+    if not path.exists():
+        return None
+    saved = json.loads(path.read_text(encoding="utf-8"))
+    if saved.get("error") or saved.get("parsed") is None or saved.get("judge_prompt_sha256") != prompt_sha:
+        return None
+    return CallResult(saved["parsed"], saved.get("raw", ""), 0.0, 0, 0)
+
 
 def judge_poster(j: JudgeClient, row: dict, repeat: int, cfg: dict, paths: dict) -> dict:
     code, pid = row["poster_code"], row["input_paper_id"]
@@ -431,17 +459,42 @@ def judge_poster(j: JudgeClient, row: dict, repeat: int, cfg: dict, paths: dict)
     png = render_poster(resolve(row["poster_path"]), paths["images"] / f"{code}.png", cfg.get("max_image_px", 2000))
     words = int(row.get("poster_word_count") or len(poster_text.split()))
 
-    cov_res, cov, cov_quotes = task_coverage(j, png, poster_text, ref_text, ref)
-    clm_res, claims, _ = task_claims(j, poster_text, paper_text, cfg.get("claims_batch_size", 40))
-    q_res, qual = task_quality(j, png, reference_text(ref, paper_text, fallback, excerpts=bool(not ref)),
-                               cfg["poster_size_in"])
+    # Tasks that already succeeded in an earlier, partly failed run of this poster are reused,
+    # so a re-run pays only for the failed ones (budget refusals, truncated claim checks).
+    kept = {} if not paths.get("reuse", True) else {
+        name: res for name in TASKS if (res := reusable(raw_dir / f"{tag}__{name}.json", paths["prompt_sha"]))}
+    if kept:
+        print(f"    reusing {', '.join(kept)} from the earlier run", flush=True)
 
-    for name, res in [("coverage", cov_res), ("claims", clm_res), ("quality", q_res)]:
-        (raw_dir / f"{tag}__{name}.json").write_text(json.dumps(
+    def save(name: str, res: CallResult) -> None:
+        # Saved as soon as the task ends, so a budget stop on a later task keeps this one.
+        path = raw_dir / f"{tag}__{name}.json"
+        if path.exists():  # the failed attempt this re-run replaces, kept for audit
+            path.replace(path.with_suffix(".prev.json"))
+        path.write_text(json.dumps(
             {"model": j.model, "repeat": repeat, "judge_prompt_sha256": paths["prompt_sha"],
              "error": res.error, "tokens_in": res.tokens_in, "tokens_out": res.tokens_out,
+             "max_output_tokens": j.max_tokens,
+             **({"claims_batch_size": cfg.get("claims_batch_size", 40)} if name == "claims" else {}),
              "parsed": res.data, "raw": res.raw},
             indent=2, ensure_ascii=False))
+
+    if "coverage" in kept:
+        cov_res, cov, cov_quotes = coverage_from(kept["coverage"], ref)
+    else:
+        cov_res, cov, cov_quotes = task_coverage(j, png, poster_text, ref_text, ref)
+        save("coverage", cov_res)
+    if "claims" in kept:
+        clm_res, claims = kept["claims"], kept["claims"].data["claims"]
+    else:
+        clm_res, claims, _ = task_claims(j, poster_text, paper_text, cfg.get("claims_batch_size", 40))
+        save("claims", clm_res)
+    if "quality" in kept:
+        q_res, qual = quality_from(kept["quality"])
+    else:
+        q_res, qual = task_quality(j, png, reference_text(ref, paper_text, fallback, excerpts=bool(not ref)),
+                                   cfg["poster_size_in"])
+        save("quality", q_res)
 
     # evidence check: do the judge's quotes actually exist in the poster / paper?
     checks = [quote_found(q, poster_text) for q in cov_quotes]
@@ -509,6 +562,10 @@ def main(argv=None, client=None):
     ap.add_argument("--repeats", type=int, default=1)
     ap.add_argument("--only-codes", default="")
     ap.add_argument("--judges", default="", help="comma list; default = all judges in config")
+    ap.add_argument("--main-only", action="store_true",
+                    help="skip posters of analysis.calibration_papers (the judge calibration set)")
+    ap.add_argument("--redo-all-tasks", action="store_true",
+                    help="re-run every task of a failed poster, not only the failed ones")
     args = ap.parse_args(argv)
 
     cfg = yaml.safe_load(open(resolve(args.config)))
@@ -517,6 +574,8 @@ def main(argv=None, client=None):
             "max_transport_retries": cfg["gateway"].get("max_transport_retries", 2),
             "poster_size_in": (p2c["poster_width_inches"], p2c["poster_height_inches"])}
     judges = [m["id"] for m in cfg["judges"]["models"]]
+    # per-judge settings (e.g. max_output_tokens) override judge_settings
+    per_judge = {m["id"]: {k: v for k, v in m.items() if k != "id"} for m in cfg["judges"]["models"]}
     if args.judges:
         judges = [x.strip() for x in args.judges.split(",")]
 
@@ -530,6 +589,9 @@ def main(argv=None, client=None):
     if args.only_codes:
         keep = {c.strip() for c in args.only_codes.split(",")}
         rows = [r for r in rows if r["poster_code"] in keep]
+    if args.main_only:
+        calibration = set(cfg.get("analysis", {}).get("calibration_papers") or [])
+        rows = [r for r in rows if r["input_paper_id"] not in calibration]
 
     if client is None:
         from openai import OpenAI
@@ -538,7 +600,8 @@ def main(argv=None, client=None):
                         timeout=g.get("timeout_s", 600))
 
     paths = {"papers": resolve(args.papers), "paper_text": resolve(args.paper_text_dir),
-             "raw": data / "judge_raw", "images": data / "judge_images", "prompt_sha": prompt_sha256()}
+             "raw": data / "judge_raw", "images": data / "judge_images", "prompt_sha": prompt_sha256(),
+             "reuse": not args.redo_all_tasks}
     out_csv.parent.mkdir(parents=True, exist_ok=True)
     if out_csv.exists():
         with out_csv.open() as f:
@@ -555,7 +618,8 @@ def main(argv=None, client=None):
         if new_file:
             w.writeheader()
         for model in judges:
-            jc = JudgeClient(client, model, jcfg)
+            mcfg = {**jcfg, **per_judge.get(model, {})}
+            jc = JudgeClient(client, model, mcfg)
             for rep in range(1, args.repeats + 1):
                 order = rows[:]
                 random.Random(f"{seed}-{model}-{rep}").shuffle(order)  # randomized presentation order
@@ -565,7 +629,7 @@ def main(argv=None, client=None):
                         continue
                     print(f"[{model} r{rep}] {k}/{len(order)} {row['poster_code']}", flush=True)
                     try:
-                        rec = judge_poster(jc, row, rep, jcfg, paths)
+                        rec = judge_poster(jc, row, rep, mcfg, paths)
                     except BudgetExceeded as e:
                         # Stop instead of writing an empty row for every remaining poster;
                         # finished posters are kept and a re-run resumes from here.

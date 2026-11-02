@@ -1,0 +1,58 @@
+{
+  "model": "gemini-3.5-flash",
+  "repeat": 1,
+  "judge_prompt_sha256": "4ec65050cfdc718218dbc587f672291e733fd03b1254c20d77b61b0933e16162",
+  "error": null,
+  "tokens_in": 6254,
+  "tokens_out": 2626,
+  "parsed": {
+    "items": {
+      "chk_problem": {
+        "label": "accurate",
+        "poster_evidence": "Measuring How Reference Choice Moves a Multilingual Benchmark Score",
+        "reason": "The title and Introduction section clearly define the problem of measuring how reference choice affects scores and introduces evaluation uncertainty in multilingual benchmarks."
+      },
+      "chk_method": {
+        "label": "accurate",
+        "poster_evidence": "The design holds one thing fixed and varies exactly one other. The scored output stays constant; only the reference against which it is scored changes.",
+        "reason": "The Method section explicitly describes holding the system output fixed and varying the reference to isolate its effect."
+      },
+      "chk_data": {
+        "label": "accurate",
+        "poster_evidence": "The retained annotation record of a six-language benchmark for personally identifiable information contains two independent annotator labellings, the aggregate shipped as gold, and a reviewer gold from independent expert re-annotation of a sample.",
+        "reason": "The Abstract identifies the dataset as the annotation record of a six-language PII extraction benchmark."
+      },
+      "chk_setup": {
+        "label": "accurate",
+        "poster_evidence": "The unit of analysis is the prompt, the outputs are the two annotator labellings, the references are the delivered gold and the reviewer gold, and the metric is span F 1 under two matching rules.",
+        "reason": "The Method section describes scoring the two annotator labellings against the delivered gold and reviewer gold references under two matching rules, matching draft (a)."
+      },
+      "chk_primary_result": {
+        "label": "accurate",
+        "poster_evidence": "The score moves by 4 . 95 F 1 points for one output and 2 . 00 for the other (95% CIs [3 . 23 , 6 . 27] and [0 . 26 , 3 . 37] ), and by 7 . 55 in the worst language.",
+        "reason": "The Abstract and Results section report the exact F1 score movements of 4.95 and 2.00 points, and up to 7.55 in the worst language."
+      },
+      "chk_secondary_result": {
+        "label": "accurate",
+        "poster_evidence": "the paired interaction between reference and system is +2 . 95 points (CI [+1 . 97 , +3 . 87] ), survives correction for multiple testing, and changes one language’s margin outright. ... while the Hindi margin changes sign.",
+        "reason": "The Abstract and Conclusion sections report the paired interaction of +2.95 points and note that the Hindi margin changes sign."
+      },
+      "chk_baseline": {
+        "label": "accurate",
+        "poster_evidence": "the references are the delivered gold and the reviewer gold",
+        "reason": "The Method and Results sections describe comparing scores obtained using the delivered gold reference versus the reviewer gold reference, matching draft (b)."
+      },
+      "chk_conclusion": {
+        "label": "accurate",
+        "poster_evidence": "We suggest benchmarks report a reference-sensitivity band alongside the score.",
+        "reason": "The Conclusion section explicitly recommends reporting a reference-sensitivity band alongside headline scores."
+      },
+      "chk_limitation": {
+        "label": "missing",
+        "poster_evidence": "",
+        "reason": "The poster does not mention any limitations of the study, such as being based on a single annotation record or using human passes instead of model predictions."
+      }
+    }
+  },
+  "raw": "```json\n{\n  \"items\": {\n    \"chk_problem\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Measuring How Reference Choice Moves a Multilingual Benchmark Score\",\n      \"reason\": \"The title and Introduction section clearly define the problem of measuring how reference choice affects scores and introduces evaluation uncertainty in multilingual benchmarks.\"\n    },\n    \"chk_method\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"The design holds one thing fixed and varies exactly one other. The scored output stays constant; only the reference against which it is scored changes.\",\n      \"reason\": \"The Method section explicitly describes holding the system output fixed and varying the reference to isolate its effect.\"\n    },\n    \"chk_data\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"The retained annotation record of a six-language benchmark for personally identifiable information contains two independent annotator labellings, the aggregate shipped as gold, and a reviewer gold from independent expert re-annotation of a sample.\",\n      \"reason\": \"The Abstract identifies the dataset as the annotation record of a six-language PII extraction benchmark.\"\n    },\n    \"chk_setup\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"The unit of analysis is the prompt, the outputs are the two annotator labellings, the references are the delivered gold and the reviewer gold, and the metric is span F 1 under two matching rules.\",\n      \"reason\": \"The Method section describes scoring the two annotator labellings against the delivered gold and reviewer gold references under two matching rules, matching draft (a).\"\n    },\n    \"chk_primary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"The score moves by 4 . 95 F 1 points for one output and 2 . 00 for the other (95% CIs [3 . 23 , 6 . 27] and [0 . 26 , 3 . 37] ), and by 7 . 55 in the worst language.\",\n      \"reason\": \"The Abstract and Results section report the exact F1 score movements of 4.95 and 2.00 points, and up to 7.55 in the worst language.\"\n    },\n    \"chk_secondary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"the paired interaction between reference and system is +2 . 95 points (CI [+1 . 97 , +3 . 87] ), survives correction for multiple testing, and changes one language’s margin outright. ... while the Hindi margin changes sign.\",\n      \"reason\": \"The Abstract and Conclusion sections report the paired interaction of +2.95 points and note that the Hindi margin changes sign.\"\n    },\n    \"chk_baseline\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"the references are the delivered gold and the reviewer gold\",\n      \"reason\": \"The Method and Results sections describe comparing scores obtained using the delivered gold reference versus the reviewer gold reference, matching draft (b).\"\n    },\n    \"chk_conclusion\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"We suggest benchmarks report a reference-sensitivity band alongside the score.\",\n      \"reason\": \"The Conclusion section explicitly recommends reporting a reference-sensitivity band alongside headline scores.\"\n    },\n    \"chk_limitation\": {\n      \"label\": \"missing\",\n      \"poster_evidence\": \"\",\n      \"reason\": \"The poster does not mention any limitations of the study, such as being based on a single annotation record or using human passes instead of model predictions.\"\n    }\n  }\n}\n```"
+}

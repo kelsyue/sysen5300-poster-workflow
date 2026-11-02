@@ -1,0 +1,58 @@
+{
+  "model": "gemini-3.5-flash",
+  "repeat": 1,
+  "judge_prompt_sha256": "4ec65050cfdc718218dbc587f672291e733fd03b1254c20d77b61b0933e16162",
+  "error": null,
+  "tokens_in": 5939,
+  "tokens_out": 2410,
+  "parsed": {
+    "items": {
+      "chk_problem": {
+        "label": "accurate",
+        "poster_evidence": "Neural morphological generation systems often achieve high aggregate accuracy on benchmark datasets, yet such performance can conceal systematic errors clustered in rare morphological subclasses.",
+        "reason": "This is stated verbatim in the Abstract section of the poster."
+      },
+      "chk_method": {
+        "label": "accurate",
+        "poster_evidence": "We present an orthographyaware diagnosis of Japanese past-tense verb inflection, treating hiragana not merely as a transcriptional medium but as a representational system that encodes morphophonological structure. Using two character-level Transformer architectures evaluated across five random seeds... Controlled ablation experiments show...",
+        "reason": "The poster describes the orthography-aware diagnosis, the use of two character-level Transformer architectures, and the controlled ablation experiments."
+      },
+      "chk_data": {
+        "label": "accurate",
+        "poster_evidence": "We use a Japanese verb inflection dataset in standard morphological transduction format. All forms are converted to hiragana to maintain orthographic consistency and eliminate confounds introduced by kanji homography.",
+        "reason": "This is stated in the Methodology section, matching the reference's description of the dataset and hiragana conversion."
+      },
+      "chk_setup": {
+        "label": "missing",
+        "poster_evidence": "",
+        "reason": "The poster mentions training two architectures across five random seeds and conducting controlled ablation experiments, but fails to specify either the 80/10/10 split or the eight ablation conditions required by the reference."
+      },
+      "chk_primary_result": {
+        "label": "accurate",
+        "poster_evidence": "Type 4-2 verbs are massively overrepresented, accounting for 30.2% (PGT) and 43.1% (LST) of all errors while comprising just 0.9% of the dataset. ... contributes roughly 34-48 × its prevalence to total errors.",
+        "reason": "The poster reports the specific error percentages (30.2% and 43.1%), the prevalence (<1% / 0.9%), and the 34-48x disparity ratio."
+      },
+      "chk_secondary_result": {
+        "label": "accurate",
+        "poster_evidence": "Controlled ablation experiments show that removing only this subtype improves generalization more than removing all irregular verbs.",
+        "reason": "This is stated in the Conclusion section of the poster."
+      },
+      "chk_baseline": {
+        "label": "accurate",
+        "poster_evidence": "On the primary run, both systems achieve high aggregate accuracy on the full dataset: 97.98% (PGT) and 97.73% (LST).",
+        "reason": "The poster explicitly reports the baseline accuracies of 97.98% (PGT) and 97.73% (LST) on the full dataset, matching option (b)."
+      },
+      "chk_conclusion": {
+        "label": "accurate",
+        "poster_evidence": "These results demonstrate that high aggregate accuracy can mask structurally localized failures, that not all irregularity is equally destabilizing to neural generalization, and that finegrained, subgroup-aware evaluation is necessary to reveal and causally test such effects.",
+        "reason": "This is stated in the Conclusion section, matching option (b) of the reference."
+      },
+      "chk_limitation": {
+        "label": "missing",
+        "poster_evidence": "",
+        "reason": "The poster does not mention any limitations, such as the study being limited to one language/paradigm, the need for replication, or the correlational nature of the analysis."
+      }
+    }
+  },
+  "raw": "```json\n{\n  \"items\": {\n    \"chk_problem\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Neural morphological generation systems often achieve high aggregate accuracy on benchmark datasets, yet such performance can conceal systematic errors clustered in rare morphological subclasses.\",\n      \"reason\": \"This is stated verbatim in the Abstract section of the poster.\"\n    },\n    \"chk_method\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"We present an orthographyaware diagnosis of Japanese past-tense verb inflection, treating hiragana not merely as a transcriptional medium but as a representational system that encodes morphophonological structure. Using two character-level Transformer architectures evaluated across five random seeds... Controlled ablation experiments show...\",\n      \"reason\": \"The poster describes the orthography-aware diagnosis, the use of two character-level Transformer architectures, and the controlled ablation experiments.\"\n    },\n    \"chk_data\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"We use a Japanese verb inflection dataset in standard morphological transduction format. All forms are converted to hiragana to maintain orthographic consistency and eliminate confounds introduced by kanji homography.\",\n      \"reason\": \"This is stated in the Methodology section, matching the reference's description of the dataset and hiragana conversion.\"\n    },\n    \"chk_setup\": {\n      \"label\": \"missing\",\n      \"poster_evidence\": \"\",\n      \"reason\": \"The poster mentions training two architectures across five random seeds and conducting controlled ablation experiments, but fails to specify either the 80/10/10 split or the eight ablation conditions required by the reference.\"\n    },\n    \"chk_primary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Type 4-2 verbs are massively overrepresented, accounting for 30.2% (PGT) and 43.1% (LST) of all errors while comprising just 0.9% of the dataset. ... contributes roughly 34-48 × its prevalence to total errors.\",\n      \"reason\": \"The poster reports the specific error percentages (30.2% and 43.1%), the prevalence (<1% / 0.9%), and the 34-48x disparity ratio.\"\n    },\n    \"chk_secondary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Controlled ablation experiments show that removing only this subtype improves generalization more than removing all irregular verbs.\",\n      \"reason\": \"This is stated in the Conclusion section of the poster.\"\n    },\n    \"chk_baseline\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"On the primary run, both systems achieve high aggregate accuracy on the full dataset: 97.98% (PGT) and 97.73% (LST).\",\n      \"reason\": \"The poster explicitly reports the baseline accuracies of 97.98% (PGT) and 97.73% (LST) on the full dataset, matching option (b).\"\n    },\n    \"chk_conclusion\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"These results demonstrate that high aggregate accuracy can mask structurally localized failures, that not all irregularity is equally destabilizing to neural generalization, and that finegrained, subgroup-aware evaluation is necessary to reveal and causally test such effects.\",\n      \"reason\": \"This is stated in the Conclusion section, matching option (b) of the reference.\"\n    },\n    \"chk_limitation\": {\n      \"label\": \"missing\",\n      \"poster_evidence\": \"\",\n      \"reason\": \"The poster does not mention any limitations, such as the study being limited to one language/paradigm, the need for replication, or the correlational nature of the analysis.\"\n    }\n  }\n}\n```"
+}

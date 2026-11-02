@@ -1,0 +1,58 @@
+{
+  "model": "gemini-3.5-flash",
+  "repeat": 1,
+  "judge_prompt_sha256": "4ec65050cfdc718218dbc587f672291e733fd03b1254c20d77b61b0933e16162",
+  "error": null,
+  "tokens_in": 6237,
+  "tokens_out": 2708,
+  "parsed": {
+    "items": {
+      "chk_problem": {
+        "label": "accurate",
+        "poster_evidence": "Two character-level Transformer systems exceed 97% aggregate accuracy on Japanese past-tense inflection, yet this performance conceals a rare, systematic failure.",
+        "reason": "Located in the 'Core Finding' section, this accurately describes the problem of systematic errors being hidden by high aggregate accuracy in Japanese past-tense inflection."
+      },
+      "chk_method": {
+        "label": "accurate",
+        "poster_evidence": "Evaluation uses lemma-level exact-match accuracy, subgroup accuracy by verb type, and the Disparity Ratio... Residual outputs are also manually classified into six orthography-sensitive categories... Eight controlled conditions remove individual irregular subtypes...",
+        "reason": "Located in the 'Evaluation' and 'Causal Ablation' sections, this describes the orthography-aware diagnosis, error taxonomy, and controlled ablation experiments."
+      },
+      "chk_data": {
+        "label": "missing",
+        "poster_evidence": "",
+        "reason": "The poster mentions 'Japanese past-tense inflection' and 'hiragana', but fails to specify the dataset size (3,958 verb forms) or that it is in standard morphological transduction format as required by the reference."
+      },
+      "chk_setup": {
+        "label": "accurate",
+        "poster_evidence": "Each model is evaluated across five random seeds using an 80/10/10 training, development, and test split.",
+        "reason": "Located in the 'Models' section, this matches the reference setup of training the two architectures across five random seeds with an 80/10/10 split."
+      },
+      "chk_primary_result": {
+        "label": "accurate",
+        "poster_evidence": "Type 4-2 verbs, whose stems end in /e/ and require gemination before the past-tense suffix, comprise only 0.9% of the data but account for 30–43% of residual errors. Their contribution to total errors is approximately 34–48 times their prevalence.",
+        "reason": "Located in the 'Core Finding' section, this accurately reports the error share and disparity ratio of the Type 4-2 irregular subtype."
+      },
+      "chk_secondary_result": {
+        "label": "accurate",
+        "poster_evidence": "Controlled ablations show that removing this subtype alone improves accuracy more than removing all irregular verbs.",
+        "reason": "Located in the 'Core Finding' and 'Causal Ablation' sections, this matches the secondary finding that removing Type 4-2 alone yields larger gains than removing all irregulars."
+      },
+      "chk_baseline": {
+        "label": "accurate",
+        "poster_evidence": "Pointer-Generator accuracy rises from 97.98% to 98.98%, a gain of 1.00 point. Lemma-Split accuracy rises from 97.73% to 99.75%, a gain of 2.02 points...",
+        "reason": "Located in the 'Causal Ablation' section, this provides the baseline accuracies of 97.98% (PGT) and 97.73% (LST) on the full dataset."
+      },
+      "chk_conclusion": {
+        "label": "accurate",
+        "poster_evidence": "Error concentration is therefore driven not by irregularity in general, but by the interaction of extreme rarity with a specific orthographic and morphophonological process.",
+        "reason": "Located in the 'Core Finding' and 'Conclusion' sections, this accurately captures the paper's substantive take-home conclusion."
+      },
+      "chk_limitation": {
+        "label": "accurate",
+        "poster_evidence": "Each ablation condition was run once, so multi-seed replication would strengthen the causal claim. The study covers one language, one inflectional paradigm, and two Transformer architectures. The experiments establish a causal role for the presence of Type 4-2 but do not independently separate frequency from structural complexity.",
+        "reason": "Located in the 'Limitations' section, this accurately covers the specific limitations regarding single-run ablations, single language/paradigm, and the correlational nature of the frequency vs. complexity mechanism."
+      }
+    }
+  },
+  "raw": "```json\n{\n  \"items\": {\n    \"chk_problem\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Two character-level Transformer systems exceed 97% aggregate accuracy on Japanese past-tense inflection, yet this performance conceals a rare, systematic failure.\",\n      \"reason\": \"Located in the 'Core Finding' section, this accurately describes the problem of systematic errors being hidden by high aggregate accuracy in Japanese past-tense inflection.\"\n    },\n    \"chk_method\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Evaluation uses lemma-level exact-match accuracy, subgroup accuracy by verb type, and the Disparity Ratio... Residual outputs are also manually classified into six orthography-sensitive categories... Eight controlled conditions remove individual irregular subtypes...\",\n      \"reason\": \"Located in the 'Evaluation' and 'Causal Ablation' sections, this describes the orthography-aware diagnosis, error taxonomy, and controlled ablation experiments.\"\n    },\n    \"chk_data\": {\n      \"label\": \"missing\",\n      \"poster_evidence\": \"\",\n      \"reason\": \"The poster mentions 'Japanese past-tense inflection' and 'hiragana', but fails to specify the dataset size (3,958 verb forms) or that it is in standard morphological transduction format as required by the reference.\"\n    },\n    \"chk_setup\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Each model is evaluated across five random seeds using an 80/10/10 training, development, and test split.\",\n      \"reason\": \"Located in the 'Models' section, this matches the reference setup of training the two architectures across five random seeds with an 80/10/10 split.\"\n    },\n    \"chk_primary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Type 4-2 verbs, whose stems end in /e/ and require gemination before the past-tense suffix, comprise only 0.9% of the data but account for 30–43% of residual errors. Their contribution to total errors is approximately 34–48 times their prevalence.\",\n      \"reason\": \"Located in the 'Core Finding' section, this accurately reports the error share and disparity ratio of the Type 4-2 irregular subtype.\"\n    },\n    \"chk_secondary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Controlled ablations show that removing this subtype alone improves accuracy more than removing all irregular verbs.\",\n      \"reason\": \"Located in the 'Core Finding' and 'Causal Ablation' sections, this matches the secondary finding that removing Type 4-2 alone yields larger gains than removing all irregulars.\"\n    },\n    \"chk_baseline\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Pointer-Generator accuracy rises from 97.98% to 98.98%, a gain of 1.00 point. Lemma-Split accuracy rises from 97.73% to 99.75%, a gain of 2.02 points...\",\n      \"reason\": \"Located in the 'Causal Ablation' section, this provides the baseline accuracies of 97.98% (PGT) and 97.73% (LST) on the full dataset.\"\n    },\n    \"chk_conclusion\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Error concentration is therefore driven not by irregularity in general, but by the interaction of extreme rarity with a specific orthographic and morphophonological process.\",\n      \"reason\": \"Located in the 'Core Finding' and 'Conclusion' sections, this accurately captures the paper's substantive take-home conclusion.\"\n    },\n    \"chk_limitation\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Each ablation condition was run once, so multi-seed replication would strengthen the causal claim. The study covers one language, one inflectional paradigm, and two Transformer architectures. The experiments establish a causal role for the presence of Type 4-2 but do not independently separate frequency from structural complexity.\",\n      \"reason\": \"Located in the 'Limitations' section, this accurately covers the specific limitations regarding single-run ablations, single language/paradigm, and the correlational nature of the frequency vs. complexity mechanism.\"\n    }\n  }\n}\n```"
+}

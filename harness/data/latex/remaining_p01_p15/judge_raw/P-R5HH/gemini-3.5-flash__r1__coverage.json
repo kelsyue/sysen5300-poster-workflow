@@ -1,0 +1,58 @@
+{
+  "model": "gemini-3.5-flash",
+  "repeat": 1,
+  "judge_prompt_sha256": "4ec65050cfdc718218dbc587f672291e733fd03b1254c20d77b61b0933e16162",
+  "error": null,
+  "tokens_in": 8285,
+  "tokens_out": 3197,
+  "parsed": {
+    "items": {
+      "chk_problem": {
+        "label": "accurate",
+        "poster_evidence": "Designing high-performance custom accelerator kernels requires deep hardware expertise.",
+        "reason": "The poster accurately states the problem of designing high-performance custom kernels requiring deep hardware expertise in the 'Motivation' section."
+      },
+      "chk_method": {
+        "label": "accurate",
+        "poster_evidence": "MaxKernel addresses this gap with a multiagent framework that combines planning, implementation, self-debugging, testing, autotuning, and XProf-based profiling in closed feedback loops.",
+        "reason": "The poster describes MaxKernel as a multi-agent framework and mentions the three paradigms (Human-in-the-loop, Autonomous Agent, and Autonomous Search) in Figure 1 and the text."
+      },
+      "chk_data": {
+        "label": "accurate",
+        "poster_evidence": "MaxKernel is evaluated on TPU v6e using JaxBench, a suite of 50 workloads containing 17 operators from widely used language-model architectures and 33 fused operators adapted from KernelBench.",
+        "reason": "The poster identifies JaxBench with its 50 workloads and mentions evaluating on complex kernels from recent open-source architectures."
+      },
+      "chk_setup": {
+        "label": "accurate",
+        "poster_evidence": "MaxKernel is evaluated on TPU v6e using JaxBench... XProf measures on-device execution time while excluding host dispatch and compilation overhead.",
+        "reason": "The poster describes the evaluation setup on TPU v6e using JaxBench and XProf profiling."
+      },
+      "chk_primary_result": {
+        "label": "accurate",
+        "poster_evidence": "Parallel Search reaches 50/50 compilation, 50/50 correctness, a 1.58× geometric mean speedup, and fast1 on 34/50 tasks.",
+        "reason": "The poster reports the primary quantitative finding of a 1.58x geometric mean speedup across JaxBench workloads."
+      },
+      "chk_secondary_result": {
+        "label": "missing",
+        "poster_evidence": "",
+        "reason": "The poster does not report the 2.32x geometric mean speedup over human-written kernels on eight production workloads."
+      },
+      "chk_baseline": {
+        "label": "accurate",
+        "poster_evidence": "geometric mean speedup over XLA with regressions floored at 1.0×",
+        "reason": "The poster compares MaxKernel against the standard XLA compiler baseline, Best-of-100 zero-shot, and human-authored Pallas baselines."
+      },
+      "chk_conclusion": {
+        "label": "accurate",
+        "poster_evidence": "MaxKernel demonstrates that agentic systems can handle the complexity of low-level TPU programming.",
+        "reason": "The poster's conclusion section accurately states that agentic systems can handle the complexity of low-level TPU programming."
+      },
+      "chk_limitation": {
+        "label": "accurate",
+        "poster_evidence": "Graph-Based Autonomous Search addresses the Auto agent’s susceptibility to local optima.",
+        "reason": "The poster mentions the Auto agent's susceptibility to local optima as a limitation/motivation for Graph Search, and lists future work directions in the Conclusion."
+      }
+    }
+  },
+  "raw": "```json\n{\n  \"items\": {\n    \"chk_problem\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Designing high-performance custom accelerator kernels requires deep hardware expertise.\",\n      \"reason\": \"The poster accurately states the problem of designing high-performance custom kernels requiring deep hardware expertise in the 'Motivation' section.\"\n    },\n    \"chk_method\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"MaxKernel addresses this gap with a multiagent framework that combines planning, implementation, self-debugging, testing, autotuning, and XProf-based profiling in closed feedback loops.\",\n      \"reason\": \"The poster describes MaxKernel as a multi-agent framework and mentions the three paradigms (Human-in-the-loop, Autonomous Agent, and Autonomous Search) in Figure 1 and the text.\"\n    },\n    \"chk_data\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"MaxKernel is evaluated on TPU v6e using JaxBench, a suite of 50 workloads containing 17 operators from widely used language-model architectures and 33 fused operators adapted from KernelBench.\",\n      \"reason\": \"The poster identifies JaxBench with its 50 workloads and mentions evaluating on complex kernels from recent open-source architectures.\"\n    },\n    \"chk_setup\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"MaxKernel is evaluated on TPU v6e using JaxBench... XProf measures on-device execution time while excluding host dispatch and compilation overhead.\",\n      \"reason\": \"The poster describes the evaluation setup on TPU v6e using JaxBench and XProf profiling.\"\n    },\n    \"chk_primary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Parallel Search reaches 50/50 compilation, 50/50 correctness, a 1.58× geometric mean speedup, and fast1 on 34/50 tasks.\",\n      \"reason\": \"The poster reports the primary quantitative finding of a 1.58x geometric mean speedup across JaxBench workloads.\"\n    },\n    \"chk_secondary_result\": {\n      \"label\": \"missing\",\n      \"poster_evidence\": \"\",\n      \"reason\": \"The poster does not report the 2.32x geometric mean speedup over human-written kernels on eight production workloads.\"\n    },\n    \"chk_baseline\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"geometric mean speedup over XLA with regressions floored at 1.0×\",\n      \"reason\": \"The poster compares MaxKernel against the standard XLA compiler baseline, Best-of-100 zero-shot, and human-authored Pallas baselines.\"\n    },\n    \"chk_conclusion\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"MaxKernel demonstrates that agentic systems can handle the complexity of low-level TPU programming.\",\n      \"reason\": \"The poster's conclusion section accurately states that agentic systems can handle the complexity of low-level TPU programming.\"\n    },\n    \"chk_limitation\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Graph-Based Autonomous Search addresses the Auto agent’s susceptibility to local optima.\",\n      \"reason\": \"The poster mentions the Auto agent's susceptibility to local optima as a limitation/motivation for Graph Search, and lists future work directions in the Conclusion.\"\n    }\n  }\n}\n```"
+}

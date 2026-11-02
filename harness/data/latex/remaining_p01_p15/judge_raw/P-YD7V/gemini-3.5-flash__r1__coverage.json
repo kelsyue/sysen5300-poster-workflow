@@ -1,0 +1,58 @@
+{
+  "model": "gemini-3.5-flash",
+  "repeat": 1,
+  "judge_prompt_sha256": "4ec65050cfdc718218dbc587f672291e733fd03b1254c20d77b61b0933e16162",
+  "error": null,
+  "tokens_in": 5415,
+  "tokens_out": 2877,
+  "parsed": {
+    "items": {
+      "chk_problem": {
+        "label": "missing",
+        "poster_evidence": "",
+        "reason": "The poster does not describe the specific problem of periodic transmission causing overhead and stale receiver states under varying channel conditions."
+      },
+      "chk_method": {
+        "label": "accurate",
+        "poster_evidence": "The sender retains an unchanged canonical filter, constructs a catalog satisfying a maximum FPR, and selects the FPR-qualified representation with the largest retained length supported by the communication resources available at each reporting opportunity.",
+        "reason": "This is stated in the Introduction section of the poster and accurately describes the online selection policy."
+      },
+      "chk_data": {
+        "label": "accurate",
+        "poster_evidence": "Inserted/absent URLs 5,000/50,000",
+        "reason": "Table I lists the 5,000/50,000 URL counts, and the legend of Figure 3 identifies the 'PhiUSIIL' and 'URL-Phish' datasets."
+      },
+      "chk_setup": {
+        "label": "accurate",
+        "poster_evidence": "Transmission opportunities per trace 500\nRepetitions 20",
+        "reason": "Table I and Figure 4 caption ('across 20 paired channel traces') along with the text in Results ('Across two phishing URL datasets and three channel models... under the Five-State and Rayleigh models. Under Gilbert-Elliott...') cover the evaluation setup and channel models."
+      },
+      "chk_primary_result": {
+        "label": "accurate",
+        "poster_evidence": "Fig. 4. Communication efficiency under the three channel models. Bars show mean successful deliveries per MB and 95% confidence intervals across 20 paired channel traces; higher values indicate better performance.",
+        "reason": "Figure 4 quantitatively shows that under the Five-State Markov model, Adaptive achieves 191.6, Best compression achieves 66.9, and Classical BF achieves 27.7 deliveries per MB."
+      },
+      "chk_secondary_result": {
+        "label": "missing",
+        "poster_evidence": "",
+        "reason": "The poster does not report the secondary quantitative finding regarding mean receiver age (1.24, 13.5, and 31.6 intervals)."
+      },
+      "chk_baseline": {
+        "label": "missing",
+        "poster_evidence": "",
+        "reason": "The poster mentions 'lossless-compression baselines' and 'Classical BF' but does not identify the specific compression baselines (gzip, zlib, bzip2, and LZMA) used for comparison."
+      },
+      "chk_conclusion": {
+        "label": "accurate",
+        "poster_evidence": "Across two phishing URL datasets and three channel models, adaptive folding improved communication efficiency and receiver freshness over complete-filtered and lossless-compression baselines under the Five-State and Rayleigh models. Under Gilbert-Elliott, it remained competitive in efficiency and produced the freshest receiver state.",
+        "reason": "This is stated in the Results section and matches the paper's take-home conclusion."
+      },
+      "chk_limitation": {
+        "label": "missing",
+        "poster_evidence": "",
+        "reason": "The poster does not mention any limitations of the study, such as the use of fixed contents/cardinalities or the lack of real-world channel traces."
+      }
+    }
+  },
+  "raw": "```json\n{\n  \"items\": {\n    \"chk_problem\": {\n      \"label\": \"missing\",\n      \"poster_evidence\": \"\",\n      \"reason\": \"The poster does not describe the specific problem of periodic transmission causing overhead and stale receiver states under varying channel conditions.\"\n    },\n    \"chk_method\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"The sender retains an unchanged canonical filter, constructs a catalog satisfying a maximum FPR, and selects the FPR-qualified representation with the largest retained length supported by the communication resources available at each reporting opportunity.\",\n      \"reason\": \"This is stated in the Introduction section of the poster and accurately describes the online selection policy.\"\n    },\n    \"chk_data\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Inserted/absent URLs 5,000/50,000\",\n      \"reason\": \"Table I lists the 5,000/50,000 URL counts, and the legend of Figure 3 identifies the 'PhiUSIIL' and 'URL-Phish' datasets.\"\n    },\n    \"chk_setup\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Transmission opportunities per trace 500\\nRepetitions 20\",\n      \"reason\": \"Table I and Figure 4 caption ('across 20 paired channel traces') along with the text in Results ('Across two phishing URL datasets and three channel models... under the Five-State and Rayleigh models. Under Gilbert-Elliott...') cover the evaluation setup and channel models.\"\n    },\n    \"chk_primary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Fig. 4. Communication efficiency under the three channel models. Bars show mean successful deliveries per MB and 95% confidence intervals across 20 paired channel traces; higher values indicate better performance.\",\n      \"reason\": \"Figure 4 quantitatively shows that under the Five-State Markov model, Adaptive achieves 191.6, Best compression achieves 66.9, and Classical BF achieves 27.7 deliveries per MB.\"\n    },\n    \"chk_secondary_result\": {\n      \"label\": \"missing\",\n      \"poster_evidence\": \"\",\n      \"reason\": \"The poster does not report the secondary quantitative finding regarding mean receiver age (1.24, 13.5, and 31.6 intervals).\"\n    },\n    \"chk_baseline\": {\n      \"label\": \"missing\",\n      \"poster_evidence\": \"\",\n      \"reason\": \"The poster mentions 'lossless-compression baselines' and 'Classical BF' but does not identify the specific compression baselines (gzip, zlib, bzip2, and LZMA) used for comparison.\"\n    },\n    \"chk_conclusion\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Across two phishing URL datasets and three channel models, adaptive folding improved communication efficiency and receiver freshness over complete-filtered and lossless-compression baselines under the Five-State and Rayleigh models. Under Gilbert-Elliott, it remained competitive in efficiency and produced the freshest receiver state.\",\n      \"reason\": \"This is stated in the Results section and matches the paper's take-home conclusion.\"\n    },\n    \"chk_limitation\": {\n      \"label\": \"missing\",\n      \"poster_evidence\": \"\",\n      \"reason\": \"The poster does not mention any limitations of the study, such as the use of fixed contents/cardinalities or the lack of real-world channel traces.\"\n    }\n  }\n}\n```"
+}

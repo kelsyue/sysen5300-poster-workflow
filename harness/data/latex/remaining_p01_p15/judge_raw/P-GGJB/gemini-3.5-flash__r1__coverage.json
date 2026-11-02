@@ -1,0 +1,58 @@
+{
+  "model": "gemini-3.5-flash",
+  "repeat": 1,
+  "judge_prompt_sha256": "4ec65050cfdc718218dbc587f672291e733fd03b1254c20d77b61b0933e16162",
+  "error": null,
+  "tokens_in": 9255,
+  "tokens_out": 5511,
+  "parsed": {
+    "items": {
+      "chk_problem": {
+        "label": "accurate",
+        "poster_evidence": "Reference-conditioned melody-preserving lyric editing replaces words while retaining a performance’s timing, singer identity, and naturalness. Continuous-latent autoregression avoids finite codebooks and offers stepwise generation with learned stopping. Editing creates a conflict absent from ordinary reconstruction: training pairs reference cues with original lyrics, whereas inference asks revised lyrics to override source-lyric-correlated cues; one source-following patch can propagate through AR history.",
+        "reason": "The poster's Abstract section accurately describes the specific selective-preservation problem and conflict between target lyrics and reference melody in melody-preserving lyric editing."
+      },
+      "chk_method": {
+        "label": "accurate",
+        "poster_evidence": "We introduce CLASVS. Its State-ControlTransition (SCT) routing keeps target-lyric and reference-melody controls persistent, returns semantic feedback on phonetic progress to the causal planner, and confines the previous latent patch to the local Transition. Progressive State-Control Grounding (PSCG) learns this contract through paired-edit-free, content-consistent Mandarin reconstruction.",
+        "reason": "The poster's Abstract section accurately describes the CLASVS method, including SCT routing and PSCG learning without paired counterfactual edit recordings."
+      },
+      "chk_data": {
+        "label": "missing",
+        "poster_evidence": "",
+        "reason": "The poster does not mention the training dataset sizes (8,000 hours of Mandarin singing, 2,000 hours of Mandarin Emilia speech, and 300 hours of curated open-source singing)."
+      },
+      "chk_setup": {
+        "label": "accurate",
+        "poster_evidence": "Under the common automatic-input protocol, CLASVS reduces macro-PER by 46.2% versus discrete-AR Vevo2 across two Mandarin benchmarks, improving all four operations while preserving melody, similarity, and perceptual quality.",
+        "reason": "The poster's Contributions section describes the evaluation setup on two Mandarin benchmarks under a common automatic-input protocol."
+      },
+      "chk_primary_result": {
+        "label": "accurate",
+        "poster_evidence": "On two Mandarin benchmarks, CLASVS improves all four operations over discrete-AR Vevo2 and reduces macro-PER by 46.2%, while maintaining melody, singer similarity, and perceptual quality.",
+        "reason": "The poster's Abstract section accurately reports the primary quantitative finding of a 46.2% reduction in macro-PER compared to the Vevo2 baseline."
+      },
+      "chk_secondary_result": {
+        "label": "missing",
+        "poster_evidence": "",
+        "reason": "The poster mentions that CLASVS leads in N-MOS and L-MOS, but it does not report the specific quantitative improvements (+.48 and +.32) over the YingMusic+ comparator."
+      },
+      "chk_baseline": {
+        "label": "accurate",
+        "poster_evidence": "On two Mandarin benchmarks, CLASVS improves all four operations over discrete-AR Vevo2 and reduces macro-PER by 46.2%... It preserves melody and singer identity while improving naturalness and lyric intelligibility over the continuous-NAR comparator, though parallel generation is faster and stronger on substitution.",
+        "reason": "The poster identifies the primary baseline as the discrete-AR Vevo2 and the complementary baseline as the continuous-NAR comparator (YingMusic+)."
+      },
+      "chk_conclusion": {
+        "label": "accurate",
+        "poster_evidence": "CLASVS establishes continuous-latent autoregression for melody-preserving Mandarin lyric editing without manual score annotations.",
+        "reason": "The poster's Conclusion section accurately states this take-home conclusion."
+      },
+      "chk_limitation": {
+        "label": "accurate",
+        "poster_evidence": "Limitations and ethics. Evaluation uses one recognizer and reference-timing metrics on Mandarin 2-6-syllable edits; cross-lingual and long-edit validation remain open.",
+        "reason": "The poster's Analysis & Discussion section explicitly lists these specific limitations and open challenges."
+      }
+    }
+  },
+  "raw": "```json\n{\n  \"items\": {\n    \"chk_problem\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Reference-conditioned melody-preserving lyric editing replaces words while retaining a performance’s timing, singer identity, and naturalness. Continuous-latent autoregression avoids finite codebooks and offers stepwise generation with learned stopping. Editing creates a conflict absent from ordinary reconstruction: training pairs reference cues with original lyrics, whereas inference asks revised lyrics to override source-lyric-correlated cues; one source-following patch can propagate through AR history.\",\n      \"reason\": \"The poster's Abstract section accurately describes the specific selective-preservation problem and conflict between target lyrics and reference melody in melody-preserving lyric editing.\"\n    },\n    \"chk_method\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"We introduce CLASVS. Its State-ControlTransition (SCT) routing keeps target-lyric and reference-melody controls persistent, returns semantic feedback on phonetic progress to the causal planner, and confines the previous latent patch to the local Transition. Progressive State-Control Grounding (PSCG) learns this contract through paired-edit-free, content-consistent Mandarin reconstruction.\",\n      \"reason\": \"The poster's Abstract section accurately describes the CLASVS method, including SCT routing and PSCG learning without paired counterfactual edit recordings.\"\n    },\n    \"chk_data\": {\n      \"label\": \"missing\",\n      \"poster_evidence\": \"\",\n      \"reason\": \"The poster does not mention the training dataset sizes (8,000 hours of Mandarin singing, 2,000 hours of Mandarin Emilia speech, and 300 hours of curated open-source singing).\"\n    },\n    \"chk_setup\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Under the common automatic-input protocol, CLASVS reduces macro-PER by 46.2% versus discrete-AR Vevo2 across two Mandarin benchmarks, improving all four operations while preserving melody, similarity, and perceptual quality.\",\n      \"reason\": \"The poster's Contributions section describes the evaluation setup on two Mandarin benchmarks under a common automatic-input protocol.\"\n    },\n    \"chk_primary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"On two Mandarin benchmarks, CLASVS improves all four operations over discrete-AR Vevo2 and reduces macro-PER by 46.2%, while maintaining melody, singer similarity, and perceptual quality.\",\n      \"reason\": \"The poster's Abstract section accurately reports the primary quantitative finding of a 46.2% reduction in macro-PER compared to the Vevo2 baseline.\"\n    },\n    \"chk_secondary_result\": {\n      \"label\": \"missing\",\n      \"poster_evidence\": \"\",\n      \"reason\": \"The poster mentions that CLASVS leads in N-MOS and L-MOS, but it does not report the specific quantitative improvements (+.48 and +.32) over the YingMusic+ comparator.\"\n    },\n    \"chk_baseline\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"On two Mandarin benchmarks, CLASVS improves all four operations over discrete-AR Vevo2 and reduces macro-PER by 46.2%... It preserves melody and singer identity while improving naturalness and lyric intelligibility over the continuous-NAR comparator, though parallel generation is faster and stronger on substitution.\",\n      \"reason\": \"The poster identifies the primary baseline as the discrete-AR Vevo2 and the complementary baseline as the continuous-NAR comparator (YingMusic+).\"\n    },\n    \"chk_conclusion\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"CLASVS establishes continuous-latent autoregression for melody-preserving Mandarin lyric editing without manual score annotations.\",\n      \"reason\": \"The poster's Conclusion section accurately states this take-home conclusion.\"\n    },\n    \"chk_limitation\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Limitations and ethics. Evaluation uses one recognizer and reference-timing metrics on Mandarin 2-6-syllable edits; cross-lingual and long-edit validation remain open.\",\n      \"reason\": \"The poster's Analysis & Discussion section explicitly lists these specific limitations and open challenges.\"\n    }\n  }\n}\n```"
+}

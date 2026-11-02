@@ -1,0 +1,58 @@
+{
+  "model": "gemini-3.5-flash",
+  "repeat": 1,
+  "judge_prompt_sha256": "4ec65050cfdc718218dbc587f672291e733fd03b1254c20d77b61b0933e16162",
+  "error": null,
+  "tokens_in": 6866,
+  "tokens_out": 2933,
+  "parsed": {
+    "items": {
+      "chk_problem": {
+        "label": "accurate",
+        "poster_evidence": "Periodic Bloom-filter transmission can impose substantial overhead in communication-constrained distributed systems. Complete-filter updates may be delayed or dropped when communication resources are constrained or time varying, leaving stale receiver state.",
+        "reason": "The poster accurately describes the problem of periodic transmission overhead and stale receiver states under varying channel conditions in the 'Motivation' section."
+      },
+      "chk_method": {
+        "label": "accurate",
+        "poster_evidence": "This work investigates channel-aware selection among OR-folded representations. The sender retains an unchanged canonical filter, constructs a catalog satisfying a maximum false-positive rate, and selects the qualified representation with the largest retained length supported by the resources available at each reporting opportunity.",
+        "reason": "The poster accurately describes the channel-aware selection method among OR-folded representations in the 'Motivation' section."
+      },
+      "chk_data": {
+        "label": "accurate",
+        "poster_evidence": "The evaluation uses the PhiUSIIL and URL-Phish datasets. For each dataset, 5,000 malicious URLs are inserted and 50,000 disjoint benign URLs are used as absent queries.",
+        "reason": "The poster accurately identifies the datasets and the specific sample sizes used for insertion and queries in the 'Experimental Design' section."
+      },
+      "chk_setup": {
+        "label": "accurate",
+        "poster_evidence": "Each trace contains 500 transmission opportunities, each lasting 10 ms, and results are calculated over 20 paired repetitions using identical channel traces for all strategies.\n\nThree time-varying communication models are evaluated. The Five-State Markov Capacity model... The Gilbert-Elliott model... The Rayleigh block-fading model...",
+        "reason": "The poster accurately details the experimental setup, including the repetitions, transmission opportunities, and the three channel models in the 'Experimental Design' and 'Channel Models' sections."
+      },
+      "chk_primary_result": {
+        "label": "accurate",
+        "poster_evidence": "Fig. 4. Communication efficiency under the three channel models. Bars show mean successful deliveries per MB... [Five-State Markov: Adaptive 191.6, Best compression 66.9, Classical BF 27.7]",
+        "reason": "The poster accurately presents the primary quantitative finding (191.6 vs 66.9 vs 27.7 deliveries per MB under the Five-State Markov model) in the bar chart of Figure 4."
+      },
+      "chk_secondary_result": {
+        "label": "accurate",
+        "poster_evidence": "Under the Five-State Markov Capacity model, adaptive folding reduces mean receiver age to 1.24 intervals, compared with 13.5 for the strongest compression baseline and 31.6 for the classical filter.",
+        "reason": "The poster accurately states the secondary finding regarding mean receiver age under the Five-State Markov Capacity model in the 'Freshness Results' section."
+      },
+      "chk_baseline": {
+        "label": "accurate",
+        "poster_evidence": "The sparse canonical bit array is compared with gzip, zlib, bzip2, and LZMA at their highest numbered standard settings. Uncompressed classical and sparse filters are also included.",
+        "reason": "The poster accurately lists the baselines, including the four lossless-compression algorithms and the uncompressed classical/sparse filters, in the 'Experimental Design' section."
+      },
+      "chk_conclusion": {
+        "label": "accurate",
+        "poster_evidence": "Across two phishing URL datasets and three channel models, adaptive folding improves communication efficiency and receiver freshness over complete-filter and lossless-compression baselines under Five-State capacity variation and Rayleigh fading.",
+        "reason": "The poster accurately states the take-home conclusion in the 'Conclusion' section."
+      },
+      "chk_limitation": {
+        "label": "accurate",
+        "poster_evidence": "The controlled evaluation uses two URL datasets at the same cardinality with fixed contents. It does not establish generality across other workloads, cardinalities, occupancies, or changing contents.",
+        "reason": "The poster accurately lists the specific limitations of the study, matching the paper's discussion of fixed contents and cardinalities, in the 'Limitations' section."
+      }
+    }
+  },
+  "raw": "```json\n{\n  \"items\": {\n    \"chk_problem\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Periodic Bloom-filter transmission can impose substantial overhead in communication-constrained distributed systems. Complete-filter updates may be delayed or dropped when communication resources are constrained or time varying, leaving stale receiver state.\",\n      \"reason\": \"The poster accurately describes the problem of periodic transmission overhead and stale receiver states under varying channel conditions in the 'Motivation' section.\"\n    },\n    \"chk_method\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"This work investigates channel-aware selection among OR-folded representations. The sender retains an unchanged canonical filter, constructs a catalog satisfying a maximum false-positive rate, and selects the qualified representation with the largest retained length supported by the resources available at each reporting opportunity.\",\n      \"reason\": \"The poster accurately describes the channel-aware selection method among OR-folded representations in the 'Motivation' section.\"\n    },\n    \"chk_data\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"The evaluation uses the PhiUSIIL and URL-Phish datasets. For each dataset, 5,000 malicious URLs are inserted and 50,000 disjoint benign URLs are used as absent queries.\",\n      \"reason\": \"The poster accurately identifies the datasets and the specific sample sizes used for insertion and queries in the 'Experimental Design' section.\"\n    },\n    \"chk_setup\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Each trace contains 500 transmission opportunities, each lasting 10 ms, and results are calculated over 20 paired repetitions using identical channel traces for all strategies.\\n\\nThree time-varying communication models are evaluated. The Five-State Markov Capacity model... The Gilbert-Elliott model... The Rayleigh block-fading model...\",\n      \"reason\": \"The poster accurately details the experimental setup, including the repetitions, transmission opportunities, and the three channel models in the 'Experimental Design' and 'Channel Models' sections.\"\n    },\n    \"chk_primary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Fig. 4. Communication efficiency under the three channel models. Bars show mean successful deliveries per MB... [Five-State Markov: Adaptive 191.6, Best compression 66.9, Classical BF 27.7]\",\n      \"reason\": \"The poster accurately presents the primary quantitative finding (191.6 vs 66.9 vs 27.7 deliveries per MB under the Five-State Markov model) in the bar chart of Figure 4.\"\n    },\n    \"chk_secondary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Under the Five-State Markov Capacity model, adaptive folding reduces mean receiver age to 1.24 intervals, compared with 13.5 for the strongest compression baseline and 31.6 for the classical filter.\",\n      \"reason\": \"The poster accurately states the secondary finding regarding mean receiver age under the Five-State Markov Capacity model in the 'Freshness Results' section.\"\n    },\n    \"chk_baseline\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"The sparse canonical bit array is compared with gzip, zlib, bzip2, and LZMA at their highest numbered standard settings. Uncompressed classical and sparse filters are also included.\",\n      \"reason\": \"The poster accurately lists the baselines, including the four lossless-compression algorithms and the uncompressed classical/sparse filters, in the 'Experimental Design' section.\"\n    },\n    \"chk_conclusion\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Across two phishing URL datasets and three channel models, adaptive folding improves communication efficiency and receiver freshness over complete-filter and lossless-compression baselines under Five-State capacity variation and Rayleigh fading.\",\n      \"reason\": \"The poster accurately states the take-home conclusion in the 'Conclusion' section.\"\n    },\n    \"chk_limitation\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"The controlled evaluation uses two URL datasets at the same cardinality with fixed contents. It does not establish generality across other workloads, cardinalities, occupancies, or changing contents.\",\n      \"reason\": \"The poster accurately lists the specific limitations of the study, matching the paper's discussion of fixed contents and cardinalities, in the 'Limitations' section.\"\n    }\n  }\n}\n```"
+}

@@ -1,0 +1,58 @@
+{
+  "model": "gemini-3.5-flash",
+  "repeat": 1,
+  "judge_prompt_sha256": "4ec65050cfdc718218dbc587f672291e733fd03b1254c20d77b61b0933e16162",
+  "error": null,
+  "tokens_in": 9283,
+  "tokens_out": 4063,
+  "parsed": {
+    "items": {
+      "chk_problem": {
+        "label": "accurate",
+        "poster_evidence": "Edge video object detection faces high energy costs due to repeated detector invocations on temporally redundant frames.",
+        "reason": "Located in the 'Problem & Motivation' section, this correctly describes the high energy costs of running detectors on temporally redundant frames."
+      },
+      "chk_method": {
+        "label": "accurate",
+        "poster_evidence": "ALBIREO wraps off-the-shelf detectors with three mechanisms: 1) Forward-looking uncertainty trigger: Uses 10D Kalman filter per object; skips detection when predicted covariance trace is below threshold u, avoiding stale comparisons. 2) Detector-flicker rescue... 3) Empty-scene screen: Uses lightweight ERD classifier to skip full detection on objectless frames.",
+        "reason": "Located in the 'ALBIREO Design' section, this accurately describes the framework and its three core mechanisms."
+      },
+      "chk_data": {
+        "label": "accurate",
+        "poster_evidence": "Evaluated on BDD100K MOT... validation split... VALUES ARE MEANS OVER 200 CLIPS.",
+        "reason": "Located in the 'Evaluation Results' section, Figure 2 caption, and Table VI caption, which identify the BDD100K MOT validation split and the 200 clips."
+      },
+      "chk_setup": {
+        "label": "accurate",
+        "poster_evidence": "Evaluated on BDD100K MOT with YOLO11x, YOLO26x, RF-DETR-Large on Jetson AGX Thor and Orin.",
+        "reason": "Located in the 'Evaluation Results' section, this correctly lists the three detectors and two Jetson platforms used for evaluation."
+      },
+      "chk_primary_result": {
+        "label": "accurate",
+        "poster_evidence": "ALBIREO keeps AP@50 within ±1.2 pp of per-frame inference while reducing energy by 12.1-17.6%.",
+        "reason": "Located in the 'Evaluation Results' section, this matches the primary quantitative finding in the reference."
+      },
+      "chk_secondary_result": {
+        "label": "accurate",
+        "poster_evidence": "On YOLO26x, default ALBIREO improves AP@50 by +0.8 pp, reduces energy by 17.6% (Thor) / 14.4% (Orin), and lowers EDP by 24.9% (Thor) / 26.1% (Orin). It Pareto-dominates Vanilla and baselines (FixedSkip, CTD, Statues) in AP@50-EDP space for AP@50 ≥ 0.50.",
+        "reason": "Located in the 'Evaluation Results' section, this covers both alternative drafts of the secondary result."
+      },
+      "chk_baseline": {
+        "label": "accurate",
+        "poster_evidence": "It Pareto-dominates Vanilla and baselines (FixedSkip, CTD, Statues) in AP@50-EDP space for AP@50 ≥ 0.50.",
+        "reason": "Located in the 'Evaluation Results' section and Table VI ('+ERD'), which covers the comparison against Vanilla, FixedSkip, CTD, Statues, and ERD-only baselines."
+      },
+      "chk_conclusion": {
+        "label": "accurate",
+        "poster_evidence": "ALBIREO provides a practical, drop-in efficiency layer for edge video detection, improving accuracy, energy, and latency simultaneously.",
+        "reason": "Located in the 'Impact & Future' section, this matches the substantive take-home conclusion of the paper."
+      },
+      "chk_limitation": {
+        "label": "accurate",
+        "poster_evidence": "Limitations include potential drift under erratic motion (e.g., abrupt pedestrian moves) and domain-dependent empty-scene classifier.",
+        "reason": "Located in the 'Impact & Future' section, this accurately lists the specific limitations of Kalman drift and domain dependency."
+      }
+    }
+  },
+  "raw": "```json\n{\n  \"items\": {\n    \"chk_problem\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Edge video object detection faces high energy costs due to repeated detector invocations on temporally redundant frames.\",\n      \"reason\": \"Located in the 'Problem & Motivation' section, this correctly describes the high energy costs of running detectors on temporally redundant frames.\"\n    },\n    \"chk_method\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"ALBIREO wraps off-the-shelf detectors with three mechanisms: 1) Forward-looking uncertainty trigger: Uses 10D Kalman filter per object; skips detection when predicted covariance trace is below threshold u, avoiding stale comparisons. 2) Detector-flicker rescue... 3) Empty-scene screen: Uses lightweight ERD classifier to skip full detection on objectless frames.\",\n      \"reason\": \"Located in the 'ALBIREO Design' section, this accurately describes the framework and its three core mechanisms.\"\n    },\n    \"chk_data\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Evaluated on BDD100K MOT... validation split... VALUES ARE MEANS OVER 200 CLIPS.\",\n      \"reason\": \"Located in the 'Evaluation Results' section, Figure 2 caption, and Table VI caption, which identify the BDD100K MOT validation split and the 200 clips.\"\n    },\n    \"chk_setup\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Evaluated on BDD100K MOT with YOLO11x, YOLO26x, RF-DETR-Large on Jetson AGX Thor and Orin.\",\n      \"reason\": \"Located in the 'Evaluation Results' section, this correctly lists the three detectors and two Jetson platforms used for evaluation.\"\n    },\n    \"chk_primary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"ALBIREO keeps AP@50 within ±1.2 pp of per-frame inference while reducing energy by 12.1-17.6%.\",\n      \"reason\": \"Located in the 'Evaluation Results' section, this matches the primary quantitative finding in the reference.\"\n    },\n    \"chk_secondary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"On YOLO26x, default ALBIREO improves AP@50 by +0.8 pp, reduces energy by 17.6% (Thor) / 14.4% (Orin), and lowers EDP by 24.9% (Thor) / 26.1% (Orin). It Pareto-dominates Vanilla and baselines (FixedSkip, CTD, Statues) in AP@50-EDP space for AP@50 ≥ 0.50.\",\n      \"reason\": \"Located in the 'Evaluation Results' section, this covers both alternative drafts of the secondary result.\"\n    },\n    \"chk_baseline\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"It Pareto-dominates Vanilla and baselines (FixedSkip, CTD, Statues) in AP@50-EDP space for AP@50 ≥ 0.50.\",\n      \"reason\": \"Located in the 'Evaluation Results' section and Table VI ('+ERD'), which covers the comparison against Vanilla, FixedSkip, CTD, Statues, and ERD-only baselines.\"\n    },\n    \"chk_conclusion\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"ALBIREO provides a practical, drop-in efficiency layer for edge video detection, improving accuracy, energy, and latency simultaneously.\",\n      \"reason\": \"Located in the 'Impact & Future' section, this matches the substantive take-home conclusion of the paper.\"\n    },\n    \"chk_limitation\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Limitations include potential drift under erratic motion (e.g., abrupt pedestrian moves) and domain-dependent empty-scene classifier.\",\n      \"reason\": \"Located in the 'Impact & Future' section, this accurately lists the specific limitations of Kalman drift and domain dependency.\"\n    }\n  }\n}\n```"
+}

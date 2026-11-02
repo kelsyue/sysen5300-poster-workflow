@@ -1,0 +1,58 @@
+{
+  "model": "gemini-3.5-flash",
+  "repeat": 1,
+  "judge_prompt_sha256": "4ec65050cfdc718218dbc587f672291e733fd03b1254c20d77b61b0933e16162",
+  "error": null,
+  "tokens_in": 7430,
+  "tokens_out": 4833,
+  "parsed": {
+    "items": {
+      "chk_problem": {
+        "label": "accurate",
+        "poster_evidence": "Most evaluations of Japanese morphological generation report aggregate exact-match accuracy, often exceeding 95%. However, high aggregate accuracy does not necessarily indicate robust generalization, and can obscure systematic weaknesses concentrated in rare morphological subclasses.",
+        "reason": "The poster accurately describes the research problem in the 'Intro & Motivation' section, matching the reference."
+      },
+      "chk_method": {
+        "label": "accurate",
+        "poster_evidence": "First, we conduct an orthography-aware diagnosis, using a fine-grained error taxonomy and subgroup-level accuracy analysis, aggregated across five random seeds and two architectures, to characterize where models fail. Second, we conduct a causal isolation study, using controlled ablation experiments that selectively remove irregular verb subtypes, to test whether the identified subtype is actually responsible for destabilizing generalization, and not irregularity in general.",
+        "reason": "The poster clearly outlines the diagnostic and causal ablation methodology in the 'Intro & Motivation' section."
+      },
+      "chk_data": {
+        "label": "accurate",
+        "poster_evidence": "We use a Japanese verb inflection dataset in standard morphological transduction format, following the setup of Vylomova et al. (2020) and Goldman et al. (2023). All forms are converted to hiragana to maintain orthographic consistency and eliminate confounds introduced by kanji homography.",
+        "reason": "The poster describes the dataset and conversion to hiragana in the 'Data & Models' section, with Table 1 confirming the total count of 3,958 verbs."
+      },
+      "chk_setup": {
+        "label": "accurate",
+        "poster_evidence": "We evaluate two character-level Transformer encoder-decoder architectures for Japanese past-tense inflection, both operating over hiragana strings and generating inflected forms autoregressively. The first is a Pointer-Generator Transformer (PGT)... The second follows the architecture of Goldman et al. (2023), a Lemma-Split Transformer (LST)...",
+        "reason": "The poster describes the two architectures, the use of five random seeds, and the ablation conditions (visualized in Table 6), satisfying draft (b) of the reference."
+      },
+      "chk_primary_result": {
+        "label": "accurate",
+        "poster_evidence": "Type 4-2 verbs are massively overrepresented, accounting for 30.2% (PGT) and 43.1% (LST) of all errors while comprising just 0.9% of the dataset. Type 4-2 contributes 34-48 × its proportional representation to total errors, as visualized in Figure 2, the largest disparity of any subclass in either system.",
+        "reason": "The poster reports the exact error percentages, dataset prevalence (<1%), and disparity ratio (34-48x) in the 'Results' section."
+      },
+      "chk_secondary_result": {
+        "label": "accurate",
+        "poster_evidence": "Controlled ablation experiments show that removing only Type 4-2 yields the largest observed gain: 97.73% → 99.75% (+2.02) for LST, corresponding to an approximately 89% reduction in error rate. The gain is substantially larger than removing all irregular verbs (+1.22) and matches or exceeds every other single or paired-subtype removal.",
+        "reason": "The poster explicitly states that removing Type 4-2 alone produces larger accuracy gains than removing all irregular verbs combined."
+      },
+      "chk_baseline": {
+        "label": "accurate",
+        "poster_evidence": "On the primary run, both systems achieve high aggregate accuracy on the full dataset: 97.98% (PGT) and 97.73% (LST).",
+        "reason": "The poster reports the baseline accuracies on the full dataset in the 'Results' section, matching draft (b) of the reference."
+      },
+      "chk_conclusion": {
+        "label": "accurate",
+        "poster_evidence": "These findings indicate that error concentration in neural morphological learning is not driven by irregularity per se, but by the interaction between extreme low-frequency morphological patterns and specific orthographic processes.",
+        "reason": "The poster states this take-home conclusion in the Abstract and 'Conclusion & Future' sections, matching draft (a) of the reference."
+      },
+      "chk_limitation": {
+        "label": "accurate",
+        "poster_evidence": "We argue this evaluation practice is particularly relevant to sample-efficient, developmentally plausible language modeling.",
+        "reason": "The poster includes the specific implication regarding sample-efficient, developmentally plausible language modeling in the 'Conclusion & Future' section."
+      }
+    }
+  },
+  "raw": "```json\n{\n  \"items\": {\n    \"chk_problem\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Most evaluations of Japanese morphological generation report aggregate exact-match accuracy, often exceeding 95%. However, high aggregate accuracy does not necessarily indicate robust generalization, and can obscure systematic weaknesses concentrated in rare morphological subclasses.\",\n      \"reason\": \"The poster accurately describes the research problem in the 'Intro & Motivation' section, matching the reference.\"\n    },\n    \"chk_method\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"First, we conduct an orthography-aware diagnosis, using a fine-grained error taxonomy and subgroup-level accuracy analysis, aggregated across five random seeds and two architectures, to characterize where models fail. Second, we conduct a causal isolation study, using controlled ablation experiments that selectively remove irregular verb subtypes, to test whether the identified subtype is actually responsible for destabilizing generalization, and not irregularity in general.\",\n      \"reason\": \"The poster clearly outlines the diagnostic and causal ablation methodology in the 'Intro & Motivation' section.\"\n    },\n    \"chk_data\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"We use a Japanese verb inflection dataset in standard morphological transduction format, following the setup of Vylomova et al. (2020) and Goldman et al. (2023). All forms are converted to hiragana to maintain orthographic consistency and eliminate confounds introduced by kanji homography.\",\n      \"reason\": \"The poster describes the dataset and conversion to hiragana in the 'Data & Models' section, with Table 1 confirming the total count of 3,958 verbs.\"\n    },\n    \"chk_setup\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"We evaluate two character-level Transformer encoder-decoder architectures for Japanese past-tense inflection, both operating over hiragana strings and generating inflected forms autoregressively. The first is a Pointer-Generator Transformer (PGT)... The second follows the architecture of Goldman et al. (2023), a Lemma-Split Transformer (LST)...\",\n      \"reason\": \"The poster describes the two architectures, the use of five random seeds, and the ablation conditions (visualized in Table 6), satisfying draft (b) of the reference.\"\n    },\n    \"chk_primary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Type 4-2 verbs are massively overrepresented, accounting for 30.2% (PGT) and 43.1% (LST) of all errors while comprising just 0.9% of the dataset. Type 4-2 contributes 34-48 × its proportional representation to total errors, as visualized in Figure 2, the largest disparity of any subclass in either system.\",\n      \"reason\": \"The poster reports the exact error percentages, dataset prevalence (<1%), and disparity ratio (34-48x) in the 'Results' section.\"\n    },\n    \"chk_secondary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Controlled ablation experiments show that removing only Type 4-2 yields the largest observed gain: 97.73% → 99.75% (+2.02) for LST, corresponding to an approximately 89% reduction in error rate. The gain is substantially larger than removing all irregular verbs (+1.22) and matches or exceeds every other single or paired-subtype removal.\",\n      \"reason\": \"The poster explicitly states that removing Type 4-2 alone produces larger accuracy gains than removing all irregular verbs combined.\"\n    },\n    \"chk_baseline\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"On the primary run, both systems achieve high aggregate accuracy on the full dataset: 97.98% (PGT) and 97.73% (LST).\",\n      \"reason\": \"The poster reports the baseline accuracies on the full dataset in the 'Results' section, matching draft (b) of the reference.\"\n    },\n    \"chk_conclusion\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"These findings indicate that error concentration in neural morphological learning is not driven by irregularity per se, but by the interaction between extreme low-frequency morphological patterns and specific orthographic processes.\",\n      \"reason\": \"The poster states this take-home conclusion in the Abstract and 'Conclusion & Future' sections, matching draft (a) of the reference.\"\n    },\n    \"chk_limitation\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"We argue this evaluation practice is particularly relevant to sample-efficient, developmentally plausible language modeling.\",\n      \"reason\": \"The poster includes the specific implication regarding sample-efficient, developmentally plausible language modeling in the 'Conclusion & Future' section.\"\n    }\n  }\n}\n```"
+}

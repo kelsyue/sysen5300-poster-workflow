@@ -1,0 +1,58 @@
+{
+  "model": "gemini-3.5-flash",
+  "repeat": 1,
+  "judge_prompt_sha256": "4ec65050cfdc718218dbc587f672291e733fd03b1254c20d77b61b0933e16162",
+  "error": null,
+  "tokens_in": 6568,
+  "tokens_out": 3925,
+  "parsed": {
+    "items": {
+      "chk_problem": {
+        "label": "accurate",
+        "poster_evidence": "Benchmark scores compare system output against a reference, but the reference is rarely questioned. We show that reference choice — not just system output — significantly moves scores.",
+        "reason": "The poster clearly states the problem of measuring how reference choice affects scores in multilingual benchmarks under the 'Core Problem' section."
+      },
+      "chk_method": {
+        "label": "accurate",
+        "poster_evidence": "We invert the standard evaluation: fix the output, vary the reference.",
+        "reason": "The poster describes this method under 'Method Design'."
+      },
+      "chk_data": {
+        "label": "accurate",
+        "poster_evidence": "We use a six-language PII benchmark (24,939 prompts) with retained records: two independent annotator labels, shipped gold, and expert reviewer labels on 10.5% of data.",
+        "reason": "The poster specifies the dataset size, languages, and annotation records under 'Method Design'."
+      },
+      "chk_setup": {
+        "label": "accurate",
+        "poster_evidence": "We score each annotator’s output against both the shipped gold and reviewer gold, measuring movement and ranking changes.",
+        "reason": "This matches draft (a) of the setup, and the poster also mentions STRICT and RELAXED matching rules in the text and tables."
+      },
+      "chk_primary_result": {
+        "label": "accurate",
+        "poster_evidence": "Pooled, swapping references moves scores by 4.95 F1 for Annotator A and 2.00 for B (95% CIs [3.23,6.27] and [0.26,3.37]). The largest shift is 7.55 in Hindi.",
+        "reason": "The poster reports the exact F1 score shifts for both outputs and the worst-case language (Hindi) under 'Key Results'."
+      },
+      "chk_secondary_result": {
+        "label": "accurate",
+        "poster_evidence": "Crucially, the comparison between outputs changes: the paired interaction is +2.95 (CI [+1.97,+3.87]), surviving Holm correction. Hindi’s margin reverses sign.",
+        "reason": "The poster reports the paired interaction of +2.95 and the sign reversal in Hindi under 'Key Results'."
+      },
+      "chk_baseline": {
+        "label": "accurate",
+        "poster_evidence": "We score each annotator’s output against both the shipped gold and reviewer gold, measuring movement and ranking changes.",
+        "reason": "This matches draft (b) as the poster compares scores obtained using the delivered (shipped) gold reference versus the reviewer gold reference."
+      },
+      "chk_conclusion": {
+        "label": "accurate",
+        "poster_evidence": "We urge the community to report reference-sensitivity bands — a simple, no-cost addition that reveals evaluation uncertainty.",
+        "reason": "The poster explicitly recommends reporting reference-sensitivity bands alongside scores in the 'Conclusion' and 'Recommendations' sections."
+      },
+      "chk_limitation": {
+        "label": "missing",
+        "poster_evidence": "",
+        "reason": "While the poster mentions that the findings are pipeline-specific, it completely omits the limitation that the scored outputs are human passes rather than model predictions."
+      }
+    }
+  },
+  "raw": "```json\n{\n  \"items\": {\n    \"chk_problem\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Benchmark scores compare system output against a reference, but the reference is rarely questioned. We show that reference choice — not just system output — significantly moves scores.\",\n      \"reason\": \"The poster clearly states the problem of measuring how reference choice affects scores in multilingual benchmarks under the 'Core Problem' section.\"\n    },\n    \"chk_method\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"We invert the standard evaluation: fix the output, vary the reference.\",\n      \"reason\": \"The poster describes this method under 'Method Design'.\"\n    },\n    \"chk_data\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"We use a six-language PII benchmark (24,939 prompts) with retained records: two independent annotator labels, shipped gold, and expert reviewer labels on 10.5% of data.\",\n      \"reason\": \"The poster specifies the dataset size, languages, and annotation records under 'Method Design'.\"\n    },\n    \"chk_setup\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"We score each annotator’s output against both the shipped gold and reviewer gold, measuring movement and ranking changes.\",\n      \"reason\": \"This matches draft (a) of the setup, and the poster also mentions STRICT and RELAXED matching rules in the text and tables.\"\n    },\n    \"chk_primary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Pooled, swapping references moves scores by 4.95 F1 for Annotator A and 2.00 for B (95% CIs [3.23,6.27] and [0.26,3.37]). The largest shift is 7.55 in Hindi.\",\n      \"reason\": \"The poster reports the exact F1 score shifts for both outputs and the worst-case language (Hindi) under 'Key Results'.\"\n    },\n    \"chk_secondary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Crucially, the comparison between outputs changes: the paired interaction is +2.95 (CI [+1.97,+3.87]), surviving Holm correction. Hindi’s margin reverses sign.\",\n      \"reason\": \"The poster reports the paired interaction of +2.95 and the sign reversal in Hindi under 'Key Results'.\"\n    },\n    \"chk_baseline\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"We score each annotator’s output against both the shipped gold and reviewer gold, measuring movement and ranking changes.\",\n      \"reason\": \"This matches draft (b) as the poster compares scores obtained using the delivered (shipped) gold reference versus the reviewer gold reference.\"\n    },\n    \"chk_conclusion\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"We urge the community to report reference-sensitivity bands — a simple, no-cost addition that reveals evaluation uncertainty.\",\n      \"reason\": \"The poster explicitly recommends reporting reference-sensitivity bands alongside scores in the 'Conclusion' and 'Recommendations' sections.\"\n    },\n    \"chk_limitation\": {\n      \"label\": \"missing\",\n      \"poster_evidence\": \"\",\n      \"reason\": \"While the poster mentions that the findings are pipeline-specific, it completely omits the limitation that the scored outputs are human passes rather than model predictions.\"\n    }\n  }\n}\n```"
+}

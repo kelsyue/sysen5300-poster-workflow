@@ -1,0 +1,58 @@
+{
+  "model": "gemini-3.5-flash",
+  "repeat": 1,
+  "judge_prompt_sha256": "4ec65050cfdc718218dbc587f672291e733fd03b1254c20d77b61b0933e16162",
+  "error": null,
+  "tokens_in": 7029,
+  "tokens_out": 3352,
+  "parsed": {
+    "items": {
+      "chk_problem": {
+        "label": "accurate",
+        "poster_evidence": "In real deployments, MCP tool services can return noisy feedback and users may intervene to correct the agent, but existing methods provide limited supervision for reflection learning and failure recovery.",
+        "reason": "This is located in the Abstract and correctly describes the problem of lack of proactive reflection and failure recovery under noisy tool feedback and user corrections."
+      },
+      "chk_method": {
+        "label": "accurate",
+        "poster_evidence": "we propose Agent-Reflex, a general training framework for incentivizing proactive reflection in agents, comprising three stages. First, Environment Reflection Skill Discovery (RSD) ... Reflective Supervised Fine-Tuning (ReSFT) ... Finally, On-Policy Reflective Policy Optimization (ORPO)",
+        "reason": "This is located in the Abstract and correctly outlines the three-stage training framework of Agent-Reflex."
+      },
+      "chk_data": {
+        "label": "accurate",
+        "poster_evidence": "The final corpus contains 54K trajectories",
+        "reason": "The poster mentions the 54K trajectories in the 'Stage 2: ReSFT' section, 557 MCP environments and 24,510 error returns in Figure 2 and Table 4, and '1,170 skills' inside the Figure 2 diagram under Stage 1, satisfying both draft options."
+      },
+      "chk_setup": {
+        "label": "accurate",
+        "poster_evidence": "Datasets. (1) Long-horizon tool use: BFCL-v4, ACEBench, 200 stratified ToolSandbox tasks, τ2-Bench, and VitaBench. (2) Noisy interaction: AgentNoiseBench, instantiated on the τ2-Bench and VitaBench tool- and user-noise settings, scored with Stability-Gated Success. ... Every trained method, including Agent-Reflex, starts from the same Qwen3-8B backbone",
+        "reason": "This is located in the 'Experimental Setup' section and correctly lists the five long-horizon tool-use benchmarks, AgentNoiseBench, and the Qwen3-8B backbone."
+      },
+      "chk_primary_result": {
+        "label": "accurate",
+        "poster_evidence": "Built on Qwen3-8B, Agent-Reflex reaches 58.6 overall on five long-horizon tool-use benchmarks and 29.1 on AgentNoiseBench",
+        "reason": "This is located in the Abstract and correctly reports the primary quantitative findings."
+      },
+      "chk_secondary_result": {
+        "label": "accurate",
+        "poster_evidence": "while improving noise robustness and maintaining stable training dynamics.",
+        "reason": "This is located in the Abstract and correctly reports the secondary findings regarding noise robustness and stable training dynamics."
+      },
+      "chk_baseline": {
+        "label": "accurate",
+        "poster_evidence": "We compare three families: reflection methods (Reflexion, ExpeL, Agent-R, NoisyAgent), environment-scaling methods (Simulator, TOUCAN, AWM, EnvACE, EnvScaler, Agent-World), and trajectory-level RL algorithms (GRPO, DAPO, REINFORCE++, SEED).",
+        "reason": "This is located in the 'Experimental Setup' section and correctly lists the baseline families and specific methods compared."
+      },
+      "chk_conclusion": {
+        "label": "accurate",
+        "poster_evidence": "Across six challenging agent benchmark suites, Agent-Reflex improves long-horizon tool use and robustness under tool and user noise with stable training dynamics, supporting scalable agent training.",
+        "reason": "This is located in the 'Conclusion' section and correctly summarizes the take-home message."
+      },
+      "chk_limitation": {
+        "label": "accurate",
+        "poster_evidence": "The skill library is mined offline from a fixed snapshot of executable environments, so interface or dynamics changes may require periodic re-mining.",
+        "reason": "This is located in the 'Limitations & future work' section and correctly identifies the offline mining limitation."
+      }
+    }
+  },
+  "raw": "```json\n{\n  \"items\": {\n    \"chk_problem\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"In real deployments, MCP tool services can return noisy feedback and users may intervene to correct the agent, but existing methods provide limited supervision for reflection learning and failure recovery.\",\n      \"reason\": \"This is located in the Abstract and correctly describes the problem of lack of proactive reflection and failure recovery under noisy tool feedback and user corrections.\"\n    },\n    \"chk_method\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"we propose Agent-Reflex, a general training framework for incentivizing proactive reflection in agents, comprising three stages. First, Environment Reflection Skill Discovery (RSD) ... Reflective Supervised Fine-Tuning (ReSFT) ... Finally, On-Policy Reflective Policy Optimization (ORPO)\",\n      \"reason\": \"This is located in the Abstract and correctly outlines the three-stage training framework of Agent-Reflex.\"\n    },\n    \"chk_data\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"The final corpus contains 54K trajectories\",\n      \"reason\": \"The poster mentions the 54K trajectories in the 'Stage 2: ReSFT' section, 557 MCP environments and 24,510 error returns in Figure 2 and Table 4, and '1,170 skills' inside the Figure 2 diagram under Stage 1, satisfying both draft options.\"\n    },\n    \"chk_setup\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Datasets. (1) Long-horizon tool use: BFCL-v4, ACEBench, 200 stratified ToolSandbox tasks, τ2-Bench, and VitaBench. (2) Noisy interaction: AgentNoiseBench, instantiated on the τ2-Bench and VitaBench tool- and user-noise settings, scored with Stability-Gated Success. ... Every trained method, including Agent-Reflex, starts from the same Qwen3-8B backbone\",\n      \"reason\": \"This is located in the 'Experimental Setup' section and correctly lists the five long-horizon tool-use benchmarks, AgentNoiseBench, and the Qwen3-8B backbone.\"\n    },\n    \"chk_primary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Built on Qwen3-8B, Agent-Reflex reaches 58.6 overall on five long-horizon tool-use benchmarks and 29.1 on AgentNoiseBench\",\n      \"reason\": \"This is located in the Abstract and correctly reports the primary quantitative findings.\"\n    },\n    \"chk_secondary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"while improving noise robustness and maintaining stable training dynamics.\",\n      \"reason\": \"This is located in the Abstract and correctly reports the secondary findings regarding noise robustness and stable training dynamics.\"\n    },\n    \"chk_baseline\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"We compare three families: reflection methods (Reflexion, ExpeL, Agent-R, NoisyAgent), environment-scaling methods (Simulator, TOUCAN, AWM, EnvACE, EnvScaler, Agent-World), and trajectory-level RL algorithms (GRPO, DAPO, REINFORCE++, SEED).\",\n      \"reason\": \"This is located in the 'Experimental Setup' section and correctly lists the baseline families and specific methods compared.\"\n    },\n    \"chk_conclusion\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Across six challenging agent benchmark suites, Agent-Reflex improves long-horizon tool use and robustness under tool and user noise with stable training dynamics, supporting scalable agent training.\",\n      \"reason\": \"This is located in the 'Conclusion' section and correctly summarizes the take-home message.\"\n    },\n    \"chk_limitation\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"The skill library is mined offline from a fixed snapshot of executable environments, so interface or dynamics changes may require periodic re-mining.\",\n      \"reason\": \"This is located in the 'Limitations & future work' section and correctly identifies the offline mining limitation.\"\n    }\n  }\n}\n```"
+}

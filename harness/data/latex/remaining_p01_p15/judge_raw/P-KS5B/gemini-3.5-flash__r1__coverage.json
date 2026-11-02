@@ -1,0 +1,58 @@
+{
+  "model": "gemini-3.5-flash",
+  "repeat": 1,
+  "judge_prompt_sha256": "4ec65050cfdc718218dbc587f672291e733fd03b1254c20d77b61b0933e16162",
+  "error": null,
+  "tokens_in": 5847,
+  "tokens_out": 4466,
+  "parsed": {
+    "items": {
+      "chk_problem": {
+        "label": "accurate",
+        "poster_evidence": "In this work, to address issues in traditional shopping guidance query generation pipelines, such as semantic drift and the inability to capture personalized user intent, we propose an LLM-based AI guidance query generation framework for multi-interest users.",
+        "reason": "The poster accurately describes the specific research problem of semantic drift and inability to capture personalized user intent in traditional pipelines under the 'Conclusion' section."
+      },
+      "chk_method": {
+        "label": "accurate",
+        "poster_evidence": "We propose LLM4AIGQ, an LLM-based solution for generating AI guidance queries tailored to users’ multi-interests. This approach segments user interests by integrating user profiles and historical interaction sequences, infers specific consumption intents for each sub-interest, and subsequently generates corresponding AIGQ. In terms of model training, we employ a post-training pipeline comprising Supervised Fine-Tuning (SFT), Reinforcement Learning (RL), and Direct Preference Optimization (DPO) to enhance the model’s capability in generating AIGQ.",
+        "reason": "The poster accurately describes the LLM4AIGQ framework and its three-stage SFT-RL-DPO training pipeline under the 'Methodology' section."
+      },
+      "chk_data": {
+        "label": "missing",
+        "poster_evidence": "",
+        "reason": "The poster mentions the 'Taobao Dataset' in Table 1 but completely omits the specific dataset details, such as the collection period (June-July 2026) and the sample sizes for SFT, RL, and DPO."
+      },
+      "chk_setup": {
+        "label": "missing",
+        "poster_evidence": "",
+        "reason": "The poster does not describe the training setup details, such as the NVIDIA H20 GPUs, LoRA rank 16, batch sizes, or learning rates."
+      },
+      "chk_primary_result": {
+        "label": "accurate",
+        "poster_evidence": "LLM4AIGQ-ONESFT+RL+DPO | 0.2101 | 0.2377 | 0.2684 | 0.2658 | 0.3709 | 0.3047 | 0.8616 | 0.0274 | 0.1109",
+        "reason": "Table 1 in the poster accurately reports the offline evaluation results for LLM4AIGQ-ONESFT+RL+DPO, showing a Recall@10 of 0.2101 and an S ratio of 0.8616, matching reference draft (b)."
+      },
+      "chk_secondary_result": {
+        "label": "missing",
+        "poster_evidence": "",
+        "reason": "The poster does not report the pairwise win rate against the teacher model (57.53%) or the specific online A/B test metrics (4.46% and 2.53% uCTR gains)."
+      },
+      "chk_baseline": {
+        "label": "accurate",
+        "poster_evidence": "Qwen3-30B-A3B\nQwen3.5-122B-A10B\nQwen3-235B-A22B\nGPT-oss-120B\nDeepseek-V4-Pro",
+        "reason": "Table 1 in the poster lists the zero-shot LLM baselines and various SFT/RL/DPO variants of LLM4AIGQ, matching the reference baselines."
+      },
+      "chk_conclusion": {
+        "label": "accurate",
+        "poster_evidence": "In this work, to address issues in traditional shopping guidance query generation pipelines, such as semantic drift and the inability to capture personalized user intent, we propose an LLM-based AI guidance query generation framework for multi-interest users. Our approach has already been deployed online and has achieved significant results at the scale of hundreds of millions of users.",
+        "reason": "The poster's 'Conclusion' section summarizes that the proposed framework successfully addresses traditional pipeline issues and achieves significant results in online deployment."
+      },
+      "chk_limitation": {
+        "label": "na",
+        "poster_evidence": "",
+        "reason": "The reference indicates that a limitation is not applicable under alternative draft (b)."
+      }
+    }
+  },
+  "raw": "```json\n{\n  \"items\": {\n    \"chk_problem\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"In this work, to address issues in traditional shopping guidance query generation pipelines, such as semantic drift and the inability to capture personalized user intent, we propose an LLM-based AI guidance query generation framework for multi-interest users.\",\n      \"reason\": \"The poster accurately describes the specific research problem of semantic drift and inability to capture personalized user intent in traditional pipelines under the 'Conclusion' section.\"\n    },\n    \"chk_method\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"We propose LLM4AIGQ, an LLM-based solution for generating AI guidance queries tailored to users’ multi-interests. This approach segments user interests by integrating user profiles and historical interaction sequences, infers specific consumption intents for each sub-interest, and subsequently generates corresponding AIGQ. In terms of model training, we employ a post-training pipeline comprising Supervised Fine-Tuning (SFT), Reinforcement Learning (RL), and Direct Preference Optimization (DPO) to enhance the model’s capability in generating AIGQ.\",\n      \"reason\": \"The poster accurately describes the LLM4AIGQ framework and its three-stage SFT-RL-DPO training pipeline under the 'Methodology' section.\"\n    },\n    \"chk_data\": {\n      \"label\": \"missing\",\n      \"poster_evidence\": \"\",\n      \"reason\": \"The poster mentions the 'Taobao Dataset' in Table 1 but completely omits the specific dataset details, such as the collection period (June-July 2026) and the sample sizes for SFT, RL, and DPO.\"\n    },\n    \"chk_setup\": {\n      \"label\": \"missing\",\n      \"poster_evidence\": \"\",\n      \"reason\": \"The poster does not describe the training setup details, such as the NVIDIA H20 GPUs, LoRA rank 16, batch sizes, or learning rates.\"\n    },\n    \"chk_primary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"LLM4AIGQ-ONESFT+RL+DPO | 0.2101 | 0.2377 | 0.2684 | 0.2658 | 0.3709 | 0.3047 | 0.8616 | 0.0274 | 0.1109\",\n      \"reason\": \"Table 1 in the poster accurately reports the offline evaluation results for LLM4AIGQ-ONESFT+RL+DPO, showing a Recall@10 of 0.2101 and an S ratio of 0.8616, matching reference draft (b).\"\n    },\n    \"chk_secondary_result\": {\n      \"label\": \"missing\",\n      \"poster_evidence\": \"\",\n      \"reason\": \"The poster does not report the pairwise win rate against the teacher model (57.53%) or the specific online A/B test metrics (4.46% and 2.53% uCTR gains).\"\n    },\n    \"chk_baseline\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Qwen3-30B-A3B\\nQwen3.5-122B-A10B\\nQwen3-235B-A22B\\nGPT-oss-120B\\nDeepseek-V4-Pro\",\n      \"reason\": \"Table 1 in the poster lists the zero-shot LLM baselines and various SFT/RL/DPO variants of LLM4AIGQ, matching the reference baselines.\"\n    },\n    \"chk_conclusion\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"In this work, to address issues in traditional shopping guidance query generation pipelines, such as semantic drift and the inability to capture personalized user intent, we propose an LLM-based AI guidance query generation framework for multi-interest users. Our approach has already been deployed online and has achieved significant results at the scale of hundreds of millions of users.\",\n      \"reason\": \"The poster's 'Conclusion' section summarizes that the proposed framework successfully addresses traditional pipeline issues and achieves significant results in online deployment.\"\n    },\n    \"chk_limitation\": {\n      \"label\": \"na\",\n      \"poster_evidence\": \"\",\n      \"reason\": \"The reference indicates that a limitation is not applicable under alternative draft (b).\"\n    }\n  }\n}\n```"
+}

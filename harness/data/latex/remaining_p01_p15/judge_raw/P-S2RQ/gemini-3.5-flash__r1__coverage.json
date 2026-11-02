@@ -1,0 +1,58 @@
+{
+  "model": "gemini-3.5-flash",
+  "repeat": 1,
+  "judge_prompt_sha256": "4ec65050cfdc718218dbc587f672291e733fd03b1254c20d77b61b0933e16162",
+  "error": null,
+  "tokens_in": 5760,
+  "tokens_out": 4083,
+  "parsed": {
+    "items": {
+      "chk_problem": {
+        "label": "accurate",
+        "poster_evidence": "The settings where AI-assisted dermatology could have the greatest impact-resourceconstrained primary-care and teledermatology clinics- differ from this training regime on both counts simultaneously. Patients present with more pigmented skin, and with a disease burden dominated by inflammatory and infectious conditions (eczema, tinea, impetigo, scabies) that are largely absent from cancercentric training data.",
+        "reason": "The poster accurately describes the problem of decomposing the generalization gap into skin tone and disease-distribution shift in resource-constrained settings."
+      },
+      "chk_method": {
+        "label": "missing",
+        "poster_evidence": "",
+        "reason": "The poster mentions label-free representation-quality analysis and cheap adaptation, but fails to mention evaluating the models as frozen feature extractors or using linear probing."
+      },
+      "chk_data": {
+        "label": "accurate",
+        "poster_evidence": "We use four public datasets, each assigned a specific experimental role (Table 1). Source domain (in-domain reference): HAM10000 and ISIC 2019 are pooled and mapped to a shared eight-class neoplastic taxonomy to train and evaluate the cancer baseline on familiar data. Tone-isolation. DDI holds diagnosis broadly fixed while varying skin tone, isolating the tone effect; we use its binary malignant/benign label. Distribution-isolation. SCIN is tone-diverse but dominated by non-neoplastic conditions absent from cancer training data, isolating the distribution effect.",
+        "reason": "The poster lists and describes all four datasets (HAM10000, ISIC 2019, DDI, and SCIN) along with their roles."
+      },
+      "chk_setup": {
+        "label": "missing",
+        "poster_evidence": "",
+        "reason": "The poster does not describe the evaluation protocol details such as frozen embeddings, L2-regularized logistic-regression probes, GroupShuffleSplit, or few-shot probe details."
+      },
+      "chk_primary_result": {
+        "label": "accurate",
+        "poster_evidence": "The cancer baseline degrades sharply from its in-domain performance to unfamiliar conditions (a drop from 0.62 to 0.21 balanced accuracy across clinical categories), a far larger effect than the withindisease skin-tone gap, which is comparatively small (0.10-0.18) and did not show a consistent direction.",
+        "reason": "The poster accurately reports the primary quantitative finding regarding the cancer baseline's degradation on SCIN compared to the skin-tone gap on DDI."
+      },
+      "chk_secondary_result": {
+        "label": "accurate",
+        "poster_evidence": "Using a label-free representation-quality analysis, we show this collapse is representational , not merely an artifact of disjoint label spaces: cancer-specialized features barely cluster unfamiliar conditions (kNN neighbor-purity lift +0 . 06 over chance), whereas dermatology-pretrained features retain substantially more transferable structure ( +0 . 23 ).",
+        "reason": "The poster accurately reports the kNN neighbor-purity lift results (+0.06 vs +0.23) under the label-free representation-quality analysis."
+      },
+      "chk_baseline": {
+        "label": "missing",
+        "poster_evidence": "",
+        "reason": "The poster includes DermLIP, MONET, and DINOv3 in Figure 2, but fails to identify them as dermatology foundation models or a general-purpose vision model, and does not specify that the cancer baseline is a ResNet-50."
+      },
+      "chk_conclusion": {
+        "label": "accurate",
+        "poster_evidence": "Using only public data and free-tier compute, we decomposed the dermatology-AI generalization gap and found disease-distribution shift to dominate skin tone, traced the effect to a representational deficit in cancerspecialized models, and found that cheap adaptation is most effective when the starting representation already encodes the target conditions.",
+        "reason": "The poster's conclusion section accurately summarizes the main take-home findings of the paper."
+      },
+      "chk_limitation": {
+        "label": "missing",
+        "poster_evidence": "",
+        "reason": "The poster does not mention that DDI and SCIN are US-sourced proxies rather than genuine resource-constrained settings (RCS) cohorts, nor does it discuss the inferential nature of the deployment conclusions."
+      }
+    }
+  },
+  "raw": "```json\n{\n  \"items\": {\n    \"chk_problem\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"The settings where AI-assisted dermatology could have the greatest impact-resourceconstrained primary-care and teledermatology clinics- differ from this training regime on both counts simultaneously. Patients present with more pigmented skin, and with a disease burden dominated by inflammatory and infectious conditions (eczema, tinea, impetigo, scabies) that are largely absent from cancercentric training data.\",\n      \"reason\": \"The poster accurately describes the problem of decomposing the generalization gap into skin tone and disease-distribution shift in resource-constrained settings.\"\n    },\n    \"chk_method\": {\n      \"label\": \"missing\",\n      \"poster_evidence\": \"\",\n      \"reason\": \"The poster mentions label-free representation-quality analysis and cheap adaptation, but fails to mention evaluating the models as frozen feature extractors or using linear probing.\"\n    },\n    \"chk_data\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"We use four public datasets, each assigned a specific experimental role (Table 1). Source domain (in-domain reference): HAM10000 and ISIC 2019 are pooled and mapped to a shared eight-class neoplastic taxonomy to train and evaluate the cancer baseline on familiar data. Tone-isolation. DDI holds diagnosis broadly fixed while varying skin tone, isolating the tone effect; we use its binary malignant/benign label. Distribution-isolation. SCIN is tone-diverse but dominated by non-neoplastic conditions absent from cancer training data, isolating the distribution effect.\",\n      \"reason\": \"The poster lists and describes all four datasets (HAM10000, ISIC 2019, DDI, and SCIN) along with their roles.\"\n    },\n    \"chk_setup\": {\n      \"label\": \"missing\",\n      \"poster_evidence\": \"\",\n      \"reason\": \"The poster does not describe the evaluation protocol details such as frozen embeddings, L2-regularized logistic-regression probes, GroupShuffleSplit, or few-shot probe details.\"\n    },\n    \"chk_primary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"The cancer baseline degrades sharply from its in-domain performance to unfamiliar conditions (a drop from 0.62 to 0.21 balanced accuracy across clinical categories), a far larger effect than the withindisease skin-tone gap, which is comparatively small (0.10-0.18) and did not show a consistent direction.\",\n      \"reason\": \"The poster accurately reports the primary quantitative finding regarding the cancer baseline's degradation on SCIN compared to the skin-tone gap on DDI.\"\n    },\n    \"chk_secondary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Using a label-free representation-quality analysis, we show this collapse is representational , not merely an artifact of disjoint label spaces: cancer-specialized features barely cluster unfamiliar conditions (kNN neighbor-purity lift +0 . 06 over chance), whereas dermatology-pretrained features retain substantially more transferable structure ( +0 . 23 ).\",\n      \"reason\": \"The poster accurately reports the kNN neighbor-purity lift results (+0.06 vs +0.23) under the label-free representation-quality analysis.\"\n    },\n    \"chk_baseline\": {\n      \"label\": \"missing\",\n      \"poster_evidence\": \"\",\n      \"reason\": \"The poster includes DermLIP, MONET, and DINOv3 in Figure 2, but fails to identify them as dermatology foundation models or a general-purpose vision model, and does not specify that the cancer baseline is a ResNet-50.\"\n    },\n    \"chk_conclusion\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Using only public data and free-tier compute, we decomposed the dermatology-AI generalization gap and found disease-distribution shift to dominate skin tone, traced the effect to a representational deficit in cancerspecialized models, and found that cheap adaptation is most effective when the starting representation already encodes the target conditions.\",\n      \"reason\": \"The poster's conclusion section accurately summarizes the main take-home findings of the paper.\"\n    },\n    \"chk_limitation\": {\n      \"label\": \"missing\",\n      \"poster_evidence\": \"\",\n      \"reason\": \"The poster does not mention that DDI and SCIN are US-sourced proxies rather than genuine resource-constrained settings (RCS) cohorts, nor does it discuss the inferential nature of the deployment conclusions.\"\n    }\n  }\n}\n```"
+}

@@ -1,0 +1,58 @@
+{
+  "model": "gemini-3.5-flash",
+  "repeat": 1,
+  "judge_prompt_sha256": "4ec65050cfdc718218dbc587f672291e733fd03b1254c20d77b61b0933e16162",
+  "error": null,
+  "tokens_in": 5776,
+  "tokens_out": 2604,
+  "parsed": {
+    "items": {
+      "chk_problem": {
+        "label": "accurate",
+        "poster_evidence": "Pelvic pathologies such as polycystic ovary syndrome (PCOS) and pelvic fracture suffer from scarce public, well-annotated benchmark data despite their clinical importance.",
+        "reason": "The poster accurately states the scarcity of public, well-annotated benchmark data for PCOS and pelvic fracture in the 'Motivation' section."
+      },
+      "chk_method": {
+        "label": "accurate",
+        "poster_evidence": "It combines dense feature extraction, hierarchical channel-spatial attention, multi-scale fusion, and talking-heads self-attention without task-specific modification.",
+        "reason": "The poster accurately describes the PelviNeXt architecture and its components in the 'Conclusion' section."
+      },
+      "chk_data": {
+        "label": "accurate",
+        "poster_evidence": "The deduplicated PCOSGen benchmark contains only 225 images, and PXR150 contains 150 radiographs.",
+        "reason": "The poster accurately identifies both datasets and their sizes in the 'Limitations' section."
+      },
+      "chk_setup": {
+        "label": "missing",
+        "poster_evidence": "",
+        "reason": "The poster mentions 5-fold cross-validation but completely omits the training details such as AdamW, batch size 16, 30 epochs, and class-aware data augmentation."
+      },
+      "chk_primary_result": {
+        "label": "accurate",
+        "poster_evidence": "PelviNeXt achieved 92.00% accuracy and 0.9051 AUROC for PCOS classification and state-of-the-art PXR150 performance with 87.33% accuracy and 0.8920 AUROC.",
+        "reason": "The poster accurately reports the primary quantitative results for both datasets in the 'Conclusion' section and the results tables."
+      },
+      "chk_secondary_result": {
+        "label": "accurate",
+        "poster_evidence": "PelviNeXt also produced narrower confidence intervals across most metrics. Its specificity varied by ±2.99 percentage points, compared with ±12.59 for ViT-B/16, indicating more stable performance in a low-data setting.",
+        "reason": "The poster accurately reports the secondary finding regarding narrower confidence intervals and stable performance in low-data regimes (matching draft b)."
+      },
+      "chk_baseline": {
+        "label": "accurate",
+        "poster_evidence": "ViT-B/16 achieved 89.33% accuracy and 0.8629 AUROC; ResNet-101 achieved 88.44% accuracy and 0.8479 AUROC; DenseNet-169 achieved 88.89% accuracy and 0.8418 AUROC.",
+        "reason": "The poster compares PelviNeXt against standard baselines (ViT-B/16, ResNet-101, DenseNet-169) and lists Patch Ensemble in Table 3."
+      },
+      "chk_conclusion": {
+        "label": "accurate",
+        "poster_evidence": "The results support PelviNeXt as a foundation for reliable computer-assisted pelvic imaging in data-scarce and under-researched areas of women’s health.",
+        "reason": "The poster's conclusion matches the reference take-home message."
+      },
+      "chk_limitation": {
+        "label": "accurate",
+        "poster_evidence": "Both evaluated datasets are small. The deduplicated PCOSGen benchmark contains only 225 images, and PXR150 contains 150 radiographs. These sample sizes limit statistical power...",
+        "reason": "The poster explicitly discusses the small dataset sizes and limited statistical power in the 'Limitations' section."
+      }
+    }
+  },
+  "raw": "```json\n{\n  \"items\": {\n    \"chk_problem\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Pelvic pathologies such as polycystic ovary syndrome (PCOS) and pelvic fracture suffer from scarce public, well-annotated benchmark data despite their clinical importance.\",\n      \"reason\": \"The poster accurately states the scarcity of public, well-annotated benchmark data for PCOS and pelvic fracture in the 'Motivation' section.\"\n    },\n    \"chk_method\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"It combines dense feature extraction, hierarchical channel-spatial attention, multi-scale fusion, and talking-heads self-attention without task-specific modification.\",\n      \"reason\": \"The poster accurately describes the PelviNeXt architecture and its components in the 'Conclusion' section.\"\n    },\n    \"chk_data\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"The deduplicated PCOSGen benchmark contains only 225 images, and PXR150 contains 150 radiographs.\",\n      \"reason\": \"The poster accurately identifies both datasets and their sizes in the 'Limitations' section.\"\n    },\n    \"chk_setup\": {\n      \"label\": \"missing\",\n      \"poster_evidence\": \"\",\n      \"reason\": \"The poster mentions 5-fold cross-validation but completely omits the training details such as AdamW, batch size 16, 30 epochs, and class-aware data augmentation.\"\n    },\n    \"chk_primary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"PelviNeXt achieved 92.00% accuracy and 0.9051 AUROC for PCOS classification and state-of-the-art PXR150 performance with 87.33% accuracy and 0.8920 AUROC.\",\n      \"reason\": \"The poster accurately reports the primary quantitative results for both datasets in the 'Conclusion' section and the results tables.\"\n    },\n    \"chk_secondary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"PelviNeXt also produced narrower confidence intervals across most metrics. Its specificity varied by ±2.99 percentage points, compared with ±12.59 for ViT-B/16, indicating more stable performance in a low-data setting.\",\n      \"reason\": \"The poster accurately reports the secondary finding regarding narrower confidence intervals and stable performance in low-data regimes (matching draft b).\"\n    },\n    \"chk_baseline\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"ViT-B/16 achieved 89.33% accuracy and 0.8629 AUROC; ResNet-101 achieved 88.44% accuracy and 0.8479 AUROC; DenseNet-169 achieved 88.89% accuracy and 0.8418 AUROC.\",\n      \"reason\": \"The poster compares PelviNeXt against standard baselines (ViT-B/16, ResNet-101, DenseNet-169) and lists Patch Ensemble in Table 3.\"\n    },\n    \"chk_conclusion\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"The results support PelviNeXt as a foundation for reliable computer-assisted pelvic imaging in data-scarce and under-researched areas of women’s health.\",\n      \"reason\": \"The poster's conclusion matches the reference take-home message.\"\n    },\n    \"chk_limitation\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Both evaluated datasets are small. The deduplicated PCOSGen benchmark contains only 225 images, and PXR150 contains 150 radiographs. These sample sizes limit statistical power...\",\n      \"reason\": \"The poster explicitly discusses the small dataset sizes and limited statistical power in the 'Limitations' section.\"\n    }\n  }\n}\n```"
+}

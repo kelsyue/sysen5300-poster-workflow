@@ -242,7 +242,8 @@ git diff -- harness/judge/prompts/system.md harness/judge/prompts/coverage.md \
 
 ## Revision 2 (2026-11-01)
 
-Prompt hash: `2436aa149d86bdcca81859577dce3c270efe6604190a60499f8513ffea4f0e02` (revision 1 was `b869632d…`).
+Prompt hash: `4ec65050cfdc718218dbc587f672291e733fd03b1254c20d77b61b0933e16162` (revision 1 was `b869632d…`;
+the first revision 2 commit, without the canvas measurement, was `2436aa14…` and was never run).
 No variable definition or formula changed; every CSV column is computed as before.
 
 What changed:
@@ -258,7 +259,14 @@ What changed:
 4. **Derived numbers** (`claims_extract.md`, `claims_verify.md`). A sentence with several
    values becomes one claim per value; differences, gains and ratios are recomputed from the
    paper's numbers, with the computation in the reason.
-5. **Blank instead of 0** (`judge.py`). A claims task that did not finish leaves `n_claims_*`
+5. **Measured blank canvas** (`judge.py` `canvas_map`, `quality.md`). Code splits the rendered
+   poster into a 12 x 9 grid (4 x 4 in cells on a 48 x 36 in poster), marks each cell blank or
+   not (less than 0.4% of its pixels differ from the background colour), and gives the judge the
+   blank share and the map. The prompt says blank cells inside a section or at the end of a
+   column are unused canvas; about a quarter or more is a major layout weakness and about a
+   tenth a noticeable one, under the existing anchors; judge the unused share, never the amount
+   of text. Same rule for every poster, no model involved; the judge still sets every score.
+6. **Blank instead of 0** (`judge.py`). A claims task that did not finish leaves `n_claims_*`
    and `halluc_per1k` blank instead of writing partial counts. Five recorded rows were blanked
    (four Gemini rows in `data/latex/judge_scores.csv`, P-KXPT in `gpt4o_calibration_revision_1/`).
 
@@ -271,15 +279,25 @@ Why (from the team's hand scores on the 12 development posters):
 
 Tested (few cents, single calls, not an agreement measurement):
 - Change 4 works: GPT-4o now flags the P-BZ7R claim.
-- Change 2 does not fix GPT-4o: on the dry-run P01 Llama poster (bottom half blank) it still
-  answered "no empty space" and scored 4. Asked directly outside the scoring task, it did say
-  the bottom is mostly blank. A code measurement of blank canvas would fix this; the team chose
-  not to add one, so expect GPT-4o to keep overrating sparse posters.
+- Changes 1-2 alone did not fix GPT-4o: on the dry-run P01 Llama poster (bottom half blank) it
+  still answered "no empty space" and scored 4, also when first asked to describe the top,
+  middle and bottom of the poster. Asked directly outside the scoring task, it did say the
+  bottom is mostly blank, so the measurement (change 5) was added.
+- With change 5 (measured: Llama poster 49% blank, Claude poster 14%):
+  GPT-4o: Llama poster empty space yes, layout 2, quality 3 (was 4); Claude poster layout 3,
+  quality 3. Gemini: Llama poster layout 2, quality 2; Claude poster quality 2, mainly for the
+  duplicated tables. GPT-4o placed the Claude poster's gap in the wrong corner, so the map
+  helps it notice blank space more than locate it.
 - Change 3 is untested.
+
+Holdout caution: these checks used the dry-run P01 posters, and P01 is a planned holdout paper.
+No human P01 scores were looked at and no prompt wording mentions P01, but the team may prefer
+a different holdout paper, or to note this in the methodology.
 
 Tried and dropped: sending four zoomed quarters of the poster (about 4,000 more tokens per
 poster per judge; did not help GPT-4o see the layout); asking the judge to describe the top,
 middle and bottom of the poster first (it listed section names instead of seeing blank space).
+The measured map adds about 180 input tokens to the quality call.
 
 Not done, because they would change a variable's definition or calculation: computing the
 holistic score from the sub-scores; removing fidelity from quality.

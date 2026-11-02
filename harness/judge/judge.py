@@ -164,6 +164,27 @@ def render_poster(poster_path: Path, out: Path, max_px: int) -> Path:
     return out
 
 
+CANVAS_GRID = (12, 9)     # columns x rows; a 48 x 36 in poster gives 4 x 4 in cells
+CANVAS_INK = 0.004        # a cell with less than this share of non-background pixels is blank
+
+
+def canvas_map(png: Path) -> tuple[float, list[str]]:
+    """Share of the poster left blank, and a coarse map of it ('#' content, '.' blank).
+
+    Judges miss large unused areas in a downscaled poster, so the quality prompt is given
+    this measurement. Background is the most common grey level; a pixel is ink when it
+    differs from it by more than 24 of 255. Same rule for every poster, no model involved."""
+    import numpy as np
+    from PIL import Image
+    with Image.open(png) as im:
+        a = np.asarray(im.convert("L"), dtype=np.int16)
+    ink = np.abs(a - np.bincount(a.ravel()).argmax()) > 24
+    (h, w), (cols, rows) = a.shape, CANVAS_GRID
+    lines = ["".join("#" if ink[r * h // rows:(r + 1) * h // rows, c * w // cols:(c + 1) * w // cols].mean() >= CANVAS_INK
+                     else "." for c in range(cols)) for r in range(rows)]
+    return sum(l.count(".") for l in lines) / (cols * rows), lines
+
+
 def paper_text_for(pid: str, papers: Path, text_dir: Path) -> str:
     """Full paper text: data/paper_text/<id>.txt, extracted from papers/<id>.pdf on first use."""
     txt = text_dir / f"{pid}.txt"
@@ -356,8 +377,11 @@ def task_claims(j: JudgeClient, poster_text, paper_text, batch_size):
 
 
 def task_quality(j: JudgeClient, png, ref_text, size_in):
+    blank, lines = canvas_map(png)
     res = j.ask(load_prompt("quality", reference=ref_text,
-                            width_in=f"{size_in[0]:g}", height_in=f"{size_in[1]:g}"), [png])
+                            width_in=f"{size_in[0]:g}", height_in=f"{size_in[1]:g}",
+                            canvas_map="\n".join(lines), blank_pct=f"{100 * blank:.0f}",
+                            cell_in=f"{size_in[0] / CANVAS_GRID[0]:g} × {size_in[1] / CANVAS_GRID[1]:g}"), [png])
     out = {}
     if res.data:
         for key, col in [("holistic", "quality_score"), ("layout", "quality_layout"),

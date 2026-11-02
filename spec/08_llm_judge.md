@@ -54,7 +54,7 @@ Hallucination follows the FActScore approach (Min et al., 2023): break text into
 
 The quality prompt states the printed size (from `poster_width_inches` × `poster_height_inches`) and tells the judge that blurry text in the downscaled image is not by itself a readability problem; otherwise every 48 × 36 in poster looks unreadable at 2,000 px.
 
-Since judge prompt revision 2 (2026-11-01), before scoring the quality judge records eight yes/no observations (empty space, overflow, duplicated visual, small figure/table text, dense text, caption mismatch, unclear order, hidden main result) with locations. They are kept in `judge_raw/` only; `quality_score` is still the judge's holistic 1–5 rating, and no column or formula changed. Revision 2 also treats unused canvas as a layout weakness (judged by blank space, not word count) and makes claim verification recompute derived numbers. See `harness/judge/calibration_revision_note.md`.
+Since judge prompt revision 2 (2026-11-01), before scoring the quality judge records eight yes/no observations (empty space, overflow, duplicated visual, small figure/table text, dense text, caption mismatch, unclear order, hidden main result) with locations. They are kept in `judge_raw/` only; `quality_score` is still the judge's holistic 1–5 rating, and no column or formula changed. Revision 2 also gives the quality judge a code measurement of blank canvas (`canvas_map`: share of blank cells and a 12 × 9 map), because GPT-4o did not notice a half-empty poster without it, and treats unused canvas as a layout weakness (judged by blank space, not word count) and makes claim verification recompute derived numbers. See `harness/judge/calibration_revision_note.md`.
 
 ## 4. Reliability handling
 
@@ -99,7 +99,7 @@ Per poster per judge: 4+ calls (one extra verification call per 40 claims). P01 
 | `openai.gpt-4o` | 6,544 / 1,266 | 17,671 / 6,408 | 2,193 / 235 | 26,408 / 7,909 | 36,444 / 8,647 |
 | `gemini-3.5-flash` | 7,086 / 2,797 | 11,189 / 12,738 | 2,435 / 1,696 | 20,710 / 17,231 | 31,207 / 17,699 |
 
-Gemini's output includes thinking tokens. Claim verification always gets the full paper. The image is a small part (the gateway providers downscale it to about 1,000 px); a single PNG of the whole poster is cheaper than tiles or the PDF. Revision 2 adds about 650 input and 150–200 output tokens to the quality call (the observation list; GPT-4o on P01: 3,249 in); four zoomed quarters were tried and dropped: about 4,000 more tokens per poster, and they did not help GPT-4o see the layout.
+Gemini's output includes thinking tokens. Claim verification always gets the full paper. The image is a small part (the gateway providers downscale it to about 1,000 px); a single PNG of the whole poster is cheaper than tiles or the PDF. Revision 2 adds about 850 input and 150–200 output tokens to the quality call (observation list and canvas map; GPT-4o on P01: about 3,430 in); four zoomed quarters were tried and dropped: about 4,000 more tokens per poster, and they did not help GPT-4o see the layout.
 
 A reference sheet costs about 28,000 tokens once per paper (P01: two drafts and two comparisons) and saves about 10,000 input tokens per poster per judge, so it pays for itself on the first poster: 30 papers × 4 candidates × 2 judges ≈ 2.4 M tokens saved for ≈ 0.85 M spent. Full run: two judges × 120 posters ≈ 960+ calls and ≈ 9 M tokens, plus pilot repeats. Track `tokens_in` / `tokens_out` in `judge_scores.csv`.
 

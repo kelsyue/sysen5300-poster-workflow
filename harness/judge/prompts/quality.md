@@ -22,8 +22,15 @@ A clean template, large blank areas, high coverage or zero flagged claims does n
 
 In each existing reason field, identify a concrete location or visual feature and its communication effect. Check the full canvas before claiming that space is well used or that no important text/figure is too small. Assess whether captions identify the correct visual and whether retained source numbering actually creates confusion; nonconsecutive source figure numbers alone are not a quality defect. Do not invent image details or infer a desired score from scientific accuracy.
 
+MEASURED CANVAS (computed by code from the same image; more reliable than your view of the downscaled image for blank space):
+Blank share of the canvas: {{blank_pct}}%
+Map, top to bottom; each character is about {{cell_in}} inches; # = text or graphics, . = blank:
+{{canvas_map}}
+
+Use this measurement for empty_space and for the layout criterion's use of the canvas. Blank cells inside a section or at the end of a column are unused canvas; a narrow ring of blank cells around the edge or a thin row between sections is margin or spacing. Under the anchors above, unused canvas of about a quarter of the poster or more is a major layout weakness, and about a tenth is a noticeable one. Judge only the unused share, never the amount of text.
+
 Observations (record before scoring; each is a check, not a score):
-- empty_space: a blank region larger than about one tenth of the canvas, other than margins. Check the whole canvas, including the lower part of every column, before answering.
+- empty_space: a blank region larger than about one tenth of the canvas, other than margins. Answer from the measured canvas map, and give its location in where.
 - overflow: text or a visual that is clipped, overlaps other content, or runs outside its box.
 - duplicate_visual: the same or a near-identical figure or table appears more than once, including a table typed out as text that is also shown as an image of the same table.
 - small_visual_text: figure or table text (axes, legends, cells, labels) too small to read at 1–2 m.

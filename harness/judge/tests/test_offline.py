@@ -71,7 +71,7 @@ class FakeCompletions:
             if self.drop_verdict and len(body["verdicts"]) > 1:
                 body["verdicts"].pop()
         elif "POSTER QUALITY" in text:
-            assert has_image and "48 × 36 inches" in text
+            assert has_image and "48 × 36 inches" in text and "Blank share of the canvas: " in text
             if not self.broke_once:
                 self.broke_once = True
                 return self._resp("Sure! Here is my rating: {layout: 4")
@@ -162,6 +162,22 @@ def test_judge_run(tmp: Path):
                ["n_claims_total", "n_claims_unsupported", "n_claims_contradicted", "halluc_per1k"]), partial
     assert all(x["coverage_pct"] and x["quality_score"] == "4" for x in partial)   # other tasks still count
     print("judge.py offline run: OK  (model calls:", fake.calls, ")")
+
+
+def test_canvas_map(tmp: Path):
+    """Content only in the top half: about half the canvas is blank, and the map shows where."""
+    im = Image.new("RGB", (1200, 900), "white")
+    draw = ImageDraw.Draw(im)
+    for y in range(20, 430, 12):                      # lines of "text" across the top half
+        draw.line([(20, y), (1180, y)], fill="black", width=3)
+    im.save(tmp / "half.png")
+    blank, lines = judge.canvas_map(tmp / "half.png")
+    assert len(lines) == judge.CANVAS_GRID[1] and all(len(l) == judge.CANVAS_GRID[0] for l in lines)
+    assert set(lines[0]) == {"#"} and set(lines[-1]) == {"."}, lines
+    assert 0.4 < blank < 0.6, blank
+    Image.new("RGB", (1200, 900), (30, 60, 120)).save(tmp / "dark.png")   # a plain dark poster is blank too
+    assert judge.canvas_map(tmp / "dark.png")[0] == 1.0
+    print("canvas_map: OK")
 
 
 def test_pilot(tmp: Path):
@@ -291,4 +307,5 @@ if __name__ == "__main__":
     (base / "ref").mkdir(exist_ok=True)
     test_reference_sheet(base / "ref")
     test_judge_run(base / "run")
+    test_canvas_map(base / "run")
     test_pilot(base / "pilot")

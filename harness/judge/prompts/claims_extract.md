@@ -3,7 +3,7 @@ TASK: CLAIM EXTRACTION (step 1 of 2 for hallucination)
 Enumerate independently checkable atomic factual claim occurrences in the supplied poster text before any verification. One occurrence states one fact that could be checked against the paper. This is an occurrence audit, not a list of unique facts.
 
 Rules:
-- Split compound statements into separately checkable facts. A numerical claim retains enough surrounding context to identify its metric, subject, comparator, sample or population denominator, and evaluation setting.
+- Split compound statements into separately checkable facts. A sentence that gives values for several items (for example, "A improved by x, B by y, and C by z") gives one claim per value. A numerical claim retains enough surrounding context to identify its metric, subject, comparator, sample or population denominator, and evaluation setting.
 - Count repeated occurrences separately, even when they repeat the same fact in body text, a caption, or a table. Do not deduplicate semantically identical occurrences.
 - A printed mean and its accompanying ± spread are separate numerical claims. Preserve which value is the mean and which is the stated uncertainty or spread; do not assume the spread is a standard deviation if the poster does not say so.
 - Include substantive table entries and captions present in the input. For each table entry retain its row/column labels and units as context. Header labels provide context but are not extra factual occurrences by themselves. Do not treat an entire numerical table as a single claim.

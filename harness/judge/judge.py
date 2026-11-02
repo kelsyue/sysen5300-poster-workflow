@@ -422,17 +422,20 @@ def judge_poster(j: JudgeClient, row: dict, repeat: int, cfg: dict, paths: dict)
     contra = [c for c in verified if c["label"] == "contradicted"]
     flagged = [{"text": c["text"], "label": c["label"], "reason": c.get("reason", "")} for c in unsup + contra]
     failed = [n for n, r in [("coverage", cov_res), ("claims", clm_res), ("quality", q_res)] if r.error]
+    # A claims task with any batch failed or any claim unverdicted is an incomplete audit:
+    # its counts would read as "0 unsupported", so they stay blank (flagged_claims keeps what was found).
+    claims_ok = bool(clm_res.data) and not clm_res.error
 
     out = {
         "poster_code": code, "judge_model": j.model, "judge_repeat": repeat,
         "judge_prompt_sha256": paths["prompt_sha"], "input_paper_id": pid,
         **{i: ("NA" if cov.get(i, "x") is None else cov.get(i, "")) for i in ITEMS},
         "coverage_pct": round(100 * sum(applicable) / len(applicable), 2) if applicable else "",
-        "n_claims_total": len(verified) if clm_res.data else "",
-        "n_claims_unsupported": len(unsup) + len(contra) if clm_res.data else "",
-        "n_claims_contradicted": len(contra) if clm_res.data else "",
+        "n_claims_total": len(verified) if claims_ok else "",
+        "n_claims_unsupported": len(unsup) + len(contra) if claims_ok else "",
+        "n_claims_contradicted": len(contra) if claims_ok else "",
         "poster_word_count": words,
-        "halluc_per1k": round(1000 * (len(unsup) + len(contra)) / words, 3) if clm_res.data and words else "",
+        "halluc_per1k": round(1000 * (len(unsup) + len(contra)) / words, 3) if claims_ok and words else "",
         "flagged_claims": json.dumps(flagged, ensure_ascii=False),
         **{k: ("" if qual.get(k) is None else qual[k]) for k in
            ["quality_score", "quality_layout", "quality_readability", "quality_fidelity"]},

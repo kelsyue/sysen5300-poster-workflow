@@ -35,6 +35,7 @@ class FakeCompletions:
     def __init__(self):
         self.calls = 0
         self.broke_once = False
+        self.drop_verdict = False   # True: verifier skips one claim, as truncated replies do
 
     def create(self, model, messages, temperature, max_tokens):
         self.calls += 1
@@ -67,6 +68,8 @@ class FakeCompletions:
             listed = re.findall(r"^(\d+)\. (.+)$", text.split("CLAIMS:")[1], flags=re.M)
             body = {"verdicts": [{"id": i, "label": verdict[t][0], "paper_evidence": verdict[t][1]}
                                  for i, (_, t) in enumerate(listed, 1)]}
+            if self.drop_verdict and len(body["verdicts"]) > 1:
+                body["verdicts"].pop()
         elif "POSTER QUALITY" in text:
             assert has_image and "48 × 36 inches" in text
             if not self.broke_once:
@@ -145,6 +148,19 @@ def test_judge_run(tmp: Path):
         judge.prompt_sha256 = real
     rows = list(csv.DictReader(open(out)))
     assert len(rows) == 10 and sum(x["judge_prompt_sha256"] == "edited" for x in rows) == 2
+    # an incomplete claim audit must leave the counts blank, not report "0 unsupported"
+    fake.drop_verdict = True
+    judge.prompt_sha256 = lambda: "partial"
+    try:
+        judge.main(args + ["--repeats", "1", "--only-codes", "P-AAAA"], client=client)
+    finally:
+        judge.prompt_sha256 = real
+        fake.drop_verdict = False
+    partial = [x for x in csv.DictReader(open(out)) if x["judge_prompt_sha256"] == "partial"]
+    assert len(partial) == 2 and all(x["failed_tasks"] == "claims" and x["parse_ok"] == "0" for x in partial)
+    assert all(x[k] == "" for x in partial for k in
+               ["n_claims_total", "n_claims_unsupported", "n_claims_contradicted", "halluc_per1k"]), partial
+    assert all(x["coverage_pct"] and x["quality_score"] == "4" for x in partial)   # other tasks still count
     print("judge.py offline run: OK  (model calls:", fake.calls, ")")
 
 

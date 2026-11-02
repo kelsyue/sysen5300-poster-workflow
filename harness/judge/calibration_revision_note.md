@@ -239,3 +239,66 @@ git diff -- harness/judge/prompts/system.md harness/judge/prompts/coverage.md \
   harness/judge/prompts/claims_extract.md harness/judge/prompts/claims_verify.md \
   harness/judge/prompts/quality.md
 ```
+
+## Revision 2 (2026-11-01)
+
+Prompt hash: `2436aa149d86bdcca81859577dce3c270efe6604190a60499f8513ffea4f0e02` (revision 1 was `b869632d…`).
+No variable definition or formula changed; every CSV column is computed as before.
+
+What changed:
+1. **Quality checklist** (`quality.md`). Before scoring, the judge records eight yes/no
+   observations with locations: empty space, overflow, duplicated visual, small figure/table
+   text, dense text, caption mismatch, unclear order, hidden main result. Each problem found
+   must appear in the matching criterion's reason. Kept in `judge_raw/` only.
+2. **Unused canvas** (`quality.md`). The old wording excused large blank areas unless content
+   was compressed elsewhere. Now unused canvas is a layout weakness, judged by blank space and
+   not word count, so a short poster that fills its canvas is not penalized.
+3. **Typed table plus table image** (`quality.md`). The duplicated-visual check names a table
+   typed as text and also shown as an image of the same table (seen on P01).
+4. **Derived numbers** (`claims_extract.md`, `claims_verify.md`). A sentence with several
+   values becomes one claim per value; differences, gains and ratios are recomputed from the
+   paper's numbers, with the computation in the reason.
+5. **Blank instead of 0** (`judge.py`). A claims task that did not finish leaves `n_claims_*`
+   and `halluc_per1k` blank instead of writing partial counts. Five recorded rows were blanked
+   (four Gemini rows in `data/latex/judge_scores.csv`, P-KXPT in `gpt4o_calibration_revision_1/`).
+
+Why (from the team's hand scores on the 12 development posters):
+- GPT-4o (revision 1) gave every poster quality 4, with near-identical reasons.
+- Humans scored the three short Llama posters 1-2 and the rest 3-4. Both judges scored the Llama
+  posters highest (GPT-4o 5.0 mean on the original prompt). These posters leave much of the
+  canvas blank.
+- On P-BZ7R GPT-4o accepted "OCA added 2.7%, REG 2.4%"; the paper's Table IV gives 3.67 and 2.33.
+
+Tested (few cents, single calls, not an agreement measurement):
+- Change 4 works: GPT-4o now flags the P-BZ7R claim.
+- Change 2 does not fix GPT-4o: on the dry-run P01 Llama poster (bottom half blank) it still
+  answered "no empty space" and scored 4. Asked directly outside the scoring task, it did say
+  the bottom is mostly blank. A code measurement of blank canvas would fix this; the team chose
+  not to add one, so expect GPT-4o to keep overrating sparse posters.
+- Change 3 is untested.
+
+Tried and dropped: sending four zoomed quarters of the poster (about 4,000 more tokens per
+poster per judge; did not help GPT-4o see the layout); asking the judge to describe the top,
+middle and bottom of the poster first (it listed section names instead of seeing blank space).
+
+Not done, because they would change a variable's definition or calculation: computing the
+holistic score from the sub-scores; removing fidelity from quality.
+
+Bias checks for the re-run:
+- The hand scores in `manual_scoring.pdf` name the model next to each poster, so they were not
+  blind. Score the holdout posters by code only.
+- No worked examples from the 12 development posters were added to any prompt.
+- After the re-run, compare the judge-minus-human gap per candidate model; a gap that stands out
+  for one model means the judge is biased for or against it.
+
+Protocol: spec/08 allows one revision per judge. Revision 2 was made on the same development
+posters before any holdout result; the team should record whether it counts as the second.
+
+Re-run GPT-4o on the 12 development posters (about $1.80; separate folder so revision 1 raw
+files are kept):
+
+```bash
+caffeinate -i python judge/judge.py --judges openai.gpt-4o --manifest data/latex/judge_manifest.csv \
+  --only-codes P-9C6K,P-A4AR,P-BZ7R,P-C2FT,P-K9BT,P-KXPT,P-PST6,P-QQS9,P-SH4A,P-YB63,P-Z35D,P-Z8KP \
+  --data-dir data/latex/gpt4o_calibration_revision_2
+```

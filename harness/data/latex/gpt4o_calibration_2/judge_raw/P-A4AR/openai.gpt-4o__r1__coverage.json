@@ -1,0 +1,58 @@
+{
+  "model": "openai.gpt-4o",
+  "repeat": 1,
+  "judge_prompt_sha256": "4ec65050cfdc718218dbc587f672291e733fd03b1254c20d77b61b0933e16162",
+  "error": null,
+  "tokens_in": 11610,
+  "tokens_out": 1088,
+  "parsed": {
+    "items": {
+      "chk_problem": {
+        "label": "accurate",
+        "poster_evidence": "Accurate T-staging is crucial for guiding personalized treatment strategies for laryngopharyngeal cancer. However, current clinical practice relies on invasive biopsy procedures, whereas CT-based staging remains challenging due to the complex patterns of tumor invasion.",
+        "reason": "The poster accurately describes the research problem, including the challenges of CT-based staging and the limitations of existing methods, matching the reference."
+      },
+      "chk_method": {
+        "label": "accurate",
+        "poster_evidence": "We propose an anatomy-aware multimodal framework that integrates organ-level CT context and radiology reports into a unified representation for laryngopharyngeal T-staging. The framework first constructs an Anatomy-Structured Organ Graph (AOG) that captures invasion patterns between primary sites and surrounding organs, then performs Organ-Anchored Cross-Modal Alignment (OCA) so that each organ node aggregates textual evidence from the radiology report, and finally refines this graph representation by injecting organ-specific invasion cues extracted from the report via Report-Enhanced Graph-Refinement (REG).",
+        "reason": "The poster provides a detailed description of the method, including its components (AOG, OCA, REG), aligning with the reference."
+      },
+      "chk_data": {
+        "label": "accurate",
+        "poster_evidence": "We collect the first and largest dataset for CT-based laryngopharyngeal cancer T-staging, comprising 656 patients across four medical centers, all paired with CT reports for multimodal assessment.",
+        "reason": "The poster specifies the dataset size, composition, and paired CT scans and radiology reports, matching the reference."
+      },
+      "chk_setup": {
+        "label": "accurate",
+        "poster_evidence": "Implementation: PyTorch on NVIDIA H20; CT resampled to 1mm isotropic, resized to 128x128x128, HU window center 50 / width 450, intensities normalized to [0,1]; Adam optimizer, batch size 8, cosine LR decay from 1e-6 to 1e-7, weight decay 1e-5.",
+        "reason": "The poster describes the experimental setup, including preprocessing, hardware, and training details, consistent with the reference."
+      },
+      "chk_primary_result": {
+        "label": "accurate",
+        "poster_evidence": "Binary (Early T1-T2 vs. Late T3-T4): internal F1 80.83% / Acc 81.53%, surpassing the second-best MMI (77.59% F1, 78.57% Acc). External F1 76.46% / Acc 76.50%, outperforming TGCAM (74.09% F1, 74.38% Acc) by a significant margin.",
+        "reason": "The poster reports the primary binary classification results (F1 and accuracy) for internal and external test sets, matching the reference."
+      },
+      "chk_secondary_result": {
+        "label": "accurate",
+        "poster_evidence": "Three-class (T1, T2, T3-T4): internal F1 61.43% / Acc 63.33%, improving over MMBCD (58.44% F1, 61.14% Acc). External F1 60.27% / Acc 63.78%, outperforming the second-best method by a large margin of 8.73% F1 and 7.78% accuracy.",
+        "reason": "The poster provides the secondary three-class classification results (F1 and accuracy) for internal and external test sets, consistent with the reference."
+      },
+      "chk_baseline": {
+        "label": "accurate",
+        "poster_evidence": "Comparison with image-only methods (SwinViT, VDPF, MRSN) and state-of-the-art multimodal methods (CPAM, TGCAM, MMBCD, LViT, MMI). Our method is superior across all settings.",
+        "reason": "The poster lists the baselines and states the comparison results, aligning with the reference."
+      },
+      "chk_conclusion": {
+        "label": "accurate",
+        "poster_evidence": "We introduced an anatomy-structured multimodal framework for laryngopharyngeal cancer T-staging that integrates CT volumes and paired radiology reports. Extensive experiments on the largest curated laryngopharyngeal cancer T-staging dataset and public benchmarks show consistent gains over state-of-the-art unimodal and multimodal baselines in both binary and multiclass staging, with notable gains over radiologist assessments.",
+        "reason": "The poster summarizes the framework's contributions and performance, matching the reference conclusion."
+      },
+      "chk_limitation": {
+        "label": "accurate",
+        "poster_evidence": "Deployment considerations include validating the segmentation model on site-specific data, accommodating institutional reporting differences, and prospective validation on independent cohorts.",
+        "reason": "The poster mentions limitations related to segmentation model validation and reporting differences, consistent with the reference."
+      }
+    }
+  },
+  "raw": "```json\n{\n  \"items\": {\n    \"chk_problem\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Accurate T-staging is crucial for guiding personalized treatment strategies for laryngopharyngeal cancer. However, current clinical practice relies on invasive biopsy procedures, whereas CT-based staging remains challenging due to the complex patterns of tumor invasion.\",\n      \"reason\": \"The poster accurately describes the research problem, including the challenges of CT-based staging and the limitations of existing methods, matching the reference.\"\n    },\n    \"chk_method\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"We propose an anatomy-aware multimodal framework that integrates organ-level CT context and radiology reports into a unified representation for laryngopharyngeal T-staging. The framework first constructs an Anatomy-Structured Organ Graph (AOG) that captures invasion patterns between primary sites and surrounding organs, then performs Organ-Anchored Cross-Modal Alignment (OCA) so that each organ node aggregates textual evidence from the radiology report, and finally refines this graph representation by injecting organ-specific invasion cues extracted from the report via Report-Enhanced Graph-Refinement (REG).\",\n      \"reason\": \"The poster provides a detailed description of the method, including its components (AOG, OCA, REG), aligning with the reference.\"\n    },\n    \"chk_data\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"We collect the first and largest dataset for CT-based laryngopharyngeal cancer T-staging, comprising 656 patients across four medical centers, all paired with CT reports for multimodal assessment.\",\n      \"reason\": \"The poster specifies the dataset size, composition, and paired CT scans and radiology reports, matching the reference.\"\n    },\n    \"chk_setup\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Implementation: PyTorch on NVIDIA H20; CT resampled to 1mm isotropic, resized to 128x128x128, HU window center 50 / width 450, intensities normalized to [0,1]; Adam optimizer, batch size 8, cosine LR decay from 1e-6 to 1e-7, weight decay 1e-5.\",\n      \"reason\": \"The poster describes the experimental setup, including preprocessing, hardware, and training details, consistent with the reference.\"\n    },\n    \"chk_primary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Binary (Early T1-T2 vs. Late T3-T4): internal F1 80.83% / Acc 81.53%, surpassing the second-best MMI (77.59% F1, 78.57% Acc). External F1 76.46% / Acc 76.50%, outperforming TGCAM (74.09% F1, 74.38% Acc) by a significant margin.\",\n      \"reason\": \"The poster reports the primary binary classification results (F1 and accuracy) for internal and external test sets, matching the reference.\"\n    },\n    \"chk_secondary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Three-class (T1, T2, T3-T4): internal F1 61.43% / Acc 63.33%, improving over MMBCD (58.44% F1, 61.14% Acc). External F1 60.27% / Acc 63.78%, outperforming the second-best method by a large margin of 8.73% F1 and 7.78% accuracy.\",\n      \"reason\": \"The poster provides the secondary three-class classification results (F1 and accuracy) for internal and external test sets, consistent with the reference.\"\n    },\n    \"chk_baseline\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Comparison with image-only methods (SwinViT, VDPF, MRSN) and state-of-the-art multimodal methods (CPAM, TGCAM, MMBCD, LViT, MMI). Our method is superior across all settings.\",\n      \"reason\": \"The poster lists the baselines and states the comparison results, aligning with the reference.\"\n    },\n    \"chk_conclusion\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"We introduced an anatomy-structured multimodal framework for laryngopharyngeal cancer T-staging that integrates CT volumes and paired radiology reports. Extensive experiments on the largest curated laryngopharyngeal cancer T-staging dataset and public benchmarks show consistent gains over state-of-the-art unimodal and multimodal baselines in both binary and multiclass staging, with notable gains over radiologist assessments.\",\n      \"reason\": \"The poster summarizes the framework's contributions and performance, matching the reference conclusion.\"\n    },\n    \"chk_limitation\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Deployment considerations include validating the segmentation model on site-specific data, accommodating institutional reporting differences, and prospective validation on independent cohorts.\",\n      \"reason\": \"The poster mentions limitations related to segmentation model validation and reporting differences, consistent with the reference.\"\n    }\n  }\n}\n```"
+}

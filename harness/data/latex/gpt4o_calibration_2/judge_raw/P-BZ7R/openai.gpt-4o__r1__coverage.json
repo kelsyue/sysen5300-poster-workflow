@@ -1,0 +1,58 @@
+{
+  "model": "openai.gpt-4o",
+  "repeat": 1,
+  "judge_prompt_sha256": "4ec65050cfdc718218dbc587f672291e733fd03b1254c20d77b61b0933e16162",
+  "error": null,
+  "tokens_in": 10161,
+  "tokens_out": 1159,
+  "parsed": {
+    "items": {
+      "chk_problem": {
+        "label": "accurate",
+        "poster_evidence": "Accurate T-staging in laryngopharyngeal cancer is critical for treatment planning but remains challenging due to complex tumor invasion patterns. Current CT-based staging is subjective and labor-intensive, while biopsy is invasive. Existing computational methods either ignore anatomical structure or rely on labor-intensive tumor segmentation. Radiology reports contain organ-specific invasion details, but current multimodal models use global fusion, failing to align specific anatomical structures with their textual descriptions. This work addresses these gaps by proposing an anatomy-aware, fine-grained multimodal framework that integrates CT and radiology reports without requiring manual tumor masks.",
+        "reason": "The poster accurately describes the research problem, including the challenges of CT-based staging and limitations of existing methods, matching the reference."
+      },
+      "chk_method": {
+        "label": "accurate",
+        "poster_evidence": "We propose a three-module framework: 1) Anatomy-Structured Organ Graph (AOG) constructs an organ-level graph using pre-trained organ segmentations and clinical prior knowledge to model invasion patterns between primary sites and surrounding organs. 2) Organ-Anchored Cross-Modal Alignment (OCA) performs fine-grained alignment by using each organ node as a query over the radiology report to selectively aggregate relevant textual evidence, enhancing organ features while preserving anatomical topology. 3) Report-Enhanced Graph-Refinement (REG) uses a large language model to extract explicit invasion statements from the report and injects them as a text node connected only to primary sites and invaded organs, refining the graph without discarding anatomy-based risk connections.",
+        "reason": "The poster provides a detailed description of the proposed framework and its components, consistent with the reference."
+      },
+      "chk_data": {
+        "label": "accurate",
+        "poster_evidence": "Evaluated on 656 patients from four centers (FUZH, CGMH, EENT, TCGA).",
+        "reason": "The poster specifies the dataset of 656 patients from four medical centers, matching the reference."
+      },
+      "chk_setup": {
+        "label": "missing",
+        "poster_evidence": "",
+        "reason": "The poster does not provide details about the experimental setup, such as preprocessing steps or hardware used, which are described in the reference."
+      },
+      "chk_primary_result": {
+        "label": "accurate",
+        "poster_evidence": "In binary classification (T1-T2 vs T3-T4), our method achieved 80.83% F1 and 81.53% accuracy internally, and 76.46% F1 and 76.50% accuracy externally, outperforming the best baseline (MMI) by 3.24% F1 internally and 2.37% F1 externally.",
+        "reason": "The poster reports the primary results for binary classification with the correct metrics and values, consistent with the reference."
+      },
+      "chk_secondary_result": {
+        "label": "accurate",
+        "poster_evidence": "In three-class classification, we achieved 61.43% F1 and 63.33% accuracy internally, and 60.27% F1 and 63.78% accuracy externally, outperforming the best baseline by 8.73% F1 externally.",
+        "reason": "The poster provides the secondary results for three-class classification with the correct metrics and values, consistent with the reference."
+      },
+      "chk_baseline": {
+        "label": "accurate",
+        "poster_evidence": "Evaluated on 656 patients from four centers (FUZH, CGMH, EENT, TCGA). In binary classification (T1-T2 vs T3-T4), our method achieved 80.83% F1 and 81.53% accuracy internally, and 76.46% F1 and 76.50% accuracy externally, outperforming the best baseline (MMI) by 3.24% F1 internally and 2.37% F1 externally. In three-class classification, we achieved 61.43% F1 and 63.33% accuracy internally, and 60.27% F1 and 63.78% accuracy externally, outperforming the best baseline by 8.73% F1 externally.",
+        "reason": "The poster compares the proposed method against baselines, including unimodal and multimodal models, consistent with the reference."
+      },
+      "chk_conclusion": {
+        "label": "accurate",
+        "poster_evidence": "We introduced an anatomy-structured multimodal framework for laryngopharyngeal cancer T-staging that integrates CT and radiology reports via AOG, OCA, and REG modules. It captures organ-specific invasion patterns and textual evidence, achieving state-of-the-art performance and matching radiologist accuracy. The framework offers improved interpretability by aligning decisions with clinically meaningful invasion pathways.",
+        "reason": "The poster summarizes the take-home conclusion of the paper, emphasizing the framework's performance and interpretability, consistent with the reference."
+      },
+      "chk_limitation": {
+        "label": "accurate",
+        "poster_evidence": "Failure analysis revealed that errors stem from CT’s inherent limitations in distinguishing true invasion from contact, not misalignment. Clinical deployment considerations include validating the segmentation model on site-specific data and accounting for institutional reporting variations.",
+        "reason": "The poster discusses limitations related to CT-based assessment and deployment considerations, consistent with the reference."
+      }
+    }
+  },
+  "raw": "```json\n{\n  \"items\": {\n    \"chk_problem\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Accurate T-staging in laryngopharyngeal cancer is critical for treatment planning but remains challenging due to complex tumor invasion patterns. Current CT-based staging is subjective and labor-intensive, while biopsy is invasive. Existing computational methods either ignore anatomical structure or rely on labor-intensive tumor segmentation. Radiology reports contain organ-specific invasion details, but current multimodal models use global fusion, failing to align specific anatomical structures with their textual descriptions. This work addresses these gaps by proposing an anatomy-aware, fine-grained multimodal framework that integrates CT and radiology reports without requiring manual tumor masks.\",\n      \"reason\": \"The poster accurately describes the research problem, including the challenges of CT-based staging and limitations of existing methods, matching the reference.\"\n    },\n    \"chk_method\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"We propose a three-module framework: 1) Anatomy-Structured Organ Graph (AOG) constructs an organ-level graph using pre-trained organ segmentations and clinical prior knowledge to model invasion patterns between primary sites and surrounding organs. 2) Organ-Anchored Cross-Modal Alignment (OCA) performs fine-grained alignment by using each organ node as a query over the radiology report to selectively aggregate relevant textual evidence, enhancing organ features while preserving anatomical topology. 3) Report-Enhanced Graph-Refinement (REG) uses a large language model to extract explicit invasion statements from the report and injects them as a text node connected only to primary sites and invaded organs, refining the graph without discarding anatomy-based risk connections.\",\n      \"reason\": \"The poster provides a detailed description of the proposed framework and its components, consistent with the reference.\"\n    },\n    \"chk_data\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Evaluated on 656 patients from four centers (FUZH, CGMH, EENT, TCGA).\",\n      \"reason\": \"The poster specifies the dataset of 656 patients from four medical centers, matching the reference.\"\n    },\n    \"chk_setup\": {\n      \"label\": \"missing\",\n      \"poster_evidence\": \"\",\n      \"reason\": \"The poster does not provide details about the experimental setup, such as preprocessing steps or hardware used, which are described in the reference.\"\n    },\n    \"chk_primary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"In binary classification (T1-T2 vs T3-T4), our method achieved 80.83% F1 and 81.53% accuracy internally, and 76.46% F1 and 76.50% accuracy externally, outperforming the best baseline (MMI) by 3.24% F1 internally and 2.37% F1 externally.\",\n      \"reason\": \"The poster reports the primary results for binary classification with the correct metrics and values, consistent with the reference.\"\n    },\n    \"chk_secondary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"In three-class classification, we achieved 61.43% F1 and 63.33% accuracy internally, and 60.27% F1 and 63.78% accuracy externally, outperforming the best baseline by 8.73% F1 externally.\",\n      \"reason\": \"The poster provides the secondary results for three-class classification with the correct metrics and values, consistent with the reference.\"\n    },\n    \"chk_baseline\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Evaluated on 656 patients from four centers (FUZH, CGMH, EENT, TCGA). In binary classification (T1-T2 vs T3-T4), our method achieved 80.83% F1 and 81.53% accuracy internally, and 76.46% F1 and 76.50% accuracy externally, outperforming the best baseline (MMI) by 3.24% F1 internally and 2.37% F1 externally. In three-class classification, we achieved 61.43% F1 and 63.33% accuracy internally, and 60.27% F1 and 63.78% accuracy externally, outperforming the best baseline by 8.73% F1 externally.\",\n      \"reason\": \"The poster compares the proposed method against baselines, including unimodal and multimodal models, consistent with the reference.\"\n    },\n    \"chk_conclusion\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"We introduced an anatomy-structured multimodal framework for laryngopharyngeal cancer T-staging that integrates CT and radiology reports via AOG, OCA, and REG modules. It captures organ-specific invasion patterns and textual evidence, achieving state-of-the-art performance and matching radiologist accuracy. The framework offers improved interpretability by aligning decisions with clinically meaningful invasion pathways.\",\n      \"reason\": \"The poster summarizes the take-home conclusion of the paper, emphasizing the framework's performance and interpretability, consistent with the reference.\"\n    },\n    \"chk_limitation\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Failure analysis revealed that errors stem from CT’s inherent limitations in distinguishing true invasion from contact, not misalignment. Clinical deployment considerations include validating the segmentation model on site-specific data and accounting for institutional reporting variations.\",\n      \"reason\": \"The poster discusses limitations related to CT-based assessment and deployment considerations, consistent with the reference.\"\n    }\n  }\n}\n```"
+}

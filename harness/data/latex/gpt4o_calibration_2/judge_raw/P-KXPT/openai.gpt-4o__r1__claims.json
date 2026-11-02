@@ -1,0 +1,661 @@
+{
+  "model": "openai.gpt-4o",
+  "repeat": 1,
+  "judge_prompt_sha256": "4ec65050cfdc718218dbc587f672291e733fd03b1254c20d77b61b0933e16162",
+  "error": "60 claims without verdict",
+  "tokens_in": 65166,
+  "tokens_out": 6651,
+  "parsed": {
+    "claims": [
+      {
+        "id": 1,
+        "text": "Accurate T-staging is crucial for personalized treatment of laryngopharyngeal cancer.",
+        "poster_quote": "Accurate T-staging is crucial for personalized treatment of laryngopharyngeal cancer.",
+        "label": "supported",
+        "paper_evidence": "Accurate T-staging is crucial for guiding personalized treatment strategies for laryngopharyngeal cancer.",
+        "reason": "Source: Abstract, confirms the importance of T-staging for personalized treatment."
+      },
+      {
+        "id": 2,
+        "text": "Early-stage laryngopharyngeal cancer is generally managed with organ-preserving surgery, laser resection, or definitive radiotherapy.",
+        "poster_quote": "Early-stage disease is generally managed with organ-preserving surgery, laser resection, or definitive radiotherapy.",
+        "label": "supported",
+        "paper_evidence": "Early-stage disease (T1–T2) is usually managed with partial laryngectomy, laser resection, or definitive radiotherapy.",
+        "reason": "Source: Introduction, explicitly states management strategies for early-stage disease."
+      },
+      {
+        "id": 3,
+        "text": "Advanced laryngopharyngeal cancer often requires total laryngectomy and adjuvant treatment.",
+        "poster_quote": "Advanced disease often requires total laryngectomy and adjuvant treatment.",
+        "label": "supported",
+        "paper_evidence": "Advanced stages (T3–T4) often require total laryngectomy combined with adjuvant therapies.",
+        "reason": "Source: Introduction, explicitly states management strategies for advanced-stage disease."
+      },
+      {
+        "id": 4,
+        "text": "Pathology-based staging is invasive and time-consuming.",
+        "poster_quote": "Pathology-based staging is invasive and time-consuming.",
+        "label": "supported",
+        "paper_evidence": "Although the current reference standard relies on biopsy-derived pathology, this process is invasive and time-consuming.",
+        "reason": "Source: Introduction, confirms pathology-based staging is invasive and time-consuming."
+      },
+      {
+        "id": 5,
+        "text": "Manual review of an entire 3D CT volume is labor-intensive and subjective.",
+        "poster_quote": "Manual review of an entire 3D CT volume is labor-intensive and subjective.",
+        "label": "supported",
+        "paper_evidence": "Manually reviewing an entire 3-D CT volume remains labor-intensive and subjective.",
+        "reason": "Source: Introduction, explicitly describes manual CT review as labor-intensive and subjective."
+      },
+      {
+        "id": 6,
+        "text": "Radiologists must track the tumor across many slices and assess extension into tightly packed adjacent structures.",
+        "poster_quote": "Radiologists must track the tumor across many slices and assess extension into tightly packed adjacent structures.",
+        "label": "supported",
+        "paper_evidence": "Radiologists must track the tumor across tens of axial slices and judge its extension into adjacent organs.",
+        "reason": "Source: Introduction, confirms radiologists assess tumor extension across slices and adjacent structures."
+      },
+      {
+        "id": 7,
+        "text": "Borderline invasion is particularly difficult to determine.",
+        "poster_quote": "Borderline invasion particularly difficult to determine.",
+        "label": "supported",
+        "paper_evidence": "Staging accuracy can suffer, especially in borderline cases.",
+        "reason": "Source: Introduction, explicitly mentions difficulty in determining borderline invasion."
+      },
+      {
+        "id": 8,
+        "text": "Reports often explicitly identify invaded organs.",
+        "poster_quote": "Reports often explicitly identify invaded organs.",
+        "label": "supported",
+        "paper_evidence": "Radiology reports often contain explicit statements about which organs are invaded.",
+        "reason": "Source: Methods, Report-Enhanced Graph-Refinement section, confirms reports explicitly identify invaded organs."
+      },
+      {
+        "id": 9,
+        "text": "Subtle or equivocal extension may be omitted from radiology reports.",
+        "poster_quote": "These observations are incomplete because subtle or equivocal extension may be omitted.",
+        "label": "supported",
+        "paper_evidence": "Radiologists typically report only obvious and clinically salient invasion, hence subtle or equivocal extension may be omitted.",
+        "reason": "Source: Methods, Report-Enhanced Graph-Refinement section, confirms omission of subtle invasion in reports."
+      },
+      {
+        "id": 10,
+        "text": "REG uses report evidence to refine anatomy-based connectivity.",
+        "poster_quote": "REG therefore uses report evidence to refine, rather than replace, anatomy-based connectivity.",
+        "label": "supported",
+        "paper_evidence": "Specifically, we design a Report-Enhanced Graph-Refinement (REG) module that reuses the global report representation as a text node in the graph, employs a large language model (LLM) to identify which organs are explicitly described as invaded in the report, and connects this text node only to primary sites and to those invaded organs, while keeping the original organ–organ edges unchanged.",
+        "reason": "Source: Methods, Report-Enhanced Graph-Refinement section, confirms REG refines anatomy-based connectivity using report evidence."
+      },
+      {
+        "id": 11,
+        "text": "The proposed framework combines CT-derived organ features with organ-specific evidence from radiology reports.",
+        "poster_quote": "We propose an annotation-free multimodal framework that combines CT-derived organ features with organ-specific evidence from radiology reports.",
+        "label": null,
+        "paper_evidence": "",
+        "reason": ""
+      },
+      {
+        "id": 12,
+        "text": "The framework contains three components: Anatomy-Structured Organ Graph (AOG), Organ-Anchored Cross-Modal Alignment (OCA), and Report-Enhanced Graph-Refinement (REG).",
+        "poster_quote": "The framework contains three components: Anatomy-Structured Organ Graph (AOG), Organ-Anchored Cross-Modal Alignment (OCA), and Report-Enhanced Graph-Refinement (REG).",
+        "label": null,
+        "paper_evidence": "",
+        "reason": ""
+      },
+      {
+        "id": 13,
+        "text": "Existing computer-aided approaches underrepresent the anatomy-structured pattern of tumor spread.",
+        "poster_quote": "Existing computer-aided approaches have two major limitations. First, whole-volume models and isolated tumor masks underrepresent the anatomy-structured pattern of tumor spread.",
+        "label": null,
+        "paper_evidence": "",
+        "reason": ""
+      },
+      {
+        "id": 14,
+        "text": "Manual tumor segmentation is costly and difficult because tumors have heterogeneous appearances.",
+        "poster_quote": "Manual tumor segmentation is also costly and difficult because tumors have heterogeneous appearances.",
+        "label": null,
+        "paper_evidence": "",
+        "reason": ""
+      },
+      {
+        "id": 15,
+        "text": "Conventional multimodal methods fuse global CT and report representations, making it difficult to align individual anatomical structures with their corresponding textual findings.",
+        "poster_quote": "Second, conventional multimodal methods fuse global CT and report representations, making it difficult to align individual anatomical structures with their corresponding textual findings.",
+        "label": null,
+        "paper_evidence": "",
+        "reason": ""
+      },
+      {
+        "id": 16,
+        "text": "A large language model extracts positive invasion statements for the esophagus, thyroid gland, trachea, and oral cavity while excluding negations and distinguishing the thyroid gland from thyroid cartilage.",
+        "poster_quote": "A large language model extracts positive invasion statements for the esophagus, thyroid gland, trachea, and oral cavity while excluding negations and distinguishing the thyroid gland from thyroid cartilage.",
+        "label": null,
+        "paper_evidence": "",
+        "reason": ""
+      },
+      {
+        "id": 17,
+        "text": "Manual review confirmed correct extraction of invasion statements.",
+        "poster_quote": "Manual review confirmed correct extraction, and multiple language models produced identical outputs on all 439 training reports.",
+        "label": null,
+        "paper_evidence": "",
+        "reason": ""
+      },
+      {
+        "id": 18,
+        "text": "Multiple language models produced identical outputs on all 439 training reports.",
+        "poster_quote": "Manual review confirmed correct extraction, and multiple language models produced identical outputs on all 439 training reports.",
+        "label": null,
+        "paper_evidence": "",
+        "reason": ""
+      },
+      {
+        "id": 19,
+        "text": "A global report representation is projected into a dedicated text node.",
+        "poster_quote": "A global report representation is projected into a dedicated text node.",
+        "label": null,
+        "paper_evidence": "",
+        "reason": ""
+      },
+      {
+        "id": 20,
+        "text": "The text node connects to all primary sites and only to target organs explicitly described as invaded.",
+        "poster_quote": "This node connects to all primary sites and only to target organs explicitly described as invaded; the original organ-to-organ edges remain unchanged.",
+        "label": null,
+        "paper_evidence": "",
+        "reason": ""
+      },
+      {
+        "id": 21,
+        "text": "Graph message passing over the report-enhanced topology allows high-confidence clinical evidence to directly guide feature refinement while retaining CT evidence from all anatomically at-risk organs.",
+        "poster_quote": "Graph message passing over this report-enhanced topology allows high-confidence clinical evidence to directly guide feature refinement while retaining CT evidence from all anatomically at-risk organs.",
+        "label": null,
+        "paper_evidence": "",
+        "reason": ""
+      },
+      {
+        "id": 22,
+        "text": "Global average pooling and a classification layer produce the final prediction.",
+        "poster_quote": "Global average pooling and a classification layer produce the final prediction.",
+        "label": null,
+        "paper_evidence": "",
+        "reason": ""
+      },
+      {
+        "id": 23,
+        "text": "The complete framework is trained end-to-end with cross-entropy loss.",
+        "poster_quote": "The complete framework is trained end-to-end with cross-entropy loss.",
+        "label": null,
+        "paper_evidence": "",
+        "reason": ""
+      },
+      {
+        "id": 24,
+        "text": "The biomedical text encoder is frozen in the final configuration to reduce computation and overfitting.",
+        "poster_quote": "The biomedical text encoder is frozen in the final configuration to reduce computation and overfitting.",
+        "label": null,
+        "paper_evidence": "",
+        "reason": ""
+      },
+      {
+        "id": 25,
+        "text": "AOG extracts features from predefined laryngopharyngeal structures using masks generated by a publicly available pretrained organ segmentation model.",
+        "poster_quote": "AOG extracts features from predefined laryngopharyngeal structures using masks generated by a publicly available pretrained organ segmentation model.",
+        "label": null,
+        "paper_evidence": "",
+        "reason": ""
+      },
+      {
+        "id": 26,
+        "text": "AOG constructs an anatomy-guided graph representing potential tumor spread from primary sites to surrounding organs.",
+        "poster_quote": "It then constructs an anatomy-guided graph representing potential tumor spread from primary sites to surrounding organs.",
+        "label": null,
+        "paper_evidence": "",
+        "reason": ""
+      },
+      {
+        "id": 27,
+        "text": "OCA lets every CT organ node query report tokens and aggregate the most relevant textual evidence.",
+        "poster_quote": "OCA lets every CT organ node query report tokens and aggregate the most relevant textual evidence.",
+        "label": null,
+        "paper_evidence": "",
+        "reason": ""
+      },
+      {
+        "id": 28,
+        "text": "REG adds a global report node and connects it to primary sites and organs explicitly described as invaded.",
+        "poster_quote": "REG adds a global report node and connects it to primary sites and organs explicitly described as invaded.",
+        "label": null,
+        "paper_evidence": "",
+        "reason": ""
+      },
+      {
+        "id": 29,
+        "text": "The refined multimodal graph is processed by a graph neural network and pooled for T-stage classification.",
+        "poster_quote": "The refined multimodal graph is processed by a graph neural network and pooled for T-stage classification.",
+        "label": null,
+        "paper_evidence": "",
+        "reason": ""
+      },
+      {
+        "id": 30,
+        "text": "The design preserves anatomically plausible risk pathways while selectively strengthening relationships supported by clinical reports.",
+        "poster_quote": "This design preserves anatomically plausible risk pathways while selectively strengthening relationships supported by clinical reports.",
+        "label": null,
+        "paper_evidence": "",
+        "reason": ""
+      },
+      {
+        "id": 31,
+        "text": "The framework is robust to organ segmentation noise because masks are used primarily to define cropping regions.",
+        "poster_quote": "The framework is robust to organ segmentation noise because masks are used primarily to define cropping regions.",
+        "label": null,
+        "paper_evidence": "",
+        "reason": ""
+      },
+      {
+        "id": 32,
+        "text": "Applying additional proportional dilation or erosion to automatically generated masks reduces F1 by 1.1% at 5% perturbation.",
+        "poster_quote": "Applying additional proportional dilation or erosion to automatically generated masks reduces F1 by only 1.1% at 5% perturbation.",
+        "label": null,
+        "paper_evidence": "",
+        "reason": ""
+      },
+      {
+        "id": 33,
+        "text": "Applying additional proportional dilation or erosion to automatically generated masks reduces F1 by 2.8% at 10% perturbation.",
+        "poster_quote": "Applying additional proportional dilation or erosion to automatically generated masks reduces F1 by only 2.8% at 10% perturbation.",
+        "label": null,
+        "paper_evidence": "",
+        "reason": ""
+      },
+      {
+        "id": 34,
+        "text": "Report robustness is evaluated by rewriting reports into less-detailed and more-detailed forms while preserving medical findings.",
+        "poster_quote": "Report robustness is evaluated by rewriting reports into less-detailed and more-detailed forms while preserving medical findings.",
+        "label": null,
+        "paper_evidence": "",
+        "reason": ""
+      },
+      {
+        "id": 35,
+        "text": "With the same CT images and frozen model, macro F1 remains between 80.4% and 82.1%.",
+        "poster_quote": "With the same CT images and frozen model, macro F1 remains between 80.4% and 82.1%.",
+        "label": null,
+        "paper_evidence": "",
+        "reason": ""
+      },
+      {
+        "id": 36,
+        "text": "With the same CT images and frozen model, accuracy remains between 81.8% and 83.0%.",
+        "poster_quote": "With the same CT images and frozen model, macro F1 remains between 80.4% and 82.1%, and accuracy remains between 81.8% and 83.0%.",
+        "label": null,
+        "paper_evidence": "",
+        "reason": ""
+      },
+      {
+        "id": 37,
+        "text": "The maximum macro-F1 change is 1.7 points, indicating resilience to variation in reporting style and completeness.",
+        "poster_quote": "The maximum macro-F1 change is 1.7 points, indicating resilience to variation in reporting style and completeness.",
+        "label": null,
+        "paper_evidence": "",
+        "reason": ""
+      },
+      {
+        "id": 38,
+        "text": "Nine of sixteen errors are over-staging cases, often caused by reports describing cartilage invasion that pathology does not confirm.",
+        "poster_quote": "Nine of sixteen errors are over-staging cases, often caused by reports describing cartilage invasion that pathology does not confirm.",
+        "label": null,
+        "paper_evidence": "",
+        "reason": ""
+      },
+      {
+        "id": 39,
+        "text": "Seven of sixteen errors are under-staging cases, frequently associated with reports that omit invasion or state that invasion is absent despite pathological confirmation.",
+        "poster_quote": "Seven are under-staging cases, frequently associated with reports that omit invasion or state that invasion is absent despite pathological confirmation.",
+        "label": null,
+        "paper_evidence": "",
+        "reason": ""
+      },
+      {
+        "id": 40,
+        "text": "These findings reflect inherent CT-pathology discordance rather than simple cross-modal misalignment.",
+        "poster_quote": "These findings reflect inherent CT-pathology discordance rather than simple cross-modal misalignment.",
+        "label": null,
+        "paper_evidence": "",
+        "reason": ""
+      },
+      {
+        "id": 41,
+        "text": "A whole-volume CT baseline obtains 58.76% macro F1 for binary staging.",
+        "poster_quote": "A whole-volume CT baseline obtains 58.76% macro F1 for binary staging.",
+        "label": "supported",
+        "paper_evidence": "The baseline model, which directly processes the whole CT volume for prediction without any anatomical guidance or textual information, achieves only 58.76% and 39.16% macro F1-scores in binary and three-class settings, respectively.",
+        "reason": "Section IV.D, Table IV explicitly states the macro F1 score for binary staging as 58.76% for the whole-volume CT baseline."
+      },
+      {
+        "id": 42,
+        "text": "A whole-volume CT baseline obtains 39.16% macro F1 for three-class staging.",
+        "poster_quote": "A whole-volume CT baseline obtains 58.76% macro F1 for binary staging and 39.16% for three-class staging.",
+        "label": "supported",
+        "paper_evidence": "The baseline model, which directly processes the whole CT volume for prediction without any anatomical guidance or textual information, achieves only 58.76% and 39.16% macro F1-scores in binary and three-class settings, respectively.",
+        "reason": "Section IV.D, Table IV explicitly states the macro F1 score for three-class staging as 39.16% for the whole-volume CT baseline."
+      },
+      {
+        "id": 43,
+        "text": "Adding AOG raises binary staging performance to 77.96% macro F1.",
+        "poster_quote": "Adding AOG raises performance to 77.96% and 52.80%, demonstrating the value of explicit anatomical relationship modeling.",
+        "label": "supported",
+        "paper_evidence": "Adding AOG substantially improves the performance (77.96% and 52.80% F1-scores), demonstrating that explicitly modeling organ-level relationships helps capture tumor invasion patterns.",
+        "reason": "Section IV.D, Table IV explicitly states that adding AOG raises binary staging performance to 77.96% macro F1."
+      },
+      {
+        "id": 44,
+        "text": "Adding AOG raises three-class staging performance to 52.80% macro F1.",
+        "poster_quote": "Adding AOG raises performance to 77.96% and 52.80%, demonstrating the value of explicit anatomical relationship modeling.",
+        "label": "supported",
+        "paper_evidence": "Adding AOG substantially improves the performance (77.96% and 52.80% F1-scores), demonstrating that explicitly modeling organ-level relationships helps capture tumor invasion patterns.",
+        "reason": "Section IV.D, Table IV explicitly states that adding AOG raises three-class staging performance to 52.80% macro F1."
+      },
+      {
+        "id": 45,
+        "text": "OCA produces 80.97% macro F1 for binary staging.",
+        "poster_quote": "OCA produces 80.97% and 58.47%, confirming that organ-level alignment captures useful report evidence.",
+        "label": "supported",
+        "paper_evidence": "When applying the OCA module alone, the performance further increases to 80.97% and 58.47% for binary and three-class settings, which validates our hypothesis that fine-grained organ–text alignment provides valuable diagnostic evidence from radiology reports.",
+        "reason": "Section IV.D, Table IV explicitly states that OCA produces 80.97% macro F1 for binary staging."
+      },
+      {
+        "id": 46,
+        "text": "OCA produces 58.47% macro F1 for three-class staging.",
+        "poster_quote": "OCA produces 80.97% and 58.47%, confirming that organ-level alignment captures useful report evidence.",
+        "label": "supported",
+        "paper_evidence": "When applying the OCA module alone, the performance further increases to 80.97% and 58.47% for binary and three-class settings, which validates our hypothesis that fine-grained organ–text alignment provides valuable diagnostic evidence from radiology reports.",
+        "reason": "Section IV.D, Table IV explicitly states that OCA produces 58.47% macro F1 for three-class staging."
+      },
+      {
+        "id": 47,
+        "text": "Combining AOG and OCA yields 81.63% macro F1 for binary staging.",
+        "poster_quote": "Combining AOG and OCA yields 81.63% and 61.52%.",
+        "label": "supported",
+        "paper_evidence": "When combining AOG and OCA, we observe further performance gains (81.63% and 61.52% F1-scores), suggesting that anatomical structure and textual evidence complement each other.",
+        "reason": "Section IV.D, Table IV explicitly states that combining AOG and OCA yields 81.63% macro F1 for binary staging."
+      },
+      {
+        "id": 48,
+        "text": "Combining AOG and OCA yields 61.52% macro F1 for three-class staging.",
+        "poster_quote": "Combining AOG and OCA yields 81.63% and 61.52%.",
+        "label": "supported",
+        "paper_evidence": "When combining AOG and OCA, we observe further performance gains (81.63% and 61.52% F1-scores), suggesting that anatomical structure and textual evidence complement each other.",
+        "reason": "Section IV.D, Table IV explicitly states that combining AOG and OCA yields 61.52% macro F1 for three-class staging."
+      },
+      {
+        "id": 49,
+        "text": "The full model with REG reaches 83.96% binary F1.",
+        "poster_quote": "The full model with REG reaches 83.96% binary F1 and 64.53% three-class F1, with the highest mean performance and lowest variance.",
+        "label": "supported",
+        "paper_evidence": "Finally, incorporating REG on top of both AOG and OCA yields the best overall performance, with macro F1-scores of 83.96% and 64.53% in binary and three-class settings.",
+        "reason": "Section IV.D, Table IV explicitly states that the full model with REG reaches 83.96% binary F1."
+      },
+      {
+        "id": 50,
+        "text": "The full model with REG reaches 64.53% three-class F1.",
+        "poster_quote": "The full model with REG reaches 83.96% binary F1 and 64.53% three-class F1, with the highest mean performance and lowest variance.",
+        "label": "supported",
+        "paper_evidence": "Finally, incorporating REG on top of both AOG and OCA yields the best overall performance, with macro F1-scores of 83.96% and 64.53% in binary and three-class settings.",
+        "reason": "Section IV.D, Table IV explicitly states that the full model with REG reaches 64.53% three-class F1."
+      },
+      {
+        "id": 51,
+        "text": "AOG achieves 77.76% internal F1.",
+        "poster_quote": "AOG also surpasses fully connected graphs, direct organ-mask fusion, and global context pooling. It achieves 77.76% internal and 73.33% external F1.",
+        "label": null,
+        "paper_evidence": "",
+        "reason": ""
+      },
+      {
+        "id": 52,
+        "text": "AOG achieves 73.33% external F1.",
+        "poster_quote": "AOG also surpasses fully connected graphs, direct organ-mask fusion, and global context pooling. It achieves 77.76% internal and 73.33% external F1.",
+        "label": null,
+        "paper_evidence": "",
+        "reason": ""
+      },
+      {
+        "id": 53,
+        "text": "AOG improves over the strongest topology baseline by 3.85 points internally.",
+        "poster_quote": "AOG also surpasses fully connected graphs, direct organ-mask fusion, and global context pooling. It achieves 77.76% internal and 73.33% external F1, improving over the strongest topology baseline by 3.85 and 4.33 points.",
+        "label": null,
+        "paper_evidence": "",
+        "reason": ""
+      },
+      {
+        "id": 54,
+        "text": "AOG improves over the strongest topology baseline by 4.33 points externally.",
+        "poster_quote": "AOG also surpasses fully connected graphs, direct organ-mask fusion, and global context pooling. It achieves 77.76% internal and 73.33% external F1, improving over the strongest topology baseline by 3.85 and 4.33 points.",
+        "label": null,
+        "paper_evidence": "",
+        "reason": ""
+      },
+      {
+        "id": 55,
+        "text": "OCA outperforms global, local, common, and multi-token attention variants.",
+        "poster_quote": "OCA outperforms global, local, common, and multi-token attention variants, reaching 81.93% internal and 76.10% external F1.",
+        "label": null,
+        "paper_evidence": "",
+        "reason": ""
+      },
+      {
+        "id": 56,
+        "text": "OCA reaches 81.93% internal F1.",
+        "poster_quote": "OCA outperforms global, local, common, and multi-token attention variants, reaching 81.93% internal and 76.10% external F1.",
+        "label": null,
+        "paper_evidence": "",
+        "reason": ""
+      },
+      {
+        "id": 57,
+        "text": "OCA reaches 76.10% external F1.",
+        "poster_quote": "OCA outperforms global, local, common, and multi-token attention variants, reaching 81.93% internal and 76.10% external F1.",
+        "label": null,
+        "paper_evidence": "",
+        "reason": ""
+      },
+      {
+        "id": 58,
+        "text": "Thyroid-focused features achieve average F1 scores of 0.716 internally.",
+        "poster_quote": "Individual organ analysis shows that thyroid-focused features are especially informative, with average F1 scores of 0.716 internally and 0.582 externally.",
+        "label": null,
+        "paper_evidence": "",
+        "reason": ""
+      },
+      {
+        "id": 59,
+        "text": "Thyroid-focused features achieve average F1 scores of 0.582 externally.",
+        "poster_quote": "Individual organ analysis shows that thyroid-focused features are especially informative, with average F1 scores of 0.716 internally and 0.582 externally.",
+        "label": null,
+        "paper_evidence": "",
+        "reason": ""
+      },
+      {
+        "id": 60,
+        "text": "Global CT processing achieves average F1 scores of 0.588 internally.",
+        "poster_quote": "Individual organ analysis shows that thyroid-focused features are especially informative, with average F1 scores of 0.716 internally and 0.582 externally, compared with 0.588 and 0.436 for global CT processing.",
+        "label": null,
+        "paper_evidence": "",
+        "reason": ""
+      },
+      {
+        "id": 61,
+        "text": "Global CT processing achieves average F1 scores of 0.436 externally.",
+        "poster_quote": "Individual organ analysis shows that thyroid-focused features are especially informative, with average F1 scores of 0.716 internally and 0.582 externally, compared with 0.588 and 0.436 for global CT processing.",
+        "label": null,
+        "paper_evidence": "",
+        "reason": ""
+      },
+      {
+        "id": 62,
+        "text": "Tracheal and esophageal regions consistently outperform global processing.",
+        "poster_quote": "Tracheal and esophageal regions also consistently outperform global processing, supporting targeted anatomical reasoning.",
+        "label": null,
+        "paper_evidence": "",
+        "reason": ""
+      },
+      {
+        "id": 63,
+        "text": "Radiology reports contain organ-specific findings that cannot be fully captured through global image-text fusion.",
+        "poster_quote": "Radiology reports contain organ-specific findings that cannot be fully captured through global image-text fusion.",
+        "label": null,
+        "paper_evidence": "",
+        "reason": ""
+      },
+      {
+        "id": 64,
+        "text": "In OCA, the report is tokenized and encoded using a pre-trained biomedical language model.",
+        "poster_quote": "In OCA, the report is tokenized and encoded using a pre-trained biomedical language model, producing contextualized representations for all tokens.",
+        "label": null,
+        "paper_evidence": "",
+        "reason": ""
+      },
+      {
+        "id": 65,
+        "text": "Organ-guided cross-attention assigns higher weights to words and phrases relevant to the node’s appearance, location, and suspected involvement.",
+        "poster_quote": "Organ-guided cross-attention assigns higher weights to words and phrases relevant to the node’s appearance, location, and suspected involvement.",
+        "label": null,
+        "paper_evidence": "",
+        "reason": ""
+      },
+      {
+        "id": 66,
+        "text": "The weighted report representation is combined with the visual node feature, yielding a text-enhanced organ representation while preserving the anatomy-guided graph topology.",
+        "poster_quote": "The weighted report representation is combined with the visual node feature, yielding a text-enhanced organ representation while preserving the anatomy-guided graph topology.",
+        "label": null,
+        "paper_evidence": "",
+        "reason": ""
+      },
+      {
+        "id": 67,
+        "text": "Different organs can attend to different portions of the same report rather than sharing one global text embedding.",
+        "poster_quote": "Thus, different organs can attend to different portions of the same report rather than sharing one global text embedding.",
+        "label": null,
+        "paper_evidence": "",
+        "reason": ""
+      },
+      {
+        "id": 68,
+        "text": "Visualized attention patterns support the intended behavior of the model.",
+        "poster_quote": "Visualized attention patterns support the intended behavior.",
+        "label": null,
+        "paper_evidence": "",
+        "reason": ""
+      },
+      {
+        "id": 69,
+        "text": "Early-stage cases mainly attend to anatomical location terms such as supraglottic and epiglottis.",
+        "poster_quote": "Early-stage cases mainly attend to anatomical location terms such as supraglottic and epiglottis.",
+        "label": null,
+        "paper_evidence": "",
+        "reason": ""
+      },
+      {
+        "id": 70,
+        "text": "Intermediate cases show attention across adjacent structures.",
+        "poster_quote": "Intermediate cases show attention across adjacent structures.",
+        "label": null,
+        "paper_evidence": "",
+        "reason": ""
+      },
+      {
+        "id": 71,
+        "text": "Advanced cases concentrate on invasion-related terms such as invades and cartilage.",
+        "poster_quote": "Advanced cases concentrate on invasion-related terms such as invades and cartilage.",
+        "label": null,
+        "paper_evidence": "",
+        "reason": ""
+      },
+      {
+        "id": 72,
+        "text": "Organ-level correspondence improves both staging performance and interpretability.",
+        "poster_quote": "This organ-level correspondence improves both staging performance and interpretability.",
+        "label": null,
+        "paper_evidence": "",
+        "reason": ""
+      },
+      {
+        "id": 73,
+        "text": "Evaluation on 656 patients from four centers demonstrates consistent improvements over strong image-only and multimodal baselines in binary and three-class staging.",
+        "poster_quote": "Evaluation on 656 patients from four centers demonstrates consistent improvements over strong image-only and multimodal baselines in binary and three-class staging.",
+        "label": null,
+        "paper_evidence": "",
+        "reason": ""
+      },
+      {
+        "id": 74,
+        "text": "The model generalizes to external cohorts.",
+        "poster_quote": "The model generalizes to external cohorts, remains robust to segmentation noise and report variation, and performs on par with or better than experienced radiologists.",
+        "label": null,
+        "paper_evidence": "",
+        "reason": ""
+      },
+      {
+        "id": 75,
+        "text": "The model remains robust to segmentation noise and report variation.",
+        "poster_quote": "The model generalizes to external cohorts, remains robust to segmentation noise and report variation, and performs on par with or better than experienced radiologists.",
+        "label": null,
+        "paper_evidence": "",
+        "reason": ""
+      },
+      {
+        "id": 76,
+        "text": "The model performs on par with or better than experienced radiologists.",
+        "poster_quote": "The model generalizes to external cohorts, remains robust to segmentation noise and report variation, and performs on par with or better than experienced radiologists.",
+        "label": null,
+        "paper_evidence": "",
+        "reason": ""
+      },
+      {
+        "id": 77,
+        "text": "The model’s organ-level alignment and invasion pathways provide clinically meaningful interpretability.",
+        "poster_quote": "Its organ-level alignment and invasion pathways also provide clinically meaningful interpretability.",
+        "label": null,
+        "paper_evidence": "",
+        "reason": ""
+      },
+      {
+        "id": 78,
+        "text": "Future work will investigate uncertainty-aware multimodal fusion.",
+        "poster_quote": "Future work will investigate uncertainty-aware multimodal fusion, prospective validation across scanners and institutions, extension to other head-and-neck and thoracic malignancies, and integration of longitudinal imaging and follow-up reports for dynamic tumor progression modeling.",
+        "label": null,
+        "paper_evidence": "",
+        "reason": ""
+      },
+      {
+        "id": 79,
+        "text": "Future work will investigate prospective validation across scanners and institutions.",
+        "poster_quote": "Future work will investigate uncertainty-aware multimodal fusion, prospective validation across scanners and institutions, extension to other head-and-neck and thoracic malignancies, and integration of longitudinal imaging and follow-up reports for dynamic tumor progression modeling.",
+        "label": null,
+        "paper_evidence": "",
+        "reason": ""
+      },
+      {
+        "id": 80,
+        "text": "Future work will investigate extension to other head-and-neck and thoracic malignancies.",
+        "poster_quote": "Future work will investigate uncertainty-aware multimodal fusion, prospective validation across scanners and institutions, extension to other head-and-neck and thoracic malignancies, and integration of longitudinal imaging and follow-up reports for dynamic tumor progression modeling.",
+        "label": null,
+        "paper_evidence": "",
+        "reason": ""
+      },
+      {
+        "id": 81,
+        "text": "Future work will investigate integration of longitudinal imaging and follow-up reports for dynamic tumor progression modeling.",
+        "poster_quote": "Future work will investigate uncertainty-aware multimodal fusion, prospective validation across scanners and institutions, extension to other head-and-neck and thoracic malignancies, and integration of longitudinal imaging and follow-up reports for dynamic tumor progression modeling.",
+        "label": "unsupported",
+        "paper_evidence": "",
+        "reason": "The source paper does not mention future work investigating integration of longitudinal imaging and follow-up reports for dynamic tumor progression modeling. This claim is absent from the provided text."
+      }
+    ]
+  },
+  "raw": "[\"{\\n  \\\"claims\\\": [\\n    {\\\"id\\\": 1, \\\"text\\\": \\\"Accurate T-staging is crucial for personalized treatment of laryngopharyngeal cancer.\\\", \\\"poster_quote\\\": \\\"Accurate T-staging is crucial for personalized treatment of laryngopharyngeal cancer.\\\"},\\n    {\\\"id\\\": 2, \\\"text\\\": \\\"Early-stage laryngopharyngeal cancer is generally managed with organ-preserving surgery, laser resection, or definitive radiotherapy.\\\", \\\"poster_quote\\\": \\\"Early-stage disease is generally managed with organ-preserving surgery, laser resection, or definitive radiotherapy.\\\"},\\n    {\\\"id\\\": 3, \\\"text\\\": \\\"Advanced laryngopharyngeal cancer often requires total laryngectomy and adjuvant treatment.\\\", \\\"poster_quote\\\": \\\"Advanced disease often requires total laryngectomy and adjuvant treatment.\\\"},\\n    {\\\"id\\\": 4, \\\"text\\\": \\\"Pathology-based staging is invasive and time-consuming.\\\", \\\"poster_quote\\\": \\\"Pathology-based staging is invasive and time-consuming.\\\"},\\n    {\\\"id\\\": 5, \\\"text\\\": \\\"Manual review of an entire 3D CT volume is labor-intensive and subjective.\\\", \\\"poster_quote\\\": \\\"Manual review of an entire 3D CT volume is labor-intensive and subjective.\\\"},\\n    {\\\"id\\\": 6, \\\"text\\\": \\\"Radiologists must track the tumor across many slices and assess extension into tightly packed adjacent structures.\\\", \\\"poster_quote\\\": \\\"Radiologists must track the tumor across many slices and assess extension into tightly packed adjacent structures.\\\"},\\n    {\\\"id\\\": 7, \\\"text\\\": \\\"Borderline invasion is particularly difficult to determine.\\\", \\\"poster_quote\\\": \\\"Borderline invasion particularly difficult to determine.\\\"},\\n    {\\\"id\\\": 8, \\\"text\\\": \\\"Reports often explicitly identify invaded organs.\\\", \\\"poster_quote\\\": \\\"Reports often explicitly identify invaded organs.\\\"},\\n    {\\\"id\\\": 9, \\\"text\\\": \\\"Subtle or equivocal extension may be omitted from radiology reports.\\\", \\\"poster_quote\\\": \\\"These observations are incomplete because subtle or equivocal extension may be omitted.\\\"},\\n    {\\\"id\\\": 10, \\\"text\\\": \\\"REG uses report evidence to refine anatomy-based connectivity.\\\", \\\"poster_quote\\\": \\\"REG therefore uses report evidence to refine, rather than replace, anatomy-based connectivity.\\\"},\\n    {\\\"id\\\": 11, \\\"text\\\": \\\"The proposed framework combines CT-derived organ features with organ-specific evidence from radiology reports.\\\", \\\"poster_quote\\\": \\\"We propose an annotation-free multimodal framework that combines CT-derived organ features with organ-specific evidence from radiology reports.\\\"},\\n    {\\\"id\\\": 12, \\\"text\\\": \\\"The framework contains three components: Anatomy-Structured Organ Graph (AOG), Organ-Anchored Cross-Modal Alignment (OCA), and Report-Enhanced Graph-Refinement (REG).\\\", \\\"poster_quote\\\": \\\"The framework contains three components: Anatomy-Structured Organ Graph (AOG), Organ-Anchored Cross-Modal Alignment (OCA), and Report-Enhanced Graph-Refinement (REG).\\\"},\\n    {\\\"id\\\": 13, \\\"text\\\": \\\"Existing computer-aided approaches underrepresent the anatomy-structured pattern of tumor spread.\\\", \\\"poster_quote\\\": \\\"Existing computer-aided approaches have two major limitations. First, whole-volume models and isolated tumor masks underrepresent the anatomy-structured pattern of tumor spread.\\\"},\\n    {\\\"id\\\": 14, \\\"text\\\": \\\"Manual tumor segmentation is costly and difficult because tumors have heterogeneous appearances.\\\", \\\"poster_quote\\\": \\\"Manual tumor segmentation is also costly and difficult because tumors have heterogeneous appearances.\\\"},\\n    {\\\"id\\\": 15, \\\"text\\\": \\\"Conventional multimodal methods fuse global CT and report representations, making it difficult to align individual anatomical structures with their corresponding textual findings.\\\", \\\"poster_quote\\\": \\\"Second, conventional multimodal methods fuse global CT and report representations, making it difficult to align individual anatomical structures with their corresponding textual findings.\\\"},\\n    {\\\"id\\\": 16, \\\"text\\\": \\\"A large language model extracts positive invasion statements for the esophagus, thyroid gland, trachea, and oral cavity while excluding negations and distinguishing the thyroid gland from thyroid cartilage.\\\", \\\"poster_quote\\\": \\\"A large language model extracts positive invasion statements for the esophagus, thyroid gland, trachea, and oral cavity while excluding negations and distinguishing the thyroid gland from thyroid cartilage.\\\"},\\n    {\\\"id\\\": 17, \\\"text\\\": \\\"Manual review confirmed correct extraction of invasion statements.\\\", \\\"poster_quote\\\": \\\"Manual review confirmed correct extraction, and multiple language models produced identical outputs on all 439 training reports.\\\"},\\n    {\\\"id\\\": 18, \\\"text\\\": \\\"Multiple language models produced identical outputs on all 439 training reports.\\\", \\\"poster_quote\\\": \\\"Manual review confirmed correct extraction, and multiple language models produced identical outputs on all 439 training reports.\\\"},\\n    {\\\"id\\\": 19, \\\"text\\\": \\\"A global report representation is projected into a dedicated text node.\\\", \\\"poster_quote\\\": \\\"A global report representation is projected into a dedicated text node.\\\"},\\n    {\\\"id\\\": 20, \\\"text\\\": \\\"The text node connects to all primary sites and only to target organs explicitly described as invaded.\\\", \\\"poster_quote\\\": \\\"This node connects to all primary sites and only to target organs explicitly described as invaded; the original organ-to-organ edges remain unchanged.\\\"},\\n    {\\\"id\\\": 21, \\\"text\\\": \\\"Graph message passing over the report-enhanced topology allows high-confidence clinical evidence to directly guide feature refinement while retaining CT evidence from all anatomically at-risk organs.\\\", \\\"poster_quote\\\": \\\"Graph message passing over this report-enhanced topology allows high-confidence clinical evidence to directly guide feature refinement while retaining CT evidence from all anatomically at-risk organs.\\\"},\\n    {\\\"id\\\": 22, \\\"text\\\": \\\"Global average pooling and a classification layer produce the final prediction.\\\", \\\"poster_quote\\\": \\\"Global average pooling and a classification layer produce the final prediction.\\\"},\\n    {\\\"id\\\": 23, \\\"text\\\": \\\"The complete framework is trained end-to-end with cross-entropy loss.\\\", \\\"poster_quote\\\": \\\"The complete framework is trained end-to-end with cross-entropy loss.\\\"},\\n    {\\\"id\\\": 24, \\\"text\\\": \\\"The biomedical text encoder is frozen in the final configuration to reduce computation and overfitting.\\\", \\\"poster_quote\\\": \\\"The biomedical text encoder is frozen in the final configuration to reduce computation and overfitting.\\\"},\\n    {\\\"id\\\": 25, \\\"text\\\": \\\"AOG extracts features from predefined laryngopharyngeal structures using masks generated by a publicly available pretrained organ segmentation model.\\\", \\\"poster_quote\\\": \\\"AOG extracts features from predefined laryngopharyngeal structures using masks generated by a publicly available pretrained organ segmentation model.\\\"},\\n    {\\\"id\\\": 26, \\\"text\\\": \\\"AOG constructs an anatomy-guided graph representing potential tumor spread from primary sites to surrounding organs.\\\", \\\"poster_quote\\\": \\\"It then constructs an anatomy-guided graph representing potential tumor spread from primary sites to surrounding organs.\\\"},\\n    {\\\"id\\\": 27, \\\"text\\\": \\\"OCA lets every CT organ node query report tokens and aggregate the most relevant textual evidence.\\\", \\\"poster_quote\\\": \\\"OCA lets every CT organ node query report tokens and aggregate the most relevant textual evidence.\\\"},\\n    {\\\"id\\\": 28, \\\"text\\\": \\\"REG adds a global report node and connects it to primary sites and organs explicitly described as invaded.\\\", \\\"poster_quote\\\": \\\"REG adds a global report node and connects it to primary sites and organs explicitly described as invaded.\\\"},\\n    {\\\"id\\\": 29, \\\"text\\\": \\\"The refined multimodal graph is processed by a graph neural network and pooled for T-stage classification.\\\", \\\"poster_quote\\\": \\\"The refined multimodal graph is processed by a graph neural network and pooled for T-stage classification.\\\"},\\n    {\\\"id\\\": 30, \\\"text\\\": \\\"The design preserves anatomically plausible risk pathways while selectively strengthening relationships supported by clinical reports.\\\", \\\"poster_quote\\\": \\\"This design preserves anatomically plausible risk pathways while selectively strengthening relationships supported by clinical reports.\\\"},\\n    {\\\"id\\\": 31, \\\"text\\\": \\\"The framework is robust to organ segmentation noise because masks are used primarily to define cropping regions.\\\", \\\"poster_quote\\\": \\\"The framework is robust to organ segmentation noise because masks are used primarily to define cropping regions.\\\"},\\n    {\\\"id\\\": 32, \\\"text\\\": \\\"Applying additional proportional dilation or erosion to automatically generated masks reduces F1 by 1.1% at 5% perturbation.\\\", \\\"poster_quote\\\": \\\"Applying additional proportional dilation or erosion to automatically generated masks reduces F1 by only 1.1% at 5% perturbation.\\\"},\\n    {\\\"id\\\": 33, \\\"text\\\": \\\"Applying additional proportional dilation or erosion to automatically generated masks reduces F1 by 2.8% at 10% perturbation.\\\", \\\"poster_quote\\\": \\\"Applying additional proportional dilation or erosion to automatically generated masks reduces F1 by only 2.8% at 10% perturbation.\\\"},\\n    {\\\"id\\\": 34, \\\"text\\\": \\\"Report robustness is evaluated by rewriting reports into less-detailed and more-detailed forms while preserving medical findings.\\\", \\\"poster_quote\\\": \\\"Report robustness is evaluated by rewriting reports into less-detailed and more-detailed forms while preserving medical findings.\\\"},\\n    {\\\"id\\\": 35, \\\"text\\\": \\\"With the same CT images and frozen model, macro F1 remains between 80.4% and 82.1%.\\\", \\\"poster_quote\\\": \\\"With the same CT images and frozen model, macro F1 remains between 80.4% and 82.1%.\\\"},\\n    {\\\"id\\\": 36, \\\"text\\\": \\\"With the same CT images and frozen model, accuracy remains between 81.8% and 83.0%.\\\", \\\"poster_quote\\\": \\\"With the same CT images and frozen model, macro F1 remains between 80.4% and 82.1%, and accuracy remains between 81.8% and 83.0%.\\\"},\\n    {\\\"id\\\": 37, \\\"text\\\": \\\"The maximum macro-F1 change is 1.7 points, indicating resilience to variation in reporting style and completeness.\\\", \\\"poster_quote\\\": \\\"The maximum macro-F1 change is 1.7 points, indicating resilience to variation in reporting style and completeness.\\\"},\\n    {\\\"id\\\": 38, \\\"text\\\": \\\"Nine of sixteen errors are over-staging cases, often caused by reports describing cartilage invasion that pathology does not confirm.\\\", \\\"poster_quote\\\": \\\"Nine of sixteen errors are over-staging cases, often caused by reports describing cartilage invasion that pathology does not confirm.\\\"},\\n    {\\\"id\\\": 39, \\\"text\\\": \\\"Seven of sixteen errors are under-staging cases, frequently associated with reports that omit invasion or state that invasion is absent despite pathological confirmation.\\\", \\\"poster_quote\\\": \\\"Seven are under-staging cases, frequently associated with reports that omit invasion or state that invasion is absent despite pathological confirmation.\\\"},\\n    {\\\"id\\\": 40, \\\"text\\\": \\\"These findings reflect inherent CT-pathology discordance rather than simple cross-modal misalignment.\\\", \\\"poster_quote\\\": \\\"These findings reflect inherent CT-pathology discordance rather than simple cross-modal misalignment.\\\"},\\n    {\\\"id\\\": 41, \\\"text\\\": \\\"A whole-volume CT baseline obtains 58.76% macro F1 for binary staging.\\\", \\\"poster_quote\\\": \\\"A whole-volume CT baseline obtains 58.76% macro F1 for binary staging.\\\"},\\n    {\\\"id\\\": 42, \\\"text\\\": \\\"A whole-volume CT baseline obtains 39.16% macro F1 for three-class staging.\\\", \\\"poster_quote\\\": \\\"A whole-volume CT baseline obtains 58.76% macro F1 for binary staging and 39.16% for three-class staging.\\\"},\\n    {\\\"id\\\": 43, \\\"text\\\": \\\"Adding AOG raises binary staging performance to 77.96% macro F1.\\\", \\\"poster_quote\\\": \\\"Adding AOG raises performance to 77.96% and 52.80%, demonstrating the value of explicit anatomical relationship modeling.\\\"},\\n    {\\\"id\\\": 44, \\\"text\\\": \\\"Adding AOG raises three-class staging performance to 52.80% macro F1.\\\", \\\"poster_quote\\\": \\\"Adding AOG raises performance to 77.96% and 52.80%, demonstrating the value of explicit anatomical relationship modeling.\\\"},\\n    {\\\"id\\\": 45, \\\"text\\\": \\\"OCA produces 80.97% macro F1 for binary staging.\\\", \\\"poster_quote\\\": \\\"OCA produces 80.97% and 58.47%, confirming that organ-level alignment captures useful report evidence.\\\"},\\n    {\\\"id\\\": 46, \\\"text\\\": \\\"OCA produces 58.47% macro F1 for three-class staging.\\\", \\\"poster_quote\\\": \\\"OCA produces 80.97% and 58.47%, confirming that organ-level alignment captures useful report evidence.\\\"},\\n    {\\\"id\\\": 47, \\\"text\\\": \\\"Combining AOG and OCA yields 81.63% macro F1 for binary staging.\\\", \\\"poster_quote\\\": \\\"Combining AOG and OCA yields 81.63% and 61.52%.\\\"},\\n    {\\\"id\\\": 48, \\\"text\\\": \\\"Combining AOG and OCA yields 61.52% macro F1 for three-class staging.\\\", \\\"poster_quote\\\": \\\"Combining AOG and OCA yields 81.63% and 61.52%.\\\"},\\n    {\\\"id\\\": 49, \\\"text\\\": \\\"The full model with REG reaches 83.96% binary F1.\\\", \\\"poster_quote\\\": \\\"The full model with REG reaches 83.96% binary F1 and 64.53% three-class F1, with the highest mean performance and lowest variance.\\\"},\\n    {\\\"id\\\": 50, \\\"text\\\": \\\"The full model with REG reaches 64.53% three-class F1.\\\", \\\"poster_quote\\\": \\\"The full model with REG reaches 83.96% binary F1 and 64.53% three-class F1, with the highest mean performance and lowest variance.\\\"},\\n    {\\\"id\\\": 51, \\\"text\\\": \\\"AOG achieves 77.76% internal F1.\\\", \\\"poster_quote\\\": \\\"AOG also surpasses fully connected graphs, direct organ-mask fusion, and global context pooling. It achieves 77.76% internal and 73.33% external F1.\\\"},\\n    {\\\"id\\\": 52, \\\"text\\\": \\\"AOG achieves 73.33% external F1.\\\", \\\"poster_quote\\\": \\\"AOG also surpasses fully connected graphs, direct organ-mask fusion, and global context pooling. It achieves 77.76% internal and 73.33% external F1.\\\"},\\n    {\\\"id\\\": 53, \\\"text\\\": \\\"AOG improves over the strongest topology baseline by 3.85 points internally.\\\", \\\"poster_quote\\\": \\\"AOG also surpasses fully connected graphs, direct organ-mask fusion, and global context pooling. It achieves 77.76% internal and 73.33% external F1, improving over the strongest topology baseline by 3.85 and 4.33 points.\\\"},\\n    {\\\"id\\\": 54, \\\"text\\\": \\\"AOG improves over the strongest topology baseline by 4.33 points externally.\\\", \\\"poster_quote\\\": \\\"AOG also surpasses fully connected graphs, direct organ-mask fusion, and global context pooling. It achieves 77.76% internal and 73.33% external F1, improving over the strongest topology baseline by 3.85 and 4.33 points.\\\"},\\n    {\\\"id\\\": 55, \\\"text\\\": \\\"OCA outperforms global, local, common, and multi-token attention variants.\\\", \\\"poster_quote\\\": \\\"OCA outperforms global, local, common, and multi-token attention variants, reaching 81.93% internal and 76.10% external F1.\\\"},\\n    {\\\"id\\\": 56, \\\"text\\\": \\\"OCA reaches 81.93% internal F1.\\\", \\\"poster_quote\\\": \\\"OCA outperforms global, local, common, and multi-token attention variants, reaching 81.93% internal and 76.10% external F1.\\\"},\\n    {\\\"id\\\": 57, \\\"text\\\": \\\"OCA reaches 76.10% external F1.\\\", \\\"poster_quote\\\": \\\"OCA outperforms global, local, common, and multi-token attention variants, reaching 81.93% internal and 76.10% external F1.\\\"},\\n    {\\\"id\\\": 58, \\\"text\\\": \\\"Thyroid-focused features achieve average F1 scores of 0.716 internally.\\\", \\\"poster_quote\\\": \\\"Individual organ analysis shows that thyroid-focused features are especially informative, with average F1 scores of 0.716 internally and 0.582 externally.\\\"},\\n    {\\\"id\\\": 59, \\\"text\\\": \\\"Thyroid-focused features achieve average F1 scores of 0.582 externally.\\\", \\\"poster_quote\\\": \\\"Individual organ analysis shows that thyroid-focused features are especially informative, with average F1 scores of 0.716 internally and 0.582 externally.\\\"},\\n    {\\\"id\\\": 60, \\\"text\\\": \\\"Global CT processing achieves average F1 scores of 0.588 internally.\\\", \\\"poster_quote\\\": \\\"Individual organ analysis shows that thyroid-focused features are especially informative, with average F1 scores of 0.716 internally and 0.582 externally, compared with 0.588 and 0.436 for global CT processing.\\\"},\\n    {\\\"id\\\": 61, \\\"text\\\": \\\"Global CT processing achieves average F1 scores of 0.436 externally.\\\", \\\"poster_quote\\\": \\\"Individual organ analysis shows that thyroid-focused features are especially informative, with average F1 scores of 0.716 internally and 0.582 externally, compared with 0.588 and 0.436 for global CT processing.\\\"},\\n    {\\\"id\\\": 62, \\\"text\\\": \\\"Tracheal and esophageal regions consistently outperform global processing.\\\", \\\"poster_quote\\\": \\\"Tracheal and esophageal regions also consistently outperform global processing, supporting targeted anatomical reasoning.\\\"},\\n    {\\\"id\\\": 63, \\\"text\\\": \\\"Radiology reports contain organ-specific findings that cannot be fully captured through global image-text fusion.\\\", \\\"poster_quote\\\": \\\"Radiology reports contain organ-specific findings that cannot be fully captured through global image-text fusion.\\\"},\\n    {\\\"id\\\": 64, \\\"text\\\": \\\"In OCA, the report is tokenized and encoded using a pre-trained biomedical language model.\\\", \\\"poster_quote\\\": \\\"In OCA, the report is tokenized and encoded using a pre-trained biomedical language model, producing contextualized representations for all tokens.\\\"},\\n    {\\\"id\\\": 65, \\\"text\\\": \\\"Organ-guided cross-attention assigns higher weights to words and phrases relevant to the node’s appearance, location, and suspected involvement.\\\", \\\"poster_quote\\\": \\\"Organ-guided cross-attention assigns higher weights to words and phrases relevant to the node’s appearance, location, and suspected involvement.\\\"},\\n    {\\\"id\\\": 66, \\\"text\\\": \\\"The weighted report representation is combined with the visual node feature, yielding a text-enhanced organ representation while preserving the anatomy-guided graph topology.\\\", \\\"poster_quote\\\": \\\"The weighted report representation is combined with the visual node feature, yielding a text-enhanced organ representation while preserving the anatomy-guided graph topology.\\\"},\\n    {\\\"id\\\": 67, \\\"text\\\": \\\"Different organs can attend to different portions of the same report rather than sharing one global text embedding.\\\", \\\"poster_quote\\\": \\\"Thus, different organs can attend to different portions of the same report rather than sharing one global text embedding.\\\"},\\n    {\\\"id\\\": 68, \\\"text\\\": \\\"Visualized attention patterns support the intended behavior of the model.\\\", \\\"poster_quote\\\": \\\"Visualized attention patterns support the intended behavior.\\\"},\\n    {\\\"id\\\": 69, \\\"text\\\": \\\"Early-stage cases mainly attend to anatomical location terms such as supraglottic and epiglottis.\\\", \\\"poster_quote\\\": \\\"Early-stage cases mainly attend to anatomical location terms such as supraglottic and epiglottis.\\\"},\\n    {\\\"id\\\": 70, \\\"text\\\": \\\"Intermediate cases show attention across adjacent structures.\\\", \\\"poster_quote\\\": \\\"Intermediate cases show attention across adjacent structures.\\\"},\\n    {\\\"id\\\": 71, \\\"text\\\": \\\"Advanced cases concentrate on invasion-related terms such as invades and cartilage.\\\", \\\"poster_quote\\\": \\\"Advanced cases concentrate on invasion-related terms such as invades and cartilage.\\\"},\\n    {\\\"id\\\": 72, \\\"text\\\": \\\"Organ-level correspondence improves both staging performance and interpretability.\\\", \\\"poster_quote\\\": \\\"This organ-level correspondence improves both staging performance and interpretability.\\\"},\\n    {\\\"id\\\": 73, \\\"text\\\": \\\"Evaluation on 656 patients from four centers demonstrates consistent improvements over strong image-only and multimodal baselines in binary and three-class staging.\\\", \\\"poster_quote\\\": \\\"Evaluation on 656 patients from four centers demonstrates consistent improvements over strong image-only and multimodal baselines in binary and three-class staging.\\\"},\\n    {\\\"id\\\": 74, \\\"text\\\": \\\"The model generalizes to external cohorts.\\\", \\\"poster_quote\\\": \\\"The model generalizes to external cohorts, remains robust to segmentation noise and report variation, and performs on par with or better than experienced radiologists.\\\"},\\n    {\\\"id\\\": 75, \\\"text\\\": \\\"The model remains robust to segmentation noise and report variation.\\\", \\\"poster_quote\\\": \\\"The model generalizes to external cohorts, remains robust to segmentation noise and report variation, and performs on par with or better than experienced radiologists.\\\"},\\n    {\\\"id\\\": 76, \\\"text\\\": \\\"The model performs on par with or better than experienced radiologists.\\\", \\\"poster_quote\\\": \\\"The model generalizes to external cohorts, remains robust to segmentation noise and report variation, and performs on par with or better than experienced radiologists.\\\"},\\n    {\\\"id\\\": 77, \\\"text\\\": \\\"The model’s organ-level alignment and invasion pathways provide clinically meaningful interpretability.\\\", \\\"poster_quote\\\": \\\"Its organ-level alignment and invasion pathways also provide clinically meaningful interpretability.\\\"},\\n    {\\\"id\\\": 78, \\\"text\\\": \\\"Future work will investigate uncertainty-aware multimodal fusion.\\\", \\\"poster_quote\\\": \\\"Future work will investigate uncertainty-aware multimodal fusion, prospective validation across scanners and institutions, extension to other head-and-neck and thoracic malignancies, and integration of longitudinal imaging and follow-up reports for dynamic tumor progression modeling.\\\"},\\n    {\\\"id\\\": 79, \\\"text\\\": \\\"Future work will investigate prospective validation across scanners and institutions.\\\", \\\"poster_quote\\\": \\\"Future work will investigate uncertainty-aware multimodal fusion, prospective validation across scanners and institutions, extension to other head-and-neck and thoracic malignancies, and integration of longitudinal imaging and follow-up reports for dynamic tumor progression modeling.\\\"},\\n    {\\\"id\\\": 80, \\\"text\\\": \\\"Future work will investigate extension to other head-and-neck and thoracic malignancies.\\\", \\\"poster_quote\\\": \\\"Future work will investigate uncertainty-aware multimodal fusion, prospective validation across scanners and institutions, extension to other head-and-neck and thoracic malignancies, and integration of longitudinal imaging and follow-up reports for dynamic tumor progression modeling.\\\"},\\n    {\\\"id\\\": 81, \\\"text\\\": \\\"Future work will investigate integration of longitudinal imaging and follow-up reports for dynamic tumor progression modeling.\\\", \\\"poster_quote\\\": \\\"Future work will investigate uncertainty-aware multimodal fusion, prospective validation across scanners and institutions, extension to other head-and-neck and thoracic malignancies, and integration of longitudinal imaging and follow-up reports for dynamic tumor progression modeling.\\\"}\\n  ]\\n}\", \"{\\n  \\\"verdicts\\\": [\\n    {\\n      \\\"id\\\": 1,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Accurate T-staging is crucial for guiding personalized treatment strategies for laryngopharyngeal cancer.\\\",\\n      \\\"reason\\\": \\\"Source: Abstract, confirms the importance of T-staging for personalized treatment.\\\"\\n    },\\n    {\\n      \\\"id\\\": 2,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Early-stage disease (T1–T2) is usually managed with partial laryngectomy, laser resection, or definitive radiotherapy.\\\",\\n      \\\"reason\\\": \\\"Source: Introduction, explicitly states management strategies for early-stage disease.\\\"\\n    },\\n    {\\n      \\\"id\\\": 3,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Advanced stages (T3–T4) often require total laryngectomy combined with adjuvant therapies.\\\",\\n      \\\"reason\\\": \\\"Source: Introduction, explicitly states management strategies for advanced-stage disease.\\\"\\n    },\\n    {\\n      \\\"id\\\": 4,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Although the current reference standard relies on biopsy-derived pathology, this process is invasive and time-consuming.\\\",\\n      \\\"reason\\\": \\\"Source: Introduction, confirms pathology-based staging is invasive and time-consuming.\\\"\\n    },\\n    {\\n      \\\"id\\\": 5,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Manually reviewing an entire 3-D CT volume remains labor-intensive and subjective.\\\",\\n      \\\"reason\\\": \\\"Source: Introduction, explicitly describes manual CT review as labor-intensive and subjective.\\\"\\n    },\\n    {\\n      \\\"id\\\": 6,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Radiologists must track the tumor across tens of axial slices and judge its extension into adjacent organs.\\\",\\n      \\\"reason\\\": \\\"Source: Introduction, confirms radiologists assess tumor extension across slices and adjacent structures.\\\"\\n    },\\n    {\\n      \\\"id\\\": 7,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Staging accuracy can suffer, especially in borderline cases.\\\",\\n      \\\"reason\\\": \\\"Source: Introduction, explicitly mentions difficulty in determining borderline invasion.\\\"\\n    },\\n    {\\n      \\\"id\\\": 8,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Radiology reports often contain explicit statements about which organs are invaded.\\\",\\n      \\\"reason\\\": \\\"Source: Methods, Report-Enhanced Graph-Refinement section, confirms reports explicitly identify invaded organs.\\\"\\n    },\\n    {\\n      \\\"id\\\": 9,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Radiologists typically report only obvious and clinically salient invasion, hence subtle or equivocal extension may be omitted.\\\",\\n      \\\"reason\\\": \\\"Source: Methods, Report-Enhanced Graph-Refinement section, confirms omission of subtle invasion in reports.\\\"\\n    },\\n    {\\n      \\\"id\\\": 10,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Specifically, we design a Report-Enhanced Graph-Refinement (REG) module that reuses the global report representation as a text node in the graph, employs a large language model (LLM) to identify which organs are explicitly described as invaded in the report, and connects this text node only to primary sites and to those invaded organs, while keeping the original organ–organ edges unchanged.\\\",\\n      \\\"reason\\\": \\\"Source: Methods, Report-Enhanced Graph-Refinement section, confirms REG refines anatomy-based connectivity using report evidence.\\\"\\n    }\\n  ]\\n}\", \"{\\n  \\\"verdicts\\\": [\\n    {\\n      \\\"id\\\": 1,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The baseline model, which directly processes the whole CT volume for prediction without any anatomical guidance or textual information, achieves only 58.76% and 39.16% macro F1-scores in binary and three-class settings, respectively.\\\",\\n      \\\"reason\\\": \\\"Section IV.D, Table IV explicitly states the macro F1 score for binary staging as 58.76% for the whole-volume CT baseline.\\\"\\n    },\\n    {\\n      \\\"id\\\": 2,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The baseline model, which directly processes the whole CT volume for prediction without any anatomical guidance or textual information, achieves only 58.76% and 39.16% macro F1-scores in binary and three-class settings, respectively.\\\",\\n      \\\"reason\\\": \\\"Section IV.D, Table IV explicitly states the macro F1 score for three-class staging as 39.16% for the whole-volume CT baseline.\\\"\\n    },\\n    {\\n      \\\"id\\\": 3,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Adding AOG substantially improves the performance (77.96% and 52.80% F1-scores), demonstrating that explicitly modeling organ-level relationships helps capture tumor invasion patterns.\\\",\\n      \\\"reason\\\": \\\"Section IV.D, Table IV explicitly states that adding AOG raises binary staging performance to 77.96% macro F1.\\\"\\n    },\\n    {\\n      \\\"id\\\": 4,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Adding AOG substantially improves the performance (77.96% and 52.80% F1-scores), demonstrating that explicitly modeling organ-level relationships helps capture tumor invasion patterns.\\\",\\n      \\\"reason\\\": \\\"Section IV.D, Table IV explicitly states that adding AOG raises three-class staging performance to 52.80% macro F1.\\\"\\n    },\\n    {\\n      \\\"id\\\": 5,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"When applying the OCA module alone, the performance further increases to 80.97% and 58.47% for binary and three-class settings, which validates our hypothesis that fine-grained organ–text alignment provides valuable diagnostic evidence from radiology reports.\\\",\\n      \\\"reason\\\": \\\"Section IV.D, Table IV explicitly states that OCA produces 80.97% macro F1 for binary staging.\\\"\\n    },\\n    {\\n      \\\"id\\\": 6,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"When applying the OCA module alone, the performance further increases to 80.97% and 58.47% for binary and three-class settings, which validates our hypothesis that fine-grained organ–text alignment provides valuable diagnostic evidence from radiology reports.\\\",\\n      \\\"reason\\\": \\\"Section IV.D, Table IV explicitly states that OCA produces 58.47% macro F1 for three-class staging.\\\"\\n    },\\n    {\\n      \\\"id\\\": 7,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"When combining AOG and OCA, we observe further performance gains (81.63% and 61.52% F1-scores), suggesting that anatomical structure and textual evidence complement each other.\\\",\\n      \\\"reason\\\": \\\"Section IV.D, Table IV explicitly states that combining AOG and OCA yields 81.63% macro F1 for binary staging.\\\"\\n    },\\n    {\\n      \\\"id\\\": 8,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"When combining AOG and OCA, we observe further performance gains (81.63% and 61.52% F1-scores), suggesting that anatomical structure and textual evidence complement each other.\\\",\\n      \\\"reason\\\": \\\"Section IV.D, Table IV explicitly states that combining AOG and OCA yields 61.52% macro F1 for three-class staging.\\\"\\n    },\\n    {\\n      \\\"id\\\": 9,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Finally, incorporating REG on top of both AOG and OCA yields the best overall performance, with macro F1-scores of 83.96% and 64.53% in binary and three-class settings.\\\",\\n      \\\"reason\\\": \\\"Section IV.D, Table IV explicitly states that the full model with REG reaches 83.96% binary F1.\\\"\\n    },\\n    {\\n      \\\"id\\\": 10,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Finally, incorporating REG on top of both AOG and OCA yields the best overall performance, with macro F1-scores of 83.96% and 64.53% in binary and three-class settings.\\\",\\n      \\\"reason\\\": \\\"Section IV.D, Table IV explicitly states that the full model with REG reaches 64.53% three-class F1.\\\"\\n    }\\n  ]\\n}\", \"{\\n  \\\"verdicts\\\": [\\n    {\\n      \\\"id\\\": 1,\\n      \\\"label\\\": \\\"unsupported\\\",\\n      \\\"paper_evidence\\\": \\\"\\\",\\n      \\\"reason\\\": \\\"The source paper does not mention future work investigating integration of longitudinal imaging and follow-up reports for dynamic tumor progression modeling. This claim is absent from the provided text.\\\"\\n    }\\n  ]\\n}\"]"
+}

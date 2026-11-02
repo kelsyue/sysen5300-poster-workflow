@@ -9,12 +9,14 @@
 | `input_paper_id` | Control / block | paper ID | Research paper used to generate the poster |
 | `run_id` | Identifier | integer | Unique per attempt, even for repeated model–paper pairs |
 | `key_information_coverage` | Outcome | % | Share of checklist items correctly represented in the poster |
-| `hallucination_rate` | Outcome | claims per 1,000 words | Unsupported claims in the poster per 1,000 words of poster text |
-| `latency` | Outcome | seconds | Prompt submission → completed poster |
-| `generation_cost` | Outcome | USD | Token usage × model pricing for one poster |
-| `workflow_success` | Outcome | 0/1 | Whether the workflow produced a usable poster |
+| `hallucination_rate` | Outcome | % of claims | Share of the poster's atomic claims that the paper does not support (unsupported or contradicted) |
+| `latency` | Outcome | seconds | Prompt submission → completed poster; summed over the first attempt and any recovery attempts |
+| `generation_cost` | Outcome | USD | Token usage × model pricing for one poster, summed over all its attempts |
+| `workflow_success` | Outcome | 0/1 | Whether the workflow produced a usable poster, on the first attempt or after checkpoint recovery (= `eventual_success`) |
+| `first_attempt_success` | Outcome | 0/1 | The first attempt alone produced a usable poster |
+| `eventual_success` | Outcome | 0/1 | The first attempt or a recovery produced a usable poster |
 | `poster_quality_score` | Outcome | 1–5 | Holistic rating of layout, readability, and how well content represents the paper |
-| `token_usage` | Outcome | integer | Tokens consumed during generation |
+| `token_usage` | Outcome | integer | Tokens consumed during generation, summed over all attempts (recovery rows hold only new usage) |
 
 ## 2. Tables
 
@@ -111,8 +113,8 @@ If an item does not apply to a paper (e.g., no baseline), the evaluator marks it
 coverage_e      = 100 × sum(chk_*) / count(non-NA chk_*)        # per evaluator
 key_information_coverage = mean(coverage_e across evaluators)
 
-halluc_per1k_e  = 1000 × n_claims_unsupported / poster_word_count
-hallucination_rate = mean(halluc_per1k_e across evaluators)
+halluc_pct_e    = 100 × n_claims_unsupported / n_claims_total          # per evaluator; NA if no claims
+hallucination_rate = mean(halluc_pct_e across evaluators)               # judges: same formula from their counts
 
 poster_quality_score = mean(quality_score across evaluators)
 ```

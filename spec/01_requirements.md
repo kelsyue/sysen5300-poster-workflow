@@ -11,12 +11,12 @@ These are the acceptance limits. Each is checked on its own; there is no combine
 | ID | Measure | Limit type | Limit | Unit | Source |
 |---|---|---|---|---|---|
 | SR-1 | `key_information_coverage` | LSL | ≥ 90 | % of checklist items accurate | Charter goal |
-| SR-2 | `hallucination_rate` | USL | < 2.0 **[proposed]** | unsupported claims per 1,000 poster words | Charter goal (< 5%), converted — see note |
+| SR-2 | `hallucination_rate` | USL | < 5 | % of the poster's claims that the paper does not support | Charter goal |
 | SR-3 | `poster_quality_score` | LSL | ≥ 4.0 | 1–5 rating | Charter goal |
-| SR-4 | `workflow_success` rate | LSL | ≥ 95 | % of attempts | Charter goal |
+| SR-4 | `workflow_success` rate | LSL | ≥ 95 | % of attempts that produced a usable poster, including after checkpoint recovery | Charter goal |
 | SR-5 | Validation effort per candidate | Target | ≤ 1 hour (from 4 h baseline, −75%) | person-hours, incl. human review | Charter goal |
 
-**Note on SR-2:** the team chose to measure hallucination as unsupported claims per 1,000 words of poster text (decided 2026-10-23). The charter's "< 5%" was a share of claims, so it was converted: assuming about 40 claims per 1,000 poster words, 5% ≈ 2 unsupported claims per 1,000 words. The 40-claim density is an assumption; check it on the judge pilot set and update the limit before the full run. See `07_open_issues.md` → OI-3. The charter goal statement should be updated to match.
+**Note on SR-2 (revised 2026-11-01):** hallucination is the share of the poster's atomic claims that the source paper does not support (unsupported or contradicted), in %, the unit the human evaluators use. This replaces the earlier "unsupported claims per 1,000 poster words" (2026-10-23) and its converted limit of 2.0. The judge still records `halluc_per1k` for reference; it is not gated. The % depends on how finely claims are split, so judge and human claim counts are compared in the pilot (`claims_per_poster_judge_over_human`). See `07_open_issues.md` → OI-3.
 
 Measures recorded without a specification limit (reported, not gated): `latency`, `generation_cost`, `token_usage`.
 

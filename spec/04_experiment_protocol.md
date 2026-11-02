@@ -1,5 +1,25 @@
 # 04 — Experiment Protocol
 
+## As run (revised 2026-11-01; supersedes §1, §3 and §5 where they differ)
+
+The token budget cut the study from 30 papers to 15 and the posters are not regenerated.
+
+- **Papers:** 15 (P01–P15) × 4 candidates = 60 attempts. P06, P11 and P13 are the judge
+  calibration papers; the **main comparison uses the other 12 papers** (48 attempts).
+- **Run order:** paper by paper; within each paper always claude → gpt → llama → qwen. Not
+  randomized. Paper blocks absorb drift over the run; order within a paper is a limitation.
+- **Recovery:** failed attempts were re-run once from their checkpoints (`src/recovery.py`); a
+  failed figure plan was retried with its own error as feedback, under a newer harness version.
+  Recorded as `first_attempt_success`, `eventual_success` and `workflow_success`
+  (= eventual). Latency, tokens and cost are summed over all attempts of a poster. Recovery is
+  confounded with the model (e.g. every qwen poster came from recovery), so content differences
+  mix model and recovery path; reported as a limitation.
+- **Judge validation:** human scores exist only for the 3 calibration papers, which were also
+  used to revise the judge prompts. Agreement (§5) is measured on those 12 posters; there is no
+  independent holdout, so agreement is optimistic and the judge's use on the 12 main papers rests
+  on it. The bias check (§5 step 6) is run on the same posters.
+- **Analysis:** Python (`harness/analysis/`), methods in `05_analysis_spec.md`.
+
 ## 1. Design
 
 - **Unit of observation:** one poster-generation attempt = one paper × one LLM.

@@ -330,10 +330,30 @@ python judge/judge.py --dry-run       # both judges -> data/latex/dry_run/judge_
 
 The blind key goes to `data/private/` (gitignored). With a reference sheet each poster costs about 35,000 tokens per judge (P01: GPT-4o 26,408 in / 7,909 out; Gemini 20,710 / 17,231); the sheet itself costs about 28,000 tokens once per paper. How to fill human scores, check reference sheets, run the pilot and revise the prompts: [`judge/README.md`](judge/README.md) and [`spec/08_llm_judge.md`](../spec/08_llm_judge.md).
 
+### Analysing the model replacement
+
+After the judges have scored the main posters (the blind key must be in `data/private/latex/`):
+
+```bash
+python analysis/build_dataset.py      # one row per paper x model -> results/latex/analysis/dataset.csv
+python analysis/analyze.py            # main comparison (12 papers) -> results/latex/analysis/report.md
+python analysis/analyze.py --split calibration   # P06, P11, P13, e.g. next to human scores
+```
+
+`dataset.csv` adds `first_attempt_success`, `eventual_success` (`workflow_success`
+includes recovery) and sums latency, tokens and cost over every attempt of a poster.
+Hallucination is `halluc_pct`, the % of the poster's claims unsupported (limit < 5%).
+`report.md` holds the gate (GR-1 to GR-4 per score source), success rates, requirement
+intervals, model comparisons, descriptive statistics, exploratory SPC and the limitations;
+the CSVs and `figures/` sit next to it. Methods: [`spec/05_analysis_spec.md`](../spec/05_analysis_spec.md).
+If a judge has scored the posters with more than one prompt version, pin one with
+`--judge-prompt JUDGE=SHA256`. These files name the models: team only.
+
 ## Validation
 
 Run `python -m unittest discover -s tests` for offline workflow checks.
 Run `python judge/tests/test_offline.py` for the judge and pilot-agreement checks (fake gateway, no key).
+Run `python analysis/tests/test_analysis.py` for the analysis pipeline (synthetic data with known answers).
 Offline checks cover one-call planning, invalid figure references, checkpoint
 isolation/restoration, resumed preparation, zero-credential rebuilds and failure
 handling. A new gateway pilot is still required to measure v2 token use and quality.

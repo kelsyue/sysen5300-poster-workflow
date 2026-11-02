@@ -14,7 +14,7 @@ The harness holds everything constant except `llm_model`. It is the engineering 
 
 ## What the harness must answer
 
-> When the underlying LLM of Paper2Poster is replaced, do poster content accuracy and quality change, and which candidate LLMs meet the stakeholder requirements (≥ 90% key-information coverage, < 2.0 unsupported claims per 1,000 poster words [proposed], ≥ 4.0/5 quality, ≥ 95% workflow success)?
+> When the underlying LLM of Paper2Poster is replaced, do poster content accuracy and quality change, and which candidate LLMs meet the stakeholder requirements (≥ 90% key-information coverage, < 5% of poster claims unsupported, ≥ 4.0/5 quality, ≥ 95% workflow success)?
 
 ## Spec files
 
@@ -24,7 +24,7 @@ The harness holds everything constant except `llm_model`. It is the engineering 
 | [02_architecture.md](02_architecture.md) | Components, data flow, Paper2Poster integration, model gateway, directory layout |
 | [03_data_schema.md](03_data_schema.md) | Codebook, table schemas, derived fields, validation rules |
 | [04_experiment_protocol.md](04_experiment_protocol.md) | Run order, blinding, evaluator procedure, judge pilot, effort timing |
-| [05_analysis_spec.md](05_analysis_spec.md) | Descriptive stats, SPC charts, capability analysis, probability methods (R) |
+| [05_analysis_spec.md](05_analysis_spec.md) | Descriptive stats, model comparison, requirement intervals, exploratory SPC and capability, probability methods (Python) |
 | [06_acceptance_gate.md](06_acceptance_gate.md) | Pass / fail / inconclusive rules, human-review routing, decision report |
 | [07_open_issues.md](07_open_issues.md) | Inconsistencies across source docs and decisions still needed |
 | [08_llm_judge.md](08_llm_judge.md) | LLM-as-judge design: the four judge calls, inputs, reliability handling, pilot validation and prompt revision, token cost |
@@ -56,6 +56,17 @@ before it can't share a runs file with runs made after):
 - `latency` sums every try and the LaTeX build; `E_NO_FIGURES` is checked automatically;
   `generation_cost` uses the gateway's price list (`scripts/fetch_prices.py`).
 
+## Revision 2026-11-01: as-run study and analysis
+
+- 15 papers × 4 candidates were generated (token budget); P06, P11 and P13 calibrate the judge,
+  the other 12 papers form the main comparison. Posters are not regenerated.
+- `first_attempt_success` and `eventual_success` are recorded; `workflow_success` includes
+  checkpoint recovery. Latency, tokens and cost are summed over every attempt of a poster.
+- Hallucination is the % of the poster's claims unsupported, limit < 5% (the human evaluators' unit).
+- Analysis in Python: mixed model + Friedman for comparisons, bootstrap intervals of the model
+  mean against each limit for the gate; Cpk/Ppk and control charts exploratory (05, 06).
+- Judge agreement is measured on the calibration papers only (no independent holdout).
+
 ## Fixed parameters (v0.1; original experiment)
 
 | Parameter | Value |
@@ -71,7 +82,7 @@ before it can't share a runs file with runs made after):
 | Prompt | Paper2Poster's built-in agent prompts at the pinned commit (`utils/prompt_templates/`), not tuned per model |
 | LLM judges | Gemini Flash (`gemini-3.5-flash`), GPT-4o (`openai.gpt-4o`) (used only after pilot validation) |
 | Human evaluators | Paper authors, blinded, target ≥ 2 per paper |
-| Analysis | R (ggplot2), per course SIGMA chapters (Fraser, n.d.) |
+| Analysis | Python (`harness/analysis/`), per course SIGMA chapters (Fraser, n.d.); R in v0.1 |
 
 ## Source documents
 

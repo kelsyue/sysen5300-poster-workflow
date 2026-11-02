@@ -195,6 +195,7 @@ def test_pilot(tmp: Path):
             if rng.random() < 0.1:
                 items[rng.integers(9)] ^= 1
             h.append({"poster_code": c, "evaluator_id": e, **dict(zip(pilot_agreement.ITEMS, items)),
+                      "n_claims_total": int(words[c] / 25),
                       "n_claims_unsupported": max(0, truth[c]["unsup"] + int(rng.integers(-1, 2)) * (rng.random() < .2)),
                       "quality_score": int(np.clip(truth[c]["q"] + (rng.random() < .2) * rng.choice([-1, 1]), 1, 5))})
     pd.DataFrame(h).to_csv(tmp / "human.csv", index=False)
@@ -211,7 +212,7 @@ def test_pilot(tmp: Path):
                           "judge_prompt_sha256": "v1", "judged_at": "2026-10-31T00:00:00+00:00",
                           **dict(zip(pilot_agreement.ITEMS, items)),
                           "coverage_pct": 100 * items.mean(), "n_claims_total": int(words[c] / 25),
-                          "poster_word_count": words[c], "halluc_per1k": 1000 * unsup / words[c],
+                          "poster_word_count": words[c], "n_claims_unsupported": unsup,
                           "quality_score": q, "parse_ok": 1, "evidence_found_rate": 0.97})
     pd.DataFrame(j).to_csv(tmp / "judge.csv", index=False)
     cfg = yaml.safe_load((HERE.parent.parent / "spec" / "config.example.yaml").read_text())

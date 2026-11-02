@@ -76,12 +76,19 @@ reference_sheets:                 # judge/reference_sheet.py: per-paper checklis
 
 spec_limits:
   key_information_coverage: { lsl: 90 }
-  hallucination_rate:       { usl: 2.0 }   # unsupported claims per 1,000 words (proposed, OI-3)
+  hallucination_rate:       { usl: 5.0 }   # % of the poster's claims unsupported (charter < 5%; same unit as human scoring, OI-3)
   poster_quality_score:     { lsl: 4.0 }
   workflow_success_rate:    { lsl: 95 }
   capability_threshold: 1.0
   confidence: 0.95
   bootstrap_reps: 2000
+
+analysis:                         # analysis/build_dataset.py, analysis/analyze.py; see spec/05_analysis_spec.md
+  calibration_papers: [P06, P11, P13]   # used to tune and check the judge prompts; out of the main comparison
+  decision_basis: mean            # mean: 95% CI of the model mean vs the limit; share: CI of the share of posters meeting it
+  target_share: 0.75              # used only with decision_basis: share
+  min_scored: 5                   # fewer scored posters than this -> inconclusive
+  seed: 5300                      # bootstrap
 
 review_routing:                   # OI-5: confirm before full run
   near_limit_band:

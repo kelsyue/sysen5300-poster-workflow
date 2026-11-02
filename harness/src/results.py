@@ -6,7 +6,7 @@ exist, the human scores, and writes under results/latex/ (results/latex/dry_run/
   by_run.csv     one row per attempt: the codebook variables (llm_model, input_paper_id,
                  run_id, latency, generation_cost, workflow_success, token_usage), the
                  failure reason, the fitted font scale, and per judge / human the mean
-                 coverage_pct, halluc_per1k, quality_score, plus judge_cost
+                 coverage_pct, halluc_pct (% of claims unsupported), quality_score, plus judge_cost
   by_model.csv   one row per candidate: attempts, success rate, mean and total latency,
                  tokens and cost, mean judge and human scores
   posters/<input_paper_id>/<llm_model>.pdf/.png   links to each successful poster, so all
@@ -34,7 +34,7 @@ import yaml
 from blinder import poster_pdf
 
 HARNESS = Path(__file__).resolve().parent.parent
-MEASURES = ["coverage_pct", "halluc_per1k", "quality_score"]
+MEASURES = ["coverage_pct", "halluc_pct", "quality_score"]
 ITEMS = ["chk_problem", "chk_method", "chk_data", "chk_setup", "chk_primary_result",
          "chk_secondary_result", "chk_baseline", "chk_conclusion", "chk_limitation"]
 
@@ -44,6 +44,7 @@ def judge_table(path: Path, key: pd.DataFrame, prices: dict) -> pd.DataFrame:
     if not path.exists() or key.empty:
         return pd.DataFrame()
     j = pd.read_csv(path)
+    j["halluc_pct"] = 100 * j.n_claims_unsupported / j.n_claims_total.where(j.n_claims_total > 0)
     newest = j.sort_values("judged_at").groupby("judge_model")["judge_prompt_sha256"].last()
     j = j[(j.judge_prompt_sha256 == j.judge_model.map(newest)) & (j.parse_ok == 1)]
     j = j.drop_duplicates(["poster_code", "judge_model", "judge_repeat"], keep="last")
@@ -67,7 +68,7 @@ def human_table(path: Path, key: pd.DataFrame, manifest: pd.DataFrame) -> pd.Dat
     h[ITEMS] = h[ITEMS].replace({"NA": float("nan")}).apply(pd.to_numeric, errors="coerce")
     h = h.merge(manifest[["poster_code", "poster_word_count"]], on="poster_code")
     h["coverage_pct"] = 100 * h[ITEMS].sum(axis=1, min_count=1) / h[ITEMS].notna().sum(axis=1)
-    h["halluc_per1k"] = 1000 * h["n_claims_unsupported"] / h["poster_word_count"]
+    h["halluc_pct"] = 100 * h["n_claims_unsupported"] / h["n_claims_total"].where(h["n_claims_total"] > 0)
     h = h.merge(key[["poster_code", "run_id"]], on="poster_code")
     agg = h.groupby("run_id").agg(**{f"{m}__human": (m, "mean") for m in MEASURES},
                                   n_evaluators=("evaluator_id", "nunique"))

@@ -52,7 +52,7 @@ Re-running skips posters already scored with the current prompts. Raw judge repl
 |---|---|
 | `evaluator_id` | `E01`, `E02`, … never a name |
 | `chk_problem` … `chk_limitation` | `1` accurate, `0` wrong or missing, `NA` item does not apply to the paper |
-| `n_claims_total` | pilot only: number of factual claims on the poster |
+| `n_claims_total` | number of factual claims on the poster (denominator of the hallucination %) |
 | `n_claims_unsupported` | claims not supported by, or contradicting, the paper |
 | `flagged_claims` | the flagged claims, e.g. `["Accuracy 0.71", "uses PanDerm"]` |
 | `quality_score` | 1–5, anchors in `spec/04_experiment_protocol.md` |

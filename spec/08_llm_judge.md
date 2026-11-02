@@ -22,7 +22,7 @@ Judges score the **LaTeX poster** (the `latex-only-v2` workflow's PDF). The PPTX
 |---|---|---|
 | Poster image (PNG, long side 2,000 px) | Rendered by `judge.py` from the blinded LaTeX PDF with `pdftoppm`; cached as `judge_images/<poster_code>.png`, so both judges see the same image | Coverage, quality |
 | Poster text | `pdftotext` of the same PDF, written by the Blinder (`blinded/<poster_code>.txt`). The LaTeX PDF has a real text layer, so this is exact text, including table cells and captions | Coverage, claim extraction |
-| Poster word count | Words in that text; the denominator of `halluc_per1k` for judges and humans alike | Hallucination rate |
+| Poster word count | Words in that text; denominator of `halluc_per1k`, recorded for reference only (not gated) | — |
 | Full paper text | `pdftotext` of `papers/<id>.pdf`, cached in `data/paper_text/<id>.txt` (a cleaner hand-made `.txt` there takes precedence) | Claim verification; coverage and quality when no reference sheet exists |
 | Reference sheet | `papers/<id>.reference.json`, made by `reference_sheet.py` (§2.1) | Coverage, quality |
 
@@ -47,10 +47,10 @@ Uncertain is common and not an error: on P01, 3 of 9 items were uncertain, becau
 |---|---|---|---|---|
 | 1 | Coverage | image + poster text + reference | label per item: accurate / wrong / missing / na, with poster quote | `chk_*` (1/0/NA), `coverage_pct` |
 | 2 | Claim extraction | poster text | list of atomic claims with source quote | `n_claims_total` |
-| 3 | Claim verification | claims (batches of 40) + full paper | supported / unsupported / contradicted, with paper quote | `n_claims_unsupported` (unsupported + contradicted), `halluc_per1k`, `flagged_claims` |
+| 3 | Claim verification | claims (batches of 40) + full paper | supported / unsupported / contradicted, with paper quote | `n_claims_total`, `n_claims_unsupported` (unsupported + contradicted), `flagged_claims`; hallucination % = 100 × unsupported / total, computed in analysis (`halluc_per1k` kept for reference) |
 | 4 | Quality | image + reference summary and values (no excerpts) + printed size | eight yes/no observations (raw JSON only), then layout, readability, fidelity (1–5) + holistic 1–5 | `quality_score` (holistic), sub-scores for diagnosis |
 
-Hallucination follows the FActScore approach (Min et al., 2023): break text into atomic claims, then check each against the source. Rate = 1,000 × (unsupported + contradicted) / poster words, matching SR-2.
+Hallucination follows the FActScore approach (Min et al., 2023): break text into atomic claims, then check each against the source. Rate = 100 × (unsupported + contradicted) / claims audited, in %, matching SR-2 and the unit the human evaluators use (revised 2026-11-01 from per 1,000 words; `judge.py` still writes `halluc_per1k` so existing CSVs keep their columns).
 
 The quality prompt states the printed size (from `poster_width_inches` × `poster_height_inches`) and tells the judge that blurry text in the downscaled image is not by itself a readability problem; otherwise every 48 × 36 in poster looks unreadable at 2,000 px.
 
@@ -82,9 +82,11 @@ Run both judges with `--repeats 2` on the pilot posters, then compare with the a
 | Test–retest | ICC between repeat 1 and 2 | ≥ 0.80 |
 | Evidence honesty | Share of judge quotes found in poster/paper | ≥ 0.90 |
 
-Also reported, not gated: false-flag rate; Bayes P(truly fails | flagged) vs. observed; parallel-system detection 1 − (1 − d₁)(1 − d₂) vs. observed, plus an independence check (do both judges miss the same posters?); human–human ICC as the ceiling; mean judge-counted claims per 1,000 words (checks the ~40 assumption behind the SR-2 limit); per-candidate bias vs. humans (needs the private blind key).
+Also reported, not gated: false-flag rate; Bayes P(truly fails | flagged) vs. observed; parallel-system detection 1 − (1 − d₁)(1 − d₂) vs. observed, plus an independence check (do both judges miss the same posters?); human–human ICC as the ceiling; judge-counted vs human-counted claims per poster (the hallucination % depends on how finely claims are split); per-candidate bias vs. humans (needs the private blind key).
 
 `judge_disagreements.csv` lists every checklist item, quality score and hallucination pass/fail where a judge and the human consensus differ, with the judge's own label, reason and quote. It is the input for a prompt revision.
+
+**As run (2026-11-01):** human scores exist only for the 12 posters of the calibration papers (P06, P11, P13), which were also used for prompt revisions 1 and 2. Agreement is measured on those posters, without an independent holdout, so it is an optimistic estimate; the report states this. The procedure below is the original plan.
 
 **Revising a prompt (calibration).** Split the pilot posters before looking at any judge output: a calibration half and a holdout half, each covering all four candidates. Read the disagreements on the calibration half only, find the pattern (e.g., the judge credits a vague method description as `accurate`; the quality judge ignores duplicated tables), and change the prompt wording or anchors to address that pattern. Then re-run both judges and score agreement on the holdout half with `--only-codes`. A judge that fails: revise its prompt **once**, re-run the pilot, and record the change and both prompt hashes. A judge that fails twice is not used; if both fail, every poster goes to human review. Judge scores are not rescaled after the fact to match humans: a systematic offset shows up as low ICC and is fixed in the prompt, so the instrument stays the same for future model swaps.
 

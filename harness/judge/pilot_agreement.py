@@ -100,15 +100,22 @@ def mae(a, b) -> float:
 
 # ----------------------------------------------------------------- data prep
 
+def halluc_pct(df: pd.DataFrame) -> pd.Series:
+    """% of the poster's claims unsupported (the unit humans score); empty without claims."""
+    total = pd.to_numeric(df["n_claims_total"], errors="coerce")
+    return 100 * pd.to_numeric(df["n_claims_unsupported"], errors="coerce") / total.where(total > 0)
+
+
 def human_table(h: pd.DataFrame, words: pd.Series) -> tuple[pd.DataFrame, pd.DataFrame]:
     h = h.copy()
     h[ITEMS] = h[ITEMS].replace({"NA": np.nan, "": np.nan}).apply(pd.to_numeric, errors="coerce")
     h["poster_word_count"] = h["poster_code"].map(words)
     h["coverage_pct"] = 100 * h[ITEMS].sum(1, min_count=1) / h[ITEMS].notna().sum(1)
-    h["halluc_per1k"] = 1000 * h["n_claims_unsupported"] / h["poster_word_count"]
+    h["halluc_pct"] = halluc_pct(h)
     agg = h.groupby("poster_code").agg(
         coverage_pct=("coverage_pct", "mean"),
-        halluc_per1k=("halluc_per1k", "mean"),
+        halluc_pct=("halluc_pct", "mean"),
+        n_claims_total=("n_claims_total", "mean"),
         quality_score=("quality_score", "mean"),
         n_evaluators=("evaluator_id", "nunique"),
     )
@@ -122,9 +129,9 @@ def fails(df: pd.DataFrame, lim: dict) -> pd.DataFrame:
     """True where a poster misses a spec limit (the thing the judge must detect)."""
     return pd.DataFrame({
         "coverage": df["coverage_pct"] < lim["coverage_lsl"],
-        "hallucination": df["halluc_per1k"] >= lim["halluc_usl"],
+        "hallucination": df["halluc_pct"] >= lim["halluc_usl"],
         "quality": df["quality_score"] < lim["quality_lsl"],
-    }, index=df.index).where(df[["coverage_pct", "halluc_per1k", "quality_score"]].notna().values)
+    }, index=df.index).where(df[["coverage_pct", "halluc_pct", "quality_score"]].notna().values)
 
 
 def detection(truth: pd.Series, flag: pd.Series) -> dict:
@@ -178,12 +185,12 @@ def disagreements(model: str, hum: pd.DataFrame, r1: pd.DataFrame, h_rows: pd.Da
                         "judge_reason": " | ".join(f"{k}={(q.get(k) or {}).get('score')}: {(q.get(k) or {}).get('reason', '')}"
                                                    for k in ("holistic", "layout", "readability", "fidelity")),
                         "judge_evidence": ""})
-        hh, jh = hum.loc[code, "halluc_per1k"], r1.loc[code, "halluc_per1k"]
+        hh, jh = hum.loc[code, "halluc_pct"], r1.loc[code, "halluc_pct"]
         if pd.notna(hh) and pd.notna(jh) and (hh >= lim["halluc_usl"]) != (jh >= lim["halluc_usl"]):
             human_claims = "; ".join(str(x) for x in h_rows.loc[h_rows.poster_code == code, "flagged_claims"].dropna()) \
                 if "flagged_claims" in h_rows else ""
-            out.append({"judge": model, "poster_code": code, "measure": "halluc_per1k",
-                        "human": round(hh, 3), "judge_value": jh, "judge_label": "",
+            out.append({"judge": model, "poster_code": code, "measure": "halluc_pct",
+                        "human": round(hh, 2), "judge_value": jh, "judge_label": "",
                         "judge_reason": r1.loc[code, "flagged_claims"] if "flagged_claims" in r1 else "",
                         "judge_evidence": human_claims})
     return out
@@ -229,6 +236,7 @@ def main(argv=None):
     hum, h_rows = human_table(h_all, words)
     jud = latest_judge_rows(pd.read_csv(args.judge))
     jud[ITEMS] = jud[ITEMS].replace({"NA": np.nan}).apply(pd.to_numeric, errors="coerce")
+    jud["halluc_pct"] = halluc_pct(jud)
     pilot = hum.index
     jud = jud[jud.poster_code.isin(pilot)]
 
@@ -258,12 +266,13 @@ def main(argv=None):
         rec(model, "coverage_spearman", spear(hum.coverage_pct, r1.coverage_pct))
 
         # hallucination
-        icc_h = icc_2_1(hum.halluc_per1k, r1.halluc_per1k)
+        icc_h = icc_2_1(hum.halluc_pct, r1.halluc_pct)
         checks.append(("hallucination ICC", icc_h, th["halluc_icc_min"]))
-        rec(model, "halluc_mae_per1k", mae(hum.halluc_per1k, r1.halluc_per1k))
-        rec(model, "halluc_spearman", spear(hum.halluc_per1k, r1.halluc_per1k))
-        rec(model, "judge_claims_per1k_mean",
-            float((1000 * r1.n_claims_total / r1.poster_word_count).mean()))  # checks the SR-2 conversion
+        rec(model, "halluc_mae_pct_pts", mae(hum.halluc_pct, r1.halluc_pct))
+        rec(model, "halluc_spearman", spear(hum.halluc_pct, r1.halluc_pct))
+        # the % depends on how finely claims are split: judge vs human claims per poster
+        rec(model, "claims_per_poster_judge_over_human",
+            float(r1.n_claims_total.mean() / hum.n_claims_total.mean()) if hum.n_claims_total.mean() else np.nan)
 
         # quality
         hq = hum.quality_score.round().clip(1, 5)
@@ -285,7 +294,7 @@ def main(argv=None):
         # test-retest
         r2 = g[g.judge_repeat == 2].set_index("poster_code").reindex(pilot)
         if r2.coverage_pct.notna().any():
-            for col in ["coverage_pct", "halluc_per1k", "quality_score"]:
+            for col in ["coverage_pct", "halluc_pct", "quality_score"]:
                 checks.append((f"retest ICC {col}", icc_2_1(r1[col], r2[col]), th["retest_icc_min"]))
 
         # evidence honesty and parsing
@@ -328,7 +337,7 @@ def main(argv=None):
     if len(two):
         firsts = two.sort_values("evaluator_id").groupby("poster_code").nth([0, 1])
         p = firsts.assign(r=firsts.groupby("poster_code").cumcount()).pivot(index="poster_code", columns="r")
-        for col in ["coverage_pct", "halluc_per1k", "quality_score"]:
+        for col in ["coverage_pct", "halluc_pct", "quality_score"]:
             rec("human-human", f"icc_{col}", icc_2_1(p[(col, 0)], p[(col, 1)]))
 
     out = Path(args.out_dir)

@@ -1,93 +1,90 @@
-# 05 — Analysis Specification (R)
+# 05 — Analysis Specification (Python)
 
-All analysis in R with `tidyverse`/`ggplot2`, following the course SIGMA chapters (Fraser, n.d.-a to -g). Each measure is analyzed and reported on its own (Ma et al., 2024): an update can improve one measure while worsening another.
+Revised 2026-11-01. The analysis is in Python (`harness/analysis/`), not R; methods follow the course SIGMA chapters (Fraser, n.d.-a to -g). Each measure is analyzed and reported on its own (Ma et al., 2024): an update can improve one measure while worsening another.
 
-Input: the analysis dataset (one row per attempt; `03_data_schema.md` §4).
+Why the methods changed from v0.1: the study has 12 main papers (≈ 12 posters per model, fewer after failures), content scores are bounded and discrete (coverage in steps of one checklist item, quality 1–5, hallucination mostly 0%), and failed attempts leave cells empty. Cpk and control charts assume roughly normal, stable data and about 20+ points, so they are kept as exploratory; decisions use intervals that hold for small, discrete samples.
 
-## AR-1 Descriptive statistics — `01_describe.R`
+## Inputs and dataset — `analysis/build_dataset.py`
 
-For each `llm_model` × measure (all 7 outcomes):
+One row per paper × candidate (`results/latex/analysis/dataset.csv`), from `data/latex/runs.csv` (first attempts), `data/latex/recovery_attempts.csv` (checkpoint recoveries), the private blind key, `data/latex/judge_scores.csv` and, when present, `data/latex/human_scores.csv`.
 
-- n (attempts; posters scored), mean, median, SD, 5th/25th/75th/95th percentiles, skewness, kurtosis.
-- Plots: boxplots with jittered points, and histograms, models side by side, with spec limits drawn as reference lines.
-
-Output: `reports/describe_table.csv`, `reports/fig_box_<measure>.png`, `reports/fig_hist_<measure>.png`.
-
-## AR-2 Model comparison — `01_describe.R`
-
-- Randomized block design: `measure ~ llm_model + input_paper_id`, two-way ANOVA (no interaction; one observation per cell).
-- Follow up with paired comparisons between models (Tukey HSD or pairwise paired tests with multiplicity correction).
-- Check residuals (normality, equal variance). If badly violated, also report Friedman test as a robustness check.
-- `workflow_success` is binary; compare success proportions (e.g., Cochran's Q across the 4 models on the same papers).
-- Report effect sizes and 95% CIs, not just p-values.
-
-## AR-3 Stability (SPC) — `02_spc.R`
-
-Charts per model, in `run_order`:
-
-| Measure | Chart | Notes |
-|---|---|---|
-| `key_information_coverage` | Individuals + moving range (I-MR) | |
-| `poster_quality_score` | I-MR | |
-| Unsupported claims | u-chart | Defects = unsupported claims; area of opportunity = poster words / 1,000 |
-| Workflow failures | p-chart | Batches of 5 attempts (`batch_id`), 6 batches per model |
-
-- 3σ control limits.
-- Signals: point outside limits, runs, trends. A signal triggers investigation, not automatic failure.
-- Output a stability flag per model × measure (`stable` / `signals`), which selects Cpk vs. Ppk in AR-4.
-
-## AR-4 Process capability — `03_capability.R`
-
-One-sided indices against stakeholder limits:
-
-```
-Coverage (LSL = 90):       Cpk = (mean − 90)  / (3σ)
-Quality  (LSL = 4.0):      Cpk = (mean − 4.0) / (3σ)
-Hallucination (USL = 2.0 per 1,000 words, proposed):   Cpk = (2.0 − mean) / (3σ)
-```
-
-- σ = within-subgroup estimate (from moving range, MR̄/1.128) for **Cpk** when AR-3 shows stability; overall sample SD for **Ppk** when it does not.
-- 95% CI two ways:
-  1. Normal-approximation formula for Cpk.
-  2. Bootstrap: resample attempts (or papers, to respect blocking — **[TBD — OI-10]**) ≥ 2,000 times; percentile interval.
-- Report both intervals; the decision uses the bootstrap interval when the two disagree in classification (coverage and quality are bounded and discrete, so the normal formula is approximate).
-
-Decision per measure (feeds `06_acceptance_gate.md`):
-
-| CI | Result |
+| Field | Definition |
 |---|---|
-| Entirely > 1 | Pass |
-| Entirely < 1 | Fail |
-| Contains 1 | Inconclusive |
+| `first_attempt_success` | The first attempt produced a usable poster |
+| `eventual_success` | The first attempt or a recovery did |
+| `workflow_success` | = `eventual_success` (codebook variable; includes both) |
+| `recovered`, `n_attempts` | Success came only from recovery; attempts made |
+| `latency`, `token_usage`, `input_tokens`, `output_tokens`, `generation_cost` | Summed over every attempt of the poster (recovery rows hold only new usage) |
+| `coverage_pct__<source>`, `halluc_pct__<source>`, `quality_score__<source>` | Per score source (each judge; `human`): mean over repeats / evaluators. A failed judge task empties only its own measure |
+| `halluc_pct` | 100 × `n_claims_unsupported` / `n_claims_total` (% of claims; SR-2) |
+| `split` | `calibration` for `analysis.calibration_papers` (P06, P11, P13), else `main` |
 
-## AR-5 Workflow success — `03_capability.R`
+A judge with more than one prompt version on the analysed posters must be pinned (`--judge-prompt JUDGE=SHA256`); the script refuses to mix versions.
 
-- Success rate = successes / attempts per model.
-- One-sided 95% lower bound from the exact binomial (Clopper–Pearson).
-- Pass if lower bound ≥ 95%; fail if the upper one-sided 95% bound < 95%; otherwise inconclusive.
-- Note: with 30 attempts, 30/30 gives a lower bound of about 90.5%, so a model **cannot** pass SR-4 on 30 attempts alone. See OI-4.
+Failed attempts have no poster: content measures are `NA` for them, never 0, and every content result is reported with its n.
 
-## AR-6 Probability of meeting requirements — `04_probability.R`
+## AR-1 Descriptive statistics — `describe.csv`, `figures/box_*.png`, `figures/hist_*.png`
 
-- From each measure's empirical CDF per model, estimate P(poster meets its limit), e.g. P(coverage ≥ 90).
-- Series-system estimate of meeting all requirements:
+Per model × measure (all generation, success and content measures, content per source): n, mean, median, SD, 5th/25th/75th/95th percentiles, skewness, excess kurtosis. Boxplots with jittered points and histograms, spec limits drawn as reference lines.
+
+## AR-2 Model comparison — `compare.csv`, `pairwise.csv`
+
+- **Continuous measures:** linear mixed model `y ~ llm_model + (1 | input_paper_id)` (paper as a random block effect; handles papers where a model failed), likelihood-ratio test of the model term on ML fits. Cost, tokens and latency are fitted on the log scale (they differ by orders of magnitude between models). Convergence and boundary warnings are recorded in `note`.
+- **Robustness:** Friedman test on papers where every model has a value (the classic randomized block, nonparametric).
+- **Pairwise:** Wilcoxon signed-rank on the papers both models share, Holm-adjusted within each measure; median paired difference as the effect size.
+- **Success (binary):** Cochran's Q across models on the same papers, pairwise exact McNemar, Holm-adjusted; reported for both `first_attempt_success` and `eventual_success`.
+
+## AR-3 Stability (exploratory) — `spc_signals.csv`, `figures/imr_*.png`
+
+In `run_order`, per model: I-MR charts (coverage, quality per source; latency, cost, tokens), a p-chart of unsupported claims (each poster: unsupported out of its claims) and a p-chart of workflow failures by `batch_id`. 3σ limits; signals are points beyond them. With about 12 points per model the limits are rough: signals are investigated and listed in the report, but they do not select Cpk vs. Ppk and do not block the gate.
+
+## AR-4 Requirements on content measures — `capability.csv`
+
+Per score source × model × requirement:
+
+- **Decision interval (`analysis.decision_basis: mean`, default):** 95% bootstrap percentile interval of the model mean (`spec_limits.bootstrap_reps` resamples of the model's posters, one per paper; seed `analysis.seed`). Also reported: t interval.
+- **Share meeting the limit:** k of n posters, exact (Clopper–Pearson) 95% interval. With `decision_basis: share` the decision uses this interval against `analysis.target_share`; note that 12/12 gives a lower bound of only 0.74.
+- **Ppk** (overall SD) with a bootstrap interval and **Cpk** (σ from the moving range): exploratory. Undefined (blank) when the scores have no spread, e.g. every poster at 0% hallucination.
+
+| Limit | Pass | Fail | Inconclusive |
+|---|---|---|---|
+| LSL (coverage ≥ 90, quality ≥ 4.0) | interval lower end ≥ LSL | upper end < LSL | otherwise |
+| USL (hallucination < 5%) | upper end < USL | lower end ≥ USL | otherwise |
+
+Fewer than `analysis.min_scored` (5) scored posters → `insufficient data` (treated as inconclusive).
+
+## AR-5 Workflow success — `success.csv`
+
+Successes / attempts per model for `first_attempt_success` and `eventual_success`, with exact one-sided 95% bounds. The gate (GR-4) uses `eventual_success`: pass if the lower bound ≥ 95%, fail if the upper bound < 95%, else inconclusive. At least 59 consecutive successes are needed for the lower bound to reach 95%, so with 12 attempts GR-4 can be failed but not passed.
+
+## AR-6 Probability of meeting requirements — `probability.csv`
 
 ```
 P(all) = P(success) × P(cov ≥ 90 | success) × P(halluc < 5 | success) × P(quality ≥ 4 | success)
 ```
 
-- Compare with the share of attempts that directly meet all four. A large gap means the measures are not independent; report it.
+compared with the observed share of attempts meeting all of them (failed attempts count as not meeting). A large gap means the measures are not independent.
 
-## AR-7 Judge analysis — `05_judges.R`
+## AR-7 Judge analysis — `harness/judge/pilot_agreement.py`
 
-Pilot outputs from `04_experiment_protocol.md` §5: agreement with humans, test–retest consistency, detection and false-flag rates, Bayes posterior, parallel-system detection, independence check, self-preference check. Also report agreement between human evaluators on the same poster.
+Agreement with humans, test–retest, detection and false-flag rates, Bayes posterior, parallel-system detection, independence and self-preference checks, human–human agreement (`08_llm_judge.md` §5). As run, measured on the calibration papers only (see `04_experiment_protocol.md`, As run).
 
-## AR-8 Effort — `06_gate.R`
+## AR-8 Effort
 
-Total person-hours per candidate from `effort_log` + evaluator minutes; compare with the 4-hour baseline and the 1-hour target.
+Not built: no `effort_log` was kept in this study.
 
-## Reporting rules
+## Reporting rules (`report.md`)
 
-- Always state n per model and per measure; failed attempts are excluded from content measures and that exclusion is stated.
-- Cost, latency, and token usage are reported with descriptive stats and comparisons only (no spec limit).
-- All figures use the same model color mapping and order across the report.
+- State n per model and per measure; failed attempts are excluded from content measures and that exclusion is stated next to the success rates.
+- Cost, latency and token usage: descriptive statistics and comparisons only (no spec limit).
+- Same model order and colours across figures.
+- Limitations listed in every report: recovery path confounded with model, code versions behind the posters, fixed run order, survivor-only content measures, GR-4 unreachable at this n, exploratory Ppk/Cpk/SPC, judge validated only on the calibration papers, claim-splitting dependence of the hallucination %.
+
+Usage (from `harness/`):
+
+```bash
+python analysis/build_dataset.py            # -> results/latex/analysis/dataset.csv
+python analysis/analyze.py                  # main comparison -> results/latex/analysis/report.md
+python analysis/analyze.py --split calibration
+python analysis/tests/test_analysis.py      # offline test with known answers
+```

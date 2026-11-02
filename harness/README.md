@@ -340,8 +340,10 @@ python analysis/analyze.py            # main comparison (12 papers) -> results/l
 python analysis/analyze.py --split calibration   # P06, P11, P13, e.g. next to human scores
 ```
 
-`dataset.csv` adds `first_attempt_success`, `eventual_success` (`workflow_success`
-includes recovery) and sums latency, tokens and cost over every attempt of a poster.
+`dataset.csv` counts each poster from its used run: the first attempt in `data/latex/runs.csv`
+if it succeeded, otherwise its recovery in `data/latex/recovery_attempts.csv` (`from_recovery`).
+Latency, tokens and cost are summed over every attempt of a poster, since a recovery reuses
+the earlier paper summary. `data/runs.csv` (old PPTX workflow) is not used.
 Hallucination is `halluc_pct`, the % of the poster's claims unsupported (limit < 5%).
 `report.md` holds the gate (GR-1 to GR-4 per score source), success rates, requirement
 intervals, model comparisons, descriptive statistics, exploratory SPC and the limitations;

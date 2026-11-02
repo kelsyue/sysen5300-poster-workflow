@@ -13,7 +13,7 @@ These are the acceptance limits. Each is checked on its own; there is no combine
 | SR-1 | `key_information_coverage` | LSL | ≥ 90 | % of checklist items accurate | Charter goal |
 | SR-2 | `hallucination_rate` | USL | < 5 | % of the poster's claims that the paper does not support | Charter goal |
 | SR-3 | `poster_quality_score` | LSL | ≥ 4.0 | 1–5 rating | Charter goal |
-| SR-4 | `workflow_success` rate | LSL | ≥ 95 | % of attempts that produced a usable poster, including after checkpoint recovery | Charter goal |
+| SR-4 | `workflow_success` rate | LSL | ≥ 95 | % of attempts whose used run (first attempt, or its recovery if the first failed) produced a usable poster | Charter goal |
 | SR-5 | Validation effort per candidate | Target | ≤ 1 hour (from 4 h baseline, −75%) | person-hours, incl. human review | Charter goal |
 
 **Note on SR-2 (revised 2026-11-01):** hallucination is the share of the poster's atomic claims that the source paper does not support (unsupported or contradicted), in %, the unit the human evaluators use. This replaces the earlier "unsupported claims per 1,000 poster words" (2026-10-23) and its converted limit of 2.0. The judge still records `halluc_per1k` for reference; it is not gated. The % depends on how finely claims are split, so judge and human claim counts are compared in the pilot (`claims_per_poster_judge_over_human`). See `07_open_issues.md` → OI-3.

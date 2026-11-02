@@ -12,9 +12,7 @@
 | `hallucination_rate` | Outcome | % of claims | Share of the poster's atomic claims that the paper does not support (unsupported or contradicted) |
 | `latency` | Outcome | seconds | Prompt submission → completed poster; summed over the first attempt and any recovery attempts |
 | `generation_cost` | Outcome | USD | Token usage × model pricing for one poster, summed over all its attempts |
-| `workflow_success` | Outcome | 0/1 | Whether the workflow produced a usable poster, on the first attempt or after checkpoint recovery (= `eventual_success`) |
-| `first_attempt_success` | Outcome | 0/1 | The first attempt alone produced a usable poster |
-| `eventual_success` | Outcome | 0/1 | The first attempt or a recovery produced a usable poster |
+| `workflow_success` | Outcome | 0/1 | Whether the used run produced a usable poster (the run the poster came from: the first attempt if it succeeded, otherwise its checkpoint recovery; a failed first attempt replaced by a recovery is not counted against the model) |
 | `poster_quality_score` | Outcome | 1–5 | Holistic rating of layout, readability, and how well content represents the paper |
 | `token_usage` | Outcome | integer | Tokens consumed during generation, summed over all attempts (recovery rows hold only new usage) |
 

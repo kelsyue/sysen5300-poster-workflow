@@ -60,8 +60,8 @@ before it can't share a runs file with runs made after):
 
 - 15 papers × 4 candidates were generated (token budget); P06, P11 and P13 calibrate the judge,
   the other 12 papers form the main comparison. Posters are not regenerated.
-- `first_attempt_success` and `eventual_success` are recorded; `workflow_success` includes
-  checkpoint recovery. Latency, tokens and cost are summed over every attempt of a poster.
+- Each poster is counted from its used run (the first attempt, or its checkpoint recovery if the
+  first failed); latency, tokens and cost are summed over every attempt of a poster.
 - Hallucination is the % of the poster's claims unsupported, limit < 5% (the human evaluators' unit).
 - Analysis in Python: mixed model + Friedman for comparisons, bootstrap intervals of the model
   mean against each limit for the gate; Cpk/Ppk and control charts exploratory (05, 06).

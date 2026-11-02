@@ -10,10 +10,13 @@ The token budget cut the study from 30 papers to 15 and the posters are not rege
   randomized. Paper blocks absorb drift over the run; order within a paper is a limitation.
 - **Recovery:** failed attempts were re-run once from their checkpoints (`src/recovery.py`); a
   failed figure plan was retried with its own error as feedback, under a newer harness version.
-  Recorded as `first_attempt_success`, `eventual_success` and `workflow_success`
-  (= eventual). Latency, tokens and cost are summed over all attempts of a poster. Recovery is
-  confounded with the model (e.g. every qwen poster came from recovery), so content differences
-  mix model and recovery path; reported as a limitation.
+  Each poster is counted from its **used run**: the first attempt if it succeeded, otherwise its
+  recovery (team decision, 2026-11-01); a failed first attempt replaced by a recovery is not
+  counted against the model. Latency, tokens and cost are summed over all attempts of a poster,
+  because a recovery reuses the paper summary made in the earlier attempt. Recovery is
+  confounded with the model (every claude and qwen attempt in the main set used a recovery run),
+  so differences mix model and recovery path; reported as a limitation. `data/runs.csv` is the
+  old PPTX workflow and is not used.
 - **Judge validation:** human scores exist only for the 3 calibration papers, which were also
   used to revise the judge prompts. Agreement (§5) is measured on those 12 posters; there is no
   independent holdout, so agreement is optimistic and the judge's use on the 12 main papers rests

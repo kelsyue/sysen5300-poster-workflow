@@ -10,11 +10,9 @@ One row per paper × candidate (`results/latex/analysis/dataset.csv`), from `dat
 
 | Field | Definition |
 |---|---|
-| `first_attempt_success` | The first attempt produced a usable poster |
-| `eventual_success` | The first attempt or a recovery did |
-| `workflow_success` | = `eventual_success` (codebook variable; includes both) |
-| `recovered`, `n_attempts` | Success came only from recovery; attempts made |
-| `latency`, `token_usage`, `input_tokens`, `output_tokens`, `generation_cost` | Summed over every attempt of the poster (recovery rows hold only new usage) |
+| `workflow_success` | The used run produced a usable poster (the run the poster came from: the first attempt if it succeeded, otherwise its checkpoint recovery; a failed first attempt replaced by a recovery is not counted against the model; team decision 2026-11-01) |
+| `from_recovery`, `n_attempts` | The used run is a recovery run; attempts made |
+| `latency`, `token_usage`, `input_tokens`, `output_tokens`, `generation_cost` | Summed over every attempt of the poster: a recovery reuses the paper summary made in the earlier attempt, so this is the full cost of getting the poster (recovery rows hold only new usage) |
 | `coverage_pct__<source>`, `halluc_pct__<source>`, `quality_score__<source>` | Per score source (each judge; `human`): mean over repeats / evaluators. A failed judge task empties only its own measure |
 | `halluc_pct` | 100 × `n_claims_unsupported` / `n_claims_total` (% of claims; SR-2) |
 | `split` | `calibration` for `analysis.calibration_papers` (P06, P11, P13), else `main` |
@@ -32,7 +30,7 @@ Per model × measure (all generation, success and content measures, content per 
 - **Continuous measures:** linear mixed model `y ~ llm_model + (1 | input_paper_id)` (paper as a random block effect; handles papers where a model failed), likelihood-ratio test of the model term on ML fits. Cost, tokens and latency are fitted on the log scale (they differ by orders of magnitude between models). Convergence and boundary warnings are recorded in `note`.
 - **Robustness:** Friedman test on papers where every model has a value (the classic randomized block, nonparametric).
 - **Pairwise:** Wilcoxon signed-rank on the papers both models share, Holm-adjusted within each measure; median paired difference as the effect size.
-- **Success (binary):** Cochran's Q across models on the same papers, pairwise exact McNemar, Holm-adjusted; reported for both `first_attempt_success` and `eventual_success`.
+- **Success (binary):** Cochran's Q across models on the same papers, pairwise exact McNemar, Holm-adjusted; on `workflow_success`.
 
 ## AR-3 Stability (exploratory) — `spc_signals.csv`, `figures/imr_*.png`
 
@@ -55,7 +53,7 @@ Fewer than `analysis.min_scored` (5) scored posters → `insufficient data` (tre
 
 ## AR-5 Workflow success — `success.csv`
 
-Successes / attempts per model for `first_attempt_success` and `eventual_success`, with exact one-sided 95% bounds. The gate (GR-4) uses `eventual_success`: pass if the lower bound ≥ 95%, fail if the upper bound < 95%, else inconclusive. At least 59 consecutive successes are needed for the lower bound to reach 95%, so with 12 attempts GR-4 can be failed but not passed.
+`workflow_success` successes / attempts per model, with exact one-sided 95% bounds. GR-4: pass if the lower bound ≥ 95%, fail if the upper bound < 95%, else inconclusive. At least 59 consecutive successes are needed for the lower bound to reach 95%, so with 12 attempts GR-4 can be failed but not passed.
 
 ## AR-6 Probability of meeting requirements — `probability.csv`
 
@@ -78,7 +76,7 @@ Not built: no `effort_log` was kept in this study.
 - State n per model and per measure; failed attempts are excluded from content measures and that exclusion is stated next to the success rates.
 - Cost, latency and token usage: descriptive statistics and comparisons only (no spec limit).
 - Same model order and colours across figures.
-- Limitations listed in every report: recovery path confounded with model, code versions behind the posters, fixed run order, survivor-only content measures, GR-4 unreachable at this n, exploratory Ppk/Cpk/SPC, judge validated only on the calibration papers, claim-splitting dependence of the hallucination %.
+- Limitations listed in every report: used-run rule and recovery path confounded with model, code versions behind the posters, fixed run order, survivor-only content measures, GR-4 unreachable at this n, exploratory Ppk/Cpk/SPC, judge validated only on the calibration papers, claim-splitting dependence of the hallucination %.
 
 Usage (from `harness/`):
 

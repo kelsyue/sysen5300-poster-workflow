@@ -1,17 +1,19 @@
 """Analysis dataset: one row per paper x candidate (no model calls).
 
-Each row combines the original attempt (data/latex/runs.csv) with its checkpoint
-recoveries (data/latex/recovery_attempts.csv):
+Each row is the run the poster came from (team decision, 2026-11-01): the original attempt
+in data/latex/runs.csv when it succeeded, otherwise its checkpoint recovery in
+data/latex/recovery_attempts.csv (the successful one, or the last one if none succeeded).
+A failed original attempt that a recovery replaced is not counted against the model.
+(data/runs.csv is the old PPTX workflow and is not used.)
 
-  first_attempt_success   the original attempt produced a usable poster
-  eventual_success        the original attempt or a recovery did
-  workflow_success        = eventual_success (the codebook variable, includes both)
-  recovered               eventual_success and not first_attempt_success
+  workflow_success        the used run produced a usable poster
+  from_recovery           the used run is a recovery run
   n_attempts              original + recoveries
-  latency                 seconds, summed over every attempt (recoveries reuse checkpoints,
-                          so the sum is the total time spent to get this poster)
+  latency                 seconds, summed over every attempt: a recovery reuses the paper
+                          summary made in the earlier attempt, so the sum is the full time
+                          spent to get this poster
   token_usage, input_tokens, output_tokens, generation_cost
-                          summed over every attempt (recovery rows hold only new usage)
+                          summed the same way (recovery rows hold only new usage)
   token_records_missing   attempts interrupted before the provider reported usage
 
 Content scores come from the blinded judge rows (data/latex/judge_scores.csv) and, when
@@ -69,28 +71,24 @@ def attempt_chains(runs: pd.DataFrame, recoveries: pd.DataFrame, runs_file: str,
                  if not recoveries.empty else recoveries)
         chain = [(runs_file, first)] + [(recovery_file, r) for _, r in later.iterrows()]
         won = [(f, r) for f, r in chain if r.workflow_success == 1]
-        poster_file, poster = won[0] if won else (chain[-1][0], chain[-1][1])
+        used_file, used = won[0] if won else chain[-1]
         row = {
             "input_paper_id": first.input_paper_id, "llm_model": first.llm_model,
             "original_run_id": first.run_id, "run_order": first.run_order, "batch_id": first.batch_id,
             "started_at": first.started_at,
-            "first_attempt_success": int(first.workflow_success == 1),
-            "eventual_success": int(bool(won)),
+            "workflow_success": int(bool(won)),
+            "from_recovery": int(used_file == recovery_file),
             "n_attempts": len(chain),
             "final_failure_reason": "" if won or pd.isna(chain[-1][1].failure_reason) else chain[-1][1].failure_reason,
             "token_records_missing": sum(int(r.get("token_usage") in (0, "0") and r.workflow_success != 1
                                              and str(r.failure_reason) in ("E_INTERRUPTED", "E_API")) for _, r in chain),
-            "poster_runs_file": poster_file if won else "", "poster_run_id": poster.run_id if won else np.nan,
-            "poster_prompt_sha256": poster.prompt_sha256 if won else "",
-            "poster_word_count": poster.poster_word_count if won else np.nan,
+            "used_runs_file": used_file, "used_run_id": used.run_id, "used_prompt_sha256": used.prompt_sha256,
+            "poster_word_count": used.poster_word_count if won else np.nan,
         }
         for col in SUMMED:
             row[col] = sum(float(r.get(col) or 0) for _, r in chain)
         rows.append(row)
-    df = pd.DataFrame(rows)
-    df["workflow_success"] = df["eventual_success"]
-    df["recovered"] = ((df.eventual_success == 1) & (df.first_attempt_success == 0)).astype(int)
-    return df
+    return pd.DataFrame(rows)
 
 
 def judge_scores(path: Path, chosen: dict[str, str], codes: set[str]) -> dict[str, pd.DataFrame]:
@@ -141,8 +139,9 @@ def build(data: Path, key_path: Path, cfg: dict, chosen: dict[str, str]) -> pd.D
         df["poster_code"] = ""
         return df
     key["run_id"] = pd.to_numeric(key.run_id)
-    df = df.merge(key[["poster_code", "runs_file", "run_id"]], how="left",
-                  left_on=["poster_runs_file", "poster_run_id"], right_on=["runs_file", "run_id"]).drop(columns=["runs_file", "run_id"])
+    key = key.rename(columns={"runs_file": "used_runs_file", "run_id": "used_run_id"})
+    df = df.merge(key[["poster_code", "used_runs_file", "used_run_id"]], how="left", on=["used_runs_file", "used_run_id"])
+    df.loc[df.workflow_success == 0, "poster_code"] = np.nan
     if df.poster_code.dropna().duplicated().any():
         sys.exit("A poster_code maps to more than one attempt (DR-1).")
     codes = set(df.poster_code.dropna())
@@ -173,7 +172,8 @@ def main(argv=None) -> None:
     main_rows = df[df.split == "main"]
     print(f"{len(df)} paper x model rows ({len(main_rows)} main, {len(df) - len(main_rows)} calibration) "
           f"-> {out}")
-    print(main_rows.groupby("llm_model")[["first_attempt_success", "eventual_success", "recovered"]].sum().to_string())
+    print(main_rows.groupby("llm_model").agg(attempts=("workflow_success", "size"), successes=("workflow_success", "sum"),
+                                             from_recovery=("from_recovery", "sum")).to_string())
 
 
 if __name__ == "__main__":

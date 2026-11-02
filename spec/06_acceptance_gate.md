@@ -9,7 +9,7 @@ The gate turns the analysis into an accept/reject recommendation per candidate. 
 | GR-1 | Coverage ≥ 90% | 95% bootstrap CI of the model mean (AR-4) | CI lower end ≥ 90 | CI upper end < 90 | Otherwise |
 | GR-2 | Hallucination < 5% of claims | 95% bootstrap CI of the model mean (AR-4) | CI upper end < 5 | CI lower end ≥ 5 | Otherwise |
 | GR-3 | Quality ≥ 4.0 | 95% bootstrap CI of the model mean (AR-4) | CI lower end ≥ 4.0 | CI upper end < 4.0 | Otherwise |
-| GR-4 | Workflow success (eventual) ≥ 95% | Exact one-sided 95% bounds (AR-5) | Lower bound ≥ 95% | Upper bound < 95% | Otherwise |
+| GR-4 | Workflow success (used run) ≥ 95% | Exact one-sided 95% bounds (AR-5) | Lower bound ≥ 95% | Upper bound < 95% | Otherwise |
 
 Revised 2026-11-01 (was: Cpk/Ppk interval vs. 1). Cpk/Ppk are reported but exploratory: with about 12 bounded, discrete scores per model they are unstable and undefined when scores do not vary. Fewer than 5 scored posters → inconclusive. GR-1 to GR-3 are evaluated per score source (each judge; humans where available). With 12 attempts GR-4 cannot pass (59 straight successes are needed), so **Accept** is not reachable in this study; a model is either rejected or inconclusive.
 

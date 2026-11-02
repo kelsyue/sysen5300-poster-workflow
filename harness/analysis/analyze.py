@@ -11,7 +11,7 @@ results/latex/analysis/ (names the models: team only):
   spc_signals.csv   AR-3  exploratory charts: I-MR, p-chart of unsupported claims, p-chart of failures
   capability.csv    AR-4  mean with bootstrap and t intervals, share of posters meeting the limit with
                           an exact interval, Ppk/Cpk (exploratory) with bootstrap intervals
-  success.csv       AR-5  first-attempt and eventual success with exact one-sided bounds
+  success.csv       AR-5  workflow success with exact one-sided bounds
   probability.csv   AR-6  P(meets all) as a series estimate vs observed
   gate.csv          GR-1..GR-4 and the overall recommendation, per score source
   figures/*.png, report.md
@@ -39,7 +39,7 @@ from scipy import stats
 
 HARNESS = Path(__file__).resolve().parent.parent
 GENERATION = {"latency": "Latency (s)", "generation_cost": "Generation cost (USD)", "token_usage": "Token usage"}
-BINARY = {"first_attempt_success": "First-attempt success", "eventual_success": "Workflow success (eventual)"}
+BINARY = {"workflow_success": "Workflow success"}
 CONTENT_LABELS = {"coverage_pct": "Key-information coverage (%)", "halluc_pct": "Hallucination (% of claims)",
                   "quality_score": "Poster quality (1-5)"}
 GATE_IDS = {"coverage_pct": "GR-1", "halluc_pct": "GR-2", "quality_score": "GR-3"}
@@ -246,8 +246,8 @@ def spc(df: pd.DataFrame, models: list[str], srcs: list[str], sigma: float, figd
                     signals.append({"chart": "p (claims)", "measure": "halluc_pct", "source": s, "llm_model": model,
                                     "input_paper_id": paper, "value": 100 * unsup / total, "ucl": 100 * (pbar + half)})
     for model in models:                 # workflow failures per batch
-        g = df[df.llm_model == model].groupby("batch_id").agg(fail=("eventual_success", lambda x: (x == 0).sum()),
-                                                               n=("eventual_success", "size"))
+        g = df[df.llm_model == model].groupby("batch_id").agg(fail=("workflow_success", lambda x: (x == 0).sum()),
+                                                               n=("workflow_success", "size"))
         if len(g) < 2:
             continue
         pbar = g.fail.sum() / g.n.sum()
@@ -305,7 +305,7 @@ def success(df, models, lsl_pct) -> pd.DataFrame:
         result = "pass" if lo >= target else "fail" if hi < target else "inconclusive"
         rows.append({"llm_model": model, "measure": measure, "successes": k, "attempts": n,
                      "rate": k / n if n else math.nan, "lower_95": lo, "upper_95": hi,
-                     "result": result if measure == "eventual_success" else "reported"})
+                     "result": result})
     return pd.DataFrame(rows)
 
 
@@ -313,16 +313,16 @@ def probability(df, models, srcs, lims) -> pd.DataFrame:
     rows = []
     for s, model in itertools.product(srcs, models):
         d = df[df.llm_model == model]
-        ok = d[d.eventual_success == 1]
+        ok = d[d.workflow_success == 1]
         cols = [f"{m}__{s}" for m in lims]
         if ok.empty or any(c not in d for c in cols):
             continue
         cond = {m: meets(ok[f"{m}__{s}"].dropna(), side, lim).mean() for m, (side, lim) in lims.items()}
-        series = d.eventual_success.mean() * np.prod(list(cond.values()))
+        series = d.workflow_success.mean() * np.prod(list(cond.values()))
         scored = ok.dropna(subset=cols)
         all_ok = pd.concat([meets(scored[f"{m}__{s}"], side, lim) for m, (side, lim) in lims.items()], axis=1).all(axis=1)
         observed = all_ok.sum() / (len(d) - len(ok) + len(scored)) if len(scored) else math.nan
-        rows.append({"source": s, "llm_model": model, "p_success": d.eventual_success.mean(),
+        rows.append({"source": s, "llm_model": model, "p_success": d.workflow_success.mean(),
                      **{f"p_{m}_given_success": v for m, v in cond.items()},
                      "p_all_series": series, "p_all_observed": observed})
     return pd.DataFrame(rows)
@@ -330,7 +330,7 @@ def probability(df, models, srcs, lims) -> pd.DataFrame:
 
 def gate(cap: pd.DataFrame, succ: pd.DataFrame, models, srcs) -> pd.DataFrame:
     rows = []
-    gr4 = succ[succ.measure == "eventual_success"].set_index("llm_model").result
+    gr4 = succ[succ.measure == "workflow_success"].set_index("llm_model").result
     for s, model in itertools.product(srcs, models):
         res = {r.gate: r.result for r in cap[(cap.source == s) & (cap.llm_model == model)].itertuples()}
         res["GR-4"] = gr4.get(model, "inconclusive")
@@ -389,8 +389,8 @@ def md_table(df: pd.DataFrame, cols: list[str], digits: int = 3) -> str:
 
 def report(df, split, models, srcs, desc, comp, cap, succ, prob, sig, gt, cfg, out: Path) -> None:
     an = cfg["analysis"]
-    recovered = df.groupby("llm_model").recovered.mean().reindex(models)
-    versions = df.loc[df.eventual_success == 1].groupby("llm_model").poster_prompt_sha256.nunique().reindex(models)
+    recovered = df.groupby("llm_model").from_recovery.mean().reindex(models)
+    versions = df.loc[df.workflow_success == 1].groupby("llm_model").used_prompt_sha256.nunique().reindex(models)
     need = math.ceil(math.log(0.05) / math.log(cfg["spec_limits"]["workflow_success_rate"]["lsl"] / 100))
     lines = [f"# Model replacement analysis ({split} papers)\n",
              f"Papers: {df.input_paper_id.nunique()} ({', '.join(sorted(df.input_paper_id.unique()))}); "
@@ -410,10 +410,11 @@ def report(df, split, models, srcs, desc, comp, cap, succ, prob, sig, gt, cfg, o
              "## Probability of meeting all requirements (AR-6)\n", md_table(prob, list(prob.columns)),
              "## SPC signals (AR-3, exploratory)\n", md_table(sig, list(sig.columns)),
              "## Limitations\n",
-             f"- Recovered posters: share of attempts that succeeded only after checkpoint recovery: "
-             + ", ".join(f"{m} {100 * r:.0f}%" for m, r in recovered.items())
-             + ". Recovery retried failed figure plans with feedback, so content differences mix the model with "
-               "the recovery path; `first_attempt_success` and `eventual_success` are reported separately.",
+             f"- Each poster is counted from the run it came from; a failed first attempt replaced by a checkpoint "
+             f"recovery is not counted against the model (team decision). Share of attempts whose used run is a "
+             f"recovery: " + ", ".join(f"{m} {100 * r:.0f}%" for m, r in recovered.items())
+             + ". Recovery runs used a newer harness version and retried failed figure plans with feedback, so "
+               "content and success differences mix the model with the recovery path.",
              f"- Code versions behind the scored posters (distinct prompt hashes per model): "
              + ", ".join(f"{m} {int(v) if pd.notna(v) else 0}" for m, v in versions.items()) + ".",
              "- Run order was fixed (each paper: claude, gpt, llama, qwen) and not randomized; papers are blocks, "

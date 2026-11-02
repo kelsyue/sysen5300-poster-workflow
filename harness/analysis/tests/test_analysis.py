@@ -69,11 +69,14 @@ def test_pipeline(tmp: Path) -> None:
     d = pd.read_csv(tmp / "out" / "dataset.csv")
     assert len(d) == len(PAPERS) * len(MODELS) and (d.split == "calibration").sum() == len(MODELS)
     llama = d[d.llm_model == MODELS[2]].iloc[0]
-    assert (llama.first_attempt_success, llama.eventual_success, llama.recovered, llama.n_attempts) == (0, 1, 1, 2)
+    assert (llama.workflow_success, llama.from_recovery, llama.n_attempts) == (1, 1, 2)
     assert llama.latency == 50 and llama.token_usage == 1300 and math.isclose(llama.generation_cost, 0.012)
-    assert llama.poster_prompt_sha256 == "v2" and llama.workflow_success == 1
+    assert llama.used_prompt_sha256 == "v2"
+    claude0 = d[d.llm_model == MODELS[0]].iloc[0]
+    assert (claude0.workflow_success, claude0.from_recovery, claude0.used_runs_file) == (1, 0, str(tmp / "data" / "runs.csv"))
     qwen = d[d.llm_model == MODELS[3]]
-    assert qwen.eventual_success.sum() == 0 and qwen.poster_code.isna().all() and qwen.latency.eq(50).all()
+    assert qwen.workflow_success.sum() == 0 and qwen.poster_code.isna().all() and qwen.latency.eq(50).all()
+    assert qwen.from_recovery.all()                                # used run = the last, failed recovery
     claude = d[d.llm_model == MODELS[0]].set_index("input_paper_id")
     assert pd.isna(claude.loc["T01", "halluc_pct__judge-a"]) and claude.loc["T01", "coverage_pct__judge-a"] == 100
     gpt = d[d.llm_model == MODELS[1]].iloc[0]
@@ -101,14 +104,15 @@ def test_pipeline(tmp: Path) -> None:
     q = gate.loc[("judge-a", MODELS[3])]
     assert q["GR-1"] == "insufficient data" and q["GR-4"] == "fail" and q.recommendation == "Reject"
     succ = pd.read_csv(out / "success.csv").set_index(["llm_model", "measure"])
-    assert math.isclose(succ.loc[(MODELS[0], "eventual_success"), "lower_95"], 0.05 ** (1 / 8), rel_tol=1e-9)
-    assert succ.loc[(MODELS[2], "first_attempt_success"), "rate"] == 0
+    assert math.isclose(succ.loc[(MODELS[0], "workflow_success"), "lower_95"], 0.05 ** (1 / 8), rel_tol=1e-9)
+    assert succ.loc[(MODELS[2], "workflow_success"), "rate"] == 1          # failed first attempts not counted
+    assert set(succ.index.get_level_values("measure")) == {"workflow_success"}
     cap = pd.read_csv(out / "capability.csv").set_index(["source", "measure", "llm_model"])
     assert cap.loc[("judge-a", "halluc_pct", MODELS[0]), "n_scored"] == 7    # failed claims task left out
     assert pd.isna(cap.loc[("judge-a", "coverage_pct", MODELS[0]), "ppk"])     # no spread: undefined, not infinite
     comp = pd.read_csv(out / "compare.csv")
     assert {"mixed model LR (log scale)", "Friedman (complete papers)", "Cochran's Q"} <= set(comp.test)
-    assert (out / "report.md").read_text().count("Recovered posters") == 1
+    assert (out / "report.md").read_text().count("not counted against the model") == 1
     assert (out / "figures" / "box_latency.png").exists()
 
     # share basis: 7/7 meeting has a 95% CI lower bound of about 0.59, below a 0.75 target

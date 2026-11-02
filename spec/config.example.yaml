@@ -89,6 +89,11 @@ analysis:                         # analysis/build_dataset.py, analysis/analyze.
   target_share: 0.75              # used only with decision_basis: share
   min_scored: 5                   # fewer scored posters than this -> inconclusive
   seed: 5300                      # bootstrap
+  judge_scores:                   # judge rows to analyse (one prompt version per judge per split)
+    - data/latex/remaining_p01_p15/judge_scores.csv     # main papers, prompt revision 2
+    - data/latex/gpt4o_calibration_2/judge_scores.csv   # calibration papers, prompt revision 2
+  human_scores:
+    - data/latex/gpt4o_calibration_2/human_scores.csv   # calibration papers (pushed when ready)
 
 review_routing:                   # OI-5: confirm before full run
   near_limit_band:

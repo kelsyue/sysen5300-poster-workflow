@@ -64,7 +64,8 @@ def make(tmp: Path) -> dict:
 
 def test_pipeline(tmp: Path) -> None:
     made = make(tmp)
-    args = ["--data-dir", str(tmp / "data"), "--key", str(tmp / "key.csv"), "--out", str(tmp / "out" / "dataset.csv")]
+    args = ["--data-dir", str(tmp / "data"), "--key", str(tmp / "key.csv"), "--out", str(tmp / "out" / "dataset.csv"),
+            "--judge-scores", str(tmp / "data" / "judge_scores.csv"), "--human-scores", str(tmp / "data" / "human_scores.csv")]
     build_dataset.main(args)
     d = pd.read_csv(tmp / "out" / "dataset.csv")
     assert len(d) == len(PAPERS) * len(MODELS) and (d.split == "calibration").sum() == len(MODELS)

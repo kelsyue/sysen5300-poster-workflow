@@ -246,6 +246,13 @@ def reference_text(ref: dict | None, paper_text: str, fallback_chars: int, excer
 
 # --------------------------------------------------------------------------- model calls
 
+class BudgetExceeded(RuntimeError):
+    """The gateway refused the call because the key's spend budget is used up."""
+
+
+BUDGET_ERROR = re.compile(r"budget[_ ]?(has been )?exceeded|ExceededBudget", re.I)
+
+
 @dataclass
 class CallResult:
     data: dict | None
@@ -273,7 +280,9 @@ class JudgeClient:
                     model=self.model, messages=messages,
                     temperature=self.temperature, max_tokens=self.max_tokens)
             except Exception as e:  # timeouts, 429, 5xx
-                if attempt == self.transport_retries or "budget_exceeded" in str(e):
+                if BUDGET_ERROR.search(str(e)):
+                    raise BudgetExceeded(str(e)) from e
+                if attempt == self.transport_retries:
                     raise
                 print(f"    transport error ({e}); retry in {delay}s", file=sys.stderr)
                 time.sleep(delay)
@@ -289,6 +298,8 @@ class JudgeClient:
         for attempt in range(2):  # one repair attempt for invalid JSON
             try:
                 r = self._create(messages)
+            except BudgetExceeded:
+                raise
             except Exception as e:
                 return CallResult(None, raw, time.time() - t0, tin, tout, f"transport: {e}")
             raw = r.choices[0].message.content or ""
@@ -553,7 +564,12 @@ def main(argv=None, client=None):
                     if key in done:
                         continue
                     print(f"[{model} r{rep}] {k}/{len(order)} {row['poster_code']}", flush=True)
-                    rec = judge_poster(jc, row, rep, jcfg, paths)
+                    try:
+                        rec = judge_poster(jc, row, rep, jcfg, paths)
+                    except BudgetExceeded as e:
+                        # Stop instead of writing an empty row for every remaining poster;
+                        # finished posters are kept and a re-run resumes from here.
+                        sys.exit(f"Gateway budget exceeded at {row['poster_code']} ({model}); stopping. {e}"[:400])
                     w.writerow(rec)
                     f.flush()
                     print(f"    coverage {rec['coverage_pct']}%  halluc/1k {rec['halluc_per1k']}  "

@@ -16,9 +16,9 @@ A failed original attempt that a recovery replaced is not counted against the mo
                           summed the same way (recovery rows hold only new usage)
   token_records_missing   attempts interrupted before the provider reported usage
 
-Content scores come from the blinded judge rows (data/latex/judge_scores.csv) and, when
-present, the human scores (data/latex/human_scores.csv), joined through the private blind
-key. Per source and poster: coverage_pct, halluc_pct, quality_score, n_claims_total,
+Content scores come from the blinded judge rows and, when present, the human scores
+(files listed in analysis.judge_scores / analysis.human_scores, or --judge-scores /
+--human-scores), joined through the private blind key. Per source and poster: coverage_pct, halluc_pct, quality_score, n_claims_total,
 n_claims_unsupported. A judge task that failed leaves only that measure empty. Repeats
 and evaluators are averaged.
 
@@ -91,31 +91,34 @@ def attempt_chains(runs: pd.DataFrame, recoveries: pd.DataFrame, runs_file: str,
     return pd.DataFrame(rows)
 
 
-def judge_scores(path: Path, chosen: dict[str, str], codes: set[str]) -> dict[str, pd.DataFrame]:
-    """Per judge: one row per poster_code, averaged over repeats, one prompt version only."""
-    j = read(path)
+def judge_scores(paths: list[Path], chosen: dict[str, str], split: dict[str, str]) -> dict[str, pd.DataFrame]:
+    """Per judge: one row per poster_code, averaged over repeats, one prompt version per split
+    (calibration and main posters may have been scored with different prompt versions)."""
+    j = pd.concat([read(p) for p in paths], ignore_index=True)
     if j.empty:
         return {}
-    j = j[j.poster_code.isin(codes)].copy()
+    j = j[j.poster_code.isin(split)].copy()
+    j["split"] = j.poster_code.map(split)
     j["halluc_pct"] = halluc_pct(j.n_claims_unsupported, j.n_claims_total)
     failed = j.failed_tasks.fillna("").astype(str).str.split(";")
     for task, cols in TASK_MEASURES.items():
         j.loc[failed.map(lambda f: task in f), cols] = np.nan
     out = {}
     for judge, rows in j.groupby("judge_model"):
-        hashes = sorted(rows.judge_prompt_sha256.unique())
         if judge in chosen:
             rows = rows[rows.judge_prompt_sha256 == chosen[judge]]
-        elif len(hashes) > 1:
-            sys.exit(f"{judge} has {len(hashes)} prompt versions on these posters: {hashes}. "
-                     f"Pick one with --judge-prompt {judge}=<sha256>.")
+        for part, sub in rows.groupby("split"):
+            hashes = sorted(sub.judge_prompt_sha256.unique())
+            if len(hashes) > 1:
+                sys.exit(f"{judge} has {len(hashes)} prompt versions on the {part} posters: {hashes}. "
+                         f"Pick one with --judge-prompt {judge}=<sha256>.")
         rows = rows.drop_duplicates(["poster_code", "judge_repeat"], keep="last")
         out[judge] = rows.groupby("poster_code")[CONTENT].mean()
     return out
 
 
-def human_scores(path: Path) -> pd.DataFrame:
-    h = read(path)
+def human_scores(paths: list[Path]) -> pd.DataFrame:
+    h = pd.concat([read(p) for p in paths], ignore_index=True)
     if h.empty:
         return h
     h[ITEMS] = h[ITEMS].replace({"NA": np.nan}).apply(pd.to_numeric, errors="coerce")
@@ -124,7 +127,8 @@ def human_scores(path: Path) -> pd.DataFrame:
     return h.groupby("poster_code")[CONTENT].mean()
 
 
-def build(data: Path, key_path: Path, cfg: dict, chosen: dict[str, str]) -> pd.DataFrame:
+def build(data: Path, key_path: Path, cfg: dict, chosen: dict[str, str],
+          judge_paths: list[Path], human_paths: list[Path]) -> pd.DataFrame:
     runs_path, recovery_path = data / "runs.csv", data / "recovery_attempts.csv"
     # the blind key names runs files relative to harness/, as blinder.py writes them
     runs_file, recovery_file = (str(p.relative_to(HARNESS)) if p.is_relative_to(HARNESS) else str(p)
@@ -144,9 +148,9 @@ def build(data: Path, key_path: Path, cfg: dict, chosen: dict[str, str]) -> pd.D
     df.loc[df.workflow_success == 0, "poster_code"] = np.nan
     if df.poster_code.dropna().duplicated().any():
         sys.exit("A poster_code maps to more than one attempt (DR-1).")
-    codes = set(df.poster_code.dropna())
-    sources = judge_scores(data / "judge_scores.csv", chosen, codes)
-    human = human_scores(data / "human_scores.csv")
+    split = dict(df.dropna(subset=["poster_code"])[["poster_code", "split"]].values)
+    sources = judge_scores(judge_paths, chosen, split)
+    human = human_scores(human_paths)
     if not human.empty:
         sources["human"] = human
     for name, scores in sources.items():
@@ -160,12 +164,22 @@ def main(argv=None) -> None:
     ap.add_argument("--data-dir", default="data/latex")
     ap.add_argument("--key", default="data/private/latex/blind_key.csv")
     ap.add_argument("--out", default="results/latex/analysis/dataset.csv")
+    ap.add_argument("--judge-scores", action="append", metavar="CSV",
+                    help="judge_scores.csv files to combine (repeatable); default analysis.judge_scores in the config")
+    ap.add_argument("--human-scores", action="append", metavar="CSV",
+                    help="human_scores.csv files (repeatable); default analysis.human_scores in the config")
     ap.add_argument("--judge-prompt", action="append", default=[], metavar="JUDGE=SHA256",
                     help="judge prompt version to use when a judge has several on these posters")
     args = ap.parse_args(argv)
     cfg = yaml.safe_load(open(HARNESS / args.config))
     chosen = dict(s.split("=", 1) for s in args.judge_prompt)
-    df = build(HARNESS / args.data_dir, HARNESS / args.key, cfg, chosen)
+    an = cfg.get("analysis", {})
+    data = HARNESS / args.data_dir
+    judge_paths = [HARNESS / p for p in args.judge_scores or an.get("judge_scores") or [data / "judge_scores.csv"]]
+    human_paths = [HARNESS / p for p in args.human_scores or an.get("human_scores") or [data / "human_scores.csv"]]
+    for p in judge_paths + human_paths:
+        print(f"{'using' if p.exists() else 'missing (skipped)'}: {p}")
+    df = build(data, HARNESS / args.key, cfg, chosen, judge_paths, human_paths)
     out = HARNESS / args.out
     out.parent.mkdir(parents=True, exist_ok=True)
     df.to_csv(out, index=False)

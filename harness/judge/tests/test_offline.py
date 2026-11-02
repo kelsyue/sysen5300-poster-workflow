@@ -163,6 +163,21 @@ def test_judge_run(tmp: Path):
     assert all(x["coverage_pct"] and x["quality_score"] == "4" for x in partial)   # other tasks still count
     print("judge.py offline run: OK  (model calls:", fake.calls, ")")
 
+    # an exhausted gateway budget stops the run at once, without writing empty rows
+    class Broke:
+        calls = 0
+        def create(self, **kw):
+            Broke.calls += 1
+            raise RuntimeError("Error code: 422 - Budget has been exceeded! Key=TEST (sk-...0000)")
+    before = len(list(csv.DictReader(open(out))))
+    try:
+        judge.main(args + ["--repeats", "3"], client=SimpleNamespace(chat=SimpleNamespace(completions=Broke())))
+        raise AssertionError("budget error did not stop the run")
+    except SystemExit as e:
+        assert "budget exceeded" in str(e)
+    assert Broke.calls == 1 and len(list(csv.DictReader(open(out)))) == before
+    print("judge.py budget stop: OK")
+
 
 def test_canvas_map(tmp: Path):
     """Content only in the top half: about half the canvas is blank, and the map shows where."""

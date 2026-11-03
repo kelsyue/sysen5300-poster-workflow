@@ -1,0 +1,59 @@
+{
+  "model": "openai.gpt-4o",
+  "repeat": 1,
+  "judge_prompt_sha256": "4ec65050cfdc718218dbc587f672291e733fd03b1254c20d77b61b0933e16162",
+  "error": null,
+  "tokens_in": 6435,
+  "tokens_out": 1062,
+  "max_output_tokens": 16384,
+  "parsed": {
+    "items": {
+      "chk_problem": {
+        "label": "accurate",
+        "poster_evidence": "Functional decline is often recognized only after a fall or observable gait impairment, when the prevention window has narrowed. Routine laboratory and vital-sign measurements may show gradual deterioration long before individual values become clinically abnormal.",
+        "reason": "The poster accurately describes the research problem as predicting pre-clinical functional mobility decline in older adults using longitudinal trajectories of routine biomarkers before observable impairment or falls occur."
+      },
+      "chk_method": {
+        "label": "accurate",
+        "poster_evidence": "This study tested whether longitudinal trajectories of routinely collected biomarkers can identify pre-clinical functional decline without using medication histories, diagnosis histories, functional assessments, or free-text records.",
+        "reason": "The poster correctly describes the method as using longitudinal trajectory descriptors from routine biomarkers and training machine learning models, including LightGBM."
+      },
+      "chk_data": {
+        "label": "accurate",
+        "poster_evidence": "The full pseudo-index cohort included 322,409 participants. The primary three-year pre-index analysis included 297,861 participants, of whom 33,088 were cases, corresponding to 11.1% prevalence.",
+        "reason": "The poster accurately states the dataset as 297,861 participants, including 33,088 cases, from the All of Us Research Program Controlled Tier Dataset version 8."
+      },
+      "chk_setup": {
+        "label": "accurate",
+        "poster_evidence": "Evaluations used random cross-sectional splits rather than calendar-time validation. Among trajectory models, logistic regression achieved AUROC 0.726, random forest 0.775, XGBoost 0.795, and LightGBM 0.797.",
+        "reason": "The poster describes the evaluation setup, including the use of cross-validation and comparison of multiple machine learning algorithms, consistent with the reference."
+      },
+      "chk_primary_result": {
+        "label": "accurate",
+        "poster_evidence": "The LightGBM trajectory model achieved AUROC 0.797 with a 95% confidence interval of 0.794–0.800 and AUPRC 0.380. The AUROC improvement over baseline was 0.042 and statistically significant at p < 0.001.",
+        "reason": "The poster accurately reports the primary result of the LightGBM model achieving AUROC 0.797 and AUPRC 0.380, consistent with the reference."
+      },
+      "chk_secondary_result": {
+        "label": "accurate",
+        "poster_evidence": "At 3 months, AUROC was 0.768 and AUPRC was 0.361. At 6 months, AUROC was 0.756 and AUPRC was 0.358. At 9 months, AUROC was 0.748 and AUPRC was 0.355. At 12 months, AUROC remained 0.740 and AUPRC remained 0.353.",
+        "reason": "The poster accurately reports the prediction horizon analysis results, including AUROCs ranging from 0.768 to 0.740, consistent with the reference."
+      },
+      "chk_baseline": {
+        "label": "accurate",
+        "poster_evidence": "Baseline laboratory means achieved AUROC 0.755 and AUPRC 0.304. The LightGBM trajectory model achieved AUROC 0.797 versus 0.755 and AUPRC 0.380 versus 0.304 for baseline laboratory means.",
+        "reason": "The poster correctly identifies the baseline as static laboratory summaries with AUROC 0.755 and AUPRC 0.304, consistent with the reference."
+      },
+      "chk_conclusion": {
+        "label": "accurate",
+        "poster_evidence": "Routine biomarker trajectories can function as a passive, zero-burden digital biomarker for early functional decline, enabling preventive intervention before falls or observable mobility impairment occur.",
+        "reason": "The poster accurately conveys the paper's conclusion that longitudinal trajectory features of routine biomarkers improve prediction of functional mobility decline and enable early detection."
+      },
+      "chk_limitation": {
+        "label": "accurate",
+        "poster_evidence": "ICD-10-coded outcomes represent documented clinical recognition rather than objective functional performance and may introduce detection bias. C-reactive protein and vitamin D were selectively ordered and highly sparse. Median imputation may not represent the clinical context of missing values. Evaluations used random cross-sectional splits rather than calendar-time validation, and comorbidity adjustment was not performed. The model may therefore capture some known disease trajectories in addition to pre-clinical decline. External validation is required in independent health systems and against objective outcomes such as gait speed, physical performance batteries, or prospective fall events.",
+        "reason": "The poster accurately describes limitations, including detection bias from ICD-10-coded outcomes, high missingness in certain biomarkers, and the need for external validation, consistent with the reference."
+      }
+    }
+  },
+  "raw": "```json\n{\n  \"items\": {\n    \"chk_problem\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Functional decline is often recognized only after a fall or observable gait impairment, when the prevention window has narrowed. Routine laboratory and vital-sign measurements may show gradual deterioration long before individual values become clinically abnormal.\",\n      \"reason\": \"The poster accurately describes the research problem as predicting pre-clinical functional mobility decline in older adults using longitudinal trajectories of routine biomarkers before observable impairment or falls occur.\"\n    },\n    \"chk_method\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"This study tested whether longitudinal trajectories of routinely collected biomarkers can identify pre-clinical functional decline without using medication histories, diagnosis histories, functional assessments, or free-text records.\",\n      \"reason\": \"The poster correctly describes the method as using longitudinal trajectory descriptors from routine biomarkers and training machine learning models, including LightGBM.\"\n    },\n    \"chk_data\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"The full pseudo-index cohort included 322,409 participants. The primary three-year pre-index analysis included 297,861 participants, of whom 33,088 were cases, corresponding to 11.1% prevalence.\",\n      \"reason\": \"The poster accurately states the dataset as 297,861 participants, including 33,088 cases, from the All of Us Research Program Controlled Tier Dataset version 8.\"\n    },\n    \"chk_setup\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Evaluations used random cross-sectional splits rather than calendar-time validation. Among trajectory models, logistic regression achieved AUROC 0.726, random forest 0.775, XGBoost 0.795, and LightGBM 0.797.\",\n      \"reason\": \"The poster describes the evaluation setup, including the use of cross-validation and comparison of multiple machine learning algorithms, consistent with the reference.\"\n    },\n    \"chk_primary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"The LightGBM trajectory model achieved AUROC 0.797 with a 95% confidence interval of 0.794–0.800 and AUPRC 0.380. The AUROC improvement over baseline was 0.042 and statistically significant at p < 0.001.\",\n      \"reason\": \"The poster accurately reports the primary result of the LightGBM model achieving AUROC 0.797 and AUPRC 0.380, consistent with the reference.\"\n    },\n    \"chk_secondary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"At 3 months, AUROC was 0.768 and AUPRC was 0.361. At 6 months, AUROC was 0.756 and AUPRC was 0.358. At 9 months, AUROC was 0.748 and AUPRC was 0.355. At 12 months, AUROC remained 0.740 and AUPRC remained 0.353.\",\n      \"reason\": \"The poster accurately reports the prediction horizon analysis results, including AUROCs ranging from 0.768 to 0.740, consistent with the reference.\"\n    },\n    \"chk_baseline\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Baseline laboratory means achieved AUROC 0.755 and AUPRC 0.304. The LightGBM trajectory model achieved AUROC 0.797 versus 0.755 and AUPRC 0.380 versus 0.304 for baseline laboratory means.\",\n      \"reason\": \"The poster correctly identifies the baseline as static laboratory summaries with AUROC 0.755 and AUPRC 0.304, consistent with the reference.\"\n    },\n    \"chk_conclusion\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Routine biomarker trajectories can function as a passive, zero-burden digital biomarker for early functional decline, enabling preventive intervention before falls or observable mobility impairment occur.\",\n      \"reason\": \"The poster accurately conveys the paper's conclusion that longitudinal trajectory features of routine biomarkers improve prediction of functional mobility decline and enable early detection.\"\n    },\n    \"chk_limitation\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"ICD-10-coded outcomes represent documented clinical recognition rather than objective functional performance and may introduce detection bias. C-reactive protein and vitamin D were selectively ordered and highly sparse. Median imputation may not represent the clinical context of missing values. Evaluations used random cross-sectional splits rather than calendar-time validation, and comorbidity adjustment was not performed. The model may therefore capture some known disease trajectories in addition to pre-clinical decline. External validation is required in independent health systems and against objective outcomes such as gait speed, physical performance batteries, or prospective fall events.\",\n      \"reason\": \"The poster accurately describes limitations, including detection bias from ICD-10-coded outcomes, high missingness in certain biomarkers, and the need for external validation, consistent with the reference.\"\n    }\n  }\n}\n```"
+}

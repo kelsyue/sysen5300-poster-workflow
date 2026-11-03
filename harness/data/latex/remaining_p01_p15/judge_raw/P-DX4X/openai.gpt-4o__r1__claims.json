@@ -1,0 +1,415 @@
+{
+  "model": "openai.gpt-4o",
+  "repeat": 1,
+  "judge_prompt_sha256": "4ec65050cfdc718218dbc587f672291e733fd03b1254c20d77b61b0933e16162",
+  "error": null,
+  "tokens_in": 67260,
+  "tokens_out": 6973,
+  "max_output_tokens": 16384,
+  "claims_batch_size": 40,
+  "parsed": {
+    "claims": [
+      {
+        "id": 1,
+        "text": "Large language models have evolved from single-turn chatbots into interactive agents capable of long-horizon reasoning.",
+        "poster_quote": "Large language models have evolved from single-turn chatbots into interactive agents capable of long-horizon reasoning.",
+        "label": "supported",
+        "paper_evidence": "Large language models have evolved from single-turn chatbots into interactive agents capable of long-horizon reasoning.",
+        "reason": "Introduction section explicitly states this claim."
+      },
+      {
+        "id": 2,
+        "text": "Tool services can return timeouts, service errors, incomplete information, and misleading observations.",
+        "poster_quote": "In real deployments, tool services can return timeouts, service errors, incomplete information, and misleading observations.",
+        "label": "supported",
+        "paper_evidence": "Real-world tool services are unreliable, frequently returning timeouts and service errors.",
+        "reason": "Introduction section mentions timeouts, service errors, incomplete information, and misleading observations as challenges."
+      },
+      {
+        "id": 3,
+        "text": "Users may intervene at arbitrary turns to correct an agent.",
+        "poster_quote": "In real deployments, ... users may intervene at arbitrary turns to correct an agent.",
+        "label": "supported",
+        "paper_evidence": "Real users actively intervene when an agent deviates from their intent, correcting its reasoning and actions.",
+        "reason": "Introduction section describes user intervention during execution."
+      },
+      {
+        "id": 4,
+        "text": "Existing training paradigms usually assume stable environments with minimal user intervention.",
+        "poster_quote": "Existing training paradigms usually assume stable environments with minimal user intervention.",
+        "label": "supported",
+        "paper_evidence": "Existing training environments usually assume stable and noise-free feedback, leaving agents underprepared for failure detection and recovery.",
+        "reason": "Introduction section highlights the assumption of stable environments with minimal user intervention."
+      },
+      {
+        "id": 5,
+        "text": "ReSFT converts explicit reflection skills into three complementary policy behaviors.",
+        "poster_quote": "ReSFT converts explicit reflection skills into three complementary policy behaviors.",
+        "label": "supported",
+        "paper_evidence": "ReSFT converts explicit reflection skills into policy behavior.",
+        "reason": "Section 3.2 describes ReSFT converting skills into three forms of reflective supervision."
+      },
+      {
+        "id": 6,
+        "text": "Two gaps separate idealized training from deployment: limited noisy feedback and limited user-guided correction and interaction diversity.",
+        "poster_quote": "Two gaps separate idealized training from deployment. First, existing environments provide limited noisy feedback, even though real tool services are unreliable. Second, user simulators provide limited user-guided correction and interaction diversity during execution.",
+        "label": "supported",
+        "paper_evidence": "We identify two gaps between idealized synthetic environments and real-world deployment in agent interaction, namely lack of noisy environment feedback and lack of user-guided correction during execution.",
+        "reason": "Introduction section explicitly identifies these two gaps."
+      },
+      {
+        "id": 7,
+        "text": "A robust agent should continuously perceive environmental noise, task failures, and user correction intent, then revise its actions promptly.",
+        "poster_quote": "A robust agent should continuously perceive environmental noise, task failures, and user correction intent, then revise its actions promptly.",
+        "label": "supported",
+        "paper_evidence": "Ideally, a robust agent should continuously perceive environmental noise, task failures, and user correction intent, then promptly revise its actions.",
+        "reason": "Introduction section describes the desired behavior of robust agents."
+      },
+      {
+        "id": 8,
+        "text": "Skill Recovery (KR) teaches global recovery when failure originates from an incorrect initial plan.",
+        "poster_quote": "Skill Recovery (KR) teaches global recovery when failure originates from an incorrect initial plan.",
+        "label": "supported",
+        "paper_evidence": "Skill Recovery (KR) teaches global recovery when failure originates from an incorrect initial plan.",
+        "reason": "Section 3.2 explicitly states this function of KR."
+      },
+      {
+        "id": 9,
+        "text": "The environment is reset to its initial state, and the task is restarted with the matched skill.",
+        "poster_quote": "The environment is reset to its initial state, and the task is restarted with the matched skill.",
+        "label": "supported",
+        "paper_evidence": "To teach global recovery, we reset the environment to its initial state s0 and restart from the original task with the matched skill.",
+        "reason": "Section 3.2 describes the KR sampling strategy in detail."
+      },
+      {
+        "id": 10,
+        "text": "The privileged skill is removed before storage so the model learns recovery without an explicit prior.",
+        "poster_quote": "As in SR, the privileged skill is removed before storage so the model learns recovery without an explicit prior.",
+        "label": "supported",
+        "paper_evidence": "As in SR, the privileged skill is removed before storage, encouraging recovery without an explicit skill prior.",
+        "reason": "Section 3.2 explicitly states this for KR sampling."
+      },
+      {
+        "id": 11,
+        "text": "Existing reflection methods mainly use inference-time self-critique, per-trajectory repair, or noise-augmented scalar rewards.",
+        "poster_quote": "Existing reflection methods mainly use inference-time self-critique, per-trajectory repair, or noise-augmented scalar rewards.",
+        "label": "supported",
+        "paper_evidence": "Existing reflection methods explore inference-time reflection, correction-trajectory learning, and noise-augmented training.",
+        "reason": "Introduction section lists these approaches as prior work."
+      },
+      {
+        "id": 12,
+        "text": "These approaches do not accumulate failures into reusable environment-level knowledge.",
+        "poster_quote": "These approaches do not accumulate failures into reusable environment-level knowledge.",
+        "label": "supported",
+        "paper_evidence": "Most are trained in stateless or simplified environments, leaving one question open: How can we elicit proactive reflective capability in agents from execution failures in real-world environments?",
+        "reason": "Introduction section critiques prior methods for not accumulating reusable environment-level knowledge."
+      },
+      {
+        "id": 13,
+        "text": "Agent-Reflex treats reflection as a learnable meta-skill: transferable recovery rules are mined from execution failures and progressively internalized through supervised learning and on-policy optimization.",
+        "poster_quote": "Agent-Reflex addresses this gap by treating reflection as a learnable meta-skill: transferable recovery rules are mined from execution failures and progressively internalized through supervised learning and on-policy optimization.",
+        "label": "supported",
+        "paper_evidence": "To address this gap, we propose Agent-Reflex, a general training framework for incentivizing proactive reflective thinking in agents. It models reflection as a learnable meta-skill: transferable meta-skills are explicitly mined from execution failures and progressively internalized into the policy through verifiable reflection learning.",
+        "reason": "Introduction section describes Agent-Reflex as treating reflection as a learnable meta-skill."
+      },
+      {
+        "id": 14,
+        "text": "Self-Reflection (SR) teaches local repair.",
+        "poster_quote": "Self-Reflection (SR) teaches local repair.",
+        "label": "supported",
+        "paper_evidence": "Self-Reflection Sampling (SR): To teach failure awareness and self-reflection, we restore the environment to st⋆ and continue after appending the corrective skill.",
+        "reason": "Section 3.2 explicitly states SR teaches local repair."
+      },
+      {
+        "id": 15,
+        "text": "For an erroneous trajectory, the environment is restored to the state immediately before the first wrong action.",
+        "poster_quote": "For an erroneous trajectory, the environment is restored to the state immediately before the first wrong action.",
+        "label": "supported",
+        "paper_evidence": "For an erroneous trajectory τ − , let t⋆ be its first erroneous turn, st⋆ the environment-state snapshot taken before that turn is executed.",
+        "reason": "Section 3.2 describes restoring the environment to the state before the first wrong action."
+      },
+      {
+        "id": 16,
+        "text": "The matched reflection skill triggers diagnosis and replanning during continuation generation.",
+        "poster_quote": "The matched reflection skill triggers diagnosis and replanning during continuation generation.",
+        "label": "supported",
+        "paper_evidence": "The skill triggers diagnosis and replanning during generation but is removed from the stored input.",
+        "reason": "Section 3.2 describes the role of the matched reflection skill in SR sampling."
+      },
+      {
+        "id": 17,
+        "text": "The skill is removed from the stored input, forcing the trained policy to recover from deployment-visible history alone.",
+        "poster_quote": "The skill is removed from the stored input, forcing the trained policy to recover from deployment-visible history alone.",
+        "label": "supported",
+        "paper_evidence": "The skill triggers diagnosis and replanning during generation but is removed from the stored input, so the policy learns to recover from its own error state.",
+        "reason": "Section 3.2 explicitly states the skill is removed from stored inputs."
+      },
+      {
+        "id": 18,
+        "text": "User-Centric Reflection (UR) teaches response to user intervention.",
+        "poster_quote": "User-Centric Reflection (UR) teaches response to user intervention.",
+        "label": "supported",
+        "paper_evidence": "User-Centric Reflection Sampling (UR): When an agent deviates from the user’s intent, users may intervene and correct its reasoning.",
+        "reason": "Section 3.2 describes UR teaching response to user intervention."
+      },
+      {
+        "id": 19,
+        "text": "A user simulator converts the matched skill into a natural-language correction, including direct corrections, partial hints, ambiguity, and deliberately incorrect advice.",
+        "poster_quote": "A user simulator converts the matched skill into a natural-language correction, including direct corrections, partial hints, ambiguity, and deliberately incorrect advice.",
+        "label": "supported",
+        "paper_evidence": "A user simulator U converts the matched skill into a natural-language correction: uκ = U (κ, ht⋆ , st⋆ ).",
+        "reason": "Section 3.2 describes the user simulator converting skills into corrections."
+      },
+      {
+        "id": 20,
+        "text": "The environment is restored to the error state, the user correction is inserted, and the policy continues.",
+        "poster_quote": "The environment is restored to the error state, the user correction is inserted, and the policy continues.",
+        "label": "supported",
+        "paper_evidence": "We then restore the environment to st⋆ , insert the correction after the erroneous turn, and continue.",
+        "reason": "Section 3.2 describes restoring the environment and inserting user corrections."
+      },
+      {
+        "id": 21,
+        "text": "The user message remains because it is visible at deployment, while the privileged skill is excluded.",
+        "poster_quote": "The user message remains because it is visible at deployment, while the privileged skill is excluded.",
+        "label": "supported",
+        "paper_evidence": "Because the user message is deployment-visible, uκ remains in the stored input, whereas the privileged skill κ is removed.",
+        "reason": "Section 3.2 explicitly states this distinction for UR sampling."
+      },
+      {
+        "id": 22,
+        "text": "Only verifier-accepted episodes enter training.",
+        "poster_quote": "Only verifier-accepted episodes enter training.",
+        "label": "supported",
+        "paper_evidence": "We merge verified rollouts only.",
+        "reason": "Section 3.2 states only verifier-validated data enters training."
+      },
+      {
+        "id": 23,
+        "text": "The final ReSFT corpus contains 54,000 trajectories combining verified Qwen3-8B successes with SR, KR, and UR correction samples.",
+        "poster_quote": "The final ReSFT corpus contains 54,000 trajectories combining verified Qwen3-8B successes with SR, KR, and UR correction samples.",
+        "label": "supported",
+        "paper_evidence": "The final corpus contains 54K trajectories, combining verified Qwen3-8B successes with reflective-correction samples spread over SR, KR, and UR.",
+        "reason": "Section 3.2 explicitly states the corpus size and composition."
+      },
+      {
+        "id": 24,
+        "text": "Tool returns, simulated user messages, hidden state snapshots, and privileged skill text do not contribute policy gradients.",
+        "poster_quote": "Tool returns, simulated user messages, hidden state snapshots, and privileged skill text do not contribute policy gradients.",
+        "label": "supported",
+        "paper_evidence": "Tokens belonging to tool returns and simulated user messages are excluded from the loss; only agent-generated tokens contribute gradient.",
+        "reason": "Section D.1 explicitly states excluded tokens."
+      },
+      {
+        "id": 25,
+        "text": "Agent-Reflex is a general three-stage framework for incentivizing proactive reflective thinking in language agents.",
+        "poster_quote": "Agent-Reflex is a general three-stage framework for incentivizing proactive reflective thinking in language agents.",
+        "label": "supported",
+        "paper_evidence": "To address this gap, we propose Agent-Reflex, a general training framework for incentivizing proactive reflective thinking in agents.",
+        "reason": "Introduction section describes Agent-Reflex as a general framework."
+      },
+      {
+        "id": 26,
+        "text": "Environment Reflection Skill Discovery (RSD) builds failure-aware executable environments, injects grounded tool-feedback perturbations, samples trajectories from a capability-diverse model pool, and mines matched success-failure pairs into an offline reflection skill library.",
+        "poster_quote": "Environment Reflection Skill Discovery (RSD) builds failure-aware executable environments, injects grounded tool-feedback perturbations, samples trajectories from a capability-diverse model pool, and mines matched success-failure pairs into an offline reflection skill library.",
+        "label": "supported",
+        "paper_evidence": "Environment Reflection Skill Discovery (RSD): Build failure-aware executable environments and mine verifier-matched pairs into an offline skill library.",
+        "reason": "Section 3.1 describes RSD in detail."
+      },
+      {
+        "id": 27,
+        "text": "Reflective Supervised Fine-Tuning (ReSFT) converts each skill into verifier-validated supervision for self-reflection, global recovery, and user-centric correction.",
+        "poster_quote": "Reflective Supervised Fine-Tuning (ReSFT) converts each skill into verifier-validated supervision for self-reflection, global recovery, and user-centric correction.",
+        "label": "supported",
+        "paper_evidence": "Reflective Supervised Fine-Tuning (ReSFT): Convert each skill into verifier-validated self-reflection, recovery, and user-correction data.",
+        "reason": "Section 3.2 describes ReSFT converting skills into supervision."
+      },
+      {
+        "id": 28,
+        "text": "Privileged skill prompts are removed from stored inputs so the policy learns to recover without requiring a skill prompt at deployment.",
+        "poster_quote": "Privileged skill prompts are removed from stored inputs so the policy learns to recover without requiring a skill prompt at deployment.",
+        "label": "supported",
+        "paper_evidence": "The skill triggers diagnosis and replanning during generation but is removed from the stored input.",
+        "reason": "Section 3.2 explicitly states privileged skill prompts are removed."
+      },
+      {
+        "id": 29,
+        "text": "On-Policy Reflective Policy Optimization (ORPO) combines reinforcement learning in mixed clean and noisy environments with reflection-guided on-policy distillation.",
+        "poster_quote": "On-Policy Reflective Policy Optimization (ORPO) combines reinforcement learning in mixed clean and noisy environments with reflection-guided on-policy distillation.",
+        "label": "supported",
+        "paper_evidence": "On-Policy Reflective Policy Optimization (ORPO): Combine Noisy Agent RL with same-token skill-guided OPD to provide dense reflection supervision.",
+        "reason": "Section 3.3 describes ORPO combining RL and OPD."
+      },
+      {
+        "id": 30,
+        "text": "The policy re-scores its own sampled actions under an environment-specific skill context, producing dense token-level supervision for reflective decisions.",
+        "poster_quote": "The policy re-scores its own sampled actions under an environment-specific skill context, producing dense token-level supervision for reflective decisions.",
+        "label": "supported",
+        "paper_evidence": "Re-scoring the same tokens with and without the skill card of their environment yields the detached, confidence-weighted OPD signal.",
+        "reason": "Section 3.3 describes dense token-level supervision from re-scoring."
+      },
+      {
+        "id": 31,
+        "text": "Built on Qwen3-8B, Agent-Reflex reaches 58.6 overall on five long-horizon tool-use benchmarks and 29.1 on AgentNoiseBench.",
+        "poster_quote": "Built on Qwen3-8B, Agent-Reflex reaches 58.6 overall on five long-horizon tool-use benchmarks and 29.1 on AgentNoiseBench.",
+        "label": "supported",
+        "paper_evidence": "Built on Qwen3-8B, Agent-Reflex reaches 58.6 overall on five long-horizon tool-use benchmarks and 29.1 on AgentNoiseBench.",
+        "reason": "Section 4.2 reports these results explicitly."
+      },
+      {
+        "id": 32,
+        "text": "Agent-Reflex is evaluated on two groups of benchmarks: long-horizon tool use and noisy interaction.",
+        "poster_quote": "Agent-Reflex is evaluated on two groups of benchmarks. Long-horizon tool use covers BFCL-v4, ACEBench, a stratified set of 200 ToolSandbox tasks, �2-Bench, and VitaBench. Noisy interaction is evaluated with AgentNoiseBench under tool-noise and user-noise settings derived from �2-Bench and VitaBench.",
+        "label": "supported",
+        "paper_evidence": "Experiments on six long-horizon tool-use and noisy-interaction benchmarks demonstrate the effectiveness of Agent-Reflex.",
+        "reason": "Introduction section describes evaluation on these two groups."
+      },
+      {
+        "id": 33,
+        "text": "Every benchmark uses its official metric and standard MCP interaction format.",
+        "poster_quote": "Every benchmark uses its official metric and standard MCP interaction format.",
+        "label": "supported",
+        "paper_evidence": "Following the EnvScaler protocol (Song et al., 2026), all evaluations use the standard MCP format and task templates, and each benchmark is scored with its official metric.",
+        "reason": "Section D.5 explicitly states this protocol."
+      },
+      {
+        "id": 34,
+        "text": "All trained methods begin from the same Qwen3-8B backbone.",
+        "poster_quote": "All trained methods begin from the same Qwen3-8B backbone.",
+        "label": "supported",
+        "paper_evidence": "Every trained method here, including Agent-Reflex, starts from the same Qwen3-8B backbone under one fair experimental setting.",
+        "reason": "Section C.1 explicitly states this shared backbone."
+      },
+      {
+        "id": 35,
+        "text": "Comparisons include inference-time and training-time reflection methods, environment-scaling methods, and trajectory-level reinforcement-learning algorithms.",
+        "poster_quote": "Comparisons include inference-time and training-time reflection methods, environment-scaling methods, and trajectory-level reinforcement-learning algorithms.",
+        "label": "supported",
+        "paper_evidence": "We compare three families: reflection methods, environment-scaling methods, and trajectory-level RL algorithms.",
+        "reason": "Section C describes these comparison families."
+      },
+      {
+        "id": 36,
+        "text": "ORPO is compared with GRPO, DAPO, REINFORCE++, NoisyAgent RL, and SEED using the same 2,500-task pool, rollout budget, toolcall budget, token budget, and 100 training steps.",
+        "poster_quote": "ORPO is compared with GRPO, DAPO, REINFORCE++, NoisyAgent RL, and SEED using the same 2,500-task pool, rollout budget, toolcall budget, token budget, and 100 training steps.",
+        "label": "supported",
+        "paper_evidence": "All runs start from Qwen3-8B and train for 100 RL steps on the same task pool under matched budgets.",
+        "reason": "Figure 4 caption explicitly states this comparison protocol."
+      },
+      {
+        "id": 37,
+        "text": "Training and evaluation environments are controlled at the environment-family level.",
+        "poster_quote": "Training and evaluation environments are controlled at the environment-family level.",
+        "label": "supported",
+        "paper_evidence": "Splits are preserved at the environment-family level rather than the task level.",
+        "reason": "Section D.5 explicitly states this control."
+      },
+      {
+        "id": 38,
+        "text": "Instructions and skill text are checked for near-duplicates against benchmark instructions and tool schemas.",
+        "poster_quote": "Instructions and skill text are checked for near-duplicates against benchmark instructions and tool schemas.",
+        "label": "supported",
+        "paper_evidence": "Generated instructions and skill text are checked for near-duplicates against benchmark instructions and tool schemas.",
+        "reason": "Section D.5 explicitly states this control."
+      },
+      {
+        "id": 39,
+        "text": "Evaluation answers never appear in analyzer, teacher, or user-simulator prompts.",
+        "poster_quote": "Evaluation answers never appear in analyzer, teacher, or user-simulator prompts.",
+        "label": "supported",
+        "paper_evidence": "Evaluation reference answers never appear in any analyzer, teacher, or user-simulator prompt.",
+        "reason": "Section D.5 explicitly states this control."
+      },
+      {
+        "id": 40,
+        "text": "AgentNoiseBench is out of distribution: its environments, tasks, taxonomy, and injector are not used during training.",
+        "poster_quote": "AgentNoiseBench is out of distribution: its environments, tasks, taxonomy, and injector are not used during training.",
+        "label": "supported",
+        "paper_evidence": "AgentNoiseBench is never consulted while RSD is built: neither its taxonomy nor its injector informs our perturbations, and the two noise designs are constructed in entirely different ways.",
+        "reason": "Section E.2 explicitly states this distinction."
+      },
+      {
+        "id": 41,
+        "text": "Agent-Reflex achieves the highest overall score among the compared 7B–8B methods on five long-horizon benchmarks, reaching 58.6 overall.",
+        "poster_quote": "Agent-Reflex achieves the highest overall score among the compared 7B–8B methods on five long-horizon benchmarks, reaching 58.6 overall.",
+        "label": "supported",
+        "paper_evidence": "Agent-Reflex reaches 58.6 overall on five long-horizon tool-use benchmarks.",
+        "reason": "The paper explicitly states that Agent-Reflex achieves 58.6 overall on five long-horizon tool-use benchmarks, which is the highest among the compared 7B–8B methods as shown in Table 1."
+      },
+      {
+        "id": 42,
+        "text": "Agent-Reflex scores 17.5 on VitaBench, 62.1 on �2-Bench, 51.4 on BFCL-v4, 78.0 on ACEBench, and 82.5 on ToolSandbox.",
+        "poster_quote": "Agent-Reflex achieves the highest overall score among the compared 7B–8B methods on five long-horizon benchmarks, reaching 58.6 overall. It scores 17.5 on VitaBench, 62.1 on �2-Bench, 51.4 on BFCL-v4, 78.0 on ACEBench, and 82.5 on ToolSandbox.",
+        "label": "supported",
+        "paper_evidence": "Agent-Reflex scores 17.5 on VitaBench, 62.1 on τ²-Bench, 51.4 on BFCL-v4, 78.0 on ACEBench, and 82.5 on ToolSandbox.",
+        "reason": "The paper explicitly lists these scores for Agent-Reflex in Table 1 under the respective benchmarks."
+      },
+      {
+        "id": 43,
+        "text": "Agent-Reflex substantially improves over the Qwen3-8B backbone, which scores 40.2 overall.",
+        "poster_quote": "Agent-Reflex substantially improves over the Qwen3-8B backbone, which scores 40.2 overall.",
+        "label": "supported",
+        "paper_evidence": "Qwen3-8B: 40.2 overall. Agent-Reflex-8B (ours): 58.6 overall.",
+        "reason": "The paper provides the overall scores for both Qwen3-8B and Agent-Reflex in Table 1, showing that Agent-Reflex substantially improves over the Qwen3-8B backbone."
+      },
+      {
+        "id": 44,
+        "text": "Agent-Reflex exceeds strong reflection methods, including Reflexion at 44.7, ExpeL at 37.9, Agent-R at 40.1, and NoisyAgent at 43.4.",
+        "poster_quote": "It also exceeds strong reflection methods, including Reflexion at 44.7, ExpeL at 37.9, Agent-R at 40.1, and NoisyAgent at 43.4.",
+        "label": "supported",
+        "paper_evidence": "Agent-Reflex outperforms Reflexion-8B, ExpeL-8B, Agent-R-8B, and NoisyAgent-8B on VitaBench, BFCL, ACEBench, and ToolSandbox.",
+        "reason": "The paper explicitly states that Agent-Reflex exceeds these reflection methods, and Table 1 confirms the scores: Reflexion (44.7), ExpeL (37.9), Agent-R (40.1), and NoisyAgent (43.4)."
+      },
+      {
+        "id": 45,
+        "text": "Agent-Reflex outperforms environment-scaling methods, including EnvScaler at 50.9 and Agent-World at 53.6.",
+        "poster_quote": "Compared with environment-scaling methods, it outperforms EnvScaler at 50.9 and Agent-World at 53.6.",
+        "label": "supported",
+        "paper_evidence": "Agent-Reflex improves over EnvScaler-8B and Agent-World-8B on all five benchmark averages.",
+        "reason": "The paper explicitly states this, and Table 1 confirms the scores: EnvScaler (50.9), Agent-World (53.6), and Agent-Reflex (58.6)."
+      },
+      {
+        "id": 46,
+        "text": "On ACEBench, Agent-Reflex reaches 73.3 turn-level accuracy while maintaining 85.0 step-level accuracy.",
+        "poster_quote": "On ACEBench, Agent-Reflex reaches 73.3 turn-level accuracy while maintaining 85.0 step-level accuracy.",
+        "label": "supported",
+        "paper_evidence": "On ACEBench, it reaches 73.3% at the turn level while matching the baselines at 85.0% step-level accuracy.",
+        "reason": "The paper explicitly states these scores for Agent-Reflex on ACEBench in Section 4.2.1."
+      },
+      {
+        "id": 47,
+        "text": "Agent-Reflex shows improved control of error propagation across multi-turn interactions.",
+        "poster_quote": "On ACEBench, Agent-Reflex reaches 73.3 turn-level accuracy while maintaining 85.0 step-level accuracy, showing improved control of error propagation across multi-turn interactions.",
+        "label": "supported",
+        "paper_evidence": "On ACEBench, the gain comes mainly from multi-turn interaction: Agent-Reflex reaches 73.3% at the turn level while matching the baselines at 85.0% step-level accuracy.",
+        "reason": "The paper explicitly attributes Agent-Reflex's performance on ACEBench to improved control of error propagation across multi-turn interactions in Section 4.2.1."
+      },
+      {
+        "id": 48,
+        "text": "Execution failures are not merely negative outcomes but a scalable source of reusable supervision for agent training.",
+        "poster_quote": "The results support a central conclusion: execution failures are not merely negative outcomes but a scalable source of reusable supervision for agent training.",
+        "label": "supported",
+        "paper_evidence": "Execution failures are not merely negative outcomes but a scalable source of reusable supervision for agent training.",
+        "reason": "The paper explicitly states this in the introduction and elaborates on how execution failures are used to mine reflection meta-skills in Section 3.1."
+      },
+      {
+        "id": 49,
+        "text": "The current skill library is mined offline from a fixed environment snapshot and may require maintenance when tool interfaces or service behavior change.",
+        "poster_quote": "The current skill library is mined offline from a fixed environment snapshot and may require maintenance when tool interfaces or service behavior change.",
+        "label": "supported",
+        "paper_evidence": "The current skill library is mined offline from a fixed snapshot of a large collection of executable environments. Consequently, it does not automatically adapt to changes in tool interfaces, service behavior, or environment dynamics.",
+        "reason": "The paper explicitly states this limitation in Section F."
+      },
+      {
+        "id": 50,
+        "text": "Future work includes online skill updating, temporal failure signatures such as latency and partial writes, transfer across model capacities, cross-environment skill composition, and distillation of richer environment-level artifacts such as verified sub-plans and tool contracts.",
+        "poster_quote": "Future work includes online skill updating, temporal failure signatures such as latency and partial writes, transfer across model capacities, cross-environment skill composition, and distillation of richer environment-level artifacts such as verified sub-plans and tool contracts.",
+        "label": "supported",
+        "paper_evidence": "Future work will investigate online skill summarization and incremental updating across larger and more diverse environment collections, allowing the library to incorporate new environments and emerging failure patterns while supporting cross-environment generalization.",
+        "reason": "The paper explicitly mentions these future directions in Section F."
+      }
+    ]
+  },
+  "raw": "[\"{\\n  \\\"claims\\\": [\\n    {\\\"id\\\": 1, \\\"text\\\": \\\"Large language models have evolved from single-turn chatbots into interactive agents capable of long-horizon reasoning.\\\", \\\"poster_quote\\\": \\\"Large language models have evolved from single-turn chatbots into interactive agents capable of long-horizon reasoning.\\\"},\\n    {\\\"id\\\": 2, \\\"text\\\": \\\"Tool services can return timeouts, service errors, incomplete information, and misleading observations.\\\", \\\"poster_quote\\\": \\\"In real deployments, tool services can return timeouts, service errors, incomplete information, and misleading observations.\\\"},\\n    {\\\"id\\\": 3, \\\"text\\\": \\\"Users may intervene at arbitrary turns to correct an agent.\\\", \\\"poster_quote\\\": \\\"In real deployments, ... users may intervene at arbitrary turns to correct an agent.\\\"},\\n    {\\\"id\\\": 4, \\\"text\\\": \\\"Existing training paradigms usually assume stable environments with minimal user intervention.\\\", \\\"poster_quote\\\": \\\"Existing training paradigms usually assume stable environments with minimal user intervention.\\\"},\\n    {\\\"id\\\": 5, \\\"text\\\": \\\"ReSFT converts explicit reflection skills into three complementary policy behaviors.\\\", \\\"poster_quote\\\": \\\"ReSFT converts explicit reflection skills into three complementary policy behaviors.\\\"},\\n    {\\\"id\\\": 6, \\\"text\\\": \\\"Two gaps separate idealized training from deployment: limited noisy feedback and limited user-guided correction and interaction diversity.\\\", \\\"poster_quote\\\": \\\"Two gaps separate idealized training from deployment. First, existing environments provide limited noisy feedback, even though real tool services are unreliable. Second, user simulators provide limited user-guided correction and interaction diversity during execution.\\\"},\\n    {\\\"id\\\": 7, \\\"text\\\": \\\"A robust agent should continuously perceive environmental noise, task failures, and user correction intent, then revise its actions promptly.\\\", \\\"poster_quote\\\": \\\"A robust agent should continuously perceive environmental noise, task failures, and user correction intent, then revise its actions promptly.\\\"},\\n    {\\\"id\\\": 8, \\\"text\\\": \\\"Skill Recovery (KR) teaches global recovery when failure originates from an incorrect initial plan.\\\", \\\"poster_quote\\\": \\\"Skill Recovery (KR) teaches global recovery when failure originates from an incorrect initial plan.\\\"},\\n    {\\\"id\\\": 9, \\\"text\\\": \\\"The environment is reset to its initial state, and the task is restarted with the matched skill.\\\", \\\"poster_quote\\\": \\\"The environment is reset to its initial state, and the task is restarted with the matched skill.\\\"},\\n    {\\\"id\\\": 10, \\\"text\\\": \\\"The privileged skill is removed before storage so the model learns recovery without an explicit prior.\\\", \\\"poster_quote\\\": \\\"As in SR, the privileged skill is removed before storage so the model learns recovery without an explicit prior.\\\"},\\n    {\\\"id\\\": 11, \\\"text\\\": \\\"Existing reflection methods mainly use inference-time self-critique, per-trajectory repair, or noise-augmented scalar rewards.\\\", \\\"poster_quote\\\": \\\"Existing reflection methods mainly use inference-time self-critique, per-trajectory repair, or noise-augmented scalar rewards.\\\"},\\n    {\\\"id\\\": 12, \\\"text\\\": \\\"These approaches do not accumulate failures into reusable environment-level knowledge.\\\", \\\"poster_quote\\\": \\\"These approaches do not accumulate failures into reusable environment-level knowledge.\\\"},\\n    {\\\"id\\\": 13, \\\"text\\\": \\\"Agent-Reflex treats reflection as a learnable meta-skill: transferable recovery rules are mined from execution failures and progressively internalized through supervised learning and on-policy optimization.\\\", \\\"poster_quote\\\": \\\"Agent-Reflex addresses this gap by treating reflection as a learnable meta-skill: transferable recovery rules are mined from execution failures and progressively internalized through supervised learning and on-policy optimization.\\\"},\\n    {\\\"id\\\": 14, \\\"text\\\": \\\"Self-Reflection (SR) teaches local repair.\\\", \\\"poster_quote\\\": \\\"Self-Reflection (SR) teaches local repair.\\\"},\\n    {\\\"id\\\": 15, \\\"text\\\": \\\"For an erroneous trajectory, the environment is restored to the state immediately before the first wrong action.\\\", \\\"poster_quote\\\": \\\"For an erroneous trajectory, the environment is restored to the state immediately before the first wrong action.\\\"},\\n    {\\\"id\\\": 16, \\\"text\\\": \\\"The matched reflection skill triggers diagnosis and replanning during continuation generation.\\\", \\\"poster_quote\\\": \\\"The matched reflection skill triggers diagnosis and replanning during continuation generation.\\\"},\\n    {\\\"id\\\": 17, \\\"text\\\": \\\"The skill is removed from the stored input, forcing the trained policy to recover from deployment-visible history alone.\\\", \\\"poster_quote\\\": \\\"The skill is removed from the stored input, forcing the trained policy to recover from deployment-visible history alone.\\\"},\\n    {\\\"id\\\": 18, \\\"text\\\": \\\"User-Centric Reflection (UR) teaches response to user intervention.\\\", \\\"poster_quote\\\": \\\"User-Centric Reflection (UR) teaches response to user intervention.\\\"},\\n    {\\\"id\\\": 19, \\\"text\\\": \\\"A user simulator converts the matched skill into a natural-language correction, including direct corrections, partial hints, ambiguity, and deliberately incorrect advice.\\\", \\\"poster_quote\\\": \\\"A user simulator converts the matched skill into a natural-language correction, including direct corrections, partial hints, ambiguity, and deliberately incorrect advice.\\\"},\\n    {\\\"id\\\": 20, \\\"text\\\": \\\"The environment is restored to the error state, the user correction is inserted, and the policy continues.\\\", \\\"poster_quote\\\": \\\"The environment is restored to the error state, the user correction is inserted, and the policy continues.\\\"},\\n    {\\\"id\\\": 21, \\\"text\\\": \\\"The user message remains because it is visible at deployment, while the privileged skill is excluded.\\\", \\\"poster_quote\\\": \\\"The user message remains because it is visible at deployment, while the privileged skill is excluded.\\\"},\\n    {\\\"id\\\": 22, \\\"text\\\": \\\"Only verifier-accepted episodes enter training.\\\", \\\"poster_quote\\\": \\\"Only verifier-accepted episodes enter training.\\\"},\\n    {\\\"id\\\": 23, \\\"text\\\": \\\"The final ReSFT corpus contains 54,000 trajectories combining verified Qwen3-8B successes with SR, KR, and UR correction samples.\\\", \\\"poster_quote\\\": \\\"The final ReSFT corpus contains 54,000 trajectories combining verified Qwen3-8B successes with SR, KR, and UR correction samples.\\\"},\\n    {\\\"id\\\": 24, \\\"text\\\": \\\"Tool returns, simulated user messages, hidden state snapshots, and privileged skill text do not contribute policy gradients.\\\", \\\"poster_quote\\\": \\\"Tool returns, simulated user messages, hidden state snapshots, and privileged skill text do not contribute policy gradients.\\\"},\\n    {\\\"id\\\": 25, \\\"text\\\": \\\"Agent-Reflex is a general three-stage framework for incentivizing proactive reflective thinking in language agents.\\\", \\\"poster_quote\\\": \\\"Agent-Reflex is a general three-stage framework for incentivizing proactive reflective thinking in language agents.\\\"},\\n    {\\\"id\\\": 26, \\\"text\\\": \\\"Environment Reflection Skill Discovery (RSD) builds failure-aware executable environments, injects grounded tool-feedback perturbations, samples trajectories from a capability-diverse model pool, and mines matched success-failure pairs into an offline reflection skill library.\\\", \\\"poster_quote\\\": \\\"Environment Reflection Skill Discovery (RSD) builds failure-aware executable environments, injects grounded tool-feedback perturbations, samples trajectories from a capability-diverse model pool, and mines matched success-failure pairs into an offline reflection skill library.\\\"},\\n    {\\\"id\\\": 27, \\\"text\\\": \\\"Reflective Supervised Fine-Tuning (ReSFT) converts each skill into verifier-validated supervision for self-reflection, global recovery, and user-centric correction.\\\", \\\"poster_quote\\\": \\\"Reflective Supervised Fine-Tuning (ReSFT) converts each skill into verifier-validated supervision for self-reflection, global recovery, and user-centric correction.\\\"},\\n    {\\\"id\\\": 28, \\\"text\\\": \\\"Privileged skill prompts are removed from stored inputs so the policy learns to recover without requiring a skill prompt at deployment.\\\", \\\"poster_quote\\\": \\\"Privileged skill prompts are removed from stored inputs so the policy learns to recover without requiring a skill prompt at deployment.\\\"},\\n    {\\\"id\\\": 29, \\\"text\\\": \\\"On-Policy Reflective Policy Optimization (ORPO) combines reinforcement learning in mixed clean and noisy environments with reflection-guided on-policy distillation.\\\", \\\"poster_quote\\\": \\\"On-Policy Reflective Policy Optimization (ORPO) combines reinforcement learning in mixed clean and noisy environments with reflection-guided on-policy distillation.\\\"},\\n    {\\\"id\\\": 30, \\\"text\\\": \\\"The policy re-scores its own sampled actions under an environment-specific skill context, producing dense token-level supervision for reflective decisions.\\\", \\\"poster_quote\\\": \\\"The policy re-scores its own sampled actions under an environment-specific skill context, producing dense token-level supervision for reflective decisions.\\\"},\\n    {\\\"id\\\": 31, \\\"text\\\": \\\"Built on Qwen3-8B, Agent-Reflex reaches 58.6 overall on five long-horizon tool-use benchmarks and 29.1 on AgentNoiseBench.\\\", \\\"poster_quote\\\": \\\"Built on Qwen3-8B, Agent-Reflex reaches 58.6 overall on five long-horizon tool-use benchmarks and 29.1 on AgentNoiseBench.\\\"},\\n    {\\\"id\\\": 32, \\\"text\\\": \\\"Agent-Reflex is evaluated on two groups of benchmarks: long-horizon tool use and noisy interaction.\\\", \\\"poster_quote\\\": \\\"Agent-Reflex is evaluated on two groups of benchmarks. Long-horizon tool use covers BFCL-v4, ACEBench, a stratified set of 200 ToolSandbox tasks, �2-Bench, and VitaBench. Noisy interaction is evaluated with AgentNoiseBench under tool-noise and user-noise settings derived from �2-Bench and VitaBench.\\\"},\\n    {\\\"id\\\": 33, \\\"text\\\": \\\"Every benchmark uses its official metric and standard MCP interaction format.\\\", \\\"poster_quote\\\": \\\"Every benchmark uses its official metric and standard MCP interaction format.\\\"},\\n    {\\\"id\\\": 34, \\\"text\\\": \\\"All trained methods begin from the same Qwen3-8B backbone.\\\", \\\"poster_quote\\\": \\\"All trained methods begin from the same Qwen3-8B backbone.\\\"},\\n    {\\\"id\\\": 35, \\\"text\\\": \\\"Comparisons include inference-time and training-time reflection methods, environment-scaling methods, and trajectory-level reinforcement-learning algorithms.\\\", \\\"poster_quote\\\": \\\"Comparisons include inference-time and training-time reflection methods, environment-scaling methods, and trajectory-level reinforcement-learning algorithms.\\\"},\\n    {\\\"id\\\": 36, \\\"text\\\": \\\"ORPO is compared with GRPO, DAPO, REINFORCE++, NoisyAgent RL, and SEED using the same 2,500-task pool, rollout budget, toolcall budget, token budget, and 100 training steps.\\\", \\\"poster_quote\\\": \\\"ORPO is compared with GRPO, DAPO, REINFORCE++, NoisyAgent RL, and SEED using the same 2,500-task pool, rollout budget, toolcall budget, token budget, and 100 training steps.\\\"},\\n    {\\\"id\\\": 37, \\\"text\\\": \\\"Training and evaluation environments are controlled at the environment-family level.\\\", \\\"poster_quote\\\": \\\"Training and evaluation environments are controlled at the environment-family level.\\\"},\\n    {\\\"id\\\": 38, \\\"text\\\": \\\"Instructions and skill text are checked for near-duplicates against benchmark instructions and tool schemas.\\\", \\\"poster_quote\\\": \\\"Instructions and skill text are checked for near-duplicates against benchmark instructions and tool schemas.\\\"},\\n    {\\\"id\\\": 39, \\\"text\\\": \\\"Evaluation answers never appear in analyzer, teacher, or user-simulator prompts.\\\", \\\"poster_quote\\\": \\\"Evaluation answers never appear in analyzer, teacher, or user-simulator prompts.\\\"},\\n    {\\\"id\\\": 40, \\\"text\\\": \\\"AgentNoiseBench is out of distribution: its environments, tasks, taxonomy, and injector are not used during training.\\\", \\\"poster_quote\\\": \\\"AgentNoiseBench is out of distribution: its environments, tasks, taxonomy, and injector are not used during training.\\\"},\\n    {\\\"id\\\": 41, \\\"text\\\": \\\"Agent-Reflex achieves the highest overall score among the compared 7B–8B methods on five long-horizon benchmarks, reaching 58.6 overall.\\\", \\\"poster_quote\\\": \\\"Agent-Reflex achieves the highest overall score among the compared 7B–8B methods on five long-horizon benchmarks, reaching 58.6 overall.\\\"},\\n    {\\\"id\\\": 42, \\\"text\\\": \\\"Agent-Reflex scores 17.5 on VitaBench, 62.1 on �2-Bench, 51.4 on BFCL-v4, 78.0 on ACEBench, and 82.5 on ToolSandbox.\\\", \\\"poster_quote\\\": \\\"Agent-Reflex achieves the highest overall score among the compared 7B–8B methods on five long-horizon benchmarks, reaching 58.6 overall. It scores 17.5 on VitaBench, 62.1 on �2-Bench, 51.4 on BFCL-v4, 78.0 on ACEBench, and 82.5 on ToolSandbox.\\\"},\\n    {\\\"id\\\": 43, \\\"text\\\": \\\"Agent-Reflex substantially improves over the Qwen3-8B backbone, which scores 40.2 overall.\\\", \\\"poster_quote\\\": \\\"Agent-Reflex substantially improves over the Qwen3-8B backbone, which scores 40.2 overall.\\\"},\\n    {\\\"id\\\": 44, \\\"text\\\": \\\"Agent-Reflex exceeds strong reflection methods, including Reflexion at 44.7, ExpeL at 37.9, Agent-R at 40.1, and NoisyAgent at 43.4.\\\", \\\"poster_quote\\\": \\\"It also exceeds strong reflection methods, including Reflexion at 44.7, ExpeL at 37.9, Agent-R at 40.1, and NoisyAgent at 43.4.\\\"},\\n    {\\\"id\\\": 45, \\\"text\\\": \\\"Agent-Reflex outperforms environment-scaling methods, including EnvScaler at 50.9 and Agent-World at 53.6.\\\", \\\"poster_quote\\\": \\\"Compared with environment-scaling methods, it outperforms EnvScaler at 50.9 and Agent-World at 53.6.\\\"},\\n    {\\\"id\\\": 46, \\\"text\\\": \\\"On ACEBench, Agent-Reflex reaches 73.3 turn-level accuracy while maintaining 85.0 step-level accuracy.\\\", \\\"poster_quote\\\": \\\"On ACEBench, Agent-Reflex reaches 73.3 turn-level accuracy while maintaining 85.0 step-level accuracy.\\\"},\\n    {\\\"id\\\": 47, \\\"text\\\": \\\"Agent-Reflex shows improved control of error propagation across multi-turn interactions.\\\", \\\"poster_quote\\\": \\\"On ACEBench, Agent-Reflex reaches 73.3 turn-level accuracy while maintaining 85.0 step-level accuracy, showing improved control of error propagation across multi-turn interactions.\\\"},\\n    {\\\"id\\\": 48, \\\"text\\\": \\\"Execution failures are not merely negative outcomes but a scalable source of reusable supervision for agent training.\\\", \\\"poster_quote\\\": \\\"The results support a central conclusion: execution failures are not merely negative outcomes but a scalable source of reusable supervision for agent training.\\\"},\\n    {\\\"id\\\": 49, \\\"text\\\": \\\"The current skill library is mined offline from a fixed environment snapshot and may require maintenance when tool interfaces or service behavior change.\\\", \\\"poster_quote\\\": \\\"The current skill library is mined offline from a fixed environment snapshot and may require maintenance when tool interfaces or service behavior change.\\\"},\\n    {\\\"id\\\": 50, \\\"text\\\": \\\"Future work includes online skill updating, temporal failure signatures such as latency and partial writes, transfer across model capacities, cross-environment skill composition, and distillation of richer environment-level artifacts such as verified sub-plans and tool contracts.\\\", \\\"poster_quote\\\": \\\"Future work includes online skill updating, temporal failure signatures such as latency and partial writes, transfer across model capacities, cross-environment skill composition, and distillation of richer environment-level artifacts such as verified sub-plans and tool contracts.\\\"}\\n  ]\\n}\", \"```json\\n{\\n  \\\"verdicts\\\": [\\n    {\\n      \\\"id\\\": 1,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Large language models have evolved from single-turn chatbots into interactive agents capable of long-horizon reasoning.\\\",\\n      \\\"reason\\\": \\\"Introduction section explicitly states this claim.\\\"\\n    },\\n    {\\n      \\\"id\\\": 2,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Real-world tool services are unreliable, frequently returning timeouts and service errors.\\\",\\n      \\\"reason\\\": \\\"Introduction section mentions timeouts, service errors, incomplete information, and misleading observations as challenges.\\\"\\n    },\\n    {\\n      \\\"id\\\": 3,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Real users actively intervene when an agent deviates from their intent, correcting its reasoning and actions.\\\",\\n      \\\"reason\\\": \\\"Introduction section describes user intervention during execution.\\\"\\n    },\\n    {\\n      \\\"id\\\": 4,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Existing training environments usually assume stable and noise-free feedback, leaving agents underprepared for failure detection and recovery.\\\",\\n      \\\"reason\\\": \\\"Introduction section highlights the assumption of stable environments with minimal user intervention.\\\"\\n    },\\n    {\\n      \\\"id\\\": 5,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"ReSFT converts explicit reflection skills into policy behavior.\\\",\\n      \\\"reason\\\": \\\"Section 3.2 describes ReSFT converting skills into three forms of reflective supervision.\\\"\\n    },\\n    {\\n      \\\"id\\\": 6,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"We identify two gaps between idealized synthetic environments and real-world deployment in agent interaction, namely lack of noisy environment feedback and lack of user-guided correction during execution.\\\",\\n      \\\"reason\\\": \\\"Introduction section explicitly identifies these two gaps.\\\"\\n    },\\n    {\\n      \\\"id\\\": 7,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Ideally, a robust agent should continuously perceive environmental noise, task failures, and user correction intent, then promptly revise its actions.\\\",\\n      \\\"reason\\\": \\\"Introduction section describes the desired behavior of robust agents.\\\"\\n    },\\n    {\\n      \\\"id\\\": 8,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Skill Recovery (KR) teaches global recovery when failure originates from an incorrect initial plan.\\\",\\n      \\\"reason\\\": \\\"Section 3.2 explicitly states this function of KR.\\\"\\n    },\\n    {\\n      \\\"id\\\": 9,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"To teach global recovery, we reset the environment to its initial state s0 and restart from the original task with the matched skill.\\\",\\n      \\\"reason\\\": \\\"Section 3.2 describes the KR sampling strategy in detail.\\\"\\n    },\\n    {\\n      \\\"id\\\": 10,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"As in SR, the privileged skill is removed before storage, encouraging recovery without an explicit skill prior.\\\",\\n      \\\"reason\\\": \\\"Section 3.2 explicitly states this for KR sampling.\\\"\\n    },\\n    {\\n      \\\"id\\\": 11,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Existing reflection methods explore inference-time reflection, correction-trajectory learning, and noise-augmented training.\\\",\\n      \\\"reason\\\": \\\"Introduction section lists these approaches as prior work.\\\"\\n    },\\n    {\\n      \\\"id\\\": 12,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Most are trained in stateless or simplified environments, leaving one question open: How can we elicit proactive reflective capability in agents from execution failures in real-world environments?\\\",\\n      \\\"reason\\\": \\\"Introduction section critiques prior methods for not accumulating reusable environment-level knowledge.\\\"\\n    },\\n    {\\n      \\\"id\\\": 13,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"To address this gap, we propose Agent-Reflex, a general training framework for incentivizing proactive reflective thinking in agents. It models reflection as a learnable meta-skill: transferable meta-skills are explicitly mined from execution failures and progressively internalized into the policy through verifiable reflection learning.\\\",\\n      \\\"reason\\\": \\\"Introduction section describes Agent-Reflex as treating reflection as a learnable meta-skill.\\\"\\n    },\\n    {\\n      \\\"id\\\": 14,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Self-Reflection Sampling (SR): To teach failure awareness and self-reflection, we restore the environment to st⋆ and continue after appending the corrective skill.\\\",\\n      \\\"reason\\\": \\\"Section 3.2 explicitly states SR teaches local repair.\\\"\\n    },\\n    {\\n      \\\"id\\\": 15,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"For an erroneous trajectory τ − , let t⋆ be its first erroneous turn, st⋆ the environment-state snapshot taken before that turn is executed.\\\",\\n      \\\"reason\\\": \\\"Section 3.2 describes restoring the environment to the state before the first wrong action.\\\"\\n    },\\n    {\\n      \\\"id\\\": 16,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The skill triggers diagnosis and replanning during generation but is removed from the stored input.\\\",\\n      \\\"reason\\\": \\\"Section 3.2 describes the role of the matched reflection skill in SR sampling.\\\"\\n    },\\n    {\\n      \\\"id\\\": 17,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The skill triggers diagnosis and replanning during generation but is removed from the stored input, so the policy learns to recover from its own error state.\\\",\\n      \\\"reason\\\": \\\"Section 3.2 explicitly states the skill is removed from stored inputs.\\\"\\n    },\\n    {\\n      \\\"id\\\": 18,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"User-Centric Reflection Sampling (UR): When an agent deviates from the user’s intent, users may intervene and correct its reasoning.\\\",\\n      \\\"reason\\\": \\\"Section 3.2 describes UR teaching response to user intervention.\\\"\\n    },\\n    {\\n      \\\"id\\\": 19,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"A user simulator U converts the matched skill into a natural-language correction: uκ = U (κ, ht⋆ , st⋆ ).\\\",\\n      \\\"reason\\\": \\\"Section 3.2 describes the user simulator converting skills into corrections.\\\"\\n    },\\n    {\\n      \\\"id\\\": 20,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"We then restore the environment to st⋆ , insert the correction after the erroneous turn, and continue.\\\",\\n      \\\"reason\\\": \\\"Section 3.2 describes restoring the environment and inserting user corrections.\\\"\\n    },\\n    {\\n      \\\"id\\\": 21,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Because the user message is deployment-visible, uκ remains in the stored input, whereas the privileged skill κ is removed.\\\",\\n      \\\"reason\\\": \\\"Section 3.2 explicitly states this distinction for UR sampling.\\\"\\n    },\\n    {\\n      \\\"id\\\": 22,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"We merge verified rollouts only.\\\",\\n      \\\"reason\\\": \\\"Section 3.2 states only verifier-validated data enters training.\\\"\\n    },\\n    {\\n      \\\"id\\\": 23,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The final corpus contains 54K trajectories, combining verified Qwen3-8B successes with reflective-correction samples spread over SR, KR, and UR.\\\",\\n      \\\"reason\\\": \\\"Section 3.2 explicitly states the corpus size and composition.\\\"\\n    },\\n    {\\n      \\\"id\\\": 24,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Tokens belonging to tool returns and simulated user messages are excluded from the loss; only agent-generated tokens contribute gradient.\\\",\\n      \\\"reason\\\": \\\"Section D.1 explicitly states excluded tokens.\\\"\\n    },\\n    {\\n      \\\"id\\\": 25,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"To address this gap, we propose Agent-Reflex, a general training framework for incentivizing proactive reflective thinking in agents.\\\",\\n      \\\"reason\\\": \\\"Introduction section describes Agent-Reflex as a general framework.\\\"\\n    },\\n    {\\n      \\\"id\\\": 26,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Environment Reflection Skill Discovery (RSD): Build failure-aware executable environments and mine verifier-matched pairs into an offline skill library.\\\",\\n      \\\"reason\\\": \\\"Section 3.1 describes RSD in detail.\\\"\\n    },\\n    {\\n      \\\"id\\\": 27,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Reflective Supervised Fine-Tuning (ReSFT): Convert each skill into verifier-validated self-reflection, recovery, and user-correction data.\\\",\\n      \\\"reason\\\": \\\"Section 3.2 describes ReSFT converting skills into supervision.\\\"\\n    },\\n    {\\n      \\\"id\\\": 28,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The skill triggers diagnosis and replanning during generation but is removed from the stored input.\\\",\\n      \\\"reason\\\": \\\"Section 3.2 explicitly states privileged skill prompts are removed.\\\"\\n    },\\n    {\\n      \\\"id\\\": 29,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"On-Policy Reflective Policy Optimization (ORPO): Combine Noisy Agent RL with same-token skill-guided OPD to provide dense reflection supervision.\\\",\\n      \\\"reason\\\": \\\"Section 3.3 describes ORPO combining RL and OPD.\\\"\\n    },\\n    {\\n      \\\"id\\\": 30,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Re-scoring the same tokens with and without the skill card of their environment yields the detached, confidence-weighted OPD signal.\\\",\\n      \\\"reason\\\": \\\"Section 3.3 describes dense token-level supervision from re-scoring.\\\"\\n    },\\n    {\\n      \\\"id\\\": 31,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Built on Qwen3-8B, Agent-Reflex reaches 58.6 overall on five long-horizon tool-use benchmarks and 29.1 on AgentNoiseBench.\\\",\\n      \\\"reason\\\": \\\"Section 4.2 reports these results explicitly.\\\"\\n    },\\n    {\\n      \\\"id\\\": 32,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Experiments on six long-horizon tool-use and noisy-interaction benchmarks demonstrate the effectiveness of Agent-Reflex.\\\",\\n      \\\"reason\\\": \\\"Introduction section describes evaluation on these two groups.\\\"\\n    },\\n    {\\n      \\\"id\\\": 33,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Following the EnvScaler protocol (Song et al., 2026), all evaluations use the standard MCP format and task templates, and each benchmark is scored with its official metric.\\\",\\n      \\\"reason\\\": \\\"Section D.5 explicitly states this protocol.\\\"\\n    },\\n    {\\n      \\\"id\\\": 34,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Every trained method here, including Agent-Reflex, starts from the same Qwen3-8B backbone under one fair experimental setting.\\\",\\n      \\\"reason\\\": \\\"Section C.1 explicitly states this shared backbone.\\\"\\n    },\\n    {\\n      \\\"id\\\": 35,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"We compare three families: reflection methods, environment-scaling methods, and trajectory-level RL algorithms.\\\",\\n      \\\"reason\\\": \\\"Section C describes these comparison families.\\\"\\n    },\\n    {\\n      \\\"id\\\": 36,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"All runs start from Qwen3-8B and train for 100 RL steps on the same task pool under matched budgets.\\\",\\n      \\\"reason\\\": \\\"Figure 4 caption explicitly states this comparison protocol.\\\"\\n    },\\n    {\\n      \\\"id\\\": 37,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Splits are preserved at the environment-family level rather than the task level.\\\",\\n      \\\"reason\\\": \\\"Section D.5 explicitly states this control.\\\"\\n    },\\n    {\\n      \\\"id\\\": 38,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Generated instructions and skill text are checked for near-duplicates against benchmark instructions and tool schemas.\\\",\\n      \\\"reason\\\": \\\"Section D.5 explicitly states this control.\\\"\\n    },\\n    {\\n      \\\"id\\\": 39,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Evaluation reference answers never appear in any analyzer, teacher, or user-simulator prompt.\\\",\\n      \\\"reason\\\": \\\"Section D.5 explicitly states this control.\\\"\\n    },\\n    {\\n      \\\"id\\\": 40,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"AgentNoiseBench is never consulted while RSD is built: neither its taxonomy nor its injector informs our perturbations, and the two noise designs are constructed in entirely different ways.\\\",\\n      \\\"reason\\\": \\\"Section E.2 explicitly states this distinction.\\\"\\n    }\\n  ]\\n}\\n```\", \"```json\\n{\\n  \\\"verdicts\\\": [\\n    {\\n      \\\"id\\\": 1,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Agent-Reflex reaches 58.6 overall on five long-horizon tool-use benchmarks.\\\",\\n      \\\"reason\\\": \\\"The paper explicitly states that Agent-Reflex achieves 58.6 overall on five long-horizon tool-use benchmarks, which is the highest among the compared 7B–8B methods as shown in Table 1.\\\"\\n    },\\n    {\\n      \\\"id\\\": 2,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Agent-Reflex scores 17.5 on VitaBench, 62.1 on τ²-Bench, 51.4 on BFCL-v4, 78.0 on ACEBench, and 82.5 on ToolSandbox.\\\",\\n      \\\"reason\\\": \\\"The paper explicitly lists these scores for Agent-Reflex in Table 1 under the respective benchmarks.\\\"\\n    },\\n    {\\n      \\\"id\\\": 3,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Qwen3-8B: 40.2 overall. Agent-Reflex-8B (ours): 58.6 overall.\\\",\\n      \\\"reason\\\": \\\"The paper provides the overall scores for both Qwen3-8B and Agent-Reflex in Table 1, showing that Agent-Reflex substantially improves over the Qwen3-8B backbone.\\\"\\n    },\\n    {\\n      \\\"id\\\": 4,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Agent-Reflex outperforms Reflexion-8B, ExpeL-8B, Agent-R-8B, and NoisyAgent-8B on VitaBench, BFCL, ACEBench, and ToolSandbox.\\\",\\n      \\\"reason\\\": \\\"The paper explicitly states that Agent-Reflex exceeds these reflection methods, and Table 1 confirms the scores: Reflexion (44.7), ExpeL (37.9), Agent-R (40.1), and NoisyAgent (43.4).\\\"\\n    },\\n    {\\n      \\\"id\\\": 5,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Agent-Reflex improves over EnvScaler-8B and Agent-World-8B on all five benchmark averages.\\\",\\n      \\\"reason\\\": \\\"The paper explicitly states this, and Table 1 confirms the scores: EnvScaler (50.9), Agent-World (53.6), and Agent-Reflex (58.6).\\\"\\n    },\\n    {\\n      \\\"id\\\": 6,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"On ACEBench, it reaches 73.3% at the turn level while matching the baselines at 85.0% step-level accuracy.\\\",\\n      \\\"reason\\\": \\\"The paper explicitly states these scores for Agent-Reflex on ACEBench in Section 4.2.1.\\\"\\n    },\\n    {\\n      \\\"id\\\": 7,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"On ACEBench, the gain comes mainly from multi-turn interaction: Agent-Reflex reaches 73.3% at the turn level while matching the baselines at 85.0% step-level accuracy.\\\",\\n      \\\"reason\\\": \\\"The paper explicitly attributes Agent-Reflex's performance on ACEBench to improved control of error propagation across multi-turn interactions in Section 4.2.1.\\\"\\n    },\\n    {\\n      \\\"id\\\": 8,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Execution failures are not merely negative outcomes but a scalable source of reusable supervision for agent training.\\\",\\n      \\\"reason\\\": \\\"The paper explicitly states this in the introduction and elaborates on how execution failures are used to mine reflection meta-skills in Section 3.1.\\\"\\n    },\\n    {\\n      \\\"id\\\": 9,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The current skill library is mined offline from a fixed snapshot of a large collection of executable environments. Consequently, it does not automatically adapt to changes in tool interfaces, service behavior, or environment dynamics.\\\",\\n      \\\"reason\\\": \\\"The paper explicitly states this limitation in Section F.\\\"\\n    },\\n    {\\n      \\\"id\\\": 10,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Future work will investigate online skill summarization and incremental updating across larger and more diverse environment collections, allowing the library to incorporate new environments and emerging failure patterns while supporting cross-environment generalization.\\\",\\n      \\\"reason\\\": \\\"The paper explicitly mentions these future directions in Section F.\\\"\\n    }\\n  ]\\n}\\n```\"]"
+}

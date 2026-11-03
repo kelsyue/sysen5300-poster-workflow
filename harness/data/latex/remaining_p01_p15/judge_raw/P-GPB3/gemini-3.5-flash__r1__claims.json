@@ -2,9 +2,598 @@
   "model": "gemini-3.5-flash",
   "repeat": 1,
   "judge_prompt_sha256": "4ec65050cfdc718218dbc587f672291e733fd03b1254c20d77b61b0933e16162",
-  "error": "transport: Error code: 422 - Budget has been exceeded! Key=SIX-SIGMA-SLIDES-PROJECT-2 (sk-...d5LQ) Current cost: 70.08230754, Max budget: 70.0",
-  "tokens_in": 0,
-  "tokens_out": 0,
-  "parsed": null,
-  "raw": ""
+  "error": null,
+  "tokens_in": 32509,
+  "tokens_out": 29015,
+  "max_output_tokens": 32768,
+  "claims_batch_size": 40,
+  "parsed": {
+    "claims": [
+      {
+        "id": 1,
+        "text": "Training uses approximately 8,000 hours of permission-documented Mandarin singing.",
+        "poster_quote": "Training uses approximately 8,000 hours of permission-documented Mandarin singing",
+        "label": "supported",
+        "paper_evidence": "Training audio comprises about 8,000 hours of permission-documented Mandarin singing",
+        "reason": "Section \"Experiments - Data, Comparators, and Statistics\". The paper states that training audio comprises about 8,000 hours of permission-documented Mandarin singing."
+      },
+      {
+        "id": 2,
+        "text": "Training uses 2,000 hours of Mandarin speech.",
+        "poster_quote": "2,000 hours of Mandarin speech",
+        "label": "supported",
+        "paper_evidence": "2,000 hours of Mandarin Emilia speech (He et al. 2024)",
+        "reason": "Section \"Experiments - Data, Comparators, and Statistics\". The paper states that training uses 2,000 hours of Mandarin speech."
+      },
+      {
+        "id": 3,
+        "text": "Training uses 300 hours of curated open-source singing.",
+        "poster_quote": "300 hours of curated open-source singing.",
+        "label": "supported",
+        "paper_evidence": "and 300 hours of curated open-source singing",
+        "reason": "Section \"Experiments - Data, Comparators, and Statistics\". The paper states that training uses 300 hours of curated open-source singing."
+      },
+      {
+        "id": 4,
+        "text": "Three training seeds use 120K-updates.",
+        "poster_quote": "Three 120K-update seeds use BF16, ZeRO-2, AdamW, and global batch size 128.",
+        "label": "supported",
+        "paper_evidence": "Three 120K-update seeds use BF16, ZeRO-2, AdamW, and global batch 128.",
+        "reason": "Section \"Experiments - Data, Comparators, and Statistics\". The paper states that three 120K-update seeds are used."
+      },
+      {
+        "id": 5,
+        "text": "The training seeds use BF16.",
+        "poster_quote": "Three 120K-update seeds use BF16",
+        "label": "supported",
+        "paper_evidence": "Three 120K-update seeds use BF16, ZeRO-2, AdamW, and global batch 128.",
+        "reason": "Section \"Experiments - Data, Comparators, and Statistics\". The paper states that the training seeds use BF16."
+      },
+      {
+        "id": 6,
+        "text": "The training seeds use ZeRO-2.",
+        "poster_quote": "Three 120K-update seeds use BF16, ZeRO-2",
+        "label": "supported",
+        "paper_evidence": "Three 120K-update seeds use BF16, ZeRO-2, AdamW, and global batch 128.",
+        "reason": "Section \"Experiments - Data, Comparators, and Statistics\". The paper states that the training seeds use ZeRO-2."
+      },
+      {
+        "id": 7,
+        "text": "The training seeds use AdamW.",
+        "poster_quote": "Three 120K-update seeds use BF16, ZeRO-2, AdamW",
+        "label": "supported",
+        "paper_evidence": "Three 120K-update seeds use BF16, ZeRO-2, AdamW, and global batch 128.",
+        "reason": "Section \"Experiments - Data, Comparators, and Statistics\". The paper states that the training seeds use AdamW."
+      },
+      {
+        "id": 8,
+        "text": "The training seeds use a global batch size of 128.",
+        "poster_quote": "global batch size 128.",
+        "label": "supported",
+        "paper_evidence": "Three 120K-update seeds use BF16, ZeRO-2, AdamW, and global batch 128.",
+        "reason": "Section \"Experiments - Data, Comparators, and Statistics\". The paper states that the training seeds use a global batch size of 128."
+      },
+      {
+        "id": 9,
+        "text": "CLASVS contains 0.765B trainable parameters.",
+        "poster_quote": "CLASVS contains 0.765B trainable parameters",
+        "label": "supported",
+        "paper_evidence": "The checkpoint has 0.765B trainable/2.115B total parameters",
+        "reason": "Section \"Experiments - Data, Comparators, and Statistics\". The paper states that CLASVS contains 0.765B trainable parameters."
+      },
+      {
+        "id": 10,
+        "text": "CLASVS contains 2.115B total generative-stack parameters.",
+        "poster_quote": "2.115B total generative-stack parameters",
+        "label": "supported",
+        "paper_evidence": "CLASVS count is trainable/total generative-stack size",
+        "reason": "Table 1 caption and Section \"Experiments - Data, Comparators, and Statistics\". The paper states that CLASVS contains 2.115B total parameters (generative-stack size)."
+      },
+      {
+        "id": 11,
+        "text": "CLASVS includes a frozen 1.350B AudioVAE.",
+        "poster_quote": "including the frozen 1.350B AudioVAE.",
+        "label": "supported",
+        "paper_evidence": "including the frozen 1.350B AudioVAE",
+        "reason": "Section \"Experiments - Data, Comparators, and Statistics\". The paper states that CLASVS includes a frozen 1.350B AudioVAE."
+      },
+      {
+        "id": 12,
+        "text": "A pretrained-frozen encoder achieves a PER of 0.0376.",
+        "poster_quote": "A pretrained-frozen encoder achieves PER 0.0376",
+        "label": "supported",
+        "paper_evidence": "Pretrained-frozen/pretrained-joint/random-joint/random-frozen PER is .0376/.0391/.0511/.0918.",
+        "reason": "Section \"Method - Progressive State–Control Grounding\". The paper states that a pretrained-frozen encoder achieves a PER of 0.0376."
+      },
+      {
+        "id": 13,
+        "text": "A pretrained-joint encoder achieves a PER of 0.0391.",
+        "poster_quote": "compared with 0.0391 for pretrained-joint",
+        "label": "supported",
+        "paper_evidence": "Pretrained-frozen/pretrained-joint/random-joint/random-frozen PER is .0376/.0391/.0511/.0918.",
+        "reason": "Section \"Method - Progressive State–Control Grounding\". The paper states that a pretrained-joint encoder achieves a PER of 0.0391."
+      },
+      {
+        "id": 14,
+        "text": "A random-joint encoder achieves a PER of 0.0511.",
+        "poster_quote": "0.0511 for random-joint",
+        "label": "supported",
+        "paper_evidence": "Pretrained-frozen/pretrained-joint/random-joint/random-frozen PER is .0376/.0391/.0511/.0918.",
+        "reason": "Section \"Method - Progressive State–Control Grounding\". The paper states that a random-joint encoder achieves a PER of 0.0511."
+      },
+      {
+        "id": 15,
+        "text": "A random-frozen encoder achieves a PER of 0.0918.",
+        "poster_quote": "and 0.0918 for random-frozen training.",
+        "label": "supported",
+        "paper_evidence": "Pretrained-frozen/pretrained-joint/random-joint/random-frozen PER is .0376/.0391/.0511/.0918.",
+        "reason": "Section \"Method - Progressive State–Control Grounding\". The paper states that a random-frozen encoder achieves a PER of 0.0918."
+      },
+      {
+        "id": 16,
+        "text": "On two Mandarin benchmarks, CLASVS reduces macro phone error rate by 46.2% relative to Vevo2.",
+        "poster_quote": "reduces macro phone error rate by 46.2%",
+        "label": "supported",
+        "paper_evidence": "On two Mandarin benchmarks, CLASVS improves all four operations over discrete-AR Vevo2 and reduces macro-PER by 46.2%",
+        "reason": "Abstract. The paper states that CLASVS reduces macro phone error rate by 46.2% relative to Vevo2."
+      },
+      {
+        "id": 17,
+        "text": "The primary benchmark, CLA-LyricEdit-320, contains 320 edits.",
+        "poster_quote": "The primary benchmark, CLA-LyricEdit-320, contains 320 edits",
+        "label": "supported",
+        "paper_evidence": "CLA-LyricEdit-320 contains 320 edits from 160 excerpts spanning 80 songs and 40 singers",
+        "reason": "Section \"Experiments - Data, Comparators, and Statistics\". The paper states that CLA-LyricEdit-320 contains 320 edits."
+      },
+      {
+        "id": 18,
+        "text": "CLA-LyricEdit-320 contains 160 excerpts.",
+        "poster_quote": "from 160 excerpts",
+        "label": "supported",
+        "paper_evidence": "CLA-LyricEdit-320 contains 320 edits from 160 excerpts spanning 80 songs and 40 singers",
+        "reason": "Section \"Experiments - Data, Comparators, and Statistics\". The paper states that CLA-LyricEdit-320 contains 160 excerpts."
+      },
+      {
+        "id": 19,
+        "text": "CLA-LyricEdit-320 spans 80 songs.",
+        "poster_quote": "spanning 80 songs",
+        "label": "supported",
+        "paper_evidence": "CLA-LyricEdit-320 contains 320 edits from 160 excerpts spanning 80 songs and 40 singers",
+        "reason": "Section \"Experiments - Data, Comparators, and Statistics\". The paper states that CLA-LyricEdit-320 spans 80 songs."
+      },
+      {
+        "id": 20,
+        "text": "CLA-LyricEdit-320 spans 40 singers.",
+        "poster_quote": "and 40 singers.",
+        "label": "supported",
+        "paper_evidence": "CLA-LyricEdit-320 contains 320 edits from 160 excerpts spanning 80 songs and 40 singers",
+        "reason": "Section \"Experiments - Data, Comparators, and Statistics\". The paper states that CLA-LyricEdit-320 spans 40 singers."
+      },
+      {
+        "id": 21,
+        "text": "History dropout has a probability of 0.10.",
+        "poster_quote": "History dropout with probability 0.10",
+        "label": "supported",
+        "paper_evidence": "Control Grounding applies history dropout (ph = .10)",
+        "reason": "Section \"Method - Progressive State–Control Grounding\". The paper states that history dropout has a probability of 0.10."
+      },
+      {
+        "id": 22,
+        "text": "Melody-span masking has a probability of 0.15.",
+        "poster_quote": "Melody-span masking with probability 0.15",
+        "label": "supported",
+        "paper_evidence": "masks reference-melody spans (pm = .15)",
+        "reason": "Section \"Method - Progressive State–Control Grounding\". The paper states that melody-span masking has a probability of 0.15."
+      },
+      {
+        "id": 23,
+        "text": "Removing history dropout raises PER to 0.0441.",
+        "poster_quote": "Removing history dropout, melody masking, or both raises PER to 0.0441",
+        "label": "supported",
+        "paper_evidence": "History-dropout, melody-mask, joint-corruption, and curriculum-order removals yield PER .0441/.0419/.0468/.0415",
+        "reason": "Section \"Method - Progressive State–Control Grounding\". The paper states that removing history dropout yields a PER of 0.0441."
+      },
+      {
+        "id": 24,
+        "text": "Removing melody masking raises PER to 0.0419.",
+        "poster_quote": "Removing history dropout, melody masking, or both raises PER to 0.0441, 0.0419",
+        "label": "supported",
+        "paper_evidence": "History-dropout, melody-mask, joint-corruption, and curriculum-order removals yield PER .0441/.0419/.0468/.0415",
+        "reason": "Section \"Method - Progressive State–Control Grounding\". The paper states that removing melody masking yields a PER of 0.0419."
+      },
+      {
+        "id": 25,
+        "text": "Removing both history dropout and melody masking raises PER to 0.0468.",
+        "poster_quote": "Removing history dropout, melody masking, or both raises PER to 0.0441, 0.0419, and 0.0468, respectively.",
+        "label": "supported",
+        "paper_evidence": "History-dropout, melody-mask, joint-corruption, and curriculum-order removals yield PER .0441/.0419/.0468/.0415",
+        "reason": "Section \"Method - Progressive State–Control Grounding\". The paper states that joint-corruption removal (removing both history dropout and melody masking) yields a PER of 0.0468."
+      },
+      {
+        "id": 26,
+        "text": "Task Grounding schedules 72K broad-singing updates.",
+        "poster_quote": "Task Grounding schedules 72K broad-singing updates",
+        "label": "supported",
+        "paper_evidence": "Task Grounding schedules 72K broad-singing, 24K speech-assisted, and 24K curated-singing updates",
+        "reason": "Section \"Method - Progressive State–Control Grounding\". The paper states that Task Grounding schedules 72K broad-singing updates."
+      },
+      {
+        "id": 27,
+        "text": "Task Grounding schedules 24K speech-assisted updates.",
+        "poster_quote": "24K speech-assisted updates",
+        "label": "supported",
+        "paper_evidence": "Task Grounding schedules 72K broad-singing, 24K speech-assisted, and 24K curated-singing updates",
+        "reason": "Section \"Method - Progressive State–Control Grounding\". The paper states that Task Grounding schedules 24K speech-assisted updates."
+      },
+      {
+        "id": 28,
+        "text": "Task Grounding schedules 24K curated-singing updates.",
+        "poster_quote": "and 24K curated-singing updates.",
+        "label": "supported",
+        "paper_evidence": "Task Grounding schedules 72K broad-singing, 24K speech-assisted, and 24K curated-singing updates",
+        "reason": "Section \"Method - Progressive State–Control Grounding\". The paper states that Task Grounding schedules 24K curated-singing updates."
+      },
+      {
+        "id": 29,
+        "text": "During inference, every patch is generated with 24 Euler steps.",
+        "poster_quote": "generated with 24 Euler steps",
+        "label": "supported",
+        "paper_evidence": "Each patch starts from Gaussian noise and uses 24 Euler steps with guidance 2.0.",
+        "reason": "Section \"Method - Progressive State–Control Grounding\". The paper states that each patch uses 24 Euler steps."
+      },
+      {
+        "id": 30,
+        "text": "During inference, every patch is generated with a guidance scale of 2.0.",
+        "poster_quote": "and guidance scale 2.0.",
+        "label": "supported",
+        "paper_evidence": "Each patch starts from Gaussian noise and uses 24 Euler steps with guidance 2.0.",
+        "reason": "Section \"Method - Progressive State–Control Grounding\". The paper states that each patch uses a guidance scale of 2.0."
+      },
+      {
+        "id": 31,
+        "text": "No-edit output-target is .018.",
+        "poster_quote": "No-edit output-target/source is .018/.019.",
+        "label": "supported",
+        "paper_evidence": "No-edit output–target/source is .018/.019.",
+        "reason": "Table 2 caption. The paper states that no-edit output-target is .018."
+      },
+      {
+        "id": 32,
+        "text": "No-edit output-source is .019.",
+        "poster_quote": "No-edit output-target/source is .018/.019.",
+        "label": "supported",
+        "paper_evidence": "No-edit output–target/source is .018/.019.",
+        "reason": "Table 2 caption. The paper states that no-edit output-source is .019."
+      },
+      {
+        "id": 33,
+        "text": "On CLA-LyricEdit-320, CLASVS achieves a PER of 0.0505 for partial substitution.",
+        "poster_quote": "CLASVS achieves PER values of 0.0505 for partial substitution",
+        "label": "supported",
+        "paper_evidence": "CLASVS\t.0505\t.0442\t.0260\t.0298",
+        "reason": "Table 4. The paper shows that CLASVS achieves a PER of 0.0505 for partial substitution (PSub)."
+      },
+      {
+        "id": 34,
+        "text": "On CLA-LyricEdit-320, CLASVS achieves a PER of 0.0442 for full substitution.",
+        "poster_quote": "0.0442 for full substitution",
+        "label": "supported",
+        "paper_evidence": "CLASVS\t.0505\t.0442\t.0260\t.0298",
+        "reason": "Table 4. The paper shows that CLASVS achieves a PER of 0.0442 for full substitution (FSub)."
+      },
+      {
+        "id": 35,
+        "text": "On CLA-LyricEdit-320, CLASVS achieves a PER of 0.0260 for deletion.",
+        "poster_quote": "0.0260 for deletion",
+        "label": "supported",
+        "paper_evidence": "CLASVS\t.0505\t.0442\t.0260\t.0298",
+        "reason": "Table 4. The paper shows that CLASVS achieves a PER of 0.0260 for deletion (Del)."
+      },
+      {
+        "id": 36,
+        "text": "On CLA-LyricEdit-320, CLASVS achieves a PER of 0.0298 for insertion.",
+        "poster_quote": "and 0.0298 for insertion",
+        "label": "supported",
+        "paper_evidence": "CLASVS\t.0505\t.0442\t.0260\t.0298",
+        "reason": "Table 4. The paper shows that CLASVS achieves a PER of 0.0298 for insertion (Ins)."
+      },
+      {
+        "id": 37,
+        "text": "On CLA-LyricEdit-320, CLASVS produces a macro-PER of 0.0376.",
+        "poster_quote": "producing macro-PER 0.0376.",
+        "label": "supported",
+        "paper_evidence": "CLASVS\t.0505\t.0442\t.0260\t.0298\t.0376",
+        "reason": "Table 4. The paper shows that CLASVS achieves a macro-PER of 0.0376."
+      },
+      {
+        "id": 38,
+        "text": "Vevo2 obtains a PER of 0.0617 for partial substitution.",
+        "poster_quote": "Vevo2 obtains 0.0617",
+        "label": "supported",
+        "paper_evidence": "Vevo2\t.0617\t.0563\t.1033\t.0581",
+        "reason": "Table 4. The paper shows that Vevo2 obtains a PER of 0.0617 for partial substitution (PSub)."
+      },
+      {
+        "id": 39,
+        "text": "Vevo2 obtains a PER of 0.0563 for full substitution.",
+        "poster_quote": "0.0563",
+        "label": "supported",
+        "paper_evidence": "Vevo2\t.0617\t.0563\t.1033\t.0581",
+        "reason": "Table 4. The paper shows that Vevo2 obtains a PER of 0.0563 for full substitution (FSub)."
+      },
+      {
+        "id": 40,
+        "text": "Vevo2 obtains a PER of 0.1033 for deletion.",
+        "poster_quote": "0.1033",
+        "label": "supported",
+        "paper_evidence": "Vevo2\t.0617\t.0563\t.1033\t.0581",
+        "reason": "Table 4. The paper shows that Vevo2 obtains a PER of 0.1033 for deletion (Del)."
+      },
+      {
+        "id": 41,
+        "text": "Vevo2 obtains a PER of 0.0581 for insertion.",
+        "poster_quote": "and 0.0581",
+        "label": "supported",
+        "paper_evidence": ".0581",
+        "reason": "Table 4, row Vevo2, column Ins shows a PER of 0.0581."
+      },
+      {
+        "id": 42,
+        "text": "Vevo2 obtains a macro-PER of 0.0699.",
+        "poster_quote": "with macro-PER 0.0699.",
+        "label": "supported",
+        "paper_evidence": ".0699 [.0617,.0781]",
+        "reason": "Table 4, row Vevo2, column Macro-PER shows 0.0699."
+      },
+      {
+        "id": 43,
+        "text": "YingMusic+ obtains a macro-PER of 0.0411.",
+        "poster_quote": "YingMusic+ obtains macro-PER 0.0411",
+        "label": "supported",
+        "paper_evidence": ".0411 [.0356,.0469]",
+        "reason": "Table 4, row YingMusic-Singer-Plus, column Macro-PER shows 0.0411."
+      },
+      {
+        "id": 44,
+        "text": "Melody correlation is 0.941 for CLASVS.",
+        "poster_quote": "Melody correlation is 0.941 for CLASVS",
+        "label": "supported",
+        "paper_evidence": ".9410",
+        "reason": "Table 4, row CLASVS, column FPC (melody correlation) shows 0.9410."
+      },
+      {
+        "id": 45,
+        "text": "Melody correlation is 0.934 for YingMusic+.",
+        "poster_quote": "compared with 0.934 for YingMusic+",
+        "label": "supported",
+        "paper_evidence": ".9340",
+        "reason": "Table 4, row YingMusic-Singer-Plus, column FPC (melody correlation) shows 0.9340."
+      },
+      {
+        "id": 46,
+        "text": "Melody correlation is 0.744 for Vevo2.",
+        "poster_quote": "and 0.744 for Vevo2.",
+        "label": "supported",
+        "paper_evidence": ".7440",
+        "reason": "Table 4, row Vevo2, column FPC (melody correlation) shows 0.7440."
+      },
+      {
+        "id": 47,
+        "text": "Singer similarity is 0.914 for CLASVS.",
+        "poster_quote": "Singer similarity is 0.914",
+        "label": "supported",
+        "paper_evidence": ".914",
+        "reason": "Table 4, row CLASVS, column SIM (singer similarity) shows 0.914."
+      },
+      {
+        "id": 48,
+        "text": "Singer similarity is 0.906 for YingMusic+.",
+        "poster_quote": "compared with 0.906",
+        "label": "supported",
+        "paper_evidence": ".906",
+        "reason": "Table 4, row YingMusic-Singer-Plus, column SIM (singer similarity) shows 0.906."
+      },
+      {
+        "id": 49,
+        "text": "Singer similarity is 0.892 for Vevo2.",
+        "poster_quote": "and 0.892.",
+        "label": "supported",
+        "paper_evidence": ".892",
+        "reason": "Table 4, row Vevo2, column SIM (singer similarity) shows 0.892."
+      },
+      {
+        "id": 50,
+        "text": "Voiced-onset error is 7.68 ms for CLASVS.",
+        "poster_quote": "Voiced-onset error is 7.68 ms",
+        "label": "supported",
+        "paper_evidence": ".9923%/7.68ms",
+        "reason": "Table 4, row CLASVS, column RefDur./Onset shows a voiced-onset MAE of 7.68 ms."
+      },
+      {
+        "id": 51,
+        "text": "Voiced-onset error is 18.80 ms for YingMusic+.",
+        "poster_quote": "versus 18.80 ms",
+        "label": "supported",
+        "paper_evidence": ".1464%/18.80ms",
+        "reason": "Table 4, row YingMusic-Singer-Plus, column RefDur./Onset shows a voiced-onset MAE of 18.80 ms."
+      },
+      {
+        "id": 52,
+        "text": "Voiced-onset error is 69.58 ms for Vevo2.",
+        "poster_quote": "and 69.58 ms.",
+        "label": "supported",
+        "paper_evidence": "1.6009%/69.58ms",
+        "reason": "Table 4, row Vevo2, column RefDur./Onset shows a voiced-onset MAE of 69.58 ms."
+      },
+      {
+        "id": 53,
+        "text": "Listener scores show CLASVS naturalness at 4.13.",
+        "poster_quote": "Listener scores show CLASVS naturalness at 4.13",
+        "label": "supported",
+        "paper_evidence": "4.13\n[4.04,4.22]",
+        "reason": "Table 6, row CLASVS, column N-MOS (naturalness) shows 4.13."
+      },
+      {
+        "id": 54,
+        "text": "Listener scores show CLASVS lyric intelligibility at 4.42.",
+        "poster_quote": "and lyric intelligibility at 4.42.",
+        "label": "supported",
+        "paper_evidence": "4.42\n[4.34,4.50]",
+        "reason": "Table 6, row CLASVS, column L-MOS (lyric intelligibility) shows 4.42."
+      },
+      {
+        "id": 55,
+        "text": "Relative to YingMusic+, CLASVS naturalness improves by 0.48.",
+        "poster_quote": "Relative to YingMusic+, naturalness improves by 0.48",
+        "label": "supported",
+        "paper_evidence": "+.48",
+        "reason": "Table 6, row ∆ vs. YingMusic+, column N-MOS shows an improvement of 0.48."
+      },
+      {
+        "id": 56,
+        "text": "Relative to YingMusic+, CLASVS intelligibility improves by 0.32.",
+        "poster_quote": "and intelligibility by 0.32",
+        "label": "supported",
+        "paper_evidence": "+.32",
+        "reason": "Table 6, row ∆ vs. YingMusic+, column L-MOS shows an improvement of 0.32."
+      },
+      {
+        "id": 57,
+        "text": "On the public Mandarin benchmark, CLASVS lowers Vevo2 macro-PER from 0.0761 to 0.0425.",
+        "poster_quote": "CLASVS lowers Vevo2 macro-PER from 0.0761 to 0.0425",
+        "label": "supported",
+        "paper_evidence": "CLASVS improves all four operations over Vevo2 and lowers macro-PER from .0761 to .0425",
+        "reason": "Section 'Public-Benchmark Replication' states that CLASVS lowers Vevo2 macro-PER from 0.0761 to 0.0425."
+      },
+      {
+        "id": 58,
+        "text": "CLASVS cold-start RTF is 3.840.",
+        "poster_quote": "CLASVS cold-start/steady-tail RTF is 3.840/1.395",
+        "label": "supported",
+        "paper_evidence": "3.840/1.395",
+        "reason": "Table 4, row CLASVS, column C/S RTF shows a cold-start RTF of 3.840."
+      },
+      {
+        "id": 59,
+        "text": "CLASVS steady-tail RTF is 1.395.",
+        "poster_quote": "CLASVS cold-start/steady-tail RTF is 3.840/1.395",
+        "label": "supported",
+        "paper_evidence": "3.840/1.395",
+        "reason": "Table 4, row CLASVS, column C/S RTF shows a steady-tail RTF of 1.395."
+      },
+      {
+        "id": 60,
+        "text": "YingMusic+ cold-start RTF is 3.392.",
+        "poster_quote": "compared with 3.392/0.241 for YingMusic+",
+        "label": "supported",
+        "paper_evidence": "3.392/.241",
+        "reason": "Table 4, row YingMusic-Singer-Plus, column C/S RTF shows a cold-start RTF of 3.392."
+      },
+      {
+        "id": 61,
+        "text": "YingMusic+ steady-tail RTF is 0.241.",
+        "poster_quote": "compared with 3.392/0.241 for YingMusic+",
+        "label": "supported",
+        "paper_evidence": "3.392/.241",
+        "reason": "Table 4, row YingMusic-Singer-Plus, column C/S RTF shows a steady-tail RTF of 0.241."
+      },
+      {
+        "id": 62,
+        "text": "Vevo2 cold-start RTF is 2.649.",
+        "poster_quote": "and 2.649/0.744 for Vevo2.",
+        "label": "supported",
+        "paper_evidence": "2.649/.744",
+        "reason": "Table 4, row Vevo2, column C/S RTF shows a cold-start RTF of 2.649."
+      },
+      {
+        "id": 63,
+        "text": "Vevo2 steady-tail RTF is 0.744.",
+        "poster_quote": "and 2.649/0.744 for Vevo2.",
+        "label": "supported",
+        "paper_evidence": "2.649/.744",
+        "reason": "Table 4, row Vevo2, column C/S RTF shows a steady-tail RTF of 0.744."
+      },
+      {
+        "id": 64,
+        "text": "Incremental peak memory is lowest for CLASVS at 5.82 GiB.",
+        "poster_quote": "Incremental peak memory is lowest for CLASVS at 5.82 GiB.",
+        "label": "supported",
+        "paper_evidence": "5.82",
+        "reason": "Table 4, row CLASVS, column ∆GiB shows the lowest incremental peak memory at 5.82 GiB."
+      },
+      {
+        "id": 65,
+        "text": "A frozen melody tokenizer converts the reference into a sequence of melody tokens at approximately 6.25 Hz.",
+        "poster_quote": "A frozen melody tokenizer converts the reference into a sequence of melody tokens at approximately 6.25 Hz",
+        "label": "supported",
+        "paper_evidence": "A frozen melody tokenizer maps r to m = (m1 , . . . , mLm ) at approximately 6.25 Hz using a 512-entry codebook",
+        "reason": "Section 'Method', subsection 'Inputs, Time Bases, and Duration' states that the frozen melody tokenizer maps the reference at approximately 6.25 Hz."
+      },
+      {
+        "id": 66,
+        "text": "The melody tokenizer uses a 512-entry codebook.",
+        "poster_quote": "using a 512-entry codebook.",
+        "label": "supported",
+        "paper_evidence": "using a 512-entry codebook",
+        "reason": "Section 'Method', subsection 'Inputs, Time Bases, and Duration' states that the melody tokenizer uses a 512-entry codebook."
+      },
+      {
+        "id": 67,
+        "text": "A frozen singer encoder extracts a 192-dimensional identity vector.",
+        "poster_quote": "A frozen singer encoder extracts a 192-dimensional identity vector.",
+        "label": "supported",
+        "paper_evidence": "A frozen CAM++ encoder (Wang et al. 2023) extracts a 192-D singer vector e.",
+        "reason": "Section 'Method', subsection 'Inputs, Time Bases, and Duration' states that the frozen CAM++ encoder extracts a 192-D singer vector."
+      },
+      {
+        "id": 68,
+        "text": "A frozen AudioVAE represents 16-kHz target audio as 64-dimensional continuous latent frames at 50 Hz.",
+        "poster_quote": "A frozen AudioVAE represents 16-kHz target audio as 64-dimensional continuous latent frames at 50 Hz.",
+        "label": "supported",
+        "paper_evidence": "A frozen Ming-UniAudio AudioVAE (Yan et al. 2025) represents 16-kHz target audio as z∗ ∈ RT ×64 at 50 Hz.",
+        "reason": "Section 'Method', subsection 'Inputs, Time Bases, and Duration' states that the AudioVAE represents 16-kHz target audio as 64-D continuous latent frames at 50 Hz."
+      },
+      {
+        "id": 69,
+        "text": "Five AudioVAE frames are grouped into one 5 × 64 latent patch, reducing the acoustic recurrence to 10 Hz.",
+        "poster_quote": "Five AudioVAE frames are grouped into one 5 × 64 latent patch, reducing the acoustic recurrence to 10 Hz.",
+        "label": "supported",
+        "paper_evidence": "We group P = 5 frames into z̄∗k ∈ R5×64 , so the acoustic recurrence runs at 10 Hz.",
+        "reason": "Section 'Method', subsection 'Inputs, Time Bases, and Duration' states that grouping 5 frames into a patch reduces the acoustic recurrence to 10 Hz."
+      },
+      {
+        "id": 70,
+        "text": "The budget-hit rate for CLASVS is 0% for partial substitution.",
+        "poster_quote": "budget-hit rates are 0%, 0%, 0%, and 1.25% for partial substitution",
+        "label": "supported",
+        "paper_evidence": "Budget-hit rates are 0/0/0/1.25% for PSub/FSub/Del/Ins",
+        "reason": "Section 'Analysis and Discussion', subsection 'What the stopping audit adds' states that the budget-hit rate is 0% for PSub (partial substitution)."
+      },
+      {
+        "id": 71,
+        "text": "The budget-hit rate for CLASVS is 0% for full substitution.",
+        "poster_quote": "budget-hit rates are 0%, 0%, 0%, and 1.25% for partial substitution, full substitution",
+        "label": "supported",
+        "paper_evidence": "Budget-hit rates are 0/0/0/1.25% for PSub/FSub/Del/Ins",
+        "reason": "Section 'Analysis and Discussion', subsection 'What the stopping audit adds' states that the budget-hit rate is 0% for FSub (full substitution)."
+      },
+      {
+        "id": 72,
+        "text": "The budget-hit rate for CLASVS is 0% for deletion.",
+        "poster_quote": "budget-hit rates are 0%, 0%, 0%, and 1.25% for partial substitution, full substitution, deletion",
+        "label": "supported",
+        "paper_evidence": "Budget-hit rates are 0/0/0/1.25% for PSub/FSub/Del/Ins",
+        "reason": "Section 'Analysis and Discussion', subsection 'What the stopping audit adds' states that the budget-hit rate is 0% for Del (deletion)."
+      },
+      {
+        "id": 73,
+        "text": "The budget-hit rate for CLASVS is 1.25% for insertion.",
+        "poster_quote": "budget-hit rates are 0%, 0%, 0%, and 1.25% for partial substitution, full substitution, deletion, and insertion",
+        "label": "supported",
+        "paper_evidence": "Budget-hit rates are 0/0/0/1.25% for PSub/FSub/Del/Ins",
+        "reason": "Section 'Analysis and Discussion', subsection 'What the stopping audit adds' states that the budget-hit rate is 1.25% for Ins (insertion)."
+      }
+    ]
+  },
+  "raw": "[\"{\\n  \\\"claims\\\": [\\n    {\\n      \\\"id\\\": 1,\\n      \\\"text\\\": \\\"Training uses approximately 8,000 hours of permission-documented Mandarin singing.\\\",\\n      \\\"poster_quote\\\": \\\"Training uses approximately 8,000 hours of permission-documented Mandarin singing\\\"\\n    },\\n    {\\n      \\\"id\\\": 2,\\n      \\\"text\\\": \\\"Training uses 2,000 hours of Mandarin speech.\\\",\\n      \\\"poster_quote\\\": \\\"2,000 hours of Mandarin speech\\\"\\n    },\\n    {\\n      \\\"id\\\": 3,\\n      \\\"text\\\": \\\"Training uses 300 hours of curated open-source singing.\\\",\\n      \\\"poster_quote\\\": \\\"300 hours of curated open-source singing.\\\"\\n    },\\n    {\\n      \\\"id\\\": 4,\\n      \\\"text\\\": \\\"Three training seeds use 120K-updates.\\\",\\n      \\\"poster_quote\\\": \\\"Three 120K-update seeds use BF16, ZeRO-2, AdamW, and global batch size 128.\\\"\\n    },\\n    {\\n      \\\"id\\\": 5,\\n      \\\"text\\\": \\\"The training seeds use BF16.\\\",\\n      \\\"poster_quote\\\": \\\"Three 120K-update seeds use BF16\\\"\\n    },\\n    {\\n      \\\"id\\\": 6,\\n      \\\"text\\\": \\\"The training seeds use ZeRO-2.\\\",\\n      \\\"poster_quote\\\": \\\"Three 120K-update seeds use BF16, ZeRO-2\\\"\\n    },\\n    {\\n      \\\"id\\\": 7,\\n      \\\"text\\\": \\\"The training seeds use AdamW.\\\",\\n      \\\"poster_quote\\\": \\\"Three 120K-update seeds use BF16, ZeRO-2, AdamW\\\"\\n    },\\n    {\\n      \\\"id\\\": 8,\\n      \\\"text\\\": \\\"The training seeds use a global batch size of 128.\\\",\\n      \\\"poster_quote\\\": \\\"global batch size 128.\\\"\\n    },\\n    {\\n      \\\"id\\\": 9,\\n      \\\"text\\\": \\\"CLASVS contains 0.765B trainable parameters.\\\",\\n      \\\"poster_quote\\\": \\\"CLASVS contains 0.765B trainable parameters\\\"\\n    },\\n    {\\n      \\\"id\\\": 10,\\n      \\\"text\\\": \\\"CLASVS contains 2.115B total generative-stack parameters.\\\",\\n      \\\"poster_quote\\\": \\\"2.115B total generative-stack parameters\\\"\\n    },\\n    {\\n      \\\"id\\\": 11,\\n      \\\"text\\\": \\\"CLASVS includes a frozen 1.350B AudioVAE.\\\",\\n      \\\"poster_quote\\\": \\\"including the frozen 1.350B AudioVAE.\\\"\\n    },\\n    {\\n      \\\"id\\\": 12,\\n      \\\"text\\\": \\\"A pretrained-frozen encoder achieves a PER of 0.0376.\\\",\\n      \\\"poster_quote\\\": \\\"A pretrained-frozen encoder achieves PER 0.0376\\\"\\n    },\\n    {\\n      \\\"id\\\": 13,\\n      \\\"text\\\": \\\"A pretrained-joint encoder achieves a PER of 0.0391.\\\",\\n      \\\"poster_quote\\\": \\\"compared with 0.0391 for pretrained-joint\\\"\\n    },\\n    {\\n      \\\"id\\\": 14,\\n      \\\"text\\\": \\\"A random-joint encoder achieves a PER of 0.0511.\\\",\\n      \\\"poster_quote\\\": \\\"0.0511 for random-joint\\\"\\n    },\\n    {\\n      \\\"id\\\": 15,\\n      \\\"text\\\": \\\"A random-frozen encoder achieves a PER of 0.0918.\\\",\\n      \\\"poster_quote\\\": \\\"and 0.0918 for random-frozen training.\\\"\\n    },\\n    {\\n      \\\"id\\\": 16,\\n      \\\"text\\\": \\\"On two Mandarin benchmarks, CLASVS reduces macro phone error rate by 46.2% relative to Vevo2.\\\",\\n      \\\"poster_quote\\\": \\\"reduces macro phone error rate by 46.2%\\\"\\n    },\\n    {\\n      \\\"id\\\": 17,\\n      \\\"text\\\": \\\"The primary benchmark, CLA-LyricEdit-320, contains 320 edits.\\\",\\n      \\\"poster_quote\\\": \\\"The primary benchmark, CLA-LyricEdit-320, contains 320 edits\\\"\\n    },\\n    {\\n      \\\"id\\\": 18,\\n      \\\"text\\\": \\\"CLA-LyricEdit-320 contains 160 excerpts.\\\",\\n      \\\"poster_quote\\\": \\\"from 160 excerpts\\\"\\n    },\\n    {\\n      \\\"id\\\": 19,\\n      \\\"text\\\": \\\"CLA-LyricEdit-320 spans 80 songs.\\\",\\n      \\\"poster_quote\\\": \\\"spanning 80 songs\\\"\\n    },\\n    {\\n      \\\"id\\\": 20,\\n      \\\"text\\\": \\\"CLA-LyricEdit-320 spans 40 singers.\\\",\\n      \\\"poster_quote\\\": \\\"and 40 singers.\\\"\\n    },\\n    {\\n      \\\"id\\\": 21,\\n      \\\"text\\\": \\\"History dropout has a probability of 0.10.\\\",\\n      \\\"poster_quote\\\": \\\"History dropout with probability 0.10\\\"\\n    },\\n    {\\n      \\\"id\\\": 22,\\n      \\\"text\\\": \\\"Melody-span masking has a probability of 0.15.\\\",\\n      \\\"poster_quote\\\": \\\"Melody-span masking with probability 0.15\\\"\\n    },\\n    {\\n      \\\"id\\\": 23,\\n      \\\"text\\\": \\\"Removing history dropout raises PER to 0.0441.\\\",\\n      \\\"poster_quote\\\": \\\"Removing history dropout, melody masking, or both raises PER to 0.0441\\\"\\n    },\\n    {\\n      \\\"id\\\": 24,\\n      \\\"text\\\": \\\"Removing melody masking raises PER to 0.0419.\\\",\\n      \\\"poster_quote\\\": \\\"Removing history dropout, melody masking, or both raises PER to 0.0441, 0.0419\\\"\\n    },\\n    {\\n      \\\"id\\\": 25,\\n      \\\"text\\\": \\\"Removing both history dropout and melody masking raises PER to 0.0468.\\\",\\n      \\\"poster_quote\\\": \\\"Removing history dropout, melody masking, or both raises PER to 0.0441, 0.0419, and 0.0468, respectively.\\\"\\n    },\\n    {\\n      \\\"id\\\": 26,\\n      \\\"text\\\": \\\"Task Grounding schedules 72K broad-singing updates.\\\",\\n      \\\"poster_quote\\\": \\\"Task Grounding schedules 72K broad-singing updates\\\"\\n    },\\n    {\\n      \\\"id\\\": 27,\\n      \\\"text\\\": \\\"Task Grounding schedules 24K speech-assisted updates.\\\",\\n      \\\"poster_quote\\\": \\\"24K speech-assisted updates\\\"\\n    },\\n    {\\n      \\\"id\\\": 28,\\n      \\\"text\\\": \\\"Task Grounding schedules 24K curated-singing updates.\\\",\\n      \\\"poster_quote\\\": \\\"and 24K curated-singing updates.\\\"\\n    },\\n    {\\n      \\\"id\\\": 29,\\n      \\\"text\\\": \\\"During inference, every patch is generated with 24 Euler steps.\\\",\\n      \\\"poster_quote\\\": \\\"generated with 24 Euler steps\\\"\\n    },\\n    {\\n      \\\"id\\\": 30,\\n      \\\"text\\\": \\\"During inference, every patch is generated with a guidance scale of 2.0.\\\",\\n      \\\"poster_quote\\\": \\\"and guidance scale 2.0.\\\"\\n    },\\n    {\\n      \\\"id\\\": 31,\\n      \\\"text\\\": \\\"No-edit output-target is .018.\\\",\\n      \\\"poster_quote\\\": \\\"No-edit output-target/source is .018/.019.\\\"\\n    },\\n    {\\n      \\\"id\\\": 32,\\n      \\\"text\\\": \\\"No-edit output-source is .019.\\\",\\n      \\\"poster_quote\\\": \\\"No-edit output-target/source is .018/.019.\\\"\\n    },\\n    {\\n      \\\"id\\\": 33,\\n      \\\"text\\\": \\\"On CLA-LyricEdit-320, CLASVS achieves a PER of 0.0505 for partial substitution.\\\",\\n      \\\"poster_quote\\\": \\\"CLASVS achieves PER values of 0.0505 for partial substitution\\\"\\n    },\\n    {\\n      \\\"id\\\": 34,\\n      \\\"text\\\": \\\"On CLA-LyricEdit-320, CLASVS achieves a PER of 0.0442 for full substitution.\\\",\\n      \\\"poster_quote\\\": \\\"0.0442 for full substitution\\\"\\n    },\\n    {\\n      \\\"id\\\": 35,\\n      \\\"text\\\": \\\"On CLA-LyricEdit-320, CLASVS achieves a PER of 0.0260 for deletion.\\\",\\n      \\\"poster_quote\\\": \\\"0.0260 for deletion\\\"\\n    },\\n    {\\n      \\\"id\\\": 36,\\n      \\\"text\\\": \\\"On CLA-LyricEdit-320, CLASVS achieves a PER of 0.0298 for insertion.\\\",\\n      \\\"poster_quote\\\": \\\"and 0.0298 for insertion\\\"\\n    },\\n    {\\n      \\\"id\\\": 37,\\n      \\\"text\\\": \\\"On CLA-LyricEdit-320, CLASVS produces a macro-PER of 0.0376.\\\",\\n      \\\"poster_quote\\\": \\\"producing macro-PER 0.0376.\\\"\\n    },\\n    {\\n      \\\"id\\\": 38,\\n      \\\"text\\\": \\\"Vevo2 obtains a PER of 0.0617 for partial substitution.\\\",\\n      \\\"poster_quote\\\": \\\"Vevo2 obtains 0.0617\\\"\\n    },\\n    {\\n      \\\"id\\\": 39,\\n      \\\"text\\\": \\\"Vevo2 obtains a PER of 0.0563 for full substitution.\\\",\\n      \\\"poster_quote\\\": \\\"0.0563\\\"\\n    },\\n    {\\n      \\\"id\\\": 40,\\n      \\\"text\\\": \\\"Vevo2 obtains a PER of 0.1033 for deletion.\\\",\\n      \\\"poster_quote\\\": \\\"0.1033\\\"\\n    },\\n    {\\n      \\\"id\\\": 41,\\n      \\\"text\\\": \\\"Vevo2 obtains a PER of 0.0581 for insertion.\\\",\\n      \\\"poster_quote\\\": \\\"and 0.0581\\\"\\n    },\\n    {\\n      \\\"id\\\": 42,\\n      \\\"text\\\": \\\"Vevo2 obtains a macro-PER of 0.0699.\\\",\\n      \\\"poster_quote\\\": \\\"with macro-PER 0.0699.\\\"\\n    },\\n    {\\n      \\\"id\\\": 43,\\n      \\\"text\\\": \\\"YingMusic+ obtains a macro-PER of 0.0411.\\\",\\n      \\\"poster_quote\\\": \\\"YingMusic+ obtains macro-PER 0.0411\\\"\\n    },\\n    {\\n      \\\"id\\\": 44,\\n      \\\"text\\\": \\\"Melody correlation is 0.941 for CLASVS.\\\",\\n      \\\"poster_quote\\\": \\\"Melody correlation is 0.941 for CLASVS\\\"\\n    },\\n    {\\n      \\\"id\\\": 45,\\n      \\\"text\\\": \\\"Melody correlation is 0.934 for YingMusic+.\\\",\\n      \\\"poster_quote\\\": \\\"compared with 0.934 for YingMusic+\\\"\\n    },\\n    {\\n      \\\"id\\\": 46,\\n      \\\"text\\\": \\\"Melody correlation is 0.744 for Vevo2.\\\",\\n      \\\"poster_quote\\\": \\\"and 0.744 for Vevo2.\\\"\\n    },\\n    {\\n      \\\"id\\\": 47,\\n      \\\"text\\\": \\\"Singer similarity is 0.914 for CLASVS.\\\",\\n      \\\"poster_quote\\\": \\\"Singer similarity is 0.914\\\"\\n    },\\n    {\\n      \\\"id\\\": 48,\\n      \\\"text\\\": \\\"Singer similarity is 0.906 for YingMusic+.\\\",\\n      \\\"poster_quote\\\": \\\"compared with 0.906\\\"\\n    },\\n    {\\n      \\\"id\\\": 49,\\n      \\\"text\\\": \\\"Singer similarity is 0.892 for Vevo2.\\\",\\n      \\\"poster_quote\\\": \\\"and 0.892.\\\"\\n    },\\n    {\\n      \\\"id\\\": 50,\\n      \\\"text\\\": \\\"Voiced-onset error is 7.68 ms for CLASVS.\\\",\\n      \\\"poster_quote\\\": \\\"Voiced-onset error is 7.68 ms\\\"\\n    },\\n    {\\n      \\\"id\\\": 51,\\n      \\\"text\\\": \\\"Voiced-onset error is 18.80 ms for YingMusic+.\\\",\\n      \\\"poster_quote\\\": \\\"versus 18.80 ms\\\"\\n    },\\n    {\\n      \\\"id\\\": 52,\\n      \\\"text\\\": \\\"Voiced-onset error is 69.58 ms for Vevo2.\\\",\\n      \\\"poster_quote\\\": \\\"and 69.58 ms.\\\"\\n    },\\n    {\\n      \\\"id\\\": 53,\\n      \\\"text\\\": \\\"Listener scores show CLASVS naturalness at 4.13.\\\",\\n      \\\"poster_quote\\\": \\\"Listener scores show CLASVS naturalness at 4.13\\\"\\n    },\\n    {\\n      \\\"id\\\": 54,\\n      \\\"text\\\": \\\"Listener scores show CLASVS lyric intelligibility at 4.42.\\\",\\n      \\\"poster_quote\\\": \\\"and lyric intelligibility at 4.42.\\\"\\n    },\\n    {\\n      \\\"id\\\": 55,\\n      \\\"text\\\": \\\"Relative to YingMusic+, CLASVS naturalness improves by 0.48.\\\",\\n      \\\"poster_quote\\\": \\\"Relative to YingMusic+, naturalness improves by 0.48\\\"\\n    },\\n    {\\n      \\\"id\\\": 56,\\n      \\\"text\\\": \\\"Relative to YingMusic+, CLASVS intelligibility improves by 0.32.\\\",\\n      \\\"poster_quote\\\": \\\"and intelligibility by 0.32\\\"\\n    },\\n    {\\n      \\\"id\\\": 57,\\n      \\\"text\\\": \\\"On the public Mandarin benchmark, CLASVS lowers Vevo2 macro-PER from 0.0761 to 0.0425.\\\",\\n      \\\"poster_quote\\\": \\\"CLASVS lowers Vevo2 macro-PER from 0.0761 to 0.0425\\\"\\n    },\\n    {\\n      \\\"id\\\": 58,\\n      \\\"text\\\": \\\"CLASVS cold-start RTF is 3.840.\\\",\\n      \\\"poster_quote\\\": \\\"CLASVS cold-start/steady-tail RTF is 3.840/1.395\\\"\\n    },\\n    {\\n      \\\"id\\\": 59,\\n      \\\"text\\\": \\\"CLASVS steady-tail RTF is 1.395.\\\",\\n      \\\"poster_quote\\\": \\\"CLASVS cold-start/steady-tail RTF is 3.840/1.395\\\"\\n    },\\n    {\\n      \\\"id\\\": 60,\\n      \\\"text\\\": \\\"YingMusic+ cold-start RTF is 3.392.\\\",\\n      \\\"poster_quote\\\": \\\"compared with 3.392/0.241 for YingMusic+\\\"\\n    },\\n    {\\n      \\\"id\\\": 61,\\n      \\\"text\\\": \\\"YingMusic+ steady-tail RTF is 0.241.\\\",\\n      \\\"poster_quote\\\": \\\"compared with 3.392/0.241 for YingMusic+\\\"\\n    },\\n    {\\n      \\\"id\\\": 62,\\n      \\\"text\\\": \\\"Vevo2 cold-start RTF is 2.649.\\\",\\n      \\\"poster_quote\\\": \\\"and 2.649/0.744 for Vevo2.\\\"\\n    },\\n    {\\n      \\\"id\\\": 63,\\n      \\\"text\\\": \\\"Vevo2 steady-tail RTF is 0.744.\\\",\\n      \\\"poster_quote\\\": \\\"and 2.649/0.744 for Vevo2.\\\"\\n    },\\n    {\\n      \\\"id\\\": 64,\\n      \\\"text\\\": \\\"Incremental peak memory is lowest for CLASVS at 5.82 GiB.\\\",\\n      \\\"poster_quote\\\": \\\"Incremental peak memory is lowest for CLASVS at 5.82 GiB.\\\"\\n    },\\n    {\\n      \\\"id\\\": 65,\\n      \\\"text\\\": \\\"A frozen melody tokenizer converts the reference into a sequence of melody tokens at approximately 6.25 Hz.\\\",\\n      \\\"poster_quote\\\": \\\"A frozen melody tokenizer converts the reference into a sequence of melody tokens at approximately 6.25 Hz\\\"\\n    },\\n    {\\n      \\\"id\\\": 66,\\n      \\\"text\\\": \\\"The melody tokenizer uses a 512-entry codebook.\\\",\\n      \\\"poster_quote\\\": \\\"using a 512-entry codebook.\\\"\\n    },\\n    {\\n      \\\"id\\\": 67,\\n      \\\"text\\\": \\\"A frozen singer encoder extracts a 192-dimensional identity vector.\\\",\\n      \\\"poster_quote\\\": \\\"A frozen singer encoder extracts a 192-dimensional identity vector.\\\"\\n    },\\n    {\\n      \\\"id\\\": 68,\\n      \\\"text\\\": \\\"A frozen AudioVAE represents 16-kHz target audio as 64-dimensional continuous latent frames at 50 Hz.\\\",\\n      \\\"poster_quote\\\": \\\"A frozen AudioVAE represents 16-kHz target audio as 64-dimensional continuous latent frames at 50 Hz.\\\"\\n    },\\n    {\\n      \\\"id\\\": 69,\\n      \\\"text\\\": \\\"Five AudioVAE frames are grouped into one 5 × 64 latent patch, reducing the acoustic recurrence to 10 Hz.\\\",\\n      \\\"poster_quote\\\": \\\"Five AudioVAE frames are grouped into one 5 × 64 latent patch, reducing the acoustic recurrence to 10 Hz.\\\"\\n    },\\n    {\\n      \\\"id\\\": 70,\\n      \\\"text\\\": \\\"The budget-hit rate for CLASVS is 0% for partial substitution.\\\",\\n      \\\"poster_quote\\\": \\\"budget-hit rates are 0%, 0%, 0%, and 1.25% for partial substitution\\\"\\n    },\\n    {\\n      \\\"id\\\": 71,\\n      \\\"text\\\": \\\"The budget-hit rate for CLASVS is 0% for full substitution.\\\",\\n      \\\"poster_quote\\\": \\\"budget-hit rates are 0%, 0%, 0%, and 1.25% for partial substitution, full substitution\\\"\\n    },\\n    {\\n      \\\"id\\\": 72,\\n      \\\"text\\\": \\\"The budget-hit rate for CLASVS is 0% for deletion.\\\",\\n      \\\"poster_quote\\\": \\\"budget-hit rates are 0%, 0%, 0%, and 1.25% for partial substitution, full substitution, deletion\\\"\\n    },\\n    {\\n      \\\"id\\\": 73,\\n      \\\"text\\\": \\\"The budget-hit rate for CLASVS is 1.25% for insertion.\\\",\\n      \\\"poster_quote\\\": \\\"budget-hit rates are 0%, 0%, 0%, and 1.25% for partial substitution, full substitution, deletion, and insertion\\\"\\n    }\\n  ]\\n}\", \"```json\\n{\\n  \\\"verdicts\\\": [\\n    {\\n      \\\"id\\\": 1,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Training audio comprises about 8,000 hours of permission-documented Mandarin singing\\\",\\n      \\\"reason\\\": \\\"Section \\\\\\\"Experiments - Data, Comparators, and Statistics\\\\\\\". The paper states that training audio comprises about 8,000 hours of permission-documented Mandarin singing.\\\"\\n    },\\n    {\\n      \\\"id\\\": 2,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"2,000 hours of Mandarin Emilia speech (He et al. 2024)\\\",\\n      \\\"reason\\\": \\\"Section \\\\\\\"Experiments - Data, Comparators, and Statistics\\\\\\\". The paper states that training uses 2,000 hours of Mandarin speech.\\\"\\n    },\\n    {\\n      \\\"id\\\": 3,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"and 300 hours of curated open-source singing\\\",\\n      \\\"reason\\\": \\\"Section \\\\\\\"Experiments - Data, Comparators, and Statistics\\\\\\\". The paper states that training uses 300 hours of curated open-source singing.\\\"\\n    },\\n    {\\n      \\\"id\\\": 4,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Three 120K-update seeds use BF16, ZeRO-2, AdamW, and global batch 128.\\\",\\n      \\\"reason\\\": \\\"Section \\\\\\\"Experiments - Data, Comparators, and Statistics\\\\\\\". The paper states that three 120K-update seeds are used.\\\"\\n    },\\n    {\\n      \\\"id\\\": 5,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Three 120K-update seeds use BF16, ZeRO-2, AdamW, and global batch 128.\\\",\\n      \\\"reason\\\": \\\"Section \\\\\\\"Experiments - Data, Comparators, and Statistics\\\\\\\". The paper states that the training seeds use BF16.\\\"\\n    },\\n    {\\n      \\\"id\\\": 6,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Three 120K-update seeds use BF16, ZeRO-2, AdamW, and global batch 128.\\\",\\n      \\\"reason\\\": \\\"Section \\\\\\\"Experiments - Data, Comparators, and Statistics\\\\\\\". The paper states that the training seeds use ZeRO-2.\\\"\\n    },\\n    {\\n      \\\"id\\\": 7,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Three 120K-update seeds use BF16, ZeRO-2, AdamW, and global batch 128.\\\",\\n      \\\"reason\\\": \\\"Section \\\\\\\"Experiments - Data, Comparators, and Statistics\\\\\\\". The paper states that the training seeds use AdamW.\\\"\\n    },\\n    {\\n      \\\"id\\\": 8,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Three 120K-update seeds use BF16, ZeRO-2, AdamW, and global batch 128.\\\",\\n      \\\"reason\\\": \\\"Section \\\\\\\"Experiments - Data, Comparators, and Statistics\\\\\\\". The paper states that the training seeds use a global batch size of 128.\\\"\\n    },\\n    {\\n      \\\"id\\\": 9,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The checkpoint has 0.765B trainable/2.115B total parameters\\\",\\n      \\\"reason\\\": \\\"Section \\\\\\\"Experiments - Data, Comparators, and Statistics\\\\\\\". The paper states that CLASVS contains 0.765B trainable parameters.\\\"\\n    },\\n    {\\n      \\\"id\\\": 10,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"CLASVS count is trainable/total generative-stack size\\\",\\n      \\\"reason\\\": \\\"Table 1 caption and Section \\\\\\\"Experiments - Data, Comparators, and Statistics\\\\\\\". The paper states that CLASVS contains 2.115B total parameters (generative-stack size).\\\"\\n    },\\n    {\\n      \\\"id\\\": 11,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"including the frozen 1.350B AudioVAE\\\",\\n      \\\"reason\\\": \\\"Section \\\\\\\"Experiments - Data, Comparators, and Statistics\\\\\\\". The paper states that CLASVS includes a frozen 1.350B AudioVAE.\\\"\\n    },\\n    {\\n      \\\"id\\\": 12,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Pretrained-frozen/pretrained-joint/random-joint/random-frozen PER is .0376/.0391/.0511/.0918.\\\",\\n      \\\"reason\\\": \\\"Section \\\\\\\"Method - Progressive State–Control Grounding\\\\\\\". The paper states that a pretrained-frozen encoder achieves a PER of 0.0376.\\\"\\n    },\\n    {\\n      \\\"id\\\": 13,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Pretrained-frozen/pretrained-joint/random-joint/random-frozen PER is .0376/.0391/.0511/.0918.\\\",\\n      \\\"reason\\\": \\\"Section \\\\\\\"Method - Progressive State–Control Grounding\\\\\\\". The paper states that a pretrained-joint encoder achieves a PER of 0.0391.\\\"\\n    },\\n    {\\n      \\\"id\\\": 14,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Pretrained-frozen/pretrained-joint/random-joint/random-frozen PER is .0376/.0391/.0511/.0918.\\\",\\n      \\\"reason\\\": \\\"Section \\\\\\\"Method - Progressive State–Control Grounding\\\\\\\". The paper states that a random-joint encoder achieves a PER of 0.0511.\\\"\\n    },\\n    {\\n      \\\"id\\\": 15,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Pretrained-frozen/pretrained-joint/random-joint/random-frozen PER is .0376/.0391/.0511/.0918.\\\",\\n      \\\"reason\\\": \\\"Section \\\\\\\"Method - Progressive State–Control Grounding\\\\\\\". The paper states that a random-frozen encoder achieves a PER of 0.0918.\\\"\\n    },\\n    {\\n      \\\"id\\\": 16,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"On two Mandarin benchmarks, CLASVS improves all four operations over discrete-AR Vevo2 and reduces macro-PER by 46.2%\\\",\\n      \\\"reason\\\": \\\"Abstract. The paper states that CLASVS reduces macro phone error rate by 46.2% relative to Vevo2.\\\"\\n    },\\n    {\\n      \\\"id\\\": 17,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"CLA-LyricEdit-320 contains 320 edits from 160 excerpts spanning 80 songs and 40 singers\\\",\\n      \\\"reason\\\": \\\"Section \\\\\\\"Experiments - Data, Comparators, and Statistics\\\\\\\". The paper states that CLA-LyricEdit-320 contains 320 edits.\\\"\\n    },\\n    {\\n      \\\"id\\\": 18,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"CLA-LyricEdit-320 contains 320 edits from 160 excerpts spanning 80 songs and 40 singers\\\",\\n      \\\"reason\\\": \\\"Section \\\\\\\"Experiments - Data, Comparators, and Statistics\\\\\\\". The paper states that CLA-LyricEdit-320 contains 160 excerpts.\\\"\\n    },\\n    {\\n      \\\"id\\\": 19,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"CLA-LyricEdit-320 contains 320 edits from 160 excerpts spanning 80 songs and 40 singers\\\",\\n      \\\"reason\\\": \\\"Section \\\\\\\"Experiments - Data, Comparators, and Statistics\\\\\\\". The paper states that CLA-LyricEdit-320 spans 80 songs.\\\"\\n    },\\n    {\\n      \\\"id\\\": 20,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"CLA-LyricEdit-320 contains 320 edits from 160 excerpts spanning 80 songs and 40 singers\\\",\\n      \\\"reason\\\": \\\"Section \\\\\\\"Experiments - Data, Comparators, and Statistics\\\\\\\". The paper states that CLA-LyricEdit-320 spans 40 singers.\\\"\\n    },\\n    {\\n      \\\"id\\\": 21,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Control Grounding applies history dropout (ph = .10)\\\",\\n      \\\"reason\\\": \\\"Section \\\\\\\"Method - Progressive State–Control Grounding\\\\\\\". The paper states that history dropout has a probability of 0.10.\\\"\\n    },\\n    {\\n      \\\"id\\\": 22,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"masks reference-melody spans (pm = .15)\\\",\\n      \\\"reason\\\": \\\"Section \\\\\\\"Method - Progressive State–Control Grounding\\\\\\\". The paper states that melody-span masking has a probability of 0.15.\\\"\\n    },\\n    {\\n      \\\"id\\\": 23,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"History-dropout, melody-mask, joint-corruption, and curriculum-order removals yield PER .0441/.0419/.0468/.0415\\\",\\n      \\\"reason\\\": \\\"Section \\\\\\\"Method - Progressive State–Control Grounding\\\\\\\". The paper states that removing history dropout yields a PER of 0.0441.\\\"\\n    },\\n    {\\n      \\\"id\\\": 24,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"History-dropout, melody-mask, joint-corruption, and curriculum-order removals yield PER .0441/.0419/.0468/.0415\\\",\\n      \\\"reason\\\": \\\"Section \\\\\\\"Method - Progressive State–Control Grounding\\\\\\\". The paper states that removing melody masking yields a PER of 0.0419.\\\"\\n    },\\n    {\\n      \\\"id\\\": 25,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"History-dropout, melody-mask, joint-corruption, and curriculum-order removals yield PER .0441/.0419/.0468/.0415\\\",\\n      \\\"reason\\\": \\\"Section \\\\\\\"Method - Progressive State–Control Grounding\\\\\\\". The paper states that joint-corruption removal (removing both history dropout and melody masking) yields a PER of 0.0468.\\\"\\n    },\\n    {\\n      \\\"id\\\": 26,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Task Grounding schedules 72K broad-singing, 24K speech-assisted, and 24K curated-singing updates\\\",\\n      \\\"reason\\\": \\\"Section \\\\\\\"Method - Progressive State–Control Grounding\\\\\\\". The paper states that Task Grounding schedules 72K broad-singing updates.\\\"\\n    },\\n    {\\n      \\\"id\\\": 27,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Task Grounding schedules 72K broad-singing, 24K speech-assisted, and 24K curated-singing updates\\\",\\n      \\\"reason\\\": \\\"Section \\\\\\\"Method - Progressive State–Control Grounding\\\\\\\". The paper states that Task Grounding schedules 24K speech-assisted updates.\\\"\\n    },\\n    {\\n      \\\"id\\\": 28,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Task Grounding schedules 72K broad-singing, 24K speech-assisted, and 24K curated-singing updates\\\",\\n      \\\"reason\\\": \\\"Section \\\\\\\"Method - Progressive State–Control Grounding\\\\\\\". The paper states that Task Grounding schedules 24K curated-singing updates.\\\"\\n    },\\n    {\\n      \\\"id\\\": 29,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Each patch starts from Gaussian noise and uses 24 Euler steps with guidance 2.0.\\\",\\n      \\\"reason\\\": \\\"Section \\\\\\\"Method - Progressive State–Control Grounding\\\\\\\". The paper states that each patch uses 24 Euler steps.\\\"\\n    },\\n    {\\n      \\\"id\\\": 30,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Each patch starts from Gaussian noise and uses 24 Euler steps with guidance 2.0.\\\",\\n      \\\"reason\\\": \\\"Section \\\\\\\"Method - Progressive State–Control Grounding\\\\\\\". The paper states that each patch uses a guidance scale of 2.0.\\\"\\n    },\\n    {\\n      \\\"id\\\": 31,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"No-edit output–target/source is .018/.019.\\\",\\n      \\\"reason\\\": \\\"Table 2 caption. The paper states that no-edit output-target is .018.\\\"\\n    },\\n    {\\n      \\\"id\\\": 32,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"No-edit output–target/source is .018/.019.\\\",\\n      \\\"reason\\\": \\\"Table 2 caption. The paper states that no-edit output-source is .019.\\\"\\n    },\\n    {\\n      \\\"id\\\": 33,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"CLASVS\\\\t.0505\\\\t.0442\\\\t.0260\\\\t.0298\\\",\\n      \\\"reason\\\": \\\"Table 4. The paper shows that CLASVS achieves a PER of 0.0505 for partial substitution (PSub).\\\"\\n    },\\n    {\\n      \\\"id\\\": 34,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"CLASVS\\\\t.0505\\\\t.0442\\\\t.0260\\\\t.0298\\\",\\n      \\\"reason\\\": \\\"Table 4. The paper shows that CLASVS achieves a PER of 0.0442 for full substitution (FSub).\\\"\\n    },\\n    {\\n      \\\"id\\\": 35,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"CLASVS\\\\t.0505\\\\t.0442\\\\t.0260\\\\t.0298\\\",\\n      \\\"reason\\\": \\\"Table 4. The paper shows that CLASVS achieves a PER of 0.0260 for deletion (Del).\\\"\\n    },\\n    {\\n      \\\"id\\\": 36,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"CLASVS\\\\t.0505\\\\t.0442\\\\t.0260\\\\t.0298\\\",\\n      \\\"reason\\\": \\\"Table 4. The paper shows that CLASVS achieves a PER of 0.0298 for insertion (Ins).\\\"\\n    },\\n    {\\n      \\\"id\\\": 37,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"CLASVS\\\\t.0505\\\\t.0442\\\\t.0260\\\\t.0298\\\\t.0376\\\",\\n      \\\"reason\\\": \\\"Table 4. The paper shows that CLASVS achieves a macro-PER of 0.0376.\\\"\\n    },\\n    {\\n      \\\"id\\\": 38,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Vevo2\\\\t.0617\\\\t.0563\\\\t.1033\\\\t.0581\\\",\\n      \\\"reason\\\": \\\"Table 4. The paper shows that Vevo2 obtains a PER of 0.0617 for partial substitution (PSub).\\\"\\n    },\\n    {\\n      \\\"id\\\": 39,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Vevo2\\\\t.0617\\\\t.0563\\\\t.1033\\\\t.0581\\\",\\n      \\\"reason\\\": \\\"Table 4. The paper shows that Vevo2 obtains a PER of 0.0563 for full substitution (FSub).\\\"\\n    },\\n    {\\n      \\\"id\\\": 40,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Vevo2\\\\t.0617\\\\t.0563\\\\t.1033\\\\t.0581\\\",\\n      \\\"reason\\\": \\\"Table 4. The paper shows that Vevo2 obtains a PER of 0.1033 for deletion (Del).\\\"\\n    }\\n  ]\\n}\\n```\", \"```json\\n{\\n  \\\"verdicts\\\": [\\n    {\\n      \\\"id\\\": 1,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\".0581\\\",\\n      \\\"reason\\\": \\\"Table 4, row Vevo2, column Ins shows a PER of 0.0581.\\\"\\n    },\\n    {\\n      \\\"id\\\": 2,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\".0699 [.0617,.0781]\\\",\\n      \\\"reason\\\": \\\"Table 4, row Vevo2, column Macro-PER shows 0.0699.\\\"\\n    },\\n    {\\n      \\\"id\\\": 3,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\".0411 [.0356,.0469]\\\",\\n      \\\"reason\\\": \\\"Table 4, row YingMusic-Singer-Plus, column Macro-PER shows 0.0411.\\\"\\n    },\\n    {\\n      \\\"id\\\": 4,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\".9410\\\",\\n      \\\"reason\\\": \\\"Table 4, row CLASVS, column FPC (melody correlation) shows 0.9410.\\\"\\n    },\\n    {\\n      \\\"id\\\": 5,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\".9340\\\",\\n      \\\"reason\\\": \\\"Table 4, row YingMusic-Singer-Plus, column FPC (melody correlation) shows 0.9340.\\\"\\n    },\\n    {\\n      \\\"id\\\": 6,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\".7440\\\",\\n      \\\"reason\\\": \\\"Table 4, row Vevo2, column FPC (melody correlation) shows 0.7440.\\\"\\n    },\\n    {\\n      \\\"id\\\": 7,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\".914\\\",\\n      \\\"reason\\\": \\\"Table 4, row CLASVS, column SIM (singer similarity) shows 0.914.\\\"\\n    },\\n    {\\n      \\\"id\\\": 8,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\".906\\\",\\n      \\\"reason\\\": \\\"Table 4, row YingMusic-Singer-Plus, column SIM (singer similarity) shows 0.906.\\\"\\n    },\\n    {\\n      \\\"id\\\": 9,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\".892\\\",\\n      \\\"reason\\\": \\\"Table 4, row Vevo2, column SIM (singer similarity) shows 0.892.\\\"\\n    },\\n    {\\n      \\\"id\\\": 10,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\".9923%/7.68ms\\\",\\n      \\\"reason\\\": \\\"Table 4, row CLASVS, column RefDur./Onset shows a voiced-onset MAE of 7.68 ms.\\\"\\n    },\\n    {\\n      \\\"id\\\": 11,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\".1464%/18.80ms\\\",\\n      \\\"reason\\\": \\\"Table 4, row YingMusic-Singer-Plus, column RefDur./Onset shows a voiced-onset MAE of 18.80 ms.\\\"\\n    },\\n    {\\n      \\\"id\\\": 12,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"1.6009%/69.58ms\\\",\\n      \\\"reason\\\": \\\"Table 4, row Vevo2, column RefDur./Onset shows a voiced-onset MAE of 69.58 ms.\\\"\\n    },\\n    {\\n      \\\"id\\\": 13,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"4.13\\\\n[4.04,4.22]\\\",\\n      \\\"reason\\\": \\\"Table 6, row CLASVS, column N-MOS (naturalness) shows 4.13.\\\"\\n    },\\n    {\\n      \\\"id\\\": 14,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"4.42\\\\n[4.34,4.50]\\\",\\n      \\\"reason\\\": \\\"Table 6, row CLASVS, column L-MOS (lyric intelligibility) shows 4.42.\\\"\\n    },\\n    {\\n      \\\"id\\\": 15,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"+.48\\\",\\n      \\\"reason\\\": \\\"Table 6, row ∆ vs. YingMusic+, column N-MOS shows an improvement of 0.48.\\\"\\n    },\\n    {\\n      \\\"id\\\": 16,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"+.32\\\",\\n      \\\"reason\\\": \\\"Table 6, row ∆ vs. YingMusic+, column L-MOS shows an improvement of 0.32.\\\"\\n    },\\n    {\\n      \\\"id\\\": 17,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"CLASVS improves all four operations over Vevo2 and lowers macro-PER from .0761 to .0425\\\",\\n      \\\"reason\\\": \\\"Section 'Public-Benchmark Replication' states that CLASVS lowers Vevo2 macro-PER from 0.0761 to 0.0425.\\\"\\n    },\\n    {\\n      \\\"id\\\": 18,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"3.840/1.395\\\",\\n      \\\"reason\\\": \\\"Table 4, row CLASVS, column C/S RTF shows a cold-start RTF of 3.840.\\\"\\n    },\\n    {\\n      \\\"id\\\": 19,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"3.840/1.395\\\",\\n      \\\"reason\\\": \\\"Table 4, row CLASVS, column C/S RTF shows a steady-tail RTF of 1.395.\\\"\\n    },\\n    {\\n      \\\"id\\\": 20,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"3.392/.241\\\",\\n      \\\"reason\\\": \\\"Table 4, row YingMusic-Singer-Plus, column C/S RTF shows a cold-start RTF of 3.392.\\\"\\n    },\\n    {\\n      \\\"id\\\": 21,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"3.392/.241\\\",\\n      \\\"reason\\\": \\\"Table 4, row YingMusic-Singer-Plus, column C/S RTF shows a steady-tail RTF of 0.241.\\\"\\n    },\\n    {\\n      \\\"id\\\": 22,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"2.649/.744\\\",\\n      \\\"reason\\\": \\\"Table 4, row Vevo2, column C/S RTF shows a cold-start RTF of 2.649.\\\"\\n    },\\n    {\\n      \\\"id\\\": 23,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"2.649/.744\\\",\\n      \\\"reason\\\": \\\"Table 4, row Vevo2, column C/S RTF shows a steady-tail RTF of 0.744.\\\"\\n    },\\n    {\\n      \\\"id\\\": 24,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"5.82\\\",\\n      \\\"reason\\\": \\\"Table 4, row CLASVS, column ∆GiB shows the lowest incremental peak memory at 5.82 GiB.\\\"\\n    },\\n    {\\n      \\\"id\\\": 25,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"A frozen melody tokenizer maps r to m = (m1 , . . . , mLm ) at approximately 6.25 Hz using a 512-entry codebook\\\",\\n      \\\"reason\\\": \\\"Section 'Method', subsection 'Inputs, Time Bases, and Duration' states that the frozen melody tokenizer maps the reference at approximately 6.25 Hz.\\\"\\n    },\\n    {\\n      \\\"id\\\": 26,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"using a 512-entry codebook\\\",\\n      \\\"reason\\\": \\\"Section 'Method', subsection 'Inputs, Time Bases, and Duration' states that the melody tokenizer uses a 512-entry codebook.\\\"\\n    },\\n    {\\n      \\\"id\\\": 27,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"A frozen CAM++ encoder (Wang et al. 2023) extracts a 192-D singer vector e.\\\",\\n      \\\"reason\\\": \\\"Section 'Method', subsection 'Inputs, Time Bases, and Duration' states that the frozen CAM++ encoder extracts a 192-D singer vector.\\\"\\n    },\\n    {\\n      \\\"id\\\": 28,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"A frozen Ming-UniAudio AudioVAE (Yan et al. 2025) represents 16-kHz target audio as z∗ ∈ RT ×64 at 50 Hz.\\\",\\n      \\\"reason\\\": \\\"Section 'Method', subsection 'Inputs, Time Bases, and Duration' states that the AudioVAE represents 16-kHz target audio as 64-D continuous latent frames at 50 Hz.\\\"\\n    },\\n    {\\n      \\\"id\\\": 29,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"We group P = 5 frames into z̄∗k ∈ R5×64 , so the acoustic recurrence runs at 10 Hz.\\\",\\n      \\\"reason\\\": \\\"Section 'Method', subsection 'Inputs, Time Bases, and Duration' states that grouping 5 frames into a patch reduces the acoustic recurrence to 10 Hz.\\\"\\n    },\\n    {\\n      \\\"id\\\": 30,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Budget-hit rates are 0/0/0/1.25% for PSub/FSub/Del/Ins\\\",\\n      \\\"reason\\\": \\\"Section 'Analysis and Discussion', subsection 'What the stopping audit adds' states that the budget-hit rate is 0% for PSub (partial substitution).\\\"\\n    },\\n    {\\n      \\\"id\\\": 31,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Budget-hit rates are 0/0/0/1.25% for PSub/FSub/Del/Ins\\\",\\n      \\\"reason\\\": \\\"Section 'Analysis and Discussion', subsection 'What the stopping audit adds' states that the budget-hit rate is 0% for FSub (full substitution).\\\"\\n    },\\n    {\\n      \\\"id\\\": 32,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Budget-hit rates are 0/0/0/1.25% for PSub/FSub/Del/Ins\\\",\\n      \\\"reason\\\": \\\"Section 'Analysis and Discussion', subsection 'What the stopping audit adds' states that the budget-hit rate is 0% for Del (deletion).\\\"\\n    },\\n    {\\n      \\\"id\\\": 33,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Budget-hit rates are 0/0/0/1.25% for PSub/FSub/Del/Ins\\\",\\n      \\\"reason\\\": \\\"Section 'Analysis and Discussion', subsection 'What the stopping audit adds' states that the budget-hit rate is 1.25% for Ins (insertion).\\\"\\n    }\\n  ]\\n}\\n```\"]"
 }

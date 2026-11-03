@@ -2,9 +2,58 @@
   "model": "gemini-3.5-flash",
   "repeat": 1,
   "judge_prompt_sha256": "4ec65050cfdc718218dbc587f672291e733fd03b1254c20d77b61b0933e16162",
-  "error": "transport: Error code: 422 - Budget has been exceeded! Key=SIX-SIGMA-SLIDES-PROJECT-2 (sk-...d5LQ) Current cost: 70.08230754, Max budget: 70.0",
-  "tokens_in": 0,
-  "tokens_out": 0,
-  "parsed": null,
-  "raw": ""
+  "error": null,
+  "tokens_in": 5377,
+  "tokens_out": 3747,
+  "max_output_tokens": 32768,
+  "parsed": {
+    "items": {
+      "chk_problem": {
+        "label": "accurate",
+        "poster_evidence": "Pelvic pathologies like PCOS and pelvic fracture lack public, well-annotated datasets despite clinical importance.",
+        "reason": "The poster accurately describes the lack of public, well-annotated datasets for PCOS and pelvic fracture under the 'Problem & Gap' section."
+      },
+      "chk_method": {
+        "label": "accurate",
+        "poster_evidence": "PelviNeXt is a modality-agnostic hybrid architecture applied identically to ultrasound and X-ray. It consists of: (1) Dense Feature Extractor (DFE) with 4 dense blocks (6,12,24,16 layers) inspired by DenseNet, producing multi-scale feature maps; (2) Hierarchical CBAM (H-CBAM) after each DFE block, applying channel and spatial attention at 4 scales (56×56 to 7×7); (3) Multi-Scale Fusion Module (MSFM) aligning and fusing outputs of DFE-2,3,4 to 7×7, reducing to 512 channels; (4) Talking-Heads Multi-Head Self-Attention (TH-MHSA) with head-mixing projections before/after softmax for global context",
+        "reason": "The poster details the PelviNeXt architecture, including all components (DFE, H-CBAM, MSFM, and TH-MHSA) matching the reference."
+      },
+      "chk_data": {
+        "label": "accurate",
+        "poster_evidence": "Original PCOSGen (4,668 images: 1,319 Normal, 3,349 Abnormal) reduced to 225 images (63 Normal, 162 Abnormal) — a 95.2% reduction. We publicly release this deduplicated version. PXR150 (150 X-rays: 100 fracture, 50 normal) is used as-is.",
+        "reason": "The poster specifies the deduplicated PCOSGen dataset with 225 images and the PXR150 dataset with 150 radiographs."
+      },
+      "chk_setup": {
+        "label": "accurate",
+        "poster_evidence": "Training uses AdamW, batch size 16, 30 epochs, 5-fold CV with augmentation (rotation, shear, flip, translate) and class-aware multipliers.",
+        "reason": "The poster lists the training parameters (AdamW, batch size 16, 30 epochs) and the 5-fold cross-validation setup with augmentation."
+      },
+      "chk_primary_result": {
+        "label": "accurate",
+        "poster_evidence": "On deduplicated PCOSGen, PelviNeXt achieves 92.00% accuracy (±1.60), 91.74% recall, 86.48% specificity, 0.8890 F1, and 0.9051 AUROC... On PXR150, PelviNeXt achieves 87.33% accuracy (±2.45), 89.00% recall, 87.00% specificity, 0.8774 F1, and 0.8920 AUROC",
+        "reason": "The poster reports the exact primary quantitative results for both datasets, matching the reference."
+      },
+      "chk_secondary_result": {
+        "label": "accurate",
+        "poster_evidence": "MSFM is critical for AUROC (PCOS: 0.90510.8735; Fracture: 0.89200.8576)",
+        "reason": "The poster reports the ablation results for MSFM on both tasks, matching option (a) of the reference."
+      },
+      "chk_baseline": {
+        "label": "accurate",
+        "poster_evidence": "outperforming ViT-B/16, ResNet-101, and DenseNet-169 by ≥2.67% in accuracy and ≥0.0422 in AUROC. On PXR150, PelviNeXt achieves 87.33% accuracy (±2.45), 89.00% recall, 87.00% specificity, 0.8774 F1, and 0.8920 AUROC — exceeding prior SOTA (Patch Ensemble: 84.00% acc, 0.8700 AUROC)",
+        "reason": "The poster compares PelviNeXt against standard baselines (ViT-B/16, ResNet-101, DenseNet-169) and the prior SOTA (Patch Ensemble)."
+      },
+      "chk_conclusion": {
+        "label": "accurate",
+        "poster_evidence": "PelviNeXt is the first modality-agnostic architecture validated on both pelvic ultrasound and X-ray without task-specific tuning... This work advances reliable, generalizable AI for under-researched women’s pelvic health.",
+        "reason": "The poster's conclusion section summarizes PelviNeXt as a reliable, modality-agnostic foundation for pelvic imaging in women's health."
+      },
+      "chk_limitation": {
+        "label": "accurate",
+        "poster_evidence": "Limitations include small dataset sizes (225 PCOS, 150 fracture images), which we mitigate via 5-fold CV with CIs.",
+        "reason": "The poster explicitly lists the small dataset sizes (225 PCOS and 150 fracture images) as a limitation."
+      }
+    }
+  },
+  "raw": "```json\n{\n  \"items\": {\n    \"chk_problem\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Pelvic pathologies like PCOS and pelvic fracture lack public, well-annotated datasets despite clinical importance.\",\n      \"reason\": \"The poster accurately describes the lack of public, well-annotated datasets for PCOS and pelvic fracture under the 'Problem & Gap' section.\"\n    },\n    \"chk_method\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"PelviNeXt is a modality-agnostic hybrid architecture applied identically to ultrasound and X-ray. It consists of: (1) Dense Feature Extractor (DFE) with 4 dense blocks (6,12,24,16 layers) inspired by DenseNet, producing multi-scale feature maps; (2) Hierarchical CBAM (H-CBAM) after each DFE block, applying channel and spatial attention at 4 scales (56×56 to 7×7); (3) Multi-Scale Fusion Module (MSFM) aligning and fusing outputs of DFE-2,3,4 to 7×7, reducing to 512 channels; (4) Talking-Heads Multi-Head Self-Attention (TH-MHSA) with head-mixing projections before/after softmax for global context\",\n      \"reason\": \"The poster details the PelviNeXt architecture, including all components (DFE, H-CBAM, MSFM, and TH-MHSA) matching the reference.\"\n    },\n    \"chk_data\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Original PCOSGen (4,668 images: 1,319 Normal, 3,349 Abnormal) reduced to 225 images (63 Normal, 162 Abnormal) — a 95.2% reduction. We publicly release this deduplicated version. PXR150 (150 X-rays: 100 fracture, 50 normal) is used as-is.\",\n      \"reason\": \"The poster specifies the deduplicated PCOSGen dataset with 225 images and the PXR150 dataset with 150 radiographs.\"\n    },\n    \"chk_setup\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Training uses AdamW, batch size 16, 30 epochs, 5-fold CV with augmentation (rotation, shear, flip, translate) and class-aware multipliers.\",\n      \"reason\": \"The poster lists the training parameters (AdamW, batch size 16, 30 epochs) and the 5-fold cross-validation setup with augmentation.\"\n    },\n    \"chk_primary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"On deduplicated PCOSGen, PelviNeXt achieves 92.00% accuracy (±1.60), 91.74% recall, 86.48% specificity, 0.8890 F1, and 0.9051 AUROC... On PXR150, PelviNeXt achieves 87.33% accuracy (±2.45), 89.00% recall, 87.00% specificity, 0.8774 F1, and 0.8920 AUROC\",\n      \"reason\": \"The poster reports the exact primary quantitative results for both datasets, matching the reference.\"\n    },\n    \"chk_secondary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"MSFM is critical for AUROC (PCOS: 0.90510.8735; Fracture: 0.89200.8576)\",\n      \"reason\": \"The poster reports the ablation results for MSFM on both tasks, matching option (a) of the reference.\"\n    },\n    \"chk_baseline\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"outperforming ViT-B/16, ResNet-101, and DenseNet-169 by ≥2.67% in accuracy and ≥0.0422 in AUROC. On PXR150, PelviNeXt achieves 87.33% accuracy (±2.45), 89.00% recall, 87.00% specificity, 0.8774 F1, and 0.8920 AUROC — exceeding prior SOTA (Patch Ensemble: 84.00% acc, 0.8700 AUROC)\",\n      \"reason\": \"The poster compares PelviNeXt against standard baselines (ViT-B/16, ResNet-101, DenseNet-169) and the prior SOTA (Patch Ensemble).\"\n    },\n    \"chk_conclusion\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"PelviNeXt is the first modality-agnostic architecture validated on both pelvic ultrasound and X-ray without task-specific tuning... This work advances reliable, generalizable AI for under-researched women’s pelvic health.\",\n      \"reason\": \"The poster's conclusion section summarizes PelviNeXt as a reliable, modality-agnostic foundation for pelvic imaging in women's health.\"\n    },\n    \"chk_limitation\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Limitations include small dataset sizes (225 PCOS, 150 fracture images), which we mitigate via 5-fold CV with CIs.\",\n      \"reason\": \"The poster explicitly lists the small dataset sizes (225 PCOS and 150 fracture images) as a limitation.\"\n    }\n  }\n}\n```"
 }

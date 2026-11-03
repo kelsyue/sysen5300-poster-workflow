@@ -2,364 +2,366 @@
   "model": "gemini-3.5-flash",
   "repeat": 1,
   "judge_prompt_sha256": "4ec65050cfdc718218dbc587f672291e733fd03b1254c20d77b61b0933e16162",
-  "error": "truncated at max_output_tokens=8192",
-  "tokens_in": 13682,
-  "tokens_out": 16058,
+  "error": null,
+  "tokens_in": 24386,
+  "tokens_out": 21947,
+  "max_output_tokens": 32768,
+  "claims_batch_size": 40,
   "parsed": {
     "claims": [
       {
         "id": 1,
         "text": "Two character-level Transformer systems exceed 97% aggregate accuracy on Japanese past-tense inflection.",
         "poster_quote": "Two character-level Transformer systems exceed 97% aggregate accuracy on Japanese past-tense inflection",
-        "label": null,
-        "paper_evidence": "",
-        "reason": ""
+        "label": "supported",
+        "paper_evidence": "Using two character-level Transformer architectures evaluated across five random seeds, we show that although both systems exceed 97% aggregate accuracy",
+        "reason": "Section 1, Abstract. The paper states that both character-level Transformer architectures exceed 97% aggregate accuracy."
       },
       {
         "id": 2,
         "text": "Type 4-2 verbs comprise only 0.9% of the data.",
         "poster_quote": "Type 4-2 verbs, whose stems end in /e/ and require gemination before the past-tense suffix, comprise only 0.9% of the data",
-        "label": null,
-        "paper_evidence": "",
-        "reason": ""
+        "label": "supported",
+        "paper_evidence": "Type 4-2 is the smallest structurally coherent subclass, comprising only 0.9% of the data;",
+        "reason": "Section 3.1. The paper states that Type 4-2 comprises 0.9% of the data."
       },
       {
         "id": 3,
         "text": "Type 4-2 verbs account for 30–43% of residual errors.",
         "poster_quote": "account for 30–43% of residual errors.",
-        "label": null,
-        "paper_evidence": "",
-        "reason": ""
+        "label": "supported",
+        "paper_evidence": "accounts for a disproportionate 30–43% share of residual errors",
+        "reason": "Section 1, Abstract. The paper states that this subtype accounts for 30-43% of residual errors."
       },
       {
         "id": 4,
         "text": "Type 4-2 verbs' contribution to total errors is approximately 34–48 times their prevalence.",
         "poster_quote": "Their contribution to total errors is approximately 34–48 times their prevalence.",
-        "label": null,
-        "paper_evidence": "",
-        "reason": ""
+        "label": "supported",
+        "paper_evidence": "and contributes roughly 34–48× its prevalence to total errors.",
+        "reason": "Section 1, Abstract. The paper states that the subtype contributes roughly 34-48x its prevalence to total errors."
       },
       {
         "id": 5,
         "text": "Removing Type 4-2 alone improves accuracy more than removing all irregular verbs.",
         "poster_quote": "removing this subtype alone improves accuracy more than removing all irregular verbs.",
-        "label": null,
-        "paper_evidence": "",
-        "reason": ""
+        "label": "supported",
+        "paper_evidence": "controlled ablation experiments show that removing this subtype alone produces larger accuracy gains than removing all irregular verbs combined.",
+        "reason": "Section 1, Abstract. The paper states that removing this subtype alone produces larger accuracy gains than removing all irregular verbs combined."
       },
       {
         "id": 6,
         "text": "Two character-level Transformer encoder-decoder architectures operate over hiragana and generate past-tense forms autoregressively.",
         "poster_quote": "Two character-level Transformer encoder-decoder architectures operate over hiragana and generate past-tense forms autoregressively.",
-        "label": null,
-        "paper_evidence": "",
-        "reason": ""
+        "label": "supported",
+        "paper_evidence": "We evaluate two character-level Transformer encoder–decoder architectures for Japanese past-tense inflection, both operating over hiragana strings and generating inflected forms autoregressively.",
+        "reason": "Section 4. The paper states that both architectures are character-level Transformer encoder-decoders operating over hiragana and generating forms autoregressively."
       },
       {
         "id": 7,
         "text": "The Pointer-Generator Transformer uses an input-copying mechanism with attention over the lemma.",
         "poster_quote": "The Pointer-Generator Transformer uses an input-copying mechanism with attention over the lemma.",
-        "label": null,
-        "paper_evidence": "",
-        "reason": ""
+        "label": "supported",
+        "paper_evidence": "The first is a Pointer-Generator Transformer (henceforth PGT), incorporating a pointer-generator copying mechanism (See et al., 2017) with attention over the input lemma",
+        "reason": "Section 4. The paper states that PGT incorporates a pointer-generator copying mechanism with attention over the input lemma."
       },
       {
         "id": 8,
         "text": "The Lemma-Split Transformer prevents the same lemma from appearing in both training and test data.",
         "poster_quote": "The Lemma-Split Transformer prevents the same lemma from appearing in both training and test data",
-        "label": null,
-        "paper_evidence": "",
-        "reason": ""
+        "label": "supported",
+        "paper_evidence": "preventing a lemma from appearing in both training and test data",
+        "reason": "Section 4. The paper states that LST uses a lemma-split regime preventing a lemma from appearing in both training and test data."
       },
       {
         "id": 9,
         "text": "Each model is evaluated across five random seeds using an 80/10/10 training, development, and test split.",
         "poster_quote": "Each model is evaluated across five random seeds using an 80/10/10 training, development, and test split.",
-        "label": null,
-        "paper_evidence": "",
-        "reason": ""
+        "label": "supported",
+        "paper_evidence": "we train each model on the full dataset five times with different random seeds, using an 80/10/10 train/development/test split.",
+        "reason": "Section 5.2. The paper states that models are trained five times with different random seeds using an 80/10/10 split."
       },
       {
         "id": 10,
         "text": "Evaluation uses lemma-level exact-match accuracy, subgroup accuracy by verb type, and the Disparity Ratio.",
         "poster_quote": "Evaluation uses lemma-level exact-match accuracy, subgroup accuracy by verb type, and the Disparity Ratio: a subgroup’s share of all errors divided by its share of the dataset.",
-        "label": null,
-        "paper_evidence": "",
-        "reason": ""
+        "label": "supported",
+        "paper_evidence": "We report exact-match accuracy at the lemma level (Cotterell et al., 2017; Goldman et al., 2023); subgroup accuracy, computed separately per verb type (Kann and Schütze, 2016; Makarov and Clematide, 2018; Vylomova et al., 2020); and the Disparity Ratio for a subgroup g,",
+        "reason": "Section 5.4. The paper states that evaluation uses lemma-level exact-match accuracy, subgroup accuracy, and the Disparity Ratio."
       },
       {
         "id": 11,
         "text": "Residual outputs are manually classified into six orthography-sensitive categories.",
         "poster_quote": "Residual outputs are also manually classified into six orthography-sensitive categories: gemination omission, gemination insertion, phonological substitution, morpheme-boundary error, character-recognition error, and compound-verb structural error.",
-        "label": null,
-        "paper_evidence": "",
-        "reason": ""
+        "label": "supported",
+        "paper_evidence": "We defined a taxonomy of six orthography- and morphophonology-sensitive failure modes (Table 2): gemination omission, gemination insertion, phonological substitution, morpheme boundary errors, character recognition (UNK) errors, and compound verb structural errors. We used this taxonomy to manually classify all residual errors (Table 3).",
+        "reason": "Section 6.2. The paper states that a taxonomy of six failure modes was defined and used to manually classify all residual errors."
       },
       {
         "id": 12,
         "text": "Type 4-2 produces 16 of 53 Pointer-Generator errors (30.2%).",
         "poster_quote": "It produces 16 of 53 Pointer-Generator errors (30.2%)",
-        "label": null,
-        "paper_evidence": "",
-        "reason": ""
+        "label": "supported",
+        "paper_evidence": "Type 4-2 | 16 (30.2%) | 22 (43.1%) | 0.9",
+        "reason": "Section 6.4, Table 4. The table shows that Type 4-2 produces 16 errors (30.2% of the 53 total PGT errors)."
       },
       {
         "id": 13,
         "text": "Type 4-2 produces 22 of 51 Lemma-Split errors (43.1%).",
         "poster_quote": "and 22 of 51 Lemma-Split errors (43.1%)",
-        "label": null,
-        "paper_evidence": "",
-        "reason": ""
+        "label": "supported",
+        "paper_evidence": "Type 4-2 | 16 (30.2%) | 22 (43.1%) | 0.9",
+        "reason": "Section 6.4, Table 4. The table shows that Type 4-2 produces 22 errors (43.1% of the 51 total LST errors)."
       },
       {
         "id": 14,
         "text": "Type 4-2 represents only 0.9% of the data.",
         "poster_quote": "despite representing only 0.9% of the data.",
-        "label": null,
-        "paper_evidence": "",
-        "reason": ""
+        "label": "supported",
+        "paper_evidence": "Type 4-2 | 37 | 0.9",
+        "reason": "Section 3.1, Table 1. The table shows that Type 4-2 represents 0.9% of the data."
       },
       {
         "id": 15,
         "text": "Type 4-2's Disparity Ratio is 33.6 for the Pointer-Generator Transformer.",
         "poster_quote": "Its Disparity Ratio is 33.6 for the Pointer-Generator Transformer",
-        "label": null,
-        "paper_evidence": "",
-        "reason": ""
+        "label": "supported",
+        "paper_evidence": "Type 4-2 | 33.6 | 47.9",
+        "reason": "Section 6.4, Table 5. The table shows that Type 4-2's Disparity Ratio is 33.6 for PGT."
       },
       {
         "id": 16,
         "text": "Type 4-2's Disparity Ratio is 47.9 for the Lemma-Split Transformer.",
         "poster_quote": "and 47.9 for the Lemma-Split Transformer.",
-        "label": null,
-        "paper_evidence": "",
-        "reason": ""
+        "label": "supported",
+        "paper_evidence": "Type 4-2 | 33.6 | 47.9",
+        "reason": "Section 6.4, Table 5. The table shows that Type 4-2's Disparity Ratio is 47.9 for LST."
       },
       {
         "id": 17,
         "text": "Type 4-1 has a Disparity Ratio of 8.17 for the Pointer-Generator Transformer.",
         "poster_quote": "By comparison, Type 4-1 has ratios of 8.17",
-        "label": null,
-        "paper_evidence": "",
-        "reason": ""
+        "label": "supported",
+        "paper_evidence": "Type 4-1 | 8.17 | 3.93",
+        "reason": "Section 6.4, Table 5. The table shows that Type 4-1's Disparity Ratio is 8.17 for PGT."
       },
       {
         "id": 18,
         "text": "Type 4-1 has a Disparity Ratio of 3.93 for the Lemma-Split Transformer.",
         "poster_quote": "and 3.93",
-        "label": null,
-        "paper_evidence": "",
-        "reason": ""
+        "label": "supported",
+        "paper_evidence": "Type 4-1 | 8.17 | 3.93",
+        "reason": "Section 6.4, Table 5. The table shows that Type 4-1's Disparity Ratio is 3.93 for LST."
       },
       {
         "id": 19,
         "text": "The common Type 1 and Type 2 classes remain below 1 for Disparity Ratio.",
         "poster_quote": "while the common Type 1 and Type 2 classes remain below 1.",
-        "label": null,
-        "paper_evidence": "",
-        "reason": ""
+        "label": "supported",
+        "paper_evidence": "Type 1 | 0.45 | 0.40\nType 2 | 0.52 | 0.60",
+        "reason": "Section 6.4, Table 5. The table shows that Type 1 and Type 2 Disparity Ratios are below 1 for both systems."
       },
       {
         "id": 20,
         "text": "Type 4-2 error rate reaches 43% for the Pointer-Generator Transformer.",
         "poster_quote": "Type 4-2 error rates reach 43%",
-        "label": null,
-        "paper_evidence": "",
-        "reason": ""
+        "label": "supported",
+        "paper_evidence": "Type 4-2 shows an error rate of 43% (PGT) and 60% (LST)",
+        "reason": "Section 6.4, Figure 1 caption. The caption states that Type 4-2 shows an error rate of 43% for PGT."
       },
       {
         "id": 21,
         "text": "Type 4-2 error rate reaches 60% for the Lemma-Split Transformer.",
         "poster_quote": "and 60%",
-        "label": null,
-        "paper_evidence": "",
-        "reason": ""
+        "label": "supported",
+        "paper_evidence": "Type 4-2 shows an error rate of 43% (PGT) and 60% (LST)",
+        "reason": "Section 6.4, Figure 1 caption. The caption states that Type 4-2 shows an error rate of 60% for LST."
       },
       {
         "id": 22,
         "text": "Type 4-2 error rates are more than 70 times the Type 1 rate.",
         "poster_quote": "more than 70 times the Type 1 rate.",
-        "label": null,
-        "paper_evidence": "",
-        "reason": ""
+        "label": "supported",
+        "paper_evidence": "more than 70 times the rate of Type 1 verbs.",
+        "reason": "Section 6.4, Figure 1 caption. The caption states that the Type 4-2 error rate is more than 70 times the rate of Type 1 verbs."
       },
       {
         "id": 23,
         "text": "The dominant error for Type 4-2 is omission of required gemination after stem-final /e/.",
         "poster_quote": "The dominant error is omission of required gemination after stem-final /e/",
-        "label": null,
-        "paper_evidence": "",
-        "reason": ""
+        "label": "contradicted",
+        "paper_evidence": "The dominant Type 4-2 failure is omission of required gemination before a stem-final /e/,",
+        "reason": "Section 6.6. The paper states that the omission of required gemination is 'before' a stem-final /e/, which contradicts the claim's assertion of 'after' stem-final /e/."
       },
       {
         "id": 24,
         "text": "Type 4-2 contributes 34-48 times its proportional share to total errors.",
         "poster_quote": "contributing 34-48 × its proportional share to total errors.",
-        "label": null,
-        "paper_evidence": "",
-        "reason": ""
+        "label": "supported",
+        "paper_evidence": "contributing 34–48× its proportional share to total errors.",
+        "reason": "Section 6.4, Figure 2 caption. The caption states that Type 4-2 contributes 34-48x its proportional share to total errors."
       },
       {
         "id": 25,
         "text": "Eight controlled conditions remove individual irregular subtypes, all irregulars, or subtype pairs from both training and test data.",
         "poster_quote": "Eight controlled conditions remove individual irregular subtypes, all irregulars, or subtype pairs from both training and test data.",
-        "label": null,
-        "paper_evidence": "",
-        "reason": ""
+        "label": "supported",
+        "paper_evidence": "To causally test the contribution of individual irregular subtypes, we train both architectures under eight controlled data conditions: the full dataset; regular verbs only (Types 1–2); the full dataset minus one irregular subtype (removing 4-1, 4-2, or 4-3 individually); and the full dataset minus each pairwise combination of subtypes. For every condition, the same verb types are removed from both training and test data.",
+        "reason": "Section 5.3. The paper describes the eight controlled conditions that remove individual irregular subtypes, all irregulars, or subtype pairs from both training and test data."
       },
       {
         "id": 26,
         "text": "Removing Type 4-2 alone is the best single-subtype condition for both systems.",
         "poster_quote": "Removing Type 4-2 alone is the best single-subtype condition for both systems.",
-        "label": null,
-        "paper_evidence": "",
-        "reason": ""
+        "label": "supported",
+        "paper_evidence": "Boldface marks the single-subtype condition producing the largest improvement in each system.",
+        "reason": "Section 6.7, Table 6. The table shows that '-4-2' is the bolded single-subtype condition for both systems."
       },
       {
         "id": 27,
         "text": "Pointer-Generator accuracy rises from 97.98% to 98.98% when removing Type 4-2.",
         "poster_quote": "Pointer-Generator accuracy rises from 97.98% to 98.98%",
-        "label": null,
-        "paper_evidence": "",
-        "reason": ""
+        "label": "supported",
+        "paper_evidence": "For the PGT system, removing Type 4-2 alone is still the single best condition (97.98% → 98.98%, +1.00).",
+        "reason": "Section 6.7. The paper states that PGT accuracy rises from 97.98% to 98.98% when removing Type 4-2."
       },
       {
         "id": 28,
         "text": "Removing Type 4-2 yields a gain of 1.00 point for Pointer-Generator accuracy.",
         "poster_quote": "a gain of 1.00 point.",
-        "label": null,
-        "paper_evidence": "",
-        "reason": ""
+        "label": "supported",
+        "paper_evidence": "For the PGT system, removing Type 4-2 alone is still the single best condition (97.98% → 98.98%, +1.00).",
+        "reason": "Section 6.7. The paper states that removing Type 4-2 yields a gain of +1.00 for PGT."
       },
       {
         "id": 29,
         "text": "Lemma-Split accuracy rises from 97.73% to 99.75% when removing Type 4-2.",
         "poster_quote": "Lemma-Split accuracy rises from 97.73% to 99.75%",
-        "label": null,
-        "paper_evidence": "",
-        "reason": ""
+        "label": "supported",
+        "paper_evidence": "For the LST system, removing only Type 4-2 yields the largest observed gain: 97.73% → 99.75% (+2.02)",
+        "reason": "Section 6.7. The paper states that LST accuracy rises from 97.73% to 99.75% when removing Type 4-2."
       },
       {
         "id": 30,
         "text": "Removing Type 4-2 yields a gain of 2.02 points for Lemma-Split accuracy.",
         "poster_quote": "a gain of 2.02 points",
-        "label": null,
-        "paper_evidence": "",
-        "reason": ""
+        "label": "supported",
+        "paper_evidence": "For the LST system, removing only Type 4-2 yields the largest observed gain: 97.73% → 99.75% (+2.02)",
+        "reason": "Section 6.7. The paper states that removing Type 4-2 yields a gain of +2.02 for LST."
       },
       {
         "id": 31,
         "text": "Removing Type 4-2 yields an approximately 89% reduction in error rate for Lemma-Split.",
         "poster_quote": "and an approximately 89% reduction in error rate.",
-        "label": null,
-        "paper_evidence": "",
-        "reason": ""
+        "label": "supported",
+        "paper_evidence": "corresponding to an approximately 89% reduction in error rate.",
+        "reason": "Section 6.7. The paper states that removing Type 4-2 yields an approximately 89% reduction in error rate for LST."
       },
       {
         "id": 32,
         "text": "Removing all irregular verbs reaches 98.95% accuracy for both systems.",
         "poster_quote": "Removing all irregular verbs reaches only 98.95% for both systems",
-        "label": null,
-        "paper_evidence": "",
-        "reason": ""
+        "label": "supported",
+        "paper_evidence": "−4 (all irregulars) | 98.95 | 98.95",
+        "reason": "Section 6.7, Table 7. The table shows that removing all irregulars (-4) reaches 98.95% accuracy for both PGT and LST."
       },
       {
         "id": 33,
         "text": "Removing all irregular verbs yields a gain of 0.97 points for Pointer-Generator.",
         "poster_quote": "corresponding to gains of 0.97",
-        "label": null,
-        "paper_evidence": "",
-        "reason": ""
+        "label": "supported",
+        "paper_evidence": "−4 (all irregulars) | +0.97 | +1.22",
+        "reason": "Section 6.7, Table 6. The table shows that removing all irregulars (-4) yields a gain of +0.97 for PGT."
       },
       {
         "id": 34,
         "text": "Removing all irregular verbs yields a gain of 1.22 points for Lemma-Split.",
         "poster_quote": "and 1.22 points.",
-        "label": null,
-        "paper_evidence": "",
-        "reason": ""
+        "label": "supported",
+        "paper_evidence": "−4 (all irregulars) | +0.97 | +1.22",
+        "reason": "Section 6.7, Table 6. The table shows that removing all irregulars (-4) yields a gain of +1.22 for LST."
       },
       {
         "id": 35,
         "text": "Type 4-2 has fewer than 1% of available examples.",
         "poster_quote": "fewer than 1% of available examples.",
-        "label": null,
-        "paper_evidence": "",
-        "reason": ""
+        "label": "supported",
+        "paper_evidence": "make up fewer than 1% of the data",
+        "reason": "Section 1, Abstract. The paper states that Type 4-2 verbs make up fewer than 1% of the data."
       },
       {
         "id": 36,
         "text": "Type 4-2 shows an error rate of 43% for PGT.",
         "poster_quote": "Type 4-2 shows an error rate of 43% (PGT)",
-        "label": null,
-        "paper_evidence": "",
-        "reason": ""
+        "label": "supported",
+        "paper_evidence": "Type 4-2 shows an error rate of 43% (PGT) and 60% (LST)",
+        "reason": "Section 6.4, Figure 1 caption. The caption states that Type 4-2 shows an error rate of 43% for PGT."
       },
       {
         "id": 37,
         "text": "Type 4-2 shows an error rate of 60% for LST.",
         "poster_quote": "and 60% (LST)",
-        "label": null,
-        "paper_evidence": "",
-        "reason": ""
+        "label": "supported",
+        "paper_evidence": "Type 4-2 shows an error rate of 43% (PGT) and 60% (LST)",
+        "reason": "Section 6.4, Figure 1 caption. The caption states that Type 4-2 shows an error rate of 60% for LST."
       },
       {
         "id": 38,
         "text": "Type 4-2 error rate is more than 70 times the rate of Type 1 verbs.",
         "poster_quote": "more than 70 times the rate of Type 1 verbs.",
-        "label": null,
-        "paper_evidence": "",
-        "reason": ""
+        "label": "supported",
+        "paper_evidence": "more than 70 times the rate of Type 1 verbs.",
+        "reason": "Section 6.4, Figure 1 caption. The caption states that the Type 4-2 error rate is more than 70 times the rate of Type 1 verbs."
       },
       {
         "id": 39,
         "text": "Each ablation condition was run once.",
         "poster_quote": "Each ablation condition was run once",
-        "label": null,
-        "paper_evidence": "",
-        "reason": ""
+        "label": "supported",
+        "paper_evidence": "First, our ablation experiments were each run once per condition; replication across multiple training runs would strengthen the causal claim.",
+        "reason": "Limitations section. The paper states that the ablation experiments were each run once per condition."
       },
       {
         "id": 40,
         "text": "A rare Japanese verb subtype comprises under 1% of the dataset.",
         "poster_quote": "A rare Japanese verb subtype comprising under 1% of the dataset",
-        "label": null,
-        "paper_evidence": "",
-        "reason": ""
+        "label": "supported",
+        "paper_evidence": "make up fewer than 1% of the data",
+        "reason": "Section 1, Abstract. The paper states that this rare subtype makes up fewer than 1% of the data."
       },
       {
         "id": 41,
         "text": "This subtype accounts for 30–43% of residual errors.",
         "poster_quote": "accounts for 30–43% of residual errors",
-        "label": null,
-        "paper_evidence": "",
-        "reason": ""
+        "label": "supported",
+        "paper_evidence": "accounts for a disproportionate 30–43% share of residual errors",
+        "reason": "Abstract. The paper states that the Type 4-2 irregular subtype accounts for 30-43% of residual errors."
       },
       {
         "id": 42,
         "text": "This subtype contributes 34–48 times its proportional share.",
         "poster_quote": "and contributes 34–48 times its proportional share.",
-        "label": null,
-        "paper_evidence": "",
-        "reason": ""
+        "label": "supported",
+        "paper_evidence": "Type 4-2 contributes 34–48× its proportional representation to total errors",
+        "reason": "Section 6.4. The paper states that Type 4-2 contributes 34-48 times its proportional representation to total errors."
       },
       {
         "id": 43,
         "text": "Its errors are concentrated in required gemination after stem-final /e/.",
         "poster_quote": "Its errors are concentrated in required gemination after stem-final /e/.",
-        "label": null,
-        "paper_evidence": "",
-        "reason": ""
+        "label": "supported",
+        "paper_evidence": "A single low-frequency subtype, verbs requiring gemination after a stem-final /e/, is structurally distinct from other irregulars. It accounts for a disproportionate share of errors",
+        "reason": "Section 7. The paper states that the errors of this subtype (Type 4-2) are concentrated in the omission of required gemination after a stem-final /e/."
       },
       {
         "id": 44,
         "text": "Removing this subtype improves generalization more than removing all irregular verbs.",
         "poster_quote": "Removing this subtype improves generalization more than removing all irregular verbs",
-        "label": null,
-        "paper_evidence": "",
-        "reason": ""
+        "label": "supported",
+        "paper_evidence": "controlled ablation experiments show that removing this subtype alone produces larger accuracy gains than removing all irregular verbs combined.",
+        "reason": "Abstract. The paper states that removing this subtype alone produces larger accuracy gains than removing all irregular verbs combined."
       }
     ]
   },
-  "raw": "[\"```json\\n{\\n  \\\"claims\\\": [\\n    {\\n      \\\"id\\\": 1,\\n      \\\"text\\\": \\\"Two character-level Transformer systems exceed 97% aggregate accuracy on Japanese past-tense inflection.\\\",\\n      \\\"poster_quote\\\": \\\"Two character-level Transformer systems exceed 97% aggregate accuracy on Japanese past-tense inflection\\\"\\n    },\\n    {\\n      \\\"id\\\": 2,\\n      \\\"text\\\": \\\"Type 4-2 verbs comprise only 0.9% of the data.\\\",\\n      \\\"poster_quote\\\": \\\"Type 4-2 verbs, whose stems end in /e/ and require gemination before the past-tense suffix, comprise only 0.9% of the data\\\"\\n    },\\n    {\\n      \\\"id\\\": 3,\\n      \\\"text\\\": \\\"Type 4-2 verbs account for 30–43% of residual errors.\\\",\\n      \\\"poster_quote\\\": \\\"account for 30–43% of residual errors.\\\"\\n    },\\n    {\\n      \\\"id\\\": 4,\\n      \\\"text\\\": \\\"Type 4-2 verbs' contribution to total errors is approximately 34–48 times their prevalence.\\\",\\n      \\\"poster_quote\\\": \\\"Their contribution to total errors is approximately 34–48 times their prevalence.\\\"\\n    },\\n    {\\n      \\\"id\\\": 5,\\n      \\\"text\\\": \\\"Removing Type 4-2 alone improves accuracy more than removing all irregular verbs.\\\",\\n      \\\"poster_quote\\\": \\\"removing this subtype alone improves accuracy more than removing all irregular verbs.\\\"\\n    },\\n    {\\n      \\\"id\\\": 6,\\n      \\\"text\\\": \\\"Two character-level Transformer encoder-decoder architectures operate over hiragana and generate past-tense forms autoregressively.\\\",\\n      \\\"poster_quote\\\": \\\"Two character-level Transformer encoder-decoder architectures operate over hiragana and generate past-tense forms autoregressively.\\\"\\n    },\\n    {\\n      \\\"id\\\": 7,\\n      \\\"text\\\": \\\"The Pointer-Generator Transformer uses an input-copying mechanism with attention over the lemma.\\\",\\n      \\\"poster_quote\\\": \\\"The Pointer-Generator Transformer uses an input-copying mechanism with attention over the lemma.\\\"\\n    },\\n    {\\n      \\\"id\\\": 8,\\n      \\\"text\\\": \\\"The Lemma-Split Transformer prevents the same lemma from appearing in both training and test data.\\\",\\n      \\\"poster_quote\\\": \\\"The Lemma-Split Transformer prevents the same lemma from appearing in both training and test data\\\"\\n    },\\n    {\\n      \\\"id\\\": 9,\\n      \\\"text\\\": \\\"Each model is evaluated across five random seeds using an 80/10/10 training, development, and test split.\\\",\\n      \\\"poster_quote\\\": \\\"Each model is evaluated across five random seeds using an 80/10/10 training, development, and test split.\\\"\\n    },\\n    {\\n      \\\"id\\\": 10,\\n      \\\"text\\\": \\\"Evaluation uses lemma-level exact-match accuracy, subgroup accuracy by verb type, and the Disparity Ratio.\\\",\\n      \\\"poster_quote\\\": \\\"Evaluation uses lemma-level exact-match accuracy, subgroup accuracy by verb type, and the Disparity Ratio: a subgroup’s share of all errors divided by its share of the dataset.\\\"\\n    },\\n    {\\n      \\\"id\\\": 11,\\n      \\\"text\\\": \\\"Residual outputs are manually classified into six orthography-sensitive categories.\\\",\\n      \\\"poster_quote\\\": \\\"Residual outputs are also manually classified into six orthography-sensitive categories: gemination omission, gemination insertion, phonological substitution, morpheme-boundary error, character-recognition error, and compound-verb structural error.\\\"\\n    },\\n    {\\n      \\\"id\\\": 12,\\n      \\\"text\\\": \\\"Type 4-2 produces 16 of 53 Pointer-Generator errors (30.2%).\\\",\\n      \\\"poster_quote\\\": \\\"It produces 16 of 53 Pointer-Generator errors (30.2%)\\\"\\n    },\\n    {\\n      \\\"id\\\": 13,\\n      \\\"text\\\": \\\"Type 4-2 produces 22 of 51 Lemma-Split errors (43.1%).\\\",\\n      \\\"poster_quote\\\": \\\"and 22 of 51 Lemma-Split errors (43.1%)\\\"\\n    },\\n    {\\n      \\\"id\\\": 14,\\n      \\\"text\\\": \\\"Type 4-2 represents only 0.9% of the data.\\\",\\n      \\\"poster_quote\\\": \\\"despite representing only 0.9% of the data.\\\"\\n    },\\n    {\\n      \\\"id\\\": 15,\\n      \\\"text\\\": \\\"Type 4-2's Disparity Ratio is 33.6 for the Pointer-Generator Transformer.\\\",\\n      \\\"poster_quote\\\": \\\"Its Disparity Ratio is 33.6 for the Pointer-Generator Transformer\\\"\\n    },\\n    {\\n      \\\"id\\\": 16,\\n      \\\"text\\\": \\\"Type 4-2's Disparity Ratio is 47.9 for the Lemma-Split Transformer.\\\",\\n      \\\"poster_quote\\\": \\\"and 47.9 for the Lemma-Split Transformer.\\\"\\n    },\\n    {\\n      \\\"id\\\": 17,\\n      \\\"text\\\": \\\"Type 4-1 has a Disparity Ratio of 8.17 for the Pointer-Generator Transformer.\\\",\\n      \\\"poster_quote\\\": \\\"By comparison, Type 4-1 has ratios of 8.17\\\"\\n    },\\n    {\\n      \\\"id\\\": 18,\\n      \\\"text\\\": \\\"Type 4-1 has a Disparity Ratio of 3.93 for the Lemma-Split Transformer.\\\",\\n      \\\"poster_quote\\\": \\\"and 3.93\\\"\\n    },\\n    {\\n      \\\"id\\\": 19,\\n      \\\"text\\\": \\\"The common Type 1 and Type 2 classes remain below 1 for Disparity Ratio.\\\",\\n      \\\"poster_quote\\\": \\\"while the common Type 1 and Type 2 classes remain below 1.\\\"\\n    },\\n    {\\n      \\\"id\\\": 20,\\n      \\\"text\\\": \\\"Type 4-2 error rate reaches 43% for the Pointer-Generator Transformer.\\\",\\n      \\\"poster_quote\\\": \\\"Type 4-2 error rates reach 43%\\\"\\n    },\\n    {\\n      \\\"id\\\": 21,\\n      \\\"text\\\": \\\"Type 4-2 error rate reaches 60% for the Lemma-Split Transformer.\\\",\\n      \\\"poster_quote\\\": \\\"and 60%\\\"\\n    },\\n    {\\n      \\\"id\\\": 22,\\n      \\\"text\\\": \\\"Type 4-2 error rates are more than 70 times the Type 1 rate.\\\",\\n      \\\"poster_quote\\\": \\\"more than 70 times the Type 1 rate.\\\"\\n    },\\n    {\\n      \\\"id\\\": 23,\\n      \\\"text\\\": \\\"The dominant error for Type 4-2 is omission of required gemination after stem-final /e/.\\\",\\n      \\\"poster_quote\\\": \\\"The dominant error is omission of required gemination after stem-final /e/\\\"\\n    },\\n    {\\n      \\\"id\\\": 24,\\n      \\\"text\\\": \\\"Type 4-2 contributes 34-48 times its proportional share to total errors.\\\",\\n      \\\"poster_quote\\\": \\\"contributing 34-48 × its proportional share to total errors.\\\"\\n    },\\n    {\\n      \\\"id\\\": 25,\\n      \\\"text\\\": \\\"Eight controlled conditions remove individual irregular subtypes, all irregulars, or subtype pairs from both training and test data.\\\",\\n      \\\"poster_quote\\\": \\\"Eight controlled conditions remove individual irregular subtypes, all irregulars, or subtype pairs from both training and test data.\\\"\\n    },\\n    {\\n      \\\"id\\\": 26,\\n      \\\"text\\\": \\\"Removing Type 4-2 alone is the best single-subtype condition for both systems.\\\",\\n      \\\"poster_quote\\\": \\\"Removing Type 4-2 alone is the best single-subtype condition for both systems.\\\"\\n    },\\n    {\\n      \\\"id\\\": 27,\\n      \\\"text\\\": \\\"Pointer-Generator accuracy rises from 97.98% to 98.98% when removing Type 4-2.\\\",\\n      \\\"poster_quote\\\": \\\"Pointer-Generator accuracy rises from 97.98% to 98.98%\\\"\\n    },\\n    {\\n      \\\"id\\\": 28,\\n      \\\"text\\\": \\\"Removing Type 4-2 yields a gain of 1.00 point for Pointer-Generator accuracy.\\\",\\n      \\\"poster_quote\\\": \\\"a gain of 1.00 point.\\\"\\n    },\\n    {\\n      \\\"id\\\": 29,\\n      \\\"text\\\": \\\"Lemma-Split accuracy rises from 97.73% to 99.75% when removing Type 4-2.\\\",\\n      \\\"poster_quote\\\": \\\"Lemma-Split accuracy rises from 97.73% to 99.75%\\\"\\n    },\\n    {\\n      \\\"id\\\": 30,\\n      \\\"text\\\": \\\"Removing Type 4-2 yields a gain of 2.02 points for Lemma-Split accuracy.\\\",\\n      \\\"poster_quote\\\": \\\"a gain of 2.02 points\\\"\\n    },\\n    {\\n      \\\"id\\\": 31,\\n      \\\"text\\\": \\\"Removing Type 4-2 yields an approximately 89% reduction in error rate for Lemma-Split.\\\",\\n      \\\"poster_quote\\\": \\\"and an approximately 89% reduction in error rate.\\\"\\n    },\\n    {\\n      \\\"id\\\": 32,\\n      \\\"text\\\": \\\"Removing all irregular verbs reaches 98.95% accuracy for both systems.\\\",\\n      \\\"poster_quote\\\": \\\"Removing all irregular verbs reaches only 98.95% for both systems\\\"\\n    },\\n    {\\n      \\\"id\\\": 33,\\n      \\\"text\\\": \\\"Removing all irregular verbs yields a gain of 0.97 points for Pointer-Generator.\\\",\\n      \\\"poster_quote\\\": \\\"corresponding to gains of 0.97\\\"\\n    },\\n    {\\n      \\\"id\\\": 34,\\n      \\\"text\\\": \\\"Removing all irregular verbs yields a gain of 1.22 points for Lemma-Split.\\\",\\n      \\\"poster_quote\\\": \\\"and 1.22 points.\\\"\\n    },\\n    {\\n      \\\"id\\\": 35,\\n      \\\"text\\\": \\\"Type 4-2 has fewer than 1% of available examples.\\\",\\n      \\\"poster_quote\\\": \\\"fewer than 1% of available examples.\\\"\\n    },\\n    {\\n      \\\"id\\\": 36,\\n      \\\"text\\\": \\\"Type 4-2 shows an error rate of 43% for PGT.\\\",\\n      \\\"poster_quote\\\": \\\"Type 4-2 shows an error rate of 43% (PGT)\\\"\\n    },\\n    {\\n      \\\"id\\\": 37,\\n      \\\"text\\\": \\\"Type 4-2 shows an error rate of 60% for LST.\\\",\\n      \\\"poster_quote\\\": \\\"and 60% (LST)\\\"\\n    },\\n    {\\n      \\\"id\\\": 38,\\n      \\\"text\\\": \\\"Type 4-2 error rate is more than 70 times the rate of Type 1 verbs.\\\",\\n      \\\"poster_quote\\\": \\\"more than 70 times the rate of Type 1 verbs.\\\"\\n    },\\n    {\\n      \\\"id\\\": 39,\\n      \\\"text\\\": \\\"Each ablation condition was run once.\\\",\\n      \\\"poster_quote\\\": \\\"Each ablation condition was run once\\\"\\n    },\\n    {\\n      \\\"id\\\": 40,\\n      \\\"text\\\": \\\"A rare Japanese verb subtype comprises under 1% of the dataset.\\\",\\n      \\\"poster_quote\\\": \\\"A rare Japanese verb subtype comprising under 1% of the dataset\\\"\\n    },\\n    {\\n      \\\"id\\\": 41,\\n      \\\"text\\\": \\\"This subtype accounts for 30–43% of residual errors.\\\",\\n      \\\"poster_quote\\\": \\\"accounts for 30–43% of residual errors\\\"\\n    },\\n    {\\n      \\\"id\\\": 42,\\n      \\\"text\\\": \\\"This subtype contributes 34–48 times its proportional share.\\\",\\n      \\\"poster_quote\\\": \\\"and contributes 34–48 times its proportional share.\\\"\\n    },\\n    {\\n      \\\"id\\\": 43,\\n      \\\"text\\\": \\\"Its errors are concentrated in required gemination after stem-final /e/.\\\",\\n      \\\"poster_quote\\\": \\\"Its errors are concentrated in required gemination after stem-final /e/.\\\"\\n    },\\n    {\\n      \\\"id\\\": 44,\\n      \\\"text\\\": \\\"Removing this subtype improves generalization more than removing all irregular verbs.\\\",\\n      \\\"poster_quote\\\": \\\"Removing this subtype improves generalization more than removing all irregular verbs\\\"\\n    }\\n  ]\\n}\\n```\", \"```json\\n{\\n  \\\"verdicts\\\": [\\n    {\\n      \\\"id\\\": 1,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Using two character-level Transformer architectures evaluated across five random seeds, we show that although both systems exceed 97% aggregate accuracy\\\",\\n      \\\"reason\\\": \\\"Section 1. The paper states that both character-level Transformer architectures exceed 97% aggregate accuracy.\\\"\\n    },\\n    {\\n      \\\"id\\\": 2,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Type 4-2 is the smallest structurally coherent subclass, comprising only 0.9% of the data;\\\",\\n      \\\"reason\\\": \\\"Section 3.1. The paper explicitly states that Type 4-2 comprises 0.9% of the data.\\\"\\n    },\\n    {\\n      \\\"id\\\": 3,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"accounts for a disproportionate 30–43% share of residual errors\\\",\\n      \\\"reason\\\": \\\"Section 1. The paper states that this subtype accounts for 30-43% of residual errors.\\\"\\n    },\\n    {\\n      \\\"id\\\": 4,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"and contributes roughly 34–48× its prevalence to total errors.\\\",\\n      \\\"reason\\\": \\\"Section 1. The paper states that the subtype contributes roughly 34-48 times its prevalence to\", \"\"]"
+  "raw": "[\"```json\\n{\\n  \\\"claims\\\": [\\n    {\\n      \\\"id\\\": 1,\\n      \\\"text\\\": \\\"Two character-level Transformer systems exceed 97% aggregate accuracy on Japanese past-tense inflection.\\\",\\n      \\\"poster_quote\\\": \\\"Two character-level Transformer systems exceed 97% aggregate accuracy on Japanese past-tense inflection\\\"\\n    },\\n    {\\n      \\\"id\\\": 2,\\n      \\\"text\\\": \\\"Type 4-2 verbs comprise only 0.9% of the data.\\\",\\n      \\\"poster_quote\\\": \\\"Type 4-2 verbs, whose stems end in /e/ and require gemination before the past-tense suffix, comprise only 0.9% of the data\\\"\\n    },\\n    {\\n      \\\"id\\\": 3,\\n      \\\"text\\\": \\\"Type 4-2 verbs account for 30–43% of residual errors.\\\",\\n      \\\"poster_quote\\\": \\\"account for 30–43% of residual errors.\\\"\\n    },\\n    {\\n      \\\"id\\\": 4,\\n      \\\"text\\\": \\\"Type 4-2 verbs' contribution to total errors is approximately 34–48 times their prevalence.\\\",\\n      \\\"poster_quote\\\": \\\"Their contribution to total errors is approximately 34–48 times their prevalence.\\\"\\n    },\\n    {\\n      \\\"id\\\": 5,\\n      \\\"text\\\": \\\"Removing Type 4-2 alone improves accuracy more than removing all irregular verbs.\\\",\\n      \\\"poster_quote\\\": \\\"removing this subtype alone improves accuracy more than removing all irregular verbs.\\\"\\n    },\\n    {\\n      \\\"id\\\": 6,\\n      \\\"text\\\": \\\"Two character-level Transformer encoder-decoder architectures operate over hiragana and generate past-tense forms autoregressively.\\\",\\n      \\\"poster_quote\\\": \\\"Two character-level Transformer encoder-decoder architectures operate over hiragana and generate past-tense forms autoregressively.\\\"\\n    },\\n    {\\n      \\\"id\\\": 7,\\n      \\\"text\\\": \\\"The Pointer-Generator Transformer uses an input-copying mechanism with attention over the lemma.\\\",\\n      \\\"poster_quote\\\": \\\"The Pointer-Generator Transformer uses an input-copying mechanism with attention over the lemma.\\\"\\n    },\\n    {\\n      \\\"id\\\": 8,\\n      \\\"text\\\": \\\"The Lemma-Split Transformer prevents the same lemma from appearing in both training and test data.\\\",\\n      \\\"poster_quote\\\": \\\"The Lemma-Split Transformer prevents the same lemma from appearing in both training and test data\\\"\\n    },\\n    {\\n      \\\"id\\\": 9,\\n      \\\"text\\\": \\\"Each model is evaluated across five random seeds using an 80/10/10 training, development, and test split.\\\",\\n      \\\"poster_quote\\\": \\\"Each model is evaluated across five random seeds using an 80/10/10 training, development, and test split.\\\"\\n    },\\n    {\\n      \\\"id\\\": 10,\\n      \\\"text\\\": \\\"Evaluation uses lemma-level exact-match accuracy, subgroup accuracy by verb type, and the Disparity Ratio.\\\",\\n      \\\"poster_quote\\\": \\\"Evaluation uses lemma-level exact-match accuracy, subgroup accuracy by verb type, and the Disparity Ratio: a subgroup’s share of all errors divided by its share of the dataset.\\\"\\n    },\\n    {\\n      \\\"id\\\": 11,\\n      \\\"text\\\": \\\"Residual outputs are manually classified into six orthography-sensitive categories.\\\",\\n      \\\"poster_quote\\\": \\\"Residual outputs are also manually classified into six orthography-sensitive categories: gemination omission, gemination insertion, phonological substitution, morpheme-boundary error, character-recognition error, and compound-verb structural error.\\\"\\n    },\\n    {\\n      \\\"id\\\": 12,\\n      \\\"text\\\": \\\"Type 4-2 produces 16 of 53 Pointer-Generator errors (30.2%).\\\",\\n      \\\"poster_quote\\\": \\\"It produces 16 of 53 Pointer-Generator errors (30.2%)\\\"\\n    },\\n    {\\n      \\\"id\\\": 13,\\n      \\\"text\\\": \\\"Type 4-2 produces 22 of 51 Lemma-Split errors (43.1%).\\\",\\n      \\\"poster_quote\\\": \\\"and 22 of 51 Lemma-Split errors (43.1%)\\\"\\n    },\\n    {\\n      \\\"id\\\": 14,\\n      \\\"text\\\": \\\"Type 4-2 represents only 0.9% of the data.\\\",\\n      \\\"poster_quote\\\": \\\"despite representing only 0.9% of the data.\\\"\\n    },\\n    {\\n      \\\"id\\\": 15,\\n      \\\"text\\\": \\\"Type 4-2's Disparity Ratio is 33.6 for the Pointer-Generator Transformer.\\\",\\n      \\\"poster_quote\\\": \\\"Its Disparity Ratio is 33.6 for the Pointer-Generator Transformer\\\"\\n    },\\n    {\\n      \\\"id\\\": 16,\\n      \\\"text\\\": \\\"Type 4-2's Disparity Ratio is 47.9 for the Lemma-Split Transformer.\\\",\\n      \\\"poster_quote\\\": \\\"and 47.9 for the Lemma-Split Transformer.\\\"\\n    },\\n    {\\n      \\\"id\\\": 17,\\n      \\\"text\\\": \\\"Type 4-1 has a Disparity Ratio of 8.17 for the Pointer-Generator Transformer.\\\",\\n      \\\"poster_quote\\\": \\\"By comparison, Type 4-1 has ratios of 8.17\\\"\\n    },\\n    {\\n      \\\"id\\\": 18,\\n      \\\"text\\\": \\\"Type 4-1 has a Disparity Ratio of 3.93 for the Lemma-Split Transformer.\\\",\\n      \\\"poster_quote\\\": \\\"and 3.93\\\"\\n    },\\n    {\\n      \\\"id\\\": 19,\\n      \\\"text\\\": \\\"The common Type 1 and Type 2 classes remain below 1 for Disparity Ratio.\\\",\\n      \\\"poster_quote\\\": \\\"while the common Type 1 and Type 2 classes remain below 1.\\\"\\n    },\\n    {\\n      \\\"id\\\": 20,\\n      \\\"text\\\": \\\"Type 4-2 error rate reaches 43% for the Pointer-Generator Transformer.\\\",\\n      \\\"poster_quote\\\": \\\"Type 4-2 error rates reach 43%\\\"\\n    },\\n    {\\n      \\\"id\\\": 21,\\n      \\\"text\\\": \\\"Type 4-2 error rate reaches 60% for the Lemma-Split Transformer.\\\",\\n      \\\"poster_quote\\\": \\\"and 60%\\\"\\n    },\\n    {\\n      \\\"id\\\": 22,\\n      \\\"text\\\": \\\"Type 4-2 error rates are more than 70 times the Type 1 rate.\\\",\\n      \\\"poster_quote\\\": \\\"more than 70 times the Type 1 rate.\\\"\\n    },\\n    {\\n      \\\"id\\\": 23,\\n      \\\"text\\\": \\\"The dominant error for Type 4-2 is omission of required gemination after stem-final /e/.\\\",\\n      \\\"poster_quote\\\": \\\"The dominant error is omission of required gemination after stem-final /e/\\\"\\n    },\\n    {\\n      \\\"id\\\": 24,\\n      \\\"text\\\": \\\"Type 4-2 contributes 34-48 times its proportional share to total errors.\\\",\\n      \\\"poster_quote\\\": \\\"contributing 34-48 × its proportional share to total errors.\\\"\\n    },\\n    {\\n      \\\"id\\\": 25,\\n      \\\"text\\\": \\\"Eight controlled conditions remove individual irregular subtypes, all irregulars, or subtype pairs from both training and test data.\\\",\\n      \\\"poster_quote\\\": \\\"Eight controlled conditions remove individual irregular subtypes, all irregulars, or subtype pairs from both training and test data.\\\"\\n    },\\n    {\\n      \\\"id\\\": 26,\\n      \\\"text\\\": \\\"Removing Type 4-2 alone is the best single-subtype condition for both systems.\\\",\\n      \\\"poster_quote\\\": \\\"Removing Type 4-2 alone is the best single-subtype condition for both systems.\\\"\\n    },\\n    {\\n      \\\"id\\\": 27,\\n      \\\"text\\\": \\\"Pointer-Generator accuracy rises from 97.98% to 98.98% when removing Type 4-2.\\\",\\n      \\\"poster_quote\\\": \\\"Pointer-Generator accuracy rises from 97.98% to 98.98%\\\"\\n    },\\n    {\\n      \\\"id\\\": 28,\\n      \\\"text\\\": \\\"Removing Type 4-2 yields a gain of 1.00 point for Pointer-Generator accuracy.\\\",\\n      \\\"poster_quote\\\": \\\"a gain of 1.00 point.\\\"\\n    },\\n    {\\n      \\\"id\\\": 29,\\n      \\\"text\\\": \\\"Lemma-Split accuracy rises from 97.73% to 99.75% when removing Type 4-2.\\\",\\n      \\\"poster_quote\\\": \\\"Lemma-Split accuracy rises from 97.73% to 99.75%\\\"\\n    },\\n    {\\n      \\\"id\\\": 30,\\n      \\\"text\\\": \\\"Removing Type 4-2 yields a gain of 2.02 points for Lemma-Split accuracy.\\\",\\n      \\\"poster_quote\\\": \\\"a gain of 2.02 points\\\"\\n    },\\n    {\\n      \\\"id\\\": 31,\\n      \\\"text\\\": \\\"Removing Type 4-2 yields an approximately 89% reduction in error rate for Lemma-Split.\\\",\\n      \\\"poster_quote\\\": \\\"and an approximately 89% reduction in error rate.\\\"\\n    },\\n    {\\n      \\\"id\\\": 32,\\n      \\\"text\\\": \\\"Removing all irregular verbs reaches 98.95% accuracy for both systems.\\\",\\n      \\\"poster_quote\\\": \\\"Removing all irregular verbs reaches only 98.95% for both systems\\\"\\n    },\\n    {\\n      \\\"id\\\": 33,\\n      \\\"text\\\": \\\"Removing all irregular verbs yields a gain of 0.97 points for Pointer-Generator.\\\",\\n      \\\"poster_quote\\\": \\\"corresponding to gains of 0.97\\\"\\n    },\\n    {\\n      \\\"id\\\": 34,\\n      \\\"text\\\": \\\"Removing all irregular verbs yields a gain of 1.22 points for Lemma-Split.\\\",\\n      \\\"poster_quote\\\": \\\"and 1.22 points.\\\"\\n    },\\n    {\\n      \\\"id\\\": 35,\\n      \\\"text\\\": \\\"Type 4-2 has fewer than 1% of available examples.\\\",\\n      \\\"poster_quote\\\": \\\"fewer than 1% of available examples.\\\"\\n    },\\n    {\\n      \\\"id\\\": 36,\\n      \\\"text\\\": \\\"Type 4-2 shows an error rate of 43% for PGT.\\\",\\n      \\\"poster_quote\\\": \\\"Type 4-2 shows an error rate of 43% (PGT)\\\"\\n    },\\n    {\\n      \\\"id\\\": 37,\\n      \\\"text\\\": \\\"Type 4-2 shows an error rate of 60% for LST.\\\",\\n      \\\"poster_quote\\\": \\\"and 60% (LST)\\\"\\n    },\\n    {\\n      \\\"id\\\": 38,\\n      \\\"text\\\": \\\"Type 4-2 error rate is more than 70 times the rate of Type 1 verbs.\\\",\\n      \\\"poster_quote\\\": \\\"more than 70 times the rate of Type 1 verbs.\\\"\\n    },\\n    {\\n      \\\"id\\\": 39,\\n      \\\"text\\\": \\\"Each ablation condition was run once.\\\",\\n      \\\"poster_quote\\\": \\\"Each ablation condition was run once\\\"\\n    },\\n    {\\n      \\\"id\\\": 40,\\n      \\\"text\\\": \\\"A rare Japanese verb subtype comprises under 1% of the dataset.\\\",\\n      \\\"poster_quote\\\": \\\"A rare Japanese verb subtype comprising under 1% of the dataset\\\"\\n    },\\n    {\\n      \\\"id\\\": 41,\\n      \\\"text\\\": \\\"This subtype accounts for 30–43% of residual errors.\\\",\\n      \\\"poster_quote\\\": \\\"accounts for 30–43% of residual errors\\\"\\n    },\\n    {\\n      \\\"id\\\": 42,\\n      \\\"text\\\": \\\"This subtype contributes 34–48 times its proportional share.\\\",\\n      \\\"poster_quote\\\": \\\"and contributes 34–48 times its proportional share.\\\"\\n    },\\n    {\\n      \\\"id\\\": 43,\\n      \\\"text\\\": \\\"Its errors are concentrated in required gemination after stem-final /e/.\\\",\\n      \\\"poster_quote\\\": \\\"Its errors are concentrated in required gemination after stem-final /e/.\\\"\\n    },\\n    {\\n      \\\"id\\\": 44,\\n      \\\"text\\\": \\\"Removing this subtype improves generalization more than removing all irregular verbs.\\\",\\n      \\\"poster_quote\\\": \\\"Removing this subtype improves generalization more than removing all irregular verbs\\\"\\n    }\\n  ]\\n}\\n```\", \"```json\\n{\\n  \\\"verdicts\\\": [\\n    {\\n      \\\"id\\\": 1,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Using two character-level Transformer architectures evaluated across five random seeds, we show that although both systems exceed 97% aggregate accuracy\\\",\\n      \\\"reason\\\": \\\"Section 1, Abstract. The paper states that both character-level Transformer architectures exceed 97% aggregate accuracy.\\\"\\n    },\\n    {\\n      \\\"id\\\": 2,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Type 4-2 is the smallest structurally coherent subclass, comprising only 0.9% of the data;\\\",\\n      \\\"reason\\\": \\\"Section 3.1. The paper states that Type 4-2 comprises 0.9% of the data.\\\"\\n    },\\n    {\\n      \\\"id\\\": 3,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"accounts for a disproportionate 30–43% share of residual errors\\\",\\n      \\\"reason\\\": \\\"Section 1, Abstract. The paper states that this subtype accounts for 30-43% of residual errors.\\\"\\n    },\\n    {\\n      \\\"id\\\": 4,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"and contributes roughly 34–48× its prevalence to total errors.\\\",\\n      \\\"reason\\\": \\\"Section 1, Abstract. The paper states that the subtype contributes roughly 34-48x its prevalence to total errors.\\\"\\n    },\\n    {\\n      \\\"id\\\": 5,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"controlled ablation experiments show that removing this subtype alone produces larger accuracy gains than removing all irregular verbs combined.\\\",\\n      \\\"reason\\\": \\\"Section 1, Abstract. The paper states that removing this subtype alone produces larger accuracy gains than removing all irregular verbs combined.\\\"\\n    },\\n    {\\n      \\\"id\\\": 6,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"We evaluate two character-level Transformer encoder–decoder architectures for Japanese past-tense inflection, both operating over hiragana strings and generating inflected forms autoregressively.\\\",\\n      \\\"reason\\\": \\\"Section 4. The paper states that both architectures are character-level Transformer encoder-decoders operating over hiragana and generating forms autoregressively.\\\"\\n    },\\n    {\\n      \\\"id\\\": 7,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The first is a Pointer-Generator Transformer (henceforth PGT), incorporating a pointer-generator copying mechanism (See et al., 2017) with attention over the input lemma\\\",\\n      \\\"reason\\\": \\\"Section 4. The paper states that PGT incorporates a pointer-generator copying mechanism with attention over the input lemma.\\\"\\n    },\\n    {\\n      \\\"id\\\": 8,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"preventing a lemma from appearing in both training and test data\\\",\\n      \\\"reason\\\": \\\"Section 4. The paper states that LST uses a lemma-split regime preventing a lemma from appearing in both training and test data.\\\"\\n    },\\n    {\\n      \\\"id\\\": 9,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"we train each model on the full dataset five times with different random seeds, using an 80/10/10 train/development/test split.\\\",\\n      \\\"reason\\\": \\\"Section 5.2. The paper states that models are trained five times with different random seeds using an 80/10/10 split.\\\"\\n    },\\n    {\\n      \\\"id\\\": 10,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"We report exact-match accuracy at the lemma level (Cotterell et al., 2017; Goldman et al., 2023); subgroup accuracy, computed separately per verb type (Kann and Schütze, 2016; Makarov and Clematide, 2018; Vylomova et al., 2020); and the Disparity Ratio for a subgroup g,\\\",\\n      \\\"reason\\\": \\\"Section 5.4. The paper states that evaluation uses lemma-level exact-match accuracy, subgroup accuracy, and the Disparity Ratio.\\\"\\n    },\\n    {\\n      \\\"id\\\": 11,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"We defined a taxonomy of six orthography- and morphophonology-sensitive failure modes (Table 2): gemination omission, gemination insertion, phonological substitution, morpheme boundary errors, character recognition (UNK) errors, and compound verb structural errors. We used this taxonomy to manually classify all residual errors (Table 3).\\\",\\n      \\\"reason\\\": \\\"Section 6.2. The paper states that a taxonomy of six failure modes was defined and used to manually classify all residual errors.\\\"\\n    },\\n    {\\n      \\\"id\\\": 12,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Type 4-2 | 16 (30.2%) | 22 (43.1%) | 0.9\\\",\\n      \\\"reason\\\": \\\"Section 6.4, Table 4. The table shows that Type 4-2 produces 16 errors (30.2% of the 53 total PGT errors).\\\"\\n    },\\n    {\\n      \\\"id\\\": 13,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Type 4-2 | 16 (30.2%) | 22 (43.1%) | 0.9\\\",\\n      \\\"reason\\\": \\\"Section 6.4, Table 4. The table shows that Type 4-2 produces 22 errors (43.1% of the 51 total LST errors).\\\"\\n    },\\n    {\\n      \\\"id\\\": 14,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Type 4-2 | 37 | 0.9\\\",\\n      \\\"reason\\\": \\\"Section 3.1, Table 1. The table shows that Type 4-2 represents 0.9% of the data.\\\"\\n    },\\n    {\\n      \\\"id\\\": 15,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Type 4-2 | 33.6 | 47.9\\\",\\n      \\\"reason\\\": \\\"Section 6.4, Table 5. The table shows that Type 4-2's Disparity Ratio is 33.6 for PGT.\\\"\\n    },\\n    {\\n      \\\"id\\\": 16,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Type 4-2 | 33.6 | 47.9\\\",\\n      \\\"reason\\\": \\\"Section 6.4, Table 5. The table shows that Type 4-2's Disparity Ratio is 47.9 for LST.\\\"\\n    },\\n    {\\n      \\\"id\\\": 17,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Type 4-1 | 8.17 | 3.93\\\",\\n      \\\"reason\\\": \\\"Section 6.4, Table 5. The table shows that Type 4-1's Disparity Ratio is 8.17 for PGT.\\\"\\n    },\\n    {\\n      \\\"id\\\": 18,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Type 4-1 | 8.17 | 3.93\\\",\\n      \\\"reason\\\": \\\"Section 6.4, Table 5. The table shows that Type 4-1's Disparity Ratio is 3.93 for LST.\\\"\\n    },\\n    {\\n      \\\"id\\\": 19,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Type 1 | 0.45 | 0.40\\\\nType 2 | 0.52 | 0.60\\\",\\n      \\\"reason\\\": \\\"Section 6.4, Table 5. The table shows that Type 1 and Type 2 Disparity Ratios are below 1 for both systems.\\\"\\n    },\\n    {\\n      \\\"id\\\": 20,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Type 4-2 shows an error rate of 43% (PGT) and 60% (LST)\\\",\\n      \\\"reason\\\": \\\"Section 6.4, Figure 1 caption. The caption states that Type 4-2 shows an error rate of 43% for PGT.\\\"\\n    },\\n    {\\n      \\\"id\\\": 21,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Type 4-2 shows an error rate of 43% (PGT) and 60% (LST)\\\",\\n      \\\"reason\\\": \\\"Section 6.4, Figure 1 caption. The caption states that Type 4-2 shows an error rate of 60% for LST.\\\"\\n    },\\n    {\\n      \\\"id\\\": 22,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"more than 70 times the rate of Type 1 verbs.\\\",\\n      \\\"reason\\\": \\\"Section 6.4, Figure 1 caption. The caption states that the Type 4-2 error rate is more than 70 times the rate of Type 1 verbs.\\\"\\n    },\\n    {\\n      \\\"id\\\": 23,\\n      \\\"label\\\": \\\"contradicted\\\",\\n      \\\"paper_evidence\\\": \\\"The dominant Type 4-2 failure is omission of required gemination before a stem-final /e/,\\\",\\n      \\\"reason\\\": \\\"Section 6.6. The paper states that the omission of required gemination is 'before' a stem-final /e/, which contradicts the claim's assertion of 'after' stem-final /e/.\\\"\\n    },\\n    {\\n      \\\"id\\\": 24,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"contributing 34–48× its proportional share to total errors.\\\",\\n      \\\"reason\\\": \\\"Section 6.4, Figure 2 caption. The caption states that Type 4-2 contributes 34-48x its proportional share to total errors.\\\"\\n    },\\n    {\\n      \\\"id\\\": 25,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"To causally test the contribution of individual irregular subtypes, we train both architectures under eight controlled data conditions: the full dataset; regular verbs only (Types 1–2); the full dataset minus one irregular subtype (removing 4-1, 4-2, or 4-3 individually); and the full dataset minus each pairwise combination of subtypes. For every condition, the same verb types are removed from both training and test data.\\\",\\n      \\\"reason\\\": \\\"Section 5.3. The paper describes the eight controlled conditions that remove individual irregular subtypes, all irregulars, or subtype pairs from both training and test data.\\\"\\n    },\\n    {\\n      \\\"id\\\": 26,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Boldface marks the single-subtype condition producing the largest improvement in each system.\\\",\\n      \\\"reason\\\": \\\"Section 6.7, Table 6. The table shows that '-4-2' is the bolded single-subtype condition for both systems.\\\"\\n    },\\n    {\\n      \\\"id\\\": 27,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"For the PGT system, removing Type 4-2 alone is still the single best condition (97.98% → 98.98%, +1.00).\\\",\\n      \\\"reason\\\": \\\"Section 6.7. The paper states that PGT accuracy rises from 97.98% to 98.98% when removing Type 4-2.\\\"\\n    },\\n    {\\n      \\\"id\\\": 28,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"For the PGT system, removing Type 4-2 alone is still the single best condition (97.98% → 98.98%, +1.00).\\\",\\n      \\\"reason\\\": \\\"Section 6.7. The paper states that removing Type 4-2 yields a gain of +1.00 for PGT.\\\"\\n    },\\n    {\\n      \\\"id\\\": 29,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"For the LST system, removing only Type 4-2 yields the largest observed gain: 97.73% → 99.75% (+2.02)\\\",\\n      \\\"reason\\\": \\\"Section 6.7. The paper states that LST accuracy rises from 97.73% to 99.75% when removing Type 4-2.\\\"\\n    },\\n    {\\n      \\\"id\\\": 30,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"For the LST system, removing only Type 4-2 yields the largest observed gain: 97.73% → 99.75% (+2.02)\\\",\\n      \\\"reason\\\": \\\"Section 6.7. The paper states that removing Type 4-2 yields a gain of +2.02 for LST.\\\"\\n    },\\n    {\\n      \\\"id\\\": 31,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"corresponding to an approximately 89% reduction in error rate.\\\",\\n      \\\"reason\\\": \\\"Section 6.7. The paper states that removing Type 4-2 yields an approximately 89% reduction in error rate for LST.\\\"\\n    },\\n    {\\n      \\\"id\\\": 32,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"−4 (all irregulars) | 98.95 | 98.95\\\",\\n      \\\"reason\\\": \\\"Section 6.7, Table 7. The table shows that removing all irregulars (-4) reaches 98.95% accuracy for both PGT and LST.\\\"\\n    },\\n    {\\n      \\\"id\\\": 33,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"−4 (all irregulars) | +0.97 | +1.22\\\",\\n      \\\"reason\\\": \\\"Section 6.7, Table 6. The table shows that removing all irregulars (-4) yields a gain of +0.97 for PGT.\\\"\\n    },\\n    {\\n      \\\"id\\\": 34,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"−4 (all irregulars) | +0.97 | +1.22\\\",\\n      \\\"reason\\\": \\\"Section 6.7, Table 6. The table shows that removing all irregulars (-4) yields a gain of +1.22 for LST.\\\"\\n    },\\n    {\\n      \\\"id\\\": 35,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"make up fewer than 1% of the data\\\",\\n      \\\"reason\\\": \\\"Section 1, Abstract. The paper states that Type 4-2 verbs make up fewer than 1% of the data.\\\"\\n    },\\n    {\\n      \\\"id\\\": 36,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Type 4-2 shows an error rate of 43% (PGT) and 60% (LST)\\\",\\n      \\\"reason\\\": \\\"Section 6.4, Figure 1 caption. The caption states that Type 4-2 shows an error rate of 43% for PGT.\\\"\\n    },\\n    {\\n      \\\"id\\\": 37,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Type 4-2 shows an error rate of 43% (PGT) and 60% (LST)\\\",\\n      \\\"reason\\\": \\\"Section 6.4, Figure 1 caption. The caption states that Type 4-2 shows an error rate of 60% for LST.\\\"\\n    },\\n    {\\n      \\\"id\\\": 38,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"more than 70 times the rate of Type 1 verbs.\\\",\\n      \\\"reason\\\": \\\"Section 6.4, Figure 1 caption. The caption states that the Type 4-2 error rate is more than 70 times the rate of Type 1 verbs.\\\"\\n    },\\n    {\\n      \\\"id\\\": 39,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"First, our ablation experiments were each run once per condition; replication across multiple training runs would strengthen the causal claim.\\\",\\n      \\\"reason\\\": \\\"Limitations section. The paper states that the ablation experiments were each run once per condition.\\\"\\n    },\\n    {\\n      \\\"id\\\": 40,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"make up fewer than 1% of the data\\\",\\n      \\\"reason\\\": \\\"Section 1, Abstract. The paper states that this rare subtype makes up fewer than 1% of the data.\\\"\\n    }\\n  ]\\n}\\n```\", \"```json\\n{\\n  \\\"verdicts\\\": [\\n    {\\n      \\\"id\\\": 1,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"accounts for a disproportionate 30–43% share of residual errors\\\",\\n      \\\"reason\\\": \\\"Abstract. The paper states that the Type 4-2 irregular subtype accounts for 30-43% of residual errors.\\\"\\n    },\\n    {\\n      \\\"id\\\": 2,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Type 4-2 contributes 34–48× its proportional representation to total errors\\\",\\n      \\\"reason\\\": \\\"Section 6.4. The paper states that Type 4-2 contributes 34-48 times its proportional representation to total errors.\\\"\\n    },\\n    {\\n      \\\"id\\\": 3,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"A single low-frequency subtype, verbs requiring gemination after a stem-final /e/, is structurally distinct from other irregulars. It accounts for a disproportionate share of errors\\\",\\n      \\\"reason\\\": \\\"Section 7. The paper states that the errors of this subtype (Type 4-2) are concentrated in the omission of required gemination after a stem-final /e/.\\\"\\n    },\\n    {\\n      \\\"id\\\": 4,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"controlled ablation experiments show that removing this subtype alone produces larger accuracy gains than removing all irregular verbs combined.\\\",\\n      \\\"reason\\\": \\\"Abstract. The paper states that removing this subtype alone produces larger accuracy gains than removing all irregular verbs combined.\\\"\\n    }\\n  ]\\n}\\n```\"]"
 }

@@ -1,0 +1,59 @@
+{
+  "model": "openai.gpt-4o",
+  "repeat": 1,
+  "judge_prompt_sha256": "4ec65050cfdc718218dbc587f672291e733fd03b1254c20d77b61b0933e16162",
+  "error": null,
+  "tokens_in": 5601,
+  "tokens_out": 918,
+  "max_output_tokens": 16384,
+  "parsed": {
+    "items": {
+      "chk_problem": {
+        "label": "accurate",
+        "poster_evidence": "Neural morphological generation systems often achieve high aggregate accuracy on benchmark datasets, yet such performance can conceal systematic errors clustered in rare morphological subclasses.",
+        "reason": "The poster accurately describes the research problem as high aggregate accuracy in neural morphological generation systems concealing systematic errors clustered in rare morphological subclasses, consistent with the reference."
+      },
+      "chk_method": {
+        "label": "accurate",
+        "poster_evidence": "We present an orthography-aware diagnosis of Japanese past-tense verb inflection, treating hiragana not merely as a transcriptional medium but as a representational system that encodes morphophonological structure. Using two character-level Transformer architectures evaluated across five random seeds, we show that although both systems exceed 97% aggregate accuracy, a single structurally specific irregular subtype, verbs whose stems end in /e/ and require gemination before the past-tense suffix and make up fewer than 1% of the data, accounts for a disproportionate 30–43% share of residual errors and contributes roughly 34–48 × its prevalence to total errors.",
+        "reason": "The poster describes the orthography-aware diagnosis, fine-grained error taxonomy, subgroup-level accuracy analysis, and controlled ablation experiments, matching the reference."
+      },
+      "chk_data": {
+        "label": "accurate",
+        "poster_evidence": "We use a Japanese verb inflection dataset in standard morphological transduction format. All forms are converted to hiragana to maintain orthographic consistency and eliminate confounds introduced by kanji homography.",
+        "reason": "The poster specifies the use of a Japanese verb inflection dataset in standard morphological transduction format, with all forms converted to hiragana, consistent with the reference."
+      },
+      "chk_setup": {
+        "label": "missing",
+        "poster_evidence": "",
+        "reason": "The poster does not provide details about the training regime, random seeds, or ablation conditions described in the reference."
+      },
+      "chk_primary_result": {
+        "label": "accurate",
+        "poster_evidence": "Type 4-2 verbs are massively overrepresented, accounting for 30.2% (PGT) and 43.1% (LST) of all errors while comprising just 0.9% of the dataset.",
+        "reason": "The poster accurately reports the primary result that Type 4-2 verbs account for 30–43% of residual errors despite comprising <1% of the dataset, consistent with the reference."
+      },
+      "chk_secondary_result": {
+        "label": "accurate",
+        "poster_evidence": "Controlled ablation experiments show that removing only Type 4-2 yields the largest observed gain: 97.73% → 99.75% (+2.02) for LST, corresponding to an approximately 89% reduction in error rate.",
+        "reason": "The poster correctly states that removing Type 4-2 alone produces larger accuracy gains than removing all irregular verbs combined, consistent with the reference."
+      },
+      "chk_baseline": {
+        "label": "accurate",
+        "poster_evidence": "On the primary run, both systems achieve high aggregate accuracy on the full dataset: 97.98% (PGT) and 97.73% (LST).",
+        "reason": "The poster provides the baseline accuracy values for the PGT and LST models on the full dataset, consistent with the reference."
+      },
+      "chk_conclusion": {
+        "label": "accurate",
+        "poster_evidence": "These results demonstrate that high aggregate accuracy can mask structurally localized failures, that not all irregularity is equally destabilizing to neural generalization, and that fine-grained, subgroup-aware evaluation is necessary to reveal and causally test such effects.",
+        "reason": "The poster accurately conveys the conclusion that error concentration is driven by structural factors rather than irregularity per se, and emphasizes the need for fine-grained evaluation, consistent with the reference."
+      },
+      "chk_limitation": {
+        "label": "missing",
+        "poster_evidence": "",
+        "reason": "The poster does not mention any limitations or implications, such as the need for replication or cross-linguistic validation, as described in the reference."
+      }
+    }
+  },
+  "raw": "```json\n{\n  \"items\": {\n    \"chk_problem\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Neural morphological generation systems often achieve high aggregate accuracy on benchmark datasets, yet such performance can conceal systematic errors clustered in rare morphological subclasses.\",\n      \"reason\": \"The poster accurately describes the research problem as high aggregate accuracy in neural morphological generation systems concealing systematic errors clustered in rare morphological subclasses, consistent with the reference.\"\n    },\n    \"chk_method\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"We present an orthography-aware diagnosis of Japanese past-tense verb inflection, treating hiragana not merely as a transcriptional medium but as a representational system that encodes morphophonological structure. Using two character-level Transformer architectures evaluated across five random seeds, we show that although both systems exceed 97% aggregate accuracy, a single structurally specific irregular subtype, verbs whose stems end in /e/ and require gemination before the past-tense suffix and make up fewer than 1% of the data, accounts for a disproportionate 30–43% share of residual errors and contributes roughly 34–48 × its prevalence to total errors.\",\n      \"reason\": \"The poster describes the orthography-aware diagnosis, fine-grained error taxonomy, subgroup-level accuracy analysis, and controlled ablation experiments, matching the reference.\"\n    },\n    \"chk_data\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"We use a Japanese verb inflection dataset in standard morphological transduction format. All forms are converted to hiragana to maintain orthographic consistency and eliminate confounds introduced by kanji homography.\",\n      \"reason\": \"The poster specifies the use of a Japanese verb inflection dataset in standard morphological transduction format, with all forms converted to hiragana, consistent with the reference.\"\n    },\n    \"chk_setup\": {\n      \"label\": \"missing\",\n      \"poster_evidence\": \"\",\n      \"reason\": \"The poster does not provide details about the training regime, random seeds, or ablation conditions described in the reference.\"\n    },\n    \"chk_primary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Type 4-2 verbs are massively overrepresented, accounting for 30.2% (PGT) and 43.1% (LST) of all errors while comprising just 0.9% of the dataset.\",\n      \"reason\": \"The poster accurately reports the primary result that Type 4-2 verbs account for 30–43% of residual errors despite comprising <1% of the dataset, consistent with the reference.\"\n    },\n    \"chk_secondary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Controlled ablation experiments show that removing only Type 4-2 yields the largest observed gain: 97.73% → 99.75% (+2.02) for LST, corresponding to an approximately 89% reduction in error rate.\",\n      \"reason\": \"The poster correctly states that removing Type 4-2 alone produces larger accuracy gains than removing all irregular verbs combined, consistent with the reference.\"\n    },\n    \"chk_baseline\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"On the primary run, both systems achieve high aggregate accuracy on the full dataset: 97.98% (PGT) and 97.73% (LST).\",\n      \"reason\": \"The poster provides the baseline accuracy values for the PGT and LST models on the full dataset, consistent with the reference.\"\n    },\n    \"chk_conclusion\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"These results demonstrate that high aggregate accuracy can mask structurally localized failures, that not all irregularity is equally destabilizing to neural generalization, and that fine-grained, subgroup-aware evaluation is necessary to reveal and causally test such effects.\",\n      \"reason\": \"The poster accurately conveys the conclusion that error concentration is driven by structural factors rather than irregularity per se, and emphasizes the need for fine-grained evaluation, consistent with the reference.\"\n    },\n    \"chk_limitation\": {\n      \"label\": \"missing\",\n      \"poster_evidence\": \"\",\n      \"reason\": \"The poster does not mention any limitations or implications, such as the need for replication or cross-linguistic validation, as described in the reference.\"\n    }\n  }\n}\n```"
+}

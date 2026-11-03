@@ -2,9 +2,358 @@
   "model": "gemini-3.5-flash",
   "repeat": 1,
   "judge_prompt_sha256": "4ec65050cfdc718218dbc587f672291e733fd03b1254c20d77b61b0933e16162",
-  "error": "truncated at max_output_tokens=8192",
-  "tokens_in": 1983,
-  "tokens_out": 8188,
-  "parsed": null,
-  "raw": "```json\n{\n  \"claims\": [\n    {\n      \"id\": 1,\n      \"text\": \"Naive frame-skipping (e.g., FixedSkip-2) causes severe accuracy loss (8.6 pp AP@50 drop).\",\n      \"poster_quote\": \"Naive frame-skipping (e.g., FixedSkip-2) causes severe accuracy loss (8.6 pp AP@50 drop)\"\n    },\n    {\n      \"id\": 2,\n      \"text\": \"ALBIREO wraps off-the-shelf detectors with three mechanisms.\",\n      \"poster_quote\": \"ALBIREO wraps off-the-shelf detectors with three mechanisms\"\n    },\n    {\n      \"id\": 3,\n      \"text\": \"ALBIREO's forward-looking uncertainty trigger uses a 10D Kalman filter per object.\",\n      \"poster_quote\": \"Forward-looking uncertainty trigger: Uses 10D Kalman filter per object\"\n    },\n    {\n      \"id\": 4,\n      \"text\": \"ALBIREO's forward-looking uncertainty trigger skips detection when predicted covariance trace is below threshold u.\",\n      \"poster_quote\": \"skips detection when predicted covariance trace is below threshold u\"\n    },\n    {\n      \"id\": 5,\n      \"text\": \"ALBIREO's detector-flicker rescue emits Kalman-predicted boxes for unmatched confirmed objects on inference frames if recent confidence was high and rescue cap not exceeded.\",\n      \"poster_quote\": \"Detector-flicker rescue: On inference frames, emits Kalman-predicted boxes for unmatched confirmed objects if recent confidence was high and rescue cap not exceeded\"\n    },\n    {\n      \"id\": 6,\n      \"text\": \"ALBIREO's empty-scene screen uses a lightweight ERD classifier to skip full detection on objectless frames.\",\n      \"poster_quote\": \"Empty-scene screen: Uses lightweight ERD classifier to skip full detection on objectless frames.\"\n    },\n    {\n      \"id\": 7,\n      \"text\": \"ALBIREO requires no detector modification or retraining.\",\n      \"poster_quote\": \"No detector modification or retraining needed.\"\n    },\n    {\n      \"id\": 8,\n      \"text\": \"ALBIREO's skip decisions are content-driven, not hardware-dependent, resulting in identical skip rates across Thor/Orin for the same detector.\",\n      \"poster_quote\": \"skip rates are identical across Thor/Orin for same detector.\"\n    },\n    {\n      \"id\": 9,\n      \"text\": \"ALBIREO's energy savings vary by platform due to GPU/CPU power characteristics.\",\n      \"poster_quote\": \"Energy savings vary by platform due to GPU/CPU power characteristics.\"\n    },\n    {\n      \"id\": 10,\n      \"text\": \"ALBIREO's rescue mechanism is invoked in 43-49% of frames.\",\n      \"poster_quote\": \"Rescue is invoked in 43-49% of frames\"\n    },\n    {\n      \"id\": 11,\n      \"text\": \"ALBIREO's empty-scene screening is effective only when conditionally applied (not per-frame).\",\n      \"poster_quote\": \"Empty-scene screening is effective only when conditionally applied (not per-frame).\"\n    },\n    {\n      \"id\": 12,\n      \"text\": \"ALBIREO adapts per clip: dense scenes emphasize rescue for accuracy.\",\n      \"poster_quote\": \"ALBIREO adapts per clip: dense scenes emphasize rescue for accuracy\"\n    },\n    {\n      \"id\": 13,\n      \"text\": \"ALBIREO adapts per clip: sparse scenes show largest energy savings via empty-frame skipping.\",\n      \"poster_quote\": \"sparse scenes show largest energy savings via empty-frame skipping.\"\n    },\n    {\n      \"id\": 14,\n      \"text\": \"ALBIREO's CPU overhead is measurable on Orin.\",\n      \"poster_quote\": \"CPU overhead is measurable on Orin\"\n    },\n    {\n      \"id\": 15,\n      \"text\": \"ALBIREO's CPU overhead is negligible on Thor's larger CPU complex.\",\n      \"poster_quote\": \"negligible on Thor’s larger CPU complex.\"\n    },\n    {\n      \"id\": 16,\n      \"text\": \"ALBIREO targets the gap with a software wrapper that uses per-object uncertainty to gate off-the-shelf detectors without fixed-camera or codec assumptions.\",\n      \"poster_quote\": \"ALBIREO targets the gap with a software wrapper that uses per-object uncertainty to gate off-the-shelf detectors without fixed-camera or codec assumptions.\"\n    },\n    {\n      \"id\": 17,\n      \"text\": \"For a representative BDD100K clip on Thor with YOLO26x representing dense urban traffic, E is 0%.\",\n      \"poster_quote\": \"Left: dense urban traffic ( 0% E\"\n    },\n    {\n      \"id\": 18,\n      \"text\": \"For a representative BDD100K clip on Thor with YOLO26x representing dense urban traffic, AI is 96%.\",\n      \"poster_quote\": \"Left: dense urban traffic ( 0% E, 96% AI)\"\n    },\n    {\n      \"id\": 19,\n      \"text\": \"For a representative BDD100K clip on Thor with YOLO26x representing dense urban traffic, detector invocations dominate and rescue preserves AP@50.\",\n      \"poster_quote\": \"Left: dense urban traffic ( 0% E, 96% AI), where detector invocations dominate, and rescue preserves AP@50.\"\n    },\n    {\n      \"id\": 20,\n      \"text\": \"For a representative BDD100K clip on Thor with YOLO26x representing sparse highway, E is 69%.\",\n      \"poster_quote\": \"Right: sparse highway ( 69% E\"\n    },\n    {\n      \"id\": 21,\n      \"text\": \"For a representative BDD100K clip on Thor with YOLO26x representing sparse highway, AI is 4%.\",\n      \"poster_quote\": \"Right: sparse highway ( 69% E, 4% AI)\"\n    },\n    {\n      \"id\": 22,\n      \"text\": \"For a representative BDD100K clip on Thor with YOLO26x representing sparse highway, long ERD-only stretches sharply reduce GPU power.\",\n      \"poster_quote\": \"Right: sparse highway ( 69% E, 4% AI), where long ERD-only stretches sharply reduce GPU power.\"\n    },\n    {\n      \"id\": 23,\n      \"text\": \"ALBIREO is evaluated on BDD100K MOT.\",\n      \"poster_quote\": \"Evaluated on BDD100K MOT\"\n    },\n    {\n      \"id\": 24,\n      \"text\": \"ALBIREO is evaluated with YOLO11x, YOLO26x, and RF-DETR-Large.\",\n      \"poster_quote\": \"with YOLO11x, YOLO26x, RF-DETR-Large\"\n    },\n    {\n      \"id\": 25,\n      \"text\": \"ALBIREO is evaluated on Jetson AGX Thor and Orin.\",\n      \"poster_quote\": \"on Jetson AGX Thor and Orin.\"\n    },\n    {\n      \"id\": 26,\n      \"text\": \"ALBIREO keeps AP@50 within ±1.2 pp of per-frame inference.\",\n      \"poster_quote\": \"ALBIREO keeps AP@50 within ±1.2 pp of per-frame inference\"\n    },\n    {\n      \"id\": 27,\n      \"text\": \"ALBIREO reduces energy by 12.1-17.6%.\",\n      \"poster_quote\": \"while reducing energy by 12.1-17.6%.\"\n    },\n    {\n      \"id\": 28,\n      \"text\": \"On YOLO26x, default ALBIREO improves AP@50 by +0.8 pp.\",\n      \"poster_quote\": \"On YOLO26x, default ALBIREO improves AP@50 by +0.8 pp\"\n    },\n    {\n      \"id\": 29,\n      \"text\": \"On YOLO26x, default ALBIREO reduces energy by 17.6% on Thor.\",\n      \"poster_quote\": \"reduces energy by 17.6% (Thor)\"\n    },\n    {\n      \"id\": 30,\n      \"text\": \"On YOLO26x, default ALBIREO reduces energy by 14.4% on Orin.\",\n      \"poster_quote\": \"reduces energy by 17.6% (Thor) / 14.4% (Orin)\"\n    },\n    {\n      \"id\": 31,\n      \"text\": \"On YOLO26x, default ALBIREO lowers EDP by 24.9% on Thor.\",\n      \"poster_quote\": \"lowers EDP by 24.9% (Thor)\"\n    },\n    {\n      \"id\": 32,\n      \"text\": \"On YOLO26x, default ALBIREO lowers EDP by 26.1% on Orin.\",\n      \"poster_quote\": \"lowers EDP by 24.9% (Thor) / 26.1% (Orin)\"\n    },\n    {\n      \"id\": 33,\n      \"text\": \"ALBIREO Pareto-dominates Vanilla and baselines (FixedSkip, CTD, Statues) in AP@50-EDP space for AP@50 ≥ 0.50.\",\n      \"poster_quote\": \"It Pareto-dominates Vanilla and baselines (FixedSkip, CTD, Statues) in AP@50-EDP space for AP@50 ≥ 0.50.\"\n    },\n    {\n      \"id\": 34,\n      \"text\": \"ALBIREO's rescue mechanism contributes most to AP@50 gain.\",\n      \"poster_quote\": \"Rescue mechanism"
+  "error": null,
+  "tokens_in": 53646,
+  "tokens_out": 18565,
+  "max_output_tokens": 32768,
+  "claims_batch_size": 40,
+  "parsed": {
+    "claims": [
+      {
+        "id": 1,
+        "text": "Naive frame-skipping (e.g., FixedSkip-2) causes severe accuracy loss (8.6 pp AP@50 drop).",
+        "poster_quote": "Naive frame-skipping (e.g., FixedSkip-2) causes severe accuracy loss (8.6 pp AP@50 drop)",
+        "label": "supported",
+        "paper_evidence": "In contrast, FixedSkip-2, a fixed-interval baseline with 50% skip rate, loses 8.6 pp AP@50 (14% relative).",
+        "reason": "Abstract. The paper explicitly states that FixedSkip-2 loses 8.6 pp AP@50."
+      },
+      {
+        "id": 2,
+        "text": "ALBIREO wraps off-the-shelf detectors with three mechanisms.",
+        "poster_quote": "ALBIREO wraps off-the-shelf detectors with three mechanisms",
+        "label": "supported",
+        "paper_evidence": "Three mechanisms compose its design:",
+        "reason": "Section I. The paper lists three mechanisms composing ALBIREO's design: forward-looking uncertainty trigger, detector-flicker rescue, and empty-scene screen."
+      },
+      {
+        "id": 3,
+        "text": "ALBIREO's forward-looking uncertainty trigger uses a 10D Kalman filter per object.",
+        "poster_quote": "Forward-looking uncertainty trigger: Uses 10D Kalman filter per object",
+        "label": "supported",
+        "paper_evidence": "To judge when skipping is safe, A LBIREO maintains a 10-dimensional Kalman filter (KF) for each active object state and invokes the detector only when prediction uncertainty exceeds a threshold.",
+        "reason": "Abstract. The paper states that ALBIREO maintains a 10-dimensional Kalman filter for each active object state."
+      },
+      {
+        "id": 4,
+        "text": "ALBIREO's forward-looking uncertainty trigger skips detection when predicted covariance trace is below threshold u.",
+        "poster_quote": "skips detection when predicted covariance trace is below threshold u",
+        "label": "supported",
+        "paper_evidence": "detector invocation is skipped when the projected covariance trace of every active object state remains below a threshold u.",
+        "reason": "Section I. The paper states that detector invocation is skipped when the projected covariance trace remains below threshold u."
+      },
+      {
+        "id": 5,
+        "text": "ALBIREO's detector-flicker rescue emits Kalman-predicted boxes for unmatched confirmed objects on inference frames if recent confidence was high and rescue cap not exceeded.",
+        "poster_quote": "Detector-flicker rescue: On inference frames, emits Kalman-predicted boxes for unmatched confirmed objects if recent confidence was high and rescue cap not exceeded",
+        "label": "supported",
+        "paper_evidence": "on detector frames, a confirmed object state that remains unmatched can emit its Kalman-predicted box, called a rescue, if its most recent real detector match has high confidence and its consecutive unmatched-frame count remains below a fixed cap.",
+        "reason": "Section I. The paper describes the detector-flicker rescue mechanism exactly as stated."
+      },
+      {
+        "id": 6,
+        "text": "ALBIREO's empty-scene screen uses a lightweight ERD classifier to skip full detection on objectless frames.",
+        "poster_quote": "Empty-scene screen: Uses lightweight ERD classifier to skip full detection on objectless frames.",
+        "label": "supported",
+        "paper_evidence": "when no active object states exist, a lightweight binary empty-scene classifier gates the full detector, skipping objectless frames without invoking the expensive detector forward pass.",
+        "reason": "Section I. The paper describes the empty-scene screen using a lightweight binary empty-scene classifier (ERD)."
+      },
+      {
+        "id": 7,
+        "text": "ALBIREO requires no detector modification or retraining.",
+        "poster_quote": "No detector modification or retraining needed.",
+        "label": "supported",
+        "paper_evidence": "A LBIREO requires no detector modification or detector retraining",
+        "reason": "Abstract. The paper states that ALBIREO requires no detector modification or retraining."
+      },
+      {
+        "id": 8,
+        "text": "ALBIREO's skip decisions are content-driven, not hardware-dependent, resulting in identical skip rates across Thor/Orin for the same detector.",
+        "poster_quote": "skip rates are identical across Thor/Orin for same detector.",
+        "label": "supported",
+        "paper_evidence": "First, for a fixed detector, skip rates are identical across Thor and Orin, to within rounding. This is expected because A LBIREO’s skip decisions depend on detector outputs and object-state uncertainty, not on hardware power or latency measurements.",
+        "reason": "Section IV-D. The paper explains that skip decisions are content-driven and independent of hardware, leading to identical skip rates across platforms."
+      },
+      {
+        "id": 9,
+        "text": "ALBIREO's energy savings vary by platform due to GPU/CPU power characteristics.",
+        "poster_quote": "Energy savings vary by platform due to GPU/CPU power characteristics.",
+        "label": "supported",
+        "paper_evidence": "Energy savings vary, even on the same skip pattern, because GPU savings and CPU-power responses are platform dependent.",
+        "reason": "Section IV-D. The paper states that energy savings vary across platforms due to platform-dependent GPU and CPU power characteristics."
+      },
+      {
+        "id": 10,
+        "text": "ALBIREO's rescue mechanism is invoked in 43-49% of frames.",
+        "poster_quote": "Rescue is invoked in 43-49% of frames",
+        "label": "supported",
+        "paper_evidence": "For YOLO26x, AI frames account for 48.9% of all frames, and 61% of frames where the detector runs. For YOLO11x and RF-DETR, AI frames account for 44.4% and 43.5% of all frames, respectively",
+        "reason": "Section IV-E. The paper states that AI (augmented inference, which uses rescue) frames account for 43.5% to 48.9% of all frames."
+      },
+      {
+        "id": 11,
+        "text": "ALBIREO's empty-scene screening is effective only when conditionally applied (not per-frame).",
+        "poster_quote": "Empty-scene screening is effective only when conditionally applied (not per-frame).",
+        "label": "supported",
+        "paper_evidence": "This result explains why A LBIREO invokes ERD only when no active object states exist: ERD is useful as a conditional empty-scene screen, not as a per-frame replacement for object-level reasoning.",
+        "reason": "Section IV-C. The paper explains that ERD is only effective when conditionally applied rather than per-frame."
+      },
+      {
+        "id": 12,
+        "text": "ALBIREO adapts per clip: dense scenes emphasize rescue for accuracy.",
+        "poster_quote": "ALBIREO adapts per clip: dense scenes emphasize rescue for accuracy",
+        "label": "supported",
+        "paper_evidence": "The same algorithm, therefore, produces different power profiles depending on scene content: dense clips emphasize rescue and accuracy preservation, while sparse clips expose the largest energy savings through empty-scene skipping.",
+        "reason": "Section IV-H. The paper states that dense clips emphasize rescue and accuracy preservation."
+      },
+      {
+        "id": 13,
+        "text": "ALBIREO adapts per clip: sparse scenes show largest energy savings via empty-frame skipping.",
+        "poster_quote": "sparse scenes show largest energy savings via empty-frame skipping.",
+        "label": "supported",
+        "paper_evidence": "The same algorithm, therefore, produces different power profiles depending on scene content: dense clips emphasize rescue and accuracy preservation, while sparse clips expose the largest energy savings through empty-scene skipping.",
+        "reason": "Section IV-H. The paper states that sparse clips expose the largest energy savings through empty-scene skipping."
+      },
+      {
+        "id": 14,
+        "text": "ALBIREO's CPU overhead is measurable on Orin.",
+        "poster_quote": "CPU overhead is measurable on Orin",
+        "label": "supported",
+        "paper_evidence": "On Orin’s twelve A78AE cores, this overhead is measurable.",
+        "reason": "Section IV-G. The paper states that CPU overhead is measurable on Orin."
+      },
+      {
+        "id": 15,
+        "text": "ALBIREO's CPU overhead is negligible on Thor's larger CPU complex.",
+        "poster_quote": "negligible on Thor’s larger CPU complex.",
+        "label": "supported",
+        "paper_evidence": "On Thor’s larger fourteen-core Neoverse V3AE CPU complex, the same operations do not increase CPU power measurably; average CPU power changes from 13.6 W under Vanilla to 13.0 W under A LBIREO.",
+        "reason": "Section IV-G. The paper states that the CPU overhead does not increase CPU power measurably on Thor."
+      },
+      {
+        "id": 16,
+        "text": "ALBIREO targets the gap with a software wrapper that uses per-object uncertainty to gate off-the-shelf detectors without fixed-camera or codec assumptions.",
+        "poster_quote": "ALBIREO targets the gap with a software wrapper that uses per-object uncertainty to gate off-the-shelf detectors without fixed-camera or codec assumptions.",
+        "label": "supported",
+        "paper_evidence": "A LBIREO targets the gap with a software wrapper that uses per-object uncertainty to gate off-the-shelf detectors without fixed-camera or codec assumptions.",
+        "reason": "Section II-D. The paper explicitly states this design target."
+      },
+      {
+        "id": 17,
+        "text": "For a representative BDD100K clip on Thor with YOLO26x representing dense urban traffic, E is 0%.",
+        "poster_quote": "Left: dense urban traffic ( 0% E",
+        "label": "supported",
+        "paper_evidence": "Dense Traffic (0% E, 96% AI)",
+        "reason": "Figure 7. The label for the dense traffic clip shows 0% E."
+      },
+      {
+        "id": 18,
+        "text": "For a representative BDD100K clip on Thor with YOLO26x representing dense urban traffic, AI is 96%.",
+        "poster_quote": "Left: dense urban traffic ( 0% E, 96% AI)",
+        "label": "supported",
+        "paper_evidence": "Dense Traffic (0% E, 96% AI)",
+        "reason": "Figure 7. The label for the dense traffic clip shows 96% AI."
+      },
+      {
+        "id": 19,
+        "text": "For a representative BDD100K clip on Thor with YOLO26x representing dense urban traffic, detector invocations dominate and rescue preserves AP@50.",
+        "poster_quote": "Left: dense urban traffic ( 0% E, 96% AI), where detector invocations dominate, and rescue preserves AP@50.",
+        "label": "supported",
+        "paper_evidence": "On a dense urban clip (no empty frames; 96% AI rate), A LBIREO and Vanilla draw similar power because the detector runs on most frames; rescue primarily preserves AP@50 rather than reducing energy.",
+        "reason": "Section IV-H. The paper states that for dense urban clips, detector invocations dominate and rescue primarily preserves AP@50."
+      },
+      {
+        "id": 20,
+        "text": "For a representative BDD100K clip on Thor with YOLO26x representing sparse highway, E is 69%.",
+        "poster_quote": "Right: sparse highway ( 69% E",
+        "label": "supported",
+        "paper_evidence": "Empty Road (69% E, 4% AI)",
+        "reason": "Figure 7. The label for the empty road clip shows 69% E."
+      },
+      {
+        "id": 21,
+        "text": "For a representative BDD100K clip on Thor with YOLO26x representing sparse highway, AI is 4%.",
+        "poster_quote": "Right: sparse highway ( 69% E, 4% AI)",
+        "label": "supported",
+        "paper_evidence": "Empty Road (69% E, 4% AI)",
+        "reason": "Figure 7. The label for the empty road clip shows 4% AI."
+      },
+      {
+        "id": 22,
+        "text": "For a representative BDD100K clip on Thor with YOLO26x representing sparse highway, long ERD-only stretches sharply reduce GPU power.",
+        "poster_quote": "Right: sparse highway ( 69% E, 4% AI), where long ERD-only stretches sharply reduce GPU power.",
+        "label": "supported",
+        "paper_evidence": "On a sparse highway clip (69% E, 4% AI), A LBIREO’s GPU power drops sharply during long ERD-only stretches, while Vanilla continues running full detector inference.",
+        "reason": "Section IV-H. The paper states that long ERD-only stretches sharply reduce GPU power on sparse highway clips."
+      },
+      {
+        "id": 23,
+        "text": "ALBIREO is evaluated on BDD100K MOT.",
+        "poster_quote": "Evaluated on BDD100K MOT",
+        "label": "supported",
+        "paper_evidence": "We evaluate A LBIREO on the BDD100K dataset’s multiobject tracking (MOT) validation split",
+        "reason": "Abstract. The paper states that ALBIREO is evaluated on the BDD100K MOT validation split."
+      },
+      {
+        "id": 24,
+        "text": "ALBIREO is evaluated with YOLO11x, YOLO26x, and RF-DETR-Large.",
+        "poster_quote": "with YOLO11x, YOLO26x, RF-DETR-Large",
+        "label": "supported",
+        "paper_evidence": "using three architecturally distinct detectors (YOLO11x, YOLO26x, and RF-DETR-Large)",
+        "reason": "Abstract. The paper lists these three detectors as the evaluation targets."
+      },
+      {
+        "id": 25,
+        "text": "ALBIREO is evaluated on Jetson AGX Thor and Orin.",
+        "poster_quote": "on Jetson AGX Thor and Orin.",
+        "label": "supported",
+        "paper_evidence": "on two NVIDIA Jetson platforms (AGX Thor and AGX Orin).",
+        "reason": "Abstract. The paper lists AGX Thor and AGX Orin as the evaluation platforms."
+      },
+      {
+        "id": 26,
+        "text": "ALBIREO keeps AP@50 within ±1.2 pp of per-frame inference.",
+        "poster_quote": "ALBIREO keeps AP@50 within ±1.2 pp of per-frame inference",
+        "label": "supported",
+        "paper_evidence": "A LBIREO keeps AP@50 (average precision at IoU 0.5) within ±1.2 pp of per-frame inference",
+        "reason": "Abstract. The paper states that ALBIREO keeps AP@50 within ±1.2 pp of per-frame inference."
+      },
+      {
+        "id": 27,
+        "text": "ALBIREO reduces energy by 12.1-17.6%.",
+        "poster_quote": "while reducing energy by 12.1-17.6%.",
+        "label": "supported",
+        "paper_evidence": "while reducing total energy by 12.1–17.6%.",
+        "reason": "Abstract. The paper states that ALBIREO reduces total energy by 12.1–17.6%."
+      },
+      {
+        "id": 28,
+        "text": "On YOLO26x, default ALBIREO improves AP@50 by +0.8 pp.",
+        "poster_quote": "On YOLO26x, default ALBIREO improves AP@50 by +0.8 pp",
+        "label": "supported",
+        "paper_evidence": "On the primary YOLO26x configuration, A LBIREO improves AP@50 by +0.8 pp",
+        "reason": "Abstract. The paper states that ALBIREO improves AP@50 by +0.8 pp on YOLO26x."
+      },
+      {
+        "id": 29,
+        "text": "On YOLO26x, default ALBIREO reduces energy by 17.6% on Thor.",
+        "poster_quote": "reduces energy by 17.6% (Thor)",
+        "label": "supported",
+        "paper_evidence": "while reducing energy by 17.6% on Thor",
+        "reason": "Abstract. The paper states that ALBIREO reduces energy by 17.6% on Thor."
+      },
+      {
+        "id": 30,
+        "text": "On YOLO26x, default ALBIREO reduces energy by 14.4% on Orin.",
+        "poster_quote": "reduces energy by 17.6% (Thor) / 14.4% (Orin)",
+        "label": "supported",
+        "paper_evidence": "and 14.4% on Orin.",
+        "reason": "Abstract. The paper states that ALBIREO reduces energy by 14.4% on Orin."
+      },
+      {
+        "id": 31,
+        "text": "On YOLO26x, default ALBIREO lowers EDP by 24.9% on Thor.",
+        "poster_quote": "lowers EDP by 24.9% (Thor)",
+        "label": "supported",
+        "paper_evidence": "It also reduces per-frame energy-delay product by 24.9% on Thor",
+        "reason": "Abstract. The paper states that ALBIREO reduces EDP by 24.9% on Thor."
+      },
+      {
+        "id": 32,
+        "text": "On YOLO26x, default ALBIREO lowers EDP by 26.1% on Orin.",
+        "poster_quote": "lowers EDP by 24.9% (Thor) / 26.1% (Orin)",
+        "label": "supported",
+        "paper_evidence": "and 26.1% on Orin",
+        "reason": "Abstract. The paper states that ALBIREO reduces EDP by 26.1% on Orin."
+      },
+      {
+        "id": 33,
+        "text": "ALBIREO Pareto-dominates Vanilla and baselines (FixedSkip, CTD, Statues) in AP@50-EDP space for AP@50 ≥ 0.50.",
+        "poster_quote": "It Pareto-dominates Vanilla and baselines (FixedSkip, CTD, Statues) in AP@50-EDP space for AP@50 ≥ 0.50.",
+        "label": "supported",
+        "paper_evidence": "Sweeping the primary uncertainty threshold on YOLO26x traces an AP@50–EDP Pareto frontier that dominates the evaluated frame-skipping baselines (FixedSkip-N , CTD, Statues) within the target operating region (AP@50 ≥ 0.50).",
+        "reason": "Section I. The paper states that ALBIREO's threshold sweep dominates the evaluated baselines in the target operating region."
+      },
+      {
+        "id": 34,
+        "text": "ALBIREO's rescue mechanism contributes most to AP@50 gain.",
+        "poster_quote": "Rescue mechanism contributes most to AP@50 gain",
+        "label": "supported",
+        "paper_evidence": "Our ablation study shows that rescue is the largest AP@50 contributor among A LBIREO’s components, raising AP@50 from the no-rescue variants’ 0.572–0.578 range to 0.617.",
+        "reason": "Section I. The paper states that rescue is the largest AP@50 contributor."
+      },
+      {
+        "id": 35,
+        "text": "ALBIREO's AP@50 with rescue is 0.617.",
+        "poster_quote": "AP@50 gain (0.617",
+        "label": "supported",
+        "paper_evidence": "raising AP@50 from the no-rescue variants’ 0.572–0.578 range to 0.617.",
+        "reason": "Section I. The paper states that the AP@50 with rescue is 0.617."
+      },
+      {
+        "id": 36,
+        "text": "ALBIREO's AP@50 without rescue is 0.572-0.578.",
+        "poster_quote": "vs 0.572-0.578 without rescue",
+        "label": "supported",
+        "paper_evidence": "raising AP@50 from the no-rescue variants’ 0.572–0.578 range to 0.617.",
+        "reason": "Section I. The paper states that the AP@50 without rescue is in the 0.572-0.578 range."
+      },
+      {
+        "id": 37,
+        "text": "ALBIREO's threshold sweep is u = 3 × 10^-4 to 1 × 10^-3.",
+        "poster_quote": "ALBIREO’s threshold sweep ( u = 3 × 10 -4 to 1 × 10 -3 )",
+        "label": "supported",
+        "paper_evidence": "A LBIREO’s threshold sweep (u = 3×10−4 to 1×10−3 )",
+        "reason": "Figure 2 caption. The paper defines the threshold sweep range as u = 3 × 10^-4 to 1 × 10^-3."
+      },
+      {
+        "id": 38,
+        "text": "ALBIREO's threshold sweep forms the upper Pareto frontier among the evaluated systems in the AP@50 ≥ 0.50 operating region on both Jetson platforms.",
+        "poster_quote": "forms the upper Pareto frontier among the evaluated systems in the AP@50 ≥ 0 . 50 operating region on both Jetson platforms.",
+        "label": "supported",
+        "paper_evidence": "A LBIREO’s threshold sweep (u = 3×10−4 to 1×10−3 ) forms the upper Pareto frontier among the evaluated systems in the AP@50 ≥ 0.50 operating region on both Jetson platforms.",
+        "reason": "Figure 2 caption. The paper explicitly states that the threshold sweep forms the upper Pareto frontier in the target region."
+      },
+      {
+        "id": 39,
+        "text": "Table VI shows component ablation on BDD100K MOT using YOLO26X on Thor.",
+        "poster_quote": "TABLE VI COMPONENT ABLATION ON BDD100K MOT USING YOLO26X ON THOR.",
+        "label": "supported",
+        "paper_evidence": "COMPONENT ABLATION ON BDD100K MOT USING YOLO26 X ON THOR.",
+        "reason": "Table VI title. The title of Table VI matches the claim."
+      },
+      {
+        "id": 40,
+        "text": "Values in Table VI are means over 200 clips.",
+        "poster_quote": "VALUES ARE MEANS OVER 200 CLIPS.",
+        "label": "supported",
+        "paper_evidence": "VALUES ARE MEANS OVER 200 CLIPS.",
+        "reason": "Table VI caption. The caption of Table VI states that values are means over 200 clips."
+      },
+      {
+        "id": 41,
+        "text": "ALBIREO improves accuracy, energy, and latency simultaneously.",
+        "poster_quote": "improving accuracy, energy, and latency simultaneously.",
+        "label": "supported",
+        "paper_evidence": "On the primary YOLO26x configuration, A LBIREO’s default operating point (u = 3×10−4 ) Pareto-dominates Vanilla per-frame inference across AP@50, energy, and latency simultaneously.",
+        "reason": "Section IV-B. The paper explicitly states that the default operating point improves accuracy (AP@50), energy, and latency simultaneously."
+      },
+      {
+        "id": 42,
+        "text": "ALBIREO's limitations include potential drift under erratic motion (e.g., abrupt pedestrian moves).",
+        "poster_quote": "Limitations include potential drift under erratic motion (e.g., abrupt pedestrian moves)",
+        "label": "supported",
+        "paper_evidence": "First, the constant-acceleration Kalman dynamics fit many vehicle-dominated dashcam scenes, but can drift under highly erratic motion, such as a pedestrian making an abrupt lateral move at a crosswalk.",
+        "reason": "Section V-D. The paper lists potential drift under highly erratic motion (such as a pedestrian's abrupt lateral move) as a limitation."
+      },
+      {
+        "id": 43,
+        "text": "ALBIREO's limitations include domain-dependent empty-scene classifier.",
+        "poster_quote": "and domain-dependent empty-scene classifier.",
+        "label": "supported",
+        "paper_evidence": "Second, the empty-scene screen is domain-dependent.",
+        "reason": "Section V-D. The paper explicitly lists the domain-dependence of the empty-scene screen (ERD) as a limitation."
+      }
+    ]
+  },
+  "raw": "[\"```json\\n{\\n  \\\"claims\\\": [\\n    {\\n      \\\"id\\\": 1,\\n      \\\"text\\\": \\\"Naive frame-skipping (e.g., FixedSkip-2) causes severe accuracy loss (8.6 pp AP@50 drop).\\\",\\n      \\\"poster_quote\\\": \\\"Naive frame-skipping (e.g., FixedSkip-2) causes severe accuracy loss (8.6 pp AP@50 drop)\\\"\\n    },\\n    {\\n      \\\"id\\\": 2,\\n      \\\"text\\\": \\\"ALBIREO wraps off-the-shelf detectors with three mechanisms.\\\",\\n      \\\"poster_quote\\\": \\\"ALBIREO wraps off-the-shelf detectors with three mechanisms\\\"\\n    },\\n    {\\n      \\\"id\\\": 3,\\n      \\\"text\\\": \\\"ALBIREO's forward-looking uncertainty trigger uses a 10D Kalman filter per object.\\\",\\n      \\\"poster_quote\\\": \\\"Forward-looking uncertainty trigger: Uses 10D Kalman filter per object\\\"\\n    },\\n    {\\n      \\\"id\\\": 4,\\n      \\\"text\\\": \\\"ALBIREO's forward-looking uncertainty trigger skips detection when predicted covariance trace is below threshold u.\\\",\\n      \\\"poster_quote\\\": \\\"skips detection when predicted covariance trace is below threshold u\\\"\\n    },\\n    {\\n      \\\"id\\\": 5,\\n      \\\"text\\\": \\\"ALBIREO's detector-flicker rescue emits Kalman-predicted boxes for unmatched confirmed objects on inference frames if recent confidence was high and rescue cap not exceeded.\\\",\\n      \\\"poster_quote\\\": \\\"Detector-flicker rescue: On inference frames, emits Kalman-predicted boxes for unmatched confirmed objects if recent confidence was high and rescue cap not exceeded\\\"\\n    },\\n    {\\n      \\\"id\\\": 6,\\n      \\\"text\\\": \\\"ALBIREO's empty-scene screen uses a lightweight ERD classifier to skip full detection on objectless frames.\\\",\\n      \\\"poster_quote\\\": \\\"Empty-scene screen: Uses lightweight ERD classifier to skip full detection on objectless frames.\\\"\\n    },\\n    {\\n      \\\"id\\\": 7,\\n      \\\"text\\\": \\\"ALBIREO requires no detector modification or retraining.\\\",\\n      \\\"poster_quote\\\": \\\"No detector modification or retraining needed.\\\"\\n    },\\n    {\\n      \\\"id\\\": 8,\\n      \\\"text\\\": \\\"ALBIREO's skip decisions are content-driven, not hardware-dependent, resulting in identical skip rates across Thor/Orin for the same detector.\\\",\\n      \\\"poster_quote\\\": \\\"skip rates are identical across Thor/Orin for same detector.\\\"\\n    },\\n    {\\n      \\\"id\\\": 9,\\n      \\\"text\\\": \\\"ALBIREO's energy savings vary by platform due to GPU/CPU power characteristics.\\\",\\n      \\\"poster_quote\\\": \\\"Energy savings vary by platform due to GPU/CPU power characteristics.\\\"\\n    },\\n    {\\n      \\\"id\\\": 10,\\n      \\\"text\\\": \\\"ALBIREO's rescue mechanism is invoked in 43-49% of frames.\\\",\\n      \\\"poster_quote\\\": \\\"Rescue is invoked in 43-49% of frames\\\"\\n    },\\n    {\\n      \\\"id\\\": 11,\\n      \\\"text\\\": \\\"ALBIREO's empty-scene screening is effective only when conditionally applied (not per-frame).\\\",\\n      \\\"poster_quote\\\": \\\"Empty-scene screening is effective only when conditionally applied (not per-frame).\\\"\\n    },\\n    {\\n      \\\"id\\\": 12,\\n      \\\"text\\\": \\\"ALBIREO adapts per clip: dense scenes emphasize rescue for accuracy.\\\",\\n      \\\"poster_quote\\\": \\\"ALBIREO adapts per clip: dense scenes emphasize rescue for accuracy\\\"\\n    },\\n    {\\n      \\\"id\\\": 13,\\n      \\\"text\\\": \\\"ALBIREO adapts per clip: sparse scenes show largest energy savings via empty-frame skipping.\\\",\\n      \\\"poster_quote\\\": \\\"sparse scenes show largest energy savings via empty-frame skipping.\\\"\\n    },\\n    {\\n      \\\"id\\\": 14,\\n      \\\"text\\\": \\\"ALBIREO's CPU overhead is measurable on Orin.\\\",\\n      \\\"poster_quote\\\": \\\"CPU overhead is measurable on Orin\\\"\\n    },\\n    {\\n      \\\"id\\\": 15,\\n      \\\"text\\\": \\\"ALBIREO's CPU overhead is negligible on Thor's larger CPU complex.\\\",\\n      \\\"poster_quote\\\": \\\"negligible on Thor’s larger CPU complex.\\\"\\n    },\\n    {\\n      \\\"id\\\": 16,\\n      \\\"text\\\": \\\"ALBIREO targets the gap with a software wrapper that uses per-object uncertainty to gate off-the-shelf detectors without fixed-camera or codec assumptions.\\\",\\n      \\\"poster_quote\\\": \\\"ALBIREO targets the gap with a software wrapper that uses per-object uncertainty to gate off-the-shelf detectors without fixed-camera or codec assumptions.\\\"\\n    },\\n    {\\n      \\\"id\\\": 17,\\n      \\\"text\\\": \\\"For a representative BDD100K clip on Thor with YOLO26x representing dense urban traffic, E is 0%.\\\",\\n      \\\"poster_quote\\\": \\\"Left: dense urban traffic ( 0% E\\\"\\n    },\\n    {\\n      \\\"id\\\": 18,\\n      \\\"text\\\": \\\"For a representative BDD100K clip on Thor with YOLO26x representing dense urban traffic, AI is 96%.\\\",\\n      \\\"poster_quote\\\": \\\"Left: dense urban traffic ( 0% E, 96% AI)\\\"\\n    },\\n    {\\n      \\\"id\\\": 19,\\n      \\\"text\\\": \\\"For a representative BDD100K clip on Thor with YOLO26x representing dense urban traffic, detector invocations dominate and rescue preserves AP@50.\\\",\\n      \\\"poster_quote\\\": \\\"Left: dense urban traffic ( 0% E, 96% AI), where detector invocations dominate, and rescue preserves AP@50.\\\"\\n    },\\n    {\\n      \\\"id\\\": 20,\\n      \\\"text\\\": \\\"For a representative BDD100K clip on Thor with YOLO26x representing sparse highway, E is 69%.\\\",\\n      \\\"poster_quote\\\": \\\"Right: sparse highway ( 69% E\\\"\\n    },\\n    {\\n      \\\"id\\\": 21,\\n      \\\"text\\\": \\\"For a representative BDD100K clip on Thor with YOLO26x representing sparse highway, AI is 4%.\\\",\\n      \\\"poster_quote\\\": \\\"Right: sparse highway ( 69% E, 4% AI)\\\"\\n    },\\n    {\\n      \\\"id\\\": 22,\\n      \\\"text\\\": \\\"For a representative BDD100K clip on Thor with YOLO26x representing sparse highway, long ERD-only stretches sharply reduce GPU power.\\\",\\n      \\\"poster_quote\\\": \\\"Right: sparse highway ( 69% E, 4% AI), where long ERD-only stretches sharply reduce GPU power.\\\"\\n    },\\n    {\\n      \\\"id\\\": 23,\\n      \\\"text\\\": \\\"ALBIREO is evaluated on BDD100K MOT.\\\",\\n      \\\"poster_quote\\\": \\\"Evaluated on BDD100K MOT\\\"\\n    },\\n    {\\n      \\\"id\\\": 24,\\n      \\\"text\\\": \\\"ALBIREO is evaluated with YOLO11x, YOLO26x, and RF-DETR-Large.\\\",\\n      \\\"poster_quote\\\": \\\"with YOLO11x, YOLO26x, RF-DETR-Large\\\"\\n    },\\n    {\\n      \\\"id\\\": 25,\\n      \\\"text\\\": \\\"ALBIREO is evaluated on Jetson AGX Thor and Orin.\\\",\\n      \\\"poster_quote\\\": \\\"on Jetson AGX Thor and Orin.\\\"\\n    },\\n    {\\n      \\\"id\\\": 26,\\n      \\\"text\\\": \\\"ALBIREO keeps AP@50 within ±1.2 pp of per-frame inference.\\\",\\n      \\\"poster_quote\\\": \\\"ALBIREO keeps AP@50 within ±1.2 pp of per-frame inference\\\"\\n    },\\n    {\\n      \\\"id\\\": 27,\\n      \\\"text\\\": \\\"ALBIREO reduces energy by 12.1-17.6%.\\\",\\n      \\\"poster_quote\\\": \\\"while reducing energy by 12.1-17.6%.\\\"\\n    },\\n    {\\n      \\\"id\\\": 28,\\n      \\\"text\\\": \\\"On YOLO26x, default ALBIREO improves AP@50 by +0.8 pp.\\\",\\n      \\\"poster_quote\\\": \\\"On YOLO26x, default ALBIREO improves AP@50 by +0.8 pp\\\"\\n    },\\n    {\\n      \\\"id\\\": 29,\\n      \\\"text\\\": \\\"On YOLO26x, default ALBIREO reduces energy by 17.6% on Thor.\\\",\\n      \\\"poster_quote\\\": \\\"reduces energy by 17.6% (Thor)\\\"\\n    },\\n    {\\n      \\\"id\\\": 30,\\n      \\\"text\\\": \\\"On YOLO26x, default ALBIREO reduces energy by 14.4% on Orin.\\\",\\n      \\\"poster_quote\\\": \\\"reduces energy by 17.6% (Thor) / 14.4% (Orin)\\\"\\n    },\\n    {\\n      \\\"id\\\": 31,\\n      \\\"text\\\": \\\"On YOLO26x, default ALBIREO lowers EDP by 24.9% on Thor.\\\",\\n      \\\"poster_quote\\\": \\\"lowers EDP by 24.9% (Thor)\\\"\\n    },\\n    {\\n      \\\"id\\\": 32,\\n      \\\"text\\\": \\\"On YOLO26x, default ALBIREO lowers EDP by 26.1% on Orin.\\\",\\n      \\\"poster_quote\\\": \\\"lowers EDP by 24.9% (Thor) / 26.1% (Orin)\\\"\\n    },\\n    {\\n      \\\"id\\\": 33,\\n      \\\"text\\\": \\\"ALBIREO Pareto-dominates Vanilla and baselines (FixedSkip, CTD, Statues) in AP@50-EDP space for AP@50 ≥ 0.50.\\\",\\n      \\\"poster_quote\\\": \\\"It Pareto-dominates Vanilla and baselines (FixedSkip, CTD, Statues) in AP@50-EDP space for AP@50 ≥ 0.50.\\\"\\n    },\\n    {\\n      \\\"id\\\": 34,\\n      \\\"text\\\": \\\"ALBIREO's rescue mechanism contributes most to AP@50 gain.\\\",\\n      \\\"poster_quote\\\": \\\"Rescue mechanism contributes most to AP@50 gain\\\"\\n    },\\n    {\\n      \\\"id\\\": 35,\\n      \\\"text\\\": \\\"ALBIREO's AP@50 with rescue is 0.617.\\\",\\n      \\\"poster_quote\\\": \\\"AP@50 gain (0.617\\\"\\n    },\\n    {\\n      \\\"id\\\": 36,\\n      \\\"text\\\": \\\"ALBIREO's AP@50 without rescue is 0.572-0.578.\\\",\\n      \\\"poster_quote\\\": \\\"vs 0.572-0.578 without rescue\\\"\\n    },\\n    {\\n      \\\"id\\\": 37,\\n      \\\"text\\\": \\\"ALBIREO's threshold sweep is u = 3 × 10^-4 to 1 × 10^-3.\\\",\\n      \\\"poster_quote\\\": \\\"ALBIREO’s threshold sweep ( u = 3 × 10 -4 to 1 × 10 -3 )\\\"\\n    },\\n    {\\n      \\\"id\\\": 38,\\n      \\\"text\\\": \\\"ALBIREO's threshold sweep forms the upper Pareto frontier among the evaluated systems in the AP@50 ≥ 0.50 operating region on both Jetson platforms.\\\",\\n      \\\"poster_quote\\\": \\\"forms the upper Pareto frontier among the evaluated systems in the AP@50 ≥ 0 . 50 operating region on both Jetson platforms.\\\"\\n    },\\n    {\\n      \\\"id\\\": 39,\\n      \\\"text\\\": \\\"Table VI shows component ablation on BDD100K MOT using YOLO26X on Thor.\\\",\\n      \\\"poster_quote\\\": \\\"TABLE VI COMPONENT ABLATION ON BDD100K MOT USING YOLO26X ON THOR.\\\"\\n    },\\n    {\\n      \\\"id\\\": 40,\\n      \\\"text\\\": \\\"Values in Table VI are means over 200 clips.\\\",\\n      \\\"poster_quote\\\": \\\"VALUES ARE MEANS OVER 200 CLIPS.\\\"\\n    },\\n    {\\n      \\\"id\\\": 41,\\n      \\\"text\\\": \\\"ALBIREO improves accuracy, energy, and latency simultaneously.\\\",\\n      \\\"poster_quote\\\": \\\"improving accuracy, energy, and latency simultaneously.\\\"\\n    },\\n    {\\n      \\\"id\\\": 42,\\n      \\\"text\\\": \\\"ALBIREO's limitations include potential drift under erratic motion (e.g., abrupt pedestrian moves).\\\",\\n      \\\"poster_quote\\\": \\\"Limitations include potential drift under erratic motion (e.g., abrupt pedestrian moves)\\\"\\n    },\\n    {\\n      \\\"id\\\": 43,\\n      \\\"text\\\": \\\"ALBIREO's limitations include domain-dependent empty-scene classifier.\\\",\\n      \\\"poster_quote\\\": \\\"and domain-dependent empty-scene classifier.\\\"\\n    }\\n  ]\\n}\\n```\", \"```json\\n{\\n  \\\"verdicts\\\": [\\n    {\\n      \\\"id\\\": 1,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"In contrast, FixedSkip-2, a fixed-interval baseline with 50% skip rate, loses 8.6 pp AP@50 (14% relative).\\\",\\n      \\\"reason\\\": \\\"Abstract. The paper explicitly states that FixedSkip-2 loses 8.6 pp AP@50.\\\"\\n    },\\n    {\\n      \\\"id\\\": 2,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Three mechanisms compose its design:\\\",\\n      \\\"reason\\\": \\\"Section I. The paper lists three mechanisms composing ALBIREO's design: forward-looking uncertainty trigger, detector-flicker rescue, and empty-scene screen.\\\"\\n    },\\n    {\\n      \\\"id\\\": 3,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"To judge when skipping is safe, A LBIREO maintains a 10-dimensional Kalman filter (KF) for each active object state and invokes the detector only when prediction uncertainty exceeds a threshold.\\\",\\n      \\\"reason\\\": \\\"Abstract. The paper states that ALBIREO maintains a 10-dimensional Kalman filter for each active object state.\\\"\\n    },\\n    {\\n      \\\"id\\\": 4,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"detector invocation is skipped when the projected covariance trace of every active object state remains below a threshold u.\\\",\\n      \\\"reason\\\": \\\"Section I. The paper states that detector invocation is skipped when the projected covariance trace remains below threshold u.\\\"\\n    },\\n    {\\n      \\\"id\\\": 5,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"on detector frames, a confirmed object state that remains unmatched can emit its Kalman-predicted box, called a rescue, if its most recent real detector match has high confidence and its consecutive unmatched-frame count remains below a fixed cap.\\\",\\n      \\\"reason\\\": \\\"Section I. The paper describes the detector-flicker rescue mechanism exactly as stated.\\\"\\n    },\\n    {\\n      \\\"id\\\": 6,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"when no active object states exist, a lightweight binary empty-scene classifier gates the full detector, skipping objectless frames without invoking the expensive detector forward pass.\\\",\\n      \\\"reason\\\": \\\"Section I. The paper describes the empty-scene screen using a lightweight binary empty-scene classifier (ERD).\\\"\\n    },\\n    {\\n      \\\"id\\\": 7,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"A LBIREO requires no detector modification or detector retraining\\\",\\n      \\\"reason\\\": \\\"Abstract. The paper states that ALBIREO requires no detector modification or retraining.\\\"\\n    },\\n    {\\n      \\\"id\\\": 8,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"First, for a fixed detector, skip rates are identical across Thor and Orin, to within rounding. This is expected because A LBIREO’s skip decisions depend on detector outputs and object-state uncertainty, not on hardware power or latency measurements.\\\",\\n      \\\"reason\\\": \\\"Section IV-D. The paper explains that skip decisions are content-driven and independent of hardware, leading to identical skip rates across platforms.\\\"\\n    },\\n    {\\n      \\\"id\\\": 9,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Energy savings vary, even on the same skip pattern, because GPU savings and CPU-power responses are platform dependent.\\\",\\n      \\\"reason\\\": \\\"Section IV-D. The paper states that energy savings vary across platforms due to platform-dependent GPU and CPU power characteristics.\\\"\\n    },\\n    {\\n      \\\"id\\\": 10,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"For YOLO26x, AI frames account for 48.9% of all frames, and 61% of frames where the detector runs. For YOLO11x and RF-DETR, AI frames account for 44.4% and 43.5% of all frames, respectively\\\",\\n      \\\"reason\\\": \\\"Section IV-E. The paper states that AI (augmented inference, which uses rescue) frames account for 43.5% to 48.9% of all frames.\\\"\\n    },\\n    {\\n      \\\"id\\\": 11,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"This result explains why A LBIREO invokes ERD only when no active object states exist: ERD is useful as a conditional empty-scene screen, not as a per-frame replacement for object-level reasoning.\\\",\\n      \\\"reason\\\": \\\"Section IV-C. The paper explains that ERD is only effective when conditionally applied rather than per-frame.\\\"\\n    },\\n    {\\n      \\\"id\\\": 12,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The same algorithm, therefore, produces different power profiles depending on scene content: dense clips emphasize rescue and accuracy preservation, while sparse clips expose the largest energy savings through empty-scene skipping.\\\",\\n      \\\"reason\\\": \\\"Section IV-H. The paper states that dense clips emphasize rescue and accuracy preservation.\\\"\\n    },\\n    {\\n      \\\"id\\\": 13,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The same algorithm, therefore, produces different power profiles depending on scene content: dense clips emphasize rescue and accuracy preservation, while sparse clips expose the largest energy savings through empty-scene skipping.\\\",\\n      \\\"reason\\\": \\\"Section IV-H. The paper states that sparse clips expose the largest energy savings through empty-scene skipping.\\\"\\n    },\\n    {\\n      \\\"id\\\": 14,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"On Orin’s twelve A78AE cores, this overhead is measurable.\\\",\\n      \\\"reason\\\": \\\"Section IV-G. The paper states that CPU overhead is measurable on Orin.\\\"\\n    },\\n    {\\n      \\\"id\\\": 15,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"On Thor’s larger fourteen-core Neoverse V3AE CPU complex, the same operations do not increase CPU power measurably; average CPU power changes from 13.6 W under Vanilla to 13.0 W under A LBIREO.\\\",\\n      \\\"reason\\\": \\\"Section IV-G. The paper states that the CPU overhead does not increase CPU power measurably on Thor.\\\"\\n    },\\n    {\\n      \\\"id\\\": 16,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"A LBIREO targets the gap with a software wrapper that uses per-object uncertainty to gate off-the-shelf detectors without fixed-camera or codec assumptions.\\\",\\n      \\\"reason\\\": \\\"Section II-D. The paper explicitly states this design target.\\\"\\n    },\\n    {\\n      \\\"id\\\": 17,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Dense Traffic (0% E, 96% AI)\\\",\\n      \\\"reason\\\": \\\"Figure 7. The label for the dense traffic clip shows 0% E.\\\"\\n    },\\n    {\\n      \\\"id\\\": 18,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Dense Traffic (0% E, 96% AI)\\\",\\n      \\\"reason\\\": \\\"Figure 7. The label for the dense traffic clip shows 96% AI.\\\"\\n    },\\n    {\\n      \\\"id\\\": 19,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"On a dense urban clip (no empty frames; 96% AI rate), A LBIREO and Vanilla draw similar power because the detector runs on most frames; rescue primarily preserves AP@50 rather than reducing energy.\\\",\\n      \\\"reason\\\": \\\"Section IV-H. The paper states that for dense urban clips, detector invocations dominate and rescue primarily preserves AP@50.\\\"\\n    },\\n    {\\n      \\\"id\\\": 20,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Empty Road (69% E, 4% AI)\\\",\\n      \\\"reason\\\": \\\"Figure 7. The label for the empty road clip shows 69% E.\\\"\\n    },\\n    {\\n      \\\"id\\\": 21,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Empty Road (69% E, 4% AI)\\\",\\n      \\\"reason\\\": \\\"Figure 7. The label for the empty road clip shows 4% AI.\\\"\\n    },\\n    {\\n      \\\"id\\\": 22,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"On a sparse highway clip (69% E, 4% AI), A LBIREO’s GPU power drops sharply during long ERD-only stretches, while Vanilla continues running full detector inference.\\\",\\n      \\\"reason\\\": \\\"Section IV-H. The paper states that long ERD-only stretches sharply reduce GPU power on sparse highway clips.\\\"\\n    },\\n    {\\n      \\\"id\\\": 23,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"We evaluate A LBIREO on the BDD100K dataset’s multiobject tracking (MOT) validation split\\\",\\n      \\\"reason\\\": \\\"Abstract. The paper states that ALBIREO is evaluated on the BDD100K MOT validation split.\\\"\\n    },\\n    {\\n      \\\"id\\\": 24,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"using three architecturally distinct detectors (YOLO11x, YOLO26x, and RF-DETR-Large)\\\",\\n      \\\"reason\\\": \\\"Abstract. The paper lists these three detectors as the evaluation targets.\\\"\\n    },\\n    {\\n      \\\"id\\\": 25,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"on two NVIDIA Jetson platforms (AGX Thor and AGX Orin).\\\",\\n      \\\"reason\\\": \\\"Abstract. The paper lists AGX Thor and AGX Orin as the evaluation platforms.\\\"\\n    },\\n    {\\n      \\\"id\\\": 26,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"A LBIREO keeps AP@50 (average precision at IoU 0.5) within ±1.2 pp of per-frame inference\\\",\\n      \\\"reason\\\": \\\"Abstract. The paper states that ALBIREO keeps AP@50 within ±1.2 pp of per-frame inference.\\\"\\n    },\\n    {\\n      \\\"id\\\": 27,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"while reducing total energy by 12.1–17.6%.\\\",\\n      \\\"reason\\\": \\\"Abstract. The paper states that ALBIREO reduces total energy by 12.1–17.6%.\\\"\\n    },\\n    {\\n      \\\"id\\\": 28,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"On the primary YOLO26x configuration, A LBIREO improves AP@50 by +0.8 pp\\\",\\n      \\\"reason\\\": \\\"Abstract. The paper states that ALBIREO improves AP@50 by +0.8 pp on YOLO26x.\\\"\\n    },\\n    {\\n      \\\"id\\\": 29,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"while reducing energy by 17.6% on Thor\\\",\\n      \\\"reason\\\": \\\"Abstract. The paper states that ALBIREO reduces energy by 17.6% on Thor.\\\"\\n    },\\n    {\\n      \\\"id\\\": 30,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"and 14.4% on Orin.\\\",\\n      \\\"reason\\\": \\\"Abstract. The paper states that ALBIREO reduces energy by 14.4% on Orin.\\\"\\n    },\\n    {\\n      \\\"id\\\": 31,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"It also reduces per-frame energy-delay product by 24.9% on Thor\\\",\\n      \\\"reason\\\": \\\"Abstract. The paper states that ALBIREO reduces EDP by 24.9% on Thor.\\\"\\n    },\\n    {\\n      \\\"id\\\": 32,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"and 26.1% on Orin\\\",\\n      \\\"reason\\\": \\\"Abstract. The paper states that ALBIREO reduces EDP by 26.1% on Orin.\\\"\\n    },\\n    {\\n      \\\"id\\\": 33,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Sweeping the primary uncertainty threshold on YOLO26x traces an AP@50–EDP Pareto frontier that dominates the evaluated frame-skipping baselines (FixedSkip-N , CTD, Statues) within the target operating region (AP@50 ≥ 0.50).\\\",\\n      \\\"reason\\\": \\\"Section I. The paper states that ALBIREO's threshold sweep dominates the evaluated baselines in the target operating region.\\\"\\n    },\\n    {\\n      \\\"id\\\": 34,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Our ablation study shows that rescue is the largest AP@50 contributor among A LBIREO’s components, raising AP@50 from the no-rescue variants’ 0.572–0.578 range to 0.617.\\\",\\n      \\\"reason\\\": \\\"Section I. The paper states that rescue is the largest AP@50 contributor.\\\"\\n    },\\n    {\\n      \\\"id\\\": 35,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"raising AP@50 from the no-rescue variants’ 0.572–0.578 range to 0.617.\\\",\\n      \\\"reason\\\": \\\"Section I. The paper states that the AP@50 with rescue is 0.617.\\\"\\n    },\\n    {\\n      \\\"id\\\": 36,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"raising AP@50 from the no-rescue variants’ 0.572–0.578 range to 0.617.\\\",\\n      \\\"reason\\\": \\\"Section I. The paper states that the AP@50 without rescue is in the 0.572-0.578 range.\\\"\\n    },\\n    {\\n      \\\"id\\\": 37,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"A LBIREO’s threshold sweep (u = 3×10−4 to 1×10−3 )\\\",\\n      \\\"reason\\\": \\\"Figure 2 caption. The paper defines the threshold sweep range as u = 3 × 10^-4 to 1 × 10^-3.\\\"\\n    },\\n    {\\n      \\\"id\\\": 38,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"A LBIREO’s threshold sweep (u = 3×10−4 to 1×10−3 ) forms the upper Pareto frontier among the evaluated systems in the AP@50 ≥ 0.50 operating region on both Jetson platforms.\\\",\\n      \\\"reason\\\": \\\"Figure 2 caption. The paper explicitly states that the threshold sweep forms the upper Pareto frontier in the target region.\\\"\\n    },\\n    {\\n      \\\"id\\\": 39,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"COMPONENT ABLATION ON BDD100K MOT USING YOLO26 X ON THOR.\\\",\\n      \\\"reason\\\": \\\"Table VI title. The title of Table VI matches the claim.\\\"\\n    },\\n    {\\n      \\\"id\\\": 40,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"VALUES ARE MEANS OVER 200 CLIPS.\\\",\\n      \\\"reason\\\": \\\"Table VI caption. The caption of Table VI states that values are means over 200 clips.\\\"\\n    }\\n  ]\\n}\\n```\", \"```json\\n{\\n  \\\"verdicts\\\": [\\n    {\\n      \\\"id\\\": 1,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"On the primary YOLO26x configuration, A LBIREO’s default operating point (u = 3×10−4 ) Pareto-dominates Vanilla per-frame inference across AP@50, energy, and latency simultaneously.\\\",\\n      \\\"reason\\\": \\\"Section IV-B. The paper explicitly states that the default operating point improves accuracy (AP@50), energy, and latency simultaneously.\\\"\\n    },\\n    {\\n      \\\"id\\\": 2,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"First, the constant-acceleration Kalman dynamics fit many vehicle-dominated dashcam scenes, but can drift under highly erratic motion, such as a pedestrian making an abrupt lateral move at a crosswalk.\\\",\\n      \\\"reason\\\": \\\"Section V-D. The paper lists potential drift under highly erratic motion (such as a pedestrian's abrupt lateral move) as a limitation.\\\"\\n    },\\n    {\\n      \\\"id\\\": 3,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Second, the empty-scene screen is domain-dependent.\\\",\\n      \\\"reason\\\": \\\"Section V-D. The paper explicitly lists the domain-dependence of the empty-scene screen (ERD) as a limitation.\\\"\\n    }\\n  ]\\n}\\n```\"]"
 }

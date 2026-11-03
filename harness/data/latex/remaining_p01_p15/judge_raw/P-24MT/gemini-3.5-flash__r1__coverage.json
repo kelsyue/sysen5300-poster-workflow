@@ -2,9 +2,58 @@
   "model": "gemini-3.5-flash",
   "repeat": 1,
   "judge_prompt_sha256": "4ec65050cfdc718218dbc587f672291e733fd03b1254c20d77b61b0933e16162",
-  "error": "transport: Error code: 422 - Budget has been exceeded! Key=SIX-SIGMA-SLIDES-PROJECT-2 (sk-...d5LQ) Current cost: 70.08230754, Max budget: 70.0",
-  "tokens_in": 0,
-  "tokens_out": 0,
-  "parsed": null,
-  "raw": ""
+  "error": null,
+  "tokens_in": 9342,
+  "tokens_out": 2263,
+  "max_output_tokens": 32768,
+  "parsed": {
+    "items": {
+      "chk_problem": {
+        "label": "accurate",
+        "poster_evidence": "Designing and authoring high-performance custom kernels for accelerators is a complex task that requires deep hardware-level expertise.",
+        "reason": "The poster quotes this exact problem statement in the Abstract section."
+      },
+      "chk_method": {
+        "label": "accurate",
+        "poster_evidence": "In this work, we present MaxKernel, a multi-agent system that implements three distinct paradigms for TPU kernel development: (1) a Human-in-the-Loop (HITL) agent for collaborative, step-by-step design; (2) an Autonomous (Auto) agent that executes a fully automated, metric/trace-driven optimization loop; and (3) a Graph-Based Autonomous Search that scales the Auto agent for global exploration of the design space.",
+        "reason": "The poster accurately describes the MaxKernel framework and its three execution paradigms in the Abstract."
+      },
+      "chk_data": {
+        "label": "accurate",
+        "poster_evidence": "We evaluate MaxKernel on JaxBench, a curated suite of 50 diverse hardware-accelerated workloads: 17 widely used operators adapted from popular LLM architectures (e.g., complex attention mechanisms) and 33 fused operators adapted from KernelBench. It spans attention variants, dense and sparse linear algebra, complex loss functions, and highly fused operations. We additionally accelerate SOTA OSS kernels such as Multi-Head Latent Attention (MLA), Qwen3-Next Gated DeltaNet, and DeepSeek-V4 Sparse Attention.",
+        "reason": "The poster lists JaxBench (50 workloads) and the specific real-world SOTA OSS kernels under the Experimental Setup section."
+      },
+      "chk_setup": {
+        "label": "accurate",
+        "poster_evidence": "All evaluations run on TPU v6e. Numerical equivalence uses jnp.allclose with atol = rtol = 1e-2 for most cases, relaxed to at most 1e-1 for tasks with standard bf16 variance. The harness integrates XProf to capture precise on-device execution times, filtering host-side JAX dispatch and compilation overheads.",
+        "reason": "The poster details the evaluation setup on TPU v6e, including the numerical tolerance checks and XProf profiling integration under the Experimental Setup section."
+      },
+      "chk_primary_result": {
+        "label": "accurate",
+        "poster_evidence": "Parallel Search eliminates compilation failures (50/50 compiled, 50/50 correct) and boosts geomean speedup to 1.58× with fast1 = 34/50.",
+        "reason": "The poster reports the 1.58x geometric mean speedup achieved by MaxKernel (Parallel Search) on JaxBench."
+      },
+      "chk_secondary_result": {
+        "label": "accurate",
+        "poster_evidence": "We demonstrated state-of-the-art results on JaxBench, reaching a geometric mean speedup of 1.58× on top of XLA optimizations, and 2.32× on production kernels—exceeding human hand-tuned references (2.02×).",
+        "reason": "The poster reports the 2.32x geometric mean speedup on production kernels, outperforming human-written ones (2.02x), in the Conclusion section."
+      },
+      "chk_baseline": {
+        "label": "accurate",
+        "poster_evidence": "Metrics: ... (3) geometric mean speedup relative to the XLA baseline (regressions floored at 1.0×)... Methods compared: Best-of-N (Zero-Shot) with N=100; MaxKernel Auto... MaxKernel Parallel... MaxKernel Beam...",
+        "reason": "The poster compares MaxKernel against the XLA baseline, Best-of-N zero-shot, and human-authored Pallas baselines (as shown in Table 3)."
+      },
+      "chk_conclusion": {
+        "label": "accurate",
+        "poster_evidence": "MaxKernel demonstrates that agentic systems can successfully handle the complexities of low-level accelerator programming.",
+        "reason": "The poster states this take-home conclusion verbatim in the Conclusion section."
+      },
+      "chk_limitation": {
+        "label": "accurate",
+        "poster_evidence": "While the Auto Agent performs linear, iterative improvements, it remains susceptible to local optima.",
+        "reason": "The poster explicitly mentions this limitation of the Auto Agent under the Graph-Based Search section."
+      }
+    }
+  },
+  "raw": "```json\n{\n  \"items\": {\n    \"chk_problem\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Designing and authoring high-performance custom kernels for accelerators is a complex task that requires deep hardware-level expertise.\",\n      \"reason\": \"The poster quotes this exact problem statement in the Abstract section.\"\n    },\n    \"chk_method\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"In this work, we present MaxKernel, a multi-agent system that implements three distinct paradigms for TPU kernel development: (1) a Human-in-the-Loop (HITL) agent for collaborative, step-by-step design; (2) an Autonomous (Auto) agent that executes a fully automated, metric/trace-driven optimization loop; and (3) a Graph-Based Autonomous Search that scales the Auto agent for global exploration of the design space.\",\n      \"reason\": \"The poster accurately describes the MaxKernel framework and its three execution paradigms in the Abstract.\"\n    },\n    \"chk_data\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"We evaluate MaxKernel on JaxBench, a curated suite of 50 diverse hardware-accelerated workloads: 17 widely used operators adapted from popular LLM architectures (e.g., complex attention mechanisms) and 33 fused operators adapted from KernelBench. It spans attention variants, dense and sparse linear algebra, complex loss functions, and highly fused operations. We additionally accelerate SOTA OSS kernels such as Multi-Head Latent Attention (MLA), Qwen3-Next Gated DeltaNet, and DeepSeek-V4 Sparse Attention.\",\n      \"reason\": \"The poster lists JaxBench (50 workloads) and the specific real-world SOTA OSS kernels under the Experimental Setup section.\"\n    },\n    \"chk_setup\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"All evaluations run on TPU v6e. Numerical equivalence uses jnp.allclose with atol = rtol = 1e-2 for most cases, relaxed to at most 1e-1 for tasks with standard bf16 variance. The harness integrates XProf to capture precise on-device execution times, filtering host-side JAX dispatch and compilation overheads.\",\n      \"reason\": \"The poster details the evaluation setup on TPU v6e, including the numerical tolerance checks and XProf profiling integration under the Experimental Setup section.\"\n    },\n    \"chk_primary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Parallel Search eliminates compilation failures (50/50 compiled, 50/50 correct) and boosts geomean speedup to 1.58× with fast1 = 34/50.\",\n      \"reason\": \"The poster reports the 1.58x geometric mean speedup achieved by MaxKernel (Parallel Search) on JaxBench.\"\n    },\n    \"chk_secondary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"We demonstrated state-of-the-art results on JaxBench, reaching a geometric mean speedup of 1.58× on top of XLA optimizations, and 2.32× on production kernels—exceeding human hand-tuned references (2.02×).\",\n      \"reason\": \"The poster reports the 2.32x geometric mean speedup on production kernels, outperforming human-written ones (2.02x), in the Conclusion section.\"\n    },\n    \"chk_baseline\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Metrics: ... (3) geometric mean speedup relative to the XLA baseline (regressions floored at 1.0×)... Methods compared: Best-of-N (Zero-Shot) with N=100; MaxKernel Auto... MaxKernel Parallel... MaxKernel Beam...\",\n      \"reason\": \"The poster compares MaxKernel against the XLA baseline, Best-of-N zero-shot, and human-authored Pallas baselines (as shown in Table 3).\"\n    },\n    \"chk_conclusion\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"MaxKernel demonstrates that agentic systems can successfully handle the complexities of low-level accelerator programming.\",\n      \"reason\": \"The poster states this take-home conclusion verbatim in the Conclusion section.\"\n    },\n    \"chk_limitation\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"While the Auto Agent performs linear, iterative improvements, it remains susceptible to local optima.\",\n      \"reason\": \"The poster explicitly mentions this limitation of the Auto Agent under the Graph-Based Search section.\"\n    }\n  }\n}\n```"
 }

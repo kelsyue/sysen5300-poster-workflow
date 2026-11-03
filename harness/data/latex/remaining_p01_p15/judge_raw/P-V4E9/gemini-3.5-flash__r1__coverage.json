@@ -2,9 +2,58 @@
   "model": "gemini-3.5-flash",
   "repeat": 1,
   "judge_prompt_sha256": "4ec65050cfdc718218dbc587f672291e733fd03b1254c20d77b61b0933e16162",
-  "error": "transport: Error code: 422 - Budget has been exceeded! Key=SIX-SIGMA-SLIDES-PROJECT-2 (sk-...d5LQ) Current cost: 70.08230754, Max budget: 70.0",
-  "tokens_in": 0,
-  "tokens_out": 0,
-  "parsed": null,
-  "raw": ""
+  "error": null,
+  "tokens_in": 7246,
+  "tokens_out": 2157,
+  "max_output_tokens": 32768,
+  "parsed": {
+    "items": {
+      "chk_problem": {
+        "label": "accurate",
+        "poster_evidence": "We invert the usual evaluation design: instead of varying the system and fixing the reference, we hold the scored output fixed and exchange the reference. Any resulting score movement is attributable to reference choice alone. We ask two questions: how far does one fixed output’s score move, and does the comparison between two fixed outputs survive the reference exchange?",
+        "reason": "The poster clearly states the problem of measuring how reference choice affects scores and comparisons between outputs under the 'Core Question' section."
+      },
+      "chk_method": {
+        "label": "accurate",
+        "poster_evidence": "instead of varying the system and fixing the reference, we hold the scored output fixed and exchange the reference. Any resulting score movement is attributable to reference choice alone.",
+        "reason": "The poster describes the method of holding the system output fixed and varying the reference to isolate the effect of reference choice under 'Core Question'."
+      },
+      "chk_data": {
+        "label": "accurate",
+        "poster_evidence": "We study a production benchmark for personally identifiable information span extraction across Hindi, Portuguese, Polish, Swedish, Chinese, and Arabic. After deduplication, the record contains 24,939 prompts, roughly 4,100 per language, from seven business domains and twelve task categories.",
+        "reason": "The poster describes the dataset under 'Dataset Pipeline', specifying the multilingual PII extraction benchmark with six languages and 24,939 prompts."
+      },
+      "chk_setup": {
+        "label": "accurate",
+        "poster_evidence": "Every reference-choice measurement uses the audited subset, where all four labellings coexist. Each annotator labelling is treated as a fixed system output and scored first against delivered gold and then against reviewer gold. STRICT matching requires identical start offset, end offset, and type. RELAXED matching requires identical boundaries but ignores type.",
+        "reason": "The poster describes the experimental setup under 'Study Design', matching the audited subset of 2,628 prompts and the strict/relaxed matching rules."
+      },
+      "chk_primary_result": {
+        "label": "accurate",
+        "poster_evidence": "Holding the output fixed and changing only the reference moves pooled scores by 2.00–4.95 F1 points and by as much as 7.55 points in one language.",
+        "reason": "The poster reports the primary quantitative finding under 'Conclusion', matching the reference values of 2.00-4.95 F1 points and up to 7.55 points in one language."
+      },
+      "chk_secondary_result": {
+        "label": "accurate",
+        "poster_evidence": "It also changes the comparison between outputs: the pooled interaction is +2.95 points, survives correction for multiple testing, and changes the Hindi margin’s sign.",
+        "reason": "The poster reports the secondary finding under 'Conclusion', matching the +2.95 points pooled interaction and the sign change in the Hindi margin."
+      },
+      "chk_baseline": {
+        "label": "accurate",
+        "poster_evidence": "Each annotator labelling is treated as a fixed system output and scored first against delivered gold and then against reviewer gold.",
+        "reason": "The poster describes the comparison between scores obtained using the delivered gold reference versus the reviewer gold reference under 'Study Design'."
+      },
+      "chk_conclusion": {
+        "label": "accurate",
+        "poster_evidence": "Reference sensitivity should therefore be reported alongside the score.",
+        "reason": "The poster states this take-home conclusion under 'Conclusion', recommending reporting reference sensitivity alongside the score."
+      },
+      "chk_limitation": {
+        "label": "accurate",
+        "poster_evidence": "All measurements come from one benchmark and one annotation pipeline, so the method transfers but the numerical band does not. ... The scored outputs are human annotation passes, not independently developed model systems, so the magnitude and pattern of reference sensitivity for model predictions remain empirical questions.",
+        "reason": "The poster lists these limitations under the 'Limitations' section, matching both parts of the uncertain reference draft."
+      }
+    }
+  },
+  "raw": "```json\n{\n  \"items\": {\n    \"chk_problem\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"We invert the usual evaluation design: instead of varying the system and fixing the reference, we hold the scored output fixed and exchange the reference. Any resulting score movement is attributable to reference choice alone. We ask two questions: how far does one fixed output’s score move, and does the comparison between two fixed outputs survive the reference exchange?\",\n      \"reason\": \"The poster clearly states the problem of measuring how reference choice affects scores and comparisons between outputs under the 'Core Question' section.\"\n    },\n    \"chk_method\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"instead of varying the system and fixing the reference, we hold the scored output fixed and exchange the reference. Any resulting score movement is attributable to reference choice alone.\",\n      \"reason\": \"The poster describes the method of holding the system output fixed and varying the reference to isolate the effect of reference choice under 'Core Question'.\"\n    },\n    \"chk_data\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"We study a production benchmark for personally identifiable information span extraction across Hindi, Portuguese, Polish, Swedish, Chinese, and Arabic. After deduplication, the record contains 24,939 prompts, roughly 4,100 per language, from seven business domains and twelve task categories.\",\n      \"reason\": \"The poster describes the dataset under 'Dataset Pipeline', specifying the multilingual PII extraction benchmark with six languages and 24,939 prompts.\"\n    },\n    \"chk_setup\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Every reference-choice measurement uses the audited subset, where all four labellings coexist. Each annotator labelling is treated as a fixed system output and scored first against delivered gold and then against reviewer gold. STRICT matching requires identical start offset, end offset, and type. RELAXED matching requires identical boundaries but ignores type.\",\n      \"reason\": \"The poster describes the experimental setup under 'Study Design', matching the audited subset of 2,628 prompts and the strict/relaxed matching rules.\"\n    },\n    \"chk_primary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Holding the output fixed and changing only the reference moves pooled scores by 2.00–4.95 F1 points and by as much as 7.55 points in one language.\",\n      \"reason\": \"The poster reports the primary quantitative finding under 'Conclusion', matching the reference values of 2.00-4.95 F1 points and up to 7.55 points in one language.\"\n    },\n    \"chk_secondary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"It also changes the comparison between outputs: the pooled interaction is +2.95 points, survives correction for multiple testing, and changes the Hindi margin’s sign.\",\n      \"reason\": \"The poster reports the secondary finding under 'Conclusion', matching the +2.95 points pooled interaction and the sign change in the Hindi margin.\"\n    },\n    \"chk_baseline\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Each annotator labelling is treated as a fixed system output and scored first against delivered gold and then against reviewer gold.\",\n      \"reason\": \"The poster describes the comparison between scores obtained using the delivered gold reference versus the reviewer gold reference under 'Study Design'.\"\n    },\n    \"chk_conclusion\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Reference sensitivity should therefore be reported alongside the score.\",\n      \"reason\": \"The poster states this take-home conclusion under 'Conclusion', recommending reporting reference sensitivity alongside the score.\"\n    },\n    \"chk_limitation\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"All measurements come from one benchmark and one annotation pipeline, so the method transfers but the numerical band does not. ... The scored outputs are human annotation passes, not independently developed model systems, so the magnitude and pattern of reference sensitivity for model predictions remain empirical questions.\",\n      \"reason\": \"The poster lists these limitations under the 'Limitations' section, matching both parts of the uncertain reference draft.\"\n    }\n  }\n}\n```"
 }

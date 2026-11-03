@@ -1,0 +1,59 @@
+{
+  "model": "openai.gpt-4o",
+  "repeat": 1,
+  "judge_prompt_sha256": "4ec65050cfdc718218dbc587f672291e733fd03b1254c20d77b61b0933e16162",
+  "error": null,
+  "tokens_in": 5925,
+  "tokens_out": 878,
+  "max_output_tokens": 16384,
+  "parsed": {
+    "items": {
+      "chk_problem": {
+        "label": "accurate",
+        "poster_evidence": "Periodic Bloom filter transmission can impose high overhead in communication-constrained distributed systems. Lossless compression preserves membership but yields only one size. OR folding creates smaller, queryable views with higher FPR while preserving no-false-negative property.",
+        "reason": "The poster accurately describes the research problem of overhead and stale receiver states in communication-constrained systems, aligning with the reference."
+      },
+      "chk_method": {
+        "label": "accurate",
+        "poster_evidence": "Sender retains canonical Bloom filter and generates catalog of OR-folded views at various retained-length ratios (e.g., 0.95m, 0.90m, 0.75m). Each view is associated with its measured FPR. At each reporting opportunity, sender selects the largest FPR-qualified view that fits current communication constraints (capacity or loss probability).",
+        "reason": "The poster correctly describes the method as an online policy for selecting OR-folded Bloom filters based on time-varying communication conditions."
+      },
+      "chk_data": {
+        "label": "accurate",
+        "poster_evidence": "Datasets: PhiUSIIL and URL-Phish, 5,000 malicious URLs inserted, 50,000 benign queries.",
+        "reason": "The poster explicitly mentions the PhiUSIIL and URL-Phish datasets and provides the correct details about the number of malicious and benign URLs."
+      },
+      "chk_setup": {
+        "label": "accurate",
+        "poster_evidence": "All strategies use same channel trace per repetition. Experiments fix inserted set, canonical length, and hash count to isolate channel effects.",
+        "reason": "The poster provides sufficient details about the experimental setup, including fixed parameters and evaluation under time-varying channel models."
+      },
+      "chk_primary_result": {
+        "label": "accurate",
+        "poster_evidence": "Under Five-State Markov: adaptive folding achieves 191.6 deliveries/MB vs. 66.9 (best compression) and 27.7 (classical filter) — 2.9x and 6.9x improvement.",
+        "reason": "The poster correctly reports the primary result of 191.6 successful deliveries per MB under the Five-State Markov model, matching the reference."
+      },
+      "chk_secondary_result": {
+        "label": "accurate",
+        "poster_evidence": "Under Five-State Markov: folding reduces mean receiver age to 1.24 intervals vs. 13.5 (compression) and 31.6 (classical) — 10.9x and 25.5x fresher.",
+        "reason": "The poster accurately reports the secondary result of reduced mean receiver age to 1.24 intervals under the Five-State Markov model, consistent with the reference."
+      },
+      "chk_baseline": {
+        "label": "accurate",
+        "poster_evidence": "Baselines: complete canonical filter, sparse canonical filter, and four lossless compression methods (gzip, zlib, bzip2, LZMA) at highest compression level.",
+        "reason": "The poster lists the correct baselines, including classical filters and four lossless compression methods, as described in the reference."
+      },
+      "chk_conclusion": {
+        "label": "accurate",
+        "poster_evidence": "Channel-aware selection of OR-folded Bloom filters improves communication efficiency and receiver freshness under time-varying channels, especially when opportunities vary substantially (Five-State, Rayleigh). Under favorable conditions (Gilbert-Elliott), it remains competitive in efficiency and provides the freshest receiver state.",
+        "reason": "The poster accurately summarizes the conclusion that channel-aware folding improves efficiency and freshness under varying communication conditions."
+      },
+      "chk_limitation": {
+        "label": "accurate",
+        "poster_evidence": "Limitations: fixed cardinality and content, simulated channels, no fixed-folded baselines.",
+        "reason": "The poster identifies specific limitations, including fixed datasets and simulated channels, consistent with the reference."
+      }
+    }
+  },
+  "raw": "```json\n{\n  \"items\": {\n    \"chk_problem\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Periodic Bloom filter transmission can impose high overhead in communication-constrained distributed systems. Lossless compression preserves membership but yields only one size. OR folding creates smaller, queryable views with higher FPR while preserving no-false-negative property.\",\n      \"reason\": \"The poster accurately describes the research problem of overhead and stale receiver states in communication-constrained systems, aligning with the reference.\"\n    },\n    \"chk_method\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Sender retains canonical Bloom filter and generates catalog of OR-folded views at various retained-length ratios (e.g., 0.95m, 0.90m, 0.75m). Each view is associated with its measured FPR. At each reporting opportunity, sender selects the largest FPR-qualified view that fits current communication constraints (capacity or loss probability).\",\n      \"reason\": \"The poster correctly describes the method as an online policy for selecting OR-folded Bloom filters based on time-varying communication conditions.\"\n    },\n    \"chk_data\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Datasets: PhiUSIIL and URL-Phish, 5,000 malicious URLs inserted, 50,000 benign queries.\",\n      \"reason\": \"The poster explicitly mentions the PhiUSIIL and URL-Phish datasets and provides the correct details about the number of malicious and benign URLs.\"\n    },\n    \"chk_setup\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"All strategies use same channel trace per repetition. Experiments fix inserted set, canonical length, and hash count to isolate channel effects.\",\n      \"reason\": \"The poster provides sufficient details about the experimental setup, including fixed parameters and evaluation under time-varying channel models.\"\n    },\n    \"chk_primary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Under Five-State Markov: adaptive folding achieves 191.6 deliveries/MB vs. 66.9 (best compression) and 27.7 (classical filter) — 2.9x and 6.9x improvement.\",\n      \"reason\": \"The poster correctly reports the primary result of 191.6 successful deliveries per MB under the Five-State Markov model, matching the reference.\"\n    },\n    \"chk_secondary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Under Five-State Markov: folding reduces mean receiver age to 1.24 intervals vs. 13.5 (compression) and 31.6 (classical) — 10.9x and 25.5x fresher.\",\n      \"reason\": \"The poster accurately reports the secondary result of reduced mean receiver age to 1.24 intervals under the Five-State Markov model, consistent with the reference.\"\n    },\n    \"chk_baseline\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Baselines: complete canonical filter, sparse canonical filter, and four lossless compression methods (gzip, zlib, bzip2, LZMA) at highest compression level.\",\n      \"reason\": \"The poster lists the correct baselines, including classical filters and four lossless compression methods, as described in the reference.\"\n    },\n    \"chk_conclusion\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Channel-aware selection of OR-folded Bloom filters improves communication efficiency and receiver freshness under time-varying channels, especially when opportunities vary substantially (Five-State, Rayleigh). Under favorable conditions (Gilbert-Elliott), it remains competitive in efficiency and provides the freshest receiver state.\",\n      \"reason\": \"The poster accurately summarizes the conclusion that channel-aware folding improves efficiency and freshness under varying communication conditions.\"\n    },\n    \"chk_limitation\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Limitations: fixed cardinality and content, simulated channels, no fixed-folded baselines.\",\n      \"reason\": \"The poster identifies specific limitations, including fixed datasets and simulated channels, consistent with the reference.\"\n    }\n  }\n}\n```"
+}

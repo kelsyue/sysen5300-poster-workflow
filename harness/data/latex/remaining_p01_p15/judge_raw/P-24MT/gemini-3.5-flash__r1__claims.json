@@ -2,9 +2,574 @@
   "model": "gemini-3.5-flash",
   "repeat": 1,
   "judge_prompt_sha256": "4ec65050cfdc718218dbc587f672291e733fd03b1254c20d77b61b0933e16162",
-  "error": "transport: Error code: 422 - Budget has been exceeded! Key=SIX-SIGMA-SLIDES-PROJECT-2 (sk-...d5LQ) Current cost: 70.08230754, Max budget: 70.0",
-  "tokens_in": 0,
-  "tokens_out": 0,
-  "parsed": null,
-  "raw": ""
+  "error": null,
+  "tokens_in": 28191,
+  "tokens_out": 27927,
+  "max_output_tokens": 32768,
+  "claims_batch_size": 40,
+  "parsed": {
+    "claims": [
+      {
+        "id": 1,
+        "text": "MaxKernel implements a Human-in-the-Loop (HITL) agent for collaborative, step-by-step design.",
+        "poster_quote": "a Human-in-the-Loop (HITL) agent for collaborative, step-by-step design",
+        "label": "supported",
+        "paper_evidence": "a Human-in-the-Loop (HITL) agent for collaborative, step-by-step design;",
+        "reason": "Abstract. The paper states that MaxKernel implements a HITL agent for collaborative, step-by-step design."
+      },
+      {
+        "id": 2,
+        "text": "MaxKernel implements an Autonomous (Auto) agent that executes a fully automated, metric/trace-driven optimization loop.",
+        "poster_quote": "an Autonomous (Auto) agent that executes a fully automated, metric/trace-driven optimization loop",
+        "label": "supported",
+        "paper_evidence": "an Autonomous (Auto) agent that executes a fully automated, metric/trace-driven optimization loop;",
+        "reason": "Abstract. The paper states that MaxKernel implements an Autonomous (Auto) agent with a metric/trace-driven optimization loop."
+      },
+      {
+        "id": 3,
+        "text": "MaxKernel implements a Graph-Based Autonomous Search that scales the Auto agent for global exploration of the design space.",
+        "poster_quote": "a Graph-Based Autonomous Search that scales the Auto agent for global exploration of the design space",
+        "label": "supported",
+        "paper_evidence": "a Graph-Based Autonomous Search that scales the Auto agent for global exploration of the design space.",
+        "reason": "Abstract. The paper states that MaxKernel implements a Graph-Based Autonomous Search to scale the Auto agent."
+      },
+      {
+        "id": 4,
+        "text": "All three paradigms of MaxKernel leverage a shared pool of specialized sub-agents to handle planning, implementation, self-debugging, testing, and hardware profiling.",
+        "poster_quote": "All three paradigms leverage a shared pool of specialized sub-agents to handle planning, implementation, self-debugging, testing, and hardware profiling.",
+        "label": "supported",
+        "paper_evidence": "All three paradigms leverage a shared pool of specialized sub-agents to handle planning, implementation, self-debugging, testing, and hardware profiling.",
+        "reason": "Abstract. The paper states that all three paradigms leverage a shared pool of specialized sub-agents for these tasks."
+      },
+      {
+        "id": 5,
+        "text": "JaxBench is a comprehensive suite of 50 diverse kernel tasks for TPUs.",
+        "poster_quote": "JaxBench, a comprehensive suite of 50 diverse kernel tasks for TPUs",
+        "label": "supported",
+        "paper_evidence": "We evaluate MaxKernel on JaxBench, a comprehensive suite of 50 diverse kernel tasks for TPUs",
+        "reason": "Abstract. The paper states that JaxBench is a comprehensive suite of 50 diverse kernel tasks for TPUs."
+      },
+      {
+        "id": 6,
+        "text": "MaxKernel matches expert hand-tuned baselines across the benchmark.",
+        "poster_quote": "matching expert hand-tuned baselines",
+        "label": "supported",
+        "paper_evidence": "matching expert hand-tuned baselines and delivering significant performance across the benchmark.",
+        "reason": "Abstract. The paper states that MaxKernel matches expert hand-tuned baselines."
+      },
+      {
+        "id": 7,
+        "text": "JaxBench contains 17 widely used operators adapted from popular LLM architectures.",
+        "poster_quote": "17 widely used operators adapted from popular LLM architectures",
+        "label": "supported",
+        "paper_evidence": "This benchmark comprises 17 widely used operators adapted from popular LLM architectures",
+        "reason": "Section 3. The paper states that JaxBench contains 17 operators adapted from popular LLM architectures."
+      },
+      {
+        "id": 8,
+        "text": "JaxBench contains 33 fused operators adapted from KernelBench.",
+        "poster_quote": "33 fused operators adapted from KernelBench",
+        "label": "supported",
+        "paper_evidence": "and 33 fused operators adapted from the KernelBench dataset.",
+        "reason": "Section 3. The paper states that JaxBench contains 33 fused operators adapted from KernelBench."
+      },
+      {
+        "id": 9,
+        "text": "MaxKernel accelerates SOTA OSS kernels including Multi-Head Latent Attention (MLA), Qwen3-Next Gated DeltaNet, and DeepSeek-V4 Sparse Attention.",
+        "poster_quote": "We additionally accelerate SOTA OSS kernels such as Multi-Head Latent Attention (MLA), Qwen3-Next Gated DeltaNet, and DeepSeek-V4 Sparse Attention.",
+        "label": "supported",
+        "paper_evidence": "By automatically generating highly efficient Pallas implementations for complex real-world workloads—such as Multi-Head Latent Attention (MLA), Qwen3-Next Gated DeltaNet, and DeepSeek-V4 Sparse Attention—MaxKernel achieves significant improvements in latency and throughput over heavily optimized JAX and human-authored baselines.",
+        "reason": "Section 3. The paper states that MaxKernel accelerates these SOTA OSS kernels."
+      },
+      {
+        "id": 10,
+        "text": "All evaluations of MaxKernel run on TPU v6e.",
+        "poster_quote": "All evaluations run on TPU v6e.",
+        "label": "supported",
+        "paper_evidence": "All empirical evaluations are conducted on TPU v6e hardware using MaxKernel’s dedicated evaluation harness.",
+        "reason": "Section 3.1. The paper states that all evaluations are conducted on TPU v6e."
+      },
+      {
+        "id": 11,
+        "text": "Numerical equivalence testing uses jnp.allclose with atol = rtol = 1e-2 for most cases.",
+        "poster_quote": "Numerical equivalence uses jnp.allclose with atol = rtol = 1e-2 for most cases",
+        "label": "supported",
+        "paper_evidence": "Numerical equivalence is checked using jnp.allclose with both absolute and relative tolerances set to 10−2 (atol = rtol = 10−2 ) for most cases.",
+        "reason": "Section 3.1. The paper states that atol = rtol = 10^-2 (which is 1e-2) is used for most cases."
+      },
+      {
+        "id": 12,
+        "text": "Numerical equivalence testing is relaxed to at most 1e-1 for tasks with standard bf16 variance.",
+        "poster_quote": "relaxed to at most 1e-1 for tasks with standard bf16 variance",
+        "label": "supported",
+        "paper_evidence": "To safely account for standard bf16 variance in custom hardware-accelerated math, certain tasks’ tolerance are relaxed to at most 10−1.",
+        "reason": "Section 3.1. The paper states that tolerance is relaxed to at most 10^-1 (which is 1e-1) for standard bf16 variance."
+      },
+      {
+        "id": 13,
+        "text": "The evaluation harness integrates XProf to capture precise on-device execution times.",
+        "poster_quote": "The harness integrates XProf to capture precise on-device execution times",
+        "label": "supported",
+        "paper_evidence": "To measure true hardware performance, the harness integrates directly with XProf profiling tool. This allows the system to capture precise on-device execution times",
+        "reason": "Section 3.1. The paper states that the harness integrates with XProf to capture precise on-device execution times."
+      },
+      {
+        "id": 14,
+        "text": "The Best-of-N (Zero-Shot) baseline uses N=100.",
+        "poster_quote": "Best-of-N (Zero-Shot) with N=100",
+        "label": "supported",
+        "paper_evidence": "The fastest correct sample out of 𝑁 is selected (in our experiments, we set 𝑁 = 100).",
+        "reason": "Section 3.1. The paper states that N=100 is used for the Best-of-N baseline."
+      },
+      {
+        "id": 15,
+        "text": "MaxKernel Auto uses a single trajectory, 5 iterations, and reports the median over 5 runs.",
+        "poster_quote": "MaxKernel Auto (single trajectory, 5 iterations, median over 5 runs)",
+        "label": "supported",
+        "paper_evidence": "MaxKernel Auto: A single-trajectory iterative refinement agent restricted to 5 iterations. To account for generation variance, we execute 5 independent runs per workload and report the median performance with its upper and lower bounds.",
+        "reason": "Section 3.1. The paper states that MaxKernel Auto uses a single trajectory, 5 iterations, and reports the median over 5 runs."
+      },
+      {
+        "id": 16,
+        "text": "MaxKernel Parallel uses 5 concurrent Auto trajectories and selects the best correct kernel.",
+        "poster_quote": "MaxKernel Parallel (5 concurrent Auto trajectories, best correct kernel)",
+        "label": "supported",
+        "paper_evidence": "MaxKernel Parallel: Executed via 5 concurrent MaxKernel Auto trajectories (5 iterations each). Instead of the median, it selects the single fastest correct kernel across all runs",
+        "reason": "Section 3.1. The paper states that MaxKernel Parallel uses 5 concurrent Auto trajectories and selects the fastest correct kernel."
+      },
+      {
+        "id": 17,
+        "text": "MaxKernel Beam uses a beam width of 3, max depth of 3, 2 branches per node, and 2 iterations per node.",
+        "poster_quote": "MaxKernel Beam (beam width 3, max depth 3, 2 branches per node, 2 iterations per node)",
+        "label": "supported",
+        "paper_evidence": "MaxKernel Beam: A structured, top-𝑘 guided graph search configured with a beam width of 3, a maximum depth of 3, and 2 expansion branches per node. To limit computational cost, the inner evaluation loop is strictly capped at 2 iterations per node.",
+        "reason": "Section 3.1. The paper states these exact parameters for MaxKernel Beam."
+      },
+      {
+        "id": 18,
+        "text": "All LLM queries in the evaluation used Gemini 3.1 Pro.",
+        "poster_quote": "All LLM queries used Gemini 3.1 Pro.",
+        "label": "supported",
+        "paper_evidence": "All large language model queries and agent interactions throughout our experiments were conducted using the Gemini 3.1 Pro model.",
+        "reason": "Section 3.2. The paper states that Gemini 3.1 Pro was used for all LLM queries."
+      },
+      {
+        "id": 19,
+        "text": "Two search algorithms are implemented for Graph-Based Autonomous Search.",
+        "poster_quote": "Two search algorithms are implemented.",
+        "label": "supported",
+        "paper_evidence": "Currently, MaxKernel implements two primary search algorithms to navigate the optimization space.",
+        "reason": "Section 2.5. The paper states that two search algorithms (Parallel Search and Beam Search) are implemented."
+      },
+      {
+        "id": 20,
+        "text": "The Best-of-N baseline achieves a compilation rate of 10/50 on JaxBench.",
+        "poster_quote": "10/50",
+        "label": "supported",
+        "paper_evidence": "10/50",
+        "reason": "Table 1, Compilation Rate row, Best-of-N column. The compilation rate is 10/50."
+      },
+      {
+        "id": 21,
+        "text": "The Best-of-N baseline achieves a correctness rate of 10/50 on JaxBench.",
+        "poster_quote": "10/50",
+        "label": "supported",
+        "paper_evidence": "10/50",
+        "reason": "Table 1, Correctness Rate row, Best-of-N column. The correctness rate is 10/50."
+      },
+      {
+        "id": 22,
+        "text": "The Best-of-N baseline achieves a geometric mean speedup of 1.08 on JaxBench.",
+        "poster_quote": "1.08",
+        "label": "supported",
+        "paper_evidence": "1.08",
+        "reason": "Table 1, Geometric Mean Speedup row, Best-of-N column. The speedup is 1.08."
+      },
+      {
+        "id": 23,
+        "text": "The Best-of-N baseline achieves a fast1 score of 6/50 on JaxBench.",
+        "poster_quote": "6/50",
+        "label": "supported",
+        "paper_evidence": "6/50",
+        "reason": "Table 1, fast1 row, Best-of-N column. The fast1 score is 6/50."
+      },
+      {
+        "id": 24,
+        "text": "MaxKernel Auto achieves a compilation rate of 49/50 on JaxBench, with a range of [48, 50].",
+        "poster_quote": "49/50 [48, 50]",
+        "label": "supported",
+        "paper_evidence": "49/50 [48/50, 50/50]",
+        "reason": "Table 1, Compilation Rate row, MK Auto column. The compilation rate is 49/50 with a range of [48/50, 50/50]."
+      },
+      {
+        "id": 25,
+        "text": "MaxKernel Auto achieves a correctness rate of 48/50 on JaxBench, with a range of [46, 49].",
+        "poster_quote": "48/50 [46, 49]",
+        "label": "supported",
+        "paper_evidence": "48/50 [46/50, 49/50]",
+        "reason": "Table 1, Correctness Rate row, MK Auto column. The correctness rate is 48/50 with a range of [46/50, 49/50]."
+      },
+      {
+        "id": 26,
+        "text": "MaxKernel Auto achieves a geometric mean speedup of 1.39 on JaxBench, with a range of [1.19, 1.42].",
+        "poster_quote": "1.39 [1.19, 1.42]",
+        "label": "supported",
+        "paper_evidence": "1.39 [1.19, 1.42]",
+        "reason": "Table 1, Geometric Mean Speedup row, MK Auto column. The speedup is 1.39 with a range of [1.19, 1.42]."
+      },
+      {
+        "id": 27,
+        "text": "MaxKernel Auto achieves a fast1 score of 22/50 on JaxBench, with a range of [18, 28].",
+        "poster_quote": "22/50 [18, 28]",
+        "label": "supported",
+        "paper_evidence": "22/50 [18/50, 28/50]",
+        "reason": "Table 1, fast1 row, MK Auto column. The fast1 score is 22/50 with a range of [18/50, 28/50]."
+      },
+      {
+        "id": 28,
+        "text": "MaxKernel Parallel achieves a compilation rate of 50/50 on JaxBench.",
+        "poster_quote": "50/50",
+        "label": "supported",
+        "paper_evidence": "50/50",
+        "reason": "Table 1, Compilation Rate row, MK Parallel column. The compilation rate is 50/50."
+      },
+      {
+        "id": 29,
+        "text": "MaxKernel Parallel achieves a correctness rate of 50/50 on JaxBench.",
+        "poster_quote": "50/50",
+        "label": "supported",
+        "paper_evidence": "50/50",
+        "reason": "Table 1, Correctness Rate row, MK Parallel column. The correctness rate is 50/50."
+      },
+      {
+        "id": 30,
+        "text": "MaxKernel Parallel achieves a geometric mean speedup of 1.58 on JaxBench.",
+        "poster_quote": "1.58",
+        "label": "supported",
+        "paper_evidence": "1.58",
+        "reason": "Table 1, Geometric Mean Speedup row, MK Parallel column. The speedup is 1.58."
+      },
+      {
+        "id": 31,
+        "text": "MaxKernel Parallel achieves a fast1 score of 34/50 on JaxBench.",
+        "poster_quote": "34/50",
+        "label": "supported",
+        "paper_evidence": "34/50",
+        "reason": "Table 1, fast1 row, MK Parallel column. The fast1 score is 34/50."
+      },
+      {
+        "id": 32,
+        "text": "MaxKernel Beam achieves a compilation rate of 50/50 on JaxBench.",
+        "poster_quote": "50/50",
+        "label": "supported",
+        "paper_evidence": "50/50",
+        "reason": "Table 1, Compilation Rate row, MK Beam column. The compilation rate is 50/50."
+      },
+      {
+        "id": 33,
+        "text": "MaxKernel Beam achieves a correctness rate of 50/50 on JaxBench.",
+        "poster_quote": "50/50",
+        "label": "supported",
+        "paper_evidence": "50/50",
+        "reason": "Table 1, Correctness Rate row, MK Beam column. The correctness rate is 50/50."
+      },
+      {
+        "id": 34,
+        "text": "MaxKernel Beam achieves a geometric mean speedup of 1.49 on JaxBench.",
+        "poster_quote": "1.49",
+        "label": "supported",
+        "paper_evidence": "1.49",
+        "reason": "Table 1, Geometric Mean Speedup row, MK Beam column. The speedup is 1.49."
+      },
+      {
+        "id": 35,
+        "text": "MaxKernel Beam achieves a fast1 score of 31/50 on JaxBench.",
+        "poster_quote": "31/50",
+        "label": "supported",
+        "paper_evidence": "31/50",
+        "reason": "Table 1, fast1 row, MK Beam column. The fast1 score is 31/50."
+      },
+      {
+        "id": 36,
+        "text": "Parallel Search resides above all individual curves with 68% at p=1.0.",
+        "poster_quote": "Parallel Search resides above all individual curves (68% at p=1.0",
+        "label": "supported",
+        "paper_evidence": "achieving the highest success rates (e.g., 68% at p=1.0 and 24% at p=2.0).",
+        "reason": "Section 3.2. The paper states that Parallel Search achieves 68% at p=1.0."
+      },
+      {
+        "id": 37,
+        "text": "Parallel Search resides above all individual curves with 24% at p=2.0.",
+        "poster_quote": "24% at p=2.0",
+        "label": "supported",
+        "paper_evidence": "achieving the highest success rates (e.g., 68% at p=1.0 and 24% at p=2.0).",
+        "reason": "Section 3.2. The paper states that Parallel Search achieves 24% at p=2.0."
+      },
+      {
+        "id": 38,
+        "text": "The baseline latency for MLA v1 is 3.127 ms using Pallas.",
+        "poster_quote": "3.127 (Pallas)",
+        "label": "supported",
+        "paper_evidence": "3.127 (Pallas)",
+        "reason": "Table 3, MLA v1 row, Latency (ms) sub-row, Baseline column. The baseline latency is 3.127 ms using Pallas."
+      },
+      {
+        "id": 39,
+        "text": "The MaxKernel latency for MLA v1 is 2.856 ms.",
+        "poster_quote": "2.856",
+        "label": "supported",
+        "paper_evidence": "2.856",
+        "reason": "Table 3, MLA v1 row, Latency (ms) sub-row, MaxKernel column. The MaxKernel latency is 2.856 ms."
+      },
+      {
+        "id": 40,
+        "text": "The latency gain of MaxKernel over baseline for MLA v1 is +8.68%.",
+        "poster_quote": "+8.68%",
+        "label": "contradicted",
+        "paper_evidence": "+8.68%",
+        "reason": "Table 3, MLA v1 row, Latency (ms) sub-row, Speedup/Gain column. Recomputing the latency reduction from the baseline (3.127 ms) and MaxKernel (2.856 ms) yields (3.127 - 2.856) / 3.127 = 8.67%, which conflicts with the printed value of 8.68% at the printed precision."
+      },
+      {
+        "id": 41,
+        "text": "The baseline throughput for MLA v1 is 116.735 TFLOPS using Pallas.",
+        "poster_quote": "116.735 (Pallas)",
+        "label": "supported",
+        "paper_evidence": "116.735 (Pallas)",
+        "reason": "Table 3, row 'MLA v1', column 'Baseline' shows the baseline throughput is 116.735 TFLOPS using Pallas."
+      },
+      {
+        "id": 42,
+        "text": "The MaxKernel throughput for MLA v1 is 127.825 TFLOPS.",
+        "poster_quote": "127.825",
+        "label": "supported",
+        "paper_evidence": "127.825",
+        "reason": "Table 3, row 'MLA v1', column 'MaxKernel' shows the throughput is 127.825 TFLOPS."
+      },
+      {
+        "id": 43,
+        "text": "The throughput gain of MaxKernel over baseline for MLA v1 is +9.50%.",
+        "poster_quote": "+9.50%",
+        "label": "supported",
+        "paper_evidence": "+9.50%",
+        "reason": "Table 3, row 'MLA v1', column 'Speedup/Gain' shows a throughput gain of +9.50%."
+      },
+      {
+        "id": 44,
+        "text": "The baseline forward pass latency for Qwen3-Next GDN is 17.09 ms using JAX.",
+        "poster_quote": "17.09 (JAX)",
+        "label": "supported",
+        "paper_evidence": "17.09 (JAX)",
+        "reason": "Table 3, row 'Qwen3-Next GDN' (Forward Pass), column 'Baseline' shows the baseline latency is 17.09 ms using JAX."
+      },
+      {
+        "id": 45,
+        "text": "The MaxKernel forward pass latency for Qwen3-Next GDN is 10.47 ms.",
+        "poster_quote": "10.47",
+        "label": "supported",
+        "paper_evidence": "10.47",
+        "reason": "Table 3, row 'Qwen3-Next GDN' (Forward Pass), column 'MaxKernel' shows the latency is 10.47 ms."
+      },
+      {
+        "id": 46,
+        "text": "The forward pass latency gain of MaxKernel over baseline for Qwen3-Next GDN is 1.63×.",
+        "poster_quote": "1.63×",
+        "label": "supported",
+        "paper_evidence": "1.63×",
+        "reason": "Table 3, row 'Qwen3-Next GDN' (Forward Pass), column 'Speedup/Gain' shows a speedup of 1.63×, which matches 17.09 / 10.47 = 1.632."
+      },
+      {
+        "id": 47,
+        "text": "The baseline training step latency for Qwen3-Next GDN is 84.51 ms using JAX.",
+        "poster_quote": "84.51 (JAX)",
+        "label": "supported",
+        "paper_evidence": "84.51 (JAX)",
+        "reason": "Table 3, row 'Qwen3-Next GDN' (Training Step), column 'Baseline' shows the baseline latency is 84.51 ms using JAX."
+      },
+      {
+        "id": 48,
+        "text": "The MaxKernel training step latency for Qwen3-Next GDN is 17.99 ms.",
+        "poster_quote": "17.99",
+        "label": "supported",
+        "paper_evidence": "17.99",
+        "reason": "Table 3, row 'Qwen3-Next GDN' (Training Step), column 'MaxKernel' shows the latency is 17.99 ms."
+      },
+      {
+        "id": 49,
+        "text": "The training step latency gain of MaxKernel over baseline for Qwen3-Next GDN is 4.70×.",
+        "poster_quote": "4.70×",
+        "label": "supported",
+        "paper_evidence": "4.70×",
+        "reason": "Table 3, row 'Qwen3-Next GDN' (Training Step), column 'Speedup/Gain' shows a speedup of 4.70×, which matches 84.51 / 17.99 = 4.698."
+      },
+      {
+        "id": 50,
+        "text": "The baseline prefill latency for DSv4 Sparse Attn is 27.08 ms using JAX.",
+        "poster_quote": "27.08 (JAX)",
+        "label": "supported",
+        "paper_evidence": "27.08 (JAX)",
+        "reason": "Table 3, row 'DSv4 Sparse Attn' (Prefill), column 'Baseline' shows the baseline latency is 27.08 ms using JAX."
+      },
+      {
+        "id": 51,
+        "text": "The MaxKernel prefill latency for DSv4 Sparse Attn is 3.449 ms.",
+        "poster_quote": "3.449",
+        "label": "supported",
+        "paper_evidence": "3.449",
+        "reason": "Table 3, row 'DSv4 Sparse Attn' (Prefill), column 'MaxKernel' shows the latency is 3.449 ms."
+      },
+      {
+        "id": 52,
+        "text": "The prefill latency gain of MaxKernel over baseline for DSv4 Sparse Attn is 7.85×.",
+        "poster_quote": "7.85×",
+        "label": "supported",
+        "paper_evidence": "7.85×",
+        "reason": "Table 3, row 'DSv4 Sparse Attn' (Prefill), column 'Speedup/Gain' shows a speedup of 7.85×, which matches 27.08 / 3.449 = 7.852."
+      },
+      {
+        "id": 53,
+        "text": "The baseline decode latency for DSv4 Sparse Attn is 0.047 ms using JAX.",
+        "poster_quote": "0.047 (JAX)",
+        "label": "supported",
+        "paper_evidence": "0.047 (JAX)",
+        "reason": "Table 3, row 'DSv4 Sparse Attn' (Decode), column 'Baseline' shows the baseline latency is 0.047 ms using JAX."
+      },
+      {
+        "id": 54,
+        "text": "The MaxKernel decode latency for DSv4 Sparse Attn is 0.02 ms.",
+        "poster_quote": "0.02",
+        "label": "supported",
+        "paper_evidence": "0.02",
+        "reason": "Table 3, row 'DSv4 Sparse Attn' (Decode), column 'MaxKernel' shows the latency is 0.02 ms."
+      },
+      {
+        "id": 55,
+        "text": "The decode latency gain of MaxKernel over baseline for DSv4 Sparse Attn is 2.36×.",
+        "poster_quote": "2.36×",
+        "label": "supported",
+        "paper_evidence": "2.36×",
+        "reason": "Table 3, row 'DSv4 Sparse Attn' (Decode), column 'Speedup/Gain' shows a speedup of 2.36×."
+      },
+      {
+        "id": 56,
+        "text": "The baseline forward pass latency for Mamba v2 (SSD) is 0.211 ms using JAX.",
+        "poster_quote": "0.211 (JAX)",
+        "label": "supported",
+        "paper_evidence": "0.211 (JAX)",
+        "reason": "Table 3, row 'Mamba v2 (SSD)', column 'Baseline' shows the baseline latency is 0.211 ms using JAX."
+      },
+      {
+        "id": 57,
+        "text": "The MaxKernel forward pass latency for Mamba v2 (SSD) is 0.192 ms.",
+        "poster_quote": "0.192",
+        "label": "supported",
+        "paper_evidence": "0.192",
+        "reason": "Table 3, row 'Mamba v2 (SSD)', column 'MaxKernel' shows the latency is 0.192 ms."
+      },
+      {
+        "id": 58,
+        "text": "The forward pass latency gain of MaxKernel over baseline for Mamba v2 (SSD) is 1.10×.",
+        "poster_quote": "1.10×",
+        "label": "supported",
+        "paper_evidence": "1.10×",
+        "reason": "Table 3, row 'Mamba v2 (SSD)', column 'Speedup/Gain' shows a speedup of 1.10×, which matches 0.211 / 0.192 = 1.099."
+      },
+      {
+        "id": 59,
+        "text": "The baseline forward pass latency for StreamIndex_topk is 0.415 ms using JAX.",
+        "poster_quote": "0.415 (JAX)",
+        "label": "supported",
+        "paper_evidence": "0.415 (JAX)",
+        "reason": "Table 3, row 'StreamIndex_topk', column 'Baseline' shows the baseline latency is 0.415 ms using JAX."
+      },
+      {
+        "id": 60,
+        "text": "The MaxKernel forward pass latency for StreamIndex_topk is 0.250 ms.",
+        "poster_quote": "0.250",
+        "label": "supported",
+        "paper_evidence": "0.250",
+        "reason": "Table 3, row 'StreamIndex_topk', column 'MaxKernel' shows the latency is 0.250 ms."
+      },
+      {
+        "id": 61,
+        "text": "The forward pass latency gain of MaxKernel over baseline for StreamIndex_topk is 1.66×.",
+        "poster_quote": "1.66×",
+        "label": "supported",
+        "paper_evidence": "1.66×",
+        "reason": "Table 3, row 'StreamIndex_topk', column 'Speedup/Gain' shows a speedup of 1.66×, which matches 0.415 / 0.250 = 1.66."
+      },
+      {
+        "id": 62,
+        "text": "MaxKernel resolved critical crash and deadlock issues in Ragged Paged Attention v3 prefill mode by automatically implementing protective ALU clamp instructions for left-padded inputs.",
+        "poster_quote": "it resolved critical crash and deadlock issues in Ragged Paged Attention v3 prefill mode by automatically implementing protective ALU clamp instructions for left-padded inputs",
+        "label": "supported",
+        "paper_evidence": "We applied the framework to resolve critical crash and deadlock issues in the Ragged Page Attention v3 (RPAv3) prefill mode. MaxKernel automatically implemented protective ALU clamp instructions to handle left-padded inputs correctly, preventing negative slice sizes and ensuring DMA prefetches execute cleanly.",
+        "reason": "Section 3.4 explicitly states that MaxKernel resolved these issues in RPAv3 prefill mode using protective ALU clamp instructions."
+      },
+      {
+        "id": 63,
+        "text": "Hand-tuned kernel code is explicitly excluded from the retrieval corpus of the Knowledge Store.",
+        "poster_quote": "Hand-tuned kernel code is explicitly excluded from the retrieval corpus",
+        "label": "supported",
+        "paper_evidence": "Additionally, we explicitly exclude hand-tuned kernel code from the retrieval corpus",
+        "reason": "Section 2.2 states that hand-tuned kernel code is explicitly excluded from the retrieval corpus of the Knowledge Store."
+      },
+      {
+        "id": 64,
+        "text": "MaxKernel reached a geometric mean speedup of 1.58× on top of XLA optimizations on JaxBench.",
+        "poster_quote": "reaching a geometric mean speedup of 1.58× on top of XLA optimizations",
+        "label": "supported",
+        "paper_evidence": "reaching a geometric mean speedup of 1.58x on top of XLA optimizations on JaxBench.",
+        "reason": "Section 4 (Conclusion) states that MaxKernel reached a geometric mean speedup of 1.58x on top of XLA optimizations on JaxBench."
+      },
+      {
+        "id": 65,
+        "text": "MaxKernel reached a geometric mean speedup of 2.32× on production kernels.",
+        "poster_quote": "and 2.32× on production kernels",
+        "label": "supported",
+        "paper_evidence": "Furthermore, on the eight production kernels where human-written kernels exist, MaxKernel achieves a 2.32× geometric mean speedup over the reference code",
+        "reason": "Section 1 states that MaxKernel achieves a 2.32× geometric mean speedup over the reference code on the eight production kernels."
+      },
+      {
+        "id": 66,
+        "text": "MaxKernel exceeded human hand-tuned references (which achieved 2.02×) on production kernels.",
+        "poster_quote": "exceeding human hand-tuned references (2.02×)",
+        "label": "supported",
+        "paper_evidence": "outperforming human-written ones (2.02×).",
+        "reason": "Section 1 states that MaxKernel outperformed human-written ones (which achieved 2.02×) on the eight production kernels."
+      },
+      {
+        "id": 67,
+        "text": "A Planning Agent creates a high-level algorithmic optimization plan based on hardware specifications and the reference implementation.",
+        "poster_quote": "A Planning Agent creates a high-level algorithmic optimization plan based on hardware specifications and the reference implementation",
+        "label": "supported",
+        "paper_evidence": "Planning Agent, which creates a high-level algorithmic optimization plan based on hardware specifications and the reference implementation",
+        "reason": "Section 2.1 describes the role of the Planning Agent."
+      },
+      {
+        "id": 68,
+        "text": "An Implementation Agent translates the plan into valid Pallas code.",
+        "poster_quote": "an Implementation Agent translates the plan into valid Pallas code",
+        "label": "supported",
+        "paper_evidence": "an Implementation Agent, which translates the plan into valid Pallas code.",
+        "reason": "Section 2.1 describes the role of the Implementation Agent."
+      },
+      {
+        "id": 69,
+        "text": "A Test Synthesis Agent constructs comprehensive test suites.",
+        "poster_quote": "A Test Synthesis Agent constructs comprehensive test suites",
+        "label": "supported",
+        "paper_evidence": "A Test Synthesis Agent constructs comprehensive test suites",
+        "reason": "Section 2.1 describes the role of the Test Synthesis Agent."
+      },
+      {
+        "id": 70,
+        "text": "An Execution Agent runs test suites securely on target hardware.",
+        "poster_quote": "an Execution Agent runs them securely on target hardware",
+        "label": "supported",
+        "paper_evidence": "an Execution Agent runs these tests securely on the target hardware (e.g., TPU).",
+        "reason": "Section 2.1 describes the role of the Execution Agent."
+      }
+    ]
+  },
+  "raw": "[\"```json\\n{\\n  \\\"claims\\\": [\\n    {\\n      \\\"id\\\": 1,\\n      \\\"text\\\": \\\"MaxKernel implements a Human-in-the-Loop (HITL) agent for collaborative, step-by-step design.\\\",\\n      \\\"poster_quote\\\": \\\"a Human-in-the-Loop (HITL) agent for collaborative, step-by-step design\\\"\\n    },\\n    {\\n      \\\"id\\\": 2,\\n      \\\"text\\\": \\\"MaxKernel implements an Autonomous (Auto) agent that executes a fully automated, metric/trace-driven optimization loop.\\\",\\n      \\\"poster_quote\\\": \\\"an Autonomous (Auto) agent that executes a fully automated, metric/trace-driven optimization loop\\\"\\n    },\\n    {\\n      \\\"id\\\": 3,\\n      \\\"text\\\": \\\"MaxKernel implements a Graph-Based Autonomous Search that scales the Auto agent for global exploration of the design space.\\\",\\n      \\\"poster_quote\\\": \\\"a Graph-Based Autonomous Search that scales the Auto agent for global exploration of the design space\\\"\\n    },\\n    {\\n      \\\"id\\\": 4,\\n      \\\"text\\\": \\\"All three paradigms of MaxKernel leverage a shared pool of specialized sub-agents to handle planning, implementation, self-debugging, testing, and hardware profiling.\\\",\\n      \\\"poster_quote\\\": \\\"All three paradigms leverage a shared pool of specialized sub-agents to handle planning, implementation, self-debugging, testing, and hardware profiling.\\\"\\n    },\\n    {\\n      \\\"id\\\": 5,\\n      \\\"text\\\": \\\"JaxBench is a comprehensive suite of 50 diverse kernel tasks for TPUs.\\\",\\n      \\\"poster_quote\\\": \\\"JaxBench, a comprehensive suite of 50 diverse kernel tasks for TPUs\\\"\\n    },\\n    {\\n      \\\"id\\\": 6,\\n      \\\"text\\\": \\\"MaxKernel matches expert hand-tuned baselines across the benchmark.\\\",\\n      \\\"poster_quote\\\": \\\"matching expert hand-tuned baselines\\\"\\n    },\\n    {\\n      \\\"id\\\": 7,\\n      \\\"text\\\": \\\"JaxBench contains 17 widely used operators adapted from popular LLM architectures.\\\",\\n      \\\"poster_quote\\\": \\\"17 widely used operators adapted from popular LLM architectures\\\"\\n    },\\n    {\\n      \\\"id\\\": 8,\\n      \\\"text\\\": \\\"JaxBench contains 33 fused operators adapted from KernelBench.\\\",\\n      \\\"poster_quote\\\": \\\"33 fused operators adapted from KernelBench\\\"\\n    },\\n    {\\n      \\\"id\\\": 9,\\n      \\\"text\\\": \\\"MaxKernel accelerates SOTA OSS kernels including Multi-Head Latent Attention (MLA), Qwen3-Next Gated DeltaNet, and DeepSeek-V4 Sparse Attention.\\\",\\n      \\\"poster_quote\\\": \\\"We additionally accelerate SOTA OSS kernels such as Multi-Head Latent Attention (MLA), Qwen3-Next Gated DeltaNet, and DeepSeek-V4 Sparse Attention.\\\"\\n    },\\n    {\\n      \\\"id\\\": 10,\\n      \\\"text\\\": \\\"All evaluations of MaxKernel run on TPU v6e.\\\",\\n      \\\"poster_quote\\\": \\\"All evaluations run on TPU v6e.\\\"\\n    },\\n    {\\n      \\\"id\\\": 11,\\n      \\\"text\\\": \\\"Numerical equivalence testing uses jnp.allclose with atol = rtol = 1e-2 for most cases.\\\",\\n      \\\"poster_quote\\\": \\\"Numerical equivalence uses jnp.allclose with atol = rtol = 1e-2 for most cases\\\"\\n    },\\n    {\\n      \\\"id\\\": 12,\\n      \\\"text\\\": \\\"Numerical equivalence testing is relaxed to at most 1e-1 for tasks with standard bf16 variance.\\\",\\n      \\\"poster_quote\\\": \\\"relaxed to at most 1e-1 for tasks with standard bf16 variance\\\"\\n    },\\n    {\\n      \\\"id\\\": 13,\\n      \\\"text\\\": \\\"The evaluation harness integrates XProf to capture precise on-device execution times.\\\",\\n      \\\"poster_quote\\\": \\\"The harness integrates XProf to capture precise on-device execution times\\\"\\n    },\\n    {\\n      \\\"id\\\": 14,\\n      \\\"text\\\": \\\"The Best-of-N (Zero-Shot) baseline uses N=100.\\\",\\n      \\\"poster_quote\\\": \\\"Best-of-N (Zero-Shot) with N=100\\\"\\n    },\\n    {\\n      \\\"id\\\": 15,\\n      \\\"text\\\": \\\"MaxKernel Auto uses a single trajectory, 5 iterations, and reports the median over 5 runs.\\\",\\n      \\\"poster_quote\\\": \\\"MaxKernel Auto (single trajectory, 5 iterations, median over 5 runs)\\\"\\n    },\\n    {\\n      \\\"id\\\": 16,\\n      \\\"text\\\": \\\"MaxKernel Parallel uses 5 concurrent Auto trajectories and selects the best correct kernel.\\\",\\n      \\\"poster_quote\\\": \\\"MaxKernel Parallel (5 concurrent Auto trajectories, best correct kernel)\\\"\\n    },\\n    {\\n      \\\"id\\\": 17,\\n      \\\"text\\\": \\\"MaxKernel Beam uses a beam width of 3, max depth of 3, 2 branches per node, and 2 iterations per node.\\\",\\n      \\\"poster_quote\\\": \\\"MaxKernel Beam (beam width 3, max depth 3, 2 branches per node, 2 iterations per node)\\\"\\n    },\\n    {\\n      \\\"id\\\": 18,\\n      \\\"text\\\": \\\"All LLM queries in the evaluation used Gemini 3.1 Pro.\\\",\\n      \\\"poster_quote\\\": \\\"All LLM queries used Gemini 3.1 Pro.\\\"\\n    },\\n    {\\n      \\\"id\\\": 19,\\n      \\\"text\\\": \\\"Two search algorithms are implemented for Graph-Based Autonomous Search.\\\",\\n      \\\"poster_quote\\\": \\\"Two search algorithms are implemented.\\\"\\n    },\\n    {\\n      \\\"id\\\": 20,\\n      \\\"text\\\": \\\"The Best-of-N baseline achieves a compilation rate of 10/50 on JaxBench.\\\",\\n      \\\"poster_quote\\\": \\\"10/50\\\"\\n    },\\n    {\\n      \\\"id\\\": 21,\\n      \\\"text\\\": \\\"The Best-of-N baseline achieves a correctness rate of 10/50 on JaxBench.\\\",\\n      \\\"poster_quote\\\": \\\"10/50\\\"\\n    },\\n    {\\n      \\\"id\\\": 22,\\n      \\\"text\\\": \\\"The Best-of-N baseline achieves a geometric mean speedup of 1.08 on JaxBench.\\\",\\n      \\\"poster_quote\\\": \\\"1.08\\\"\\n    },\\n    {\\n      \\\"id\\\": 23,\\n      \\\"text\\\": \\\"The Best-of-N baseline achieves a fast1 score of 6/50 on JaxBench.\\\",\\n      \\\"poster_quote\\\": \\\"6/50\\\"\\n    },\\n    {\\n      \\\"id\\\": 24,\\n      \\\"text\\\": \\\"MaxKernel Auto achieves a compilation rate of 49/50 on JaxBench, with a range of [48, 50].\\\",\\n      \\\"poster_quote\\\": \\\"49/50 [48, 50]\\\"\\n    },\\n    {\\n      \\\"id\\\": 25,\\n      \\\"text\\\": \\\"MaxKernel Auto achieves a correctness rate of 48/50 on JaxBench, with a range of [46, 49].\\\",\\n      \\\"poster_quote\\\": \\\"48/50 [46, 49]\\\"\\n    },\\n    {\\n      \\\"id\\\": 26,\\n      \\\"text\\\": \\\"MaxKernel Auto achieves a geometric mean speedup of 1.39 on JaxBench, with a range of [1.19, 1.42].\\\",\\n      \\\"poster_quote\\\": \\\"1.39 [1.19, 1.42]\\\"\\n    },\\n    {\\n      \\\"id\\\": 27,\\n      \\\"text\\\": \\\"MaxKernel Auto achieves a fast1 score of 22/50 on JaxBench, with a range of [18, 28].\\\",\\n      \\\"poster_quote\\\": \\\"22/50 [18, 28]\\\"\\n    },\\n    {\\n      \\\"id\\\": 28,\\n      \\\"text\\\": \\\"MaxKernel Parallel achieves a compilation rate of 50/50 on JaxBench.\\\",\\n      \\\"poster_quote\\\": \\\"50/50\\\"\\n    },\\n    {\\n      \\\"id\\\": 29,\\n      \\\"text\\\": \\\"MaxKernel Parallel achieves a correctness rate of 50/50 on JaxBench.\\\",\\n      \\\"poster_quote\\\": \\\"50/50\\\"\\n    },\\n    {\\n      \\\"id\\\": 30,\\n      \\\"text\\\": \\\"MaxKernel Parallel achieves a geometric mean speedup of 1.58 on JaxBench.\\\",\\n      \\\"poster_quote\\\": \\\"1.58\\\"\\n    },\\n    {\\n      \\\"id\\\": 31,\\n      \\\"text\\\": \\\"MaxKernel Parallel achieves a fast1 score of 34/50 on JaxBench.\\\",\\n      \\\"poster_quote\\\": \\\"34/50\\\"\\n    },\\n    {\\n      \\\"id\\\": 32,\\n      \\\"text\\\": \\\"MaxKernel Beam achieves a compilation rate of 50/50 on JaxBench.\\\",\\n      \\\"poster_quote\\\": \\\"50/50\\\"\\n    },\\n    {\\n      \\\"id\\\": 33,\\n      \\\"text\\\": \\\"MaxKernel Beam achieves a correctness rate of 50/50 on JaxBench.\\\",\\n      \\\"poster_quote\\\": \\\"50/50\\\"\\n    },\\n    {\\n      \\\"id\\\": 34,\\n      \\\"text\\\": \\\"MaxKernel Beam achieves a geometric mean speedup of 1.49 on JaxBench.\\\",\\n      \\\"poster_quote\\\": \\\"1.49\\\"\\n    },\\n    {\\n      \\\"id\\\": 35,\\n      \\\"text\\\": \\\"MaxKernel Beam achieves a fast1 score of 31/50 on JaxBench.\\\",\\n      \\\"poster_quote\\\": \\\"31/50\\\"\\n    },\\n    {\\n      \\\"id\\\": 36,\\n      \\\"text\\\": \\\"Parallel Search resides above all individual curves with 68% at p=1.0.\\\",\\n      \\\"poster_quote\\\": \\\"Parallel Search resides above all individual curves (68% at p=1.0\\\"\\n    },\\n    {\\n      \\\"id\\\": 37,\\n      \\\"text\\\": \\\"Parallel Search resides above all individual curves with 24% at p=2.0.\\\",\\n      \\\"poster_quote\\\": \\\"24% at p=2.0\\\"\\n    },\\n    {\\n      \\\"id\\\": 38,\\n      \\\"text\\\": \\\"The baseline latency for MLA v1 is 3.127 ms using Pallas.\\\",\\n      \\\"poster_quote\\\": \\\"3.127 (Pallas)\\\"\\n    },\\n    {\\n      \\\"id\\\": 39,\\n      \\\"text\\\": \\\"The MaxKernel latency for MLA v1 is 2.856 ms.\\\",\\n      \\\"poster_quote\\\": \\\"2.856\\\"\\n    },\\n    {\\n      \\\"id\\\": 40,\\n      \\\"text\\\": \\\"The latency gain of MaxKernel over baseline for MLA v1 is +8.68%.\\\",\\n      \\\"poster_quote\\\": \\\"+8.68%\\\"\\n    },\\n    {\\n      \\\"id\\\": 41,\\n      \\\"text\\\": \\\"The baseline throughput for MLA v1 is 116.735 TFLOPS using Pallas.\\\",\\n      \\\"poster_quote\\\": \\\"116.735 (Pallas)\\\"\\n    },\\n    {\\n      \\\"id\\\": 42,\\n      \\\"text\\\": \\\"The MaxKernel throughput for MLA v1 is 127.825 TFLOPS.\\\",\\n      \\\"poster_quote\\\": \\\"127.825\\\"\\n    },\\n    {\\n      \\\"id\\\": 43,\\n      \\\"text\\\": \\\"The throughput gain of MaxKernel over baseline for MLA v1 is +9.50%.\\\",\\n      \\\"poster_quote\\\": \\\"+9.50%\\\"\\n    },\\n    {\\n      \\\"id\\\": 44,\\n      \\\"text\\\": \\\"The baseline forward pass latency for Qwen3-Next GDN is 17.09 ms using JAX.\\\",\\n      \\\"poster_quote\\\": \\\"17.09 (JAX)\\\"\\n    },\\n    {\\n      \\\"id\\\": 45,\\n      \\\"text\\\": \\\"The MaxKernel forward pass latency for Qwen3-Next GDN is 10.47 ms.\\\",\\n      \\\"poster_quote\\\": \\\"10.47\\\"\\n    },\\n    {\\n      \\\"id\\\": 46,\\n      \\\"text\\\": \\\"The forward pass latency gain of MaxKernel over baseline for Qwen3-Next GDN is 1.63×.\\\",\\n      \\\"poster_quote\\\": \\\"1.63×\\\"\\n    },\\n    {\\n      \\\"id\\\": 47,\\n      \\\"text\\\": \\\"The baseline training step latency for Qwen3-Next GDN is 84.51 ms using JAX.\\\",\\n      \\\"poster_quote\\\": \\\"84.51 (JAX)\\\"\\n    },\\n    {\\n      \\\"id\\\": 48,\\n      \\\"text\\\": \\\"The MaxKernel training step latency for Qwen3-Next GDN is 17.99 ms.\\\",\\n      \\\"poster_quote\\\": \\\"17.99\\\"\\n    },\\n    {\\n      \\\"id\\\": 49,\\n      \\\"text\\\": \\\"The training step latency gain of MaxKernel over baseline for Qwen3-Next GDN is 4.70×.\\\",\\n      \\\"poster_quote\\\": \\\"4.70×\\\"\\n    },\\n    {\\n      \\\"id\\\": 50,\\n      \\\"text\\\": \\\"The baseline prefill latency for DSv4 Sparse Attn is 27.08 ms using JAX.\\\",\\n      \\\"poster_quote\\\": \\\"27.08 (JAX)\\\"\\n    },\\n    {\\n      \\\"id\\\": 51,\\n      \\\"text\\\": \\\"The MaxKernel prefill latency for DSv4 Sparse Attn is 3.449 ms.\\\",\\n      \\\"poster_quote\\\": \\\"3.449\\\"\\n    },\\n    {\\n      \\\"id\\\": 52,\\n      \\\"text\\\": \\\"The prefill latency gain of MaxKernel over baseline for DSv4 Sparse Attn is 7.85×.\\\",\\n      \\\"poster_quote\\\": \\\"7.85×\\\"\\n    },\\n    {\\n      \\\"id\\\": 53,\\n      \\\"text\\\": \\\"The baseline decode latency for DSv4 Sparse Attn is 0.047 ms using JAX.\\\",\\n      \\\"poster_quote\\\": \\\"0.047 (JAX)\\\"\\n    },\\n    {\\n      \\\"id\\\": 54,\\n      \\\"text\\\": \\\"The MaxKernel decode latency for DSv4 Sparse Attn is 0.02 ms.\\\",\\n      \\\"poster_quote\\\": \\\"0.02\\\"\\n    },\\n    {\\n      \\\"id\\\": 55,\\n      \\\"text\\\": \\\"The decode latency gain of MaxKernel over baseline for DSv4 Sparse Attn is 2.36×.\\\",\\n      \\\"poster_quote\\\": \\\"2.36×\\\"\\n    },\\n    {\\n      \\\"id\\\": 56,\\n      \\\"text\\\": \\\"The baseline forward pass latency for Mamba v2 (SSD) is 0.211 ms using JAX.\\\",\\n      \\\"poster_quote\\\": \\\"0.211 (JAX)\\\"\\n    },\\n    {\\n      \\\"id\\\": 57,\\n      \\\"text\\\": \\\"The MaxKernel forward pass latency for Mamba v2 (SSD) is 0.192 ms.\\\",\\n      \\\"poster_quote\\\": \\\"0.192\\\"\\n    },\\n    {\\n      \\\"id\\\": 58,\\n      \\\"text\\\": \\\"The forward pass latency gain of MaxKernel over baseline for Mamba v2 (SSD) is 1.10×.\\\",\\n      \\\"poster_quote\\\": \\\"1.10×\\\"\\n    },\\n    {\\n      \\\"id\\\": 59,\\n      \\\"text\\\": \\\"The baseline forward pass latency for StreamIndex_topk is 0.415 ms using JAX.\\\",\\n      \\\"poster_quote\\\": \\\"0.415 (JAX)\\\"\\n    },\\n    {\\n      \\\"id\\\": 60,\\n      \\\"text\\\": \\\"The MaxKernel forward pass latency for StreamIndex_topk is 0.250 ms.\\\",\\n      \\\"poster_quote\\\": \\\"0.250\\\"\\n    },\\n    {\\n      \\\"id\\\": 61,\\n      \\\"text\\\": \\\"The forward pass latency gain of MaxKernel over baseline for StreamIndex_topk is 1.66×.\\\",\\n      \\\"poster_quote\\\": \\\"1.66×\\\"\\n    },\\n    {\\n      \\\"id\\\": 62,\\n      \\\"text\\\": \\\"MaxKernel resolved critical crash and deadlock issues in Ragged Paged Attention v3 prefill mode by automatically implementing protective ALU clamp instructions for left-padded inputs.\\\",\\n      \\\"poster_quote\\\": \\\"it resolved critical crash and deadlock issues in Ragged Paged Attention v3 prefill mode by automatically implementing protective ALU clamp instructions for left-padded inputs\\\"\\n    },\\n    {\\n      \\\"id\\\": 63,\\n      \\\"text\\\": \\\"Hand-tuned kernel code is explicitly excluded from the retrieval corpus of the Knowledge Store.\\\",\\n      \\\"poster_quote\\\": \\\"Hand-tuned kernel code is explicitly excluded from the retrieval corpus\\\"\\n    },\\n    {\\n      \\\"id\\\": 64,\\n      \\\"text\\\": \\\"MaxKernel reached a geometric mean speedup of 1.58× on top of XLA optimizations on JaxBench.\\\",\\n      \\\"poster_quote\\\": \\\"reaching a geometric mean speedup of 1.58× on top of XLA optimizations\\\"\\n    },\\n    {\\n      \\\"id\\\": 65,\\n      \\\"text\\\": \\\"MaxKernel reached a geometric mean speedup of 2.32× on production kernels.\\\",\\n      \\\"poster_quote\\\": \\\"and 2.32× on production kernels\\\"\\n    },\\n    {\\n      \\\"id\\\": 66,\\n      \\\"text\\\": \\\"MaxKernel exceeded human hand-tuned references (which achieved 2.02×) on production kernels.\\\",\\n      \\\"poster_quote\\\": \\\"exceeding human hand-tuned references (2.02×)\\\"\\n    },\\n    {\\n      \\\"id\\\": 67,\\n      \\\"text\\\": \\\"A Planning Agent creates a high-level algorithmic optimization plan based on hardware specifications and the reference implementation.\\\",\\n      \\\"poster_quote\\\": \\\"A Planning Agent creates a high-level algorithmic optimization plan based on hardware specifications and the reference implementation\\\"\\n    },\\n    {\\n      \\\"id\\\": 68,\\n      \\\"text\\\": \\\"An Implementation Agent translates the plan into valid Pallas code.\\\",\\n      \\\"poster_quote\\\": \\\"an Implementation Agent translates the plan into valid Pallas code\\\"\\n    },\\n    {\\n      \\\"id\\\": 69,\\n      \\\"text\\\": \\\"A Test Synthesis Agent constructs comprehensive test suites.\\\",\\n      \\\"poster_quote\\\": \\\"A Test Synthesis Agent constructs comprehensive test suites\\\"\\n    },\\n    {\\n      \\\"id\\\": 70,\\n      \\\"text\\\": \\\"An Execution Agent runs test suites securely on target hardware.\\\",\\n      \\\"poster_quote\\\": \\\"an Execution Agent runs them securely on target hardware\\\"\\n    }\\n  ]\\n}\\n```\", \"```json\\n{\\n  \\\"verdicts\\\": [\\n    {\\n      \\\"id\\\": 1,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"a Human-in-the-Loop (HITL) agent for collaborative, step-by-step design;\\\",\\n      \\\"reason\\\": \\\"Abstract. The paper states that MaxKernel implements a HITL agent for collaborative, step-by-step design.\\\"\\n    },\\n    {\\n      \\\"id\\\": 2,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"an Autonomous (Auto) agent that executes a fully automated, metric/trace-driven optimization loop;\\\",\\n      \\\"reason\\\": \\\"Abstract. The paper states that MaxKernel implements an Autonomous (Auto) agent with a metric/trace-driven optimization loop.\\\"\\n    },\\n    {\\n      \\\"id\\\": 3,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"a Graph-Based Autonomous Search that scales the Auto agent for global exploration of the design space.\\\",\\n      \\\"reason\\\": \\\"Abstract. The paper states that MaxKernel implements a Graph-Based Autonomous Search to scale the Auto agent.\\\"\\n    },\\n    {\\n      \\\"id\\\": 4,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"All three paradigms leverage a shared pool of specialized sub-agents to handle planning, implementation, self-debugging, testing, and hardware profiling.\\\",\\n      \\\"reason\\\": \\\"Abstract. The paper states that all three paradigms leverage a shared pool of specialized sub-agents for these tasks.\\\"\\n    },\\n    {\\n      \\\"id\\\": 5,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"We evaluate MaxKernel on JaxBench, a comprehensive suite of 50 diverse kernel tasks for TPUs\\\",\\n      \\\"reason\\\": \\\"Abstract. The paper states that JaxBench is a comprehensive suite of 50 diverse kernel tasks for TPUs.\\\"\\n    },\\n    {\\n      \\\"id\\\": 6,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"matching expert hand-tuned baselines and delivering significant performance across the benchmark.\\\",\\n      \\\"reason\\\": \\\"Abstract. The paper states that MaxKernel matches expert hand-tuned baselines.\\\"\\n    },\\n    {\\n      \\\"id\\\": 7,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"This benchmark comprises 17 widely used operators adapted from popular LLM architectures\\\",\\n      \\\"reason\\\": \\\"Section 3. The paper states that JaxBench contains 17 operators adapted from popular LLM architectures.\\\"\\n    },\\n    {\\n      \\\"id\\\": 8,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"and 33 fused operators adapted from the KernelBench dataset.\\\",\\n      \\\"reason\\\": \\\"Section 3. The paper states that JaxBench contains 33 fused operators adapted from KernelBench.\\\"\\n    },\\n    {\\n      \\\"id\\\": 9,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"By automatically generating highly efficient Pallas implementations for complex real-world workloads—such as Multi-Head Latent Attention (MLA), Qwen3-Next Gated DeltaNet, and DeepSeek-V4 Sparse Attention—MaxKernel achieves significant improvements in latency and throughput over heavily optimized JAX and human-authored baselines.\\\",\\n      \\\"reason\\\": \\\"Section 3. The paper states that MaxKernel accelerates these SOTA OSS kernels.\\\"\\n    },\\n    {\\n      \\\"id\\\": 10,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"All empirical evaluations are conducted on TPU v6e hardware using MaxKernel’s dedicated evaluation harness.\\\",\\n      \\\"reason\\\": \\\"Section 3.1. The paper states that all evaluations are conducted on TPU v6e.\\\"\\n    },\\n    {\\n      \\\"id\\\": 11,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Numerical equivalence is checked using jnp.allclose with both absolute and relative tolerances set to 10−2 (atol = rtol = 10−2 ) for most cases.\\\",\\n      \\\"reason\\\": \\\"Section 3.1. The paper states that atol = rtol = 10^-2 (which is 1e-2) is used for most cases.\\\"\\n    },\\n    {\\n      \\\"id\\\": 12,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"To safely account for standard bf16 variance in custom hardware-accelerated math, certain tasks’ tolerance are relaxed to at most 10−1.\\\",\\n      \\\"reason\\\": \\\"Section 3.1. The paper states that tolerance is relaxed to at most 10^-1 (which is 1e-1) for standard bf16 variance.\\\"\\n    },\\n    {\\n      \\\"id\\\": 13,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"To measure true hardware performance, the harness integrates directly with XProf profiling tool. This allows the system to capture precise on-device execution times\\\",\\n      \\\"reason\\\": \\\"Section 3.1. The paper states that the harness integrates with XProf to capture precise on-device execution times.\\\"\\n    },\\n    {\\n      \\\"id\\\": 14,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The fastest correct sample out of 𝑁 is selected (in our experiments, we set 𝑁 = 100).\\\",\\n      \\\"reason\\\": \\\"Section 3.1. The paper states that N=100 is used for the Best-of-N baseline.\\\"\\n    },\\n    {\\n      \\\"id\\\": 15,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"MaxKernel Auto: A single-trajectory iterative refinement agent restricted to 5 iterations. To account for generation variance, we execute 5 independent runs per workload and report the median performance with its upper and lower bounds.\\\",\\n      \\\"reason\\\": \\\"Section 3.1. The paper states that MaxKernel Auto uses a single trajectory, 5 iterations, and reports the median over 5 runs.\\\"\\n    },\\n    {\\n      \\\"id\\\": 16,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"MaxKernel Parallel: Executed via 5 concurrent MaxKernel Auto trajectories (5 iterations each). Instead of the median, it selects the single fastest correct kernel across all runs\\\",\\n      \\\"reason\\\": \\\"Section 3.1. The paper states that MaxKernel Parallel uses 5 concurrent Auto trajectories and selects the fastest correct kernel.\\\"\\n    },\\n    {\\n      \\\"id\\\": 17,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"MaxKernel Beam: A structured, top-𝑘 guided graph search configured with a beam width of 3, a maximum depth of 3, and 2 expansion branches per node. To limit computational cost, the inner evaluation loop is strictly capped at 2 iterations per node.\\\",\\n      \\\"reason\\\": \\\"Section 3.1. The paper states these exact parameters for MaxKernel Beam.\\\"\\n    },\\n    {\\n      \\\"id\\\": 18,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"All large language model queries and agent interactions throughout our experiments were conducted using the Gemini 3.1 Pro model.\\\",\\n      \\\"reason\\\": \\\"Section 3.2. The paper states that Gemini 3.1 Pro was used for all LLM queries.\\\"\\n    },\\n    {\\n      \\\"id\\\": 19,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Currently, MaxKernel implements two primary search algorithms to navigate the optimization space.\\\",\\n      \\\"reason\\\": \\\"Section 2.5. The paper states that two search algorithms (Parallel Search and Beam Search) are implemented.\\\"\\n    },\\n    {\\n      \\\"id\\\": 20,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"10/50\\\",\\n      \\\"reason\\\": \\\"Table 1, Compilation Rate row, Best-of-N column. The compilation rate is 10/50.\\\"\\n    },\\n    {\\n      \\\"id\\\": 21,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"10/50\\\",\\n      \\\"reason\\\": \\\"Table 1, Correctness Rate row, Best-of-N column. The correctness rate is 10/50.\\\"\\n    },\\n    {\\n      \\\"id\\\": 22,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"1.08\\\",\\n      \\\"reason\\\": \\\"Table 1, Geometric Mean Speedup row, Best-of-N column. The speedup is 1.08.\\\"\\n    },\\n    {\\n      \\\"id\\\": 23,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"6/50\\\",\\n      \\\"reason\\\": \\\"Table 1, fast1 row, Best-of-N column. The fast1 score is 6/50.\\\"\\n    },\\n    {\\n      \\\"id\\\": 24,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"49/50 [48/50, 50/50]\\\",\\n      \\\"reason\\\": \\\"Table 1, Compilation Rate row, MK Auto column. The compilation rate is 49/50 with a range of [48/50, 50/50].\\\"\\n    },\\n    {\\n      \\\"id\\\": 25,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"48/50 [46/50, 49/50]\\\",\\n      \\\"reason\\\": \\\"Table 1, Correctness Rate row, MK Auto column. The correctness rate is 48/50 with a range of [46/50, 49/50].\\\"\\n    },\\n    {\\n      \\\"id\\\": 26,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"1.39 [1.19, 1.42]\\\",\\n      \\\"reason\\\": \\\"Table 1, Geometric Mean Speedup row, MK Auto column. The speedup is 1.39 with a range of [1.19, 1.42].\\\"\\n    },\\n    {\\n      \\\"id\\\": 27,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"22/50 [18/50, 28/50]\\\",\\n      \\\"reason\\\": \\\"Table 1, fast1 row, MK Auto column. The fast1 score is 22/50 with a range of [18/50, 28/50].\\\"\\n    },\\n    {\\n      \\\"id\\\": 28,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"50/50\\\",\\n      \\\"reason\\\": \\\"Table 1, Compilation Rate row, MK Parallel column. The compilation rate is 50/50.\\\"\\n    },\\n    {\\n      \\\"id\\\": 29,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"50/50\\\",\\n      \\\"reason\\\": \\\"Table 1, Correctness Rate row, MK Parallel column. The correctness rate is 50/50.\\\"\\n    },\\n    {\\n      \\\"id\\\": 30,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"1.58\\\",\\n      \\\"reason\\\": \\\"Table 1, Geometric Mean Speedup row, MK Parallel column. The speedup is 1.58.\\\"\\n    },\\n    {\\n      \\\"id\\\": 31,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"34/50\\\",\\n      \\\"reason\\\": \\\"Table 1, fast1 row, MK Parallel column. The fast1 score is 34/50.\\\"\\n    },\\n    {\\n      \\\"id\\\": 32,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"50/50\\\",\\n      \\\"reason\\\": \\\"Table 1, Compilation Rate row, MK Beam column. The compilation rate is 50/50.\\\"\\n    },\\n    {\\n      \\\"id\\\": 33,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"50/50\\\",\\n      \\\"reason\\\": \\\"Table 1, Correctness Rate row, MK Beam column. The correctness rate is 50/50.\\\"\\n    },\\n    {\\n      \\\"id\\\": 34,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"1.49\\\",\\n      \\\"reason\\\": \\\"Table 1, Geometric Mean Speedup row, MK Beam column. The speedup is 1.49.\\\"\\n    },\\n    {\\n      \\\"id\\\": 35,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"31/50\\\",\\n      \\\"reason\\\": \\\"Table 1, fast1 row, MK Beam column. The fast1 score is 31/50.\\\"\\n    },\\n    {\\n      \\\"id\\\": 36,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"achieving the highest success rates (e.g., 68% at p=1.0 and 24% at p=2.0).\\\",\\n      \\\"reason\\\": \\\"Section 3.2. The paper states that Parallel Search achieves 68% at p=1.0.\\\"\\n    },\\n    {\\n      \\\"id\\\": 37,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"achieving the highest success rates (e.g., 68% at p=1.0 and 24% at p=2.0).\\\",\\n      \\\"reason\\\": \\\"Section 3.2. The paper states that Parallel Search achieves 24% at p=2.0.\\\"\\n    },\\n    {\\n      \\\"id\\\": 38,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"3.127 (Pallas)\\\",\\n      \\\"reason\\\": \\\"Table 3, MLA v1 row, Latency (ms) sub-row, Baseline column. The baseline latency is 3.127 ms using Pallas.\\\"\\n    },\\n    {\\n      \\\"id\\\": 39,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"2.856\\\",\\n      \\\"reason\\\": \\\"Table 3, MLA v1 row, Latency (ms) sub-row, MaxKernel column. The MaxKernel latency is 2.856 ms.\\\"\\n    },\\n    {\\n      \\\"id\\\": 40,\\n      \\\"label\\\": \\\"contradicted\\\",\\n      \\\"paper_evidence\\\": \\\"+8.68%\\\",\\n      \\\"reason\\\": \\\"Table 3, MLA v1 row, Latency (ms) sub-row, Speedup/Gain column. Recomputing the latency reduction from the baseline (3.127 ms) and MaxKernel (2.856 ms) yields (3.127 - 2.856) / 3.127 = 8.67%, which conflicts with the printed value of 8.68% at the printed precision.\\\"\\n    }\\n  ]\\n}\\n```\", \"```json\\n{\\n  \\\"verdicts\\\": [\\n    {\\n      \\\"id\\\": 1,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"116.735 (Pallas)\\\",\\n      \\\"reason\\\": \\\"Table 3, row 'MLA v1', column 'Baseline' shows the baseline throughput is 116.735 TFLOPS using Pallas.\\\"\\n    },\\n    {\\n      \\\"id\\\": 2,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"127.825\\\",\\n      \\\"reason\\\": \\\"Table 3, row 'MLA v1', column 'MaxKernel' shows the throughput is 127.825 TFLOPS.\\\"\\n    },\\n    {\\n      \\\"id\\\": 3,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"+9.50%\\\",\\n      \\\"reason\\\": \\\"Table 3, row 'MLA v1', column 'Speedup/Gain' shows a throughput gain of +9.50%.\\\"\\n    },\\n    {\\n      \\\"id\\\": 4,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"17.09 (JAX)\\\",\\n      \\\"reason\\\": \\\"Table 3, row 'Qwen3-Next GDN' (Forward Pass), column 'Baseline' shows the baseline latency is 17.09 ms using JAX.\\\"\\n    },\\n    {\\n      \\\"id\\\": 5,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"10.47\\\",\\n      \\\"reason\\\": \\\"Table 3, row 'Qwen3-Next GDN' (Forward Pass), column 'MaxKernel' shows the latency is 10.47 ms.\\\"\\n    },\\n    {\\n      \\\"id\\\": 6,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"1.63×\\\",\\n      \\\"reason\\\": \\\"Table 3, row 'Qwen3-Next GDN' (Forward Pass), column 'Speedup/Gain' shows a speedup of 1.63×, which matches 17.09 / 10.47 = 1.632.\\\"\\n    },\\n    {\\n      \\\"id\\\": 7,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"84.51 (JAX)\\\",\\n      \\\"reason\\\": \\\"Table 3, row 'Qwen3-Next GDN' (Training Step), column 'Baseline' shows the baseline latency is 84.51 ms using JAX.\\\"\\n    },\\n    {\\n      \\\"id\\\": 8,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"17.99\\\",\\n      \\\"reason\\\": \\\"Table 3, row 'Qwen3-Next GDN' (Training Step), column 'MaxKernel' shows the latency is 17.99 ms.\\\"\\n    },\\n    {\\n      \\\"id\\\": 9,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"4.70×\\\",\\n      \\\"reason\\\": \\\"Table 3, row 'Qwen3-Next GDN' (Training Step), column 'Speedup/Gain' shows a speedup of 4.70×, which matches 84.51 / 17.99 = 4.698.\\\"\\n    },\\n    {\\n      \\\"id\\\": 10,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"27.08 (JAX)\\\",\\n      \\\"reason\\\": \\\"Table 3, row 'DSv4 Sparse Attn' (Prefill), column 'Baseline' shows the baseline latency is 27.08 ms using JAX.\\\"\\n    },\\n    {\\n      \\\"id\\\": 11,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"3.449\\\",\\n      \\\"reason\\\": \\\"Table 3, row 'DSv4 Sparse Attn' (Prefill), column 'MaxKernel' shows the latency is 3.449 ms.\\\"\\n    },\\n    {\\n      \\\"id\\\": 12,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"7.85×\\\",\\n      \\\"reason\\\": \\\"Table 3, row 'DSv4 Sparse Attn' (Prefill), column 'Speedup/Gain' shows a speedup of 7.85×, which matches 27.08 / 3.449 = 7.852.\\\"\\n    },\\n    {\\n      \\\"id\\\": 13,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"0.047 (JAX)\\\",\\n      \\\"reason\\\": \\\"Table 3, row 'DSv4 Sparse Attn' (Decode), column 'Baseline' shows the baseline latency is 0.047 ms using JAX.\\\"\\n    },\\n    {\\n      \\\"id\\\": 14,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"0.02\\\",\\n      \\\"reason\\\": \\\"Table 3, row 'DSv4 Sparse Attn' (Decode), column 'MaxKernel' shows the latency is 0.02 ms.\\\"\\n    },\\n    {\\n      \\\"id\\\": 15,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"2.36×\\\",\\n      \\\"reason\\\": \\\"Table 3, row 'DSv4 Sparse Attn' (Decode), column 'Speedup/Gain' shows a speedup of 2.36×.\\\"\\n    },\\n    {\\n      \\\"id\\\": 16,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"0.211 (JAX)\\\",\\n      \\\"reason\\\": \\\"Table 3, row 'Mamba v2 (SSD)', column 'Baseline' shows the baseline latency is 0.211 ms using JAX.\\\"\\n    },\\n    {\\n      \\\"id\\\": 17,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"0.192\\\",\\n      \\\"reason\\\": \\\"Table 3, row 'Mamba v2 (SSD)', column 'MaxKernel' shows the latency is 0.192 ms.\\\"\\n    },\\n    {\\n      \\\"id\\\": 18,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"1.10×\\\",\\n      \\\"reason\\\": \\\"Table 3, row 'Mamba v2 (SSD)', column 'Speedup/Gain' shows a speedup of 1.10×, which matches 0.211 / 0.192 = 1.099.\\\"\\n    },\\n    {\\n      \\\"id\\\": 19,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"0.415 (JAX)\\\",\\n      \\\"reason\\\": \\\"Table 3, row 'StreamIndex_topk', column 'Baseline' shows the baseline latency is 0.415 ms using JAX.\\\"\\n    },\\n    {\\n      \\\"id\\\": 20,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"0.250\\\",\\n      \\\"reason\\\": \\\"Table 3, row 'StreamIndex_topk', column 'MaxKernel' shows the latency is 0.250 ms.\\\"\\n    },\\n    {\\n      \\\"id\\\": 21,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"1.66×\\\",\\n      \\\"reason\\\": \\\"Table 3, row 'StreamIndex_topk', column 'Speedup/Gain' shows a speedup of 1.66×, which matches 0.415 / 0.250 = 1.66.\\\"\\n    },\\n    {\\n      \\\"id\\\": 22,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"We applied the framework to resolve critical crash and deadlock issues in the Ragged Page Attention v3 (RPAv3) prefill mode. MaxKernel automatically implemented protective ALU clamp instructions to handle left-padded inputs correctly, preventing negative slice sizes and ensuring DMA prefetches execute cleanly.\\\",\\n      \\\"reason\\\": \\\"Section 3.4 explicitly states that MaxKernel resolved these issues in RPAv3 prefill mode using protective ALU clamp instructions.\\\"\\n    },\\n    {\\n      \\\"id\\\": 23,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Additionally, we explicitly exclude hand-tuned kernel code from the retrieval corpus\\\",\\n      \\\"reason\\\": \\\"Section 2.2 states that hand-tuned kernel code is explicitly excluded from the retrieval corpus of the Knowledge Store.\\\"\\n    },\\n    {\\n      \\\"id\\\": 24,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"reaching a geometric mean speedup of 1.58x on top of XLA optimizations on JaxBench.\\\",\\n      \\\"reason\\\": \\\"Section 4 (Conclusion) states that MaxKernel reached a geometric mean speedup of 1.58x on top of XLA optimizations on JaxBench.\\\"\\n    },\\n    {\\n      \\\"id\\\": 25,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Furthermore, on the eight production kernels where human-written kernels exist, MaxKernel achieves a 2.32× geometric mean speedup over the reference code\\\",\\n      \\\"reason\\\": \\\"Section 1 states that MaxKernel achieves a 2.32× geometric mean speedup over the reference code on the eight production kernels.\\\"\\n    },\\n    {\\n      \\\"id\\\": 26,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"outperforming human-written ones (2.02×).\\\",\\n      \\\"reason\\\": \\\"Section 1 states that MaxKernel outperformed human-written ones (which achieved 2.02×) on the eight production kernels.\\\"\\n    },\\n    {\\n      \\\"id\\\": 27,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Planning Agent, which creates a high-level algorithmic optimization plan based on hardware specifications and the reference implementation\\\",\\n      \\\"reason\\\": \\\"Section 2.1 describes the role of the Planning Agent.\\\"\\n    },\\n    {\\n      \\\"id\\\": 28,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"an Implementation Agent, which translates the plan into valid Pallas code.\\\",\\n      \\\"reason\\\": \\\"Section 2.1 describes the role of the Implementation Agent.\\\"\\n    },\\n    {\\n      \\\"id\\\": 29,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"A Test Synthesis Agent constructs comprehensive test suites\\\",\\n      \\\"reason\\\": \\\"Section 2.1 describes the role of the Test Synthesis Agent.\\\"\\n    },\\n    {\\n      \\\"id\\\": 30,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"an Execution Agent runs these tests securely on the target hardware (e.g., TPU).\\\",\\n      \\\"reason\\\": \\\"Section 2.1 describes the role of the Execution Agent.\\\"\\n    }\\n  ]\\n}\\n```\"]"
 }

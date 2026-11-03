@@ -1,0 +1,59 @@
+{
+  "model": "openai.gpt-4o",
+  "repeat": 1,
+  "judge_prompt_sha256": "4ec65050cfdc718218dbc587f672291e733fd03b1254c20d77b61b0933e16162",
+  "error": null,
+  "tokens_in": 8584,
+  "tokens_out": 1086,
+  "max_output_tokens": 16384,
+  "parsed": {
+    "items": {
+      "chk_problem": {
+        "label": "accurate",
+        "poster_evidence": "Edge video object detection faces high energy costs due to repeated detector invocations on temporally redundant frames. Naive frame-skipping (e.g., FixedSkip-2) causes severe accuracy loss (8.6 pp AP@50 drop) by skipping during critical events like object entry or motion. Existing adaptive methods are insufficient: they require detector retraining, depend on codecs, or fail under ego-motion. ALBIREO fills this gap by enabling detector-agnostic, codec-free, content-aware skipping using per-object temporal state.",
+        "reason": "The poster accurately describes the research problem as high energy consumption and sustained GPU utilization due to repeated detector invocations on redundant frames, aligning with the reference."
+      },
+      "chk_method": {
+        "label": "accurate",
+        "poster_evidence": "ALBIREO wraps off-the-shelf detectors with three mechanisms: 1) Forward-looking uncertainty trigger: Uses 10D Kalman filter per object; skips detection when predicted covariance trace is below threshold u, avoiding stale comparisons. 2) Detector-flicker rescue: On inference frames, emits Kalman-predicted boxes for unmatched confirmed objects if recent confidence was high and rescue cap not exceeded, preventing output fragmentation. 3) Empty-scene screen: Uses lightweight ERD classifier to skip full detection on objectless frames. No detector modification or retraining needed.",
+        "reason": "The poster provides a detailed description of the ALBIREO framework, including its mechanisms (Kalman filter uncertainty trigger, detector-flicker rescue, and empty-scene screen), matching the reference."
+      },
+      "chk_data": {
+        "label": "accurate",
+        "poster_evidence": "Evaluated on BDD100K MOT with YOLO11x, YOLO26x, RF-DETR-Large on Jetson AGX Thor and Orin.",
+        "reason": "The poster specifies the BDD100K dataset's multi-object tracking validation split, which matches the reference."
+      },
+      "chk_setup": {
+        "label": "accurate",
+        "poster_evidence": "Evaluated on BDD100K MOT with YOLO11x, YOLO26x, RF-DETR-Large on Jetson AGX Thor and Orin.",
+        "reason": "The poster mentions the evaluation setup, including the three detectors and two NVIDIA Jetson platforms, consistent with the reference."
+      },
+      "chk_primary_result": {
+        "label": "accurate",
+        "poster_evidence": "ALBIREO keeps AP@50 within ±1.2 pp of per-frame inference while reducing energy by 12.1-17.6%. On YOLO26x, default ALBIREO improves AP@50 by +0.8 pp, reduces energy by 17.6% (Thor) / 14.4% (Orin), and lowers EDP by 24.9% (Thor) / 26.1% (Orin).",
+        "reason": "The poster includes both primary result drafts from the reference, covering AP@50 within ±1.2 pp and energy reduction by 12.1–17.6%, as well as the improvement of AP@50 by +0.8 pp and energy reduction on Thor and Orin."
+      },
+      "chk_secondary_result": {
+        "label": "accurate",
+        "poster_evidence": "It Pareto-dominates Vanilla and baselines (FixedSkip, CTD, Statues) in AP@50-EDP space for AP@50 ≥ 0.50.",
+        "reason": "The poster mentions ALBIREO forming the upper AP@50–EDP Pareto frontier over evaluated baselines in the AP@50 ≥ 0.50 region, matching one of the secondary result drafts."
+      },
+      "chk_baseline": {
+        "label": "accurate",
+        "poster_evidence": "It Pareto-dominates Vanilla and baselines (FixedSkip, CTD, Statues) in AP@50-EDP space for AP@50 ≥ 0.50.",
+        "reason": "The poster compares ALBIREO against multiple baselines, including FixedSkip, CTD, and Statues, consistent with the reference."
+      },
+      "chk_conclusion": {
+        "label": "accurate",
+        "poster_evidence": "ALBIREO provides a practical, drop-in efficiency layer for edge video detection, improving accuracy, energy, and latency simultaneously.",
+        "reason": "The poster states the substantive conclusion that ALBIREO serves as a practical drop-in efficiency layer for edge video detection pipelines, matching the reference."
+      },
+      "chk_limitation": {
+        "label": "accurate",
+        "poster_evidence": "Limitations include potential drift under erratic motion (e.g., abrupt pedestrian moves) and domain-dependent empty-scene classifier.",
+        "reason": "The poster mentions the limitation of potential drift under erratic motion and the domain dependency of the empty-scene classifier, consistent with the reference."
+      }
+    }
+  },
+  "raw": "```json\n{\n  \"items\": {\n    \"chk_problem\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Edge video object detection faces high energy costs due to repeated detector invocations on temporally redundant frames. Naive frame-skipping (e.g., FixedSkip-2) causes severe accuracy loss (8.6 pp AP@50 drop) by skipping during critical events like object entry or motion. Existing adaptive methods are insufficient: they require detector retraining, depend on codecs, or fail under ego-motion. ALBIREO fills this gap by enabling detector-agnostic, codec-free, content-aware skipping using per-object temporal state.\",\n      \"reason\": \"The poster accurately describes the research problem as high energy consumption and sustained GPU utilization due to repeated detector invocations on redundant frames, aligning with the reference.\"\n    },\n    \"chk_method\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"ALBIREO wraps off-the-shelf detectors with three mechanisms: 1) Forward-looking uncertainty trigger: Uses 10D Kalman filter per object; skips detection when predicted covariance trace is below threshold u, avoiding stale comparisons. 2) Detector-flicker rescue: On inference frames, emits Kalman-predicted boxes for unmatched confirmed objects if recent confidence was high and rescue cap not exceeded, preventing output fragmentation. 3) Empty-scene screen: Uses lightweight ERD classifier to skip full detection on objectless frames. No detector modification or retraining needed.\",\n      \"reason\": \"The poster provides a detailed description of the ALBIREO framework, including its mechanisms (Kalman filter uncertainty trigger, detector-flicker rescue, and empty-scene screen), matching the reference.\"\n    },\n    \"chk_data\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Evaluated on BDD100K MOT with YOLO11x, YOLO26x, RF-DETR-Large on Jetson AGX Thor and Orin.\",\n      \"reason\": \"The poster specifies the BDD100K dataset's multi-object tracking validation split, which matches the reference.\"\n    },\n    \"chk_setup\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Evaluated on BDD100K MOT with YOLO11x, YOLO26x, RF-DETR-Large on Jetson AGX Thor and Orin.\",\n      \"reason\": \"The poster mentions the evaluation setup, including the three detectors and two NVIDIA Jetson platforms, consistent with the reference.\"\n    },\n    \"chk_primary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"ALBIREO keeps AP@50 within ±1.2 pp of per-frame inference while reducing energy by 12.1-17.6%. On YOLO26x, default ALBIREO improves AP@50 by +0.8 pp, reduces energy by 17.6% (Thor) / 14.4% (Orin), and lowers EDP by 24.9% (Thor) / 26.1% (Orin).\",\n      \"reason\": \"The poster includes both primary result drafts from the reference, covering AP@50 within ±1.2 pp and energy reduction by 12.1–17.6%, as well as the improvement of AP@50 by +0.8 pp and energy reduction on Thor and Orin.\"\n    },\n    \"chk_secondary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"It Pareto-dominates Vanilla and baselines (FixedSkip, CTD, Statues) in AP@50-EDP space for AP@50 ≥ 0.50.\",\n      \"reason\": \"The poster mentions ALBIREO forming the upper AP@50–EDP Pareto frontier over evaluated baselines in the AP@50 ≥ 0.50 region, matching one of the secondary result drafts.\"\n    },\n    \"chk_baseline\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"It Pareto-dominates Vanilla and baselines (FixedSkip, CTD, Statues) in AP@50-EDP space for AP@50 ≥ 0.50.\",\n      \"reason\": \"The poster compares ALBIREO against multiple baselines, including FixedSkip, CTD, and Statues, consistent with the reference.\"\n    },\n    \"chk_conclusion\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"ALBIREO provides a practical, drop-in efficiency layer for edge video detection, improving accuracy, energy, and latency simultaneously.\",\n      \"reason\": \"The poster states the substantive conclusion that ALBIREO serves as a practical drop-in efficiency layer for edge video detection pipelines, matching the reference.\"\n    },\n    \"chk_limitation\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Limitations include potential drift under erratic motion (e.g., abrupt pedestrian moves) and domain-dependent empty-scene classifier.\",\n      \"reason\": \"The poster mentions the limitation of potential drift under erratic motion and the domain dependency of the empty-scene classifier, consistent with the reference.\"\n    }\n  }\n}\n```"
+}

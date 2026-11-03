@@ -1,0 +1,59 @@
+{
+  "model": "openai.gpt-4o",
+  "repeat": 1,
+  "judge_prompt_sha256": "4ec65050cfdc718218dbc587f672291e733fd03b1254c20d77b61b0933e16162",
+  "error": null,
+  "tokens_in": 6133,
+  "tokens_out": 984,
+  "max_output_tokens": 16384,
+  "parsed": {
+    "items": {
+      "chk_problem": {
+        "label": "accurate",
+        "poster_evidence": "Functional decline in older adults is typically recognized only after falls or observable gait impairment, closing the window for prevention. Routine biomarkers — already recorded but rarely analyzed longitudinally — may hold early warning signals. This study investigates whether temporal trajectories of 12 routine biomarkers can identify patients in the preclinical phase of mobility decline, using the All of Us Research Program (N=297,861; 11.1% cases).",
+        "reason": "The poster accurately describes the research problem as predicting pre-clinical functional mobility decline in older adults using longitudinal trajectories of routine biomarkers."
+      },
+      "chk_method": {
+        "label": "accurate",
+        "poster_evidence": "Trajectory features (slope, variability, delta, mean, count) were derived over a 3-year preindex window. Models (LightGBM, XGBoost, Random Forest, Logistic Regression) were evaluated via 5-fold stratified CV with out-of-fold predictions.",
+        "reason": "The poster correctly outlines the feature engineering of trajectory descriptors and the use of LightGBM and other machine learning algorithms."
+      },
+      "chk_data": {
+        "label": "accurate",
+        "poster_evidence": "This study investigates whether temporal trajectories of 12 routine biomarkers can identify patients in the preclinical phase of mobility decline, using the All of Us Research Program (N=297,861; 11.1% cases).",
+        "reason": "The poster specifies the dataset as the All of Us Research Program with 297,861 participants, matching the reference."
+      },
+      "chk_setup": {
+        "label": "accurate",
+        "poster_evidence": "Models (LightGBM, XGBoost, Random Forest, Logistic Regression) were evaluated via 5-fold stratified CV with out-of-fold predictions.",
+        "reason": "The poster describes the evaluation setup as five-fold stratified cross-validation with out-of-fold predictions, consistent with the reference."
+      },
+      "chk_primary_result": {
+        "label": "accurate",
+        "poster_evidence": "Trajectory features significantly outperformed static summaries: AUROC 0.797 vs. 0.755 (DeLong p<0.001); AUPRC 0.380 vs. 0.304.",
+        "reason": "The poster reports the primary result of AUROC 0.797 and AUPRC 0.380 for LightGBM models incorporating trajectory features, matching the reference."
+      },
+      "chk_secondary_result": {
+        "label": "accurate",
+        "poster_evidence": "Prediction horizon analysis showed sustained discrimination 3–12 months before decline onset (AUROC 0.768–0.740).",
+        "reason": "The poster includes the secondary result of sustained prediction performance 3–12 months before onset, with AUROCs ranging from 0.768 to 0.740."
+      },
+      "chk_baseline": {
+        "label": "accurate",
+        "poster_evidence": "Trajectory features significantly outperformed static summaries: AUROC 0.797 vs. 0.755 (DeLong p<0.001); AUPRC 0.380 vs. 0.304.",
+        "reason": "The poster correctly contrasts trajectory models with static laboratory summaries, reporting baseline AUROC 0.755 and AUPRC 0.304."
+      },
+      "chk_conclusion": {
+        "label": "accurate",
+        "poster_evidence": "Longitudinal trajectory features from 12 routine biomarkers significantly outperform static summaries for predicting functional decline (AUROC 0.797 vs. 0.755; AUPRC 0.380 vs. 0.304; p<0.001). Because the model uses only measurements already ordered in routine care, it supports passive, zero-burden EHR integration for early detection of pre-clinical functional decline — enabling timely, equitable interventions before falls or observable impairment occur.",
+        "reason": "The poster concludes that trajectory features improve prediction and support passive EHR integration for early detection, consistent with the reference."
+      },
+      "chk_limitation": {
+        "label": "accurate",
+        "poster_evidence": "Limitations: ICD-10 outcomes may miss objective decline; CRP and vitamin D have high missingness; no comorbidity adjustment. External validation and objective endpoints (e.g., gait speed) are needed.",
+        "reason": "The poster identifies limitations such as ICD-10-coded outcomes, missingness in certain biomarkers, and the need for external validation, matching the reference."
+      }
+    }
+  },
+  "raw": "```json\n{\n  \"items\": {\n    \"chk_problem\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Functional decline in older adults is typically recognized only after falls or observable gait impairment, closing the window for prevention. Routine biomarkers — already recorded but rarely analyzed longitudinally — may hold early warning signals. This study investigates whether temporal trajectories of 12 routine biomarkers can identify patients in the preclinical phase of mobility decline, using the All of Us Research Program (N=297,861; 11.1% cases).\",\n      \"reason\": \"The poster accurately describes the research problem as predicting pre-clinical functional mobility decline in older adults using longitudinal trajectories of routine biomarkers.\"\n    },\n    \"chk_method\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Trajectory features (slope, variability, delta, mean, count) were derived over a 3-year preindex window. Models (LightGBM, XGBoost, Random Forest, Logistic Regression) were evaluated via 5-fold stratified CV with out-of-fold predictions.\",\n      \"reason\": \"The poster correctly outlines the feature engineering of trajectory descriptors and the use of LightGBM and other machine learning algorithms.\"\n    },\n    \"chk_data\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"This study investigates whether temporal trajectories of 12 routine biomarkers can identify patients in the preclinical phase of mobility decline, using the All of Us Research Program (N=297,861; 11.1% cases).\",\n      \"reason\": \"The poster specifies the dataset as the All of Us Research Program with 297,861 participants, matching the reference.\"\n    },\n    \"chk_setup\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Models (LightGBM, XGBoost, Random Forest, Logistic Regression) were evaluated via 5-fold stratified CV with out-of-fold predictions.\",\n      \"reason\": \"The poster describes the evaluation setup as five-fold stratified cross-validation with out-of-fold predictions, consistent with the reference.\"\n    },\n    \"chk_primary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Trajectory features significantly outperformed static summaries: AUROC 0.797 vs. 0.755 (DeLong p<0.001); AUPRC 0.380 vs. 0.304.\",\n      \"reason\": \"The poster reports the primary result of AUROC 0.797 and AUPRC 0.380 for LightGBM models incorporating trajectory features, matching the reference.\"\n    },\n    \"chk_secondary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Prediction horizon analysis showed sustained discrimination 3–12 months before decline onset (AUROC 0.768–0.740).\",\n      \"reason\": \"The poster includes the secondary result of sustained prediction performance 3–12 months before onset, with AUROCs ranging from 0.768 to 0.740.\"\n    },\n    \"chk_baseline\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Trajectory features significantly outperformed static summaries: AUROC 0.797 vs. 0.755 (DeLong p<0.001); AUPRC 0.380 vs. 0.304.\",\n      \"reason\": \"The poster correctly contrasts trajectory models with static laboratory summaries, reporting baseline AUROC 0.755 and AUPRC 0.304.\"\n    },\n    \"chk_conclusion\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Longitudinal trajectory features from 12 routine biomarkers significantly outperform static summaries for predicting functional decline (AUROC 0.797 vs. 0.755; AUPRC 0.380 vs. 0.304; p<0.001). Because the model uses only measurements already ordered in routine care, it supports passive, zero-burden EHR integration for early detection of pre-clinical functional decline — enabling timely, equitable interventions before falls or observable impairment occur.\",\n      \"reason\": \"The poster concludes that trajectory features improve prediction and support passive EHR integration for early detection, consistent with the reference.\"\n    },\n    \"chk_limitation\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Limitations: ICD-10 outcomes may miss objective decline; CRP and vitamin D have high missingness; no comorbidity adjustment. External validation and objective endpoints (e.g., gait speed) are needed.\",\n      \"reason\": \"The poster identifies limitations such as ICD-10-coded outcomes, missingness in certain biomarkers, and the need for external validation, matching the reference.\"\n    }\n  }\n}\n```"
+}

@@ -1,0 +1,59 @@
+{
+  "model": "openai.gpt-4o",
+  "repeat": 1,
+  "judge_prompt_sha256": "4ec65050cfdc718218dbc587f672291e733fd03b1254c20d77b61b0933e16162",
+  "error": null,
+  "tokens_in": 7782,
+  "tokens_out": 1008,
+  "max_output_tokens": 16384,
+  "parsed": {
+    "items": {
+      "chk_problem": {
+        "label": "accurate",
+        "poster_evidence": "Designing high-performance custom accelerator kernels requires deep hardware expertise. Engineers must manually manage memory hierarchies such as HBM and VMEM, orchestrate DMA pipelining, derive multidimensional tiling strategies, satisfy rigid accelerator APIs, and interpret opaque compiler errors. Even functionally correct kernels require repeated profiling and configuration tuning to achieve strong hardware performance.",
+        "reason": "The poster accurately describes the complexity of designing high-performance custom kernels for accelerators, aligning with the reference."
+      },
+      "chk_method": {
+        "label": "accurate",
+        "poster_evidence": "MaxKernel addresses this gap with a multi-agent framework that combines planning, implementation, self-debugging, testing, autotuning, and XProf-based profiling in closed feedback loops.",
+        "reason": "The poster identifies MaxKernel as a multi-agent system and outlines its paradigms and functionalities, matching the reference."
+      },
+      "chk_data": {
+        "label": "accurate",
+        "poster_evidence": "MaxKernel is evaluated on TPU v6e using JaxBench, a suite of 50 workloads containing 17 operators from widely used language-model architectures and 33 fused operators adapted from KernelBench.",
+        "reason": "The poster specifies JaxBench and real-world workloads, consistent with the reference."
+      },
+      "chk_setup": {
+        "label": "accurate",
+        "poster_evidence": "Metrics include compilation rate, correctness rate, geometric mean speedup over XLA with regressions floored at 1.0×, and fast-p: the fraction of tasks that are correct and exceed speedup threshold p. Correctness is checked against unoptimized JAX references, generally using absolute and relative tolerances of 10�², with selected bf16 workloads relaxed to at most 10�¹. XProf measures on-device execution time while excluding host dispatch and compilation overhead.",
+        "reason": "The poster describes the evaluation setup, including hardware, correctness validation, and profiling tools, aligning with the reference."
+      },
+      "chk_primary_result": {
+        "label": "accurate",
+        "poster_evidence": "Parallel Search reaches 50/50 compilation, 50/50 correctness, a 1.58× geometric mean speedup, and fast1 on 34/50 tasks.",
+        "reason": "The poster reports the primary result of a 1.58× geometric mean speedup across JaxBench workloads, consistent with the reference."
+      },
+      "chk_secondary_result": {
+        "label": "accurate",
+        "poster_evidence": "For Qwen3-Next Gated DeltaNet, MaxKernel reduces forward-pass latency from 17.09 ms to 10.47 ms, a 1.63× speedup, and reduces the full forward-and-backward training step from 84.51 ms to 17.99 ms, a 4.70× speedup. DeepSeek-V4 Sparse Attention improves by 2.36× for small decoding shapes and up to 7.85× for prefill operations.",
+        "reason": "The poster provides secondary results, including a 2.36× improvement for DeepSeek-V4 Sparse Attention and other production workloads, consistent with the reference."
+      },
+      "chk_baseline": {
+        "label": "accurate",
+        "poster_evidence": "Metrics include compilation rate, correctness rate, geometric mean speedup over XLA with regressions floored at 1.0×, and fast-p: the fraction of tasks that are correct and exceed speedup threshold p.",
+        "reason": "The poster mentions comparison against the XLA baseline, aligning with the reference."
+      },
+      "chk_conclusion": {
+        "label": "accurate",
+        "poster_evidence": "MaxKernel demonstrates that agentic systems can handle the complexity of low-level TPU programming. Context synthesis, compiler-guided diagnosis, frozen correctness tests, XProf bottleneck identification, autotuning, and structured search transform static code generation into a reliable hardware optimization process.",
+        "reason": "The poster accurately conveys the conclusion that MaxKernel demonstrates the ability of agentic systems to handle low-level accelerator programming complexities and achieve state-of-the-art performance."
+      },
+      "chk_limitation": {
+        "label": "accurate",
+        "poster_evidence": "Graph-Based Autonomous Search addresses the Auto agent’s susceptibility to local optima. MaxKernel models kernel optimization as a SearchGraph in which each node contains source code, an optimization plan, correctness results, latency, and speedup.",
+        "reason": "The poster mentions the Auto Agent's susceptibility to local optima and the use of Graph-Based Autonomous Search to address this limitation, consistent with the reference."
+      }
+    }
+  },
+  "raw": "```json\n{\n  \"items\": {\n    \"chk_problem\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Designing high-performance custom accelerator kernels requires deep hardware expertise. Engineers must manually manage memory hierarchies such as HBM and VMEM, orchestrate DMA pipelining, derive multidimensional tiling strategies, satisfy rigid accelerator APIs, and interpret opaque compiler errors. Even functionally correct kernels require repeated profiling and configuration tuning to achieve strong hardware performance.\",\n      \"reason\": \"The poster accurately describes the complexity of designing high-performance custom kernels for accelerators, aligning with the reference.\"\n    },\n    \"chk_method\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"MaxKernel addresses this gap with a multi-agent framework that combines planning, implementation, self-debugging, testing, autotuning, and XProf-based profiling in closed feedback loops.\",\n      \"reason\": \"The poster identifies MaxKernel as a multi-agent system and outlines its paradigms and functionalities, matching the reference.\"\n    },\n    \"chk_data\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"MaxKernel is evaluated on TPU v6e using JaxBench, a suite of 50 workloads containing 17 operators from widely used language-model architectures and 33 fused operators adapted from KernelBench.\",\n      \"reason\": \"The poster specifies JaxBench and real-world workloads, consistent with the reference.\"\n    },\n    \"chk_setup\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Metrics include compilation rate, correctness rate, geometric mean speedup over XLA with regressions floored at 1.0×, and fast-p: the fraction of tasks that are correct and exceed speedup threshold p. Correctness is checked against unoptimized JAX references, generally using absolute and relative tolerances of 10�², with selected bf16 workloads relaxed to at most 10�¹. XProf measures on-device execution time while excluding host dispatch and compilation overhead.\",\n      \"reason\": \"The poster describes the evaluation setup, including hardware, correctness validation, and profiling tools, aligning with the reference.\"\n    },\n    \"chk_primary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Parallel Search reaches 50/50 compilation, 50/50 correctness, a 1.58× geometric mean speedup, and fast1 on 34/50 tasks.\",\n      \"reason\": \"The poster reports the primary result of a 1.58× geometric mean speedup across JaxBench workloads, consistent with the reference.\"\n    },\n    \"chk_secondary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"For Qwen3-Next Gated DeltaNet, MaxKernel reduces forward-pass latency from 17.09 ms to 10.47 ms, a 1.63× speedup, and reduces the full forward-and-backward training step from 84.51 ms to 17.99 ms, a 4.70× speedup. DeepSeek-V4 Sparse Attention improves by 2.36× for small decoding shapes and up to 7.85× for prefill operations.\",\n      \"reason\": \"The poster provides secondary results, including a 2.36× improvement for DeepSeek-V4 Sparse Attention and other production workloads, consistent with the reference.\"\n    },\n    \"chk_baseline\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Metrics include compilation rate, correctness rate, geometric mean speedup over XLA with regressions floored at 1.0×, and fast-p: the fraction of tasks that are correct and exceed speedup threshold p.\",\n      \"reason\": \"The poster mentions comparison against the XLA baseline, aligning with the reference.\"\n    },\n    \"chk_conclusion\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"MaxKernel demonstrates that agentic systems can handle the complexity of low-level TPU programming. Context synthesis, compiler-guided diagnosis, frozen correctness tests, XProf bottleneck identification, autotuning, and structured search transform static code generation into a reliable hardware optimization process.\",\n      \"reason\": \"The poster accurately conveys the conclusion that MaxKernel demonstrates the ability of agentic systems to handle low-level accelerator programming complexities and achieve state-of-the-art performance.\"\n    },\n    \"chk_limitation\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Graph-Based Autonomous Search addresses the Auto agent’s susceptibility to local optima. MaxKernel models kernel optimization as a SearchGraph in which each node contains source code, an optimization plan, correctness results, latency, and speedup.\",\n      \"reason\": \"The poster mentions the Auto Agent's susceptibility to local optima and the use of Graph-Based Autonomous Search to address this limitation, consistent with the reference.\"\n    }\n  }\n}\n```"
+}

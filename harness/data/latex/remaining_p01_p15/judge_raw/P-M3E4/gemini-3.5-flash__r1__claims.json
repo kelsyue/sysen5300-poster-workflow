@@ -2,9 +2,574 @@
   "model": "gemini-3.5-flash",
   "repeat": 1,
   "judge_prompt_sha256": "4ec65050cfdc718218dbc587f672291e733fd03b1254c20d77b61b0933e16162",
-  "error": "transport: Error code: 422 - Budget has been exceeded! Key=SIX-SIGMA-SLIDES-PROJECT-2 (sk-...d5LQ) Current cost: 70.08230754, Max budget: 70.0",
-  "tokens_in": 0,
-  "tokens_out": 0,
-  "parsed": null,
-  "raw": ""
+  "error": null,
+  "tokens_in": 40353,
+  "tokens_out": 27844,
+  "max_output_tokens": 32768,
+  "claims_batch_size": 40,
+  "parsed": {
+    "claims": [
+      {
+        "id": 1,
+        "text": "Traditional AI-generated query (AIGQ) systems rely on a two-stage Q2AIGQ paradigm.",
+        "poster_quote": "Traditional AI-generated query (AIGQ) systems rely on a two-stage Q2AIGQ paradigm",
+        "label": "supported",
+        "paper_evidence": "Traditional AI-generated queries(AIGQ) generation primarily relies on a two-stage \"Query-to-Ai-Generated-Query\"(Q2AIGQ) association paradigm",
+        "reason": "Section 1, Abstract. The paper explicitly states that traditional AIGQ generation relies on this two-stage paradigm."
+      },
+      {
+        "id": 2,
+        "text": "Traditional AI-generated query (AIGQ) systems suffer from semantic drift.",
+        "poster_quote": "Traditional AI-generated query (AIGQ) systems rely on a two-stage Q2AIGQ paradigm that suffers from semantic drift",
+        "label": "supported",
+        "paper_evidence": "This approach suffers from semantic drift due to information cascade loss;",
+        "reason": "Section 1, Abstract. The paper states that the traditional Q2AIGQ approach suffers from semantic drift."
+      },
+      {
+        "id": 3,
+        "text": "Traditional AI-generated query (AIGQ) systems fail to capture multi-interest user intent.",
+        "poster_quote": "Traditional AI-generated query (AIGQ) systems rely on a two-stage Q2AIGQ paradigm that suffers from semantic drift and fails to capture multi-interest user intent.",
+        "label": "supported",
+        "paper_evidence": "additionally, primary search query derivation heavily depends on \"user-item\" co-occurrence relationships, lacking exploration of user multi-interests, resulting in guidance queries with low value and mismatched purchase intent.",
+        "reason": "Section 1, Abstract. The paper states that traditional methods lack exploration of user multi-interests."
+      },
+      {
+        "id": 4,
+        "text": "User behavior is often noisy.",
+        "poster_quote": "User behavior is often noisy",
+        "label": "supported",
+        "paper_evidence": "while their historical interaction sequences inevitably contain noise caused by accidental interactions [16, 25, 31], exposure bias, and so on.",
+        "reason": "Section 1, Introduction. The paper states that historical interaction sequences contain noise."
+      },
+      {
+        "id": 5,
+        "text": "User behavior is dominated by co-occurrence signals.",
+        "poster_quote": "User behavior is often noisy and dominated by co-occurrence signals",
+        "label": "unsupported",
+        "paper_evidence": "",
+        "reason": "Section 1. The paper states that 'anchor-query inference' (not user behavior itself) is dominated by isolated search behaviors and user-item co-occurrence signals."
+      },
+      {
+        "id": 6,
+        "text": "User behavior leads to low-value guidance queries misaligned with actual purchase intent.",
+        "poster_quote": "User behavior is often noisy and dominated by co-occurrence signals, leading to low-value guidance queries misaligned with actual purchase intent.",
+        "label": "unsupported",
+        "paper_evidence": "",
+        "reason": "Section 1. The paper states that the traditional Q2AIGQ approach's limitations (such as lack of exploration of multi-interests) lead to low-value guidance queries, not user behavior itself."
+      },
+      {
+        "id": 7,
+        "text": "LLM4AIGQ adopts a three-stage training pipeline consisting of Supervised Fine-Tuning (SFT), Reinforcement Learning (RL), and Direct Preference Optimization (DPO).",
+        "poster_quote": "LLM4AIGQ adopts a three-stage training pipeline: Supervised Fine-Tuning (SFT), Reinforcement Learning (RL), and Direct Preference Optimization (DPO).",
+        "label": "supported",
+        "paper_evidence": "In summary, we propose LLM4AIGQ, an LLM-based framework for multi-interest-aware AI guidance query generation, with a three-stage SFT–RL–DPO training pipeline.",
+        "reason": "Section 1, Introduction. The paper explicitly outlines this three-stage training pipeline."
+      },
+      {
+        "id": 8,
+        "text": "In SFT, the model is trained on single-interest subsequences to learn AIGQ style.",
+        "poster_quote": "In SFT, we train the model on single-interest subsequences to learn AIGQ style.",
+        "label": "supported",
+        "paper_evidence": "During the SFT stage, the LLM is provided only with single-interest subsequences, with the primary objective of learning the desired generation style and patterns of guidance queries.",
+        "reason": "Section 1, Introduction. The paper states that SFT uses single-interest subsequences to learn the generation style."
+      },
+      {
+        "id": 9,
+        "text": "In RL, multi-level rewards are used to supervise interest disentanglement and query generation under mixed-interest scenarios.",
+        "poster_quote": "In RL, we use multi-level rewards to supervise interest disentanglement and query generation under mixed-interest scenarios.",
+        "label": "supported",
+        "paper_evidence": "The SFT stage focuses on learning the style of AIGQ, while the RL stage uses multi-objective rewards to supervise interest disentanglement and high-quality query generation.",
+        "reason": "Section 1, Introduction. The paper states that the RL stage uses multi-objective rewards to supervise interest disentanglement and query generation."
+      },
+      {
+        "id": 10,
+        "text": "DPO distills reasoning capability from think-mode to non-think mode for efficient inference.",
+        "poster_quote": "DPO distills reasoning capability from think-mode to non-think mode for efficient inference.",
+        "label": "supported",
+        "paper_evidence": "Second, we further apply Direct Preference Optimization (DPO) [19] to enable the model to preserve the reasoning effectiveness of the think mode under a non-think inference mode.",
+        "reason": "Section 1, Introduction. The paper states that DPO is used to preserve reasoning effectiveness in non-think mode."
+      },
+      {
+        "id": 11,
+        "text": "For deployment, LLM4AIGQ uses a nearline generation + online retrieval architecture.",
+        "poster_quote": "For deployment, we use a nearline generation + online retrieval architecture",
+        "label": "supported",
+        "paper_evidence": "For deployment, we adopt a nearline generation and online retrieval architecture.",
+        "reason": "Section 1, Introduction. The paper states that this architecture is adopted for deployment."
+      },
+      {
+        "id": 12,
+        "text": "Guidance queries are pre-generated offline and retrieved in real-time.",
+        "poster_quote": "guidance queries are pre-generated offline and retrieved in real-time",
+        "label": "supported",
+        "paper_evidence": "where guidance queries are generated in advance through nearline inference and directly retrieved during online serving, thereby substantially reducing the latency requirements imposed on LLM inference.",
+        "reason": "Section 1, Introduction. The paper explains that queries are pre-generated nearline and retrieved online."
+      },
+      {
+        "id": 13,
+        "text": "The deployment architecture reduces latency while preserving quality.",
+        "poster_quote": "reducing latency while preserving quality.",
+        "label": "supported",
+        "paper_evidence": "The system satisfies strict online latency requirements and achieves strong performance in both offline and online evaluations.",
+        "reason": "Section 1, Introduction. The paper states that the deployment architecture satisfies latency requirements while achieving strong performance."
+      },
+      {
+        "id": 14,
+        "text": "DPO trains the model to generate high-quality AIGQs without explicit reasoning steps.",
+        "poster_quote": "DPO trains the model to generate high-quality AIGQs without explicit reasoning steps.",
+        "label": "supported",
+        "paper_evidence": "By eliminating explicit reasoning traces and substantially reducing the number of generated tokens, this strategy accelerates LLM inference while maintaining the quality of generated guidance queries.",
+        "reason": "Section 1, Introduction. The paper states that DPO enables the model to maintain quality without explicit reasoning traces."
+      },
+      {
+        "id": 15,
+        "text": "RL-generated think-mode outputs (final answers only) are used as positive samples in DPO.",
+        "poster_quote": "We use RL-generated think-mode outputs (final answers only) as positive samples",
+        "label": "supported",
+        "paper_evidence": "We first use the model checkpoint from RL stage generate responses under the thinking mode and retain only their final answers as positive samples y w , while discarding the explicit reasoning traces.",
+        "reason": "Section 4.4. The paper states that the final answers from think-mode are used as positive samples."
+      },
+      {
+        "id": 16,
+        "text": "Non-think mode outputs are used as negative samples in DPO.",
+        "poster_quote": "and non-think mode outputs as negative samples.",
+        "label": "supported",
+        "paper_evidence": "Responses directly generated under the non-thinking mode are used as negative samples yl .",
+        "reason": "Section 4.4. The paper states that non-thinking mode outputs are used as negative samples."
+      },
+      {
+        "id": 17,
+        "text": "A preference-pair filtering strategy removes the top 30% semantically similar pairs.",
+        "poster_quote": "A preference-pair filtering strategy removes top 30% semantically similar pairs",
+        "label": "supported",
+        "paper_evidence": "Specifically, we compute the semantic similarity for each positive-negative sample pair and remove the top 30% most semantically similar pairs to alleviate the issue of ’ineffective training’.",
+        "reason": "Section 4.4. The paper describes this filtering strategy exactly."
+      },
+      {
+        "id": 18,
+        "text": "The preference-pair filtering strategy improves training stability.",
+        "poster_quote": "A preference-pair filtering strategy removes top 30% semantically similar pairs to improve training stability.",
+        "label": "supported",
+        "paper_evidence": "Training on such hard-to-distinguish data makes the optimization process more unstable and causes the model to produce more templated and stylistically homogeneous outputs, resulting in “ineffective learning”",
+        "reason": "Section 5.3.3. The paper explains that without filtering, the optimization process is more unstable."
+      },
+      {
+        "id": 19,
+        "text": "Nearline generation runs after every N user interactions.",
+        "poster_quote": "nearline generation runs after every N user interactions",
+        "label": "supported",
+        "paper_evidence": "Instead, the model is invoked after every N accumulated user interactions, such as clicks or favorites, to generate guidance queries.",
+        "reason": "Section 4.5.1. The paper states that nearline generation runs after every N interactions."
+      },
+      {
+        "id": 20,
+        "text": "Nearline generation writes results to a mapping table.",
+        "poster_quote": "writing results to a mapping table.",
+        "label": "supported",
+        "paper_evidence": "The generated guidance queries are directly written back into the mapping table for subsequent online retrieval.",
+        "reason": "Section 4.5.1. The paper states that nearline results are written to the mapping table."
+      },
+      {
+        "id": 21,
+        "text": "Online serving uses lightweight vector retrieval to fetch personalized AIGQs in real-time.",
+        "poster_quote": "Online serving uses lightweight vector retrieval to fetch personalized AIGQs in real-time.",
+        "label": "supported",
+        "paper_evidence": "Whenever a user enters the shopping-guide interface, the online pipeline employs an efficient vector retrieval algorithm to locate the corresponding index in the table and retrieve personalized candidate guidance queries for real-time recall.",
+        "reason": "Section 4.5.2. The paper states that online serving retrieves personalized queries in real-time using vector retrieval."
+      },
+      {
+        "id": 22,
+        "text": "In the data preprocessing stage, an LLM is used to generate item short titles from item-side information.",
+        "poster_quote": "In the data preprocessing stage, an LLM is used to generate item short titles from item-side information",
+        "label": "supported",
+        "paper_evidence": "In the data preprocessing stage, an LLM is used to generate item short titles from item-side information, enabling compressed extraction of behavioral content.",
+        "reason": "Figure 2 Caption. The paper states that an LLM is used to generate item short titles from item-side information."
+      },
+      {
+        "id": 23,
+        "text": "Generating item short titles enables compressed extraction of behavioral content.",
+        "poster_quote": "enabling compressed extraction of behavioral content.",
+        "label": "supported",
+        "paper_evidence": "In the data preprocessing stage, an LLM is used to generate item short titles from item-side information, enabling compressed extraction of behavioral content.",
+        "reason": "Figure 2 Caption. The paper states that generating short titles enables compressed extraction."
+      },
+      {
+        "id": 24,
+        "text": "The SFT stage is conducted under single-interest scenarios to guide the learning of AIGQ styles.",
+        "poster_quote": "The SFT stage is conducted under single-interest scenarios to guide the learning of AIGQ styles.",
+        "label": "supported",
+        "paper_evidence": "The SFT stage is conducted under single-interest scenarios to guide the learning of AIGQ styles.",
+        "reason": "Figure 2 Caption. The paper states that SFT is conducted under single-interest scenarios."
+      },
+      {
+        "id": 25,
+        "text": "The RL stage adopts multi-level reward functions to supervise interest disentanglement and query generation.",
+        "poster_quote": "The RL stage adopts multi-level reward functions to supervise interest disentanglement and query generation.",
+        "label": "supported",
+        "paper_evidence": "The RL stage adopts multi-level reward functions to supervise interest disentanglement and query generation.",
+        "reason": "Figure 2 Caption. The paper states that RL uses multi-level reward functions."
+      },
+      {
+        "id": 26,
+        "text": "DPO learns the reasoning expression of think mode through preference optimization.",
+        "poster_quote": "DPO further learns the reasoning expression of think mode through preference optimization.",
+        "label": "supported",
+        "paper_evidence": "DPO further learns the reasoning expression of think mode through preference optimization.",
+        "reason": "Figure 2 Caption. The paper states that DPO learns the reasoning expression of think mode."
+      },
+      {
+        "id": 27,
+        "text": "For deployment, a nearline generation and online retrieval architecture is adopted.",
+        "poster_quote": "For deployment, we adopt a nearline generation and online retrieval architecture.",
+        "label": "supported",
+        "paper_evidence": "For deployment, we adopt a nearline generation and online retrieval architecture.",
+        "reason": "Figure 2 Caption. The paper states that this architecture is adopted for deployment."
+      },
+      {
+        "id": 28,
+        "text": "The evaluation is conducted on Taobao/Tmall datasets from June-July 2026.",
+        "poster_quote": "We evaluate on Taobao/Tmall datasets (June-July 2026).",
+        "label": "supported",
+        "paper_evidence": "Our datasets are sampled from multi-behavior user interaction logs on the Taobao and Tmall e-commerce platforms, covering the period from June to July 2026.",
+        "reason": "Section 5.1.1. The paper states the dataset source and time period."
+      },
+      {
+        "id": 29,
+        "text": "Evaluation metrics include Recall@k.",
+        "poster_quote": "Metrics include Recall@k",
+        "label": "supported",
+        "paper_evidence": "Recall@k and NDCG@k are adopted to measure the relevance of the generated queries.",
+        "reason": "Section 5.1.2. The paper states that Recall@k is adopted as an evaluation metric."
+      },
+      {
+        "id": 30,
+        "text": "Evaluation metrics include NDCG@k (relevance).",
+        "poster_quote": "Metrics include Recall@k, NDCG@k (relevance)",
+        "label": "supported",
+        "paper_evidence": "Recall@k and NDCG@k are adopted to measure the relevance of the generated queries.",
+        "reason": "Section 5.1.2. The paper states that NDCG@k is adopted to measure relevance."
+      },
+      {
+        "id": 31,
+        "text": "Evaluation metrics include S/A/B ratings (shopping guidance value).",
+        "poster_quote": "Metrics include Recall@k, NDCG@k (relevance), and S/A/B ratings (shopping guidance value).",
+        "label": "supported",
+        "paper_evidence": "For shopping guidance value, we report the proportions of S/A/B ratings for the generated queries on the test set.",
+        "reason": "Section 5.1.2. The paper states that S/A/B ratings are reported for shopping guidance value."
+      },
+      {
+        "id": 32,
+        "text": "LLM4AIGQ outperforms zero-shot LLMs.",
+        "poster_quote": "LLM4AIGQ outperforms zero-shot LLMs",
+        "label": "supported",
+        "paper_evidence": "Our method outperforms zero-shot state-of-the-art models in both relevance and shopping guidance value",
+        "reason": "Section 5.2. The paper states that LLM4AIGQ outperforms zero-shot models."
+      },
+      {
+        "id": 33,
+        "text": "LLM4AIGQ outperforms larger variants.",
+        "poster_quote": "LLM4AIGQ outperforms zero-shot LLMs and larger variants.",
+        "label": "supported",
+        "paper_evidence": "and also surpasses larger models from the same family, demonstrating the effectiveness of LLM4AIGQ.",
+        "reason": "Section 5.2. The paper states that LLM4AIGQ outperforms larger variants."
+      },
+      {
+        "id": 34,
+        "text": "The SFTRLDPO pipeline shows progressive gains.",
+        "poster_quote": "The SFTRLDPO pipeline shows progressive gains",
+        "label": "supported",
+        "paper_evidence": "Each training stage significantly improves model performance.",
+        "reason": "Section 5.2. The paper states that each training stage improves performance, which is also shown in Table 1."
+      },
+      {
+        "id": 35,
+        "text": "SFT improves style.",
+        "poster_quote": "SFT improves style",
+        "label": "supported",
+        "paper_evidence": "In the SFT stage, style learning rapidly enhances the value and relevance of generated AIGQ.",
+        "reason": "Section 5.2. The paper states that SFT style learning enhances value and relevance."
+      },
+      {
+        "id": 36,
+        "text": "RL enhances interest disentanglement and value.",
+        "poster_quote": "RL enhances interest disentanglement and value",
+        "label": "supported",
+        "paper_evidence": "In the RL stage, multi-level reward functions help the model disentangle user interests and improve relevance, while a judge model further enhances query value by supervising quality.",
+        "reason": "Section 5.2. The paper states that RL enhances interest disentanglement and query value."
+      },
+      {
+        "id": 37,
+        "text": "DPO preserves reasoning in non-think mode.",
+        "poster_quote": "DPO preserves reasoning in non-think mode.",
+        "label": "supported",
+        "paper_evidence": "The DPO stage improves reasoning in non-thinking mode by distilling reasoning ability from think mode",
+        "reason": "Section 5.2. The paper states that DPO improves reasoning in non-thinking mode."
+      },
+      {
+        "id": 38,
+        "text": "Ablation studies confirm the necessity of multi-level rewards.",
+        "poster_quote": "Ablation studies confirm the necessity of multi-level rewards",
+        "label": "supported",
+        "paper_evidence": "As shown in Table 3, removing any reward component leads to declines in both relevance and shopping guidance value.",
+        "reason": "Section 5.3.2. The paper states that removing any reward component leads to declines."
+      },
+      {
+        "id": 39,
+        "text": "Ablation studies confirm the necessity of data filtering.",
+        "poster_quote": "Ablation studies confirm the necessity of multi-level rewards and data filtering.",
+        "label": "supported",
+        "paper_evidence": "As shown in Table 3, removing the preference-pair filtering strategy in DPO training leads to significant declines in both relevance and shopping guidance value.",
+        "reason": "Section 5.3.3. The paper states that removing the filtering strategy leads to significant declines."
+      },
+      {
+        "id": 40,
+        "text": "Online A/B tests show +4.46% uCTR at 10% traffic.",
+        "poster_quote": "Online A/B tests show +4.46% uCTR at 10% traffic",
+        "label": "supported",
+        "paper_evidence": "In the initial 10% traffic experiment, the experimental group achieved a 4.46% improvement in uCTR compared with the baseline bucket.",
+        "reason": "Section 5.5. The paper states that the online A/B test showed a 4.46% improvement in uCTR at 10% traffic."
+      },
+      {
+        "id": 41,
+        "text": "Online A/B tests show +2.53% uCTR at 40% traffic.",
+        "poster_quote": "Online A/B tests show +4.46% uCTR at 10% traffic, +2.53% at 40% traffic",
+        "label": "supported",
+        "paper_evidence": "After scaling the traffic to 40%, the overall uCTR still maintained a positive gain of 2.53% over six days of online validation, demonstrating strong generalization capability and online stability under larger-scale deployment.",
+        "reason": "Section 5.5, page 7."
+      },
+      {
+        "id": 42,
+        "text": "In SFT, DeepSeek-V4-Pro is used as a teacher model.",
+        "poster_quote": "In SFT, we use a teacher model (DeepSeek-V4-Pro)",
+        "label": "supported",
+        "paper_evidence": "In contrast, the AIGQ generated by the larger-capacity model (deepseek-V4 Pro) are more in line with practical application scenarios in terms of expression and have greater guidance value. Therefore, we use the inference results of the larger-capacity model as the standard answer, and enhance the model’s understanding of AIGQ through instruction fine-tuning.",
+        "reason": "Section 4.2, page 4."
+      },
+      {
+        "id": 43,
+        "text": "The teacher model segments user histories into single-interest subsequences.",
+        "poster_quote": "to segment user histories into single-interest subsequences",
+        "label": "supported",
+        "paper_evidence": "We first employ a state-of-the-art LLM as the teacher model to decompose each user’s historical interaction sequence. Through sequence merging and pruning, we construct multiple subsequences, each representing a coherent and distinct interest, and use them as supervision labels.",
+        "reason": "Section 1, page 2."
+      },
+      {
+        "id": 44,
+        "text": "The teacher model generates reference AIGQs.",
+        "poster_quote": "and generate reference AIGQs.",
+        "label": "supported",
+        "paper_evidence": "Specifically, we first employ a state-of-the-art LLm as teacher model to partition user interests and generate a guidance query for each identified sub-interest, which serves as the reference output.",
+        "reason": "Section 1, page 2."
+      },
+      {
+        "id": 45,
+        "text": "Qwen3-30B-A3B is used as the student model.",
+        "poster_quote": "The student model (Qwen3-30B-A3B)",
+        "label": "supported",
+        "paper_evidence": "LLM4AIGQ adopts Qwen3-30B-A3B as the backbone model and is trained on NVIDIA H20 GPUs.",
+        "reason": "Section 5.1.4, page 6."
+      },
+      {
+        "id": 46,
+        "text": "The student model learns to generate compliant, concise, and guidance-rich queries.",
+        "poster_quote": "learns to generate compliant, concise, and guidance-rich queries.",
+        "label": "supported",
+        "paper_evidence": "The aim of SFT stage is to help LLM understand the definition of AIGQ and what constitutes good AIGQ. To this end, we will indicate in the task instructions the possible application scenarios of AIGQ (single item consultation, comparative decision-making, category selection, etc.), and require the model to output AIGQ that have guidance value while ensuring content compliance and concise expression.",
+        "reason": "Section 4.2, page 4."
+      },
+      {
+        "id": 47,
+        "text": "In RL, the model is required to reason step-by-step.",
+        "poster_quote": "In RL, we require the model to reason step-by-step",
+        "label": "supported",
+        "paper_evidence": "To better supervise model training, the LLM is instructed to conduct step-by-step reasoning according to the prompt instructions before producing the final answer.",
+        "reason": "Section 4.3, page 4."
+      },
+      {
+        "id": 48,
+        "text": "The model segments mixed sequences into up to 3 interest subsequences.",
+        "poster_quote": "(1) segment mixed sequences into up to 3 interest subsequences",
+        "label": "supported",
+        "paper_evidence": "For Step 1, the model is required to segment the historical sequence into at most three interest subsequences based on temporal proximity of user behaviors, semantic relevance, and profile preferences.",
+        "reason": "Section 4.3, page 4."
+      },
+      {
+        "id": 49,
+        "text": "The model infers consumption intent per sub-interest.",
+        "poster_quote": "(2) infer consumption intent and next-item prediction per sub-interest",
+        "label": "supported",
+        "paper_evidence": "For Step 2, the model is required to infer the user’s current consumption intent M_k based on the interest label I_k, the item characteristics reflected in B_k, and the user profile P_u, while also predicting the next potentially preferred item i_k.",
+        "reason": "Section 4.3, page 4-5."
+      },
+      {
+        "id": 50,
+        "text": "The model performs next-item prediction per sub-interest.",
+        "poster_quote": "(2) infer consumption intent and next-item prediction per sub-interest",
+        "label": "supported",
+        "paper_evidence": "For Step 2, the model is required to infer the user’s current consumption intent M_k based on the interest label I_k, the item characteristics reflected in B_k, and the user profile P_u, while also predicting the next potentially preferred item i_k.",
+        "reason": "Section 4.3, page 4-5."
+      },
+      {
+        "id": 51,
+        "text": "The model generates 3 AIGQs with confidence scores.",
+        "poster_quote": "(3) generate 3 AIGQs with confidence scores.",
+        "label": "supported",
+        "paper_evidence": "For Step 3, the model is required to generate three guidance queries according to the inferred interest I_k and the predicted item i_k, and assign a confidence score c to each guidance query.",
+        "reason": "Section 4.3, page 5."
+      },
+      {
+        "id": 52,
+        "text": "Four reward levels are designed: think-level, query-level, interest-level, and global-level.",
+        "poster_quote": "We design four reward levels: think-level (interest segmentation accuracy), query-level (length + commercial value), interest-level (semantic accuracy + stylistic diversity), and global-level (cross-interest diversity).",
+        "label": "supported",
+        "paper_evidence": "Specifically, rewards are defined at four granularities: think-level, query-level, interest-level, and global-level, enabling supervision of the model’s reasoning accuracy from multiple perspectives.",
+        "reason": "Section 4.3, page 5."
+      },
+      {
+        "id": 53,
+        "text": "Think-level reward measures interest segmentation accuracy.",
+        "poster_quote": "think-level (interest segmentation accuracy)",
+        "label": "supported",
+        "paper_evidence": "The think-level reward is designed to supervise the rationality of interest segmentation and the accuracy of interest mining.",
+        "reason": "Section 4.3.1, page 5."
+      },
+      {
+        "id": 54,
+        "text": "Query-level reward measures length and commercial value.",
+        "poster_quote": "query-level (length + commercial value)",
+        "label": "supported",
+        "paper_evidence": "The query-level reward is designed to supervise the generation of guidance queries that are both commercially valuable and content-compliant. To this end, we design two types of rewards and apply them to each generated guidance query q_{kj} under every sub-interest I_k. The first is a length reward R_{length}... The second is the shopping-guidance value reward R_{value}.",
+        "reason": "Section 4.3.2, page 5."
+      },
+      {
+        "id": 55,
+        "text": "Interest-level reward measures semantic accuracy and stylistic diversity.",
+        "poster_quote": "interest-level (semantic accuracy + stylistic diversity)",
+        "label": "supported",
+        "paper_evidence": "The interest-level reward is designed to supervise the content accuracy and stylistic diversity of multiple candidate guidance queries within the same interest cluster. To this end, we design three reward functions. The first is the semantic accuracy reward R_{sem}... In addition, we design a stylistic diversity reward R_{style} to encourage varied expressions of guidance queries within the same interest cluster.",
+        "reason": "Section 4.3.3, page 6."
+      },
+      {
+        "id": 56,
+        "text": "Global-level reward measures cross-interest diversity.",
+        "poster_quote": "global-level (cross-interest diversity)",
+        "label": "supported",
+        "paper_evidence": "The global-level reward is designed to supervise content diversity across different interests. Specifically, we aim to encourage diversified interests and avoid homogeneous expressions among interest clusters. To this end, we introduce a content diversity reward R_{content}.",
+        "reason": "Section 4.3.4, page 6."
+      },
+      {
+        "id": 57,
+        "text": "Rewards are aggregated and optimized via GRPO.",
+        "poster_quote": "Rewards are aggregated and optimized via GRPO.",
+        "label": "supported",
+        "paper_evidence": "We first integrate the multiple rewards described above using weighted aggregation, and then optimize the model with the GRPO algorithm.",
+        "reason": "Section 4.3.5, page 6."
+      },
+      {
+        "id": 58,
+        "text": "Table 4 shows pairwise evaluation results between LLMAIGQ variants and the Teacher Model.",
+        "poster_quote": "Table 4: Pairwise Evaluation Result between LLMAIGQ variants and Teacher Model.",
+        "label": "supported",
+        "paper_evidence": "Table 4: Pairwise Evaluation Result between LLMAIGQ variants and Teacher Model.",
+        "reason": "Table 4 caption, page 7."
+      },
+      {
+        "id": 59,
+        "text": "The experiment in Table 4 adopts A/B randomization to prevent positional bias.",
+        "poster_quote": "The experiment adopts A/B randomization to prevent positional bias in the experimental results.",
+        "label": "supported",
+        "paper_evidence": "The experiment adopts A/B randomization to prevent positional bias in the experimental results.",
+        "reason": "Table 4 caption, page 7."
+      },
+      {
+        "id": 60,
+        "text": "LLM4AIGQ is an LLM-based framework for generating multi-interest-aware AI guidance queries.",
+        "poster_quote": "LLM4AIGQ is an LLM-based framework for generating multi-interest-aware AI guidance queries.",
+        "label": "supported",
+        "paper_evidence": "In summary, we propose LLM4AIGQ, an LLM-based framework for multi-interest-aware AI guidance query generation, with a three-stage SFT–RL–DPO training pipeline.",
+        "reason": "Section 1, page 2."
+      },
+      {
+        "id": 61,
+        "text": "LLM4AIGQ overcomes semantic drift by directly inferring user intent from profiles and behavior sequences.",
+        "poster_quote": "It overcomes semantic drift and co-occurrence bias by directly inferring user intent from profiles and behavior sequences.",
+        "label": "supported",
+        "paper_evidence": "LLM-based generative query generation can better capture personalized user intent and avoid semantic drift caused by information cascade loss.",
+        "reason": "Section 1, page 2."
+      },
+      {
+        "id": 62,
+        "text": "LLM4AIGQ overcomes co-occurrence bias by directly inferring user intent from profiles and behavior sequences.",
+        "poster_quote": "It overcomes semantic drift and co-occurrence bias by directly inferring user intent from profiles and behavior sequences.",
+        "label": "supported",
+        "paper_evidence": "Moreover, anchor-query inference is often dominated by isolated search behaviors and user-item co-occurrence signals, limiting its ability to model users’ diverse interests and personalized intent.",
+        "reason": "Section 1, page 1."
+      },
+      {
+        "id": 63,
+        "text": "The SFT-RL-DPO pipeline enables high-quality, diverse, and compliant query generation.",
+        "poster_quote": "The SFT-RLDPO pipeline enables high-quality, diverse, and compliant query generation.",
+        "label": "supported",
+        "paper_evidence": "We adopt a three-stage SFT–RL–DPO training pipeline. The SFT stage focuses on learning the style of AIGQ, while the RL stage uses multi-objective rewards to supervise interest disentanglement and high-quality query generation. The DPO stage further optimizes the model’s reasoning expression in non-think mode through preference optimization.",
+        "reason": "Section 1, page 2."
+      },
+      {
+        "id": 64,
+        "text": "The nearline-online deployment architecture ensures low-latency serving.",
+        "poster_quote": "The nearline-online deployment architecture ensures low-latency serving.",
+        "label": "supported",
+        "paper_evidence": "Regarding deployment, we adopt an nearline-generation and online-read architecture to meet latency constraints.",
+        "reason": "Abstract, page 1."
+      },
+      {
+        "id": 65,
+        "text": "Deployed at scale, LLM4AIGQ significantly improves user engagement in e-commerce scenarios.",
+        "poster_quote": "Deployed at scale, LLM4AIGQ significantly improves user engagement and conversion in e-commerce scenarios",
+        "label": "supported",
+        "paper_evidence": "Our approach has already been deployed online and has achieved significant results at the scale of hundreds of millions of users.",
+        "reason": "Section 6, page 8."
+      },
+      {
+        "id": 66,
+        "text": "Deployed at scale, LLM4AIGQ significantly improves conversion in e-commerce scenarios.",
+        "poster_quote": "Deployed at scale, LLM4AIGQ significantly improves user engagement and conversion in e-commerce scenarios",
+        "label": "unsupported",
+        "paper_evidence": "",
+        "reason": "The paper only reports click performance (uCTR) in Section 5.5 and does not provide any evaluation metrics or results showing that LLM4AIGQ significantly improves conversion."
+      },
+      {
+        "id": 67,
+        "text": "Table 3 shows experimental results of an ablation study about GRPO-Training and DPO-Training.",
+        "poster_quote": "Table 3: The Experimental Results of Ablation Study about GRPO-Training and DPO-Training.",
+        "label": "supported",
+        "paper_evidence": "Table 3: The Experimental Results of Ablation Study about GRPO-Training and DPO-Training.",
+        "reason": "Table 3 caption, page 7."
+      },
+      {
+        "id": 68,
+        "text": "Table 1 shows performance comparison among different models on Taobao Dataset with Relation and Value Metrics.",
+        "poster_quote": "Table 1: Performance comparison among Different Models on Taobao Dataset with Relation and Value Metrics",
+        "label": "supported",
+        "paper_evidence": "Table 1: Performance comparison among Different Models on Taobao Dataset with Relation and Value Metrics",
+        "reason": "Table 1 caption, page 7."
+      },
+      {
+        "id": 69,
+        "text": "Table 2 shows analysis of the response performance of item short titles to LLM4ALGQ.",
+        "poster_quote": "Table 2: Analysis of the Response Performance of Item Short Titles to LLM4ALGQ",
+        "label": "supported",
+        "paper_evidence": "Table 2: Analysis of the Response Performance of Item Short Titles to LLM4ALGQ",
+        "reason": "Table 2 caption, page 7."
+      },
+      {
+        "id": 70,
+        "text": "Figure 1 shows a comparison between the Generative Pipeline and Traditional Discriminative Pipeline in the development of guidance queries.",
+        "poster_quote": "Figure 1: Comparison between Generative Pipeline and Traditional Discriminative Pipeline in the Development of Guidance queries",
+        "label": "supported",
+        "paper_evidence": "Figure 1: Comparison between Generative Pipeline and Traditional Discriminative Pipeline in the Development of Guidance queries",
+        "reason": "Figure 1 caption, page 2."
+      }
+    ]
+  },
+  "raw": "[\"```json\\n{\\n  \\\"claims\\\": [\\n    {\\n      \\\"id\\\": 1,\\n      \\\"text\\\": \\\"Traditional AI-generated query (AIGQ) systems rely on a two-stage Q2AIGQ paradigm.\\\",\\n      \\\"poster_quote\\\": \\\"Traditional AI-generated query (AIGQ) systems rely on a two-stage Q2AIGQ paradigm\\\"\\n    },\\n    {\\n      \\\"id\\\": 2,\\n      \\\"text\\\": \\\"Traditional AI-generated query (AIGQ) systems suffer from semantic drift.\\\",\\n      \\\"poster_quote\\\": \\\"Traditional AI-generated query (AIGQ) systems rely on a two-stage Q2AIGQ paradigm that suffers from semantic drift\\\"\\n    },\\n    {\\n      \\\"id\\\": 3,\\n      \\\"text\\\": \\\"Traditional AI-generated query (AIGQ) systems fail to capture multi-interest user intent.\\\",\\n      \\\"poster_quote\\\": \\\"Traditional AI-generated query (AIGQ) systems rely on a two-stage Q2AIGQ paradigm that suffers from semantic drift and fails to capture multi-interest user intent.\\\"\\n    },\\n    {\\n      \\\"id\\\": 4,\\n      \\\"text\\\": \\\"User behavior is often noisy.\\\",\\n      \\\"poster_quote\\\": \\\"User behavior is often noisy\\\"\\n    },\\n    {\\n      \\\"id\\\": 5,\\n      \\\"text\\\": \\\"User behavior is dominated by co-occurrence signals.\\\",\\n      \\\"poster_quote\\\": \\\"User behavior is often noisy and dominated by co-occurrence signals\\\"\\n    },\\n    {\\n      \\\"id\\\": 6,\\n      \\\"text\\\": \\\"User behavior leads to low-value guidance queries misaligned with actual purchase intent.\\\",\\n      \\\"poster_quote\\\": \\\"User behavior is often noisy and dominated by co-occurrence signals, leading to low-value guidance queries misaligned with actual purchase intent.\\\"\\n    },\\n    {\\n      \\\"id\\\": 7,\\n      \\\"text\\\": \\\"LLM4AIGQ adopts a three-stage training pipeline consisting of Supervised Fine-Tuning (SFT), Reinforcement Learning (RL), and Direct Preference Optimization (DPO).\\\",\\n      \\\"poster_quote\\\": \\\"LLM4AIGQ adopts a three-stage training pipeline: Supervised Fine-Tuning (SFT), Reinforcement Learning (RL), and Direct Preference Optimization (DPO).\\\"\\n    },\\n    {\\n      \\\"id\\\": 8,\\n      \\\"text\\\": \\\"In SFT, the model is trained on single-interest subsequences to learn AIGQ style.\\\",\\n      \\\"poster_quote\\\": \\\"In SFT, we train the model on single-interest subsequences to learn AIGQ style.\\\"\\n    },\\n    {\\n      \\\"id\\\": 9,\\n      \\\"text\\\": \\\"In RL, multi-level rewards are used to supervise interest disentanglement and query generation under mixed-interest scenarios.\\\",\\n      \\\"poster_quote\\\": \\\"In RL, we use multi-level rewards to supervise interest disentanglement and query generation under mixed-interest scenarios.\\\"\\n    },\\n    {\\n      \\\"id\\\": 10,\\n      \\\"text\\\": \\\"DPO distills reasoning capability from think-mode to non-think mode for efficient inference.\\\",\\n      \\\"poster_quote\\\": \\\"DPO distills reasoning capability from think-mode to non-think mode for efficient inference.\\\"\\n    },\\n    {\\n      \\\"id\\\": 11,\\n      \\\"text\\\": \\\"For deployment, LLM4AIGQ uses a nearline generation + online retrieval architecture.\\\",\\n      \\\"poster_quote\\\": \\\"For deployment, we use a nearline generation + online retrieval architecture\\\"\\n    },\\n    {\\n      \\\"id\\\": 12,\\n      \\\"text\\\": \\\"Guidance queries are pre-generated offline and retrieved in real-time.\\\",\\n      \\\"poster_quote\\\": \\\"guidance queries are pre-generated offline and retrieved in real-time\\\"\\n    },\\n    {\\n      \\\"id\\\": 13,\\n      \\\"text\\\": \\\"The deployment architecture reduces latency while preserving quality.\\\",\\n      \\\"poster_quote\\\": \\\"reducing latency while preserving quality.\\\"\\n    },\\n    {\\n      \\\"id\\\": 14,\\n      \\\"text\\\": \\\"DPO trains the model to generate high-quality AIGQs without explicit reasoning steps.\\\",\\n      \\\"poster_quote\\\": \\\"DPO trains the model to generate high-quality AIGQs without explicit reasoning steps.\\\"\\n    },\\n    {\\n      \\\"id\\\": 15,\\n      \\\"text\\\": \\\"RL-generated think-mode outputs (final answers only) are used as positive samples in DPO.\\\",\\n      \\\"poster_quote\\\": \\\"We use RL-generated think-mode outputs (final answers only) as positive samples\\\"\\n    },\\n    {\\n      \\\"id\\\": 16,\\n      \\\"text\\\": \\\"Non-think mode outputs are used as negative samples in DPO.\\\",\\n      \\\"poster_quote\\\": \\\"and non-think mode outputs as negative samples.\\\"\\n    },\\n    {\\n      \\\"id\\\": 17,\\n      \\\"text\\\": \\\"A preference-pair filtering strategy removes the top 30% semantically similar pairs.\\\",\\n      \\\"poster_quote\\\": \\\"A preference-pair filtering strategy removes top 30% semantically similar pairs\\\"\\n    },\\n    {\\n      \\\"id\\\": 18,\\n      \\\"text\\\": \\\"The preference-pair filtering strategy improves training stability.\\\",\\n      \\\"poster_quote\\\": \\\"A preference-pair filtering strategy removes top 30% semantically similar pairs to improve training stability.\\\"\\n    },\\n    {\\n      \\\"id\\\": 19,\\n      \\\"text\\\": \\\"Nearline generation runs after every N user interactions.\\\",\\n      \\\"poster_quote\\\": \\\"nearline generation runs after every N user interactions\\\"\\n    },\\n    {\\n      \\\"id\\\": 20,\\n      \\\"text\\\": \\\"Nearline generation writes results to a mapping table.\\\",\\n      \\\"poster_quote\\\": \\\"writing results to a mapping table.\\\"\\n    },\\n    {\\n      \\\"id\\\": 21,\\n      \\\"text\\\": \\\"Online serving uses lightweight vector retrieval to fetch personalized AIGQs in real-time.\\\",\\n      \\\"poster_quote\\\": \\\"Online serving uses lightweight vector retrieval to fetch personalized AIGQs in real-time.\\\"\\n    },\\n    {\\n      \\\"id\\\": 22,\\n      \\\"text\\\": \\\"In the data preprocessing stage, an LLM is used to generate item short titles from item-side information.\\\",\\n      \\\"poster_quote\\\": \\\"In the data preprocessing stage, an LLM is used to generate item short titles from item-side information\\\"\\n    },\\n    {\\n      \\\"id\\\": 23,\\n      \\\"text\\\": \\\"Generating item short titles enables compressed extraction of behavioral content.\\\",\\n      \\\"poster_quote\\\": \\\"enabling compressed extraction of behavioral content.\\\"\\n    },\\n    {\\n      \\\"id\\\": 24,\\n      \\\"text\\\": \\\"The SFT stage is conducted under single-interest scenarios to guide the learning of AIGQ styles.\\\",\\n      \\\"poster_quote\\\": \\\"The SFT stage is conducted under single-interest scenarios to guide the learning of AIGQ styles.\\\"\\n    },\\n    {\\n      \\\"id\\\": 25,\\n      \\\"text\\\": \\\"The RL stage adopts multi-level reward functions to supervise interest disentanglement and query generation.\\\",\\n      \\\"poster_quote\\\": \\\"The RL stage adopts multi-level reward functions to supervise interest disentanglement and query generation.\\\"\\n    },\\n    {\\n      \\\"id\\\": 26,\\n      \\\"text\\\": \\\"DPO learns the reasoning expression of think mode through preference optimization.\\\",\\n      \\\"poster_quote\\\": \\\"DPO further learns the reasoning expression of think mode through preference optimization.\\\"\\n    },\\n    {\\n      \\\"id\\\": 27,\\n      \\\"text\\\": \\\"For deployment, a nearline generation and online retrieval architecture is adopted.\\\",\\n      \\\"poster_quote\\\": \\\"For deployment, we adopt a nearline generation and online retrieval architecture.\\\"\\n    },\\n    {\\n      \\\"id\\\": 28,\\n      \\\"text\\\": \\\"The evaluation is conducted on Taobao/Tmall datasets from June-July 2026.\\\",\\n      \\\"poster_quote\\\": \\\"We evaluate on Taobao/Tmall datasets (June-July 2026).\\\"\\n    },\\n    {\\n      \\\"id\\\": 29,\\n      \\\"text\\\": \\\"Evaluation metrics include Recall@k.\\\",\\n      \\\"poster_quote\\\": \\\"Metrics include Recall@k\\\"\\n    },\\n    {\\n      \\\"id\\\": 30,\\n      \\\"text\\\": \\\"Evaluation metrics include NDCG@k (relevance).\\\",\\n      \\\"poster_quote\\\": \\\"Metrics include Recall@k, NDCG@k (relevance)\\\"\\n    },\\n    {\\n      \\\"id\\\": 31,\\n      \\\"text\\\": \\\"Evaluation metrics include S/A/B ratings (shopping guidance value).\\\",\\n      \\\"poster_quote\\\": \\\"Metrics include Recall@k, NDCG@k (relevance), and S/A/B ratings (shopping guidance value).\\\"\\n    },\\n    {\\n      \\\"id\\\": 32,\\n      \\\"text\\\": \\\"LLM4AIGQ outperforms zero-shot LLMs.\\\",\\n      \\\"poster_quote\\\": \\\"LLM4AIGQ outperforms zero-shot LLMs\\\"\\n    },\\n    {\\n      \\\"id\\\": 33,\\n      \\\"text\\\": \\\"LLM4AIGQ outperforms larger variants.\\\",\\n      \\\"poster_quote\\\": \\\"LLM4AIGQ outperforms zero-shot LLMs and larger variants.\\\"\\n    },\\n    {\\n      \\\"id\\\": 34,\\n      \\\"text\\\": \\\"The SFTRLDPO pipeline shows progressive gains.\\\",\\n      \\\"poster_quote\\\": \\\"The SFTRLDPO pipeline shows progressive gains\\\"\\n    },\\n    {\\n      \\\"id\\\": 35,\\n      \\\"text\\\": \\\"SFT improves style.\\\",\\n      \\\"poster_quote\\\": \\\"SFT improves style\\\"\\n    },\\n    {\\n      \\\"id\\\": 36,\\n      \\\"text\\\": \\\"RL enhances interest disentanglement and value.\\\",\\n      \\\"poster_quote\\\": \\\"RL enhances interest disentanglement and value\\\"\\n    },\\n    {\\n      \\\"id\\\": 37,\\n      \\\"text\\\": \\\"DPO preserves reasoning in non-think mode.\\\",\\n      \\\"poster_quote\\\": \\\"DPO preserves reasoning in non-think mode.\\\"\\n    },\\n    {\\n      \\\"id\\\": 38,\\n      \\\"text\\\": \\\"Ablation studies confirm the necessity of multi-level rewards.\\\",\\n      \\\"poster_quote\\\": \\\"Ablation studies confirm the necessity of multi-level rewards\\\"\\n    },\\n    {\\n      \\\"id\\\": 39,\\n      \\\"text\\\": \\\"Ablation studies confirm the necessity of data filtering.\\\",\\n      \\\"poster_quote\\\": \\\"Ablation studies confirm the necessity of multi-level rewards and data filtering.\\\"\\n    },\\n    {\\n      \\\"id\\\": 40,\\n      \\\"text\\\": \\\"Online A/B tests show +4.46% uCTR at 10% traffic.\\\",\\n      \\\"poster_quote\\\": \\\"Online A/B tests show +4.46% uCTR at 10% traffic\\\"\\n    },\\n    {\\n      \\\"id\\\": 41,\\n      \\\"text\\\": \\\"Online A/B tests show +2.53% uCTR at 40% traffic.\\\",\\n      \\\"poster_quote\\\": \\\"Online A/B tests show +4.46% uCTR at 10% traffic, +2.53% at 40% traffic\\\"\\n    },\\n    {\\n      \\\"id\\\": 42,\\n      \\\"text\\\": \\\"In SFT, DeepSeek-V4-Pro is used as a teacher model.\\\",\\n      \\\"poster_quote\\\": \\\"In SFT, we use a teacher model (DeepSeek-V4-Pro)\\\"\\n    },\\n    {\\n      \\\"id\\\": 43,\\n      \\\"text\\\": \\\"The teacher model segments user histories into single-interest subsequences.\\\",\\n      \\\"poster_quote\\\": \\\"to segment user histories into single-interest subsequences\\\"\\n    },\\n    {\\n      \\\"id\\\": 44,\\n      \\\"text\\\": \\\"The teacher model generates reference AIGQs.\\\",\\n      \\\"poster_quote\\\": \\\"and generate reference AIGQs.\\\"\\n    },\\n    {\\n      \\\"id\\\": 45,\\n      \\\"text\\\": \\\"Qwen3-30B-A3B is used as the student model.\\\",\\n      \\\"poster_quote\\\": \\\"The student model (Qwen3-30B-A3B)\\\"\\n    },\\n    {\\n      \\\"id\\\": 46,\\n      \\\"text\\\": \\\"The student model learns to generate compliant, concise, and guidance-rich queries.\\\",\\n      \\\"poster_quote\\\": \\\"learns to generate compliant, concise, and guidance-rich queries.\\\"\\n    },\\n    {\\n      \\\"id\\\": 47,\\n      \\\"text\\\": \\\"In RL, the model is required to reason step-by-step.\\\",\\n      \\\"poster_quote\\\": \\\"In RL, we require the model to reason step-by-step\\\"\\n    },\\n    {\\n      \\\"id\\\": 48,\\n      \\\"text\\\": \\\"The model segments mixed sequences into up to 3 interest subsequences.\\\",\\n      \\\"poster_quote\\\": \\\"(1) segment mixed sequences into up to 3 interest subsequences\\\"\\n    },\\n    {\\n      \\\"id\\\": 49,\\n      \\\"text\\\": \\\"The model infers consumption intent per sub-interest.\\\",\\n      \\\"poster_quote\\\": \\\"(2) infer consumption intent and next-item prediction per sub-interest\\\"\\n    },\\n    {\\n      \\\"id\\\": 50,\\n      \\\"text\\\": \\\"The model performs next-item prediction per sub-interest.\\\",\\n      \\\"poster_quote\\\": \\\"(2) infer consumption intent and next-item prediction per sub-interest\\\"\\n    },\\n    {\\n      \\\"id\\\": 51,\\n      \\\"text\\\": \\\"The model generates 3 AIGQs with confidence scores.\\\",\\n      \\\"poster_quote\\\": \\\"(3) generate 3 AIGQs with confidence scores.\\\"\\n    },\\n    {\\n      \\\"id\\\": 52,\\n      \\\"text\\\": \\\"Four reward levels are designed: think-level, query-level, interest-level, and global-level.\\\",\\n      \\\"poster_quote\\\": \\\"We design four reward levels: think-level (interest segmentation accuracy), query-level (length + commercial value), interest-level (semantic accuracy + stylistic diversity), and global-level (cross-interest diversity).\\\"\\n    },\\n    {\\n      \\\"id\\\": 53,\\n      \\\"text\\\": \\\"Think-level reward measures interest segmentation accuracy.\\\",\\n      \\\"poster_quote\\\": \\\"think-level (interest segmentation accuracy)\\\"\\n    },\\n    {\\n      \\\"id\\\": 54,\\n      \\\"text\\\": \\\"Query-level reward measures length and commercial value.\\\",\\n      \\\"poster_quote\\\": \\\"query-level (length + commercial value)\\\"\\n    },\\n    {\\n      \\\"id\\\": 55,\\n      \\\"text\\\": \\\"Interest-level reward measures semantic accuracy and stylistic diversity.\\\",\\n      \\\"poster_quote\\\": \\\"interest-level (semantic accuracy + stylistic diversity)\\\"\\n    },\\n    {\\n      \\\"id\\\": 56,\\n      \\\"text\\\": \\\"Global-level reward measures cross-interest diversity.\\\",\\n      \\\"poster_quote\\\": \\\"global-level (cross-interest diversity)\\\"\\n    },\\n    {\\n      \\\"id\\\": 57,\\n      \\\"text\\\": \\\"Rewards are aggregated and optimized via GRPO.\\\",\\n      \\\"poster_quote\\\": \\\"Rewards are aggregated and optimized via GRPO.\\\"\\n    },\\n    {\\n      \\\"id\\\": 58,\\n      \\\"text\\\": \\\"Table 4 shows pairwise evaluation results between LLMAIGQ variants and the Teacher Model.\\\",\\n      \\\"poster_quote\\\": \\\"Table 4: Pairwise Evaluation Result between LLMAIGQ variants and Teacher Model.\\\"\\n    },\\n    {\\n      \\\"id\\\": 59,\\n      \\\"text\\\": \\\"The experiment in Table 4 adopts A/B randomization to prevent positional bias.\\\",\\n      \\\"poster_quote\\\": \\\"The experiment adopts A/B randomization to prevent positional bias in the experimental results.\\\"\\n    },\\n    {\\n      \\\"id\\\": 60,\\n      \\\"text\\\": \\\"LLM4AIGQ is an LLM-based framework for generating multi-interest-aware AI guidance queries.\\\",\\n      \\\"poster_quote\\\": \\\"LLM4AIGQ is an LLM-based framework for generating multi-interest-aware AI guidance queries.\\\"\\n    },\\n    {\\n      \\\"id\\\": 61,\\n      \\\"text\\\": \\\"LLM4AIGQ overcomes semantic drift by directly inferring user intent from profiles and behavior sequences.\\\",\\n      \\\"poster_quote\\\": \\\"It overcomes semantic drift and co-occurrence bias by directly inferring user intent from profiles and behavior sequences.\\\"\\n    },\\n    {\\n      \\\"id\\\": 62,\\n      \\\"text\\\": \\\"LLM4AIGQ overcomes co-occurrence bias by directly inferring user intent from profiles and behavior sequences.\\\",\\n      \\\"poster_quote\\\": \\\"It overcomes semantic drift and co-occurrence bias by directly inferring user intent from profiles and behavior sequences.\\\"\\n    },\\n    {\\n      \\\"id\\\": 63,\\n      \\\"text\\\": \\\"The SFT-RL-DPO pipeline enables high-quality, diverse, and compliant query generation.\\\",\\n      \\\"poster_quote\\\": \\\"The SFT-RLDPO pipeline enables high-quality, diverse, and compliant query generation.\\\"\\n    },\\n    {\\n      \\\"id\\\": 64,\\n      \\\"text\\\": \\\"The nearline-online deployment architecture ensures low-latency serving.\\\",\\n      \\\"poster_quote\\\": \\\"The nearline-online deployment architecture ensures low-latency serving.\\\"\\n    },\\n    {\\n      \\\"id\\\": 65,\\n      \\\"text\\\": \\\"Deployed at scale, LLM4AIGQ significantly improves user engagement in e-commerce scenarios.\\\",\\n      \\\"poster_quote\\\": \\\"Deployed at scale, LLM4AIGQ significantly improves user engagement and conversion in e-commerce scenarios\\\"\\n    },\\n    {\\n      \\\"id\\\": 66,\\n      \\\"text\\\": \\\"Deployed at scale, LLM4AIGQ significantly improves conversion in e-commerce scenarios.\\\",\\n      \\\"poster_quote\\\": \\\"Deployed at scale, LLM4AIGQ significantly improves user engagement and conversion in e-commerce scenarios\\\"\\n    },\\n    {\\n      \\\"id\\\": 67,\\n      \\\"text\\\": \\\"Table 3 shows experimental results of an ablation study about GRPO-Training and DPO-Training.\\\",\\n      \\\"poster_quote\\\": \\\"Table 3: The Experimental Results of Ablation Study about GRPO-Training and DPO-Training.\\\"\\n    },\\n    {\\n      \\\"id\\\": 68,\\n      \\\"text\\\": \\\"Table 1 shows performance comparison among different models on Taobao Dataset with Relation and Value Metrics.\\\",\\n      \\\"poster_quote\\\": \\\"Table 1: Performance comparison among Different Models on Taobao Dataset with Relation and Value Metrics\\\"\\n    },\\n    {\\n      \\\"id\\\": 69,\\n      \\\"text\\\": \\\"Table 2 shows analysis of the response performance of item short titles to LLM4ALGQ.\\\",\\n      \\\"poster_quote\\\": \\\"Table 2: Analysis of the Response Performance of Item Short Titles to LLM4ALGQ\\\"\\n    },\\n    {\\n      \\\"id\\\": 70,\\n      \\\"text\\\": \\\"Figure 1 shows a comparison between the Generative Pipeline and Traditional Discriminative Pipeline in the development of guidance queries.\\\",\\n      \\\"poster_quote\\\": \\\"Figure 1: Comparison between Generative Pipeline and Traditional Discriminative Pipeline in the Development of Guidance queries\\\"\\n    }\\n  ]\\n}\\n```\", \"```json\\n{\\n  \\\"verdicts\\\": [\\n    {\\n      \\\"id\\\": 1,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Traditional AI-generated queries(AIGQ) generation primarily relies on a two-stage \\\\\\\"Query-to-Ai-Generated-Query\\\\\\\"(Q2AIGQ) association paradigm\\\",\\n      \\\"reason\\\": \\\"Section 1, Abstract. The paper explicitly states that traditional AIGQ generation relies on this two-stage paradigm.\\\"\\n    },\\n    {\\n      \\\"id\\\": 2,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"This approach suffers from semantic drift due to information cascade loss;\\\",\\n      \\\"reason\\\": \\\"Section 1, Abstract. The paper states that the traditional Q2AIGQ approach suffers from semantic drift.\\\"\\n    },\\n    {\\n      \\\"id\\\": 3,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"additionally, primary search query derivation heavily depends on \\\\\\\"user-item\\\\\\\" co-occurrence relationships, lacking exploration of user multi-interests, resulting in guidance queries with low value and mismatched purchase intent.\\\",\\n      \\\"reason\\\": \\\"Section 1, Abstract. The paper states that traditional methods lack exploration of user multi-interests.\\\"\\n    },\\n    {\\n      \\\"id\\\": 4,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"while their historical interaction sequences inevitably contain noise caused by accidental interactions [16, 25, 31], exposure bias, and so on.\\\",\\n      \\\"reason\\\": \\\"Section 1, Introduction. The paper states that historical interaction sequences contain noise.\\\"\\n    },\\n    {\\n      \\\"id\\\": 5,\\n      \\\"label\\\": \\\"unsupported\\\",\\n      \\\"paper_evidence\\\": \\\"\\\",\\n      \\\"reason\\\": \\\"Section 1. The paper states that 'anchor-query inference' (not user behavior itself) is dominated by isolated search behaviors and user-item co-occurrence signals.\\\"\\n    },\\n    {\\n      \\\"id\\\": 6,\\n      \\\"label\\\": \\\"unsupported\\\",\\n      \\\"paper_evidence\\\": \\\"\\\",\\n      \\\"reason\\\": \\\"Section 1. The paper states that the traditional Q2AIGQ approach's limitations (such as lack of exploration of multi-interests) lead to low-value guidance queries, not user behavior itself.\\\"\\n    },\\n    {\\n      \\\"id\\\": 7,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"In summary, we propose LLM4AIGQ, an LLM-based framework for multi-interest-aware AI guidance query generation, with a three-stage SFT–RL–DPO training pipeline.\\\",\\n      \\\"reason\\\": \\\"Section 1, Introduction. The paper explicitly outlines this three-stage training pipeline.\\\"\\n    },\\n    {\\n      \\\"id\\\": 8,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"During the SFT stage, the LLM is provided only with single-interest subsequences, with the primary objective of learning the desired generation style and patterns of guidance queries.\\\",\\n      \\\"reason\\\": \\\"Section 1, Introduction. The paper states that SFT uses single-interest subsequences to learn the generation style.\\\"\\n    },\\n    {\\n      \\\"id\\\": 9,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The SFT stage focuses on learning the style of AIGQ, while the RL stage uses multi-objective rewards to supervise interest disentanglement and high-quality query generation.\\\",\\n      \\\"reason\\\": \\\"Section 1, Introduction. The paper states that the RL stage uses multi-objective rewards to supervise interest disentanglement and query generation.\\\"\\n    },\\n    {\\n      \\\"id\\\": 10,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Second, we further apply Direct Preference Optimization (DPO) [19] to enable the model to preserve the reasoning effectiveness of the think mode under a non-think inference mode.\\\",\\n      \\\"reason\\\": \\\"Section 1, Introduction. The paper states that DPO is used to preserve reasoning effectiveness in non-think mode.\\\"\\n    },\\n    {\\n      \\\"id\\\": 11,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"For deployment, we adopt a nearline generation and online retrieval architecture.\\\",\\n      \\\"reason\\\": \\\"Section 1, Introduction. The paper states that this architecture is adopted for deployment.\\\"\\n    },\\n    {\\n      \\\"id\\\": 12,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"where guidance queries are generated in advance through nearline inference and directly retrieved during online serving, thereby substantially reducing the latency requirements imposed on LLM inference.\\\",\\n      \\\"reason\\\": \\\"Section 1, Introduction. The paper explains that queries are pre-generated nearline and retrieved online.\\\"\\n    },\\n    {\\n      \\\"id\\\": 13,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The system satisfies strict online latency requirements and achieves strong performance in both offline and online evaluations.\\\",\\n      \\\"reason\\\": \\\"Section 1, Introduction. The paper states that the deployment architecture satisfies latency requirements while achieving strong performance.\\\"\\n    },\\n    {\\n      \\\"id\\\": 14,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"By eliminating explicit reasoning traces and substantially reducing the number of generated tokens, this strategy accelerates LLM inference while maintaining the quality of generated guidance queries.\\\",\\n      \\\"reason\\\": \\\"Section 1, Introduction. The paper states that DPO enables the model to maintain quality without explicit reasoning traces.\\\"\\n    },\\n    {\\n      \\\"id\\\": 15,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"We first use the model checkpoint from RL stage generate responses under the thinking mode and retain only their final answers as positive samples y w , while discarding the explicit reasoning traces.\\\",\\n      \\\"reason\\\": \\\"Section 4.4. The paper states that the final answers from think-mode are used as positive samples.\\\"\\n    },\\n    {\\n      \\\"id\\\": 16,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Responses directly generated under the non-thinking mode are used as negative samples yl .\\\",\\n      \\\"reason\\\": \\\"Section 4.4. The paper states that non-thinking mode outputs are used as negative samples.\\\"\\n    },\\n    {\\n      \\\"id\\\": 17,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Specifically, we compute the semantic similarity for each positive-negative sample pair and remove the top 30% most semantically similar pairs to alleviate the issue of ’ineffective training’.\\\",\\n      \\\"reason\\\": \\\"Section 4.4. The paper describes this filtering strategy exactly.\\\"\\n    },\\n    {\\n      \\\"id\\\": 18,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Training on such hard-to-distinguish data makes the optimization process more unstable and causes the model to produce more templated and stylistically homogeneous outputs, resulting in “ineffective learning”\\\",\\n      \\\"reason\\\": \\\"Section 5.3.3. The paper explains that without filtering, the optimization process is more unstable.\\\"\\n    },\\n    {\\n      \\\"id\\\": 19,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Instead, the model is invoked after every N accumulated user interactions, such as clicks or favorites, to generate guidance queries.\\\",\\n      \\\"reason\\\": \\\"Section 4.5.1. The paper states that nearline generation runs after every N interactions.\\\"\\n    },\\n    {\\n      \\\"id\\\": 20,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The generated guidance queries are directly written back into the mapping table for subsequent online retrieval.\\\",\\n      \\\"reason\\\": \\\"Section 4.5.1. The paper states that nearline results are written to the mapping table.\\\"\\n    },\\n    {\\n      \\\"id\\\": 21,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Whenever a user enters the shopping-guide interface, the online pipeline employs an efficient vector retrieval algorithm to locate the corresponding index in the table and retrieve personalized candidate guidance queries for real-time recall.\\\",\\n      \\\"reason\\\": \\\"Section 4.5.2. The paper states that online serving retrieves personalized queries in real-time using vector retrieval.\\\"\\n    },\\n    {\\n      \\\"id\\\": 22,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"In the data preprocessing stage, an LLM is used to generate item short titles from item-side information, enabling compressed extraction of behavioral content.\\\",\\n      \\\"reason\\\": \\\"Figure 2 Caption. The paper states that an LLM is used to generate item short titles from item-side information.\\\"\\n    },\\n    {\\n      \\\"id\\\": 23,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"In the data preprocessing stage, an LLM is used to generate item short titles from item-side information, enabling compressed extraction of behavioral content.\\\",\\n      \\\"reason\\\": \\\"Figure 2 Caption. The paper states that generating short titles enables compressed extraction.\\\"\\n    },\\n    {\\n      \\\"id\\\": 24,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The SFT stage is conducted under single-interest scenarios to guide the learning of AIGQ styles.\\\",\\n      \\\"reason\\\": \\\"Figure 2 Caption. The paper states that SFT is conducted under single-interest scenarios.\\\"\\n    },\\n    {\\n      \\\"id\\\": 25,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The RL stage adopts multi-level reward functions to supervise interest disentanglement and query generation.\\\",\\n      \\\"reason\\\": \\\"Figure 2 Caption. The paper states that RL uses multi-level reward functions.\\\"\\n    },\\n    {\\n      \\\"id\\\": 26,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"DPO further learns the reasoning expression of think mode through preference optimization.\\\",\\n      \\\"reason\\\": \\\"Figure 2 Caption. The paper states that DPO learns the reasoning expression of think mode.\\\"\\n    },\\n    {\\n      \\\"id\\\": 27,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"For deployment, we adopt a nearline generation and online retrieval architecture.\\\",\\n      \\\"reason\\\": \\\"Figure 2 Caption. The paper states that this architecture is adopted for deployment.\\\"\\n    },\\n    {\\n      \\\"id\\\": 28,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Our datasets are sampled from multi-behavior user interaction logs on the Taobao and Tmall e-commerce platforms, covering the period from June to July 2026.\\\",\\n      \\\"reason\\\": \\\"Section 5.1.1. The paper states the dataset source and time period.\\\"\\n    },\\n    {\\n      \\\"id\\\": 29,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"reason\\\": \\\"Section 5.1.2. The paper states that Recall@k is adopted as an evaluation metric.\\\",\\n      \\\"paper_evidence\\\": \\\"Recall@k and NDCG@k are adopted to measure the relevance of the generated queries.\\\"\\n    },\\n    {\\n      \\\"id\\\": 30,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Recall@k and NDCG@k are adopted to measure the relevance of the generated queries.\\\",\\n      \\\"reason\\\": \\\"Section 5.1.2. The paper states that NDCG@k is adopted to measure relevance.\\\"\\n    },\\n    {\\n      \\\"id\\\": 31,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"For shopping guidance value, we report the proportions of S/A/B ratings for the generated queries on the test set.\\\",\\n      \\\"reason\\\": \\\"Section 5.1.2. The paper states that S/A/B ratings are reported for shopping guidance value.\\\"\\n    },\\n    {\\n      \\\"id\\\": 32,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Our method outperforms zero-shot state-of-the-art models in both relevance and shopping guidance value\\\",\\n      \\\"reason\\\": \\\"Section 5.2. The paper states that LLM4AIGQ outperforms zero-shot models.\\\"\\n    },\\n    {\\n      \\\"id\\\": 33,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"and also surpasses larger models from the same family, demonstrating the effectiveness of LLM4AIGQ.\\\",\\n      \\\"reason\\\": \\\"Section 5.2. The paper states that LLM4AIGQ outperforms larger variants.\\\"\\n    },\\n    {\\n      \\\"id\\\": 34,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Each training stage significantly improves model performance.\\\",\\n      \\\"reason\\\": \\\"Section 5.2. The paper states that each training stage improves performance, which is also shown in Table 1.\\\"\\n    },\\n    {\\n      \\\"id\\\": 35,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"In the SFT stage, style learning rapidly enhances the value and relevance of generated AIGQ.\\\",\\n      \\\"reason\\\": \\\"Section 5.2. The paper states that SFT style learning enhances value and relevance.\\\"\\n    },\\n    {\\n      \\\"id\\\": 36,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"In the RL stage, multi-level reward functions help the model disentangle user interests and improve relevance, while a judge model further enhances query value by supervising quality.\\\",\\n      \\\"reason\\\": \\\"Section 5.2. The paper states that RL enhances interest disentanglement and query value.\\\"\\n    },\\n    {\\n      \\\"id\\\": 37,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The DPO stage improves reasoning in non-thinking mode by distilling reasoning ability from think mode\\\",\\n      \\\"reason\\\": \\\"Section 5.2. The paper states that DPO improves reasoning in non-thinking mode.\\\"\\n    },\\n    {\\n      \\\"id\\\": 38,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"As shown in Table 3, removing any reward component leads to declines in both relevance and shopping guidance value.\\\",\\n      \\\"reason\\\": \\\"Section 5.3.2. The paper states that removing any reward component leads to declines.\\\"\\n    },\\n    {\\n      \\\"id\\\": 39,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"As shown in Table 3, removing the preference-pair filtering strategy in DPO training leads to significant declines in both relevance and shopping guidance value.\\\",\\n      \\\"reason\\\": \\\"Section 5.3.3. The paper states that removing the filtering strategy leads to significant declines.\\\"\\n    },\\n    {\\n      \\\"id\\\": 40,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"In the initial 10% traffic experiment, the experimental group achieved a 4.46% improvement in uCTR compared with the baseline bucket.\\\",\\n      \\\"reason\\\": \\\"Section 5.5. The paper states that the online A/B test showed a 4.46% improvement in uCTR at 10% traffic.\\\"\\n    }\\n  ]\\n}\\n```\", \"```json\\n{\\n  \\\"verdicts\\\": [\\n    {\\n      \\\"id\\\": 1,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"After scaling the traffic to 40%, the overall uCTR still maintained a positive gain of 2.53% over six days of online validation, demonstrating strong generalization capability and online stability under larger-scale deployment.\\\",\\n      \\\"reason\\\": \\\"Section 5.5, page 7.\\\"\\n    },\\n    {\\n      \\\"id\\\": 2,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"In contrast, the AIGQ generated by the larger-capacity model (deepseek-V4 Pro) are more in line with practical application scenarios in terms of expression and have greater guidance value. Therefore, we use the inference results of the larger-capacity model as the standard answer, and enhance the model’s understanding of AIGQ through instruction fine-tuning.\\\",\\n      \\\"reason\\\": \\\"Section 4.2, page 4.\\\"\\n    },\\n    {\\n      \\\"id\\\": 3,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"We first employ a state-of-the-art LLM as the teacher model to decompose each user’s historical interaction sequence. Through sequence merging and pruning, we construct multiple subsequences, each representing a coherent and distinct interest, and use them as supervision labels.\\\",\\n      \\\"reason\\\": \\\"Section 1, page 2.\\\"\\n    },\\n    {\\n      \\\"id\\\": 4,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Specifically, we first employ a state-of-the-art LLm as teacher model to partition user interests and generate a guidance query for each identified sub-interest, which serves as the reference output.\\\",\\n      \\\"reason\\\": \\\"Section 1, page 2.\\\"\\n    },\\n    {\\n      \\\"id\\\": 5,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"LLM4AIGQ adopts Qwen3-30B-A3B as the backbone model and is trained on NVIDIA H20 GPUs.\\\",\\n      \\\"reason\\\": \\\"Section 5.1.4, page 6.\\\"\\n    },\\n    {\\n      \\\"id\\\": 6,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The aim of SFT stage is to help LLM understand the definition of AIGQ and what constitutes good AIGQ. To this end, we will indicate in the task instructions the possible application scenarios of AIGQ (single item consultation, comparative decision-making, category selection, etc.), and require the model to output AIGQ that have guidance value while ensuring content compliance and concise expression.\\\",\\n      \\\"reason\\\": \\\"Section 4.2, page 4.\\\"\\n    },\\n    {\\n      \\\"id\\\": 7,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"To better supervise model training, the LLM is instructed to conduct step-by-step reasoning according to the prompt instructions before producing the final answer.\\\",\\n      \\\"reason\\\": \\\"Section 4.3, page 4.\\\"\\n    },\\n    {\\n      \\\"id\\\": 8,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"For Step 1, the model is required to segment the historical sequence into at most three interest subsequences based on temporal proximity of user behaviors, semantic relevance, and profile preferences.\\\",\\n      \\\"reason\\\": \\\"Section 4.3, page 4.\\\"\\n    },\\n    {\\n      \\\"id\\\": 9,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"For Step 2, the model is required to infer the user’s current consumption intent M_k based on the interest label I_k, the item characteristics reflected in B_k, and the user profile P_u, while also predicting the next potentially preferred item i_k.\\\",\\n      \\\"reason\\\": \\\"Section 4.3, page 4-5.\\\"\\n    },\\n    {\\n      \\\"id\\\": 10,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"For Step 2, the model is required to infer the user’s current consumption intent M_k based on the interest label I_k, the item characteristics reflected in B_k, and the user profile P_u, while also predicting the next potentially preferred item i_k.\\\",\\n      \\\"reason\\\": \\\"Section 4.3, page 4-5.\\\"\\n    },\\n    {\\n      \\\"id\\\": 11,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"For Step 3, the model is required to generate three guidance queries according to the inferred interest I_k and the predicted item i_k, and assign a confidence score c to each guidance query.\\\",\\n      \\\"reason\\\": \\\"Section 4.3, page 5.\\\"\\n    },\\n    {\\n      \\\"id\\\": 12,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Specifically, rewards are defined at four granularities: think-level, query-level, interest-level, and global-level, enabling supervision of the model’s reasoning accuracy from multiple perspectives.\\\",\\n      \\\"reason\\\": \\\"Section 4.3, page 5.\\\"\\n    },\\n    {\\n      \\\"id\\\": 13,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The think-level reward is designed to supervise the rationality of interest segmentation and the accuracy of interest mining.\\\",\\n      \\\"reason\\\": \\\"Section 4.3.1, page 5.\\\"\\n    },\\n    {\\n      \\\"id\\\": 14,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The query-level reward is designed to supervise the generation of guidance queries that are both commercially valuable and content-compliant. To this end, we design two types of rewards and apply them to each generated guidance query q_{kj} under every sub-interest I_k. The first is a length reward R_{length}... The second is the shopping-guidance value reward R_{value}.\\\",\\n      \\\"reason\\\": \\\"Section 4.3.2, page 5.\\\"\\n    },\\n    {\\n      \\\"id\\\": 15,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The interest-level reward is designed to supervise the content accuracy and stylistic diversity of multiple candidate guidance queries within the same interest cluster. To this end, we design three reward functions. The first is the semantic accuracy reward R_{sem}... In addition, we design a stylistic diversity reward R_{style} to encourage varied expressions of guidance queries within the same interest cluster.\\\",\\n      \\\"reason\\\": \\\"Section 4.3.3, page 6.\\\"\\n    },\\n    {\\n      \\\"id\\\": 16,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The global-level reward is designed to supervise content diversity across different interests. Specifically, we aim to encourage diversified interests and avoid homogeneous expressions among interest clusters. To this end, we introduce a content diversity reward R_{content}.\\\",\\n      \\\"reason\\\": \\\"Section 4.3.4, page 6.\\\"\\n    },\\n    {\\n      \\\"id\\\": 17,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"We first integrate the multiple rewards described above using weighted aggregation, and then optimize the model with the GRPO algorithm.\\\",\\n      \\\"reason\\\": \\\"Section 4.3.5, page 6.\\\"\\n    },\\n    {\\n      \\\"id\\\": 18,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Table 4: Pairwise Evaluation Result between LLMAIGQ variants and Teacher Model.\\\",\\n      \\\"reason\\\": \\\"Table 4 caption, page 7.\\\"\\n    },\\n    {\\n      \\\"id\\\": 19,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The experiment adopts A/B randomization to prevent positional bias in the experimental results.\\\",\\n      \\\"reason\\\": \\\"Table 4 caption, page 7.\\\"\\n    },\\n    {\\n      \\\"id\\\": 20,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"In summary, we propose LLM4AIGQ, an LLM-based framework for multi-interest-aware AI guidance query generation, with a three-stage SFT–RL–DPO training pipeline.\\\",\\n      \\\"reason\\\": \\\"Section 1, page 2.\\\"\\n    },\\n    {\\n      \\\"id\\\": 21,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"LLM-based generative query generation can better capture personalized user intent and avoid semantic drift caused by information cascade loss.\\\",\\n      \\\"reason\\\": \\\"Section 1, page 2.\\\"\\n    },\\n    {\\n      \\\"id\\\": 22,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Moreover, anchor-query inference is often dominated by isolated search behaviors and user-item co-occurrence signals, limiting its ability to model users’ diverse interests and personalized intent.\\\",\\n      \\\"reason\\\": \\\"Section 1, page 1.\\\"\\n    },\\n    {\\n      \\\"id\\\": 23,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"We adopt a three-stage SFT–RL–DPO training pipeline. The SFT stage focuses on learning the style of AIGQ, while the RL stage uses multi-objective rewards to supervise interest disentanglement and high-quality query generation. The DPO stage further optimizes the model’s reasoning expression in non-think mode through preference optimization.\\\",\\n      \\\"reason\\\": \\\"Section 1, page 2.\\\"\\n    },\\n    {\\n      \\\"id\\\": 24,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Regarding deployment, we adopt an nearline-generation and online-read architecture to meet latency constraints.\\\",\\n      \\\"reason\\\": \\\"Abstract, page 1.\\\"\\n    },\\n    {\\n      \\\"id\\\": 25,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Our approach has already been deployed online and has achieved significant results at the scale of hundreds of millions of users.\\\",\\n      \\\"reason\\\": \\\"Section 6, page 8.\\\"\\n    },\\n    {\\n      \\\"id\\\": 26,\\n      \\\"label\\\": \\\"unsupported\\\",\\n      \\\"paper_evidence\\\": \\\"\\\",\\n      \\\"reason\\\": \\\"The paper only reports click performance (uCTR) in Section 5.5 and does not provide any evaluation metrics or results showing that LLM4AIGQ significantly improves conversion.\\\"\\n    },\\n    {\\n      \\\"id\\\": 27,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Table 3: The Experimental Results of Ablation Study about GRPO-Training and DPO-Training.\\\",\\n      \\\"reason\\\": \\\"Table 3 caption, page 7.\\\"\\n    },\\n    {\\n      \\\"id\\\": 28,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Table 1: Performance comparison among Different Models on Taobao Dataset with Relation and Value Metrics\\\",\\n      \\\"reason\\\": \\\"Table 1 caption, page 7.\\\"\\n    },\\n    {\\n      \\\"id\\\": 29,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Table 2: Analysis of the Response Performance of Item Short Titles to LLM4ALGQ\\\",\\n      \\\"reason\\\": \\\"Table 2 caption, page 7.\\\"\\n    },\\n    {\\n      \\\"id\\\": 30,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Figure 1: Comparison between Generative Pipeline and Traditional Discriminative Pipeline in the Development of Guidance queries\\\",\\n      \\\"reason\\\": \\\"Figure 1 caption, page 2.\\\"\\n    }\\n  ]\\n}\\n```\"]"
 }

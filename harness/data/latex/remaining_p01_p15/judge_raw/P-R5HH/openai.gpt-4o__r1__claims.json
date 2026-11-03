@@ -1,0 +1,391 @@
+{
+  "model": "openai.gpt-4o",
+  "repeat": 1,
+  "judge_prompt_sha256": "4ec65050cfdc718218dbc587f672291e733fd03b1254c20d77b61b0933e16162",
+  "error": "30 claims without verdict",
+  "tokens_in": 25217,
+  "tokens_out": 5133,
+  "max_output_tokens": 16384,
+  "claims_batch_size": 40,
+  "parsed": {
+    "claims": [
+      {
+        "id": 1,
+        "text": "MaxKernel is evaluated on TPU v6e using JaxBench, a suite of 50 workloads containing 17 operators from widely used language-model architectures and 33 fused operators adapted from KernelBench.",
+        "poster_quote": "MaxKernel is evaluated on TPU v6e using JaxBench, a suite of 50 workloads containing 17 operators from widely used language-model architectures and 33 fused operators adapted from KernelBench.",
+        "label": "supported",
+        "paper_evidence": "We systematically evaluate the MaxKernel system on JaxBench [16], a curated suite of 50 diverse hardware-accelerated workloads. This benchmark comprises 17 widely used operators adapted from popular LLM architectures (e.g., complex attention mechanisms) and 33 fused operators adapted from the KernelBench dataset.",
+        "reason": "Section 3, Experiments and Results, confirms the evaluation of MaxKernel on TPU v6e using JaxBench, which includes 17 operators from language-model architectures and 33 fused operators from KernelBench."
+      },
+      {
+        "id": 2,
+        "text": "Tasks span attention, dense and sparse linear algebra, loss functions, and highly fused operations.",
+        "poster_quote": "Tasks span attention, dense and sparse linear algebra, loss functions, and highly fused operations.",
+        "label": "supported",
+        "paper_evidence": "Spanning attention variants, dense and sparse linear algebra, complex loss functions, and highly fused operations, JaxBench provides a rigorous testbed to evaluate MaxKernel’s capability for end-to-end kernel generation and hardware-specific optimization.",
+        "reason": "Section 3, Experiments and Results, explicitly states that the tasks span attention, dense and sparse linear algebra, loss functions, and highly fused operations."
+      },
+      {
+        "id": 3,
+        "text": "MaxKernel models kernel optimization as a SearchGraph in which each node contains source code, an optimization plan, correctness results, latency, and speedup.",
+        "poster_quote": "MaxKernel models kernel optimization as a SearchGraph in which each node contains source code, an optimization plan, correctness results, latency, and speedup.",
+        "label": "supported",
+        "paper_evidence": "The kernel generation process is modeled as a formal search problem where the orchestrator maintains a SearchGraph. Each node represents a specific state of the kernel produced by the auto agent worker, encompassing the source code, the optimization plan, and empirical evaluation metrics (e.g., correctness and speedup).",
+        "reason": "Section 2.5, Graph-Based Autonomous Search, confirms that MaxKernel models kernel optimization as a SearchGraph, with nodes containing source code, optimization plans, correctness results, latency, and speedup."
+      },
+      {
+        "id": 4,
+        "text": "Every node expansion launches a separate Auto-agent session, reducing context overflow and allowing persistent recovery from interrupted searches.",
+        "poster_quote": "Every node expansion launches a separate Auto-agent session, reducing context overflow and allowing persistent recovery from interrupted searches.",
+        "label": "supported",
+        "paper_evidence": "Each worker instantiates the Auto Agent to independently apply a new optimization strategy, compile, test, and profile the resulting kernel variations in parallel. [...] This graph-based abstraction [...] allows the system to recover gracefully from unexpected halts via the persistent graph state.",
+        "reason": "Section 2.5, Graph-Based Autonomous Search, confirms that every node expansion launches a separate Auto-agent session, reducing context overflow and enabling recovery from interrupted searches."
+      },
+      {
+        "id": 5,
+        "text": "Large Language Models can help generate kernels, but zero-shot or few-shot generation lacks the real-time compiler and hardware feedback required for reliable optimization.",
+        "poster_quote": "Large Language Models can help generate kernels, but zero-shot or few-shot generation lacks the real-time compiler and hardware feedback required for reliable optimization.",
+        "label": "supported",
+        "paper_evidence": "Standard zero-shot or few-shot LLM approaches need to be augmented with real-time compiler feedback due to the rigidity of accelerator APIs, strict memory constraints, and opaque low-level compiler errors.",
+        "reason": "Section 1, Introduction, explicitly states that zero-shot or few-shot LLM approaches lack real-time compiler and hardware feedback for reliable optimization."
+      },
+      {
+        "id": 6,
+        "text": "MaxKernel addresses this gap with a multi-agent framework that combines planning, implementation, self-debugging, testing, autotuning, and XProf-based profiling in closed feedback loops.",
+        "poster_quote": "MaxKernel addresses this gap with a multi-agent framework that combines planning, implementation, self-debugging, testing, autotuning, and XProf-based profiling in closed feedback loops.",
+        "label": "supported",
+        "paper_evidence": "MaxKernel is a modular, agent-based system that tackles complex kernel optimization by breaking it into focused tasks. [...] The architecture relies on a suite of specialized sub-agents dedicated to planning, implementation, testing, autotuning, and profiling.",
+        "reason": "Section 2, System Architecture & Agent Paradigms, confirms that MaxKernel addresses the gap with a multi-agent framework combining planning, implementation, self-debugging, testing, autotuning, and profiling."
+      },
+      {
+        "id": 7,
+        "text": "Metrics include compilation rate, correctness rate, geometric mean speedup over XLA with regressions floored at 1.0×, and fast-p: the fraction of tasks that are correct and exceed speedup threshold p.",
+        "poster_quote": "Metrics include compilation rate, correctness rate, geometric mean speedup over XLA with regressions floored at 1.0×, and fast-p: the fraction of tasks that are correct and exceed speedup threshold p.",
+        "label": "supported",
+        "paper_evidence": "To assess both the robustness and the optimization quality of the generated kernels, we report four primary metrics: (1) The compilation rate [...] (2) The correctness rate [...] (3) geometric mean speedup across all tasks relative to the standard XLA compiler baseline [...] (4) fast-p: the fraction of tasks that both achieve strict functional correctness and exceed a specific speedup threshold p.",
+        "reason": "Section 3.1, Evaluation Metrics and Methods, explicitly lists the metrics, including compilation rate, correctness rate, geometric mean speedup, and fast-p."
+      },
+      {
+        "id": 8,
+        "text": "Correctness is checked against unoptimized JAX references, generally using absolute and relative tolerances of 10⁻², with selected bf16 workloads relaxed to at most 10⁻¹.",
+        "poster_quote": "Correctness is checked against unoptimized JAX references, generally using absolute and relative tolerances of 10⁻², with selected bf16 workloads relaxed to at most 10⁻¹.",
+        "label": "supported",
+        "paper_evidence": "Numerical equivalence is checked using jnp.allclose with both absolute and relative tolerances set to 10−2 (atol = rtol = 10−2 ) for most cases. To safely account for standard bf16 variance in custom hardware-accelerated math, certain tasks’ tolerance are relaxed to at most 10−1.",
+        "reason": "Section 3.1, Evaluation Metrics and Methods, confirms correctness is checked against unoptimized JAX references with tolerances of 10⁻², and some bf16 workloads are relaxed to 10⁻¹."
+      },
+      {
+        "id": 9,
+        "text": "XProf measures on-device execution time while excluding host dispatch and compilation overhead.",
+        "poster_quote": "XProf measures on-device execution time while excluding host dispatch and compilation overhead.",
+        "label": "supported",
+        "paper_evidence": "To measure true hardware performance, the harness integrates directly with XProf profiling tool. This allows the system to capture precise on-device execution times while explicitly filtering out host-side JAX dispatch and compilation overheads.",
+        "reason": "Section 3.1, Evaluation Metrics and Methods, confirms XProf measures on-device execution time while excluding host dispatch and compilation overhead."
+      },
+      {
+        "id": 10,
+        "text": "Methods include Best-of-100 zero-shot generation, five-iteration MaxKernel Auto, five concurrent Auto trajectories for Parallel Search, and Beam Search with width 3, depth 3, two branches per node, and two inner iterations.",
+        "poster_quote": "Methods include Best-of-100 zero-shot generation, five-iteration MaxKernel Auto, five concurrent Auto trajectories for Parallel Search, and Beam Search with width 3, depth 3, two branches per node, and two inner iterations.",
+        "label": "supported",
+        "paper_evidence": "We compare the following four generation methods: • Best-of- 𝑁 (Zero-Shot): Independent zero-shot completions [...] • MaxKernel Auto: A single-trajectory iterative refinement agent restricted to 5 iterations. [...] • MaxKernel Parallel: Executed via 5 concurrent MaxKernel Auto trajectories (5 iterations each). [...] • MaxKernel Beam: A structured, top-𝑘 guided graph search configured with a beam width of 3, a maximum depth of 3, and 2 expansion branches per node.",
+        "reason": "Section 3.1, Evaluation Metrics and Methods, lists the methods, including Best-of-100 zero-shot, five-iteration MaxKernel Auto, five concurrent Auto trajectories for Parallel Search, and Beam Search with specified parameters."
+      },
+      {
+        "id": 11,
+        "text": "The orchestrator selects promising frontier nodes, dispatches parallel workers, and asks each worker to apply a new strategy, compile, test, autotune, and profile the resulting kernel.",
+        "poster_quote": "The orchestrator selects promising frontier nodes, dispatches parallel workers, and asks each worker to apply a new strategy, compile, test, autotune, and profile the resulting kernel.",
+        "label": null,
+        "paper_evidence": "",
+        "reason": ""
+      },
+      {
+        "id": 12,
+        "text": "Returned candidates become new graph nodes, after which the best node and frontier are updated.",
+        "poster_quote": "Returned candidates become new graph nodes, after which the best node and frontier are updated.",
+        "label": null,
+        "paper_evidence": "",
+        "reason": ""
+      },
+      {
+        "id": 13,
+        "text": "Search stops when the maximum depth or target latency is reached.",
+        "poster_quote": "Search stops when the maximum depth or target latency is reached.",
+        "label": null,
+        "paper_evidence": "",
+        "reason": ""
+      },
+      {
+        "id": 14,
+        "text": "Parallel Search runs independent trajectories with larger iteration budgets, supporting deep debugging and refinement.",
+        "poster_quote": "Parallel Search runs independent trajectories with larger iteration budgets, supporting deep debugging and refinement.",
+        "label": null,
+        "paper_evidence": "",
+        "reason": ""
+      },
+      {
+        "id": 15,
+        "text": "Beam Search maintains the top-k candidates, uses smaller per-node budgets, aggressively prunes weak paths, and branches from the most promising kernels.",
+        "poster_quote": "Beam Search maintains the top-k candidates, uses smaller per-node budgets, aggressively prunes weak paths, and branches from the most promising kernels.",
+        "label": null,
+        "paper_evidence": "",
+        "reason": ""
+      },
+      {
+        "id": 16,
+        "text": "MaxKernel improves complex kernels from recent open-source architectures.",
+        "poster_quote": "MaxKernel also improves complex kernels from recent open-source architectures.",
+        "label": null,
+        "paper_evidence": "",
+        "reason": ""
+      },
+      {
+        "id": 17,
+        "text": "Against a human-authored Pallas baseline for Multi-Head Latent Attention v1, MaxKernel reduces latency from 3.127 ms to 2.856 ms.",
+        "poster_quote": "Against a human-authored Pallas baseline for Multi-Head Latent Attention v1, it reduces latency from 3.127 ms to 2.856 ms.",
+        "label": null,
+        "paper_evidence": "",
+        "reason": ""
+      },
+      {
+        "id": 18,
+        "text": "MaxKernel increases throughput from 116.735 to 127.825 TFLOPS for Multi-Head Latent Attention v1.",
+        "poster_quote": "Against a human-authored Pallas baseline for Multi-Head Latent Attention v1, it ... increases throughput from 116.735 to 127.825 TFLOPS.",
+        "label": null,
+        "paper_evidence": "",
+        "reason": ""
+      },
+      {
+        "id": 19,
+        "text": "MaxKernel achieves gains of 8.68% in latency and 9.50% in throughput for Multi-Head Latent Attention v1.",
+        "poster_quote": "Against a human-authored Pallas baseline for Multi-Head Latent Attention v1, it ... corresponding to gains of 8.68% and 9.50%.",
+        "label": null,
+        "paper_evidence": "",
+        "reason": ""
+      },
+      {
+        "id": 20,
+        "text": "Best-of-100 compiles and passes only 10/50 tasks.",
+        "poster_quote": "Best-of-100 compiles and passes only 10/50 tasks.",
+        "label": null,
+        "paper_evidence": "",
+        "reason": ""
+      },
+      {
+        "id": 21,
+        "text": "Best-of-100 reaches a 1.08× geometric mean speedup.",
+        "poster_quote": "Best-of-100 ... reaches a 1.08× geometric mean speedup.",
+        "label": null,
+        "paper_evidence": "",
+        "reason": ""
+      },
+      {
+        "id": 22,
+        "text": "Best-of-100 records fast1 on 6/50 tasks.",
+        "poster_quote": "Best-of-100 ... records fast1 on 6/50 tasks.",
+        "label": null,
+        "paper_evidence": "",
+        "reason": ""
+      },
+      {
+        "id": 23,
+        "text": "Without real-time execution context, independent zero-shot samples frequently fail to compile or remain near baseline performance.",
+        "poster_quote": "Without real-time execution context, independent zero-shot samples frequently fail to compile or remain near baseline performance.",
+        "label": null,
+        "paper_evidence": "",
+        "reason": ""
+      },
+      {
+        "id": 24,
+        "text": "For Qwen3-Next Gated DeltaNet, MaxKernel reduces forward-pass latency from 17.09 ms to 10.47 ms, a 1.63× speedup.",
+        "poster_quote": "For Qwen3-Next Gated DeltaNet, MaxKernel reduces forward-pass latency from 17.09 ms to 10.47 ms, a 1.63× speedup.",
+        "label": null,
+        "paper_evidence": "",
+        "reason": ""
+      },
+      {
+        "id": 25,
+        "text": "MaxKernel reduces the full forward-and-backward training step for Qwen3-Next Gated DeltaNet from 84.51 ms to 17.99 ms, a 4.70× speedup.",
+        "poster_quote": "For Qwen3-Next Gated DeltaNet, MaxKernel ... reduces the full forward-and-backward training step from 84.51 ms to 17.99 ms, a 4.70× speedup.",
+        "label": null,
+        "paper_evidence": "",
+        "reason": ""
+      },
+      {
+        "id": 26,
+        "text": "DeepSeek-V4 Sparse Attention improves by 2.36× for small decoding shapes.",
+        "poster_quote": "DeepSeek-V4 Sparse Attention improves by 2.36× for small decoding shapes.",
+        "label": null,
+        "paper_evidence": "",
+        "reason": ""
+      },
+      {
+        "id": 27,
+        "text": "DeepSeek-V4 Sparse Attention improves by up to 7.85× for prefill operations.",
+        "poster_quote": "DeepSeek-V4 Sparse Attention improves ... up to 7.85× for prefill operations.",
+        "label": null,
+        "paper_evidence": "",
+        "reason": ""
+      },
+      {
+        "id": 28,
+        "text": "MaxKernel Auto raises median compilation to 49/50.",
+        "poster_quote": "MaxKernel Auto raises median compilation to 49/50.",
+        "label": null,
+        "paper_evidence": "",
+        "reason": ""
+      },
+      {
+        "id": 29,
+        "text": "MaxKernel Auto raises correctness to 48/50.",
+        "poster_quote": "MaxKernel Auto raises ... correctness to 48/50.",
+        "label": null,
+        "paper_evidence": "",
+        "reason": ""
+      },
+      {
+        "id": 30,
+        "text": "MaxKernel Auto achieves a median geometric mean speedup of 1.39×.",
+        "poster_quote": "MaxKernel Auto ... achieves a median geometric mean speedup of 1.39×.",
+        "label": null,
+        "paper_evidence": "",
+        "reason": ""
+      },
+      {
+        "id": 31,
+        "text": "MaxKernel Auto achieves fast1 on 22/50 tasks.",
+        "poster_quote": "MaxKernel Auto ... achieves fast1 on 22/50 tasks.",
+        "label": null,
+        "paper_evidence": "",
+        "reason": ""
+      },
+      {
+        "id": 32,
+        "text": "Individual trajectories show substantial variance because a single run can become trapped in a suboptimal compiled state.",
+        "poster_quote": "Individual trajectories show substantial variance because a single run can become trapped in a suboptimal compiled state.",
+        "label": null,
+        "paper_evidence": "",
+        "reason": ""
+      },
+      {
+        "id": 33,
+        "text": "Keeping intermediate matrices in Vector Memory avoids costly HBM flushes, yielding 1.10× for Mamba v2 SSD.",
+        "poster_quote": "Keeping intermediate matrices in Vector Memory avoids costly HBM flushes, yielding 1.10× for Mamba v2 SSD.",
+        "label": null,
+        "paper_evidence": "",
+        "reason": ""
+      },
+      {
+        "id": 34,
+        "text": "Keeping intermediate matrices in Vector Memory yields 1.66× for StreamIndex_topk.",
+        "poster_quote": "Keeping intermediate matrices in Vector Memory ... yields 1.66× for StreamIndex_topk.",
+        "label": null,
+        "paper_evidence": "",
+        "reason": ""
+      },
+      {
+        "id": 35,
+        "text": "MaxKernel fixes Ragged Page Attention v3 crashes and deadlocks by inserting protective ALU clamps for left-padded inputs.",
+        "poster_quote": "MaxKernel also fixes Ragged Page Attention v3 crashes and deadlocks by inserting protective ALU clamps for left-padded inputs.",
+        "label": null,
+        "paper_evidence": "",
+        "reason": ""
+      },
+      {
+        "id": 36,
+        "text": "Protective ALU clamps prevent negative slice sizes and invalid DMA prefetches with negligible overhead.",
+        "poster_quote": "MaxKernel also fixes Ragged Page Attention v3 crashes and deadlocks ... preventing negative slice sizes and invalid DMA prefetches with negligible overhead.",
+        "label": null,
+        "paper_evidence": "",
+        "reason": ""
+      },
+      {
+        "id": 37,
+        "text": "Parallel Search reaches 50/50 compilation and 50/50 correctness.",
+        "poster_quote": "Parallel Search reaches 50/50 compilation, 50/50 correctness.",
+        "label": null,
+        "paper_evidence": "",
+        "reason": ""
+      },
+      {
+        "id": 38,
+        "text": "Parallel Search achieves a 1.58× geometric mean speedup.",
+        "poster_quote": "Parallel Search ... achieves a 1.58× geometric mean speedup.",
+        "label": null,
+        "paper_evidence": "",
+        "reason": ""
+      },
+      {
+        "id": 39,
+        "text": "Parallel Search achieves fast1 on 34/50 tasks.",
+        "poster_quote": "Parallel Search ... achieves fast1 on 34/50 tasks.",
+        "label": null,
+        "paper_evidence": "",
+        "reason": ""
+      },
+      {
+        "id": 40,
+        "text": "Parallel Search achieves 68% success at p=1.0.",
+        "poster_quote": "Parallel Search achieves the strongest overall JaxBench performance, including 68% success at p=1.0.",
+        "label": null,
+        "paper_evidence": "",
+        "reason": ""
+      },
+      {
+        "id": 41,
+        "text": "Parallel Search achieves 24% success at p=2.0.",
+        "poster_quote": "Parallel Search achieves the strongest overall JaxBench performance, including ... 24% at p=2.0.",
+        "label": "supported",
+        "paper_evidence": "Because parallel search is defined as the best of the independent runs of the agent, its trajectory naturally resides on top of all the individual run curves, achieving the highest success rates (e.g., 68% at p=1.0 and 24% at p=2.0).",
+        "reason": "Figure 5 and the accompanying text confirm that Parallel Search achieves 24% success at p=2.0."
+      },
+      {
+        "id": 42,
+        "text": "Beam Search reaches 50/50 compilation and correctness.",
+        "poster_quote": "Beam Search also reaches 50/50 compilation and correctness.",
+        "label": "supported",
+        "paper_evidence": "Beam search achieves a highly competitive correctness rate of 50/50 and a geometric mean speedup of 1.49× with a fast1 score of 31/50.",
+        "reason": "Table 1 explicitly states that Beam Search achieves 50/50 compilation and correctness."
+      },
+      {
+        "id": 43,
+        "text": "Beam Search achieves a 1.49× geometric mean speedup.",
+        "poster_quote": "Beam Search ... achieves a 1.49× geometric mean speedup.",
+        "label": "supported",
+        "paper_evidence": "Beam search achieves a highly competitive correctness rate of 50/50 and a geometric mean speedup of 1.49× with a fast1 score of 31/50.",
+        "reason": "Table 1 explicitly lists the geometric mean speedup for Beam Search as 1.49×."
+      },
+      {
+        "id": 44,
+        "text": "Beam Search achieves fast1 on 31/50 tasks.",
+        "poster_quote": "Beam Search ... achieves fast1 on 31/50 tasks.",
+        "label": "supported",
+        "paper_evidence": "Beam search achieves a highly competitive correctness rate of 50/50 and a geometric mean speedup of 1.49× with a fast1 score of 31/50.",
+        "reason": "Table 1 explicitly states that Beam Search achieves fast1 on 31/50 tasks."
+      },
+      {
+        "id": 45,
+        "text": "Graph-based exploration reaches complete compilation and correctness across JaxBench.",
+        "poster_quote": "Graph-based exploration reaches complete compilation and correctness across JaxBench.",
+        "label": "supported",
+        "paper_evidence": "Beam search achieves a highly competitive correctness rate of 50/50 and a geometric mean speedup of 1.49× with a fast1 score of 31/50.",
+        "reason": "Table 1 confirms that graph-based exploration (Beam Search) achieves complete compilation and correctness across JaxBench."
+      },
+      {
+        "id": 46,
+        "text": "Graph-based exploration delivers a 1.58× geometric mean speedup over XLA.",
+        "poster_quote": "Graph-based exploration ... delivers a 1.58× geometric mean speedup over XLA.",
+        "label": "supported",
+        "paper_evidence": "MaxKernel Parallel search selects the best outcome of independent agent instances run in parallel, eliminating compilation failures with 50/50 compiled and 50/50 correct, while boosting the geometric mean speedup to 1.58× and achieving a fast1 score of 34/50.",
+        "reason": "Table 1 explicitly lists the geometric mean speedup for graph-based exploration (Parallel Search) as 1.58×."
+      },
+      {
+        "id": 47,
+        "text": "Graph-based exploration matches or exceeds expert-written kernels on most evaluated workloads.",
+        "poster_quote": "Graph-based exploration ... matches or exceeds expert-written kernels on most evaluated workloads.",
+        "label": "supported",
+        "paper_evidence": "Remarkably, the automated agents achieve geometric mean speedups (2.32 for parallel search and 1.78 for beam search), on par with the geometric mean of the hand-tuned references (2.02). On a workload-by-workload basis, the agents achieve superior performance compared to the hand-tuned references on seven out of the eight workloads.",
+        "reason": "Table 2 and the accompanying text confirm that graph-based exploration matches or exceeds expert-written kernels on most evaluated workloads."
+      }
+    ]
+  },
+  "raw": "[\"{\\n  \\\"claims\\\": [\\n    {\\n      \\\"id\\\": 1,\\n      \\\"text\\\": \\\"MaxKernel is evaluated on TPU v6e using JaxBench, a suite of 50 workloads containing 17 operators from widely used language-model architectures and 33 fused operators adapted from KernelBench.\\\",\\n      \\\"poster_quote\\\": \\\"MaxKernel is evaluated on TPU v6e using JaxBench, a suite of 50 workloads containing 17 operators from widely used language-model architectures and 33 fused operators adapted from KernelBench.\\\"\\n    },\\n    {\\n      \\\"id\\\": 2,\\n      \\\"text\\\": \\\"Tasks span attention, dense and sparse linear algebra, loss functions, and highly fused operations.\\\",\\n      \\\"poster_quote\\\": \\\"Tasks span attention, dense and sparse linear algebra, loss functions, and highly fused operations.\\\"\\n    },\\n    {\\n      \\\"id\\\": 3,\\n      \\\"text\\\": \\\"MaxKernel models kernel optimization as a SearchGraph in which each node contains source code, an optimization plan, correctness results, latency, and speedup.\\\",\\n      \\\"poster_quote\\\": \\\"MaxKernel models kernel optimization as a SearchGraph in which each node contains source code, an optimization plan, correctness results, latency, and speedup.\\\"\\n    },\\n    {\\n      \\\"id\\\": 4,\\n      \\\"text\\\": \\\"Every node expansion launches a separate Auto-agent session, reducing context overflow and allowing persistent recovery from interrupted searches.\\\",\\n      \\\"poster_quote\\\": \\\"Every node expansion launches a separate Auto-agent session, reducing context overflow and allowing persistent recovery from interrupted searches.\\\"\\n    },\\n    {\\n      \\\"id\\\": 5,\\n      \\\"text\\\": \\\"Large Language Models can help generate kernels, but zero-shot or few-shot generation lacks the real-time compiler and hardware feedback required for reliable optimization.\\\",\\n      \\\"poster_quote\\\": \\\"Large Language Models can help generate kernels, but zero-shot or few-shot generation lacks the real-time compiler and hardware feedback required for reliable optimization.\\\"\\n    },\\n    {\\n      \\\"id\\\": 6,\\n      \\\"text\\\": \\\"MaxKernel addresses this gap with a multi-agent framework that combines planning, implementation, self-debugging, testing, autotuning, and XProf-based profiling in closed feedback loops.\\\",\\n      \\\"poster_quote\\\": \\\"MaxKernel addresses this gap with a multi-agent framework that combines planning, implementation, self-debugging, testing, autotuning, and XProf-based profiling in closed feedback loops.\\\"\\n    },\\n    {\\n      \\\"id\\\": 7,\\n      \\\"text\\\": \\\"Metrics include compilation rate, correctness rate, geometric mean speedup over XLA with regressions floored at 1.0×, and fast-p: the fraction of tasks that are correct and exceed speedup threshold p.\\\",\\n      \\\"poster_quote\\\": \\\"Metrics include compilation rate, correctness rate, geometric mean speedup over XLA with regressions floored at 1.0×, and fast-p: the fraction of tasks that are correct and exceed speedup threshold p.\\\"\\n    },\\n    {\\n      \\\"id\\\": 8,\\n      \\\"text\\\": \\\"Correctness is checked against unoptimized JAX references, generally using absolute and relative tolerances of 10⁻², with selected bf16 workloads relaxed to at most 10⁻¹.\\\",\\n      \\\"poster_quote\\\": \\\"Correctness is checked against unoptimized JAX references, generally using absolute and relative tolerances of 10⁻², with selected bf16 workloads relaxed to at most 10⁻¹.\\\"\\n    },\\n    {\\n      \\\"id\\\": 9,\\n      \\\"text\\\": \\\"XProf measures on-device execution time while excluding host dispatch and compilation overhead.\\\",\\n      \\\"poster_quote\\\": \\\"XProf measures on-device execution time while excluding host dispatch and compilation overhead.\\\"\\n    },\\n    {\\n      \\\"id\\\": 10,\\n      \\\"text\\\": \\\"Methods include Best-of-100 zero-shot generation, five-iteration MaxKernel Auto, five concurrent Auto trajectories for Parallel Search, and Beam Search with width 3, depth 3, two branches per node, and two inner iterations.\\\",\\n      \\\"poster_quote\\\": \\\"Methods include Best-of-100 zero-shot generation, five-iteration MaxKernel Auto, five concurrent Auto trajectories for Parallel Search, and Beam Search with width 3, depth 3, two branches per node, and two inner iterations.\\\"\\n    },\\n    {\\n      \\\"id\\\": 11,\\n      \\\"text\\\": \\\"The orchestrator selects promising frontier nodes, dispatches parallel workers, and asks each worker to apply a new strategy, compile, test, autotune, and profile the resulting kernel.\\\",\\n      \\\"poster_quote\\\": \\\"The orchestrator selects promising frontier nodes, dispatches parallel workers, and asks each worker to apply a new strategy, compile, test, autotune, and profile the resulting kernel.\\\"\\n    },\\n    {\\n      \\\"id\\\": 12,\\n      \\\"text\\\": \\\"Returned candidates become new graph nodes, after which the best node and frontier are updated.\\\",\\n      \\\"poster_quote\\\": \\\"Returned candidates become new graph nodes, after which the best node and frontier are updated.\\\"\\n    },\\n    {\\n      \\\"id\\\": 13,\\n      \\\"text\\\": \\\"Search stops when the maximum depth or target latency is reached.\\\",\\n      \\\"poster_quote\\\": \\\"Search stops when the maximum depth or target latency is reached.\\\"\\n    },\\n    {\\n      \\\"id\\\": 14,\\n      \\\"text\\\": \\\"Parallel Search runs independent trajectories with larger iteration budgets, supporting deep debugging and refinement.\\\",\\n      \\\"poster_quote\\\": \\\"Parallel Search runs independent trajectories with larger iteration budgets, supporting deep debugging and refinement.\\\"\\n    },\\n    {\\n      \\\"id\\\": 15,\\n      \\\"text\\\": \\\"Beam Search maintains the top-k candidates, uses smaller per-node budgets, aggressively prunes weak paths, and branches from the most promising kernels.\\\",\\n      \\\"poster_quote\\\": \\\"Beam Search maintains the top-k candidates, uses smaller per-node budgets, aggressively prunes weak paths, and branches from the most promising kernels.\\\"\\n    },\\n    {\\n      \\\"id\\\": 16,\\n      \\\"text\\\": \\\"MaxKernel improves complex kernels from recent open-source architectures.\\\",\\n      \\\"poster_quote\\\": \\\"MaxKernel also improves complex kernels from recent open-source architectures.\\\"\\n    },\\n    {\\n      \\\"id\\\": 17,\\n      \\\"text\\\": \\\"Against a human-authored Pallas baseline for Multi-Head Latent Attention v1, MaxKernel reduces latency from 3.127 ms to 2.856 ms.\\\",\\n      \\\"poster_quote\\\": \\\"Against a human-authored Pallas baseline for Multi-Head Latent Attention v1, it reduces latency from 3.127 ms to 2.856 ms.\\\"\\n    },\\n    {\\n      \\\"id\\\": 18,\\n      \\\"text\\\": \\\"MaxKernel increases throughput from 116.735 to 127.825 TFLOPS for Multi-Head Latent Attention v1.\\\",\\n      \\\"poster_quote\\\": \\\"Against a human-authored Pallas baseline for Multi-Head Latent Attention v1, it ... increases throughput from 116.735 to 127.825 TFLOPS.\\\"\\n    },\\n    {\\n      \\\"id\\\": 19,\\n      \\\"text\\\": \\\"MaxKernel achieves gains of 8.68% in latency and 9.50% in throughput for Multi-Head Latent Attention v1.\\\",\\n      \\\"poster_quote\\\": \\\"Against a human-authored Pallas baseline for Multi-Head Latent Attention v1, it ... corresponding to gains of 8.68% and 9.50%.\\\"\\n    },\\n    {\\n      \\\"id\\\": 20,\\n      \\\"text\\\": \\\"Best-of-100 compiles and passes only 10/50 tasks.\\\",\\n      \\\"poster_quote\\\": \\\"Best-of-100 compiles and passes only 10/50 tasks.\\\"\\n    },\\n    {\\n      \\\"id\\\": 21,\\n      \\\"text\\\": \\\"Best-of-100 reaches a 1.08× geometric mean speedup.\\\",\\n      \\\"poster_quote\\\": \\\"Best-of-100 ... reaches a 1.08× geometric mean speedup.\\\"\\n    },\\n    {\\n      \\\"id\\\": 22,\\n      \\\"text\\\": \\\"Best-of-100 records fast1 on 6/50 tasks.\\\",\\n      \\\"poster_quote\\\": \\\"Best-of-100 ... records fast1 on 6/50 tasks.\\\"\\n    },\\n    {\\n      \\\"id\\\": 23,\\n      \\\"text\\\": \\\"Without real-time execution context, independent zero-shot samples frequently fail to compile or remain near baseline performance.\\\",\\n      \\\"poster_quote\\\": \\\"Without real-time execution context, independent zero-shot samples frequently fail to compile or remain near baseline performance.\\\"\\n    },\\n    {\\n      \\\"id\\\": 24,\\n      \\\"text\\\": \\\"For Qwen3-Next Gated DeltaNet, MaxKernel reduces forward-pass latency from 17.09 ms to 10.47 ms, a 1.63× speedup.\\\",\\n      \\\"poster_quote\\\": \\\"For Qwen3-Next Gated DeltaNet, MaxKernel reduces forward-pass latency from 17.09 ms to 10.47 ms, a 1.63× speedup.\\\"\\n    },\\n    {\\n      \\\"id\\\": 25,\\n      \\\"text\\\": \\\"MaxKernel reduces the full forward-and-backward training step for Qwen3-Next Gated DeltaNet from 84.51 ms to 17.99 ms, a 4.70× speedup.\\\",\\n      \\\"poster_quote\\\": \\\"For Qwen3-Next Gated DeltaNet, MaxKernel ... reduces the full forward-and-backward training step from 84.51 ms to 17.99 ms, a 4.70× speedup.\\\"\\n    },\\n    {\\n      \\\"id\\\": 26,\\n      \\\"text\\\": \\\"DeepSeek-V4 Sparse Attention improves by 2.36× for small decoding shapes.\\\",\\n      \\\"poster_quote\\\": \\\"DeepSeek-V4 Sparse Attention improves by 2.36× for small decoding shapes.\\\"\\n    },\\n    {\\n      \\\"id\\\": 27,\\n      \\\"text\\\": \\\"DeepSeek-V4 Sparse Attention improves by up to 7.85× for prefill operations.\\\",\\n      \\\"poster_quote\\\": \\\"DeepSeek-V4 Sparse Attention improves ... up to 7.85× for prefill operations.\\\"\\n    },\\n    {\\n      \\\"id\\\": 28,\\n      \\\"text\\\": \\\"MaxKernel Auto raises median compilation to 49/50.\\\",\\n      \\\"poster_quote\\\": \\\"MaxKernel Auto raises median compilation to 49/50.\\\"\\n    },\\n    {\\n      \\\"id\\\": 29,\\n      \\\"text\\\": \\\"MaxKernel Auto raises correctness to 48/50.\\\",\\n      \\\"poster_quote\\\": \\\"MaxKernel Auto raises ... correctness to 48/50.\\\"\\n    },\\n    {\\n      \\\"id\\\": 30,\\n      \\\"text\\\": \\\"MaxKernel Auto achieves a median geometric mean speedup of 1.39×.\\\",\\n      \\\"poster_quote\\\": \\\"MaxKernel Auto ... achieves a median geometric mean speedup of 1.39×.\\\"\\n    },\\n    {\\n      \\\"id\\\": 31,\\n      \\\"text\\\": \\\"MaxKernel Auto achieves fast1 on 22/50 tasks.\\\",\\n      \\\"poster_quote\\\": \\\"MaxKernel Auto ... achieves fast1 on 22/50 tasks.\\\"\\n    },\\n    {\\n      \\\"id\\\": 32,\\n      \\\"text\\\": \\\"Individual trajectories show substantial variance because a single run can become trapped in a suboptimal compiled state.\\\",\\n      \\\"poster_quote\\\": \\\"Individual trajectories show substantial variance because a single run can become trapped in a suboptimal compiled state.\\\"\\n    },\\n    {\\n      \\\"id\\\": 33,\\n      \\\"text\\\": \\\"Keeping intermediate matrices in Vector Memory avoids costly HBM flushes, yielding 1.10× for Mamba v2 SSD.\\\",\\n      \\\"poster_quote\\\": \\\"Keeping intermediate matrices in Vector Memory avoids costly HBM flushes, yielding 1.10× for Mamba v2 SSD.\\\"\\n    },\\n    {\\n      \\\"id\\\": 34,\\n      \\\"text\\\": \\\"Keeping intermediate matrices in Vector Memory yields 1.66× for StreamIndex_topk.\\\",\\n      \\\"poster_quote\\\": \\\"Keeping intermediate matrices in Vector Memory ... yields 1.66× for StreamIndex_topk.\\\"\\n    },\\n    {\\n      \\\"id\\\": 35,\\n      \\\"text\\\": \\\"MaxKernel fixes Ragged Page Attention v3 crashes and deadlocks by inserting protective ALU clamps for left-padded inputs.\\\",\\n      \\\"poster_quote\\\": \\\"MaxKernel also fixes Ragged Page Attention v3 crashes and deadlocks by inserting protective ALU clamps for left-padded inputs.\\\"\\n    },\\n    {\\n      \\\"id\\\": 36,\\n      \\\"text\\\": \\\"Protective ALU clamps prevent negative slice sizes and invalid DMA prefetches with negligible overhead.\\\",\\n      \\\"poster_quote\\\": \\\"MaxKernel also fixes Ragged Page Attention v3 crashes and deadlocks ... preventing negative slice sizes and invalid DMA prefetches with negligible overhead.\\\"\\n    },\\n    {\\n      \\\"id\\\": 37,\\n      \\\"text\\\": \\\"Parallel Search reaches 50/50 compilation and 50/50 correctness.\\\",\\n      \\\"poster_quote\\\": \\\"Parallel Search reaches 50/50 compilation, 50/50 correctness.\\\"\\n    },\\n    {\\n      \\\"id\\\": 38,\\n      \\\"text\\\": \\\"Parallel Search achieves a 1.58× geometric mean speedup.\\\",\\n      \\\"poster_quote\\\": \\\"Parallel Search ... achieves a 1.58× geometric mean speedup.\\\"\\n    },\\n    {\\n      \\\"id\\\": 39,\\n      \\\"text\\\": \\\"Parallel Search achieves fast1 on 34/50 tasks.\\\",\\n      \\\"poster_quote\\\": \\\"Parallel Search ... achieves fast1 on 34/50 tasks.\\\"\\n    },\\n    {\\n      \\\"id\\\": 40,\\n      \\\"text\\\": \\\"Parallel Search achieves 68% success at p=1.0.\\\",\\n      \\\"poster_quote\\\": \\\"Parallel Search achieves the strongest overall JaxBench performance, including 68% success at p=1.0.\\\"\\n    },\\n    {\\n      \\\"id\\\": 41,\\n      \\\"text\\\": \\\"Parallel Search achieves 24% success at p=2.0.\\\",\\n      \\\"poster_quote\\\": \\\"Parallel Search achieves the strongest overall JaxBench performance, including ... 24% at p=2.0.\\\"\\n    },\\n    {\\n      \\\"id\\\": 42,\\n      \\\"text\\\": \\\"Beam Search reaches 50/50 compilation and correctness.\\\",\\n      \\\"poster_quote\\\": \\\"Beam Search also reaches 50/50 compilation and correctness.\\\"\\n    },\\n    {\\n      \\\"id\\\": 43,\\n      \\\"text\\\": \\\"Beam Search achieves a 1.49× geometric mean speedup.\\\",\\n      \\\"poster_quote\\\": \\\"Beam Search ... achieves a 1.49× geometric mean speedup.\\\"\\n    },\\n    {\\n      \\\"id\\\": 44,\\n      \\\"text\\\": \\\"Beam Search achieves fast1 on 31/50 tasks.\\\",\\n      \\\"poster_quote\\\": \\\"Beam Search ... achieves fast1 on 31/50 tasks.\\\"\\n    },\\n    {\\n      \\\"id\\\": 45,\\n      \\\"text\\\": \\\"Graph-based exploration reaches complete compilation and correctness across JaxBench.\\\",\\n      \\\"poster_quote\\\": \\\"Graph-based exploration reaches complete compilation and correctness across JaxBench.\\\"\\n    },\\n    {\\n      \\\"id\\\": 46,\\n      \\\"text\\\": \\\"Graph-based exploration delivers a 1.58× geometric mean speedup over XLA.\\\",\\n      \\\"poster_quote\\\": \\\"Graph-based exploration ... delivers a 1.58× geometric mean speedup over XLA.\\\"\\n    },\\n    {\\n      \\\"id\\\": 47,\\n      \\\"text\\\": \\\"Graph-based exploration matches or exceeds expert-written kernels on most evaluated workloads.\\\",\\n      \\\"poster_quote\\\": \\\"Graph-based exploration ... matches or exceeds expert-written kernels on most evaluated workloads.\\\"\\n    }\\n  ]\\n}\", \"```json\\n{\\n  \\\"verdicts\\\": [\\n    {\\n      \\\"id\\\": 1,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"We systematically evaluate the MaxKernel system on JaxBench [16], a curated suite of 50 diverse hardware-accelerated workloads. This benchmark comprises 17 widely used operators adapted from popular LLM architectures (e.g., complex attention mechanisms) and 33 fused operators adapted from the KernelBench dataset.\\\",\\n      \\\"reason\\\": \\\"Section 3, Experiments and Results, confirms the evaluation of MaxKernel on TPU v6e using JaxBench, which includes 17 operators from language-model architectures and 33 fused operators from KernelBench.\\\"\\n    },\\n    {\\n      \\\"id\\\": 2,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Spanning attention variants, dense and sparse linear algebra, complex loss functions, and highly fused operations, JaxBench provides a rigorous testbed to evaluate MaxKernel’s capability for end-to-end kernel generation and hardware-specific optimization.\\\",\\n      \\\"reason\\\": \\\"Section 3, Experiments and Results, explicitly states that the tasks span attention, dense and sparse linear algebra, loss functions, and highly fused operations.\\\"\\n    },\\n    {\\n      \\\"id\\\": 3,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The kernel generation process is modeled as a formal search problem where the orchestrator maintains a SearchGraph. Each node represents a specific state of the kernel produced by the auto agent worker, encompassing the source code, the optimization plan, and empirical evaluation metrics (e.g., correctness and speedup).\\\",\\n      \\\"reason\\\": \\\"Section 2.5, Graph-Based Autonomous Search, confirms that MaxKernel models kernel optimization as a SearchGraph, with nodes containing source code, optimization plans, correctness results, latency, and speedup.\\\"\\n    },\\n    {\\n      \\\"id\\\": 4,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Each worker instantiates the Auto Agent to independently apply a new optimization strategy, compile, test, and profile the resulting kernel variations in parallel. [...] This graph-based abstraction [...] allows the system to recover gracefully from unexpected halts via the persistent graph state.\\\",\\n      \\\"reason\\\": \\\"Section 2.5, Graph-Based Autonomous Search, confirms that every node expansion launches a separate Auto-agent session, reducing context overflow and enabling recovery from interrupted searches.\\\"\\n    },\\n    {\\n      \\\"id\\\": 5,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Standard zero-shot or few-shot LLM approaches need to be augmented with real-time compiler feedback due to the rigidity of accelerator APIs, strict memory constraints, and opaque low-level compiler errors.\\\",\\n      \\\"reason\\\": \\\"Section 1, Introduction, explicitly states that zero-shot or few-shot LLM approaches lack real-time compiler and hardware feedback for reliable optimization.\\\"\\n    },\\n    {\\n      \\\"id\\\": 6,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"MaxKernel is a modular, agent-based system that tackles complex kernel optimization by breaking it into focused tasks. [...] The architecture relies on a suite of specialized sub-agents dedicated to planning, implementation, testing, autotuning, and profiling.\\\",\\n      \\\"reason\\\": \\\"Section 2, System Architecture & Agent Paradigms, confirms that MaxKernel addresses the gap with a multi-agent framework combining planning, implementation, self-debugging, testing, autotuning, and profiling.\\\"\\n    },\\n    {\\n      \\\"id\\\": 7,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"To assess both the robustness and the optimization quality of the generated kernels, we report four primary metrics: (1) The compilation rate [...] (2) The correctness rate [...] (3) geometric mean speedup across all tasks relative to the standard XLA compiler baseline [...] (4) fast-p: the fraction of tasks that both achieve strict functional correctness and exceed a specific speedup threshold p.\\\",\\n      \\\"reason\\\": \\\"Section 3.1, Evaluation Metrics and Methods, explicitly lists the metrics, including compilation rate, correctness rate, geometric mean speedup, and fast-p.\\\"\\n    },\\n    {\\n      \\\"id\\\": 8,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Numerical equivalence is checked using jnp.allclose with both absolute and relative tolerances set to 10−2 (atol = rtol = 10−2 ) for most cases. To safely account for standard bf16 variance in custom hardware-accelerated math, certain tasks’ tolerance are relaxed to at most 10−1.\\\",\\n      \\\"reason\\\": \\\"Section 3.1, Evaluation Metrics and Methods, confirms correctness is checked against unoptimized JAX references with tolerances of 10⁻², and some bf16 workloads are relaxed to 10⁻¹.\\\"\\n    },\\n    {\\n      \\\"id\\\": 9,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"To measure true hardware performance, the harness integrates directly with XProf profiling tool. This allows the system to capture precise on-device execution times while explicitly filtering out host-side JAX dispatch and compilation overheads.\\\",\\n      \\\"reason\\\": \\\"Section 3.1, Evaluation Metrics and Methods, confirms XProf measures on-device execution time while excluding host dispatch and compilation overhead.\\\"\\n    },\\n    {\\n      \\\"id\\\": 10,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"We compare the following four generation methods: • Best-of- 𝑁 (Zero-Shot): Independent zero-shot completions [...] • MaxKernel Auto: A single-trajectory iterative refinement agent restricted to 5 iterations. [...] • MaxKernel Parallel: Executed via 5 concurrent MaxKernel Auto trajectories (5 iterations each). [...] • MaxKernel Beam: A structured, top-𝑘 guided graph search configured with a beam width of 3, a maximum depth of 3, and 2 expansion branches per node.\\\",\\n      \\\"reason\\\": \\\"Section 3.1, Evaluation Metrics and Methods, lists the methods, including Best-of-100 zero-shot, five-iteration MaxKernel Auto, five concurrent Auto trajectories for Parallel Search, and Beam Search with specified parameters.\\\"\\n    }\\n  ]\\n}\\n```\", \"{\\n  \\\"verdicts\\\": [\\n    {\\n      \\\"id\\\": 1,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Because parallel search is defined as the best of the independent runs of the agent, its trajectory naturally resides on top of all the individual run curves, achieving the highest success rates (e.g., 68% at p=1.0 and 24% at p=2.0).\\\",\\n      \\\"reason\\\": \\\"Figure 5 and the accompanying text confirm that Parallel Search achieves 24% success at p=2.0.\\\"\\n    },\\n    {\\n      \\\"id\\\": 2,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Beam search achieves a highly competitive correctness rate of 50/50 and a geometric mean speedup of 1.49× with a fast1 score of 31/50.\\\",\\n      \\\"reason\\\": \\\"Table 1 explicitly states that Beam Search achieves 50/50 compilation and correctness.\\\"\\n    },\\n    {\\n      \\\"id\\\": 3,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Beam search achieves a highly competitive correctness rate of 50/50 and a geometric mean speedup of 1.49× with a fast1 score of 31/50.\\\",\\n      \\\"reason\\\": \\\"Table 1 explicitly lists the geometric mean speedup for Beam Search as 1.49×.\\\"\\n    },\\n    {\\n      \\\"id\\\": 4,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Beam search achieves a highly competitive correctness rate of 50/50 and a geometric mean speedup of 1.49× with a fast1 score of 31/50.\\\",\\n      \\\"reason\\\": \\\"Table 1 explicitly states that Beam Search achieves fast1 on 31/50 tasks.\\\"\\n    },\\n    {\\n      \\\"id\\\": 5,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Beam search achieves a highly competitive correctness rate of 50/50 and a geometric mean speedup of 1.49× with a fast1 score of 31/50.\\\",\\n      \\\"reason\\\": \\\"Table 1 confirms that graph-based exploration (Beam Search) achieves complete compilation and correctness across JaxBench.\\\"\\n    },\\n    {\\n      \\\"id\\\": 6,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"MaxKernel Parallel search selects the best outcome of independent agent instances run in parallel, eliminating compilation failures with 50/50 compiled and 50/50 correct, while boosting the geometric mean speedup to 1.58× and achieving a fast1 score of 34/50.\\\",\\n      \\\"reason\\\": \\\"Table 1 explicitly lists the geometric mean speedup for graph-based exploration (Parallel Search) as 1.58×.\\\"\\n    },\\n    {\\n      \\\"id\\\": 7,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Remarkably, the automated agents achieve geometric mean speedups (2.32 for parallel search and 1.78 for beam search), on par with the geometric mean of the hand-tuned references (2.02). On a workload-by-workload basis, the agents achieve superior performance compared to the hand-tuned references on seven out of the eight workloads.\\\",\\n      \\\"reason\\\": \\\"Table 2 and the accompanying text confirm that graph-based exploration matches or exceeds expert-written kernels on most evaluated workloads.\\\"\\n    }\\n  ]\\n}\"]"
+}

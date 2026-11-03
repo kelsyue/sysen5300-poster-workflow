@@ -2,9 +2,58 @@
   "model": "gemini-3.5-flash",
   "repeat": 1,
   "judge_prompt_sha256": "4ec65050cfdc718218dbc587f672291e733fd03b1254c20d77b61b0933e16162",
-  "error": "transport: Error code: 422 - Budget has been exceeded! Key=SIX-SIGMA-SLIDES-PROJECT-2 (sk-...d5LQ) Current cost: 70.08230754, Max budget: 70.0",
-  "tokens_in": 0,
-  "tokens_out": 0,
-  "parsed": null,
-  "raw": ""
+  "error": null,
+  "tokens_in": 6659,
+  "tokens_out": 4738,
+  "max_output_tokens": 32768,
+  "parsed": {
+    "items": {
+      "chk_problem": {
+        "label": "accurate",
+        "poster_evidence": "Traditional systems follow a two-stage Query-to-AI-Generated-Query paradigm: they first infer primary search queries from user profiles, historical behaviors, item information, and the current query, then transform them into guidance queries using rules. This intermediate-query bottleneck causes information loss and semantic drift. It also relies heavily on isolated search behaviors and user-item co-occurrence, limiting the discovery of diverse interests and personalized purchase intent. Consequently, generated queries may provide limited shopping guidance and poorly align with users’ actual needs.",
+        "reason": "The poster accurately describes the background, motivation, and specific problems of traditional query generation systems (semantic drift, failure to capture diverse interests)."
+      },
+      "chk_method": {
+        "label": "accurate",
+        "poster_evidence": "LLM4AIGQ: LLM-based AI Guidance Query Generation Framework for Multi Interest Mining\n...\nThe SFT-RL-DPO pipeline combines style learning, hierarchical multi-objective rewards, and reasoning distillation.",
+        "reason": "The poster identifies the LLM4AIGQ framework and its three-stage SFT-RL-DPO training pipeline."
+      },
+      "chk_data": {
+        "label": "missing",
+        "poster_evidence": "",
+        "reason": "The poster mentions the 'Taobao Dataset' in Table 1, but completely omits the specific dataset details such as the collection period (June-July 2026) and the sample sizes for SFT, RL, and DPO."
+      },
+      "chk_setup": {
+        "label": "missing",
+        "poster_evidence": "",
+        "reason": "The poster mentions the Qwen3-30B-A3B backbone but does not describe the training setup details such as NVIDIA H20 GPUs, LoRA rank 16, batch sizes, or learning rates."
+      },
+      "chk_primary_result": {
+        "label": "accurate",
+        "poster_evidence": "In an initial experiment with 10% traffic, the experimental group achieves a 4.46% improvement in user click-through rate over the baseline. After scaling to 40% traffic, the system maintains a 2.53% improvement across six days.",
+        "reason": "The poster reports the primary online A/B test results (4.46% uCTR improvement at 10% traffic and 2.53% gain at 40% traffic) matching option (a) of the reference."
+      },
+      "chk_secondary_result": {
+        "label": "accurate",
+        "poster_evidence": "In an initial experiment with 10% traffic, the experimental group achieves a 4.46% improvement in user click-through rate over the baseline. After scaling to 40% traffic, the system maintains a 2.53% improvement across six days.",
+        "reason": "The poster reports the online A/B test results, which satisfies option (b) of the uncertain reference."
+      },
+      "chk_baseline": {
+        "label": "accurate",
+        "poster_evidence": "The zero-shot Qwen3-30B-A3B backbone obtains Recall@10 of 0.1513, NDCG@10 of 0.1754, and an S ratio of 0.6405. Single-interest SFT consistently outperforms mixed-interest SFT throughout later stages. Each training stage provides clear gains... The final model also surpasses larger zero-shot models...",
+        "reason": "The poster compares LLM4AIGQ against zero-shot LLMs (including Qwen3-30B-A3B and larger variants in Table 1) and its own SFT/RL/DPO variants."
+      },
+      "chk_conclusion": {
+        "label": "accurate",
+        "poster_evidence": "LLM4AIGQ replaces cascading co-occurrence retrieval and rule-based generalization with direct, multi-interest-aware guidance-query generation. It autonomously disentangles noisy user histories, infers consumption intent, and produces concise, commercially valuable queries... Strong offline relevance and quality gains, positive pairwise evaluations, and sustained online click-through improvements validate the framework.",
+        "reason": "The poster's conclusion summarizes that the framework successfully segments user interests, generates high-quality queries, and achieves significant gains."
+      },
+      "chk_limitation": {
+        "label": "missing",
+        "poster_evidence": "",
+        "reason": "The poster does not mention the trade-off between reasoning quality and inference efficiency when transitioning from thinking mode to non-thinking mode."
+      }
+    }
+  },
+  "raw": "```json\n{\n  \"items\": {\n    \"chk_problem\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Traditional systems follow a two-stage Query-to-AI-Generated-Query paradigm: they first infer primary search queries from user profiles, historical behaviors, item information, and the current query, then transform them into guidance queries using rules. This intermediate-query bottleneck causes information loss and semantic drift. It also relies heavily on isolated search behaviors and user-item co-occurrence, limiting the discovery of diverse interests and personalized purchase intent. Consequently, generated queries may provide limited shopping guidance and poorly align with users’ actual needs.\",\n      \"reason\": \"The poster accurately describes the background, motivation, and specific problems of traditional query generation systems (semantic drift, failure to capture diverse interests).\"\n    },\n    \"chk_method\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"LLM4AIGQ: LLM-based AI Guidance Query Generation Framework for Multi Interest Mining\\n...\\nThe SFT-RL-DPO pipeline combines style learning, hierarchical multi-objective rewards, and reasoning distillation.\",\n      \"reason\": \"The poster identifies the LLM4AIGQ framework and its three-stage SFT-RL-DPO training pipeline.\"\n    },\n    \"chk_data\": {\n      \"label\": \"missing\",\n      \"poster_evidence\": \"\",\n      \"reason\": \"The poster mentions the 'Taobao Dataset' in Table 1, but completely omits the specific dataset details such as the collection period (June-July 2026) and the sample sizes for SFT, RL, and DPO.\"\n    },\n    \"chk_setup\": {\n      \"label\": \"missing\",\n      \"poster_evidence\": \"\",\n      \"reason\": \"The poster mentions the Qwen3-30B-A3B backbone but does not describe the training setup details such as NVIDIA H20 GPUs, LoRA rank 16, batch sizes, or learning rates.\"\n    },\n    \"chk_primary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"In an initial experiment with 10% traffic, the experimental group achieves a 4.46% improvement in user click-through rate over the baseline. After scaling to 40% traffic, the system maintains a 2.53% improvement across six days.\",\n      \"reason\": \"The poster reports the primary online A/B test results (4.46% uCTR improvement at 10% traffic and 2.53% gain at 40% traffic) matching option (a) of the reference.\"\n    },\n    \"chk_secondary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"In an initial experiment with 10% traffic, the experimental group achieves a 4.46% improvement in user click-through rate over the baseline. After scaling to 40% traffic, the system maintains a 2.53% improvement across six days.\",\n      \"reason\": \"The poster reports the online A/B test results, which satisfies option (b) of the uncertain reference.\"\n    },\n    \"chk_baseline\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"The zero-shot Qwen3-30B-A3B backbone obtains Recall@10 of 0.1513, NDCG@10 of 0.1754, and an S ratio of 0.6405. Single-interest SFT consistently outperforms mixed-interest SFT throughout later stages. Each training stage provides clear gains... The final model also surpasses larger zero-shot models...\",\n      \"reason\": \"The poster compares LLM4AIGQ against zero-shot LLMs (including Qwen3-30B-A3B and larger variants in Table 1) and its own SFT/RL/DPO variants.\"\n    },\n    \"chk_conclusion\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"LLM4AIGQ replaces cascading co-occurrence retrieval and rule-based generalization with direct, multi-interest-aware guidance-query generation. It autonomously disentangles noisy user histories, infers consumption intent, and produces concise, commercially valuable queries... Strong offline relevance and quality gains, positive pairwise evaluations, and sustained online click-through improvements validate the framework.\",\n      \"reason\": \"The poster's conclusion summarizes that the framework successfully segments user interests, generates high-quality queries, and achieves significant gains.\"\n    },\n    \"chk_limitation\": {\n      \"label\": \"missing\",\n      \"poster_evidence\": \"\",\n      \"reason\": \"The poster does not mention the trade-off between reasoning quality and inference efficiency when transitioning from thinking mode to non-thinking mode.\"\n    }\n  }\n}\n```"
 }

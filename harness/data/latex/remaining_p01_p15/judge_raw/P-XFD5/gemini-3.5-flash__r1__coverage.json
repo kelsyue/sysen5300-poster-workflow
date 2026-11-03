@@ -2,9 +2,58 @@
   "model": "gemini-3.5-flash",
   "repeat": 1,
   "judge_prompt_sha256": "4ec65050cfdc718218dbc587f672291e733fd03b1254c20d77b61b0933e16162",
-  "error": "transport: Error code: 422 - Budget has been exceeded! Key=SIX-SIGMA-SLIDES-PROJECT-2 (sk-...d5LQ) Current cost: 70.08230754, Max budget: 70.0",
-  "tokens_in": 0,
-  "tokens_out": 0,
-  "parsed": null,
-  "raw": ""
+  "error": null,
+  "tokens_in": 7813,
+  "tokens_out": 4249,
+  "max_output_tokens": 32768,
+  "parsed": {
+    "items": {
+      "chk_problem": {
+        "label": "accurate",
+        "poster_evidence": "This approach suffers from semantic drift due to information cascade loss; additionally, primary search query derivation heavily depends on ”user-item” co-occurrence relationships, lacking exploration of user multi-interests, resulting in guidance queries with low value and mismatched purchase intent.",
+        "reason": "The poster accurately describes the problem of semantic drift and failure to capture multi-interests in traditional AIGQ generation, matching the reference."
+      },
+      "chk_method": {
+        "label": "accurate",
+        "poster_evidence": "We propose LLM4AIGQ, an LLM-based solution for generating AI guidance queries tailored to users’ multi-interests. It segments user interests by integrating user profiles and historical interaction sequences, infers specific consumption intents for each sub-interest, and generates corresponding AIGQ. We employ a post-training pipeline comprising Supervised Fine-Tuning (SFT), Reinforcement Learning (RL), and Direct Preference Optimization (DPO)",
+        "reason": "The poster accurately describes the LLM4AIGQ framework and its three-stage SFT-RL-DPO training pipeline."
+      },
+      "chk_data": {
+        "label": "accurate",
+        "poster_evidence": "Dataset: Sampled from multi-behavior user interaction logs on Taobao and Tmall (June–July 2026). Short-title fine-tuning uses 8,000 instances from the Taobao item CPV table. SFT uses 5,000 single-day records from highly active users, decomposed by DeepSeek-V4-Pro into 11,259 single-interest instances. RL uses 3,000 samples; DPO uses 5,000 samples (3,500 valid after preference-pair filtering). 1,000 test samples are used for offline evaluation",
+        "reason": "The poster lists the exact dataset details and sample sizes for each stage, matching both uncertain reference options."
+      },
+      "chk_setup": {
+        "label": "accurate",
+        "poster_evidence": "Implementation: Qwen3-30B-A3B backbone on NVIDIA H20 GPUs; max input/output lengths 8192/2048. SFT: 500 steps, 4 GPUs, LoRA rank 16, lr 1e-5. RL: ROLL framework, 100 steps, 16 GPUs, group size 8, lr 1e-6, vLLM inference. DPO: LoRA, 500 steps, 4 GPUs.",
+        "reason": "The poster details the backbone model, GPU hardware, LoRA rank, and training parameters across SFT, RL, and DPO stages."
+      },
+      "chk_primary_result": {
+        "label": "accurate",
+        "poster_evidence": "Best model LLM4AIGQ-ONE_SFT+RL+DPO achieves Recall@10 0.2101, NDCG@10 0.2377, Recall@50 0.3709, NDCG@50 0.3047, and S ratio 0.8616",
+        "reason": "The poster reports the offline evaluation metrics (Recall@10 of 0.2101 and S ratio of 0.8616) as well as the online A/B test results (4.46% and 2.53% uCTR gains), satisfying both uncertain reference options."
+      },
+      "chk_secondary_result": {
+        "label": "accurate",
+        "poster_evidence": "SFT+RL: 57.53% / 42.47% — the student surpasses the teacher, with gains from optimizing interest understanding, query quality, and content diversity.",
+        "reason": "The poster reports the pairwise win rate of 57.53% for the RL-trained model against the teacher model, matching reference option (a)."
+      },
+      "chk_baseline": {
+        "label": "accurate",
+        "poster_evidence": "Baselines: (1) zero-shot LLMs (Qwen3-30B-A3B, Qwen3.5-122B-A10B, Qwen3-235B-A22B, GPT-oss-120B, DeepSeek-V4-Pro); (2) LLM4AIGQ variants across training stages from single-interest (ONE) and multi-interest (MULTI) SFT branches.",
+        "reason": "The poster lists the zero-shot LLM baselines and the internal model variants used for comparison."
+      },
+      "chk_conclusion": {
+        "label": "accurate",
+        "poster_evidence": "To address issues in traditional shopping guidance query generation pipelines, such as semantic drift and the inability to capture personalized user intent, we propose an LLM-based AI guidance query generation framework for multi-interest users. The framework autonomously disentangles user interests and generates high-quality shopping guidance queries tailored to users’ consumption intentions. Our approach has been deployed online and has achieved significant results",
+        "reason": "The poster's conclusion section summarizes the framework's success in interest segmentation, query generation, and online deployment."
+      },
+      "chk_limitation": {
+        "label": "accurate",
+        "poster_evidence": "reflecting a trade-off between reasoning quality and inference efficiency while preserving most RL-acquired capability.",
+        "reason": "The poster explicitly mentions the trade-off between reasoning quality and inference efficiency when transitioning from thinking mode to non-thinking mode, matching reference option (a)."
+      }
+    }
+  },
+  "raw": "```json\n{\n  \"items\": {\n    \"chk_problem\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"This approach suffers from semantic drift due to information cascade loss; additionally, primary search query derivation heavily depends on ”user-item” co-occurrence relationships, lacking exploration of user multi-interests, resulting in guidance queries with low value and mismatched purchase intent.\",\n      \"reason\": \"The poster accurately describes the problem of semantic drift and failure to capture multi-interests in traditional AIGQ generation, matching the reference.\"\n    },\n    \"chk_method\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"We propose LLM4AIGQ, an LLM-based solution for generating AI guidance queries tailored to users’ multi-interests. It segments user interests by integrating user profiles and historical interaction sequences, infers specific consumption intents for each sub-interest, and generates corresponding AIGQ. We employ a post-training pipeline comprising Supervised Fine-Tuning (SFT), Reinforcement Learning (RL), and Direct Preference Optimization (DPO)\",\n      \"reason\": \"The poster accurately describes the LLM4AIGQ framework and its three-stage SFT-RL-DPO training pipeline.\"\n    },\n    \"chk_data\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Dataset: Sampled from multi-behavior user interaction logs on Taobao and Tmall (June–July 2026). Short-title fine-tuning uses 8,000 instances from the Taobao item CPV table. SFT uses 5,000 single-day records from highly active users, decomposed by DeepSeek-V4-Pro into 11,259 single-interest instances. RL uses 3,000 samples; DPO uses 5,000 samples (3,500 valid after preference-pair filtering). 1,000 test samples are used for offline evaluation\",\n      \"reason\": \"The poster lists the exact dataset details and sample sizes for each stage, matching both uncertain reference options.\"\n    },\n    \"chk_setup\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Implementation: Qwen3-30B-A3B backbone on NVIDIA H20 GPUs; max input/output lengths 8192/2048. SFT: 500 steps, 4 GPUs, LoRA rank 16, lr 1e-5. RL: ROLL framework, 100 steps, 16 GPUs, group size 8, lr 1e-6, vLLM inference. DPO: LoRA, 500 steps, 4 GPUs.\",\n      \"reason\": \"The poster details the backbone model, GPU hardware, LoRA rank, and training parameters across SFT, RL, and DPO stages.\"\n    },\n    \"chk_primary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Best model LLM4AIGQ-ONE_SFT+RL+DPO achieves Recall@10 0.2101, NDCG@10 0.2377, Recall@50 0.3709, NDCG@50 0.3047, and S ratio 0.8616\",\n      \"reason\": \"The poster reports the offline evaluation metrics (Recall@10 of 0.2101 and S ratio of 0.8616) as well as the online A/B test results (4.46% and 2.53% uCTR gains), satisfying both uncertain reference options.\"\n    },\n    \"chk_secondary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"SFT+RL: 57.53% / 42.47% — the student surpasses the teacher, with gains from optimizing interest understanding, query quality, and content diversity.\",\n      \"reason\": \"The poster reports the pairwise win rate of 57.53% for the RL-trained model against the teacher model, matching reference option (a).\"\n    },\n    \"chk_baseline\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Baselines: (1) zero-shot LLMs (Qwen3-30B-A3B, Qwen3.5-122B-A10B, Qwen3-235B-A22B, GPT-oss-120B, DeepSeek-V4-Pro); (2) LLM4AIGQ variants across training stages from single-interest (ONE) and multi-interest (MULTI) SFT branches.\",\n      \"reason\": \"The poster lists the zero-shot LLM baselines and the internal model variants used for comparison.\"\n    },\n    \"chk_conclusion\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"To address issues in traditional shopping guidance query generation pipelines, such as semantic drift and the inability to capture personalized user intent, we propose an LLM-based AI guidance query generation framework for multi-interest users. The framework autonomously disentangles user interests and generates high-quality shopping guidance queries tailored to users’ consumption intentions. Our approach has been deployed online and has achieved significant results\",\n      \"reason\": \"The poster's conclusion section summarizes the framework's success in interest segmentation, query generation, and online deployment.\"\n    },\n    \"chk_limitation\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"reflecting a trade-off between reasoning quality and inference efficiency while preserving most RL-acquired capability.\",\n      \"reason\": \"The poster explicitly mentions the trade-off between reasoning quality and inference efficiency when transitioning from thinking mode to non-thinking mode, matching reference option (a).\"\n    }\n  }\n}\n```"
 }

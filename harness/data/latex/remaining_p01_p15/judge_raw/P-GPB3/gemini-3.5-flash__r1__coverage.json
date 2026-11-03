@@ -2,9 +2,58 @@
   "model": "gemini-3.5-flash",
   "repeat": 1,
   "judge_prompt_sha256": "4ec65050cfdc718218dbc587f672291e733fd03b1254c20d77b61b0933e16162",
-  "error": "transport: Error code: 422 - Budget has been exceeded! Key=SIX-SIGMA-SLIDES-PROJECT-2 (sk-...d5LQ) Current cost: 70.08230754, Max budget: 70.0",
-  "tokens_in": 0,
-  "tokens_out": 0,
-  "parsed": null,
-  "raw": ""
+  "error": null,
+  "tokens_in": 9579,
+  "tokens_out": 2389,
+  "max_output_tokens": 32768,
+  "parsed": {
+    "items": {
+      "chk_problem": {
+        "label": "accurate",
+        "poster_evidence": "Removing these annotations creates a selective-preservation problem: the model must retain performance characteristics from the reference while rejecting its source lyrics.",
+        "reason": "Located in the 'Motivation' section, this matches the selective-preservation problem described in the reference."
+      },
+      "chk_method": {
+        "label": "accurate",
+        "poster_evidence": "It introduces a State-Control-Transition editing contract that separates persistent target and melody controls, recurrent phonetic-progress state, and local acoustic continuity. Progressive State-Control Grounding learns this routing without paired edit recordings.",
+        "reason": "Located in the 'Motivation' section, this accurately describes the SCT contract and PSCG routing."
+      },
+      "chk_data": {
+        "label": "accurate",
+        "poster_evidence": "Training uses approximately 8,000 hours of permission-documented Mandarin singing, 2,000 hours of Mandarin speech, and 300 hours of curated open-source singing.",
+        "reason": "Located in the 'Evaluation Setup' section, this matches the training dataset details in the reference."
+      },
+      "chk_setup": {
+        "label": "accurate",
+        "poster_evidence": "Three 120K-update seeds use BF16, ZeRO-2, AdamW, and global batch size 128.",
+        "reason": "Located in the 'Evaluation Setup' section, this matches the training setup details in reference draft (a)."
+      },
+      "chk_primary_result": {
+        "label": "accurate",
+        "poster_evidence": "CLASVS therefore improves every operation and reduces macro-PER by 46.2% relative to the discrete-AR comparator.",
+        "reason": "Located in the 'Main Results' section, this matches the primary quantitative finding of a 46.2% reduction in macro-PER compared to Vevo2."
+      },
+      "chk_secondary_result": {
+        "label": "accurate",
+        "poster_evidence": "Relative to YingMusic+, naturalness improves by 0.48 and intelligibility by 0.32",
+        "reason": "Located in the 'Main Results' section, this matches the secondary finding of N-MOS and L-MOS improvements over YingMusic+."
+      },
+      "chk_baseline": {
+        "label": "accurate",
+        "poster_evidence": "Vevo2 is the primary discrete-AR comparator because it shares the sequential reference-audio-plus-target-lyrics interface but predicts discrete acoustic tokens. YingMusic-Singer-Plus is the complementary continuous-NAR comparator with parallel inference.",
+        "reason": "Located in the 'Evaluation Setup' section, this correctly identifies Vevo2 and YingMusic+ as the primary and complementary baselines."
+      },
+      "chk_conclusion": {
+        "label": "accurate",
+        "poster_evidence": "CLASVS establishes continuous-latent autoregression for melody-preserving Mandarin lyric editing without manual score annotations or paired counterfactual recordings.",
+        "reason": "Located in the 'Conclusion' section, this matches the main take-home conclusion in reference draft (a)."
+      },
+      "chk_limitation": {
+        "label": "accurate",
+        "poster_evidence": "Evaluation is limited to Mandarin, one recognizer, reference-timing metrics, and edits of 2–6 syllables. Cross-lingual editing, longer edits, and long-context compression remain open.",
+        "reason": "Located in the 'Implications' section, this matches the specific evaluation limitations and open challenges described in the reference."
+      }
+    }
+  },
+  "raw": "```json\n{\n  \"items\": {\n    \"chk_problem\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Removing these annotations creates a selective-preservation problem: the model must retain performance characteristics from the reference while rejecting its source lyrics.\",\n      \"reason\": \"Located in the 'Motivation' section, this matches the selective-preservation problem described in the reference.\"\n    },\n    \"chk_method\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"It introduces a State-Control-Transition editing contract that separates persistent target and melody controls, recurrent phonetic-progress state, and local acoustic continuity. Progressive State-Control Grounding learns this routing without paired edit recordings.\",\n      \"reason\": \"Located in the 'Motivation' section, this accurately describes the SCT contract and PSCG routing.\"\n    },\n    \"chk_data\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Training uses approximately 8,000 hours of permission-documented Mandarin singing, 2,000 hours of Mandarin speech, and 300 hours of curated open-source singing.\",\n      \"reason\": \"Located in the 'Evaluation Setup' section, this matches the training dataset details in the reference.\"\n    },\n    \"chk_setup\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Three 120K-update seeds use BF16, ZeRO-2, AdamW, and global batch size 128.\",\n      \"reason\": \"Located in the 'Evaluation Setup' section, this matches the training setup details in reference draft (a).\"\n    },\n    \"chk_primary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"CLASVS therefore improves every operation and reduces macro-PER by 46.2% relative to the discrete-AR comparator.\",\n      \"reason\": \"Located in the 'Main Results' section, this matches the primary quantitative finding of a 46.2% reduction in macro-PER compared to Vevo2.\"\n    },\n    \"chk_secondary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Relative to YingMusic+, naturalness improves by 0.48 and intelligibility by 0.32\",\n      \"reason\": \"Located in the 'Main Results' section, this matches the secondary finding of N-MOS and L-MOS improvements over YingMusic+.\"\n    },\n    \"chk_baseline\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Vevo2 is the primary discrete-AR comparator because it shares the sequential reference-audio-plus-target-lyrics interface but predicts discrete acoustic tokens. YingMusic-Singer-Plus is the complementary continuous-NAR comparator with parallel inference.\",\n      \"reason\": \"Located in the 'Evaluation Setup' section, this correctly identifies Vevo2 and YingMusic+ as the primary and complementary baselines.\"\n    },\n    \"chk_conclusion\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"CLASVS establishes continuous-latent autoregression for melody-preserving Mandarin lyric editing without manual score annotations or paired counterfactual recordings.\",\n      \"reason\": \"Located in the 'Conclusion' section, this matches the main take-home conclusion in reference draft (a).\"\n    },\n    \"chk_limitation\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Evaluation is limited to Mandarin, one recognizer, reference-timing metrics, and edits of 2–6 syllables. Cross-lingual editing, longer edits, and long-context compression remain open.\",\n      \"reason\": \"Located in the 'Implications' section, this matches the specific evaluation limitations and open challenges described in the reference.\"\n    }\n  }\n}\n```"
 }

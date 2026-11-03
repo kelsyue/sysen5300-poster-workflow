@@ -2,9 +2,1078 @@
   "model": "openai.gpt-4o",
   "repeat": 1,
   "judge_prompt_sha256": "4ec65050cfdc718218dbc587f672291e733fd03b1254c20d77b61b0933e16162",
-  "error": "transport: Error code: 422 - Budget has been exceeded! Key=SIX-SIGMA-SLIDES-PROJECT-2 (sk-...d5LQ) Current cost: 70.08230754, Max budget: 70.0",
-  "tokens_in": 0,
-  "tokens_out": 0,
-  "parsed": null,
-  "raw": ""
+  "error": null,
+  "tokens_in": 55926,
+  "tokens_out": 18658,
+  "max_output_tokens": 16384,
+  "claims_batch_size": 40,
+  "parsed": {
+    "claims": [
+      {
+        "id": 1,
+        "text": "Melody-preserving lyric editing changes the words of a singing performance while retaining its melody, timing, singer identity, and naturalness.",
+        "poster_quote": "Melody-preserving lyric editing changes the words of a singing performance while retaining its melody, timing, singer identity, and naturalness.",
+        "label": "supported",
+        "paper_evidence": "Melody-preserving lyric editing changes the words of a singing performance while retaining its melody, timing, singer identity, and naturalness.",
+        "reason": "Source: Abstract, first sentence. The claim matches the description of melody-preserving lyric editing."
+      },
+      {
+        "id": 2,
+        "text": "Reference-conditioned editing directly accepts a singing recording and revised lyrics, avoiding costly phoneme, note, duration, and edit-boundary annotations.",
+        "poster_quote": "Unlike score-conditioned synthesis, reference-conditioned editing directly accepts a singing recording and revised lyrics, avoiding costly phoneme, note, duration, and edit-boundary annotations.",
+        "label": "supported",
+        "paper_evidence": "Reference-conditioned lyric editing instead accepts a singing recording and revised lyrics directly. Removing score annotations, however, creates a selective-preservation problem: the model must retain the performance characteristics carried by the reference while rejecting its source lyrics.",
+        "reason": "Source: Introduction, paragraph 2. The claim aligns with the description of reference-conditioned editing avoiding costly annotations."
+      },
+      {
+        "id": 3,
+        "text": "Training uses approximately 8,000 hours of permission-documented Mandarin singing.",
+        "poster_quote": "Training uses approximately 8,000 hours of permission-documented Mandarin singing, 2,000 hours of Mandarin speech, and 300 hours of curated open-source singing.",
+        "label": "supported",
+        "paper_evidence": "Training audio comprises about 8,000 hours of permission-documented Mandarin singing.",
+        "reason": "Source: Experiments, Data, Comparators, and Statistics section. The claim matches the stated training data volume."
+      },
+      {
+        "id": 4,
+        "text": "Training uses 2,000 hours of Mandarin speech.",
+        "poster_quote": "Training uses approximately 8,000 hours of permission-documented Mandarin singing, 2,000 hours of Mandarin speech, and 300 hours of curated open-source singing.",
+        "label": "supported",
+        "paper_evidence": "Training audio comprises ... 2,000 hours of Mandarin Emilia speech.",
+        "reason": "Source: Experiments, Data, Comparators, and Statistics section. The claim matches the stated training data volume."
+      },
+      {
+        "id": 5,
+        "text": "Training uses 300 hours of curated open-source singing.",
+        "poster_quote": "Training uses approximately 8,000 hours of permission-documented Mandarin singing, 2,000 hours of Mandarin speech, and 300 hours of curated open-source singing.",
+        "label": "supported",
+        "paper_evidence": "Training audio comprises ... 300 hours of curated open-source singing.",
+        "reason": "Source: Experiments, Data, Comparators, and Statistics section. The claim matches the stated training data volume."
+      },
+      {
+        "id": 6,
+        "text": "Three 120K-update seeds use BF16, ZeRO-2, AdamW, and global batch size 128.",
+        "poster_quote": "Three 120K-update seeds use BF16, ZeRO-2, AdamW, and global batch size 128.",
+        "label": "supported",
+        "paper_evidence": "Three 120K-update seeds use BF16, ZeRO-2, AdamW, and global batch 128.",
+        "reason": "Source: Experiments, Data, Comparators, and Statistics section. The claim matches the described training configuration."
+      },
+      {
+        "id": 7,
+        "text": "CLASVS contains 0.765B trainable parameters.",
+        "poster_quote": "CLASVS contains 0.765B trainable parameters and 2.115B total generative-stack parameters, including the frozen 1.350B AudioVAE.",
+        "label": "supported",
+        "paper_evidence": "The checkpoint has 0.765B trainable/2.115B total parameters.",
+        "reason": "Source: Experiments, Data, Comparators, and Statistics section. The claim matches the stated trainable parameter count."
+      },
+      {
+        "id": 8,
+        "text": "CLASVS contains 2.115B total generative-stack parameters.",
+        "poster_quote": "CLASVS contains 0.765B trainable parameters and 2.115B total generative-stack parameters, including the frozen 1.350B AudioVAE.",
+        "label": "supported",
+        "paper_evidence": "The checkpoint has 0.765B trainable/2.115B total parameters.",
+        "reason": "Source: Experiments, Data, Comparators, and Statistics section. The claim matches the stated total generative-stack parameter count."
+      },
+      {
+        "id": 9,
+        "text": "CLASVS includes the frozen 1.350B AudioVAE.",
+        "poster_quote": "CLASVS contains 0.765B trainable parameters and 2.115B total generative-stack parameters, including the frozen 1.350B AudioVAE.",
+        "label": "supported",
+        "paper_evidence": "The checkpoint has ... including the frozen 1.350B AudioVAE.",
+        "reason": "Source: Experiments, Data, Comparators, and Statistics section. The claim matches the stated frozen AudioVAE parameter count."
+      },
+      {
+        "id": 10,
+        "text": "A pretrained-frozen encoder achieves PER 0.0376.",
+        "poster_quote": "A pretrained-frozen encoder achieves PER 0.0376, compared with 0.0391 for pretrained-joint, 0.0511 for random-joint, and 0.0918 for random-frozen training.",
+        "label": "supported",
+        "paper_evidence": "Pretrained-frozen/pretrained-joint/random-joint/random-frozen PER is .0376/.0391/.0511/.0918.",
+        "reason": "Source: Progressive State–Control Grounding section. The claim matches the stated PER for the pretrained-frozen encoder."
+      },
+      {
+        "id": 11,
+        "text": "A pretrained-joint encoder achieves PER 0.0391.",
+        "poster_quote": "A pretrained-frozen encoder achieves PER 0.0376, compared with 0.0391 for pretrained-joint, 0.0511 for random-joint, and 0.0918 for random-frozen training.",
+        "label": "supported",
+        "paper_evidence": "Pretrained-frozen/pretrained-joint/random-joint/random-frozen PER is .0376/.0391/.0511/.0918.",
+        "reason": "Source: Progressive State–Control Grounding section. The claim matches the stated PER for the pretrained-joint encoder."
+      },
+      {
+        "id": 12,
+        "text": "A random-joint encoder achieves PER 0.0511.",
+        "poster_quote": "A pretrained-frozen encoder achieves PER 0.0376, compared with 0.0391 for pretrained-joint, 0.0511 for random-joint, and 0.0918 for random-frozen training.",
+        "label": "supported",
+        "paper_evidence": "Pretrained-frozen/pretrained-joint/random-joint/random-frozen PER is .0376/.0391/.0511/.0918.",
+        "reason": "Source: Progressive State–Control Grounding section. The claim matches the stated PER for the random-joint encoder."
+      },
+      {
+        "id": 13,
+        "text": "A random-frozen encoder achieves PER 0.0918.",
+        "poster_quote": "A pretrained-frozen encoder achieves PER 0.0376, compared with 0.0391 for pretrained-joint, 0.0511 for random-joint, and 0.0918 for random-frozen training.",
+        "label": "supported",
+        "paper_evidence": "Pretrained-frozen/pretrained-joint/random-joint/random-frozen PER is .0376/.0391/.0511/.0918.",
+        "reason": "Source: Progressive State–Control Grounding section. The claim matches the stated PER for the random-frozen encoder."
+      },
+      {
+        "id": 14,
+        "text": "CLASVS establishes a continuous-autoregressive operating point for score-annotation-free lyric editing.",
+        "poster_quote": "CLASVS establishes a continuous-autoregressive operating point for score-annotation-free lyric editing.",
+        "label": "supported",
+        "paper_evidence": "Together, these results establish a strong continuous-AR operating point for score-annotation-free lyric edits and a basis for broader stepwise control.",
+        "reason": "Source: Abstract, final sentence. The claim matches the stated contribution of CLASVS."
+      },
+      {
+        "id": 15,
+        "text": "CLASVS introduces a State-Control-Transition editing contract that separates persistent target and melody controls, recurrent phonetic-progress state, and local acoustic continuity.",
+        "poster_quote": "It introduces a State-Control-Transition editing contract that separates persistent target and melody controls, recurrent phonetic-progress state, and local acoustic continuity.",
+        "label": "supported",
+        "paper_evidence": "CLASVS addresses this challenge with a State–Control–Transition (SCT) editing contract. Target lyrics and reference melody remain persistent Control; a frozen causal semantic encoder returns feedback on realized phonetic progress as recurrent State; and the previous AudioVAE latent patch enters only the local Transition.",
+        "reason": "Source: Introduction, paragraph 5. The claim matches the described SCT editing contract."
+      },
+      {
+        "id": 16,
+        "text": "On two Mandarin benchmarks, CLASVS improves all four edit operations over discrete-AR Vevo2 and reduces macro phone error rate by 46.2%.",
+        "poster_quote": "On two Mandarin benchmarks, CLASVS improves all four edit operations over discrete-AR Vevo2 and reduces macro phone error rate by 46.2%, while maintaining melody, singer similarity, and perceptual quality.",
+        "label": "supported",
+        "paper_evidence": "On two Mandarin benchmarks, CLASVS improves all four operations over Vevo2, reducing macro-PER from .0699 to .0376 (46.2%).",
+        "reason": "Source: Abstract, final paragraph. The claim matches the stated improvement over Vevo2."
+      },
+      {
+        "id": 17,
+        "text": "The primary benchmark, CLA-LyricEdit-320, contains 320 edits from 160 excerpts spanning 80 songs and 40 singers.",
+        "poster_quote": "The primary benchmark, CLA-LyricEdit-320, contains 320 edits from 160 excerpts spanning 80 songs and 40 singers.",
+        "label": "supported",
+        "paper_evidence": "CLA-LyricEdit-320 contains 320 edits from 160 excerpts spanning 80 songs and 40 singers.",
+        "reason": "Source: Experiments, Data, Comparators, and Statistics section. The claim matches the described dataset composition."
+      },
+      {
+        "id": 18,
+        "text": "CLA-LyricEdit-320 balances four operations: partial-line substitution, full-line substitution, deletion, and insertion.",
+        "poster_quote": "It balances four operations: partial-line substitution replaces a contiguous 2–6-syllable span; full-line substitution replaces every lexical syllable; deletion removes 2–6 syllables; and insertion adds 2–6 syllables.",
+        "label": "supported",
+        "paper_evidence": "CLA-LyricEdit-320 balances four operations: partial-line substitution (PSub), full-line substitution (FSub), deletion, and insertion.",
+        "reason": "Source: Experiments, Data, Comparators, and Statistics section. The claim matches the described operation balance."
+      },
+      {
+        "id": 19,
+        "text": "Partial-line substitution replaces a contiguous 2–6-syllable span.",
+        "poster_quote": "It balances four operations: partial-line substitution replaces a contiguous 2–6-syllable span; full-line substitution replaces every lexical syllable; deletion removes 2–6 syllables; and insertion adds 2–6 syllables.",
+        "label": "supported",
+        "paper_evidence": "PSub replaces a contiguous 2–6-syllable span while retaining context.",
+        "reason": "Source: Experiments, Data, Comparators, and Statistics section. The claim matches the described partial-line substitution operation."
+      },
+      {
+        "id": 20,
+        "text": "Full-line substitution replaces every lexical syllable.",
+        "poster_quote": "It balances four operations: partial-line substitution replaces a contiguous 2–6-syllable span; full-line substitution replaces every lexical syllable; deletion removes 2–6 syllables; and insertion adds 2–6 syllables.",
+        "label": "supported",
+        "paper_evidence": "FSub replaces every lexical syllable in a line.",
+        "reason": "Source: Experiments, Data, Comparators, and Statistics section. The claim matches the described full-line substitution operation."
+      },
+      {
+        "id": 21,
+        "text": "Deletion removes 2–6 syllables.",
+        "poster_quote": "It balances four operations: partial-line substitution replaces a contiguous 2–6-syllable span; full-line substitution replaces every lexical syllable; deletion removes 2–6 syllables; and insertion adds 2–6 syllables.",
+        "label": "supported",
+        "paper_evidence": "Deletion removes 2–6 syllables.",
+        "reason": "Source: Experiments, Data, Comparators, and Statistics section. The claim matches the described deletion operation."
+      },
+      {
+        "id": 22,
+        "text": "Insertion adds 2–6 syllables.",
+        "poster_quote": "It balances four operations: partial-line substitution replaces a contiguous 2–6-syllable span; full-line substitution replaces every lexical syllable; deletion removes 2–6 syllables; and insertion adds 2–6 syllables.",
+        "label": "supported",
+        "paper_evidence": "Insertion adds 2–6 syllables.",
+        "reason": "Source: Experiments, Data, Comparators, and Statistics section. The claim matches the described insertion operation."
+      },
+      {
+        "id": 23,
+        "text": "Splits in CLA-LyricEdit-320 are song-disjoint.",
+        "poster_quote": "Splits are song-disjoint, and two annotators verify targets and operations.",
+        "label": "supported",
+        "paper_evidence": "All splits are song-disjoint.",
+        "reason": "Source: Experiments, Data, Comparators, and Statistics section. The claim matches the described split structure."
+      },
+      {
+        "id": 24,
+        "text": "Two annotators verify targets and operations in CLA-LyricEdit-320.",
+        "poster_quote": "Splits are song-disjoint, and two annotators verify targets and operations.",
+        "label": "supported",
+        "paper_evidence": "Two annotators verify targets and operations (κ = .93).",
+        "reason": "Source: Experiments, Data, Comparators, and Statistics section. The claim matches the described annotation process."
+      },
+      {
+        "id": 25,
+        "text": "Vevo2 is the primary discrete-AR comparator because it shares the sequential reference-audio-plus-target-lyrics interface but predicts discrete acoustic tokens.",
+        "poster_quote": "Vevo2 is the primary discrete-AR comparator because it shares the sequential reference-audio-plus-target-lyrics interface but predicts discrete acoustic tokens.",
+        "label": "supported",
+        "paper_evidence": "Vevo2 is the primary comparator because it shares CLASVS’s sequential interface but predicts discrete acoustic tokens rather than continuous AudioVAE latent patches.",
+        "reason": "Source: Abstract, final paragraph. The claim matches the described comparison rationale."
+      },
+      {
+        "id": 26,
+        "text": "YingMusic-Singer-Plus is the complementary continuous-NAR comparator with parallel inference.",
+        "poster_quote": "YingMusic-Singer-Plus is the complementary continuous-NAR comparator with parallel inference.",
+        "label": "supported",
+        "paper_evidence": "YingMusic+ is the complementary continuous-NAR comparator (Hao et al. 2026): it remains stronger on substitution, global duration, and steady-tail speed.",
+        "reason": "Source: Abstract, final paragraph. The claim matches the described comparison rationale."
+      },
+      {
+        "id": 27,
+        "text": "All systems derive melody automatically and emit one candidate.",
+        "poster_quote": "All systems derive melody automatically and emit one candidate.",
+        "label": "supported",
+        "paper_evidence": "All systems derive melody automatically and emit one candidate.",
+        "reason": "Source: Experiments, Data, Comparators, and Statistics section. The claim matches the described system behavior."
+      },
+      {
+        "id": 28,
+        "text": "Metrics include phone error rate, normalized edit distance, source-lyric reversion, log-F0 Pearson correlation, voiced-onset mean absolute error, output/reference duration deviation, and singer-similarity cosine.",
+        "poster_quote": "Metrics include phone error rate, normalized edit distance, source-lyric reversion, log-F0 Pearson correlation, voiced-onset mean absolute error, output/reference duration deviation, and singer-similarity cosine.",
+        "label": "supported",
+        "paper_evidence": "Metrics include phone error rate, normalized edit distance, source-lyric reversion rate, log-F0 Pearson correlation, voiced-onset MAE, reference-duration deviation, and singer-similarity cosine.",
+        "reason": "Source: Experiments, Data, Comparators, and Statistics section. The claim matches the described evaluation metrics."
+      },
+      {
+        "id": 29,
+        "text": "Eighty blinded outputs spanning five conditions are rated by twenty native Mandarin listeners for naturalness, melody, and lyric intelligibility.",
+        "poster_quote": "Eighty blinded outputs spanning five conditions are rated by twenty native Mandarin listeners for naturalness, melody, and lyric intelligibility.",
+        "label": "supported",
+        "paper_evidence": "A pre-generation stratified draw yields 80 blinded audio outputs spanning five conditions, evaluated by twenty native Mandarin listeners for naturalness (N-MOS), melody (M-MOS), and lyric intelligibility (L-MOS).",
+        "reason": "Source: Experiments, Data, Comparators, and Statistics section. The claim matches the described listener evaluation setup."
+      },
+      {
+        "id": 30,
+        "text": "Results use operation-balanced macro-PER, song-clustered resampling, listener/item random effects, and multiple-comparison correction.",
+        "poster_quote": "Results use operation-balanced macro-PER, song-clustered resampling, listener/item random effects, and multiple-comparison correction.",
+        "label": "supported",
+        "paper_evidence": "We report operation-balanced macro-PER, 10,000 song-clustered draws, listener/item random effects (Kirkland et al. 2023; Camp et al. 2023), and Holm correction.",
+        "reason": "Source: Experiments, Data, Comparators, and Statistics section. The claim matches the described statistical methods."
+      },
+      {
+        "id": 31,
+        "text": "A frozen public Mandarin benchmark and evaluator test whether the operation-specific profile transfers beyond the primary dataset.",
+        "poster_quote": "A frozen public Mandarin benchmark and evaluator test whether the operation-specific profile transfers beyond the primary dataset.",
+        "label": "supported",
+        "paper_evidence": "The public Mandarin benchmark retains YingMusic+’s substitution lead and CLASVS’s deletion/insertion advantage, confirming the operation-specific profile.",
+        "reason": "Source: Analysis and Discussion section. The claim matches the described benchmark transfer test."
+      },
+      {
+        "id": 32,
+        "text": "Control Grounding exposes the model to imperfect local and reference evidence.",
+        "poster_quote": "Control Grounding exposes the model to imperfect local and reference evidence.",
+        "label": "supported",
+        "paper_evidence": "Control Grounding applies history dropout (ph = .10) to the teacher-forced previous latent patch and masks reference-melody spans (pm = .15), forcing recovery from imperfect local evidence while retaining both controls.",
+        "reason": "Source: Progressive State–Control Grounding section. The claim matches the described Control Grounding method."
+      },
+      {
+        "id": 33,
+        "text": "History dropout with probability 0.10 corrupts the teacher-forced previous latent patch, preventing unconditional predecessor copying.",
+        "poster_quote": "History dropout with probability 0.10 corrupts the teacher-forced previous latent patch, preventing unconditional predecessor copying.",
+        "label": "supported",
+        "paper_evidence": "Control Grounding applies history dropout (ph = .10) to the teacher-forced previous latent patch.",
+        "reason": "Source: Progressive State–Control Grounding section. The claim matches the described history dropout probability."
+      },
+      {
+        "id": 34,
+        "text": "Melody-span masking with probability 0.15 forces recovery from incomplete reference cues while target lyrics remain available.",
+        "poster_quote": "Melody-span masking with probability 0.15 forces recovery from incomplete reference cues while target lyrics remain available.",
+        "label": "supported",
+        "paper_evidence": "Control Grounding applies ... masks reference-melody spans (pm = .15).",
+        "reason": "Source: Progressive State–Control Grounding section. The claim matches the described melody-span masking probability."
+      },
+      {
+        "id": 35,
+        "text": "Removing history dropout raises PER to 0.0441.",
+        "poster_quote": "Removing history dropout, melody masking, or both raises PER to 0.0441, 0.0419, and 0.0468, respectively.",
+        "label": "supported",
+        "paper_evidence": "History-dropout, melody-mask, joint-corruption, and curriculum-order removals yield PER .0441/.0419/.0468/.0415.",
+        "reason": "Source: Progressive State–Control Grounding section. The claim matches the stated PER after removing history dropout."
+      },
+      {
+        "id": 36,
+        "text": "Removing melody masking raises PER to 0.0419.",
+        "poster_quote": "Removing history dropout, melody masking, or both raises PER to 0.0441, 0.0419, and 0.0468, respectively.",
+        "label": "supported",
+        "paper_evidence": "History-dropout, melody-mask, joint-corruption, and curriculum-order removals yield PER .0441/.0419/.0468/.0415.",
+        "reason": "Source: Progressive State–Control Grounding section. The claim matches the stated PER after removing melody masking."
+      },
+      {
+        "id": 37,
+        "text": "Removing both history dropout and melody masking raises PER to 0.0468.",
+        "poster_quote": "Removing history dropout, melody masking, or both raises PER to 0.0441, 0.0419, and 0.0468, respectively.",
+        "label": "supported",
+        "paper_evidence": "History-dropout, melody-mask, joint-corruption, and curriculum-order removals yield PER .0441/.0419/.0468/.0415.",
+        "reason": "Source: Progressive State–Control Grounding section. The claim matches the stated PER after removing both history dropout and melody masking."
+      },
+      {
+        "id": 38,
+        "text": "Task Grounding schedules 72K broad-singing updates, 24K speech-assisted updates, and 24K curated-singing updates.",
+        "poster_quote": "Task Grounding schedules 72K broad-singing updates, 24K speech-assisted updates, and 24K curated-singing updates.",
+        "label": "supported",
+        "paper_evidence": "Task Grounding schedules 72K broad-singing, 24K speech-assisted, and 24K curated-singing updates.",
+        "reason": "Source: Progressive State–Control Grounding section. The claim matches the described update schedule."
+      },
+      {
+        "id": 39,
+        "text": "Reversing or removing curriculum structure degrades editing accuracy.",
+        "poster_quote": "Reversing or removing curriculum structure degrades editing accuracy.",
+        "label": "supported",
+        "paper_evidence": "Reversing or removing curriculum structure degrades editing accuracy.",
+        "reason": "Source: Progressive State–Control Grounding section. The claim matches the described impact of curriculum structure changes."
+      },
+      {
+        "id": 40,
+        "text": "Training uses conditional flow matching for latent generation, causally shifted target-lyric cross-entropy as a planner-side content regularizer, and balanced continue/stop cross-entropy.",
+        "poster_quote": "Training uses conditional flow matching for latent generation, causally shifted target-lyric cross-entropy as a planner-side content regularizer, and balanced continue/stop cross-entropy.",
+        "label": "supported",
+        "paper_evidence": "The complete objective is L = Ltext + 10LFM + Lstop. Ltext is causally shifted cross-entropy on nonpadding target-lyric positions during prefix teacher forcing; melody tokens, separators, and recurrent semantic feedback are excluded. Lstop is balanced cross-entropy with the final valid patch labeled stop.",
+        "reason": "Source: Progressive State–Control Grounding section. The claim matches the described training objectives."
+      },
+      {
+        "id": 41,
+        "text": "Joint lyric, melody, and singer dropout trains the classifier-free guidance branch.",
+        "poster_quote": "Joint lyric, melody, and singer dropout trains the classifier-free guidance branch.",
+        "label": "supported",
+        "paper_evidence": "Joint lyric–melody–singer dropout (p = .10) trains the unconditional guidance branch (Ho and Salimans 2022), which supports classifier-free guidance during sampling.",
+        "reason": "Section 'Progressive State–Control Grounding' explicitly states that joint lyric, melody, and singer dropout trains the classifier-free guidance branch."
+      },
+      {
+        "id": 42,
+        "text": "During inference, every patch begins as Gaussian noise and is generated with 24 Euler steps and guidance scale 2.0.",
+        "poster_quote": "During inference, every patch begins as Gaussian noise and is generated with 24 Euler steps and guidance scale 2.0.",
+        "label": "supported",
+        "paper_evidence": "Each patch starts from Gaussian noise and uses 24 Euler steps with guidance 2.0.",
+        "reason": "Section 'Progressive State–Control Grounding' confirms that every patch begins as Gaussian noise and is generated with 24 Euler steps and guidance scale 2.0."
+      },
+      {
+        "id": 43,
+        "text": "Generation stops at posterior 0.5 or a safety budget, and all patches are decoded together.",
+        "poster_quote": "Generation stops at posterior 0.5 or a safety budget, and all patches are decoded together.",
+        "label": "supported",
+        "paper_evidence": "We emit one candidate, stop at posterior .5 or the rollout budget, concatenate the patches, and decode once.",
+        "reason": "Section 'Progressive State–Control Grounding' confirms that generation stops at posterior 0.5 or a safety budget, and all patches are decoded together."
+      },
+      {
+        "id": 44,
+        "text": "On CLA-LyricEdit-320, CLASVS achieves PER values of 0.0505 for partial substitution, 0.0442 for full substitution, 0.0260 for deletion, and 0.0298 for insertion.",
+        "poster_quote": "On CLA-LyricEdit-320, CLASVS achieves PER values of 0.0505 for partial substitution, 0.0442 for full substitution, 0.0260 for deletion, and 0.0298 for insertion, producing macro-PER 0.0376.",
+        "label": "supported",
+        "paper_evidence": "CLASVS\n.0505 .0442 .0260 .0298",
+        "reason": "Table 4 provides the PER values for partial substitution, full substitution, deletion, and insertion on CLA-LyricEdit-320."
+      },
+      {
+        "id": 45,
+        "text": "CLASVS produces macro-PER 0.0376 on CLA-LyricEdit-320.",
+        "poster_quote": "On CLA-LyricEdit-320, CLASVS achieves PER values of 0.0505 for partial substitution, 0.0442 for full substitution, 0.0260 for deletion, and 0.0298 for insertion, producing macro-PER 0.0376.",
+        "label": "supported",
+        "paper_evidence": "CLASVS\n.0376 [.0326,.0429]",
+        "reason": "Table 4 confirms that CLASVS produces a macro-PER of 0.0376 on CLA-LyricEdit-320."
+      },
+      {
+        "id": 46,
+        "text": "Vevo2 obtains PER values of 0.0617 for partial substitution, 0.0563 for full substitution, 0.1033 for deletion, and 0.0581 for insertion.",
+        "poster_quote": "Vevo2 obtains 0.0617, 0.0563, 0.1033, and 0.0581, with macro-PER 0.0699.",
+        "label": "supported",
+        "paper_evidence": "Vevo2\n.0617 .0563 .1033 .0581",
+        "reason": "Table 4 provides the PER values for partial substitution, full substitution, deletion, and insertion for Vevo2."
+      },
+      {
+        "id": 47,
+        "text": "Vevo2 produces macro-PER 0.0699 on CLA-LyricEdit-320.",
+        "poster_quote": "Vevo2 obtains 0.0617, 0.0563, 0.1033, and 0.0581, with macro-PER 0.0699.",
+        "label": "supported",
+        "paper_evidence": "Vevo2\n.0699 [.0617,.0781]",
+        "reason": "Table 4 confirms that Vevo2 produces a macro-PER of 0.0699 on CLA-LyricEdit-320."
+      },
+      {
+        "id": 48,
+        "text": "CLASVS reduces macro-PER by 46.2% relative to the discrete-AR comparator Vevo2.",
+        "poster_quote": "CLASVS therefore improves every operation and reduces macro-PER by 46.2% relative to the discrete-AR comparator.",
+        "label": "supported",
+        "paper_evidence": "CLASVS reduces macro-PER by 46.2% versus discrete-AR Vevo2 across two Mandarin benchmarks.",
+        "reason": "Abstract and Section 'Editing Accuracy, Quality, and Identity' confirm that CLASVS reduces macro-PER by 46.2% relative to Vevo2."
+      },
+      {
+        "id": 49,
+        "text": "YingMusic+ obtains macro-PER 0.0411.",
+        "poster_quote": "YingMusic+ obtains macro-PER 0.0411 and remains stronger on substitution, global duration matching, and steady-tail speed.",
+        "label": "supported",
+        "paper_evidence": "YingMusic-Singer-Plus\n.0411 [.0356,.0469]",
+        "reason": "Table 4 confirms that YingMusic+ obtains a macro-PER of 0.0411."
+      },
+      {
+        "id": 50,
+        "text": "YingMusic+ remains stronger on substitution, global duration matching, and steady-tail speed.",
+        "poster_quote": "YingMusic+ obtains macro-PER 0.0411 and remains stronger on substitution, global duration matching, and steady-tail speed.",
+        "label": "supported",
+        "paper_evidence": "YingMusic+ remains stronger on substitution, global RefDur, and steady-tail RTF.",
+        "reason": "Section 'Editing Accuracy, Quality, and Identity' explicitly states that YingMusic+ remains stronger on substitution, global duration matching, and steady-tail speed."
+      },
+      {
+        "id": 51,
+        "text": "CLASVS is substantially stronger on deletion and insertion, resulting in lower overall macro-PER than YingMusic+.",
+        "poster_quote": "CLASVS is substantially stronger on deletion and insertion, resulting in lower overall macro-PER.",
+        "label": "supported",
+        "paper_evidence": "CLASVS leads deletion, insertion, macro-PER, voiced-onset MAE, naturalness, and lyric intelligibility.",
+        "reason": "Section 'Editing Accuracy, Quality, and Identity' confirms that CLASVS is stronger on deletion and insertion, resulting in lower macro-PER than YingMusic+."
+      },
+      {
+        "id": 52,
+        "text": "Melody correlation is 0.941 for CLASVS.",
+        "poster_quote": "Melody correlation is 0.941 for CLASVS, compared with 0.934 for YingMusic+ and 0.744 for Vevo2.",
+        "label": "supported",
+        "paper_evidence": ".9410",
+        "reason": "Table 4 confirms that melody correlation is 0.941 for CLASVS."
+      },
+      {
+        "id": 53,
+        "text": "Melody correlation is 0.934 for YingMusic+.",
+        "poster_quote": "Melody correlation is 0.941 for CLASVS, compared with 0.934 for YingMusic+ and 0.744 for Vevo2.",
+        "label": "supported",
+        "paper_evidence": ".9340",
+        "reason": "Table 4 confirms that melody correlation is 0.934 for YingMusic+."
+      },
+      {
+        "id": 54,
+        "text": "Melody correlation is 0.744 for Vevo2.",
+        "poster_quote": "Melody correlation is 0.941 for CLASVS, compared with 0.934 for YingMusic+ and 0.744 for Vevo2.",
+        "label": "supported",
+        "paper_evidence": ".7440",
+        "reason": "Table 4 confirms that melody correlation is 0.744 for Vevo2."
+      },
+      {
+        "id": 55,
+        "text": "Singer similarity is 0.914 for CLASVS.",
+        "poster_quote": "Singer similarity is 0.914, compared with 0.906 and 0.892.",
+        "label": "supported",
+        "paper_evidence": ".914",
+        "reason": "Table 4 confirms that singer similarity is 0.914 for CLASVS."
+      },
+      {
+        "id": 56,
+        "text": "Singer similarity is 0.906 for YingMusic+.",
+        "poster_quote": "Singer similarity is 0.914, compared with 0.906 and 0.892.",
+        "label": "supported",
+        "paper_evidence": ".906",
+        "reason": "Table 4 confirms that singer similarity is 0.906 for YingMusic+."
+      },
+      {
+        "id": 57,
+        "text": "Singer similarity is 0.892 for Vevo2.",
+        "poster_quote": "Singer similarity is 0.914, compared with 0.906 and 0.892.",
+        "label": "supported",
+        "paper_evidence": ".892",
+        "reason": "Table 4 confirms that singer similarity is 0.892 for Vevo2."
+      },
+      {
+        "id": 58,
+        "text": "Voiced-onset error is 7.68 ms for CLASVS.",
+        "poster_quote": "Voiced-onset error is 7.68 ms, versus 18.80 ms and 69.58 ms.",
+        "label": "supported",
+        "paper_evidence": "7.68ms",
+        "reason": "Table 4 confirms that voiced-onset error is 7.68 ms for CLASVS."
+      },
+      {
+        "id": 59,
+        "text": "Voiced-onset error is 18.80 ms for YingMusic+.",
+        "poster_quote": "Voiced-onset error is 7.68 ms, versus 18.80 ms and 69.58 ms.",
+        "label": "supported",
+        "paper_evidence": "18.80ms",
+        "reason": "Table 4 confirms that voiced-onset error is 18.80 ms for YingMusic+."
+      },
+      {
+        "id": 60,
+        "text": "Voiced-onset error is 69.58 ms for Vevo2.",
+        "poster_quote": "Voiced-onset error is 7.68 ms, versus 18.80 ms and 69.58 ms.",
+        "label": "supported",
+        "paper_evidence": "69.58ms",
+        "reason": "Table 4 confirms that voiced-onset error is 69.58 ms for Vevo2."
+      },
+      {
+        "id": 61,
+        "text": "Listener scores show CLASVS naturalness at 4.13.",
+        "poster_quote": "Listener scores show CLASVS naturalness at 4.13 and lyric intelligibility at 4.42.",
+        "label": "supported",
+        "paper_evidence": "4.13 [4.04,4.22]",
+        "reason": "Table 6 confirms that listener scores show CLASVS naturalness at 4.13."
+      },
+      {
+        "id": 62,
+        "text": "Listener scores show CLASVS lyric intelligibility at 4.42.",
+        "poster_quote": "Listener scores show CLASVS naturalness at 4.13 and lyric intelligibility at 4.42.",
+        "label": "supported",
+        "paper_evidence": "4.42 [4.34,4.50]",
+        "reason": "Table 6 confirms that listener scores show CLASVS lyric intelligibility at 4.42."
+      },
+      {
+        "id": 63,
+        "text": "Relative to YingMusic+, CLASVS naturalness improves by 0.48.",
+        "poster_quote": "Relative to YingMusic+, naturalness improves by 0.48 and intelligibility by 0.32, while the 0.01 melody-rating difference is not detectable.",
+        "label": "supported",
+        "paper_evidence": "+.48 [+.34, +.62]",
+        "reason": "Table 6 confirms that relative to YingMusic+, CLASVS naturalness improves by 0.48."
+      },
+      {
+        "id": 64,
+        "text": "Relative to YingMusic+, CLASVS intelligibility improves by 0.32.",
+        "poster_quote": "Relative to YingMusic+, naturalness improves by 0.48 and intelligibility by 0.32, while the 0.01 melody-rating difference is not detectable.",
+        "label": "supported",
+        "paper_evidence": "+.32 [+.20, +.44]",
+        "reason": "Table 6 confirms that relative to YingMusic+, CLASVS intelligibility improves by 0.32."
+      },
+      {
+        "id": 65,
+        "text": "The 0.01 melody-rating difference between CLASVS and YingMusic+ is not detectable.",
+        "poster_quote": "Relative to YingMusic+, naturalness improves by 0.48 and intelligibility by 0.32, while the 0.01 melody-rating difference is not detectable.",
+        "label": "supported",
+        "paper_evidence": "The M-MOS difference is not detectable.",
+        "reason": "Table 6 explicitly states that the 0.01 melody-rating difference between CLASVS and YingMusic+ is not detectable."
+      },
+      {
+        "id": 66,
+        "text": "The public Mandarin benchmark reproduces the profile.",
+        "poster_quote": "The public Mandarin benchmark reproduces the profile.",
+        "label": "supported",
+        "paper_evidence": "The public Mandarin benchmark reproduces the operation-specific profile.",
+        "reason": "Section 'Public-Benchmark Replication' confirms that the public Mandarin benchmark reproduces the profile."
+      },
+      {
+        "id": 67,
+        "text": "CLASVS lowers Vevo2 macro-PER from 0.0761 to 0.0425 on the public Mandarin benchmark.",
+        "poster_quote": "CLASVS lowers Vevo2 macro-PER from 0.0761 to 0.0425 and improves all four operations.",
+        "label": "supported",
+        "paper_evidence": "CLASVS improves all four operations over Vevo2 and lowers macro-PER from .0761 to .0425.",
+        "reason": "Table 3 confirms that CLASVS lowers Vevo2 macro-PER from 0.0761 to 0.0425 on the public Mandarin benchmark."
+      },
+      {
+        "id": 68,
+        "text": "CLASVS improves all four operations on the public Mandarin benchmark.",
+        "poster_quote": "CLASVS lowers Vevo2 macro-PER from 0.0761 to 0.0425 and improves all four operations.",
+        "label": "supported",
+        "paper_evidence": "CLASVS improves all four operations over Vevo2.",
+        "reason": "Table 3 confirms that CLASVS improves all four operations on the public Mandarin benchmark."
+      },
+      {
+        "id": 69,
+        "text": "YingMusic+ remains stronger on substitution on the public Mandarin benchmark.",
+        "poster_quote": "YingMusic+ remains stronger on substitution, while CLASVS remains stronger on deletion and insertion.",
+        "label": "supported",
+        "paper_evidence": "YingMusic+ remains stronger on substitution.",
+        "reason": "Table 3 confirms that YingMusic+ remains stronger on substitution on the public Mandarin benchmark."
+      },
+      {
+        "id": 70,
+        "text": "CLASVS remains stronger on deletion and insertion on the public Mandarin benchmark.",
+        "poster_quote": "YingMusic+ remains stronger on substitution, while CLASVS remains stronger on deletion and insertion.",
+        "label": "supported",
+        "paper_evidence": "CLASVS improves deletion and insertion while YingMusic+ remains stronger on substitution.",
+        "reason": "Table 3 confirms that CLASVS remains stronger on deletion and insertion on the public Mandarin benchmark."
+      },
+      {
+        "id": 71,
+        "text": "Runtime is the main trade-off for CLASVS.",
+        "poster_quote": "Runtime is the main trade-off: CLASVS cold-start/steady-tail RTF is 3.840/1.395, compared with 3.392/0.241 for YingMusic+ and 2.649/0.744 for Vevo2.",
+        "label": "supported",
+        "paper_evidence": "Runtime is the main trade-off for CLASVS.",
+        "reason": "Section 'Editing Accuracy, Quality, and Identity' explicitly states that runtime is the main trade-off for CLASVS."
+      },
+      {
+        "id": 72,
+        "text": "CLASVS cold-start RTF is 3.840.",
+        "poster_quote": "Runtime is the main trade-off: CLASVS cold-start/steady-tail RTF is 3.840/1.395, compared with 3.392/0.241 for YingMusic+ and 2.649/0.744 for Vevo2.",
+        "label": "supported",
+        "paper_evidence": "3.840",
+        "reason": "Table 4 confirms that CLASVS cold-start RTF is 3.840."
+      },
+      {
+        "id": 73,
+        "text": "CLASVS steady-tail RTF is 1.395.",
+        "poster_quote": "Runtime is the main trade-off: CLASVS cold-start/steady-tail RTF is 3.840/1.395, compared with 3.392/0.241 for YingMusic+ and 2.649/0.744 for Vevo2.",
+        "label": "supported",
+        "paper_evidence": "1.395",
+        "reason": "Table 4 confirms that CLASVS steady-tail RTF is 1.395."
+      },
+      {
+        "id": 74,
+        "text": "YingMusic+ cold-start RTF is 3.392.",
+        "poster_quote": "Runtime is the main trade-off: CLASVS cold-start/steady-tail RTF is 3.840/1.395, compared with 3.392/0.241 for YingMusic+ and 2.649/0.744 for Vevo2.",
+        "label": "supported",
+        "paper_evidence": "3.392",
+        "reason": "Table 4 confirms that YingMusic+ cold-start RTF is 3.392."
+      },
+      {
+        "id": 75,
+        "text": "YingMusic+ steady-tail RTF is 0.241.",
+        "poster_quote": "Runtime is the main trade-off: CLASVS cold-start/steady-tail RTF is 3.840/1.395, compared with 3.392/0.241 for YingMusic+ and 2.649/0.744 for Vevo2.",
+        "label": "supported",
+        "paper_evidence": "0.241",
+        "reason": "Table 4 confirms that YingMusic+ steady-tail RTF is 0.241."
+      },
+      {
+        "id": 76,
+        "text": "Vevo2 cold-start RTF is 2.649.",
+        "poster_quote": "Runtime is the main trade-off: CLASVS cold-start/steady-tail RTF is 3.840/1.395, compared with 3.392/0.241 for YingMusic+ and 2.649/0.744 for Vevo2.",
+        "label": "supported",
+        "paper_evidence": "2.649",
+        "reason": "Table 4 confirms that Vevo2 cold-start RTF is 2.649."
+      },
+      {
+        "id": 77,
+        "text": "Vevo2 steady-tail RTF is 0.744.",
+        "poster_quote": "Runtime is the main trade-off: CLASVS cold-start/steady-tail RTF is 3.840/1.395, compared with 3.392/0.241 for YingMusic+ and 2.649/0.744 for Vevo2.",
+        "label": "supported",
+        "paper_evidence": "0.744",
+        "reason": "Table 4 confirms that Vevo2 steady-tail RTF is 0.744."
+      },
+      {
+        "id": 78,
+        "text": "Incremental peak memory is lowest for CLASVS at 5.82 GiB.",
+        "poster_quote": "Incremental peak memory is lowest for CLASVS at 5.82 GiB.",
+        "label": "supported",
+        "paper_evidence": "5.82",
+        "reason": "Table 4 confirms that incremental peak memory is lowest for CLASVS at 5.82 GiB."
+      },
+      {
+        "id": 79,
+        "text": "CLASVS generates 64-dimensional AudioVAE latent patches every 100 ms.",
+        "poster_quote": "CLASVS generates 64-dimensional AudioVAE latent patches every 100 ms and learns when to stop.",
+        "label": "supported",
+        "paper_evidence": "CLASVS generates 64-D continuous AudioVAE latent patches every 100 ms.",
+        "reason": "Figure 1 and Section 'State–Control–Transition Routing' confirm that CLASVS generates 64-dimensional AudioVAE latent patches every 100 ms."
+      },
+      {
+        "id": 80,
+        "text": "CLASVS learns when to stop generating latent patches.",
+        "poster_quote": "CLASVS generates 64-dimensional AudioVAE latent patches every 100 ms and learns when to stop.",
+        "label": "supported",
+        "paper_evidence": "The stop head learns output patch count while target/source syllable counts may differ under reference timing cues.",
+        "reason": "Section 'State–Control–Transition Routing' confirms that CLASVS learns when to stop generating latent patches."
+      },
+      {
+        "id": 81,
+        "text": "CLASVS preserves the complete target-lyric and reference-melody spans in the causal planner cache.",
+        "poster_quote": "It preserves the complete target-lyric and reference-melody spans in the causal planner cache while adding one compact semantic-feedback vector per generated patch.",
+        "label": "supported",
+        "paper_evidence": "Lyric and melody tokens prefill a Qwen3-0.6B causal planner (Yang et al. 2025a). After the first step, only semantic feedback ak−1 is appended: (hk , Kplan k ) = Pθ (ak−1 , Kplan k−1 ). The cache retains the full controls and all earlier feedback.",
+        "reason": "Section 'State–Control–Transition Routing' confirms that both target-lyric and reference-melody spans persist in the causal planner cache."
+      },
+      {
+        "id": 82,
+        "text": "CLASVS adds one compact semantic-feedback vector per generated patch.",
+        "poster_quote": "It preserves the complete target-lyric and reference-melody spans in the causal planner cache while adding one compact semantic-feedback vector per generated patch.",
+        "label": "supported",
+        "paper_evidence": "The semantic route compresses each five-frame patch into one 1024-D feedback vector, while the local route retains the complete 5 × 64 patch for only the following transition.",
+        "reason": "Section 'State–Control–Transition Routing' specifies that one compact semantic-feedback vector is added per generated patch."
+      },
+      {
+        "id": 83,
+        "text": "The previous latent patch conditions only the next Flow-DiT transition in CLASVS.",
+        "poster_quote": "The previous latent patch conditions only the next Flow-DiT transition.",
+        "label": "supported",
+        "paper_evidence": "The previous latent patch enters an 8-block Flow-DiT that combines conditional flow matching with a transformer denoiser. The previous latent patch conditions only the next Flow-DiT transition.",
+        "reason": "Section 'State–Control–Transition Routing' explicitly states that the previous latent patch conditions only the next Flow-DiT transition."
+      },
+      {
+        "id": 84,
+        "text": "CLASVS improves partial substitution, full substitution, deletion, and insertion over Vevo2.",
+        "poster_quote": "Under a common automatic-input protocol, CLASVS improves partial substitution, full substitution, deletion, and insertion over Vevo2.",
+        "label": "supported",
+        "paper_evidence": "CLASVS improves all four operations over Vevo2, reducing macro-PER from .0699 to .0376 (46.2%).",
+        "reason": "Section 'Abstract' and 'Experiments' confirm improvement in partial substitution, full substitution, deletion, and insertion over Vevo2."
+      },
+      {
+        "id": 85,
+        "text": "CLASVS reduces macro-PER from 0.0699 to 0.0376 compared to Vevo2.",
+        "poster_quote": "Macro-PER falls from 0.0699 to 0.0376.",
+        "label": "supported",
+        "paper_evidence": "CLASVS improves all four operations over Vevo2, reducing macro-PER from .0699 to .0376 (46.2%).",
+        "reason": "Section 'Abstract' and 'Experiments' explicitly state the reduction in macro-PER compared to Vevo2."
+      },
+      {
+        "id": 86,
+        "text": "Compared with continuous-NAR YingMusic+, CLASVS leads on deletion, insertion, macro-PER, voiced-onset accuracy, naturalness, and lyric intelligibility.",
+        "poster_quote": "Compared with continuous-NAR YingMusic+, CLASVS leads on deletion, insertion, macro-PER, voiced-onset accuracy, naturalness, and lyric intelligibility.",
+        "label": "supported",
+        "paper_evidence": "CLASVS leads deletion, insertion, macro-PER, voiced-onset MAE, naturalness, and lyric intelligibility.",
+        "reason": "Section 'Editing Accuracy, Quality, and Identity' confirms CLASVS's lead over YingMusic+ in these metrics."
+      },
+      {
+        "id": 87,
+        "text": "Matched routing and grounding ablations confirm that semantic feedback primarily supports lyric accuracy.",
+        "poster_quote": "Matched routing and grounding ablations confirm that semantic feedback primarily supports lyric accuracy, while the previous latent patch primarily preserves melody and continuity.",
+        "label": "supported",
+        "paper_evidence": "Removing semantic feedback changes PER/FPC to .0564/.9205, supporting semantic feedback as an explicitly grounded phonetic-progress State.",
+        "reason": "Section 'PSCG and Inference Diagnostics' confirms that semantic feedback primarily supports lyric accuracy."
+      },
+      {
+        "id": 88,
+        "text": "The previous latent patch primarily preserves melody and continuity.",
+        "poster_quote": "Matched routing and grounding ablations confirm that semantic feedback primarily supports lyric accuracy, while the previous latent patch primarily preserves melody and continuity.",
+        "label": "supported",
+        "paper_evidence": "Removing the previous latent patch most strongly harms melody preservation.",
+        "reason": "Section 'PSCG and Inference Diagnostics' confirms the role of the previous latent patch in preserving melody and continuity."
+      },
+      {
+        "id": 89,
+        "text": "CLASVS demonstrates zero-paired-edit generalization.",
+        "poster_quote": "CLASVS demonstrates zero-paired-edit generalization: training never reveals counterfactual lyrics, edit-span alignments, or operation templates, yet the model follows revised words at test time.",
+        "label": "supported",
+        "paper_evidence": "This paired-edit-free training turns lyric editing into a zero-paired-edit generalization test: success requires following revised lyrics despite residual source-lyric-correlated evidence.",
+        "reason": "Section 'Training Tuples and the Content Conflict' explicitly describes zero-paired-edit generalization."
+      },
+      {
+        "id": 90,
+        "text": "Training never reveals counterfactual lyrics, edit-span alignments, or operation templates.",
+        "poster_quote": "CLASVS demonstrates zero-paired-edit generalization: training never reveals counterfactual lyrics, edit-span alignments, or operation templates, yet the model follows revised words at test time.",
+        "label": "supported",
+        "paper_evidence": "Training uses content-consistent reconstruction, never unavailable recordings of one melody sung with counterfactual lyrics.",
+        "reason": "Section 'Training Tuples and the Content Conflict' confirms that training never reveals counterfactual lyrics, edit-span alignments, or operation templates."
+      },
+      {
+        "id": 91,
+        "text": "The largest gains occur on length-changing edits.",
+        "poster_quote": "The largest gains occur on length-changing edits.",
+        "label": "supported",
+        "paper_evidence": "CLASVS improves every Vevo2 operation, especially length-changing edits.",
+        "reason": "Section 'Editing Accuracy, Quality, and Identity' explicitly states that the largest gains occur on length-changing edits."
+      },
+      {
+        "id": 92,
+        "text": "Against both comparators, CLASVS is especially effective for deletion and insertion.",
+        "poster_quote": "Against both comparators, CLASVS is especially effective for deletion and insertion.",
+        "label": "supported",
+        "paper_evidence": "CLASVS improves deletion and insertion over YingMusic+ while YingMusic+ remains stronger on substitution.",
+        "reason": "Section 'Editing Accuracy, Quality, and Identity' confirms CLASVS's effectiveness for deletion and insertion against both comparators."
+      },
+      {
+        "id": 93,
+        "text": "Stopping audits show that these gains do not result from simple truncation.",
+        "poster_quote": "Stopping audits show that these gains do not result from simple truncation: budget-hit rates are 0%, 0%, 0%, and 1.25% for partial substitution, full substitution, deletion, and insertion, while premature and delayed stopping remain low.",
+        "label": "supported",
+        "paper_evidence": "Deletion accuracy is not obtained by truncation or retained words.",
+        "reason": "Section 'Stopping audits' confirms that gains do not result from simple truncation."
+      },
+      {
+        "id": 94,
+        "text": "Budget-hit rates are 0% for partial substitution, full substitution, and deletion.",
+        "poster_quote": "Stopping audits show that these gains do not result from simple truncation: budget-hit rates are 0%, 0%, 0%, and 1.25% for partial substitution, full substitution, deletion, and insertion, while premature and delayed stopping remain low.",
+        "label": "supported",
+        "paper_evidence": "Budget-hit rates are 0/0/0/1.25% for PSub/FSub/Del/Ins.",
+        "reason": "Section 'Stopping audits' confirms a 0% budget-hit rate for partial substitution, full substitution, and deletion."
+      },
+      {
+        "id": 95,
+        "text": "Budget-hit rate is 1.25% for insertion.",
+        "poster_quote": "Stopping audits show that these gains do not result from simple truncation: budget-hit rates are 0%, 0%, 0%, and 1.25% for partial substitution, full substitution, deletion, and insertion, while premature and delayed stopping remain low.",
+        "label": "supported",
+        "paper_evidence": "Budget-hit rates are 0/0/0/1.25% for PSub/FSub/Del/Ins.",
+        "reason": "Section 'Stopping audits' confirms a 1.25% budget-hit rate for insertion."
+      },
+      {
+        "id": 96,
+        "text": "Premature and delayed stopping remain low for CLASVS.",
+        "poster_quote": "Stopping audits show that these gains do not result from simple truncation: budget-hit rates are 0%, 0%, 0%, and 1.25% for partial substitution, full substitution, deletion, and insertion, while premature and delayed stopping remain low.",
+        "label": "supported",
+        "paper_evidence": "Premature/delayed-stop rates never exceed 1.25/2.50%.",
+        "reason": "Section 'Stopping audits' confirms that premature and delayed stopping remain low for CLASVS."
+      },
+      {
+        "id": 97,
+        "text": "Continuous autoregression provides high-fidelity stepwise control, learned stopping, low peak memory, and strong perceptual quality.",
+        "poster_quote": "Continuous autoregression provides high-fidelity stepwise control, learned stopping, low peak memory, and strong perceptual quality, but is slower than parallel generation.",
+        "label": "supported",
+        "paper_evidence": "Continuous autoregression provides high-fidelity stepwise control with learned stopping, low peak memory, and strong perceptual quality.",
+        "reason": "Section 'Conclusion' confirms these attributes of continuous autoregression."
+      },
+      {
+        "id": 98,
+        "text": "Continuous autoregression is slower than parallel generation.",
+        "poster_quote": "Continuous autoregression provides high-fidelity stepwise control, learned stopping, low peak memory, and strong perceptual quality, but is slower than parallel generation.",
+        "label": "supported",
+        "paper_evidence": "Parallel generation is faster and stronger on substitution.",
+        "reason": "Section 'Editing Accuracy, Quality, and Identity' confirms that continuous autoregression is slower than parallel generation."
+      },
+      {
+        "id": 99,
+        "text": "Compactness in CLASVS is temporal rather than constant-memory.",
+        "poster_quote": "Compactness is temporal rather than constant-memory: one 1024-dimensional semantic vector enters the cache per patch, so cache growth remains linear during long rollouts.",
+        "label": "supported",
+        "paper_evidence": "Here compact is temporal: one 1024-D semantic-feedback vector enters the cache per patch.",
+        "reason": "Section 'State–Control–Transition Routing' confirms that compactness in CLASVS is temporal rather than constant-memory."
+      },
+      {
+        "id": 100,
+        "text": "One 1024-dimensional semantic vector enters the cache per patch in CLASVS.",
+        "poster_quote": "Compactness is temporal rather than constant-memory: one 1024-dimensional semantic vector enters the cache per patch, so cache growth remains linear during long rollouts.",
+        "label": "supported",
+        "paper_evidence": "The semantic route compresses each five-frame patch into one 1024-D feedback vector.",
+        "reason": "Section 'State–Control–Transition Routing' confirms that one 1024-dimensional semantic vector enters the cache per patch."
+      },
+      {
+        "id": 101,
+        "text": "Cache growth remains linear during long rollouts in CLASVS.",
+        "poster_quote": "Compactness is temporal rather than constant-memory: one 1024-dimensional semantic vector enters the cache per patch, so cache growth remains linear during long rollouts.",
+        "label": "supported",
+        "paper_evidence": "Cache growth remains linear during long rollouts.",
+        "reason": "Section 'State–Control–Transition Routing' confirms linear cache growth during long rollouts."
+      },
+      {
+        "id": 102,
+        "text": "The current runtime of CLASVS is best suited to offline editing.",
+        "poster_quote": "The current runtime is best suited to offline editing.",
+        "label": "supported",
+        "paper_evidence": "With cold-start/steady-tail RTF 3.840/1.395, it remains better suited to offline use.",
+        "reason": "Section 'Editing Accuracy, Quality, and Identity' confirms that the current runtime of CLASVS is best suited to offline editing."
+      },
+      {
+        "id": 103,
+        "text": "Evaluation is limited to Mandarin, one recognizer, reference-timing metrics, and edits of 2–6 syllables.",
+        "poster_quote": "Evaluation is limited to Mandarin, one recognizer, reference-timing metrics, and edits of 2–6 syllables.",
+        "label": "supported",
+        "paper_evidence": "Evaluation uses one recognizer and reference-timing metrics on Mandarin 2–6-syllable edits.",
+        "reason": "Section 'Limitations, Reproducibility, and Ethics' confirms the evaluation limitations."
+      },
+      {
+        "id": 104,
+        "text": "Cross-lingual editing, longer edits, and long-context compression remain open challenges.",
+        "poster_quote": "Cross-lingual editing, longer edits, and long-context compression remain open.",
+        "label": "supported",
+        "paper_evidence": "Cross-lingual and long-edit validation remain open.",
+        "reason": "Section 'Limitations, Reproducibility, and Ethics' confirms that cross-lingual editing, longer edits, and long-context compression remain open challenges."
+      },
+      {
+        "id": 105,
+        "text": "Recognizable-voice editing creates impersonation risks.",
+        "poster_quote": "Recognizable-voice editing also creates impersonation risks; deployment should require source-level permissions, identity-authorized checkpoint access, opt-out and removal processes, localized provenance, and misuse-response procedures.",
+        "label": "supported",
+        "paper_evidence": "Recognizable-voice editing can enable impersonation.",
+        "reason": "Section 'Limitations, Reproducibility, and Ethics' confirms impersonation risks."
+      },
+      {
+        "id": 106,
+        "text": "Deployment of recognizable-voice editing should require source-level permissions, identity-authorized checkpoint access, opt-out and removal processes, localized provenance, and misuse-response procedures.",
+        "poster_quote": "Recognizable-voice editing also creates impersonation risks; deployment should require source-level permissions, identity-authorized checkpoint access, opt-out and removal processes, localized provenance, and misuse-response procedures.",
+        "label": "supported",
+        "paper_evidence": "Source-level permissions, opt-out and removal procedures, identity-authorized access, and localized provenance therefore govern data use, checkpoint release, and responses to misuse reports.",
+        "reason": "Section 'Limitations, Reproducibility, and Ethics' confirms the recommended deployment requirements."
+      },
+      {
+        "id": 107,
+        "text": "The model receives reference audio r and target lyric tokens x.",
+        "poster_quote": "The model receives reference audio r and target lyric tokens x.",
+        "label": "supported",
+        "paper_evidence": "Let r be reference audio and x = (x1 , . . . , xLx ) the target lyric-token sequence.",
+        "reason": "Section 'Inputs, Time Bases, and Duration' confirms the model receives reference audio and target lyric tokens."
+      },
+      {
+        "id": 108,
+        "text": "A frozen melody tokenizer converts the reference into a sequence of melody tokens at approximately 6.25 Hz using a 512-entry codebook.",
+        "poster_quote": "A frozen melody tokenizer converts the reference into a sequence of melody tokens at approximately 6.25 Hz using a 512-entry codebook.",
+        "label": "supported",
+        "paper_evidence": "A frozen melody tokenizer maps r to m = (m1 , . . . , mLm ) at approximately 6.25 Hz using a 512-entry codebook.",
+        "reason": "Section 'Inputs, Time Bases, and Duration' confirms the melody tokenizer's operation and frequency."
+      },
+      {
+        "id": 109,
+        "text": "The melody tokenizer is trained from chroma-derived inputs so that the control emphasizes pitch and timing rather than lexical content.",
+        "poster_quote": "It is trained from chroma-derived inputs so that the control emphasizes pitch and timing rather than lexical content.",
+        "label": "supported",
+        "paper_evidence": "It is trained from chroma-derived inputs so that the control emphasizes pitch and timing rather than lexical content.",
+        "reason": "Section 'Inputs, Time Bases, and Duration' confirms the melody tokenizer's training and emphasis."
+      },
+      {
+        "id": 110,
+        "text": "A frozen singer encoder extracts a 192-dimensional identity vector.",
+        "poster_quote": "A frozen singer encoder extracts a 192-dimensional identity vector.",
+        "label": "supported",
+        "paper_evidence": "A frozen CAM++ encoder (Wang et al. 2023) extracts a 192-D singer vector e.",
+        "reason": "Section 'Inputs, Time Bases, and Duration' confirms the frozen singer encoder extracts a 192-dimensional identity vector."
+      },
+      {
+        "id": 111,
+        "text": "A frozen AudioVAE represents 16-kHz target audio as 64-dimensional continuous latent frames at 50 Hz.",
+        "poster_quote": "A frozen AudioVAE represents 16-kHz target audio as 64-dimensional continuous latent frames at 50 Hz.",
+        "label": "supported",
+        "paper_evidence": "A frozen Ming-UniAudio AudioVAE (Yan et al. 2025) represents 16-kHz target audio as z∗ ∈ RT ×64 at 50 Hz.",
+        "reason": "Section 'Inputs, Time Bases, and Duration' confirms the frozen AudioVAE's representation of target audio."
+      },
+      {
+        "id": 112,
+        "text": "Five AudioVAE frames are grouped into one 5 × 64 latent patch, reducing the acoustic recurrence to 10 Hz.",
+        "poster_quote": "Five AudioVAE frames are grouped into one 5 × 64 latent patch, reducing the acoustic recurrence to 10 Hz.",
+        "label": "supported",
+        "paper_evidence": "We group P = 5 frames into z̄∗k ∈ R5×64 , so the acoustic recurrence runs at 10 Hz.",
+        "reason": "Section 'Inputs, Time Bases, and Duration' confirms the grouping of five AudioVAE frames into one latent patch."
+      },
+      {
+        "id": 113,
+        "text": "Each autoregressive transition represents 100 ms of audio.",
+        "poster_quote": "Each autoregressive transition therefore represents 100 ms of audio.",
+        "label": "supported",
+        "paper_evidence": "Each transition receives one flow-time/planner token, five predecessor tokens, and five noisy current-patch tokens.",
+        "reason": "Section 'State–Control–Transition Routing' confirms each autoregressive transition represents 100 ms of audio."
+      },
+      {
+        "id": 114,
+        "text": "A final short group is zero padded and retained in training, decoding, evaluation, and listening tests, giving at most 100-ms endpoint granularity.",
+        "poster_quote": "A final short group is zero padded and retained in training, decoding, evaluation, and listening tests, giving at most 100-ms endpoint granularity.",
+        "label": "supported",
+        "paper_evidence": "A final short group is zero padded and retained as one patch in loss and decoding; no frame-level trimming is applied, giving at most 100-ms endpoint granularity.",
+        "reason": "Section 'Inputs, Time Bases, and Duration' confirms the retention of a final short group with 100-ms endpoint granularity."
+      },
+      {
+        "id": 115,
+        "text": "Melody and acoustic tokens are intentionally not aligned one to one.",
+        "poster_quote": "Melody and acoustic tokens are intentionally not aligned one to one.",
+        "label": "supported",
+        "paper_evidence": "Melody and acoustic tokens are not one-to-one aligned.",
+        "reason": "Section 'Inputs, Time Bases, and Duration' confirms intentional non-alignment of melody and acoustic tokens."
+      },
+      {
+        "id": 116,
+        "text": "The complete melody prefix remains available in the planner cache.",
+        "poster_quote": "The complete melody prefix remains available in the planner cache, while recurrent semantic feedback indicates generated progress.",
+        "label": "supported",
+        "paper_evidence": "The melody prefix remains in the planner cache while semantic feedback marks generated progress.",
+        "reason": "Section 'Inputs, Time Bases, and Duration' confirms the complete melody prefix remains available in the planner cache."
+      },
+      {
+        "id": 117,
+        "text": "Recurrent semantic feedback indicates generated progress.",
+        "poster_quote": "The complete melody prefix remains available in the planner cache, while recurrent semantic feedback indicates generated progress.",
+        "label": "supported",
+        "paper_evidence": "Recurrent semantic feedback indicates generated progress.",
+        "reason": "Section 'State–Control–Transition Routing' confirms recurrent semantic feedback indicates generated progress."
+      },
+      {
+        "id": 118,
+        "text": "Target lyrics preserve sequence order but require no notes, durations, edit boundaries, or forced alignment.",
+        "poster_quote": "Target lyrics preserve sequence order but require no notes, durations, edit boundaries, or forced alignment.",
+        "label": "supported",
+        "paper_evidence": "Target lyric tokens retain sequence order without requiring note, duration, or edit-boundary labels.",
+        "reason": "Section 'State–Control–Transition Routing' confirms target lyrics preserve sequence order without requiring additional labels."
+      },
+      {
+        "id": 119,
+        "text": "The stop head predicts the number of output patches even when target and source syllable counts differ under fixed reference-timing cues.",
+        "poster_quote": "The stop head predicts the number of output patches even when target and source syllable counts differ under fixed reference-timing cues.",
+        "label": "supported",
+        "paper_evidence": "The stop head learns output patch count while target/source syllable counts may differ under reference timing cues.",
+        "reason": "Section 'Inputs, Time Bases, and Duration' confirms the stop head predicts the number of output patches under differing syllable counts."
+      },
+      {
+        "id": 120,
+        "text": "Each training tuple comes from one recording: the reference and acoustic target are the same performance, and the target lyrics are its transcript.",
+        "poster_quote": "Each training tuple comes from one recording: the reference and acoustic target are the same performance, and the target lyrics are its transcript.",
+        "label": "supported",
+        "paper_evidence": "Each tuple (r, x, z∗ ) comes from one recording: reference and target audio are the same performance, and x is its transcript.",
+        "reason": "Section 'Training Tuples and the Content Conflict' confirms the composition of each training tuple."
+      },
+      {
+        "id": 121,
+        "text": "Editing is evaluated as zero-paired-edit generalization.",
+        "poster_quote": "Editing is therefore evaluated as zero-paired-edit generalization.",
+        "label": "supported",
+        "paper_evidence": "This paired-edit-free training turns lyric editing into a zero-paired-edit generalization test: success requires following revised lyrics despite residual source-lyric-correlated evidence, rather than fitting edit templates.",
+        "reason": "Section 'Training Tuples and the Content Conflict' explicitly describes editing as a zero-paired-edit generalization test."
+      },
+      {
+        "id": 122,
+        "text": "At test time, revised lyrics must override residual source-lyric evidence while melody, timing, and singer cues remain tied to the reference.",
+        "poster_quote": "At test time, revised lyrics must override residual source-lyric evidence while melody, timing, and singer cues remain tied to the reference.",
+        "label": "supported",
+        "paper_evidence": "At evaluation, x changes while reference-derived controls remain tied to the reference audio. This paired-edit-free training turns lyric editing into a zero-paired-edit generalization test: success requires following revised lyrics despite residual source-lyric-correlated evidence, rather than fitting edit templates.",
+        "reason": "Section 'Training Tuples and the Content Conflict' confirms that revised lyrics must override residual source-lyric evidence while melody, timing, and singer cues remain tied to the reference."
+      },
+      {
+        "id": 123,
+        "text": "CLASVS establishes continuous-latent autoregression for melody-preserving Mandarin lyric editing without manual score annotations or paired counterfactual recordings.",
+        "poster_quote": "CLASVS establishes continuous-latent autoregression for melody-preserving Mandarin lyric editing without manual score annotations or paired counterfactual recordings.",
+        "label": "supported",
+        "paper_evidence": "CLASVS establishes continuous-latent autoregression for melody-preserving Mandarin lyric editing without manual score annotations. Progressive State–Control Grounding (PSCG) grounds this routing through paired-edit-free, content-consistent Mandarin reconstruction.",
+        "reason": "Abstract and Section 'Introduction' confirm the establishment of continuous-latent autoregression for melody-preserving Mandarin lyric editing without manual score annotations or paired counterfactual recordings."
+      },
+      {
+        "id": 124,
+        "text": "The State-Control-Transition contract keeps target lyrics and reference melody persistently available.",
+        "poster_quote": "Its State-Control-Transition contract keeps target lyrics and reference melody persistently available, returns semantic feedback about phonetic progress to the causal planner, and confines the previous AudioVAE latent patch to one local transition.",
+        "label": "supported",
+        "paper_evidence": "Target lyrics and reference melody remain persistent Control; a frozen causal semantic encoder returns feedback on realized phonetic progress as recurrent State; and the previous AudioVAE latent patch enters only the local Transition.",
+        "reason": "Section 'State–Control–Transition Routing' explicitly states that target lyrics and reference melody remain persistently available."
+      },
+      {
+        "id": 125,
+        "text": "The State-Control-Transition contract returns semantic feedback about phonetic progress to the causal planner.",
+        "poster_quote": "Its State-Control-Transition contract keeps target lyrics and reference melody persistently available, returns semantic feedback about phonetic progress to the causal planner, and confines the previous AudioVAE latent patch to one local transition.",
+        "label": "supported",
+        "paper_evidence": "A frozen causal semantic encoder returns feedback on realized phonetic progress as recurrent State.",
+        "reason": "Section 'State–Control–Transition Routing' confirms that semantic feedback about phonetic progress is returned to the causal planner."
+      },
+      {
+        "id": 126,
+        "text": "The State-Control-Transition contract confines the previous AudioVAE latent patch to one local transition.",
+        "poster_quote": "Its State-Control-Transition contract keeps target lyrics and reference melody persistently available, returns semantic feedback about phonetic progress to the causal planner, and confines the previous AudioVAE latent patch to one local transition.",
+        "label": "supported",
+        "paper_evidence": "Latent patches never re-enter the causal planner, preserving continuity without biasing lyric planning.",
+        "reason": "Section 'State–Control–Transition Routing' confirms that the previous AudioVAE latent patch is confined to one local transition."
+      },
+      {
+        "id": 127,
+        "text": "Progressive State-Control Grounding learns this division through content-consistent reconstruction.",
+        "poster_quote": "Progressive State-Control Grounding learns this division through content-consistent reconstruction.",
+        "label": "supported",
+        "paper_evidence": "Progressive State–Control Grounding (PSCG) grounds this routing through paired-edit-free, content-consistent Mandarin reconstruction.",
+        "reason": "Abstract and Section 'Progressive State–Control Grounding' confirm that PSCG learns the division through content-consistent reconstruction."
+      },
+      {
+        "id": 128,
+        "text": "Under a common automatic-input protocol, CLASVS improves all four edit operations over discrete-AR Vevo2.",
+        "poster_quote": "Under a common automatic-input protocol, CLASVS improves all four edit operations over discrete-AR Vevo2 and reduces macro-PER by 46.2%.",
+        "label": "supported",
+        "paper_evidence": "Under the common automatic-input protocol, CLASVS improves all four operations over Vevo2, reducing macro-PER from .0699 to .0376 (46.2%).",
+        "reason": "Section 'Experiments' and Table 4 confirm that CLASVS improves all four edit operations over discrete-AR Vevo2 under the common automatic-input protocol."
+      },
+      {
+        "id": 129,
+        "text": "CLASVS attains the best deletion, insertion, voiced-onset accuracy, naturalness, lyric intelligibility, and overall macro-PER among the evaluated systems while preserving melody and singer identity.",
+        "poster_quote": "It attains the best deletion, insertion, voiced-onset accuracy, naturalness, lyric intelligibility, and overall macro-PER among the evaluated systems while preserving melody and singer identity.",
+        "label": "supported",
+        "paper_evidence": "CLASVS leads deletion, insertion, macro-PER, voiced-onset MAE, naturalness, and lyric intelligibility. It preserves melody and singer identity while improving naturalness and lyric intelligibility over the continuous-NAR comparator.",
+        "reason": "Section 'Editing Accuracy, Quality, and Identity' and Table 4 confirm that CLASVS attains the best deletion, insertion, voiced-onset accuracy, naturalness, lyric intelligibility, and overall macro-PER among the evaluated systems while preserving melody and singer identity."
+      },
+      {
+        "id": 130,
+        "text": "Continuous-NAR YingMusic+ remains faster and stronger on substitution and global duration matching.",
+        "poster_quote": "Continuous-NAR YingMusic+ remains faster and stronger on substitution and global duration matching, highlighting complementary operating profiles rather than universal architectural dominance.",
+        "label": "supported",
+        "paper_evidence": "YingMusic+ remains stronger on substitution, global duration, and steady-tail speed.",
+        "reason": "Section 'Editing Accuracy, Quality, and Identity' confirms that YingMusic+ remains faster and stronger on substitution and global duration matching."
+      },
+      {
+        "id": 131,
+        "text": "Matched interventions show that semantic feedback guides content progress and target-lyric adherence.",
+        "poster_quote": "Matched interventions show that semantic feedback guides content progress and target-lyric adherence, while the previous latent patch preserves local melody and acoustic continuity.",
+        "label": "supported",
+        "paper_evidence": "Removing State Grounding changes PER/FPC to .0511/.9168, supporting semantic feedback as an explicitly grounded phonetic-progress State.",
+        "reason": "Section 'PSCG and Inference Diagnostics' confirms that matched interventions show semantic feedback guides content progress and target-lyric adherence."
+      },
+      {
+        "id": 132,
+        "text": "The previous latent patch preserves local melody and acoustic continuity.",
+        "poster_quote": "Matched interventions show that semantic feedback guides content progress and target-lyric adherence, while the previous latent patch preserves local melody and acoustic continuity.",
+        "label": "supported",
+        "paper_evidence": "Removing the previous latent patch most strongly harms melody preservation.",
+        "reason": "Section 'PSCG and Inference Diagnostics' confirms that the previous latent patch preserves local melody and acoustic continuity."
+      },
+      {
+        "id": 133,
+        "text": "These results provide a continuous-autoregressive foundation for broader stepwise control of singing performances.",
+        "poster_quote": "These results provide a continuous-autoregressive foundation for broader stepwise control of singing performances.",
+        "label": "supported",
+        "paper_evidence": "Together, these results provide a continuous-AR foundation for broader controllable singing performance.",
+        "reason": "Section 'Conclusion' explicitly states that the results provide a continuous-autoregressive foundation for broader stepwise control of singing performances."
+      }
+    ]
+  },
+  "raw": "[\"```json\\n{\\n  \\\"claims\\\": [\\n    {\\\"id\\\": 1, \\\"text\\\": \\\"Melody-preserving lyric editing changes the words of a singing performance while retaining its melody, timing, singer identity, and naturalness.\\\", \\\"poster_quote\\\": \\\"Melody-preserving lyric editing changes the words of a singing performance while retaining its melody, timing, singer identity, and naturalness.\\\"},\\n    {\\\"id\\\": 2, \\\"text\\\": \\\"Reference-conditioned editing directly accepts a singing recording and revised lyrics, avoiding costly phoneme, note, duration, and edit-boundary annotations.\\\", \\\"poster_quote\\\": \\\"Unlike score-conditioned synthesis, reference-conditioned editing directly accepts a singing recording and revised lyrics, avoiding costly phoneme, note, duration, and edit-boundary annotations.\\\"},\\n    {\\\"id\\\": 3, \\\"text\\\": \\\"Training uses approximately 8,000 hours of permission-documented Mandarin singing.\\\", \\\"poster_quote\\\": \\\"Training uses approximately 8,000 hours of permission-documented Mandarin singing, 2,000 hours of Mandarin speech, and 300 hours of curated open-source singing.\\\"},\\n    {\\\"id\\\": 4, \\\"text\\\": \\\"Training uses 2,000 hours of Mandarin speech.\\\", \\\"poster_quote\\\": \\\"Training uses approximately 8,000 hours of permission-documented Mandarin singing, 2,000 hours of Mandarin speech, and 300 hours of curated open-source singing.\\\"},\\n    {\\\"id\\\": 5, \\\"text\\\": \\\"Training uses 300 hours of curated open-source singing.\\\", \\\"poster_quote\\\": \\\"Training uses approximately 8,000 hours of permission-documented Mandarin singing, 2,000 hours of Mandarin speech, and 300 hours of curated open-source singing.\\\"},\\n    {\\\"id\\\": 6, \\\"text\\\": \\\"Three 120K-update seeds use BF16, ZeRO-2, AdamW, and global batch size 128.\\\", \\\"poster_quote\\\": \\\"Three 120K-update seeds use BF16, ZeRO-2, AdamW, and global batch size 128.\\\"},\\n    {\\\"id\\\": 7, \\\"text\\\": \\\"CLASVS contains 0.765B trainable parameters.\\\", \\\"poster_quote\\\": \\\"CLASVS contains 0.765B trainable parameters and 2.115B total generative-stack parameters, including the frozen 1.350B AudioVAE.\\\"},\\n    {\\\"id\\\": 8, \\\"text\\\": \\\"CLASVS contains 2.115B total generative-stack parameters.\\\", \\\"poster_quote\\\": \\\"CLASVS contains 0.765B trainable parameters and 2.115B total generative-stack parameters, including the frozen 1.350B AudioVAE.\\\"},\\n    {\\\"id\\\": 9, \\\"text\\\": \\\"CLASVS includes the frozen 1.350B AudioVAE.\\\", \\\"poster_quote\\\": \\\"CLASVS contains 0.765B trainable parameters and 2.115B total generative-stack parameters, including the frozen 1.350B AudioVAE.\\\"},\\n    {\\\"id\\\": 10, \\\"text\\\": \\\"A pretrained-frozen encoder achieves PER 0.0376.\\\", \\\"poster_quote\\\": \\\"A pretrained-frozen encoder achieves PER 0.0376, compared with 0.0391 for pretrained-joint, 0.0511 for random-joint, and 0.0918 for random-frozen training.\\\"},\\n    {\\\"id\\\": 11, \\\"text\\\": \\\"A pretrained-joint encoder achieves PER 0.0391.\\\", \\\"poster_quote\\\": \\\"A pretrained-frozen encoder achieves PER 0.0376, compared with 0.0391 for pretrained-joint, 0.0511 for random-joint, and 0.0918 for random-frozen training.\\\"},\\n    {\\\"id\\\": 12, \\\"text\\\": \\\"A random-joint encoder achieves PER 0.0511.\\\", \\\"poster_quote\\\": \\\"A pretrained-frozen encoder achieves PER 0.0376, compared with 0.0391 for pretrained-joint, 0.0511 for random-joint, and 0.0918 for random-frozen training.\\\"},\\n    {\\\"id\\\": 13, \\\"text\\\": \\\"A random-frozen encoder achieves PER 0.0918.\\\", \\\"poster_quote\\\": \\\"A pretrained-frozen encoder achieves PER 0.0376, compared with 0.0391 for pretrained-joint, 0.0511 for random-joint, and 0.0918 for random-frozen training.\\\"},\\n    {\\\"id\\\": 14, \\\"text\\\": \\\"CLASVS establishes a continuous-autoregressive operating point for score-annotation-free lyric editing.\\\", \\\"poster_quote\\\": \\\"CLASVS establishes a continuous-autoregressive operating point for score-annotation-free lyric editing.\\\"},\\n    {\\\"id\\\": 15, \\\"text\\\": \\\"CLASVS introduces a State-Control-Transition editing contract that separates persistent target and melody controls, recurrent phonetic-progress state, and local acoustic continuity.\\\", \\\"poster_quote\\\": \\\"It introduces a State-Control-Transition editing contract that separates persistent target and melody controls, recurrent phonetic-progress state, and local acoustic continuity.\\\"},\\n    {\\\"id\\\": 16, \\\"text\\\": \\\"On two Mandarin benchmarks, CLASVS improves all four edit operations over discrete-AR Vevo2 and reduces macro phone error rate by 46.2%.\\\", \\\"poster_quote\\\": \\\"On two Mandarin benchmarks, CLASVS improves all four edit operations over discrete-AR Vevo2 and reduces macro phone error rate by 46.2%, while maintaining melody, singer similarity, and perceptual quality.\\\"},\\n    {\\\"id\\\": 17, \\\"text\\\": \\\"The primary benchmark, CLA-LyricEdit-320, contains 320 edits from 160 excerpts spanning 80 songs and 40 singers.\\\", \\\"poster_quote\\\": \\\"The primary benchmark, CLA-LyricEdit-320, contains 320 edits from 160 excerpts spanning 80 songs and 40 singers.\\\"},\\n    {\\\"id\\\": 18, \\\"text\\\": \\\"CLA-LyricEdit-320 balances four operations: partial-line substitution, full-line substitution, deletion, and insertion.\\\", \\\"poster_quote\\\": \\\"It balances four operations: partial-line substitution replaces a contiguous 2–6-syllable span; full-line substitution replaces every lexical syllable; deletion removes 2–6 syllables; and insertion adds 2–6 syllables.\\\"},\\n    {\\\"id\\\": 19, \\\"text\\\": \\\"Partial-line substitution replaces a contiguous 2–6-syllable span.\\\", \\\"poster_quote\\\": \\\"It balances four operations: partial-line substitution replaces a contiguous 2–6-syllable span; full-line substitution replaces every lexical syllable; deletion removes 2–6 syllables; and insertion adds 2–6 syllables.\\\"},\\n    {\\\"id\\\": 20, \\\"text\\\": \\\"Full-line substitution replaces every lexical syllable.\\\", \\\"poster_quote\\\": \\\"It balances four operations: partial-line substitution replaces a contiguous 2–6-syllable span; full-line substitution replaces every lexical syllable; deletion removes 2–6 syllables; and insertion adds 2–6 syllables.\\\"},\\n    {\\\"id\\\": 21, \\\"text\\\": \\\"Deletion removes 2–6 syllables.\\\", \\\"poster_quote\\\": \\\"It balances four operations: partial-line substitution replaces a contiguous 2–6-syllable span; full-line substitution replaces every lexical syllable; deletion removes 2–6 syllables; and insertion adds 2–6 syllables.\\\"},\\n    {\\\"id\\\": 22, \\\"text\\\": \\\"Insertion adds 2–6 syllables.\\\", \\\"poster_quote\\\": \\\"It balances four operations: partial-line substitution replaces a contiguous 2–6-syllable span; full-line substitution replaces every lexical syllable; deletion removes 2–6 syllables; and insertion adds 2–6 syllables.\\\"},\\n    {\\\"id\\\": 23, \\\"text\\\": \\\"Splits in CLA-LyricEdit-320 are song-disjoint.\\\", \\\"poster_quote\\\": \\\"Splits are song-disjoint, and two annotators verify targets and operations.\\\"},\\n    {\\\"id\\\": 24, \\\"text\\\": \\\"Two annotators verify targets and operations in CLA-LyricEdit-320.\\\", \\\"poster_quote\\\": \\\"Splits are song-disjoint, and two annotators verify targets and operations.\\\"},\\n    {\\\"id\\\": 25, \\\"text\\\": \\\"Vevo2 is the primary discrete-AR comparator because it shares the sequential reference-audio-plus-target-lyrics interface but predicts discrete acoustic tokens.\\\", \\\"poster_quote\\\": \\\"Vevo2 is the primary discrete-AR comparator because it shares the sequential reference-audio-plus-target-lyrics interface but predicts discrete acoustic tokens.\\\"},\\n    {\\\"id\\\": 26, \\\"text\\\": \\\"YingMusic-Singer-Plus is the complementary continuous-NAR comparator with parallel inference.\\\", \\\"poster_quote\\\": \\\"YingMusic-Singer-Plus is the complementary continuous-NAR comparator with parallel inference.\\\"},\\n    {\\\"id\\\": 27, \\\"text\\\": \\\"All systems derive melody automatically and emit one candidate.\\\", \\\"poster_quote\\\": \\\"All systems derive melody automatically and emit one candidate.\\\"},\\n    {\\\"id\\\": 28, \\\"text\\\": \\\"Metrics include phone error rate, normalized edit distance, source-lyric reversion, log-F0 Pearson correlation, voiced-onset mean absolute error, output/reference duration deviation, and singer-similarity cosine.\\\", \\\"poster_quote\\\": \\\"Metrics include phone error rate, normalized edit distance, source-lyric reversion, log-F0 Pearson correlation, voiced-onset mean absolute error, output/reference duration deviation, and singer-similarity cosine.\\\"},\\n    {\\\"id\\\": 29, \\\"text\\\": \\\"Eighty blinded outputs spanning five conditions are rated by twenty native Mandarin listeners for naturalness, melody, and lyric intelligibility.\\\", \\\"poster_quote\\\": \\\"Eighty blinded outputs spanning five conditions are rated by twenty native Mandarin listeners for naturalness, melody, and lyric intelligibility.\\\"},\\n    {\\\"id\\\": 30, \\\"text\\\": \\\"Results use operation-balanced macro-PER, song-clustered resampling, listener/item random effects, and multiple-comparison correction.\\\", \\\"poster_quote\\\": \\\"Results use operation-balanced macro-PER, song-clustered resampling, listener/item random effects, and multiple-comparison correction.\\\"},\\n    {\\\"id\\\": 31, \\\"text\\\": \\\"A frozen public Mandarin benchmark and evaluator test whether the operation-specific profile transfers beyond the primary dataset.\\\", \\\"poster_quote\\\": \\\"A frozen public Mandarin benchmark and evaluator test whether the operation-specific profile transfers beyond the primary dataset.\\\"},\\n    {\\\"id\\\": 32, \\\"text\\\": \\\"Control Grounding exposes the model to imperfect local and reference evidence.\\\", \\\"poster_quote\\\": \\\"Control Grounding exposes the model to imperfect local and reference evidence.\\\"},\\n    {\\\"id\\\": 33, \\\"text\\\": \\\"History dropout with probability 0.10 corrupts the teacher-forced previous latent patch, preventing unconditional predecessor copying.\\\", \\\"poster_quote\\\": \\\"History dropout with probability 0.10 corrupts the teacher-forced previous latent patch, preventing unconditional predecessor copying.\\\"},\\n    {\\\"id\\\": 34, \\\"text\\\": \\\"Melody-span masking with probability 0.15 forces recovery from incomplete reference cues while target lyrics remain available.\\\", \\\"poster_quote\\\": \\\"Melody-span masking with probability 0.15 forces recovery from incomplete reference cues while target lyrics remain available.\\\"},\\n    {\\\"id\\\": 35, \\\"text\\\": \\\"Removing history dropout raises PER to 0.0441.\\\", \\\"poster_quote\\\": \\\"Removing history dropout, melody masking, or both raises PER to 0.0441, 0.0419, and 0.0468, respectively.\\\"},\\n    {\\\"id\\\": 36, \\\"text\\\": \\\"Removing melody masking raises PER to 0.0419.\\\", \\\"poster_quote\\\": \\\"Removing history dropout, melody masking, or both raises PER to 0.0441, 0.0419, and 0.0468, respectively.\\\"},\\n    {\\\"id\\\": 37, \\\"text\\\": \\\"Removing both history dropout and melody masking raises PER to 0.0468.\\\", \\\"poster_quote\\\": \\\"Removing history dropout, melody masking, or both raises PER to 0.0441, 0.0419, and 0.0468, respectively.\\\"},\\n    {\\\"id\\\": 38, \\\"text\\\": \\\"Task Grounding schedules 72K broad-singing updates, 24K speech-assisted updates, and 24K curated-singing updates.\\\", \\\"poster_quote\\\": \\\"Task Grounding schedules 72K broad-singing updates, 24K speech-assisted updates, and 24K curated-singing updates.\\\"},\\n    {\\\"id\\\": 39, \\\"text\\\": \\\"Reversing or removing curriculum structure degrades editing accuracy.\\\", \\\"poster_quote\\\": \\\"Reversing or removing curriculum structure degrades editing accuracy.\\\"},\\n    {\\\"id\\\": 40, \\\"text\\\": \\\"Training uses conditional flow matching for latent generation, causally shifted target-lyric cross-entropy as a planner-side content regularizer, and balanced continue/stop cross-entropy.\\\", \\\"poster_quote\\\": \\\"Training uses conditional flow matching for latent generation, causally shifted target-lyric cross-entropy as a planner-side content regularizer, and balanced continue/stop cross-entropy.\\\"},\\n    {\\\"id\\\": 41, \\\"text\\\": \\\"Joint lyric, melody, and singer dropout trains the classifier-free guidance branch.\\\", \\\"poster_quote\\\": \\\"Joint lyric, melody, and singer dropout trains the classifier-free guidance branch.\\\"},\\n    {\\\"id\\\": 42, \\\"text\\\": \\\"During inference, every patch begins as Gaussian noise and is generated with 24 Euler steps and guidance scale 2.0.\\\", \\\"poster_quote\\\": \\\"During inference, every patch begins as Gaussian noise and is generated with 24 Euler steps and guidance scale 2.0.\\\"},\\n    {\\\"id\\\": 43, \\\"text\\\": \\\"Generation stops at posterior 0.5 or a safety budget, and all patches are decoded together.\\\", \\\"poster_quote\\\": \\\"Generation stops at posterior 0.5 or a safety budget, and all patches are decoded together.\\\"},\\n    {\\\"id\\\": 44, \\\"text\\\": \\\"On CLA-LyricEdit-320, CLASVS achieves PER values of 0.0505 for partial substitution, 0.0442 for full substitution, 0.0260 for deletion, and 0.0298 for insertion.\\\", \\\"poster_quote\\\": \\\"On CLA-LyricEdit-320, CLASVS achieves PER values of 0.0505 for partial substitution, 0.0442 for full substitution, 0.0260 for deletion, and 0.0298 for insertion, producing macro-PER 0.0376.\\\"},\\n    {\\\"id\\\": 45, \\\"text\\\": \\\"CLASVS produces macro-PER 0.0376 on CLA-LyricEdit-320.\\\", \\\"poster_quote\\\": \\\"On CLA-LyricEdit-320, CLASVS achieves PER values of 0.0505 for partial substitution, 0.0442 for full substitution, 0.0260 for deletion, and 0.0298 for insertion, producing macro-PER 0.0376.\\\"},\\n    {\\\"id\\\": 46, \\\"text\\\": \\\"Vevo2 obtains PER values of 0.0617 for partial substitution, 0.0563 for full substitution, 0.1033 for deletion, and 0.0581 for insertion.\\\", \\\"poster_quote\\\": \\\"Vevo2 obtains 0.0617, 0.0563, 0.1033, and 0.0581, with macro-PER 0.0699.\\\"},\\n    {\\\"id\\\": 47, \\\"text\\\": \\\"Vevo2 produces macro-PER 0.0699 on CLA-LyricEdit-320.\\\", \\\"poster_quote\\\": \\\"Vevo2 obtains 0.0617, 0.0563, 0.1033, and 0.0581, with macro-PER 0.0699.\\\"},\\n    {\\\"id\\\": 48, \\\"text\\\": \\\"CLASVS reduces macro-PER by 46.2% relative to the discrete-AR comparator Vevo2.\\\", \\\"poster_quote\\\": \\\"CLASVS therefore improves every operation and reduces macro-PER by 46.2% relative to the discrete-AR comparator.\\\"},\\n    {\\\"id\\\": 49, \\\"text\\\": \\\"YingMusic+ obtains macro-PER 0.0411.\\\", \\\"poster_quote\\\": \\\"YingMusic+ obtains macro-PER 0.0411 and remains stronger on substitution, global duration matching, and steady-tail speed.\\\"},\\n    {\\\"id\\\": 50, \\\"text\\\": \\\"YingMusic+ remains stronger on substitution, global duration matching, and steady-tail speed.\\\", \\\"poster_quote\\\": \\\"YingMusic+ obtains macro-PER 0.0411 and remains stronger on substitution, global duration matching, and steady-tail speed.\\\"},\\n    {\\\"id\\\": 51, \\\"text\\\": \\\"CLASVS is substantially stronger on deletion and insertion, resulting in lower overall macro-PER than YingMusic+.\\\", \\\"poster_quote\\\": \\\"CLASVS is substantially stronger on deletion and insertion, resulting in lower overall macro-PER.\\\"},\\n    {\\\"id\\\": 52, \\\"text\\\": \\\"Melody correlation is 0.941 for CLASVS.\\\", \\\"poster_quote\\\": \\\"Melody correlation is 0.941 for CLASVS, compared with 0.934 for YingMusic+ and 0.744 for Vevo2.\\\"},\\n    {\\\"id\\\": 53, \\\"text\\\": \\\"Melody correlation is 0.934 for YingMusic+.\\\", \\\"poster_quote\\\": \\\"Melody correlation is 0.941 for CLASVS, compared with 0.934 for YingMusic+ and 0.744 for Vevo2.\\\"},\\n    {\\\"id\\\": 54, \\\"text\\\": \\\"Melody correlation is 0.744 for Vevo2.\\\", \\\"poster_quote\\\": \\\"Melody correlation is 0.941 for CLASVS, compared with 0.934 for YingMusic+ and 0.744 for Vevo2.\\\"},\\n    {\\\"id\\\": 55, \\\"text\\\": \\\"Singer similarity is 0.914 for CLASVS.\\\", \\\"poster_quote\\\": \\\"Singer similarity is 0.914, compared with 0.906 and 0.892.\\\"},\\n    {\\\"id\\\": 56, \\\"text\\\": \\\"Singer similarity is 0.906 for YingMusic+.\\\", \\\"poster_quote\\\": \\\"Singer similarity is 0.914, compared with 0.906 and 0.892.\\\"},\\n    {\\\"id\\\": 57, \\\"text\\\": \\\"Singer similarity is 0.892 for Vevo2.\\\", \\\"poster_quote\\\": \\\"Singer similarity is 0.914, compared with 0.906 and 0.892.\\\"},\\n    {\\\"id\\\": 58, \\\"text\\\": \\\"Voiced-onset error is 7.68 ms for CLASVS.\\\", \\\"poster_quote\\\": \\\"Voiced-onset error is 7.68 ms, versus 18.80 ms and 69.58 ms.\\\"},\\n    {\\\"id\\\": 59, \\\"text\\\": \\\"Voiced-onset error is 18.80 ms for YingMusic+.\\\", \\\"poster_quote\\\": \\\"Voiced-onset error is 7.68 ms, versus 18.80 ms and 69.58 ms.\\\"},\\n    {\\\"id\\\": 60, \\\"text\\\": \\\"Voiced-onset error is 69.58 ms for Vevo2.\\\", \\\"poster_quote\\\": \\\"Voiced-onset error is 7.68 ms, versus 18.80 ms and 69.58 ms.\\\"},\\n    {\\\"id\\\": 61, \\\"text\\\": \\\"Listener scores show CLASVS naturalness at 4.13.\\\", \\\"poster_quote\\\": \\\"Listener scores show CLASVS naturalness at 4.13 and lyric intelligibility at 4.42.\\\"},\\n    {\\\"id\\\": 62, \\\"text\\\": \\\"Listener scores show CLASVS lyric intelligibility at 4.42.\\\", \\\"poster_quote\\\": \\\"Listener scores show CLASVS naturalness at 4.13 and lyric intelligibility at 4.42.\\\"},\\n    {\\\"id\\\": 63, \\\"text\\\": \\\"Relative to YingMusic+, CLASVS naturalness improves by 0.48.\\\", \\\"poster_quote\\\": \\\"Relative to YingMusic+, naturalness improves by 0.48 and intelligibility by 0.32, while the 0.01 melody-rating difference is not detectable.\\\"},\\n    {\\\"id\\\": 64, \\\"text\\\": \\\"Relative to YingMusic+, CLASVS intelligibility improves by 0.32.\\\", \\\"poster_quote\\\": \\\"Relative to YingMusic+, naturalness improves by 0.48 and intelligibility by 0.32, while the 0.01 melody-rating difference is not detectable.\\\"},\\n    {\\\"id\\\": 65, \\\"text\\\": \\\"The 0.01 melody-rating difference between CLASVS and YingMusic+ is not detectable.\\\", \\\"poster_quote\\\": \\\"Relative to YingMusic+, naturalness improves by 0.48 and intelligibility by 0.32, while the 0.01 melody-rating difference is not detectable.\\\"},\\n    {\\\"id\\\": 66, \\\"text\\\": \\\"The public Mandarin benchmark reproduces the profile.\\\", \\\"poster_quote\\\": \\\"The public Mandarin benchmark reproduces the profile.\\\"},\\n    {\\\"id\\\": 67, \\\"text\\\": \\\"CLASVS lowers Vevo2 macro-PER from 0.0761 to 0.0425 on the public Mandarin benchmark.\\\", \\\"poster_quote\\\": \\\"CLASVS lowers Vevo2 macro-PER from 0.0761 to 0.0425 and improves all four operations.\\\"},\\n    {\\\"id\\\": 68, \\\"text\\\": \\\"CLASVS improves all four operations on the public Mandarin benchmark.\\\", \\\"poster_quote\\\": \\\"CLASVS lowers Vevo2 macro-PER from 0.0761 to 0.0425 and improves all four operations.\\\"},\\n    {\\\"id\\\": 69, \\\"text\\\": \\\"YingMusic+ remains stronger on substitution on the public Mandarin benchmark.\\\", \\\"poster_quote\\\": \\\"YingMusic+ remains stronger on substitution, while CLASVS remains stronger on deletion and insertion.\\\"},\\n    {\\\"id\\\": 70, \\\"text\\\": \\\"CLASVS remains stronger on deletion and insertion on the public Mandarin benchmark.\\\", \\\"poster_quote\\\": \\\"YingMusic+ remains stronger on substitution, while CLASVS remains stronger on deletion and insertion.\\\"},\\n    {\\\"id\\\": 71, \\\"text\\\": \\\"Runtime is the main trade-off for CLASVS.\\\", \\\"poster_quote\\\": \\\"Runtime is the main trade-off: CLASVS cold-start/steady-tail RTF is 3.840/1.395, compared with 3.392/0.241 for YingMusic+ and 2.649/0.744 for Vevo2.\\\"},\\n    {\\\"id\\\": 72, \\\"text\\\": \\\"CLASVS cold-start RTF is 3.840.\\\", \\\"poster_quote\\\": \\\"Runtime is the main trade-off: CLASVS cold-start/steady-tail RTF is 3.840/1.395, compared with 3.392/0.241 for YingMusic+ and 2.649/0.744 for Vevo2.\\\"},\\n    {\\\"id\\\": 73, \\\"text\\\": \\\"CLASVS steady-tail RTF is 1.395.\\\", \\\"poster_quote\\\": \\\"Runtime is the main trade-off: CLASVS cold-start/steady-tail RTF is 3.840/1.395, compared with 3.392/0.241 for YingMusic+ and 2.649/0.744 for Vevo2.\\\"},\\n    {\\\"id\\\": 74, \\\"text\\\": \\\"YingMusic+ cold-start RTF is 3.392.\\\", \\\"poster_quote\\\": \\\"Runtime is the main trade-off: CLASVS cold-start/steady-tail RTF is 3.840/1.395, compared with 3.392/0.241 for YingMusic+ and 2.649/0.744 for Vevo2.\\\"},\\n    {\\\"id\\\": 75, \\\"text\\\": \\\"YingMusic+ steady-tail RTF is 0.241.\\\", \\\"poster_quote\\\": \\\"Runtime is the main trade-off: CLASVS cold-start/steady-tail RTF is 3.840/1.395, compared with 3.392/0.241 for YingMusic+ and 2.649/0.744 for Vevo2.\\\"},\\n    {\\\"id\\\": 76, \\\"text\\\": \\\"Vevo2 cold-start RTF is 2.649.\\\", \\\"poster_quote\\\": \\\"Runtime is the main trade-off: CLASVS cold-start/steady-tail RTF is 3.840/1.395, compared with 3.392/0.241 for YingMusic+ and 2.649/0.744 for Vevo2.\\\"},\\n    {\\\"id\\\": 77, \\\"text\\\": \\\"Vevo2 steady-tail RTF is 0.744.\\\", \\\"poster_quote\\\": \\\"Runtime is the main trade-off: CLASVS cold-start/steady-tail RTF is 3.840/1.395, compared with 3.392/0.241 for YingMusic+ and 2.649/0.744 for Vevo2.\\\"},\\n    {\\\"id\\\": 78, \\\"text\\\": \\\"Incremental peak memory is lowest for CLASVS at 5.82 GiB.\\\", \\\"poster_quote\\\": \\\"Incremental peak memory is lowest for CLASVS at 5.82 GiB.\\\"},\\n    {\\\"id\\\": 79, \\\"text\\\": \\\"CLASVS generates 64-dimensional AudioVAE latent patches every 100 ms.\\\", \\\"poster_quote\\\": \\\"CLASVS generates 64-dimensional AudioVAE latent patches every 100 ms and learns when to stop.\\\"},\\n    {\\\"id\\\": 80, \\\"text\\\": \\\"CLASVS learns when to stop generating latent patches.\\\", \\\"poster_quote\\\": \\\"CLASVS generates 64-dimensional AudioVAE latent patches every 100 ms and learns when to stop.\\\"},\\n    {\\\"id\\\": 81, \\\"text\\\": \\\"CLASVS preserves the complete target-lyric and reference-melody spans in the causal planner cache.\\\", \\\"poster_quote\\\": \\\"It preserves the complete target-lyric and reference-melody spans in the causal planner cache while adding one compact semantic-feedback vector per generated patch.\\\"},\\n    {\\\"id\\\": 82, \\\"text\\\": \\\"CLASVS adds one compact semantic-feedback vector per generated patch.\\\", \\\"poster_quote\\\": \\\"It preserves the complete target-lyric and reference-melody spans in the causal planner cache while adding one compact semantic-feedback vector per generated patch.\\\"},\\n    {\\\"id\\\": 83, \\\"text\\\": \\\"The previous latent patch conditions only the next Flow-DiT transition in CLASVS.\\\", \\\"poster_quote\\\": \\\"The previous latent patch conditions only the next Flow-DiT transition.\\\"},\\n    {\\\"id\\\": 84, \\\"text\\\": \\\"CLASVS improves partial substitution, full substitution, deletion, and insertion over Vevo2.\\\", \\\"poster_quote\\\": \\\"Under a common automatic-input protocol, CLASVS improves partial substitution, full substitution, deletion, and insertion over Vevo2.\\\"},\\n    {\\\"id\\\": 85, \\\"text\\\": \\\"CLASVS reduces macro-PER from 0.0699 to 0.0376 compared to Vevo2.\\\", \\\"poster_quote\\\": \\\"Macro-PER falls from 0.0699 to 0.0376.\\\"},\\n    {\\\"id\\\": 86, \\\"text\\\": \\\"Compared with continuous-NAR YingMusic+, CLASVS leads on deletion, insertion, macro-PER, voiced-onset accuracy, naturalness, and lyric intelligibility.\\\", \\\"poster_quote\\\": \\\"Compared with continuous-NAR YingMusic+, CLASVS leads on deletion, insertion, macro-PER, voiced-onset accuracy, naturalness, and lyric intelligibility.\\\"},\\n    {\\\"id\\\": 87, \\\"text\\\": \\\"Matched routing and grounding ablations confirm that semantic feedback primarily supports lyric accuracy.\\\", \\\"poster_quote\\\": \\\"Matched routing and grounding ablations confirm that semantic feedback primarily supports lyric accuracy, while the previous latent patch primarily preserves melody and continuity.\\\"},\\n    {\\\"id\\\": 88, \\\"text\\\": \\\"The previous latent patch primarily preserves melody and continuity.\\\", \\\"poster_quote\\\": \\\"Matched routing and grounding ablations confirm that semantic feedback primarily supports lyric accuracy, while the previous latent patch primarily preserves melody and continuity.\\\"},\\n    {\\\"id\\\": 89, \\\"text\\\": \\\"CLASVS demonstrates zero-paired-edit generalization.\\\", \\\"poster_quote\\\": \\\"CLASVS demonstrates zero-paired-edit generalization: training never reveals counterfactual lyrics, edit-span alignments, or operation templates, yet the model follows revised words at test time.\\\"},\\n    {\\\"id\\\": 90, \\\"text\\\": \\\"Training never reveals counterfactual lyrics, edit-span alignments, or operation templates.\\\", \\\"poster_quote\\\": \\\"CLASVS demonstrates zero-paired-edit generalization: training never reveals counterfactual lyrics, edit-span alignments, or operation templates, yet the model follows revised words at test time.\\\"},\\n    {\\\"id\\\": 91, \\\"text\\\": \\\"The largest gains occur on length-changing edits.\\\", \\\"poster_quote\\\": \\\"The largest gains occur on length-changing edits.\\\"},\\n    {\\\"id\\\": 92, \\\"text\\\": \\\"Against both comparators, CLASVS is especially effective for deletion and insertion.\\\", \\\"poster_quote\\\": \\\"Against both comparators, CLASVS is especially effective for deletion and insertion.\\\"},\\n    {\\\"id\\\": 93, \\\"text\\\": \\\"Stopping audits show that these gains do not result from simple truncation.\\\", \\\"poster_quote\\\": \\\"Stopping audits show that these gains do not result from simple truncation: budget-hit rates are 0%, 0%, 0%, and 1.25% for partial substitution, full substitution, deletion, and insertion, while premature and delayed stopping remain low.\\\"},\\n    {\\\"id\\\": 94, \\\"text\\\": \\\"Budget-hit rates are 0% for partial substitution, full substitution, and deletion.\\\", \\\"poster_quote\\\": \\\"Stopping audits show that these gains do not result from simple truncation: budget-hit rates are 0%, 0%, 0%, and 1.25% for partial substitution, full substitution, deletion, and insertion, while premature and delayed stopping remain low.\\\"},\\n    {\\\"id\\\": 95, \\\"text\\\": \\\"Budget-hit rate is 1.25% for insertion.\\\", \\\"poster_quote\\\": \\\"Stopping audits show that these gains do not result from simple truncation: budget-hit rates are 0%, 0%, 0%, and 1.25% for partial substitution, full substitution, deletion, and insertion, while premature and delayed stopping remain low.\\\"},\\n    {\\\"id\\\": 96, \\\"text\\\": \\\"Premature and delayed stopping remain low for CLASVS.\\\", \\\"poster_quote\\\": \\\"Stopping audits show that these gains do not result from simple truncation: budget-hit rates are 0%, 0%, 0%, and 1.25% for partial substitution, full substitution, deletion, and insertion, while premature and delayed stopping remain low.\\\"},\\n    {\\\"id\\\": 97, \\\"text\\\": \\\"Continuous autoregression provides high-fidelity stepwise control, learned stopping, low peak memory, and strong perceptual quality.\\\", \\\"poster_quote\\\": \\\"Continuous autoregression provides high-fidelity stepwise control, learned stopping, low peak memory, and strong perceptual quality, but is slower than parallel generation.\\\"},\\n    {\\\"id\\\": 98, \\\"text\\\": \\\"Continuous autoregression is slower than parallel generation.\\\", \\\"poster_quote\\\": \\\"Continuous autoregression provides high-fidelity stepwise control, learned stopping, low peak memory, and strong perceptual quality, but is slower than parallel generation.\\\"},\\n    {\\\"id\\\": 99, \\\"text\\\": \\\"Compactness in CLASVS is temporal rather than constant-memory.\\\", \\\"poster_quote\\\": \\\"Compactness is temporal rather than constant-memory: one 1024-dimensional semantic vector enters the cache per patch, so cache growth remains linear during long rollouts.\\\"},\\n    {\\\"id\\\": 100, \\\"text\\\": \\\"One 1024-dimensional semantic vector enters the cache per patch in CLASVS.\\\", \\\"poster_quote\\\": \\\"Compactness is temporal rather than constant-memory: one 1024-dimensional semantic vector enters the cache per patch, so cache growth remains linear during long rollouts.\\\"},\\n    {\\\"id\\\": 101, \\\"text\\\": \\\"Cache growth remains linear during long rollouts in CLASVS.\\\", \\\"poster_quote\\\": \\\"Compactness is temporal rather than constant-memory: one 1024-dimensional semantic vector enters the cache per patch, so cache growth remains linear during long rollouts.\\\"},\\n    {\\\"id\\\": 102, \\\"text\\\": \\\"The current runtime of CLASVS is best suited to offline editing.\\\", \\\"poster_quote\\\": \\\"The current runtime is best suited to offline editing.\\\"},\\n    {\\\"id\\\": 103, \\\"text\\\": \\\"Evaluation is limited to Mandarin, one recognizer, reference-timing metrics, and edits of 2–6 syllables.\\\", \\\"poster_quote\\\": \\\"Evaluation is limited to Mandarin, one recognizer, reference-timing metrics, and edits of 2–6 syllables.\\\"},\\n    {\\\"id\\\": 104, \\\"text\\\": \\\"Cross-lingual editing, longer edits, and long-context compression remain open challenges.\\\", \\\"poster_quote\\\": \\\"Cross-lingual editing, longer edits, and long-context compression remain open.\\\"},\\n    {\\\"id\\\": 105, \\\"text\\\": \\\"Recognizable-voice editing creates impersonation risks.\\\", \\\"poster_quote\\\": \\\"Recognizable-voice editing also creates impersonation risks; deployment should require source-level permissions, identity-authorized checkpoint access, opt-out and removal processes, localized provenance, and misuse-response procedures.\\\"},\\n    {\\\"id\\\": 106, \\\"text\\\": \\\"Deployment of recognizable-voice editing should require source-level permissions, identity-authorized checkpoint access, opt-out and removal processes, localized provenance, and misuse-response procedures.\\\", \\\"poster_quote\\\": \\\"Recognizable-voice editing also creates impersonation risks; deployment should require source-level permissions, identity-authorized checkpoint access, opt-out and removal processes, localized provenance, and misuse-response procedures.\\\"},\\n    {\\\"id\\\": 107, \\\"text\\\": \\\"The model receives reference audio r and target lyric tokens x.\\\", \\\"poster_quote\\\": \\\"The model receives reference audio r and target lyric tokens x.\\\"},\\n    {\\\"id\\\": 108, \\\"text\\\": \\\"A frozen melody tokenizer converts the reference into a sequence of melody tokens at approximately 6.25 Hz using a 512-entry codebook.\\\", \\\"poster_quote\\\": \\\"A frozen melody tokenizer converts the reference into a sequence of melody tokens at approximately 6.25 Hz using a 512-entry codebook.\\\"},\\n    {\\\"id\\\": 109, \\\"text\\\": \\\"The melody tokenizer is trained from chroma-derived inputs so that the control emphasizes pitch and timing rather than lexical content.\\\", \\\"poster_quote\\\": \\\"It is trained from chroma-derived inputs so that the control emphasizes pitch and timing rather than lexical content.\\\"},\\n    {\\\"id\\\": 110, \\\"text\\\": \\\"A frozen singer encoder extracts a 192-dimensional identity vector.\\\", \\\"poster_quote\\\": \\\"A frozen singer encoder extracts a 192-dimensional identity vector.\\\"},\\n    {\\\"id\\\": 111, \\\"text\\\": \\\"A frozen AudioVAE represents 16-kHz target audio as 64-dimensional continuous latent frames at 50 Hz.\\\", \\\"poster_quote\\\": \\\"A frozen AudioVAE represents 16-kHz target audio as 64-dimensional continuous latent frames at 50 Hz.\\\"},\\n    {\\\"id\\\": 112, \\\"text\\\": \\\"Five AudioVAE frames are grouped into one 5 × 64 latent patch, reducing the acoustic recurrence to 10 Hz.\\\", \\\"poster_quote\\\": \\\"Five AudioVAE frames are grouped into one 5 × 64 latent patch, reducing the acoustic recurrence to 10 Hz.\\\"},\\n    {\\\"id\\\": 113, \\\"text\\\": \\\"Each autoregressive transition represents 100 ms of audio.\\\", \\\"poster_quote\\\": \\\"Each autoregressive transition therefore represents 100 ms of audio.\\\"},\\n    {\\\"id\\\": 114, \\\"text\\\": \\\"A final short group is zero padded and retained in training, decoding, evaluation, and listening tests, giving at most 100-ms endpoint granularity.\\\", \\\"poster_quote\\\": \\\"A final short group is zero padded and retained in training, decoding, evaluation, and listening tests, giving at most 100-ms endpoint granularity.\\\"},\\n    {\\\"id\\\": 115, \\\"text\\\": \\\"Melody and acoustic tokens are intentionally not aligned one to one.\\\", \\\"poster_quote\\\": \\\"Melody and acoustic tokens are intentionally not aligned one to one.\\\"},\\n    {\\\"id\\\": 116, \\\"text\\\": \\\"The complete melody prefix remains available in the planner cache.\\\", \\\"poster_quote\\\": \\\"The complete melody prefix remains available in the planner cache, while recurrent semantic feedback indicates generated progress.\\\"},\\n    {\\\"id\\\": 117, \\\"text\\\": \\\"Recurrent semantic feedback indicates generated progress.\\\", \\\"poster_quote\\\": \\\"The complete melody prefix remains available in the planner cache, while recurrent semantic feedback indicates generated progress.\\\"},\\n    {\\\"id\\\": 118, \\\"text\\\": \\\"Target lyrics preserve sequence order but require no notes, durations, edit boundaries, or forced alignment.\\\", \\\"poster_quote\\\": \\\"Target lyrics preserve sequence order but require no notes, durations, edit boundaries, or forced alignment.\\\"},\\n    {\\\"id\\\": 119, \\\"text\\\": \\\"The stop head predicts the number of output patches even when target and source syllable counts differ under fixed reference-timing cues.\\\", \\\"poster_quote\\\": \\\"The stop head predicts the number of output patches even when target and source syllable counts differ under fixed reference-timing cues.\\\"},\\n    {\\\"id\\\": 120, \\\"text\\\": \\\"Each training tuple comes from one recording: the reference and acoustic target are the same performance, and the target lyrics are its transcript.\\\", \\\"poster_quote\\\": \\\"Each training tuple comes from one recording: the reference and acoustic target are the same performance, and the target lyrics are its transcript.\\\"},\\n    {\\\"id\\\": 121, \\\"text\\\": \\\"Editing is evaluated as zero-paired-edit generalization.\\\", \\\"poster_quote\\\": \\\"Editing is therefore evaluated as zero-paired-edit generalization.\\\"},\\n    {\\\"id\\\": 122, \\\"text\\\": \\\"At test time, revised lyrics must override residual source-lyric evidence while melody, timing, and singer cues remain tied to the reference.\\\", \\\"poster_quote\\\": \\\"At test time, revised lyrics must override residual source-lyric evidence while melody, timing, and singer cues remain tied to the reference.\\\"},\\n    {\\\"id\\\": 123, \\\"text\\\": \\\"CLASVS establishes continuous-latent autoregression for melody-preserving Mandarin lyric editing without manual score annotations or paired counterfactual recordings.\\\", \\\"poster_quote\\\": \\\"CLASVS establishes continuous-latent autoregression for melody-preserving Mandarin lyric editing without manual score annotations or paired counterfactual recordings.\\\"},\\n    {\\\"id\\\": 124, \\\"text\\\": \\\"The State-Control-Transition contract keeps target lyrics and reference melody persistently available.\\\", \\\"poster_quote\\\": \\\"Its State-Control-Transition contract keeps target lyrics and reference melody persistently available, returns semantic feedback about phonetic progress to the causal planner, and confines the previous AudioVAE latent patch to one local transition.\\\"},\\n    {\\\"id\\\": 125, \\\"text\\\": \\\"The State-Control-Transition contract returns semantic feedback about phonetic progress to the causal planner.\\\", \\\"poster_quote\\\": \\\"Its State-Control-Transition contract keeps target lyrics and reference melody persistently available, returns semantic feedback about phonetic progress to the causal planner, and confines the previous AudioVAE latent patch to one local transition.\\\"},\\n    {\\\"id\\\": 126, \\\"text\\\": \\\"The State-Control-Transition contract confines the previous AudioVAE latent patch to one local transition.\\\", \\\"poster_quote\\\": \\\"Its State-Control-Transition contract keeps target lyrics and reference melody persistently available, returns semantic feedback about phonetic progress to the causal planner, and confines the previous AudioVAE latent patch to one local transition.\\\"},\\n    {\\\"id\\\": 127, \\\"text\\\": \\\"Progressive State-Control Grounding learns this division through content-consistent reconstruction.\\\", \\\"poster_quote\\\": \\\"Progressive State-Control Grounding learns this division through content-consistent reconstruction.\\\"},\\n    {\\\"id\\\": 128, \\\"text\\\": \\\"Under a common automatic-input protocol, CLASVS improves all four edit operations over discrete-AR Vevo2.\\\", \\\"poster_quote\\\": \\\"Under a common automatic-input protocol, CLASVS improves all four edit operations over discrete-AR Vevo2 and reduces macro-PER by 46.2%.\\\"},\\n    {\\\"id\\\": 129, \\\"text\\\": \\\"CLASVS attains the best deletion, insertion, voiced-onset accuracy, naturalness, lyric intelligibility, and overall macro-PER among the evaluated systems while preserving melody and singer identity.\\\", \\\"poster_quote\\\": \\\"It attains the best deletion, insertion, voiced-onset accuracy, naturalness, lyric intelligibility, and overall macro-PER among the evaluated systems while preserving melody and singer identity.\\\"},\\n    {\\\"id\\\": 130, \\\"text\\\": \\\"Continuous-NAR YingMusic+ remains faster and stronger on substitution and global duration matching.\\\", \\\"poster_quote\\\": \\\"Continuous-NAR YingMusic+ remains faster and stronger on substitution and global duration matching, highlighting complementary operating profiles rather than universal architectural dominance.\\\"},\\n    {\\\"id\\\": 131, \\\"text\\\": \\\"Matched interventions show that semantic feedback guides content progress and target-lyric adherence.\\\", \\\"poster_quote\\\": \\\"Matched interventions show that semantic feedback guides content progress and target-lyric adherence, while the previous latent patch preserves local melody and acoustic continuity.\\\"},\\n    {\\\"id\\\": 132, \\\"text\\\": \\\"The previous latent patch preserves local melody and acoustic continuity.\\\", \\\"poster_quote\\\": \\\"Matched interventions show that semantic feedback guides content progress and target-lyric adherence, while the previous latent patch preserves local melody and acoustic continuity.\\\"},\\n    {\\\"id\\\": 133, \\\"text\\\": \\\"These results provide a continuous-autoregressive foundation for broader stepwise control of singing performances.\\\", \\\"poster_quote\\\": \\\"These results provide a continuous-autoregressive foundation for broader stepwise control of singing performances.\\\"}\\n  ]\\n}\\n```\", \"{\\n  \\\"verdicts\\\": [\\n    {\\n      \\\"id\\\": 1,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Melody-preserving lyric editing changes the words of a singing performance while retaining its melody, timing, singer identity, and naturalness.\\\",\\n      \\\"reason\\\": \\\"Source: Abstract, first sentence. The claim matches the description of melody-preserving lyric editing.\\\"\\n    },\\n    {\\n      \\\"id\\\": 2,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Reference-conditioned lyric editing instead accepts a singing recording and revised lyrics directly. Removing score annotations, however, creates a selective-preservation problem: the model must retain the performance characteristics carried by the reference while rejecting its source lyrics.\\\",\\n      \\\"reason\\\": \\\"Source: Introduction, paragraph 2. The claim aligns with the description of reference-conditioned editing avoiding costly annotations.\\\"\\n    },\\n    {\\n      \\\"id\\\": 3,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Training audio comprises about 8,000 hours of permission-documented Mandarin singing.\\\",\\n      \\\"reason\\\": \\\"Source: Experiments, Data, Comparators, and Statistics section. The claim matches the stated training data volume.\\\"\\n    },\\n    {\\n      \\\"id\\\": 4,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Training audio comprises ... 2,000 hours of Mandarin Emilia speech.\\\",\\n      \\\"reason\\\": \\\"Source: Experiments, Data, Comparators, and Statistics section. The claim matches the stated training data volume.\\\"\\n    },\\n    {\\n      \\\"id\\\": 5,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Training audio comprises ... 300 hours of curated open-source singing.\\\",\\n      \\\"reason\\\": \\\"Source: Experiments, Data, Comparators, and Statistics section. The claim matches the stated training data volume.\\\"\\n    },\\n    {\\n      \\\"id\\\": 6,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Three 120K-update seeds use BF16, ZeRO-2, AdamW, and global batch 128.\\\",\\n      \\\"reason\\\": \\\"Source: Experiments, Data, Comparators, and Statistics section. The claim matches the described training configuration.\\\"\\n    },\\n    {\\n      \\\"id\\\": 7,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The checkpoint has 0.765B trainable/2.115B total parameters.\\\",\\n      \\\"reason\\\": \\\"Source: Experiments, Data, Comparators, and Statistics section. The claim matches the stated trainable parameter count.\\\"\\n    },\\n    {\\n      \\\"id\\\": 8,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The checkpoint has 0.765B trainable/2.115B total parameters.\\\",\\n      \\\"reason\\\": \\\"Source: Experiments, Data, Comparators, and Statistics section. The claim matches the stated total generative-stack parameter count.\\\"\\n    },\\n    {\\n      \\\"id\\\": 9,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The checkpoint has ... including the frozen 1.350B AudioVAE.\\\",\\n      \\\"reason\\\": \\\"Source: Experiments, Data, Comparators, and Statistics section. The claim matches the stated frozen AudioVAE parameter count.\\\"\\n    },\\n    {\\n      \\\"id\\\": 10,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Pretrained-frozen/pretrained-joint/random-joint/random-frozen PER is .0376/.0391/.0511/.0918.\\\",\\n      \\\"reason\\\": \\\"Source: Progressive State–Control Grounding section. The claim matches the stated PER for the pretrained-frozen encoder.\\\"\\n    },\\n    {\\n      \\\"id\\\": 11,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Pretrained-frozen/pretrained-joint/random-joint/random-frozen PER is .0376/.0391/.0511/.0918.\\\",\\n      \\\"reason\\\": \\\"Source: Progressive State–Control Grounding section. The claim matches the stated PER for the pretrained-joint encoder.\\\"\\n    },\\n    {\\n      \\\"id\\\": 12,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Pretrained-frozen/pretrained-joint/random-joint/random-frozen PER is .0376/.0391/.0511/.0918.\\\",\\n      \\\"reason\\\": \\\"Source: Progressive State–Control Grounding section. The claim matches the stated PER for the random-joint encoder.\\\"\\n    },\\n    {\\n      \\\"id\\\": 13,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Pretrained-frozen/pretrained-joint/random-joint/random-frozen PER is .0376/.0391/.0511/.0918.\\\",\\n      \\\"reason\\\": \\\"Source: Progressive State–Control Grounding section. The claim matches the stated PER for the random-frozen encoder.\\\"\\n    },\\n    {\\n      \\\"id\\\": 14,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Together, these results establish a strong continuous-AR operating point for score-annotation-free lyric edits and a basis for broader stepwise control.\\\",\\n      \\\"reason\\\": \\\"Source: Abstract, final sentence. The claim matches the stated contribution of CLASVS.\\\"\\n    },\\n    {\\n      \\\"id\\\": 15,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"CLASVS addresses this challenge with a State–Control–Transition (SCT) editing contract. Target lyrics and reference melody remain persistent Control; a frozen causal semantic encoder returns feedback on realized phonetic progress as recurrent State; and the previous AudioVAE latent patch enters only the local Transition.\\\",\\n      \\\"reason\\\": \\\"Source: Introduction, paragraph 5. The claim matches the described SCT editing contract.\\\"\\n    },\\n    {\\n      \\\"id\\\": 16,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"On two Mandarin benchmarks, CLASVS improves all four operations over Vevo2, reducing macro-PER from .0699 to .0376 (46.2%).\\\",\\n      \\\"reason\\\": \\\"Source: Abstract, final paragraph. The claim matches the stated improvement over Vevo2.\\\"\\n    },\\n    {\\n      \\\"id\\\": 17,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"CLA-LyricEdit-320 contains 320 edits from 160 excerpts spanning 80 songs and 40 singers.\\\",\\n      \\\"reason\\\": \\\"Source: Experiments, Data, Comparators, and Statistics section. The claim matches the described dataset composition.\\\"\\n    },\\n    {\\n      \\\"id\\\": 18,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"CLA-LyricEdit-320 balances four operations: partial-line substitution (PSub), full-line substitution (FSub), deletion, and insertion.\\\",\\n      \\\"reason\\\": \\\"Source: Experiments, Data, Comparators, and Statistics section. The claim matches the described operation balance.\\\"\\n    },\\n    {\\n      \\\"id\\\": 19,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"PSub replaces a contiguous 2–6-syllable span while retaining context.\\\",\\n      \\\"reason\\\": \\\"Source: Experiments, Data, Comparators, and Statistics section. The claim matches the described partial-line substitution operation.\\\"\\n    },\\n    {\\n      \\\"id\\\": 20,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"FSub replaces every lexical syllable in a line.\\\",\\n      \\\"reason\\\": \\\"Source: Experiments, Data, Comparators, and Statistics section. The claim matches the described full-line substitution operation.\\\"\\n    },\\n    {\\n      \\\"id\\\": 21,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Deletion removes 2–6 syllables.\\\",\\n      \\\"reason\\\": \\\"Source: Experiments, Data, Comparators, and Statistics section. The claim matches the described deletion operation.\\\"\\n    },\\n    {\\n      \\\"id\\\": 22,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Insertion adds 2–6 syllables.\\\",\\n      \\\"reason\\\": \\\"Source: Experiments, Data, Comparators, and Statistics section. The claim matches the described insertion operation.\\\"\\n    },\\n    {\\n      \\\"id\\\": 23,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"All splits are song-disjoint.\\\",\\n      \\\"reason\\\": \\\"Source: Experiments, Data, Comparators, and Statistics section. The claim matches the described split structure.\\\"\\n    },\\n    {\\n      \\\"id\\\": 24,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Two annotators verify targets and operations (κ = .93).\\\",\\n      \\\"reason\\\": \\\"Source: Experiments, Data, Comparators, and Statistics section. The claim matches the described annotation process.\\\"\\n    },\\n    {\\n      \\\"id\\\": 25,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Vevo2 is the primary comparator because it shares CLASVS’s sequential interface but predicts discrete acoustic tokens rather than continuous AudioVAE latent patches.\\\",\\n      \\\"reason\\\": \\\"Source: Abstract, final paragraph. The claim matches the described comparison rationale.\\\"\\n    },\\n    {\\n      \\\"id\\\": 26,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"YingMusic+ is the complementary continuous-NAR comparator (Hao et al. 2026): it remains stronger on substitution, global duration, and steady-tail speed.\\\",\\n      \\\"reason\\\": \\\"Source: Abstract, final paragraph. The claim matches the described comparison rationale.\\\"\\n    },\\n    {\\n      \\\"id\\\": 27,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"All systems derive melody automatically and emit one candidate.\\\",\\n      \\\"reason\\\": \\\"Source: Experiments, Data, Comparators, and Statistics section. The claim matches the described system behavior.\\\"\\n    },\\n    {\\n      \\\"id\\\": 28,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Metrics include phone error rate, normalized edit distance, source-lyric reversion rate, log-F0 Pearson correlation, voiced-onset MAE, reference-duration deviation, and singer-similarity cosine.\\\",\\n      \\\"reason\\\": \\\"Source: Experiments, Data, Comparators, and Statistics section. The claim matches the described evaluation metrics.\\\"\\n    },\\n    {\\n      \\\"id\\\": 29,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"A pre-generation stratified draw yields 80 blinded audio outputs spanning five conditions, evaluated by twenty native Mandarin listeners for naturalness (N-MOS), melody (M-MOS), and lyric intelligibility (L-MOS).\\\",\\n      \\\"reason\\\": \\\"Source: Experiments, Data, Comparators, and Statistics section. The claim matches the described listener evaluation setup.\\\"\\n    },\\n    {\\n      \\\"id\\\": 30,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"We report operation-balanced macro-PER, 10,000 song-clustered draws, listener/item random effects (Kirkland et al. 2023; Camp et al. 2023), and Holm correction.\\\",\\n      \\\"reason\\\": \\\"Source: Experiments, Data, Comparators, and Statistics section. The claim matches the described statistical methods.\\\"\\n    },\\n    {\\n      \\\"id\\\": 31,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The public Mandarin benchmark retains YingMusic+’s substitution lead and CLASVS’s deletion/insertion advantage, confirming the operation-specific profile.\\\",\\n      \\\"reason\\\": \\\"Source: Analysis and Discussion section. The claim matches the described benchmark transfer test.\\\"\\n    },\\n    {\\n      \\\"id\\\": 32,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Control Grounding applies history dropout (ph = .10) to the teacher-forced previous latent patch and masks reference-melody spans (pm = .15), forcing recovery from imperfect local evidence while retaining both controls.\\\",\\n      \\\"reason\\\": \\\"Source: Progressive State–Control Grounding section. The claim matches the described Control Grounding method.\\\"\\n    },\\n    {\\n      \\\"id\\\": 33,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Control Grounding applies history dropout (ph = .10) to the teacher-forced previous latent patch.\\\",\\n      \\\"reason\\\": \\\"Source: Progressive State–Control Grounding section. The claim matches the described history dropout probability.\\\"\\n    },\\n    {\\n      \\\"id\\\": 34,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Control Grounding applies ... masks reference-melody spans (pm = .15).\\\",\\n      \\\"reason\\\": \\\"Source: Progressive State–Control Grounding section. The claim matches the described melody-span masking probability.\\\"\\n    },\\n    {\\n      \\\"id\\\": 35,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"History-dropout, melody-mask, joint-corruption, and curriculum-order removals yield PER .0441/.0419/.0468/.0415.\\\",\\n      \\\"reason\\\": \\\"Source: Progressive State–Control Grounding section. The claim matches the stated PER after removing history dropout.\\\"\\n    },\\n    {\\n      \\\"id\\\": 36,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"History-dropout, melody-mask, joint-corruption, and curriculum-order removals yield PER .0441/.0419/.0468/.0415.\\\",\\n      \\\"reason\\\": \\\"Source: Progressive State–Control Grounding section. The claim matches the stated PER after removing melody masking.\\\"\\n    },\\n    {\\n      \\\"id\\\": 37,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"History-dropout, melody-mask, joint-corruption, and curriculum-order removals yield PER .0441/.0419/.0468/.0415.\\\",\\n      \\\"reason\\\": \\\"Source: Progressive State–Control Grounding section. The claim matches the stated PER after removing both history dropout and melody masking.\\\"\\n    },\\n    {\\n      \\\"id\\\": 38,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Task Grounding schedules 72K broad-singing, 24K speech-assisted, and 24K curated-singing updates.\\\",\\n      \\\"reason\\\": \\\"Source: Progressive State–Control Grounding section. The claim matches the described update schedule.\\\"\\n    },\\n    {\\n      \\\"id\\\": 39,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Reversing or removing curriculum structure degrades editing accuracy.\\\",\\n      \\\"reason\\\": \\\"Source: Progressive State–Control Grounding section. The claim matches the described impact of curriculum structure changes.\\\"\\n    },\\n    {\\n      \\\"id\\\": 40,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The complete objective is L = Ltext + 10LFM + Lstop. Ltext is causally shifted cross-entropy on nonpadding target-lyric positions during prefix teacher forcing; melody tokens, separators, and recurrent semantic feedback are excluded. Lstop is balanced cross-entropy with the final valid patch labeled stop.\\\",\\n      \\\"reason\\\": \\\"Source: Progressive State–Control Grounding section. The claim matches the described training objectives.\\\"\\n    }\\n  ]\\n}\", \"```json\\n{\\n  \\\"verdicts\\\": [\\n    {\\n      \\\"id\\\": 1,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Joint lyric–melody–singer dropout (p = .10) trains the unconditional guidance branch (Ho and Salimans 2022), which supports classifier-free guidance during sampling.\\\",\\n      \\\"reason\\\": \\\"Section 'Progressive State–Control Grounding' explicitly states that joint lyric, melody, and singer dropout trains the classifier-free guidance branch.\\\"\\n    },\\n    {\\n      \\\"id\\\": 2,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Each patch starts from Gaussian noise and uses 24 Euler steps with guidance 2.0.\\\",\\n      \\\"reason\\\": \\\"Section 'Progressive State–Control Grounding' confirms that every patch begins as Gaussian noise and is generated with 24 Euler steps and guidance scale 2.0.\\\"\\n    },\\n    {\\n      \\\"id\\\": 3,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"We emit one candidate, stop at posterior .5 or the rollout budget, concatenate the patches, and decode once.\\\",\\n      \\\"reason\\\": \\\"Section 'Progressive State–Control Grounding' confirms that generation stops at posterior 0.5 or a safety budget, and all patches are decoded together.\\\"\\n    },\\n    {\\n      \\\"id\\\": 4,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"CLASVS\\\\n.0505 .0442 .0260 .0298\\\",\\n      \\\"reason\\\": \\\"Table 4 provides the PER values for partial substitution, full substitution, deletion, and insertion on CLA-LyricEdit-320.\\\"\\n    },\\n    {\\n      \\\"id\\\": 5,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"CLASVS\\\\n.0376 [.0326,.0429]\\\",\\n      \\\"reason\\\": \\\"Table 4 confirms that CLASVS produces a macro-PER of 0.0376 on CLA-LyricEdit-320.\\\"\\n    },\\n    {\\n      \\\"id\\\": 6,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Vevo2\\\\n.0617 .0563 .1033 .0581\\\",\\n      \\\"reason\\\": \\\"Table 4 provides the PER values for partial substitution, full substitution, deletion, and insertion for Vevo2.\\\"\\n    },\\n    {\\n      \\\"id\\\": 7,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Vevo2\\\\n.0699 [.0617,.0781]\\\",\\n      \\\"reason\\\": \\\"Table 4 confirms that Vevo2 produces a macro-PER of 0.0699 on CLA-LyricEdit-320.\\\"\\n    },\\n    {\\n      \\\"id\\\": 8,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"CLASVS reduces macro-PER by 46.2% versus discrete-AR Vevo2 across two Mandarin benchmarks.\\\",\\n      \\\"reason\\\": \\\"Abstract and Section 'Editing Accuracy, Quality, and Identity' confirm that CLASVS reduces macro-PER by 46.2% relative to Vevo2.\\\"\\n    },\\n    {\\n      \\\"id\\\": 9,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"YingMusic-Singer-Plus\\\\n.0411 [.0356,.0469]\\\",\\n      \\\"reason\\\": \\\"Table 4 confirms that YingMusic+ obtains a macro-PER of 0.0411.\\\"\\n    },\\n    {\\n      \\\"id\\\": 10,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"YingMusic+ remains stronger on substitution, global RefDur, and steady-tail RTF.\\\",\\n      \\\"reason\\\": \\\"Section 'Editing Accuracy, Quality, and Identity' explicitly states that YingMusic+ remains stronger on substitution, global duration matching, and steady-tail speed.\\\"\\n    },\\n    {\\n      \\\"id\\\": 11,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"CLASVS leads deletion, insertion, macro-PER, voiced-onset MAE, naturalness, and lyric intelligibility.\\\",\\n      \\\"reason\\\": \\\"Section 'Editing Accuracy, Quality, and Identity' confirms that CLASVS is stronger on deletion and insertion, resulting in lower macro-PER than YingMusic+.\\\"\\n    },\\n    {\\n      \\\"id\\\": 12,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\".9410\\\",\\n      \\\"reason\\\": \\\"Table 4 confirms that melody correlation is 0.941 for CLASVS.\\\"\\n    },\\n    {\\n      \\\"id\\\": 13,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\".9340\\\",\\n      \\\"reason\\\": \\\"Table 4 confirms that melody correlation is 0.934 for YingMusic+.\\\"\\n    },\\n    {\\n      \\\"id\\\": 14,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\".7440\\\",\\n      \\\"reason\\\": \\\"Table 4 confirms that melody correlation is 0.744 for Vevo2.\\\"\\n    },\\n    {\\n      \\\"id\\\": 15,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\".914\\\",\\n      \\\"reason\\\": \\\"Table 4 confirms that singer similarity is 0.914 for CLASVS.\\\"\\n    },\\n    {\\n      \\\"id\\\": 16,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\".906\\\",\\n      \\\"reason\\\": \\\"Table 4 confirms that singer similarity is 0.906 for YingMusic+.\\\"\\n    },\\n    {\\n      \\\"id\\\": 17,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\".892\\\",\\n      \\\"reason\\\": \\\"Table 4 confirms that singer similarity is 0.892 for Vevo2.\\\"\\n    },\\n    {\\n      \\\"id\\\": 18,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"7.68ms\\\",\\n      \\\"reason\\\": \\\"Table 4 confirms that voiced-onset error is 7.68 ms for CLASVS.\\\"\\n    },\\n    {\\n      \\\"id\\\": 19,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"18.80ms\\\",\\n      \\\"reason\\\": \\\"Table 4 confirms that voiced-onset error is 18.80 ms for YingMusic+.\\\"\\n    },\\n    {\\n      \\\"id\\\": 20,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"69.58ms\\\",\\n      \\\"reason\\\": \\\"Table 4 confirms that voiced-onset error is 69.58 ms for Vevo2.\\\"\\n    },\\n    {\\n      \\\"id\\\": 21,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"4.13 [4.04,4.22]\\\",\\n      \\\"reason\\\": \\\"Table 6 confirms that listener scores show CLASVS naturalness at 4.13.\\\"\\n    },\\n    {\\n      \\\"id\\\": 22,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"4.42 [4.34,4.50]\\\",\\n      \\\"reason\\\": \\\"Table 6 confirms that listener scores show CLASVS lyric intelligibility at 4.42.\\\"\\n    },\\n    {\\n      \\\"id\\\": 23,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"+.48 [+.34, +.62]\\\",\\n      \\\"reason\\\": \\\"Table 6 confirms that relative to YingMusic+, CLASVS naturalness improves by 0.48.\\\"\\n    },\\n    {\\n      \\\"id\\\": 24,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"+.32 [+.20, +.44]\\\",\\n      \\\"reason\\\": \\\"Table 6 confirms that relative to YingMusic+, CLASVS intelligibility improves by 0.32.\\\"\\n    },\\n    {\\n      \\\"id\\\": 25,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The M-MOS difference is not detectable.\\\",\\n      \\\"reason\\\": \\\"Table 6 explicitly states that the 0.01 melody-rating difference between CLASVS and YingMusic+ is not detectable.\\\"\\n    },\\n    {\\n      \\\"id\\\": 26,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The public Mandarin benchmark reproduces the operation-specific profile.\\\",\\n      \\\"reason\\\": \\\"Section 'Public-Benchmark Replication' confirms that the public Mandarin benchmark reproduces the profile.\\\"\\n    },\\n    {\\n      \\\"id\\\": 27,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"CLASVS improves all four operations over Vevo2 and lowers macro-PER from .0761 to .0425.\\\",\\n      \\\"reason\\\": \\\"Table 3 confirms that CLASVS lowers Vevo2 macro-PER from 0.0761 to 0.0425 on the public Mandarin benchmark.\\\"\\n    },\\n    {\\n      \\\"id\\\": 28,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"CLASVS improves all four operations over Vevo2.\\\",\\n      \\\"reason\\\": \\\"Table 3 confirms that CLASVS improves all four operations on the public Mandarin benchmark.\\\"\\n    },\\n    {\\n      \\\"id\\\": 29,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"YingMusic+ remains stronger on substitution.\\\",\\n      \\\"reason\\\": \\\"Table 3 confirms that YingMusic+ remains stronger on substitution on the public Mandarin benchmark.\\\"\\n    },\\n    {\\n      \\\"id\\\": 30,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"CLASVS improves deletion and insertion while YingMusic+ remains stronger on substitution.\\\",\\n      \\\"reason\\\": \\\"Table 3 confirms that CLASVS remains stronger on deletion and insertion on the public Mandarin benchmark.\\\"\\n    },\\n    {\\n      \\\"id\\\": 31,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Runtime is the main trade-off for CLASVS.\\\",\\n      \\\"reason\\\": \\\"Section 'Editing Accuracy, Quality, and Identity' explicitly states that runtime is the main trade-off for CLASVS.\\\"\\n    },\\n    {\\n      \\\"id\\\": 32,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"3.840\\\",\\n      \\\"reason\\\": \\\"Table 4 confirms that CLASVS cold-start RTF is 3.840.\\\"\\n    },\\n    {\\n      \\\"id\\\": 33,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"1.395\\\",\\n      \\\"reason\\\": \\\"Table 4 confirms that CLASVS steady-tail RTF is 1.395.\\\"\\n    },\\n    {\\n      \\\"id\\\": 34,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"3.392\\\",\\n      \\\"reason\\\": \\\"Table 4 confirms that YingMusic+ cold-start RTF is 3.392.\\\"\\n    },\\n    {\\n      \\\"id\\\": 35,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"0.241\\\",\\n      \\\"reason\\\": \\\"Table 4 confirms that YingMusic+ steady-tail RTF is 0.241.\\\"\\n    },\\n    {\\n      \\\"id\\\": 36,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"2.649\\\",\\n      \\\"reason\\\": \\\"Table 4 confirms that Vevo2 cold-start RTF is 2.649.\\\"\\n    },\\n    {\\n      \\\"id\\\": 37,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"0.744\\\",\\n      \\\"reason\\\": \\\"Table 4 confirms that Vevo2 steady-tail RTF is 0.744.\\\"\\n    },\\n    {\\n      \\\"id\\\": 38,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"5.82\\\",\\n      \\\"reason\\\": \\\"Table 4 confirms that incremental peak memory is lowest for CLASVS at 5.82 GiB.\\\"\\n    },\\n    {\\n      \\\"id\\\": 39,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"CLASVS generates 64-D continuous AudioVAE latent patches every 100 ms.\\\",\\n      \\\"reason\\\": \\\"Figure 1 and Section 'State–Control–Transition Routing' confirm that CLASVS generates 64-dimensional AudioVAE latent patches every 100 ms.\\\"\\n    },\\n    {\\n      \\\"id\\\": 40,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The stop head learns output patch count while target/source syllable counts may differ under reference timing cues.\\\",\\n      \\\"reason\\\": \\\"Section 'State–Control–Transition Routing' confirms that CLASVS learns when to stop generating latent patches.\\\"\\n    }\\n  ]\\n}\\n```\", \"{\\n  \\\"verdicts\\\": [\\n    {\\n      \\\"id\\\": 1,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Lyric and melody tokens prefill a Qwen3-0.6B causal planner (Yang et al. 2025a). After the first step, only semantic feedback ak−1 is appended: (hk , Kplan k ) = Pθ (ak−1 , Kplan k−1 ). The cache retains the full controls and all earlier feedback.\\\",\\n      \\\"reason\\\": \\\"Section 'State–Control–Transition Routing' confirms that both target-lyric and reference-melody spans persist in the causal planner cache.\\\"\\n    },\\n    {\\n      \\\"id\\\": 2,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The semantic route compresses each five-frame patch into one 1024-D feedback vector, while the local route retains the complete 5 × 64 patch for only the following transition.\\\",\\n      \\\"reason\\\": \\\"Section 'State–Control–Transition Routing' specifies that one compact semantic-feedback vector is added per generated patch.\\\"\\n    },\\n    {\\n      \\\"id\\\": 3,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The previous latent patch enters an 8-block Flow-DiT that combines conditional flow matching with a transformer denoiser. The previous latent patch conditions only the next Flow-DiT transition.\\\",\\n      \\\"reason\\\": \\\"Section 'State–Control–Transition Routing' explicitly states that the previous latent patch conditions only the next Flow-DiT transition.\\\"\\n    },\\n    {\\n      \\\"id\\\": 4,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"CLASVS improves all four operations over Vevo2, reducing macro-PER from .0699 to .0376 (46.2%).\\\",\\n      \\\"reason\\\": \\\"Section 'Abstract' and 'Experiments' confirm improvement in partial substitution, full substitution, deletion, and insertion over Vevo2.\\\"\\n    },\\n    {\\n      \\\"id\\\": 5,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"CLASVS improves all four operations over Vevo2, reducing macro-PER from .0699 to .0376 (46.2%).\\\",\\n      \\\"reason\\\": \\\"Section 'Abstract' and 'Experiments' explicitly state the reduction in macro-PER compared to Vevo2.\\\"\\n    },\\n    {\\n      \\\"id\\\": 6,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"CLASVS leads deletion, insertion, macro-PER, voiced-onset MAE, naturalness, and lyric intelligibility.\\\",\\n      \\\"reason\\\": \\\"Section 'Editing Accuracy, Quality, and Identity' confirms CLASVS's lead over YingMusic+ in these metrics.\\\"\\n    },\\n    {\\n      \\\"id\\\": 7,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Removing semantic feedback changes PER/FPC to .0564/.9205, supporting semantic feedback as an explicitly grounded phonetic-progress State.\\\",\\n      \\\"reason\\\": \\\"Section 'PSCG and Inference Diagnostics' confirms that semantic feedback primarily supports lyric accuracy.\\\"\\n    },\\n    {\\n      \\\"id\\\": 8,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Removing the previous latent patch most strongly harms melody preservation.\\\",\\n      \\\"reason\\\": \\\"Section 'PSCG and Inference Diagnostics' confirms the role of the previous latent patch in preserving melody and continuity.\\\"\\n    },\\n    {\\n      \\\"id\\\": 9,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"This paired-edit-free training turns lyric editing into a zero-paired-edit generalization test: success requires following revised lyrics despite residual source-lyric-correlated evidence.\\\",\\n      \\\"reason\\\": \\\"Section 'Training Tuples and the Content Conflict' explicitly describes zero-paired-edit generalization.\\\"\\n    },\\n    {\\n      \\\"id\\\": 10,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Training uses content-consistent reconstruction, never unavailable recordings of one melody sung with counterfactual lyrics.\\\",\\n      \\\"reason\\\": \\\"Section 'Training Tuples and the Content Conflict' confirms that training never reveals counterfactual lyrics, edit-span alignments, or operation templates.\\\"\\n    },\\n    {\\n      \\\"id\\\": 11,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"CLASVS improves every Vevo2 operation, especially length-changing edits.\\\",\\n      \\\"reason\\\": \\\"Section 'Editing Accuracy, Quality, and Identity' explicitly states that the largest gains occur on length-changing edits.\\\"\\n    },\\n    {\\n      \\\"id\\\": 12,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"CLASVS improves deletion and insertion over YingMusic+ while YingMusic+ remains stronger on substitution.\\\",\\n      \\\"reason\\\": \\\"Section 'Editing Accuracy, Quality, and Identity' confirms CLASVS's effectiveness for deletion and insertion against both comparators.\\\"\\n    },\\n    {\\n      \\\"id\\\": 13,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Deletion accuracy is not obtained by truncation or retained words.\\\",\\n      \\\"reason\\\": \\\"Section 'Stopping audits' confirms that gains do not result from simple truncation.\\\"\\n    },\\n    {\\n      \\\"id\\\": 14,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Budget-hit rates are 0/0/0/1.25% for PSub/FSub/Del/Ins.\\\",\\n      \\\"reason\\\": \\\"Section 'Stopping audits' confirms a 0% budget-hit rate for partial substitution, full substitution, and deletion.\\\"\\n    },\\n    {\\n      \\\"id\\\": 15,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Budget-hit rates are 0/0/0/1.25% for PSub/FSub/Del/Ins.\\\",\\n      \\\"reason\\\": \\\"Section 'Stopping audits' confirms a 1.25% budget-hit rate for insertion.\\\"\\n    },\\n    {\\n      \\\"id\\\": 16,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Premature/delayed-stop rates never exceed 1.25/2.50%.\\\",\\n      \\\"reason\\\": \\\"Section 'Stopping audits' confirms that premature and delayed stopping remain low for CLASVS.\\\"\\n    },\\n    {\\n      \\\"id\\\": 17,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Continuous autoregression provides high-fidelity stepwise control with learned stopping, low peak memory, and strong perceptual quality.\\\",\\n      \\\"reason\\\": \\\"Section 'Conclusion' confirms these attributes of continuous autoregression.\\\"\\n    },\\n    {\\n      \\\"id\\\": 18,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Parallel generation is faster and stronger on substitution.\\\",\\n      \\\"reason\\\": \\\"Section 'Editing Accuracy, Quality, and Identity' confirms that continuous autoregression is slower than parallel generation.\\\"\\n    },\\n    {\\n      \\\"id\\\": 19,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Here compact is temporal: one 1024-D semantic-feedback vector enters the cache per patch.\\\",\\n      \\\"reason\\\": \\\"Section 'State–Control–Transition Routing' confirms that compactness in CLASVS is temporal rather than constant-memory.\\\"\\n    },\\n    {\\n      \\\"id\\\": 20,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The semantic route compresses each five-frame patch into one 1024-D feedback vector.\\\",\\n      \\\"reason\\\": \\\"Section 'State–Control–Transition Routing' confirms that one 1024-dimensional semantic vector enters the cache per patch.\\\"\\n    },\\n    {\\n      \\\"id\\\": 21,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Cache growth remains linear during long rollouts.\\\",\\n      \\\"reason\\\": \\\"Section 'State–Control–Transition Routing' confirms linear cache growth during long rollouts.\\\"\\n    },\\n    {\\n      \\\"id\\\": 22,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"With cold-start/steady-tail RTF 3.840/1.395, it remains better suited to offline use.\\\",\\n      \\\"reason\\\": \\\"Section 'Editing Accuracy, Quality, and Identity' confirms that the current runtime of CLASVS is best suited to offline editing.\\\"\\n    },\\n    {\\n      \\\"id\\\": 23,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Evaluation uses one recognizer and reference-timing metrics on Mandarin 2–6-syllable edits.\\\",\\n      \\\"reason\\\": \\\"Section 'Limitations, Reproducibility, and Ethics' confirms the evaluation limitations.\\\"\\n    },\\n    {\\n      \\\"id\\\": 24,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Cross-lingual and long-edit validation remain open.\\\",\\n      \\\"reason\\\": \\\"Section 'Limitations, Reproducibility, and Ethics' confirms that cross-lingual editing, longer edits, and long-context compression remain open challenges.\\\"\\n    },\\n    {\\n      \\\"id\\\": 25,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Recognizable-voice editing can enable impersonation.\\\",\\n      \\\"reason\\\": \\\"Section 'Limitations, Reproducibility, and Ethics' confirms impersonation risks.\\\"\\n    },\\n    {\\n      \\\"id\\\": 26,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Source-level permissions, opt-out and removal procedures, identity-authorized access, and localized provenance therefore govern data use, checkpoint release, and responses to misuse reports.\\\",\\n      \\\"reason\\\": \\\"Section 'Limitations, Reproducibility, and Ethics' confirms the recommended deployment requirements.\\\"\\n    },\\n    {\\n      \\\"id\\\": 27,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Let r be reference audio and x = (x1 , . . . , xLx ) the target lyric-token sequence.\\\",\\n      \\\"reason\\\": \\\"Section 'Inputs, Time Bases, and Duration' confirms the model receives reference audio and target lyric tokens.\\\"\\n    },\\n    {\\n      \\\"id\\\": 28,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"A frozen melody tokenizer maps r to m = (m1 , . . . , mLm ) at approximately 6.25 Hz using a 512-entry codebook.\\\",\\n      \\\"reason\\\": \\\"Section 'Inputs, Time Bases, and Duration' confirms the melody tokenizer's operation and frequency.\\\"\\n    },\\n    {\\n      \\\"id\\\": 29,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"It is trained from chroma-derived inputs so that the control emphasizes pitch and timing rather than lexical content.\\\",\\n      \\\"reason\\\": \\\"Section 'Inputs, Time Bases, and Duration' confirms the melody tokenizer's training and emphasis.\\\"\\n    },\\n    {\\n      \\\"id\\\": 30,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"A frozen CAM++ encoder (Wang et al. 2023) extracts a 192-D singer vector e.\\\",\\n      \\\"reason\\\": \\\"Section 'Inputs, Time Bases, and Duration' confirms the frozen singer encoder extracts a 192-dimensional identity vector.\\\"\\n    },\\n    {\\n      \\\"id\\\": 31,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"A frozen Ming-UniAudio AudioVAE (Yan et al. 2025) represents 16-kHz target audio as z∗ ∈ RT ×64 at 50 Hz.\\\",\\n      \\\"reason\\\": \\\"Section 'Inputs, Time Bases, and Duration' confirms the frozen AudioVAE's representation of target audio.\\\"\\n    },\\n    {\\n      \\\"id\\\": 32,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"We group P = 5 frames into z̄∗k ∈ R5×64 , so the acoustic recurrence runs at 10 Hz.\\\",\\n      \\\"reason\\\": \\\"Section 'Inputs, Time Bases, and Duration' confirms the grouping of five AudioVAE frames into one latent patch.\\\"\\n    },\\n    {\\n      \\\"id\\\": 33,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Each transition receives one flow-time/planner token, five predecessor tokens, and five noisy current-patch tokens.\\\",\\n      \\\"reason\\\": \\\"Section 'State–Control–Transition Routing' confirms each autoregressive transition represents 100 ms of audio.\\\"\\n    },\\n    {\\n      \\\"id\\\": 34,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"A final short group is zero padded and retained as one patch in loss and decoding; no frame-level trimming is applied, giving at most 100-ms endpoint granularity.\\\",\\n      \\\"reason\\\": \\\"Section 'Inputs, Time Bases, and Duration' confirms the retention of a final short group with 100-ms endpoint granularity.\\\"\\n    },\\n    {\\n      \\\"id\\\": 35,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Melody and acoustic tokens are not one-to-one aligned.\\\",\\n      \\\"reason\\\": \\\"Section 'Inputs, Time Bases, and Duration' confirms intentional non-alignment of melody and acoustic tokens.\\\"\\n    },\\n    {\\n      \\\"id\\\": 36,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The melody prefix remains in the planner cache while semantic feedback marks generated progress.\\\",\\n      \\\"reason\\\": \\\"Section 'Inputs, Time Bases, and Duration' confirms the complete melody prefix remains available in the planner cache.\\\"\\n    },\\n    {\\n      \\\"id\\\": 37,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Recurrent semantic feedback indicates generated progress.\\\",\\n      \\\"reason\\\": \\\"Section 'State–Control–Transition Routing' confirms recurrent semantic feedback indicates generated progress.\\\"\\n    },\\n    {\\n      \\\"id\\\": 38,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Target lyric tokens retain sequence order without requiring note, duration, or edit-boundary labels.\\\",\\n      \\\"reason\\\": \\\"Section 'State–Control–Transition Routing' confirms target lyrics preserve sequence order without requiring additional labels.\\\"\\n    },\\n    {\\n      \\\"id\\\": 39,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The stop head learns output patch count while target/source syllable counts may differ under reference timing cues.\\\",\\n      \\\"reason\\\": \\\"Section 'Inputs, Time Bases, and Duration' confirms the stop head predicts the number of output patches under differing syllable counts.\\\"\\n    },\\n    {\\n      \\\"id\\\": 40,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Each tuple (r, x, z∗ ) comes from one recording: reference and target audio are the same performance, and x is its transcript.\\\",\\n      \\\"reason\\\": \\\"Section 'Training Tuples and the Content Conflict' confirms the composition of each training tuple.\\\"\\n    }\\n  ]\\n}\", \"{\\n  \\\"verdicts\\\": [\\n    {\\n      \\\"id\\\": 1,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"This paired-edit-free training turns lyric editing into a zero-paired-edit generalization test: success requires following revised lyrics despite residual source-lyric-correlated evidence, rather than fitting edit templates.\\\",\\n      \\\"reason\\\": \\\"Section 'Training Tuples and the Content Conflict' explicitly describes editing as a zero-paired-edit generalization test.\\\"\\n    },\\n    {\\n      \\\"id\\\": 2,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"At evaluation, x changes while reference-derived controls remain tied to the reference audio. This paired-edit-free training turns lyric editing into a zero-paired-edit generalization test: success requires following revised lyrics despite residual source-lyric-correlated evidence, rather than fitting edit templates.\\\",\\n      \\\"reason\\\": \\\"Section 'Training Tuples and the Content Conflict' confirms that revised lyrics must override residual source-lyric evidence while melody, timing, and singer cues remain tied to the reference.\\\"\\n    },\\n    {\\n      \\\"id\\\": 3,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"CLASVS establishes continuous-latent autoregression for melody-preserving Mandarin lyric editing without manual score annotations. Progressive State–Control Grounding (PSCG) grounds this routing through paired-edit-free, content-consistent Mandarin reconstruction.\\\",\\n      \\\"reason\\\": \\\"Abstract and Section 'Introduction' confirm the establishment of continuous-latent autoregression for melody-preserving Mandarin lyric editing without manual score annotations or paired counterfactual recordings.\\\"\\n    },\\n    {\\n      \\\"id\\\": 4,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Target lyrics and reference melody remain persistent Control; a frozen causal semantic encoder returns feedback on realized phonetic progress as recurrent State; and the previous AudioVAE latent patch enters only the local Transition.\\\",\\n      \\\"reason\\\": \\\"Section 'State–Control–Transition Routing' explicitly states that target lyrics and reference melody remain persistently available.\\\"\\n    },\\n    {\\n      \\\"id\\\": 5,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"A frozen causal semantic encoder returns feedback on realized phonetic progress as recurrent State.\\\",\\n      \\\"reason\\\": \\\"Section 'State–Control–Transition Routing' confirms that semantic feedback about phonetic progress is returned to the causal planner.\\\"\\n    },\\n    {\\n      \\\"id\\\": 6,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Latent patches never re-enter the causal planner, preserving continuity without biasing lyric planning.\\\",\\n      \\\"reason\\\": \\\"Section 'State–Control–Transition Routing' confirms that the previous AudioVAE latent patch is confined to one local transition.\\\"\\n    },\\n    {\\n      \\\"id\\\": 7,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Progressive State–Control Grounding (PSCG) grounds this routing through paired-edit-free, content-consistent Mandarin reconstruction.\\\",\\n      \\\"reason\\\": \\\"Abstract and Section 'Progressive State–Control Grounding' confirm that PSCG learns the division through content-consistent reconstruction.\\\"\\n    },\\n    {\\n      \\\"id\\\": 8,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Under the common automatic-input protocol, CLASVS improves all four operations over Vevo2, reducing macro-PER from .0699 to .0376 (46.2%).\\\",\\n      \\\"reason\\\": \\\"Section 'Experiments' and Table 4 confirm that CLASVS improves all four edit operations over discrete-AR Vevo2 under the common automatic-input protocol.\\\"\\n    },\\n    {\\n      \\\"id\\\": 9,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"CLASVS leads deletion, insertion, macro-PER, voiced-onset MAE, naturalness, and lyric intelligibility. It preserves melody and singer identity while improving naturalness and lyric intelligibility over the continuous-NAR comparator.\\\",\\n      \\\"reason\\\": \\\"Section 'Editing Accuracy, Quality, and Identity' and Table 4 confirm that CLASVS attains the best deletion, insertion, voiced-onset accuracy, naturalness, lyric intelligibility, and overall macro-PER among the evaluated systems while preserving melody and singer identity.\\\"\\n    },\\n    {\\n      \\\"id\\\": 10,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"YingMusic+ remains stronger on substitution, global duration, and steady-tail speed.\\\",\\n      \\\"reason\\\": \\\"Section 'Editing Accuracy, Quality, and Identity' confirms that YingMusic+ remains faster and stronger on substitution and global duration matching.\\\"\\n    },\\n    {\\n      \\\"id\\\": 11,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Removing State Grounding changes PER/FPC to .0511/.9168, supporting semantic feedback as an explicitly grounded phonetic-progress State.\\\",\\n      \\\"reason\\\": \\\"Section 'PSCG and Inference Diagnostics' confirms that matched interventions show semantic feedback guides content progress and target-lyric adherence.\\\"\\n    },\\n    {\\n      \\\"id\\\": 12,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Removing the previous latent patch most strongly harms melody preservation.\\\",\\n      \\\"reason\\\": \\\"Section 'PSCG and Inference Diagnostics' confirms that the previous latent patch preserves local melody and acoustic continuity.\\\"\\n    },\\n    {\\n      \\\"id\\\": 13,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Together, these results provide a continuous-AR foundation for broader controllable singing performance.\\\",\\n      \\\"reason\\\": \\\"Section 'Conclusion' explicitly states that the results provide a continuous-autoregressive foundation for broader stepwise control of singing performances.\\\"\\n    }\\n  ]\\n}\"]"
 }

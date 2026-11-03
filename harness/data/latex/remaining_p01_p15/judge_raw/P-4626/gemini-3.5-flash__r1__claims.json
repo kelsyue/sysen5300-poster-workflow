@@ -2,9 +2,694 @@
   "model": "gemini-3.5-flash",
   "repeat": 1,
   "judge_prompt_sha256": "4ec65050cfdc718218dbc587f672291e733fd03b1254c20d77b61b0933e16162",
-  "error": "transport: Error code: 422 - Budget has been exceeded! Key=SIX-SIGMA-SLIDES-PROJECT-2 (sk-...d5LQ) Current cost: 70.08230754, Max budget: 70.0",
-  "tokens_in": 0,
-  "tokens_out": 0,
-  "parsed": null,
-  "raw": ""
+  "error": null,
+  "tokens_in": 34537,
+  "tokens_out": 33740,
+  "max_output_tokens": 32768,
+  "claims_batch_size": 40,
+  "parsed": {
+    "claims": [
+      {
+        "id": 1,
+        "text": "Functional decline is often recognized only after a fall or observable gait impairment, when the prevention window has narrowed.",
+        "poster_quote": "Functional decline is often recognized only after a fall or observable gait impairment, when the prevention window has narrowed.",
+        "label": "supported",
+        "paper_evidence": "Functional decline in older adults is typically recognized only after falls or observable gait impairment, closing the window for prevention.",
+        "reason": "Abstract. The paper states that functional decline is typically recognized only after falls or gait impairment, which closes the prevention window."
+      },
+      {
+        "id": 2,
+        "text": "Routine laboratory and vital-sign measurements may show gradual deterioration long before individual values become clinically abnormal.",
+        "poster_quote": "Routine laboratory and vital-sign measurements may show gradual deterioration long before individual values become clinically abnormal.",
+        "label": "supported",
+        "paper_evidence": "functional decline unfolds through gradual physiologic instability already being recorded, and currently being ignored, in routine EHR data.",
+        "reason": "Discussion, paragraph 1. The paper states that functional decline unfolds through gradual physiologic instability recorded in routine EHR data."
+      },
+      {
+        "id": 3,
+        "text": "A stable hemoglobin of 11.5 g/dL may indicate different risk from a value that declined from 13.5 g/dL over three years, although both appear identical at a single visit.",
+        "poster_quote": "A stable hemoglobin of 11.5 g/dL may indicate different risk from a value that declined from 13.5 g/dL over three years, although both appear identical at a single visit.",
+        "label": "supported",
+        "paper_evidence": "A hemoglobin of 11.5 g/dL that has been stable for three years represents a fundamentally different risk than one that declined from 13.5 g/dL over the same period. Yet, both appear identical at a single timepoint.",
+        "reason": "Introduction, paragraph 3. The paper explicitly uses this example to illustrate the value of trajectories over single timepoints."
+      },
+      {
+        "id": 4,
+        "text": "Existing frailty and mobility tools require structured assessments, manual scoring, or dedicated patient interaction and generally capture only one timepoint.",
+        "poster_quote": "Existing frailty and mobility tools require structured assessments, manual scoring, or dedicated patient interaction and generally capture only one timepoint.",
+        "label": "supported",
+        "paper_evidence": "Existing frailty tools, such as the Fried phenotype, the Short Physical Performance Battery, and the Timed Up-and-Go, require structured functional assessments, manual scoring, or dedicated patient interaction not consistently embedded in primary care workflows. Even when administered, they capture a single timepoint rather than the trajectory of physiologic change.",
+        "reason": "Introduction, paragraph 2. The paper states that existing tools require structured assessments, manual scoring, or patient interaction, and capture only a single timepoint."
+      },
+      {
+        "id": 5,
+        "text": "Pathways leading to mobility decline leave measurable traces in routine data, including anemia-related fatigue, vitamin D deficiency, hyponatremia, glycemic dysregulation, sarcopenia, inflammation, and blood pressure instability.",
+        "poster_quote": "Meanwhile, pathways leading to mobility decline leave measurable traces in routine data, including anemia-related fatigue, vitamin D deficiency, hyponatremia, glycemic dysregulation, sarcopenia, inflammation, and blood pressure instability.",
+        "label": "supported",
+        "paper_evidence": "Multiple pathways underlying mobility decline leave measurable traces in routine laboratory data: anemia-related fatigue, vitamin D deficiency affecting neuromuscular function, hyponatremia impairing balance, glycemic dysregulation driving neuropathy, and albumin-mediated sarcopenia.",
+        "reason": "Introduction, paragraph 3. The paper lists these pathways and their links to routine laboratory data."
+      },
+      {
+        "id": 6,
+        "text": "This study tested whether longitudinal trajectories of routinely collected biomarkers can identify preclinical functional decline without using medication histories, diagnosis histories, functional assessments, or free-text records.",
+        "poster_quote": "This study tested whether longitudinal trajectories of routinely collected biomarkers can identify preclinical functional decline without using medication histories, diagnosis histories, functional assessments, or free-text records.",
+        "label": "supported",
+        "paper_evidence": "Our model achieves AUROC 0.797 using only twelve laboratory biomarkers - no diagnosis codes, medications, functional assessments, or free-text processing.",
+        "reason": "Discussion, paragraph 2. The paper states that the model uses only twelve laboratory biomarkers without diagnosis codes, medications, functional assessments, or free-text processing."
+      },
+      {
+        "id": 7,
+        "text": "The study used the All of Us Research Program Controlled Tier Dataset version 8, a longitudinal EHR repository harmonized to the OMOP Common Data Model.",
+        "poster_quote": "We used the All of Us Research Program Controlled Tier Dataset version 8, a longitudinal EHR repository harmonized to the OMOP Common Data Model.",
+        "label": "supported",
+        "paper_evidence": "We used the All of Us Research Program Controlled Tier Dataset version 8, a de-identified longitudinal EHR repository harmonized to the OMOP Common Data Model.",
+        "reason": "Methods, Dataset and Study Population. The paper explicitly states the dataset version and OMOP harmonization."
+      },
+      {
+        "id": 8,
+        "text": "Eligible participants were aged 50–125 years, had available EHR data, and had at least one laboratory measurement.",
+        "poster_quote": "Eligible participants were aged 50–125 years, had available EHR data, and had at least one laboratory measurement.",
+        "label": "supported",
+        "paper_evidence": "Eligible participants were aged 50-125 years with available EHR data and at least one recorded laboratory measurement.",
+        "reason": "Methods, Dataset and Study Population. The paper defines the eligibility criteria exactly as claimed."
+      },
+      {
+        "id": 9,
+        "text": "Participants with a recorded death were excluded.",
+        "poster_quote": "Participants with a recorded death were excluded.",
+        "label": "supported",
+        "paper_evidence": "Deceased participants were excluded from all analyses by removing individuals with a recorded entry in the OMOP death table prior to the analysis date.",
+        "reason": "Methods, Dataset and Study Population. The paper states that deceased participants were excluded."
+      },
+      {
+        "id": 10,
+        "text": "Mobility decline cases were identified using diagnoses for difficulty walking, gait and mobility abnormalities, unsteadiness, reduced mobility, generalized muscle weakness, and falls.",
+        "poster_quote": "Mobility decline cases were identified using diagnoses for difficulty walking, gait and mobility abnormalities, unsteadiness, reduced mobility, generalized muscle weakness, and falls.",
+        "label": "supported",
+        "paper_evidence": "Mobility decline cases were identified from the OMOP condition occurrence table using ICD-10-CM source concept identifiers: difficulty in walking (R26.2), unspecified gait and mobility abnormalities (R26.9), unsteadiness on feet (R26.81), other reduced mobility (Z74.09), generalized muscle weakness (M62.81), and unspecified fall (W19).",
+        "reason": "Methods, Outcome definition. The paper lists these specific ICD-10 codes and descriptions used to identify cases."
+      },
+      {
+        "id": 11,
+        "text": "The earliest qualifying diagnosis defined the index date.",
+        "poster_quote": "The earliest qualifying diagnosis defined the index date.",
+        "label": "supported",
+        "paper_evidence": "The earliest qualifying diagnosis defined each case’s index date.",
+        "reason": "Methods, Outcome definition. The paper states that the earliest qualifying diagnosis defined the index date."
+      },
+      {
+        "id": 12,
+        "text": "Controls had laboratory data but no qualifying diagnosis.",
+        "poster_quote": "Controls had laboratory data but no qualifying diagnosis.",
+        "label": "supported",
+        "paper_evidence": "Controls were participants with laboratory data and no qualifying mobility decline diagnosis.",
+        "reason": "Methods, Control cohort and pseudo-index assignment. The paper defines controls exactly as claimed."
+      },
+      {
+        "id": 13,
+        "text": "Each control received a pseudo-index date sampled within the individual laboratory observation window, preserving natural measurement histories while reducing immortal time bias.",
+        "poster_quote": "Each control received a pseudo-index date sampled within the individual laboratory observation window, preserving natural measurement histories while reducing immortal time bias.",
+        "label": "supported",
+        "paper_evidence": "A pseudo-index date was assigned by sampling uniformly at random within each control’s laboratory observation window (first to last measurement). This design preserves natural measurement history while preventing immortal time bias",
+        "reason": "Methods, Control cohort and pseudo-index assignment. The paper states that pseudo-index dates preserve natural measurement history and prevent immortal time bias."
+      },
+      {
+        "id": 14,
+        "text": "The full pseudo-index cohort included 322,409 participants.",
+        "poster_quote": "The full pseudo-index cohort included 322,409 participants.",
+        "label": "supported",
+        "paper_evidence": "The full pseudo-index cohort comprised 322,409 individuals",
+        "reason": "Methods, Control cohort and pseudo-index assignment. The paper states the full pseudo-index cohort size was 322,409."
+      },
+      {
+        "id": 15,
+        "text": "The primary three-year pre-index analysis included 297,861 participants.",
+        "poster_quote": "The primary three-year pre-index analysis included 297,861 participants",
+        "label": "supported",
+        "paper_evidence": "The primary analysis used a three-year pre-index window (N = 297,861; 33,088 cases, 11.1%).",
+        "reason": "Methods, Biomarker Selection and Observation Windows. The paper states that the primary three-year pre-index analysis included 297,861 participants."
+      },
+      {
+        "id": 16,
+        "text": "The primary three-year pre-index analysis included 33,088 cases.",
+        "poster_quote": "of whom 33,088 were cases",
+        "label": "supported",
+        "paper_evidence": "The primary analysis used a three-year pre-index window (N = 297,861; 33,088 cases, 11.1%).",
+        "reason": "Methods, Biomarker Selection and Observation Windows. The paper states that the primary analysis included 33,088 cases."
+      },
+      {
+        "id": 17,
+        "text": "The primary three-year pre-index analysis had an 11.1% prevalence of cases.",
+        "poster_quote": "corresponding to 11.1% prevalence.",
+        "label": "supported",
+        "paper_evidence": "The primary analysis used a three-year pre-index window (N = 297,861; 33,088 cases, 11.1%).",
+        "reason": "Methods, Biomarker Selection and Observation Windows. The paper states that the primary analysis had an 11.1% case prevalence."
+      },
+      {
+        "id": 18,
+        "text": "All measurements on or after the index date were excluded to prevent leakage.",
+        "poster_quote": "All measurements on or after the index date were excluded to prevent leakage.",
+        "label": "supported",
+        "paper_evidence": "All measurements on or after the index date were excluded to prevent data leakage.",
+        "reason": "Methods, Biomarker Selection and Observation Windows. The paper states that measurements on or after the index date were excluded to prevent data leakage."
+      },
+      {
+        "id": 19,
+        "text": "ICD-10-coded outcomes represent documented clinical recognition rather than objective functional performance and may introduce detection bias.",
+        "poster_quote": "ICD-10-coded outcomes represent documented clinical recognition rather than objective functional performance and may introduce detection bias.",
+        "label": "supported",
+        "paper_evidence": "ICD-10-coded outcomes capture documented recognition rather than objective functional performance, introducing potential detection bias.",
+        "reason": "Discussion, Limitations. The paper states that ICD-10-coded outcomes capture documented recognition rather than objective performance, introducing potential detection bias."
+      },
+      {
+        "id": 20,
+        "text": "C-reactive protein and vitamin D were selectively ordered and highly sparse.",
+        "poster_quote": "C-reactive protein and vitamin D were selectively ordered and highly sparse.",
+        "label": "supported",
+        "paper_evidence": "CRP and 25-hydroxyvitamin D contribute a limited trajectory signal due to selective ordering (82%–98% and 80%–88% missing, respectively)",
+        "reason": "Discussion, Limitations. The paper states that CRP and vitamin D had high missingness due to selective ordering."
+      },
+      {
+        "id": 21,
+        "text": "Median imputation may not represent the clinical context of missing values.",
+        "poster_quote": "Median imputation may not represent the clinical context of missing values.",
+        "label": "supported",
+        "paper_evidence": "Median imputation assigns a population-level central value regardless of clinical context",
+        "reason": "Discussion, Limitations. The paper states that median imputation assigns a population-level central value regardless of clinical context."
+      },
+      {
+        "id": 22,
+        "text": "Evaluations used random cross-sectional splits rather than calendar-time validation.",
+        "poster_quote": "Evaluations used random cross-sectional splits rather than calendar-time validation",
+        "label": "supported",
+        "paper_evidence": "All evaluations use cross-sectional random splits; calendar-time validation would strengthen temporal generalizability evidence.",
+        "reason": "Discussion, Limitations. The paper states that evaluations used cross-sectional random splits rather than calendar-time validation."
+      },
+      {
+        "id": 23,
+        "text": "Comorbidity adjustment was not performed.",
+        "poster_quote": "and comorbidity adjustment was not performed.",
+        "label": "supported",
+        "paper_evidence": "Comorbidity adjustment was not performed.",
+        "reason": "Discussion, Limitations. The paper explicitly states that comorbidity adjustment was not performed."
+      },
+      {
+        "id": 24,
+        "text": "The model may capture some known disease trajectories in addition to pre-clinical decline.",
+        "poster_quote": "The model may therefore capture some known disease trajectories in addition to pre-clinical decline.",
+        "label": "supported",
+        "paper_evidence": "The model may partially capture known disease trajectories rather than purely pre-clinical signals.",
+        "reason": "Discussion, Limitations. The paper states that the model may partially capture known disease trajectories."
+      },
+      {
+        "id": 25,
+        "text": "External validation is required in independent health systems and against objective outcomes such as gait speed, physical performance batteries, or prospective fall events.",
+        "poster_quote": "External validation is required in independent health systems and against objective outcomes such as gait speed, physical performance batteries, or prospective fall events.",
+        "label": "unsupported",
+        "paper_evidence": "",
+        "reason": "Discussion, Limitations. The paper mentions validation against objective functional endpoints such as gait speed or SPPB, but does not mention 'prospective fall events' as an objective outcome for external validation."
+      },
+      {
+        "id": 26,
+        "text": "Prediction horizon analyses excluded measurements closest to the index date to simulate prospective screening before clinical recognition.",
+        "poster_quote": "Prediction horizon analyses excluded measurements closest to the index date to simulate prospective screening before clinical recognition.",
+        "label": "supported",
+        "paper_evidence": "To evaluate the temporal lead time available for early detection, we assessed model discrimination when laboratory measurements within 3, 6, 9, and 12 months of the index date were excluded. This design simulates prospective screening where predictions must be made before clinical recognition of mobility decline.",
+        "reason": "Results, Prediction horizon analysis. The paper states that the prediction horizon analysis excluded measurements within 3, 6, 9, and 12 months to simulate prospective screening."
+      },
+      {
+        "id": 27,
+        "text": "Trajectory models maintained substantial discrimination when data from the final 3, 6, 9, or 12 months were removed.",
+        "poster_quote": "Trajectory models maintained substantial discrimination when data from the final 3, 6, 9, or 12 months were removed.",
+        "label": "supported",
+        "paper_evidence": "Trajectory-based models maintained substantial discrimination across all horizons.",
+        "reason": "Results, Prediction horizon analysis. The paper states that trajectory models maintained substantial discrimination across all horizons."
+      },
+      {
+        "id": 28,
+        "text": "At 3 months, AUROC was 0.768.",
+        "poster_quote": "At 3 months, AUROC was 0.768",
+        "label": "supported",
+        "paper_evidence": "3 months | 0.768",
+        "reason": "Results, Table 2. The table shows that at 3 months, the AUROC was 0.768."
+      },
+      {
+        "id": 29,
+        "text": "At 3 months, AUPRC was 0.361.",
+        "poster_quote": "and AUPRC was 0.361.",
+        "label": "supported",
+        "paper_evidence": "3 months | 0.768 | 0.361",
+        "reason": "Results, Table 2. The table shows that at 3 months, the AUPRC was 0.361."
+      },
+      {
+        "id": 30,
+        "text": "At 6 months, AUROC was 0.756.",
+        "poster_quote": "At 6 months, AUROC was 0.756",
+        "label": "supported",
+        "paper_evidence": "6 months | 0.756",
+        "reason": "Results, Table 2. The table shows that at 6 months, the AUROC was 0.756."
+      },
+      {
+        "id": 31,
+        "text": "At 6 months, AUPRC was 0.358.",
+        "poster_quote": "and AUPRC was 0.358.",
+        "label": "supported",
+        "paper_evidence": "6 months | 0.756 | 0.358",
+        "reason": "Results, Table 2. The table shows that at 6 months, the AUPRC was 0.358."
+      },
+      {
+        "id": 32,
+        "text": "At 9 months, AUROC was 0.748.",
+        "poster_quote": "At 9 months, AUROC was 0.748",
+        "label": "supported",
+        "paper_evidence": "9 months | 0.748",
+        "reason": "Results, Table 2. The table shows that at 9 months, the AUROC was 0.748."
+      },
+      {
+        "id": 33,
+        "text": "At 9 months, AUPRC was 0.355.",
+        "poster_quote": "and AUPRC was 0.355.",
+        "label": "supported",
+        "paper_evidence": "9 months | 0.748 | 0.355",
+        "reason": "Results, Table 2. The table shows that at 9 months, the AUPRC was 0.355."
+      },
+      {
+        "id": 34,
+        "text": "At 12 months, AUROC remained 0.740.",
+        "poster_quote": "At 12 months, AUROC remained 0.740",
+        "label": "supported",
+        "paper_evidence": "12 months | 0.740",
+        "reason": "Results, Table 2. The table shows that at 12 months, the AUROC was 0.740."
+      },
+      {
+        "id": 35,
+        "text": "At 12 months, AUPRC remained 0.353.",
+        "poster_quote": "and AUPRC remained 0.353.",
+        "label": "supported",
+        "paper_evidence": "12 months | 0.740 | 0.353",
+        "reason": "Results, Table 2. The table shows that at 12 months, the AUPRC was 0.353."
+      },
+      {
+        "id": 36,
+        "text": "Isotonic calibration reduced the Brier score from 0.174 to 0.083.",
+        "poster_quote": "Isotonic calibration reduced the Brier score from 0.174 to 0.083",
+        "label": "supported",
+        "paper_evidence": "Isotonic calibration reduced Brier score from 0.174 to 0.083 (52.3% improvement)",
+        "reason": "Results, Sensitivity analyses and calibration. The paper states that isotonic calibration reduced the Brier score from 0.174 to 0.083."
+      },
+      {
+        "id": 37,
+        "text": "Isotonic calibration achieved a 52.3% improvement in Brier score.",
+        "poster_quote": "a 52.3% improvement",
+        "label": "supported",
+        "paper_evidence": "Isotonic calibration reduced Brier score from 0.174 to 0.083 (52.3% improvement)",
+        "reason": "Results, Sensitivity analyses and calibration. The paper states that isotonic calibration achieved a 52.3% improvement in Brier score."
+      },
+      {
+        "id": 38,
+        "text": "Isotonic calibration preserved discrimination at AUROC 0.796 versus 0.797 before calibration.",
+        "poster_quote": "while preserving discrimination at AUROC 0.796 versus 0.797 before calibration.",
+        "label": "supported",
+        "paper_evidence": "without degrading discrimination (AUROC 0.797 vs. 0.796; Figure 4).",
+        "reason": "Results, Sensitivity analyses and calibration. The paper states that discrimination was preserved at AUROC 0.796 versus 0.797."
+      },
+      {
+        "id": 39,
+        "text": "At a risk threshold of 0.20, the trajectory model achieved a net reclassification improvement of 0.077 over baseline.",
+        "poster_quote": "At risk thresholds of 0.20 and 0.25, the trajectory model achieved net reclassification improvements of 0.077 and 0.124 over baseline.",
+        "label": "supported",
+        "paper_evidence": "At risk thresholds of 0.20 and 0.25, the trajectory model achieved NRI of 0.077 and 0.124 over baseline",
+        "reason": "Results, Sensitivity analyses and calibration. The paper states that at a risk threshold of 0.20, the model achieved an NRI of 0.077."
+      },
+      {
+        "id": 40,
+        "text": "At a risk threshold of 0.25, the trajectory model achieved a net reclassification improvement of 0.124 over baseline.",
+        "poster_quote": "At risk thresholds of 0.20 and 0.25, the trajectory model achieved net reclassification improvements of 0.077 and 0.124 over baseline.",
+        "label": "supported",
+        "paper_evidence": "At risk thresholds of 0.20 and 0.25, the trajectory model achieved NRI of 0.077 and 0.124 over baseline",
+        "reason": "Results, Sensitivity analyses and calibration. The paper states that at a risk threshold of 0.25, the model achieved an NRI of 0.124."
+      },
+      {
+        "id": 41,
+        "text": "Gains were concentrated in improved specificity among participants without events, indicating fewer unnecessary risk flags.",
+        "poster_quote": "Gains were concentrated in improved specificity among participants without events, indicating fewer unnecessary risk flags.",
+        "label": "supported",
+        "paper_evidence": "with gains concentrated in improved specificity among non-events (NRInonevents = 0.091 and 0.153), indicating reduced unnecessary risk flagging.",
+        "reason": "Section \"Sensitivity analyses and calibration\", page 7."
+      },
+      {
+        "id": 42,
+        "text": "Longitudinal trajectories from twelve routine biomarkers predicted functional mobility decline more accurately than static laboratory summaries.",
+        "poster_quote": "Longitudinal trajectories from twelve routine biomarkers predicted functional mobility decline more accurately than static laboratory summaries.",
+        "label": "supported",
+        "paper_evidence": "We demonstrate that longitudinal biomarker trajectories from twelve routine measurements significantly improve prediction of functional mobility decline compared with static summaries (AUROC 0.797 vs. 0.755; AUPRC 0.380 vs. 0.304; p < 0.001).",
+        "reason": "Section \"Discussion\", page 7."
+      },
+      {
+        "id": 43,
+        "text": "The trajectory model achieved AUROC 0.797 versus 0.755 for baseline laboratory means.",
+        "poster_quote": "The trajectory model achieved AUROC 0.797 versus 0.755 and AUPRC 0.380 versus 0.304 for baseline laboratory means.",
+        "label": "supported",
+        "paper_evidence": "LightGBM models incorporating trajectories significantly outperformed static laboratory summaries (AUROC 0.797 vs. 0.755; DeLong p < 0.001; AUPRC 0.380 vs. 0.304).",
+        "reason": "Abstract, page 1, and Table 1, page 5."
+      },
+      {
+        "id": 44,
+        "text": "The trajectory model achieved AUPRC 0.380 versus 0.304 for baseline laboratory means.",
+        "poster_quote": "The trajectory model achieved AUROC 0.797 versus 0.755 and AUPRC 0.380 versus 0.304 for baseline laboratory means.",
+        "label": "supported",
+        "paper_evidence": "LightGBM models incorporating trajectories significantly outperformed static laboratory summaries (AUROC 0.797 vs. 0.755; DeLong p < 0.001; AUPRC 0.380 vs. 0.304).",
+        "reason": "Abstract, page 1, and Table 1, page 5."
+      },
+      {
+        "id": 45,
+        "text": "Age- and sex-matched analysis confirmed an independent trajectory signal with AUROC 0.727.",
+        "poster_quote": "Age- and sex-matched analysis confirmed an independent trajectory signal with AUROC 0.727",
+        "label": "supported",
+        "paper_evidence": "A 1:1 age- and sex-matched analysis confirmed an independent trajectory signal (AUROC 0.727 vs. demographics-only 0.680).",
+        "reason": "Abstract, page 1, and Table 1, page 5."
+      },
+      {
+        "id": 46,
+        "text": "Removal of utilization-proxy count features preserved AUROC 0.789.",
+        "poster_quote": "while removal of utilization-proxy count features preserved AUROC 0.789.",
+        "label": "supported",
+        "paper_evidence": "Removing count features yielded AUROC 0.789 (0.786–0.791), a reduction of 0.009 (DeLong p < 0.001).",
+        "reason": "Section \"Sensitivity analyses and calibration\", page 7."
+      },
+      {
+        "id": 47,
+        "text": "Predictive information remained detectable up to 12 months before diagnosis.",
+        "poster_quote": "Predictive information remained detectable up to 12 months before diagnosis.",
+        "label": "supported",
+        "paper_evidence": "A horizon analysis demonstrated sustained prediction 3–12 months before decline onset (AUROC 0.768–0.740).",
+        "reason": "Abstract, page 1, and Table 2, page 6."
+      },
+      {
+        "id": 48,
+        "text": "Routine biomarker trajectories can function as a passive, zero-burden digital biomarker for early functional decline, enabling preventive intervention before falls or observable mobility impairment occur.",
+        "poster_quote": "Routine biomarker trajectories can function as a passive, zero-burden digital biomarker for early functional decline, enabling preventive intervention before falls or observable mobility impairment occur.",
+        "label": "supported",
+        "paper_evidence": "Because the model uses only measurements already ordered in routine care, it supports passive, zero-burden EHR integration for early detection of pre-clinical functional decline.",
+        "reason": "Abstract, page 1."
+      },
+      {
+        "id": 49,
+        "text": "The gradual decline in performance demonstrates that routine biomarker trajectories contain detectable risk signals up to one year before functional decline is documented.",
+        "poster_quote": "The gradual decline in performance demonstrates that routine biomarker trajectories contain detectable risk signals up to one year before functional decline is documented.",
+        "label": "supported",
+        "paper_evidence": "AUROC declined gradually from 0.768 at the 3-month horizon to 0.740 at the 12-month horizon, demonstrating that biomarker trajectories contain predictive signal up to one year before diagnosis (Table 2).",
+        "reason": "Section \"Prediction horizon analysis\", page 6."
+      },
+      {
+        "id": 50,
+        "text": "This interval represents a clinically meaningful opportunity for physical therapy referral, fall-prevention programs, medication review, or comprehensive geriatric assessment.",
+        "poster_quote": "This interval represents a clinically meaningful opportunity for physical therapy referral, fall-prevention programs, medication review, or comprehensive geriatric assessment.",
+        "label": "unsupported",
+        "paper_evidence": "",
+        "reason": "The paper does not mention \"medication review\" as an intervention or opportunity."
+      },
+      {
+        "id": 51,
+        "text": "Table 2 shows prediction horizon performance using trajectory features, where measurements within the specified horizon prior to the index date were excluded.",
+        "poster_quote": "Table 2: Prediction horizon performance using trajectory features. Measurements within the specified horizon prior to the index date were excluded.",
+        "label": "supported",
+        "paper_evidence": "Table 2: Prediction horizon performance using trajectory features. Measurements within the specified horizon prior to the index date were excluded.",
+        "reason": "Table 2 caption, page 6."
+      },
+      {
+        "id": 52,
+        "text": "Temporal information produced stepwise improvements in discrimination.",
+        "poster_quote": "Temporal information produced stepwise improvements in discrimination.",
+        "label": "supported",
+        "paper_evidence": "A stepwise improvement emerged as temporal information was added.",
+        "reason": "Section \"Trajectory Features Improve Discrimination\", page 5."
+      },
+      {
+        "id": 53,
+        "text": "Demographics alone achieved AUROC 0.680.",
+        "poster_quote": "Demographics alone achieved AUROC 0.680",
+        "label": "supported",
+        "paper_evidence": "Demographics alone achieved AUROC 0.680 (95% CI: 0.677–0.683).",
+        "reason": "Section \"Trajectory Features Improve Discrimination\", page 5, and Table 1, page 5."
+      },
+      {
+        "id": 54,
+        "text": "Demographics alone achieved AUPRC 0.204.",
+        "poster_quote": "and AUPRC 0.204.",
+        "label": "supported",
+        "paper_evidence": "Demographics only | LGB | 0.680 | [0.677–0.683] | 0.204",
+        "reason": "Table 1, page 5."
+      },
+      {
+        "id": 55,
+        "text": "Baseline laboratory means achieved AUROC 0.755.",
+        "poster_quote": "Baseline laboratory means achieved AUROC 0.755",
+        "label": "supported",
+        "paper_evidence": "Baseline laboratory means improved to 0.755 (0.752–0.757).",
+        "reason": "Section \"Trajectory Features Improve Discrimination\", page 5, and Table 1, page 5."
+      },
+      {
+        "id": 56,
+        "text": "Baseline laboratory means achieved AUPRC 0.304.",
+        "poster_quote": "and AUPRC 0.304.",
+        "label": "supported",
+        "paper_evidence": "Baseline labs (3yr) | LGB | 0.755 | [0.752–0.757] | 0.304",
+        "reason": "Table 1, page 5."
+      },
+      {
+        "id": 57,
+        "text": "The LightGBM trajectory model achieved AUROC 0.797.",
+        "poster_quote": "The LightGBM trajectory model achieved AUROC 0.797",
+        "label": "supported",
+        "paper_evidence": "Trajectory (3yr) | LGB | 0.797 | [0.794–0.800] | 0.380",
+        "reason": "Table 1, page 5."
+      },
+      {
+        "id": 58,
+        "text": "The LightGBM trajectory model achieved a 95% confidence interval of 0.794–0.800 for AUROC.",
+        "poster_quote": "with a 95% confidence interval of 0.794–0.800",
+        "label": "supported",
+        "paper_evidence": "Trajectory (3yr) | LGB | 0.797 | [0.794–0.800] | 0.380",
+        "reason": "Table 1, page 5."
+      },
+      {
+        "id": 59,
+        "text": "The LightGBM trajectory model achieved AUPRC 0.380.",
+        "poster_quote": "and AUPRC 0.380.",
+        "label": "supported",
+        "paper_evidence": "Trajectory (3yr) | LGB | 0.797 | [0.794–0.800] | 0.380",
+        "reason": "Table 1, page 5."
+      },
+      {
+        "id": 60,
+        "text": "The AUROC improvement over baseline was 0.042.",
+        "poster_quote": "The AUROC improvement over baseline was 0.042",
+        "label": "supported",
+        "paper_evidence": "Trajectory features reached 0.797 (0.794–0.800), a significant gain over baseline (∆AUC = 0.042; DeLong p < 0.001).",
+        "reason": "Section \"Trajectory Features Improve Discrimination\", page 5."
+      },
+      {
+        "id": 61,
+        "text": "The AUROC improvement over baseline was statistically significant at p < 0.001.",
+        "poster_quote": "and statistically significant at p < 0.001.",
+        "label": "supported",
+        "paper_evidence": "Trajectory features reached 0.797 (0.794–0.800), a significant gain over baseline (∆AUC = 0.042; DeLong p < 0.001).",
+        "reason": "Section \"Trajectory Features Improve Discrimination\", page 5."
+      },
+      {
+        "id": 62,
+        "text": "Trajectory AUPRC improved by 25% relative to baseline.",
+        "poster_quote": "Trajectory AUPRC improved by 25% relative to baseline",
+        "label": "supported",
+        "paper_evidence": "Trajectory AUPRC was 0.380 versus 0.304 for baseline - a 25% relative improvement and 3.4× the no-skill rate of 0.111 (Figure 2).",
+        "reason": "Section \"Trajectory Features Improve Discrimination\", page 5."
+      },
+      {
+        "id": 63,
+        "text": "Trajectory AUPRC reached approximately 3.4 times the no-skill rate of 0.111.",
+        "poster_quote": "and reached approximately 3.4 times the no-skill rate of 0.111.",
+        "label": "supported",
+        "paper_evidence": "Trajectory AUPRC was 0.380 versus 0.304 for baseline - a 25% relative improvement and 3.4× the no-skill rate of 0.111 (Figure 2).",
+        "reason": "Section \"Trajectory Features Improve Discrimination\", page 5."
+      },
+      {
+        "id": 64,
+        "text": "The larger gain in AUPRC than AUROC indicates improved identification of true cases at clinically relevant precision levels, an important property for limiting alert fatigue.",
+        "poster_quote": "The larger gain in AUPRC than AUROC indicates improved identification of true cases at clinically relevant precision levels, an important property for limiting alert fatigue.",
+        "label": "supported",
+        "paper_evidence": "The larger relative AUPRC gain (+0.076) than AUROC gain (+0.042) indicates that trajectories disproportionately improve positive-class detection at high-precision operating points - critical for alert systems where false positives drive clinician fatigue.",
+        "reason": "Section \"Trajectory Features Improve Discrimination\", page 5."
+      },
+      {
+        "id": 65,
+        "text": "Among trajectory models, logistic regression achieved AUROC 0.726.",
+        "poster_quote": "Among trajectory models, logistic regression achieved AUROC 0.726",
+        "label": "supported",
+        "paper_evidence": "Trajectory (3yr) | LR | 0.726",
+        "reason": "Table 1, page 5."
+      },
+      {
+        "id": 66,
+        "text": "Among trajectory models, random forest achieved AUROC 0.775.",
+        "poster_quote": "random forest 0.775",
+        "label": "supported",
+        "paper_evidence": "Trajectory (3yr) | RF | 0.775",
+        "reason": "Table 1, page 5."
+      },
+      {
+        "id": 67,
+        "text": "Among trajectory models, XGBoost achieved AUROC 0.795.",
+        "poster_quote": "XGBoost 0.795",
+        "label": "supported",
+        "paper_evidence": "Trajectory (3yr) | XGB | 0.795",
+        "reason": "Table 1, page 5."
+      },
+      {
+        "id": 68,
+        "text": "Among trajectory models, LightGBM achieved AUROC 0.797.",
+        "poster_quote": "and LightGBM 0.797.",
+        "label": "supported",
+        "paper_evidence": "Trajectory (3yr) | LGB | 0.797",
+        "reason": "Table 1, page 5."
+      },
+      {
+        "id": 69,
+        "text": "Gradient boosting provided the strongest performance while demonstrating that longitudinal descriptors improved prediction across multiple model classes.",
+        "poster_quote": "Thus, gradient boosting provided the strongest performance while demonstrating that longitudinal descriptors improved prediction across multiple model classes.",
+        "label": "unsupported",
+        "paper_evidence": "",
+        "reason": "The paper does not explicitly state that gradient boosting provided the strongest performance or that longitudinal descriptors improved prediction across multiple model classes."
+      },
+      {
+        "id": 70,
+        "text": "Table 1 reports model performance using a 3-year window, 5-fold CV, OOF, with N = 297,861 and 11.1% cases.",
+        "poster_quote": "Table 1: Model performance (3-year window, 5-fold CV, OOF; N = 297,861; 11.1% cases).",
+        "label": "supported",
+        "paper_evidence": "Table 1: Model performance (3-year window, 5-fold CV, OOF; N = 297,861; 11.1% cases).",
+        "reason": "Table 1 caption, page 5."
+      },
+      {
+        "id": 71,
+        "text": "Table 1 reports Bootstrap 95% CI and AUPRC for LightGBM.",
+        "poster_quote": "Bootstrap 95% CI and AUPRC reported for LightGBM.",
+        "label": "supported",
+        "paper_evidence": "Bootstrap 95% CI and AUPRC reported for LightGBM.",
+        "reason": "Table 1 caption, page 5."
+      },
+      {
+        "id": 72,
+        "text": "Figure 4 shows calibration curves.",
+        "poster_quote": "Figure 4: Calibration curves.",
+        "label": "supported",
+        "paper_evidence": "Figure 4: Calibration curves.",
+        "reason": "Figure 4 caption, page 7."
+      },
+      {
+        "id": 73,
+        "text": "Isotonic regression substantially improves reliability (Brier 0.083 vs. 0.174) with AUC preserved.",
+        "poster_quote": "Isotonic regression substantially improves reliability (Brier 0.083 vs. 0.174) with AUC preserved.",
+        "label": "supported",
+        "paper_evidence": "Isotonic regression substantially improves reliability (Brier 0.083 vs. 0.174) with AUC preserved.",
+        "reason": "Figure 4 caption, page 7."
+      },
+      {
+        "id": 74,
+        "text": "Cases had lower missingness than controls for every biomarker, demonstrating informative observation in EHR data.",
+        "poster_quote": "Cases had lower missingness than controls for every biomarker, demonstrating informative observation in EHR data.",
+        "label": "supported",
+        "paper_evidence": "Cases showed systematically lower missingness than controls across all biomarkers (Figure 1)",
+        "reason": "Section \"Study Population and Missingness\", page 4."
+      },
+      {
+        "id": 75,
+        "text": "The largest difference in missingness occurred for albumin, with 32.1% missing among cases versus 51.4% among controls.",
+        "poster_quote": "The largest differences occurred for albumin, with 32.1% missing among cases versus 51.4% among controls",
+        "label": "supported",
+        "paper_evidence": "with the largest differential for albumin (32.1% vs. 51.4%)",
+        "reason": "Section \"Study Population and Missingness\", page 4."
+      },
+      {
+        "id": 76,
+        "text": "The difference in missingness for hemoglobin was 21.3% among cases versus 37.0% among controls.",
+        "poster_quote": "and hemoglobin, with 21.3% versus 37.0%.",
+        "label": "supported",
+        "paper_evidence": "and hemoglobin (21.3% vs. 37.0%).",
+        "reason": "Section \"Study Population and Missingness\", page 4."
+      },
+      {
+        "id": 77,
+        "text": "C-reactive protein was one of the sparsest measures, with approximately 82%–98% missingness across variants.",
+        "poster_quote": "C-reactive protein and 25-hydroxyvitamin D were the sparsest measures, with approximately 82%–98% and 80%–88% missingness across variants.",
+        "label": "supported",
+        "paper_evidence": "CRP (82%–98% missing across variants) and 25-hydroxyvitamin D (80%–88%) exhibited the greatest overall sparsity, limiting their trajectory signal.",
+        "reason": "Section \"Study Population and Missingness\", page 4."
+      },
+      {
+        "id": 78,
+        "text": "25-hydroxyvitamin D was one of the sparsest measures, with approximately 80%–88% missingness across variants.",
+        "poster_quote": "C-reactive protein and 25-hydroxyvitamin D were the sparsest measures, with approximately 82%–98% and 80%–88% missingness across variants.",
+        "label": "supported",
+        "paper_evidence": "CRP (82%–98% missing across variants) and 25-hydroxyvitamin D (80%–88%) exhibited the greatest overall sparsity, limiting their trajectory signal.",
+        "reason": "Section \"Study Population and Missingness\", page 4."
+      },
+      {
+        "id": 79,
+        "text": "Frequent measurement acts as both a utilization signal and a potential confounder.",
+        "poster_quote": "Frequent measurement therefore acts as both a utilization signal and a potential confounder.",
+        "label": "supported",
+        "paper_evidence": "Informative observation as confounder and signal.",
+        "reason": "Section \"Informative observation as confounder and signal\", page 8, and Section \"Study Population and Missingness\", page 4."
+      },
+      {
+        "id": 80,
+        "text": "Strong performance after count-feature removal indicates that physiologic trajectory features remain useful when monitoring frequency differs across populations or care settings.",
+        "poster_quote": "However, strong performance after count-feature removal indicates that physiologic trajectory features remain useful when monitoring frequency differs across populations or care settings.",
+        "label": "supported",
+        "paper_evidence": "While statistically significant due to large sample size, the magnitude confirms that the model primarily exploits physiologic dynamics. This is clinically important: it means the model performs comparably in settings with variable healthcare utilization, including safety-net hospitals and rural practices where measurement frequency does not reliably reflect disease severity.",
+        "reason": "Section \"Sensitivity analyses and calibration\", page 7."
+      },
+      {
+        "id": 81,
+        "text": "Figure 1 shows differential missingness by lab feature, stratified by outcome (3-year window).",
+        "poster_quote": "Figure 1: Differential missingness by lab feature, stratified by outcome (3-year window).",
+        "label": "supported",
+        "paper_evidence": "Figure 1: Differential missingness by lab feature, stratified by outcome (3-year window).",
+        "reason": "Figure 1 caption. The text matches the claim exactly."
+      },
+      {
+        "id": 82,
+        "text": "Cases show consistently lower missingness, consistent with informative observation in EHR data - patients developing functional impairment receive more frequent monitoring.",
+        "poster_quote": "Cases show consistently lower missingness, consistent with informative observation in EHR data - patients developing functional impairment receive more frequent monitoring.",
+        "label": "supported",
+        "paper_evidence": "Cases show consistently lower missingness, consistent with informative observation in EHR data - patients developing functional impairment receive more frequent monitoring.",
+        "reason": "Figure 1 caption. The text matches the claim exactly."
+      },
+      {
+        "id": 83,
+        "text": "Figure 2 shows precision-recall curves.",
+        "poster_quote": "Figure 2: Precision-recall curves.",
+        "label": "supported",
+        "paper_evidence": "Figure 2: Precision–recall curves.",
+        "reason": "Figure 2 caption. The text matches the claim exactly (with a standard hyphen instead of an en-dash)."
+      },
+      {
+        "id": 84,
+        "text": "The trajectory model (AP = 0.380) achieves 25% relative improvement over baseline (AP = 0.304).",
+        "poster_quote": "The trajectory model (AP = 0.380) achieves 25% relative improvement over baseline (AP = 0.304).",
+        "label": "supported",
+        "paper_evidence": "The trajectory model (AP = 0.380) achieves 25% relative improvement over baseline (AP = 0.304).",
+        "reason": "Figure 2 caption. The relative improvement is mathematically correct: (0.380 - 0.304) / 0.304 = 0.25 (25%)."
+      },
+      {
+        "id": 85,
+        "text": "Figure 2 has a dashed line representing 11.1% prevalence.",
+        "poster_quote": "Dashed line: 11.1% prevalence.",
+        "label": "supported",
+        "paper_evidence": "Dashed line: 11.1% prevalence.",
+        "reason": "Figure 2 caption. The text matches the claim exactly."
+      }
+    ]
+  },
+  "raw": "[\"```json\\n{\\n  \\\"claims\\\": [\\n    {\\n      \\\"id\\\": 1,\\n      \\\"text\\\": \\\"Functional decline is often recognized only after a fall or observable gait impairment, when the prevention window has narrowed.\\\",\\n      \\\"poster_quote\\\": \\\"Functional decline is often recognized only after a fall or observable gait impairment, when the prevention window has narrowed.\\\"\\n    },\\n    {\\n      \\\"id\\\": 2,\\n      \\\"text\\\": \\\"Routine laboratory and vital-sign measurements may show gradual deterioration long before individual values become clinically abnormal.\\\",\\n      \\\"poster_quote\\\": \\\"Routine laboratory and vital-sign measurements may show gradual deterioration long before individual values become clinically abnormal.\\\"\\n    },\\n    {\\n      \\\"id\\\": 3,\\n      \\\"text\\\": \\\"A stable hemoglobin of 11.5 g/dL may indicate different risk from a value that declined from 13.5 g/dL over three years, although both appear identical at a single visit.\\\",\\n      \\\"poster_quote\\\": \\\"A stable hemoglobin of 11.5 g/dL may indicate different risk from a value that declined from 13.5 g/dL over three years, although both appear identical at a single visit.\\\"\\n    },\\n    {\\n      \\\"id\\\": 4,\\n      \\\"text\\\": \\\"Existing frailty and mobility tools require structured assessments, manual scoring, or dedicated patient interaction and generally capture only one timepoint.\\\",\\n      \\\"poster_quote\\\": \\\"Existing frailty and mobility tools require structured assessments, manual scoring, or dedicated patient interaction and generally capture only one timepoint.\\\"\\n    },\\n    {\\n      \\\"id\\\": 5,\\n      \\\"text\\\": \\\"Pathways leading to mobility decline leave measurable traces in routine data, including anemia-related fatigue, vitamin D deficiency, hyponatremia, glycemic dysregulation, sarcopenia, inflammation, and blood pressure instability.\\\",\\n      \\\"poster_quote\\\": \\\"Meanwhile, pathways leading to mobility decline leave measurable traces in routine data, including anemia-related fatigue, vitamin D deficiency, hyponatremia, glycemic dysregulation, sarcopenia, inflammation, and blood pressure instability.\\\"\\n    },\\n    {\\n      \\\"id\\\": 6,\\n      \\\"text\\\": \\\"This study tested whether longitudinal trajectories of routinely collected biomarkers can identify preclinical functional decline without using medication histories, diagnosis histories, functional assessments, or free-text records.\\\",\\n      \\\"poster_quote\\\": \\\"This study tested whether longitudinal trajectories of routinely collected biomarkers can identify preclinical functional decline without using medication histories, diagnosis histories, functional assessments, or free-text records.\\\"\\n    },\\n    {\\n      \\\"id\\\": 7,\\n      \\\"text\\\": \\\"The study used the All of Us Research Program Controlled Tier Dataset version 8, a longitudinal EHR repository harmonized to the OMOP Common Data Model.\\\",\\n      \\\"poster_quote\\\": \\\"We used the All of Us Research Program Controlled Tier Dataset version 8, a longitudinal EHR repository harmonized to the OMOP Common Data Model.\\\"\\n    },\\n    {\\n      \\\"id\\\": 8,\\n      \\\"text\\\": \\\"Eligible participants were aged 50–125 years, had available EHR data, and had at least one laboratory measurement.\\\",\\n      \\\"poster_quote\\\": \\\"Eligible participants were aged 50–125 years, had available EHR data, and had at least one laboratory measurement.\\\"\\n    },\\n    {\\n      \\\"id\\\": 9,\\n      \\\"text\\\": \\\"Participants with a recorded death were excluded.\\\",\\n      \\\"poster_quote\\\": \\\"Participants with a recorded death were excluded.\\\"\\n    },\\n    {\\n      \\\"id\\\": 10,\\n      \\\"text\\\": \\\"Mobility decline cases were identified using diagnoses for difficulty walking, gait and mobility abnormalities, unsteadiness, reduced mobility, generalized muscle weakness, and falls.\\\",\\n      \\\"poster_quote\\\": \\\"Mobility decline cases were identified using diagnoses for difficulty walking, gait and mobility abnormalities, unsteadiness, reduced mobility, generalized muscle weakness, and falls.\\\"\\n    },\\n    {\\n      \\\"id\\\": 11,\\n      \\\"text\\\": \\\"The earliest qualifying diagnosis defined the index date.\\\",\\n      \\\"poster_quote\\\": \\\"The earliest qualifying diagnosis defined the index date.\\\"\\n    },\\n    {\\n      \\\"id\\\": 12,\\n      \\\"text\\\": \\\"Controls had laboratory data but no qualifying diagnosis.\\\",\\n      \\\"poster_quote\\\": \\\"Controls had laboratory data but no qualifying diagnosis.\\\"\\n    },\\n    {\\n      \\\"id\\\": 13,\\n      \\\"text\\\": \\\"Each control received a pseudo-index date sampled within the individual laboratory observation window, preserving natural measurement histories while reducing immortal time bias.\\\",\\n      \\\"poster_quote\\\": \\\"Each control received a pseudo-index date sampled within the individual laboratory observation window, preserving natural measurement histories while reducing immortal time bias.\\\"\\n    },\\n    {\\n      \\\"id\\\": 14,\\n      \\\"text\\\": \\\"The full pseudo-index cohort included 322,409 participants.\\\",\\n      \\\"poster_quote\\\": \\\"The full pseudo-index cohort included 322,409 participants.\\\"\\n    },\\n    {\\n      \\\"id\\\": 15,\\n      \\\"text\\\": \\\"The primary three-year pre-index analysis included 297,861 participants.\\\",\\n      \\\"poster_quote\\\": \\\"The primary three-year pre-index analysis included 297,861 participants\\\"\\n    },\\n    {\\n      \\\"id\\\": 16,\\n      \\\"text\\\": \\\"The primary three-year pre-index analysis included 33,088 cases.\\\",\\n      \\\"poster_quote\\\": \\\"of whom 33,088 were cases\\\"\\n    },\\n    {\\n      \\\"id\\\": 17,\\n      \\\"text\\\": \\\"The primary three-year pre-index analysis had an 11.1% prevalence of cases.\\\",\\n      \\\"poster_quote\\\": \\\"corresponding to 11.1% prevalence.\\\"\\n    },\\n    {\\n      \\\"id\\\": 18,\\n      \\\"text\\\": \\\"All measurements on or after the index date were excluded to prevent leakage.\\\",\\n      \\\"poster_quote\\\": \\\"All measurements on or after the index date were excluded to prevent leakage.\\\"\\n    },\\n    {\\n      \\\"id\\\": 19,\\n      \\\"text\\\": \\\"ICD-10-coded outcomes represent documented clinical recognition rather than objective functional performance and may introduce detection bias.\\\",\\n      \\\"poster_quote\\\": \\\"ICD-10-coded outcomes represent documented clinical recognition rather than objective functional performance and may introduce detection bias.\\\"\\n    },\\n    {\\n      \\\"id\\\": 20,\\n      \\\"text\\\": \\\"C-reactive protein and vitamin D were selectively ordered and highly sparse.\\\",\\n      \\\"poster_quote\\\": \\\"C-reactive protein and vitamin D were selectively ordered and highly sparse.\\\"\\n    },\\n    {\\n      \\\"id\\\": 21,\\n      \\\"text\\\": \\\"Median imputation may not represent the clinical context of missing values.\\\",\\n      \\\"poster_quote\\\": \\\"Median imputation may not represent the clinical context of missing values.\\\"\\n    },\\n    {\\n      \\\"id\\\": 22,\\n      \\\"text\\\": \\\"Evaluations used random cross-sectional splits rather than calendar-time validation.\\\",\\n      \\\"poster_quote\\\": \\\"Evaluations used random cross-sectional splits rather than calendar-time validation\\\"\\n    },\\n    {\\n      \\\"id\\\": 23,\\n      \\\"text\\\": \\\"Comorbidity adjustment was not performed.\\\",\\n      \\\"poster_quote\\\": \\\"and comorbidity adjustment was not performed.\\\"\\n    },\\n    {\\n      \\\"id\\\": 24,\\n      \\\"text\\\": \\\"The model may capture some known disease trajectories in addition to pre-clinical decline.\\\",\\n      \\\"poster_quote\\\": \\\"The model may therefore capture some known disease trajectories in addition to pre-clinical decline.\\\"\\n    },\\n    {\\n      \\\"id\\\": 25,\\n      \\\"text\\\": \\\"External validation is required in independent health systems and against objective outcomes such as gait speed, physical performance batteries, or prospective fall events.\\\",\\n      \\\"poster_quote\\\": \\\"External validation is required in independent health systems and against objective outcomes such as gait speed, physical performance batteries, or prospective fall events.\\\"\\n    },\\n    {\\n      \\\"id\\\": 26,\\n      \\\"text\\\": \\\"Prediction horizon analyses excluded measurements closest to the index date to simulate prospective screening before clinical recognition.\\\",\\n      \\\"poster_quote\\\": \\\"Prediction horizon analyses excluded measurements closest to the index date to simulate prospective screening before clinical recognition.\\\"\\n    },\\n    {\\n      \\\"id\\\": 27,\\n      \\\"text\\\": \\\"Trajectory models maintained substantial discrimination when data from the final 3, 6, 9, or 12 months were removed.\\\",\\n      \\\"poster_quote\\\": \\\"Trajectory models maintained substantial discrimination when data from the final 3, 6, 9, or 12 months were removed.\\\"\\n    },\\n    {\\n      \\\"id\\\": 28,\\n      \\\"text\\\": \\\"At 3 months, AUROC was 0.768.\\\",\\n      \\\"poster_quote\\\": \\\"At 3 months, AUROC was 0.768\\\"\\n    },\\n    {\\n      \\\"id\\\": 29,\\n      \\\"text\\\": \\\"At 3 months, AUPRC was 0.361.\\\",\\n      \\\"poster_quote\\\": \\\"and AUPRC was 0.361.\\\"\\n    },\\n    {\\n      \\\"id\\\": 30,\\n      \\\"text\\\": \\\"At 6 months, AUROC was 0.756.\\\",\\n      \\\"poster_quote\\\": \\\"At 6 months, AUROC was 0.756\\\"\\n    },\\n    {\\n      \\\"id\\\": 31,\\n      \\\"text\\\": \\\"At 6 months, AUPRC was 0.358.\\\",\\n      \\\"poster_quote\\\": \\\"and AUPRC was 0.358.\\\"\\n    },\\n    {\\n      \\\"id\\\": 32,\\n      \\\"text\\\": \\\"At 9 months, AUROC was 0.748.\\\",\\n      \\\"poster_quote\\\": \\\"At 9 months, AUROC was 0.748\\\"\\n    },\\n    {\\n      \\\"id\\\": 33,\\n      \\\"text\\\": \\\"At 9 months, AUPRC was 0.355.\\\",\\n      \\\"poster_quote\\\": \\\"and AUPRC was 0.355.\\\"\\n    },\\n    {\\n      \\\"id\\\": 34,\\n      \\\"text\\\": \\\"At 12 months, AUROC remained 0.740.\\\",\\n      \\\"poster_quote\\\": \\\"At 12 months, AUROC remained 0.740\\\"\\n    },\\n    {\\n      \\\"id\\\": 35,\\n      \\\"text\\\": \\\"At 12 months, AUPRC remained 0.353.\\\",\\n      \\\"poster_quote\\\": \\\"and AUPRC remained 0.353.\\\"\\n    },\\n    {\\n      \\\"id\\\": 36,\\n      \\\"text\\\": \\\"Isotonic calibration reduced the Brier score from 0.174 to 0.083.\\\",\\n      \\\"poster_quote\\\": \\\"Isotonic calibration reduced the Brier score from 0.174 to 0.083\\\"\\n    },\\n    {\\n      \\\"id\\\": 37,\\n      \\\"text\\\": \\\"Isotonic calibration achieved a 52.3% improvement in Brier score.\\\",\\n      \\\"poster_quote\\\": \\\"a 52.3% improvement\\\"\\n    },\\n    {\\n      \\\"id\\\": 38,\\n      \\\"text\\\": \\\"Isotonic calibration preserved discrimination at AUROC 0.796 versus 0.797 before calibration.\\\",\\n      \\\"poster_quote\\\": \\\"while preserving discrimination at AUROC 0.796 versus 0.797 before calibration.\\\"\\n    },\\n    {\\n      \\\"id\\\": 39,\\n      \\\"text\\\": \\\"At a risk threshold of 0.20, the trajectory model achieved a net reclassification improvement of 0.077 over baseline.\\\",\\n      \\\"poster_quote\\\": \\\"At risk thresholds of 0.20 and 0.25, the trajectory model achieved net reclassification improvements of 0.077 and 0.124 over baseline.\\\"\\n    },\\n    {\\n      \\\"id\\\": 40,\\n      \\\"text\\\": \\\"At a risk threshold of 0.25, the trajectory model achieved a net reclassification improvement of 0.124 over baseline.\\\",\\n      \\\"poster_quote\\\": \\\"At risk thresholds of 0.20 and 0.25, the trajectory model achieved net reclassification improvements of 0.077 and 0.124 over baseline.\\\"\\n    },\\n    {\\n      \\\"id\\\": 41,\\n      \\\"text\\\": \\\"Gains were concentrated in improved specificity among participants without events, indicating fewer unnecessary risk flags.\\\",\\n      \\\"poster_quote\\\": \\\"Gains were concentrated in improved specificity among participants without events, indicating fewer unnecessary risk flags.\\\"\\n    },\\n    {\\n      \\\"id\\\": 42,\\n      \\\"text\\\": \\\"Longitudinal trajectories from twelve routine biomarkers predicted functional mobility decline more accurately than static laboratory summaries.\\\",\\n      \\\"poster_quote\\\": \\\"Longitudinal trajectories from twelve routine biomarkers predicted functional mobility decline more accurately than static laboratory summaries.\\\"\\n    },\\n    {\\n      \\\"id\\\": 43,\\n      \\\"text\\\": \\\"The trajectory model achieved AUROC 0.797 versus 0.755 for baseline laboratory means.\\\",\\n      \\\"poster_quote\\\": \\\"The trajectory model achieved AUROC 0.797 versus 0.755 and AUPRC 0.380 versus 0.304 for baseline laboratory means.\\\"\\n    },\\n    {\\n      \\\"id\\\": 44,\\n      \\\"text\\\": \\\"The trajectory model achieved AUPRC 0.380 versus 0.304 for baseline laboratory means.\\\",\\n      \\\"poster_quote\\\": \\\"The trajectory model achieved AUROC 0.797 versus 0.755 and AUPRC 0.380 versus 0.304 for baseline laboratory means.\\\"\\n    },\\n    {\\n      \\\"id\\\": 45,\\n      \\\"text\\\": \\\"Age- and sex-matched analysis confirmed an independent trajectory signal with AUROC 0.727.\\\",\\n      \\\"poster_quote\\\": \\\"Age- and sex-matched analysis confirmed an independent trajectory signal with AUROC 0.727\\\"\\n    },\\n    {\\n      \\\"id\\\": 46,\\n      \\\"text\\\": \\\"Removal of utilization-proxy count features preserved AUROC 0.789.\\\",\\n      \\\"poster_quote\\\": \\\"while removal of utilization-proxy count features preserved AUROC 0.789.\\\"\\n    },\\n    {\\n      \\\"id\\\": 47,\\n      \\\"text\\\": \\\"Predictive information remained detectable up to 12 months before diagnosis.\\\",\\n      \\\"poster_quote\\\": \\\"Predictive information remained detectable up to 12 months before diagnosis.\\\"\\n    },\\n    {\\n      \\\"id\\\": 48,\\n      \\\"text\\\": \\\"Routine biomarker trajectories can function as a passive, zero-burden digital biomarker for early functional decline, enabling preventive intervention before falls or observable mobility impairment occur.\\\",\\n      \\\"poster_quote\\\": \\\"Routine biomarker trajectories can function as a passive, zero-burden digital biomarker for early functional decline, enabling preventive intervention before falls or observable mobility impairment occur.\\\"\\n    },\\n    {\\n      \\\"id\\\": 49,\\n      \\\"text\\\": \\\"The gradual decline in performance demonstrates that routine biomarker trajectories contain detectable risk signals up to one year before functional decline is documented.\\\",\\n      \\\"poster_quote\\\": \\\"The gradual decline in performance demonstrates that routine biomarker trajectories contain detectable risk signals up to one year before functional decline is documented.\\\"\\n    },\\n    {\\n      \\\"id\\\": 50,\\n      \\\"text\\\": \\\"This interval represents a clinically meaningful opportunity for physical therapy referral, fall-prevention programs, medication review, or comprehensive geriatric assessment.\\\",\\n      \\\"poster_quote\\\": \\\"This interval represents a clinically meaningful opportunity for physical therapy referral, fall-prevention programs, medication review, or comprehensive geriatric assessment.\\\"\\n    },\\n    {\\n      \\\"id\\\": 51,\\n      \\\"text\\\": \\\"Table 2 shows prediction horizon performance using trajectory features, where measurements within the specified horizon prior to the index date were excluded.\\\",\\n      \\\"poster_quote\\\": \\\"Table 2: Prediction horizon performance using trajectory features. Measurements within the specified horizon prior to the index date were excluded.\\\"\\n    },\\n    {\\n      \\\"id\\\": 52,\\n      \\\"text\\\": \\\"Temporal information produced stepwise improvements in discrimination.\\\",\\n      \\\"poster_quote\\\": \\\"Temporal information produced stepwise improvements in discrimination.\\\"\\n    },\\n    {\\n      \\\"id\\\": 53,\\n      \\\"text\\\": \\\"Demographics alone achieved AUROC 0.680.\\\",\\n      \\\"poster_quote\\\": \\\"Demographics alone achieved AUROC 0.680\\\"\\n    },\\n    {\\n      \\\"id\\\": 54,\\n      \\\"text\\\": \\\"Demographics alone achieved AUPRC 0.204.\\\",\\n      \\\"poster_quote\\\": \\\"and AUPRC 0.204.\\\"\\n    },\\n    {\\n      \\\"id\\\": 55,\\n      \\\"text\\\": \\\"Baseline laboratory means achieved AUROC 0.755.\\\",\\n      \\\"poster_quote\\\": \\\"Baseline laboratory means achieved AUROC 0.755\\\"\\n    },\\n    {\\n      \\\"id\\\": 56,\\n      \\\"text\\\": \\\"Baseline laboratory means achieved AUPRC 0.304.\\\",\\n      \\\"poster_quote\\\": \\\"and AUPRC 0.304.\\\"\\n    },\\n    {\\n      \\\"id\\\": 57,\\n      \\\"text\\\": \\\"The LightGBM trajectory model achieved AUROC 0.797.\\\",\\n      \\\"poster_quote\\\": \\\"The LightGBM trajectory model achieved AUROC 0.797\\\"\\n    },\\n    {\\n      \\\"id\\\": 58,\\n      \\\"text\\\": \\\"The LightGBM trajectory model achieved a 95% confidence interval of 0.794–0.800 for AUROC.\\\",\\n      \\\"poster_quote\\\": \\\"with a 95% confidence interval of 0.794–0.800\\\"\\n    },\\n    {\\n      \\\"id\\\": 59,\\n      \\\"text\\\": \\\"The LightGBM trajectory model achieved AUPRC 0.380.\\\",\\n      \\\"poster_quote\\\": \\\"and AUPRC 0.380.\\\"\\n    },\\n    {\\n      \\\"id\\\": 60,\\n      \\\"text\\\": \\\"The AUROC improvement over baseline was 0.042.\\\",\\n      \\\"poster_quote\\\": \\\"The AUROC improvement over baseline was 0.042\\\"\\n    },\\n    {\\n      \\\"id\\\": 61,\\n      \\\"text\\\": \\\"The AUROC improvement over baseline was statistically significant at p < 0.001.\\\",\\n      \\\"poster_quote\\\": \\\"and statistically significant at p < 0.001.\\\"\\n    },\\n    {\\n      \\\"id\\\": 62,\\n      \\\"text\\\": \\\"Trajectory AUPRC improved by 25% relative to baseline.\\\",\\n      \\\"poster_quote\\\": \\\"Trajectory AUPRC improved by 25% relative to baseline\\\"\\n    },\\n    {\\n      \\\"id\\\": 63,\\n      \\\"text\\\": \\\"Trajectory AUPRC reached approximately 3.4 times the no-skill rate of 0.111.\\\",\\n      \\\"poster_quote\\\": \\\"and reached approximately 3.4 times the no-skill rate of 0.111.\\\"\\n    },\\n    {\\n      \\\"id\\\": 64,\\n      \\\"text\\\": \\\"The larger gain in AUPRC than AUROC indicates improved identification of true cases at clinically relevant precision levels, an important property for limiting alert fatigue.\\\",\\n      \\\"poster_quote\\\": \\\"The larger gain in AUPRC than AUROC indicates improved identification of true cases at clinically relevant precision levels, an important property for limiting alert fatigue.\\\"\\n    },\\n    {\\n      \\\"id\\\": 65,\\n      \\\"text\\\": \\\"Among trajectory models, logistic regression achieved AUROC 0.726.\\\",\\n      \\\"poster_quote\\\": \\\"Among trajectory models, logistic regression achieved AUROC 0.726\\\"\\n    },\\n    {\\n      \\\"id\\\": 66,\\n      \\\"text\\\": \\\"Among trajectory models, random forest achieved AUROC 0.775.\\\",\\n      \\\"poster_quote\\\": \\\"random forest 0.775\\\"\\n    },\\n    {\\n      \\\"id\\\": 67,\\n      \\\"text\\\": \\\"Among trajectory models, XGBoost achieved AUROC 0.795.\\\",\\n      \\\"poster_quote\\\": \\\"XGBoost 0.795\\\"\\n    },\\n    {\\n      \\\"id\\\": 68,\\n      \\\"text\\\": \\\"Among trajectory models, LightGBM achieved AUROC 0.797.\\\",\\n      \\\"poster_quote\\\": \\\"and LightGBM 0.797.\\\"\\n    },\\n    {\\n      \\\"id\\\": 69,\\n      \\\"text\\\": \\\"Gradient boosting provided the strongest performance while demonstrating that longitudinal descriptors improved prediction across multiple model classes.\\\",\\n      \\\"poster_quote\\\": \\\"Thus, gradient boosting provided the strongest performance while demonstrating that longitudinal descriptors improved prediction across multiple model classes.\\\"\\n    },\\n    {\\n      \\\"id\\\": 70,\\n      \\\"text\\\": \\\"Table 1 reports model performance using a 3-year window, 5-fold CV, OOF, with N = 297,861 and 11.1% cases.\\\",\\n      \\\"poster_quote\\\": \\\"Table 1: Model performance (3-year window, 5-fold CV, OOF; N = 297,861; 11.1% cases).\\\"\\n    },\\n    {\\n      \\\"id\\\": 71,\\n      \\\"text\\\": \\\"Table 1 reports Bootstrap 95% CI and AUPRC for LightGBM.\\\",\\n      \\\"poster_quote\\\": \\\"Bootstrap 95% CI and AUPRC reported for LightGBM.\\\"\\n    },\\n    {\\n      \\\"id\\\": 72,\\n      \\\"text\\\": \\\"Figure 4 shows calibration curves.\\\",\\n      \\\"poster_quote\\\": \\\"Figure 4: Calibration curves.\\\"\\n    },\\n    {\\n      \\\"id\\\": 73,\\n      \\\"text\\\": \\\"Isotonic regression substantially improves reliability (Brier 0.083 vs. 0.174) with AUC preserved.\\\",\\n      \\\"poster_quote\\\": \\\"Isotonic regression substantially improves reliability (Brier 0.083 vs. 0.174) with AUC preserved.\\\"\\n    },\\n    {\\n      \\\"id\\\": 74,\\n      \\\"text\\\": \\\"Cases had lower missingness than controls for every biomarker, demonstrating informative observation in EHR data.\\\",\\n      \\\"poster_quote\\\": \\\"Cases had lower missingness than controls for every biomarker, demonstrating informative observation in EHR data.\\\"\\n    },\\n    {\\n      \\\"id\\\": 75,\\n      \\\"text\\\": \\\"The largest difference in missingness occurred for albumin, with 32.1% missing among cases versus 51.4% among controls.\\\",\\n      \\\"poster_quote\\\": \\\"The largest differences occurred for albumin, with 32.1% missing among cases versus 51.4% among controls\\\"\\n    },\\n    {\\n      \\\"id\\\": 76,\\n      \\\"text\\\": \\\"The difference in missingness for hemoglobin was 21.3% among cases versus 37.0% among controls.\\\",\\n      \\\"poster_quote\\\": \\\"and hemoglobin, with 21.3% versus 37.0%.\\\"\\n    },\\n    {\\n      \\\"id\\\": 77,\\n      \\\"text\\\": \\\"C-reactive protein was one of the sparsest measures, with approximately 82%–98% missingness across variants.\\\",\\n      \\\"poster_quote\\\": \\\"C-reactive protein and 25-hydroxyvitamin D were the sparsest measures, with approximately 82%–98% and 80%–88% missingness across variants.\\\"\\n    },\\n    {\\n      \\\"id\\\": 78,\\n      \\\"text\\\": \\\"25-hydroxyvitamin D was one of the sparsest measures, with approximately 80%–88% missingness across variants.\\\",\\n      \\\"poster_quote\\\": \\\"C-reactive protein and 25-hydroxyvitamin D were the sparsest measures, with approximately 82%–98% and 80%–88% missingness across variants.\\\"\\n    },\\n    {\\n      \\\"id\\\": 79,\\n      \\\"text\\\": \\\"Frequent measurement acts as both a utilization signal and a potential confounder.\\\",\\n      \\\"poster_quote\\\": \\\"Frequent measurement therefore acts as both a utilization signal and a potential confounder.\\\"\\n    },\\n    {\\n      \\\"id\\\": 80,\\n      \\\"text\\\": \\\"Strong performance after count-feature removal indicates that physiologic trajectory features remain useful when monitoring frequency differs across populations or care settings.\\\",\\n      \\\"poster_quote\\\": \\\"However, strong performance after count-feature removal indicates that physiologic trajectory features remain useful when monitoring frequency differs across populations or care settings.\\\"\\n    },\\n    {\\n      \\\"id\\\": 81,\\n      \\\"text\\\": \\\"Figure 1 shows differential missingness by lab feature, stratified by outcome (3-year window).\\\",\\n      \\\"poster_quote\\\": \\\"Figure 1: Differential missingness by lab feature, stratified by outcome (3-year window).\\\"\\n    },\\n    {\\n      \\\"id\\\": 82,\\n      \\\"text\\\": \\\"Cases show consistently lower missingness, consistent with informative observation in EHR data - patients developing functional impairment receive more frequent monitoring.\\\",\\n      \\\"poster_quote\\\": \\\"Cases show consistently lower missingness, consistent with informative observation in EHR data - patients developing functional impairment receive more frequent monitoring.\\\"\\n    },\\n    {\\n      \\\"id\\\": 83,\\n      \\\"text\\\": \\\"Figure 2 shows precision-recall curves.\\\",\\n      \\\"poster_quote\\\": \\\"Figure 2: Precision-recall curves.\\\"\\n    },\\n    {\\n      \\\"id\\\": 84,\\n      \\\"text\\\": \\\"The trajectory model (AP = 0.380) achieves 25% relative improvement over baseline (AP = 0.304).\\\",\\n      \\\"poster_quote\\\": \\\"The trajectory model (AP = 0.380) achieves 25% relative improvement over baseline (AP = 0.304).\\\"\\n    },\\n    {\\n      \\\"id\\\": 85,\\n      \\\"text\\\": \\\"Figure 2 has a dashed line representing 11.1% prevalence.\\\",\\n      \\\"poster_quote\\\": \\\"Dashed line: 11.1% prevalence.\\\"\\n    }\\n  ]\\n}\\n```\", \"```json\\n{\\n  \\\"verdicts\\\": [\\n    {\\n      \\\"id\\\": 1,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Functional decline in older adults is typically recognized only after falls or observable gait impairment, closing the window for prevention.\\\",\\n      \\\"reason\\\": \\\"Abstract. The paper states that functional decline is typically recognized only after falls or gait impairment, which closes the prevention window.\\\"\\n    },\\n    {\\n      \\\"id\\\": 2,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"functional decline unfolds through gradual physiologic instability already being recorded, and currently being ignored, in routine EHR data.\\\",\\n      \\\"reason\\\": \\\"Discussion, paragraph 1. The paper states that functional decline unfolds through gradual physiologic instability recorded in routine EHR data.\\\"\\n    },\\n    {\\n      \\\"id\\\": 3,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"A hemoglobin of 11.5 g/dL that has been stable for three years represents a fundamentally different risk than one that declined from 13.5 g/dL over the same period. Yet, both appear identical at a single timepoint.\\\",\\n      \\\"reason\\\": \\\"Introduction, paragraph 3. The paper explicitly uses this example to illustrate the value of trajectories over single timepoints.\\\"\\n    },\\n    {\\n      \\\"id\\\": 4,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Existing frailty tools, such as the Fried phenotype, the Short Physical Performance Battery, and the Timed Up-and-Go, require structured functional assessments, manual scoring, or dedicated patient interaction not consistently embedded in primary care workflows. Even when administered, they capture a single timepoint rather than the trajectory of physiologic change.\\\",\\n      \\\"reason\\\": \\\"Introduction, paragraph 2. The paper states that existing tools require structured assessments, manual scoring, or patient interaction, and capture only a single timepoint.\\\"\\n    },\\n    {\\n      \\\"id\\\": 5,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Multiple pathways underlying mobility decline leave measurable traces in routine laboratory data: anemia-related fatigue, vitamin D deficiency affecting neuromuscular function, hyponatremia impairing balance, glycemic dysregulation driving neuropathy, and albumin-mediated sarcopenia.\\\",\\n      \\\"reason\\\": \\\"Introduction, paragraph 3. The paper lists these pathways and their links to routine laboratory data.\\\"\\n    },\\n    {\\n      \\\"id\\\": 6,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Our model achieves AUROC 0.797 using only twelve laboratory biomarkers - no diagnosis codes, medications, functional assessments, or free-text processing.\\\",\\n      \\\"reason\\\": \\\"Discussion, paragraph 2. The paper states that the model uses only twelve laboratory biomarkers without diagnosis codes, medications, functional assessments, or free-text processing.\\\"\\n    },\\n    {\\n      \\\"id\\\": 7,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"We used the All of Us Research Program Controlled Tier Dataset version 8, a de-identified longitudinal EHR repository harmonized to the OMOP Common Data Model.\\\",\\n      \\\"reason\\\": \\\"Methods, Dataset and Study Population. The paper explicitly states the dataset version and OMOP harmonization.\\\"\\n    },\\n    {\\n      \\\"id\\\": 8,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Eligible participants were aged 50-125 years with available EHR data and at least one recorded laboratory measurement.\\\",\\n      \\\"reason\\\": \\\"Methods, Dataset and Study Population. The paper defines the eligibility criteria exactly as claimed.\\\"\\n    },\\n    {\\n      \\\"id\\\": 9,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Deceased participants were excluded from all analyses by removing individuals with a recorded entry in the OMOP death table prior to the analysis date.\\\",\\n      \\\"reason\\\": \\\"Methods, Dataset and Study Population. The paper states that deceased participants were excluded.\\\"\\n    },\\n    {\\n      \\\"id\\\": 10,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Mobility decline cases were identified from the OMOP condition occurrence table using ICD-10-CM source concept identifiers: difficulty in walking (R26.2), unspecified gait and mobility abnormalities (R26.9), unsteadiness on feet (R26.81), other reduced mobility (Z74.09), generalized muscle weakness (M62.81), and unspecified fall (W19).\\\",\\n      \\\"reason\\\": \\\"Methods, Outcome definition. The paper lists these specific ICD-10 codes and descriptions used to identify cases.\\\"\\n    },\\n    {\\n      \\\"id\\\": 11,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The earliest qualifying diagnosis defined each case’s index date.\\\",\\n      \\\"reason\\\": \\\"Methods, Outcome definition. The paper states that the earliest qualifying diagnosis defined the index date.\\\"\\n    },\\n    {\\n      \\\"id\\\": 12,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Controls were participants with laboratory data and no qualifying mobility decline diagnosis.\\\",\\n      \\\"reason\\\": \\\"Methods, Control cohort and pseudo-index assignment. The paper defines controls exactly as claimed.\\\"\\n    },\\n    {\\n      \\\"id\\\": 13,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"A pseudo-index date was assigned by sampling uniformly at random within each control’s laboratory observation window (first to last measurement). This design preserves natural measurement history while preventing immortal time bias\\\",\\n      \\\"reason\\\": \\\"Methods, Control cohort and pseudo-index assignment. The paper states that pseudo-index dates preserve natural measurement history and prevent immortal time bias.\\\"\\n    },\\n    {\\n      \\\"id\\\": 14,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The full pseudo-index cohort comprised 322,409 individuals\\\",\\n      \\\"reason\\\": \\\"Methods, Control cohort and pseudo-index assignment. The paper states the full pseudo-index cohort size was 322,409.\\\"\\n    },\\n    {\\n      \\\"id\\\": 15,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The primary analysis used a three-year pre-index window (N = 297,861; 33,088 cases, 11.1%).\\\",\\n      \\\"reason\\\": \\\"Methods, Biomarker Selection and Observation Windows. The paper states that the primary three-year pre-index analysis included 297,861 participants.\\\"\\n    },\\n    {\\n      \\\"id\\\": 16,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The primary analysis used a three-year pre-index window (N = 297,861; 33,088 cases, 11.1%).\\\",\\n      \\\"reason\\\": \\\"Methods, Biomarker Selection and Observation Windows. The paper states that the primary analysis included 33,088 cases.\\\"\\n    },\\n    {\\n      \\\"id\\\": 17,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The primary analysis used a three-year pre-index window (N = 297,861; 33,088 cases, 11.1%).\\\",\\n      \\\"reason\\\": \\\"Methods, Biomarker Selection and Observation Windows. The paper states that the primary analysis had an 11.1% case prevalence.\\\"\\n    },\\n    {\\n      \\\"id\\\": 18,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"All measurements on or after the index date were excluded to prevent data leakage.\\\",\\n      \\\"reason\\\": \\\"Methods, Biomarker Selection and Observation Windows. The paper states that measurements on or after the index date were excluded to prevent data leakage.\\\"\\n    },\\n    {\\n      \\\"id\\\": 19,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"ICD-10-coded outcomes capture documented recognition rather than objective functional performance, introducing potential detection bias.\\\",\\n      \\\"reason\\\": \\\"Discussion, Limitations. The paper states that ICD-10-coded outcomes capture documented recognition rather than objective performance, introducing potential detection bias.\\\"\\n    },\\n    {\\n      \\\"id\\\": 20,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"CRP and 25-hydroxyvitamin D contribute a limited trajectory signal due to selective ordering (82%–98% and 80%–88% missing, respectively)\\\",\\n      \\\"reason\\\": \\\"Discussion, Limitations. The paper states that CRP and vitamin D had high missingness due to selective ordering.\\\"\\n    },\\n    {\\n      \\\"id\\\": 21,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Median imputation assigns a population-level central value regardless of clinical context\\\",\\n      \\\"reason\\\": \\\"Discussion, Limitations. The paper states that median imputation assigns a population-level central value regardless of clinical context.\\\"\\n    },\\n    {\\n      \\\"id\\\": 22,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"All evaluations use cross-sectional random splits; calendar-time validation would strengthen temporal generalizability evidence.\\\",\\n      \\\"reason\\\": \\\"Discussion, Limitations. The paper states that evaluations used cross-sectional random splits rather than calendar-time validation.\\\"\\n    },\\n    {\\n      \\\"id\\\": 23,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Comorbidity adjustment was not performed.\\\",\\n      \\\"reason\\\": \\\"Discussion, Limitations. The paper explicitly states that comorbidity adjustment was not performed.\\\"\\n    },\\n    {\\n      \\\"id\\\": 24,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The model may partially capture known disease trajectories rather than purely pre-clinical signals.\\\",\\n      \\\"reason\\\": \\\"Discussion, Limitations. The paper states that the model may partially capture known disease trajectories.\\\"\\n    },\\n    {\\n      \\\"id\\\": 25,\\n      \\\"label\\\": \\\"unsupported\\\",\\n      \\\"paper_evidence\\\": \\\"\\\",\\n      \\\"reason\\\": \\\"Discussion, Limitations. The paper mentions validation against objective functional endpoints such as gait speed or SPPB, but does not mention 'prospective fall events' as an objective outcome for external validation.\\\"\\n    },\\n    {\\n      \\\"id\\\": 26,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"To evaluate the temporal lead time available for early detection, we assessed model discrimination when laboratory measurements within 3, 6, 9, and 12 months of the index date were excluded. This design simulates prospective screening where predictions must be made before clinical recognition of mobility decline.\\\",\\n      \\\"reason\\\": \\\"Results, Prediction horizon analysis. The paper states that the prediction horizon analysis excluded measurements within 3, 6, 9, and 12 months to simulate prospective screening.\\\"\\n    },\\n    {\\n      \\\"id\\\": 27,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Trajectory-based models maintained substantial discrimination across all horizons.\\\",\\n      \\\"reason\\\": \\\"Results, Prediction horizon analysis. The paper states that trajectory models maintained substantial discrimination across all horizons.\\\"\\n    },\\n    {\\n      \\\"id\\\": 28,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"3 months | 0.768\\\",\\n      \\\"reason\\\": \\\"Results, Table 2. The table shows that at 3 months, the AUROC was 0.768.\\\"\\n    },\\n    {\\n      \\\"id\\\": 29,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"3 months | 0.768 | 0.361\\\",\\n      \\\"reason\\\": \\\"Results, Table 2. The table shows that at 3 months, the AUPRC was 0.361.\\\"\\n    },\\n    {\\n      \\\"id\\\": 30,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"6 months | 0.756\\\",\\n      \\\"reason\\\": \\\"Results, Table 2. The table shows that at 6 months, the AUROC was 0.756.\\\"\\n    },\\n    {\\n      \\\"id\\\": 31,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"6 months | 0.756 | 0.358\\\",\\n      \\\"reason\\\": \\\"Results, Table 2. The table shows that at 6 months, the AUPRC was 0.358.\\\"\\n    },\\n    {\\n      \\\"id\\\": 32,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"9 months | 0.748\\\",\\n      \\\"reason\\\": \\\"Results, Table 2. The table shows that at 9 months, the AUROC was 0.748.\\\"\\n    },\\n    {\\n      \\\"id\\\": 33,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"9 months | 0.748 | 0.355\\\",\\n      \\\"reason\\\": \\\"Results, Table 2. The table shows that at 9 months, the AUPRC was 0.355.\\\"\\n    },\\n    {\\n      \\\"id\\\": 34,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"12 months | 0.740\\\",\\n      \\\"reason\\\": \\\"Results, Table 2. The table shows that at 12 months, the AUROC was 0.740.\\\"\\n    },\\n    {\\n      \\\"id\\\": 35,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"12 months | 0.740 | 0.353\\\",\\n      \\\"reason\\\": \\\"Results, Table 2. The table shows that at 12 months, the AUPRC was 0.353.\\\"\\n    },\\n    {\\n      \\\"id\\\": 36,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Isotonic calibration reduced Brier score from 0.174 to 0.083 (52.3% improvement)\\\",\\n      \\\"reason\\\": \\\"Results, Sensitivity analyses and calibration. The paper states that isotonic calibration reduced the Brier score from 0.174 to 0.083.\\\"\\n    },\\n    {\\n      \\\"id\\\": 37,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Isotonic calibration reduced Brier score from 0.174 to 0.083 (52.3% improvement)\\\",\\n      \\\"reason\\\": \\\"Results, Sensitivity analyses and calibration. The paper states that isotonic calibration achieved a 52.3% improvement in Brier score.\\\"\\n    },\\n    {\\n      \\\"id\\\": 38,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"without degrading discrimination (AUROC 0.797 vs. 0.796; Figure 4).\\\",\\n      \\\"reason\\\": \\\"Results, Sensitivity analyses and calibration. The paper states that discrimination was preserved at AUROC 0.796 versus 0.797.\\\"\\n    },\\n    {\\n      \\\"id\\\": 39,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"At risk thresholds of 0.20 and 0.25, the trajectory model achieved NRI of 0.077 and 0.124 over baseline\\\",\\n      \\\"reason\\\": \\\"Results, Sensitivity analyses and calibration. The paper states that at a risk threshold of 0.20, the model achieved an NRI of 0.077.\\\"\\n    },\\n    {\\n      \\\"id\\\": 40,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"At risk thresholds of 0.20 and 0.25, the trajectory model achieved NRI of 0.077 and 0.124 over baseline\\\",\\n      \\\"reason\\\": \\\"Results, Sensitivity analyses and calibration. The paper states that at a risk threshold of 0.25, the model achieved an NRI of 0.124.\\\"\\n    }\\n  ]\\n}\\n```\", \"```json\\n{\\n  \\\"verdicts\\\": [\\n    {\\n      \\\"id\\\": 1,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"with gains concentrated in improved specificity among non-events (NRInonevents = 0.091 and 0.153), indicating reduced unnecessary risk flagging.\\\",\\n      \\\"reason\\\": \\\"Section \\\\\\\"Sensitivity analyses and calibration\\\\\\\", page 7.\\\"\\n    },\\n    {\\n      \\\"id\\\": 2,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"We demonstrate that longitudinal biomarker trajectories from twelve routine measurements significantly improve prediction of functional mobility decline compared with static summaries (AUROC 0.797 vs. 0.755; AUPRC 0.380 vs. 0.304; p < 0.001).\\\",\\n      \\\"reason\\\": \\\"Section \\\\\\\"Discussion\\\\\\\", page 7.\\\"\\n    },\\n    {\\n      \\\"id\\\": 3,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"LightGBM models incorporating trajectories significantly outperformed static laboratory summaries (AUROC 0.797 vs. 0.755; DeLong p < 0.001; AUPRC 0.380 vs. 0.304).\\\",\\n      \\\"reason\\\": \\\"Abstract, page 1, and Table 1, page 5.\\\"\\n    },\\n    {\\n      \\\"id\\\": 4,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"LightGBM models incorporating trajectories significantly outperformed static laboratory summaries (AUROC 0.797 vs. 0.755; DeLong p < 0.001; AUPRC 0.380 vs. 0.304).\\\",\\n      \\\"reason\\\": \\\"Abstract, page 1, and Table 1, page 5.\\\"\\n    },\\n    {\\n      \\\"id\\\": 5,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"A 1:1 age- and sex-matched analysis confirmed an independent trajectory signal (AUROC 0.727 vs. demographics-only 0.680).\\\",\\n      \\\"reason\\\": \\\"Abstract, page 1, and Table 1, page 5.\\\"\\n    },\\n    {\\n      \\\"id\\\": 6,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Removing count features yielded AUROC 0.789 (0.786–0.791), a reduction of 0.009 (DeLong p < 0.001).\\\",\\n      \\\"reason\\\": \\\"Section \\\\\\\"Sensitivity analyses and calibration\\\\\\\", page 7.\\\"\\n    },\\n    {\\n      \\\"id\\\": 7,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"A horizon analysis demonstrated sustained prediction 3–12 months before decline onset (AUROC 0.768–0.740).\\\",\\n      \\\"reason\\\": \\\"Abstract, page 1, and Table 2, page 6.\\\"\\n    },\\n    {\\n      \\\"id\\\": 8,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Because the model uses only measurements already ordered in routine care, it supports passive, zero-burden EHR integration for early detection of pre-clinical functional decline.\\\",\\n      \\\"reason\\\": \\\"Abstract, page 1.\\\"\\n    },\\n    {\\n      \\\"id\\\": 9,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"AUROC declined gradually from 0.768 at the 3-month horizon to 0.740 at the 12-month horizon, demonstrating that biomarker trajectories contain predictive signal up to one year before diagnosis (Table 2).\\\",\\n      \\\"reason\\\": \\\"Section \\\\\\\"Prediction horizon analysis\\\\\\\", page 6.\\\"\\n    },\\n    {\\n      \\\"id\\\": 10,\\n      \\\"label\\\": \\\"unsupported\\\",\\n      \\\"paper_evidence\\\": \\\"\\\",\\n      \\\"reason\\\": \\\"The paper does not mention \\\\\\\"medication review\\\\\\\" as an intervention or opportunity.\\\"\\n    },\\n    {\\n      \\\"id\\\": 11,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Table 2: Prediction horizon performance using trajectory features. Measurements within the specified horizon prior to the index date were excluded.\\\",\\n      \\\"reason\\\": \\\"Table 2 caption, page 6.\\\"\\n    },\\n    {\\n      \\\"id\\\": 12,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"A stepwise improvement emerged as temporal information was added.\\\",\\n      \\\"reason\\\": \\\"Section \\\\\\\"Trajectory Features Improve Discrimination\\\\\\\", page 5.\\\"\\n    },\\n    {\\n      \\\"id\\\": 13,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Demographics alone achieved AUROC 0.680 (95% CI: 0.677–0.683).\\\",\\n      \\\"reason\\\": \\\"Section \\\\\\\"Trajectory Features Improve Discrimination\\\\\\\", page 5, and Table 1, page 5.\\\"\\n    },\\n    {\\n      \\\"id\\\": 14,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Demographics only | LGB | 0.680 | [0.677–0.683] | 0.204\\\",\\n      \\\"reason\\\": \\\"Table 1, page 5.\\\"\\n    },\\n    {\\n      \\\"id\\\": 15,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Baseline laboratory means improved to 0.755 (0.752–0.757).\\\",\\n      \\\"reason\\\": \\\"Section \\\\\\\"Trajectory Features Improve Discrimination\\\\\\\", page 5, and Table 1, page 5.\\\"\\n    },\\n    {\\n      \\\"id\\\": 16,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Baseline labs (3yr) | LGB | 0.755 | [0.752–0.757] | 0.304\\\",\\n      \\\"reason\\\": \\\"Table 1, page 5.\\\"\\n    },\\n    {\\n      \\\"id\\\": 17,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Trajectory (3yr) | LGB | 0.797 | [0.794–0.800] | 0.380\\\",\\n      \\\"reason\\\": \\\"Table 1, page 5.\\\"\\n    },\\n    {\\n      \\\"id\\\": 18,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Trajectory (3yr) | LGB | 0.797 | [0.794–0.800] | 0.380\\\",\\n      \\\"reason\\\": \\\"Table 1, page 5.\\\"\\n    },\\n    {\\n      \\\"id\\\": 19,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Trajectory (3yr) | LGB | 0.797 | [0.794–0.800] | 0.380\\\",\\n      \\\"reason\\\": \\\"Table 1, page 5.\\\"\\n    },\\n    {\\n      \\\"id\\\": 20,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Trajectory features reached 0.797 (0.794–0.800), a significant gain over baseline (∆AUC = 0.042; DeLong p < 0.001).\\\",\\n      \\\"reason\\\": \\\"Section \\\\\\\"Trajectory Features Improve Discrimination\\\\\\\", page 5.\\\"\\n    },\\n    {\\n      \\\"id\\\": 21,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Trajectory features reached 0.797 (0.794–0.800), a significant gain over baseline (∆AUC = 0.042; DeLong p < 0.001).\\\",\\n      \\\"reason\\\": \\\"Section \\\\\\\"Trajectory Features Improve Discrimination\\\\\\\", page 5.\\\"\\n    },\\n    {\\n      \\\"id\\\": 22,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Trajectory AUPRC was 0.380 versus 0.304 for baseline - a 25% relative improvement and 3.4× the no-skill rate of 0.111 (Figure 2).\\\",\\n      \\\"reason\\\": \\\"Section \\\\\\\"Trajectory Features Improve Discrimination\\\\\\\", page 5.\\\"\\n    },\\n    {\\n      \\\"id\\\": 23,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Trajectory AUPRC was 0.380 versus 0.304 for baseline - a 25% relative improvement and 3.4× the no-skill rate of 0.111 (Figure 2).\\\",\\n      \\\"reason\\\": \\\"Section \\\\\\\"Trajectory Features Improve Discrimination\\\\\\\", page 5.\\\"\\n    },\\n    {\\n      \\\"id\\\": 24,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The larger relative AUPRC gain (+0.076) than AUROC gain (+0.042) indicates that trajectories disproportionately improve positive-class detection at high-precision operating points - critical for alert systems where false positives drive clinician fatigue.\\\",\\n      \\\"reason\\\": \\\"Section \\\\\\\"Trajectory Features Improve Discrimination\\\\\\\", page 5.\\\"\\n    },\\n    {\\n      \\\"id\\\": 25,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Trajectory (3yr) | LR | 0.726\\\",\\n      \\\"reason\\\": \\\"Table 1, page 5.\\\"\\n    },\\n    {\\n      \\\"id\\\": 26,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Trajectory (3yr) | RF | 0.775\\\",\\n      \\\"reason\\\": \\\"Table 1, page 5.\\\"\\n    },\\n    {\\n      \\\"id\\\": 27,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Trajectory (3yr) | XGB | 0.795\\\",\\n      \\\"reason\\\": \\\"Table 1, page 5.\\\"\\n    },\\n    {\\n      \\\"id\\\": 28,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Trajectory (3yr) | LGB | 0.797\\\",\\n      \\\"reason\\\": \\\"Table 1, page 5.\\\"\\n    },\\n    {\\n      \\\"id\\\": 29,\\n      \\\"label\\\": \\\"unsupported\\\",\\n      \\\"paper_evidence\\\": \\\"\\\",\\n      \\\"reason\\\": \\\"The paper does not explicitly state that gradient boosting provided the strongest performance or that longitudinal descriptors improved prediction across multiple model classes.\\\"\\n    },\\n    {\\n      \\\"id\\\": 30,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Table 1: Model performance (3-year window, 5-fold CV, OOF; N = 297,861; 11.1% cases).\\\",\\n      \\\"reason\\\": \\\"Table 1 caption, page 5.\\\"\\n    },\\n    {\\n      \\\"id\\\": 31,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Bootstrap 95% CI and AUPRC reported for LightGBM.\\\",\\n      \\\"reason\\\": \\\"Table 1 caption, page 5.\\\"\\n    },\\n    {\\n      \\\"id\\\": 32,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Figure 4: Calibration curves.\\\",\\n      \\\"reason\\\": \\\"Figure 4 caption, page 7.\\\"\\n    },\\n    {\\n      \\\"id\\\": 33,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Isotonic regression substantially improves reliability (Brier 0.083 vs. 0.174) with AUC preserved.\\\",\\n      \\\"reason\\\": \\\"Figure 4 caption, page 7.\\\"\\n    },\\n    {\\n      \\\"id\\\": 34,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Cases showed systematically lower missingness than controls across all biomarkers (Figure 1)\\\",\\n      \\\"reason\\\": \\\"Section \\\\\\\"Study Population and Missingness\\\\\\\", page 4.\\\"\\n    },\\n    {\\n      \\\"id\\\": 35,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"with the largest differential for albumin (32.1% vs. 51.4%)\\\",\\n      \\\"reason\\\": \\\"Section \\\\\\\"Study Population and Missingness\\\\\\\", page 4.\\\"\\n    },\\n    {\\n      \\\"id\\\": 36,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"and hemoglobin (21.3% vs. 37.0%).\\\",\\n      \\\"reason\\\": \\\"Section \\\\\\\"Study Population and Missingness\\\\\\\", page 4.\\\"\\n    },\\n    {\\n      \\\"id\\\": 37,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"CRP (82%–98% missing across variants) and 25-hydroxyvitamin D (80%–88%) exhibited the greatest overall sparsity, limiting their trajectory signal.\\\",\\n      \\\"reason\\\": \\\"Section \\\\\\\"Study Population and Missingness\\\\\\\", page 4.\\\"\\n    },\\n    {\\n      \\\"id\\\": 38,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"CRP (82%–98% missing across variants) and 25-hydroxyvitamin D (80%–88%) exhibited the greatest overall sparsity, limiting their trajectory signal.\\\",\\n      \\\"reason\\\": \\\"Section \\\\\\\"Study Population and Missingness\\\\\\\", page 4.\\\"\\n    },\\n    {\\n      \\\"id\\\": 39,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Informative observation as confounder and signal.\\\",\\n      \\\"reason\\\": \\\"Section \\\\\\\"Informative observation as confounder and signal\\\\\\\", page 8, and Section \\\\\\\"Study Population and Missingness\\\\\\\", page 4.\\\"\\n    },\\n    {\\n      \\\"id\\\": 40,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"While statistically significant due to large sample size, the magnitude confirms that the model primarily exploits physiologic dynamics. This is clinically important: it means the model performs comparably in settings with variable healthcare utilization, including safety-net hospitals and rural practices where measurement frequency does not reliably reflect disease severity.\\\",\\n      \\\"reason\\\": \\\"Section \\\\\\\"Sensitivity analyses and calibration\\\\\\\", page 7.\\\"\\n    }\\n  ]\\n}\\n```\", \"```json\\n{\\n  \\\"verdicts\\\": [\\n    {\\n      \\\"id\\\": 1,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Figure 1: Differential missingness by lab feature, stratified by outcome (3-year window).\\\",\\n      \\\"reason\\\": \\\"Figure 1 caption. The text matches the claim exactly.\\\"\\n    },\\n    {\\n      \\\"id\\\": 2,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Cases show consistently lower missingness, consistent with informative observation in EHR data - patients developing functional impairment receive more frequent monitoring.\\\",\\n      \\\"reason\\\": \\\"Figure 1 caption. The text matches the claim exactly.\\\"\\n    },\\n    {\\n      \\\"id\\\": 3,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Figure 2: Precision–recall curves.\\\",\\n      \\\"reason\\\": \\\"Figure 2 caption. The text matches the claim exactly (with a standard hyphen instead of an en-dash).\\\"\\n    },\\n    {\\n      \\\"id\\\": 4,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The trajectory model (AP = 0.380) achieves 25% relative improvement over baseline (AP = 0.304).\\\",\\n      \\\"reason\\\": \\\"Figure 2 caption. The relative improvement is mathematically correct: (0.380 - 0.304) / 0.304 = 0.25 (25%).\\\"\\n    },\\n    {\\n      \\\"id\\\": 5,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Dashed line: 11.1% prevalence.\\\",\\n      \\\"reason\\\": \\\"Figure 2 caption. The text matches the claim exactly.\\\"\\n    }\\n  ]\\n}\\n```\"]"
 }

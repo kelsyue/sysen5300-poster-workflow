@@ -1,0 +1,59 @@
+{
+  "model": "openai.gpt-4o",
+  "repeat": 1,
+  "judge_prompt_sha256": "4ec65050cfdc718218dbc587f672291e733fd03b1254c20d77b61b0933e16162",
+  "error": null,
+  "tokens_in": 6801,
+  "tokens_out": 1062,
+  "max_output_tokens": 16384,
+  "parsed": {
+    "items": {
+      "chk_problem": {
+        "label": "accurate",
+        "poster_evidence": "A benchmark score compares a system output against a reference, yet methodological attention falls almost entirely on the system. The reference is not a constant: it is produced by an annotation process in which people label items, disagree, and have those disagreements resolved by an aggregation rule. A different rule applied to the same human labour can yield a different reference. We invert the usual evaluation design: instead of varying the system and fixing the reference, we hold the scored output fixed and exchange the reference. Any resulting score movement is attributable to reference choice alone.",
+        "reason": "The poster clearly states the research problem of measuring how reference choice affects scores and model rankings in multilingual benchmarks, aligning with the reference."
+      },
+      "chk_method": {
+        "label": "accurate",
+        "poster_evidence": "We invert the usual evaluation design: instead of varying the system and fixing the reference, we hold the scored output fixed and exchange the reference. Any resulting score movement is attributable to reference choice alone.",
+        "reason": "The poster accurately describes the method of holding system outputs fixed and varying the reference to isolate the effect of reference choice."
+      },
+      "chk_data": {
+        "label": "accurate",
+        "poster_evidence": "We study a production benchmark for personally identifiable information span extraction across Hindi, Portuguese, Polish, Swedish, Chinese, and Arabic. After deduplication, the record contains 24,939 prompts, roughly 4,100 per language, from seven business domains and twelve task categories.",
+        "reason": "The poster provides identifying information about the dataset, including the number of prompts, languages, and task categories, matching the reference."
+      },
+      "chk_setup": {
+        "label": "accurate",
+        "poster_evidence": "Every reference-choice measurement uses the audited subset, where all four labellings coexist. Each annotator labelling is treated as a fixed system output and scored first against delivered gold and then against reviewer gold. STRICT matching requires identical start offset, end offset, and type. RELAXED matching requires identical boundaries but ignores type. Both use micro-averaged span F1 and give no credit for partial overlap.",
+        "reason": "The poster describes the evaluation setup, including the use of the audited subset, scoring outputs against two references, and the matching rules, consistent with the reference."
+      },
+      "chk_primary_result": {
+        "label": "accurate",
+        "poster_evidence": "Holding the output fixed and changing only the reference moves pooled scores by 2.00–4.95 F1 points and by as much as 7.55 points in one language.",
+        "reason": "The poster accurately reports the primary result, including the score movement range and the worst-case language result, as stated in the reference."
+      },
+      "chk_secondary_result": {
+        "label": "accurate",
+        "poster_evidence": "It also changes the comparison between outputs: the pooled interaction is +2.95 points, survives correction for multiple testing, and changes the Hindi margin’s sign.",
+        "reason": "The poster correctly reports the secondary result, including the paired interaction and the Hindi margin change, as described in the reference."
+      },
+      "chk_baseline": {
+        "label": "accurate",
+        "poster_evidence": "To test whether reference choice changes the comparison between outputs, we compute the paired interaction: the A-minus-B margin under delivered gold minus the A-minus-B margin under reviewer gold.",
+        "reason": "The poster describes the comparison between scores obtained using delivered gold and reviewer gold references, consistent with the reference."
+      },
+      "chk_conclusion": {
+        "label": "accurate",
+        "poster_evidence": "A benchmark score measures both a system and a reference. Reference sensitivity should therefore be reported alongside the score. Computing it requires no new annotation—only retaining the annotation record and scoring fixed outputs against more than one defensible reference.",
+        "reason": "The poster accurately conveys the paper's conclusion that benchmarks should report a reference-sensitivity band alongside scores to reflect evaluation uncertainty."
+      },
+      "chk_limitation": {
+        "label": "accurate",
+        "poster_evidence": "All measurements come from one benchmark and one annotation pipeline, so the method transfers but the numerical band does not. The reviewer sample was documented as random, but randomness could not be verified from the export. The export contains no annotator identifiers, preventing separation of differences in skill from differences in convention. The audited subset supports pooled conclusions but gives limited per-language power, while the 135-prompt decontaminated subset is too small for firm conclusions. The scored outputs are human annotation passes, not independently developed model systems, so the magnitude and pattern of reference sensitivity for model predictions remain empirical questions.",
+        "reason": "The poster explicitly discusses the limitations of the study, including the single annotation record, lack of annotator identifiers, and the use of human annotation passes rather than model predictions, aligning with the reference."
+      }
+    }
+  },
+  "raw": "```json\n{\n  \"items\": {\n    \"chk_problem\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"A benchmark score compares a system output against a reference, yet methodological attention falls almost entirely on the system. The reference is not a constant: it is produced by an annotation process in which people label items, disagree, and have those disagreements resolved by an aggregation rule. A different rule applied to the same human labour can yield a different reference. We invert the usual evaluation design: instead of varying the system and fixing the reference, we hold the scored output fixed and exchange the reference. Any resulting score movement is attributable to reference choice alone.\",\n      \"reason\": \"The poster clearly states the research problem of measuring how reference choice affects scores and model rankings in multilingual benchmarks, aligning with the reference.\"\n    },\n    \"chk_method\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"We invert the usual evaluation design: instead of varying the system and fixing the reference, we hold the scored output fixed and exchange the reference. Any resulting score movement is attributable to reference choice alone.\",\n      \"reason\": \"The poster accurately describes the method of holding system outputs fixed and varying the reference to isolate the effect of reference choice.\"\n    },\n    \"chk_data\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"We study a production benchmark for personally identifiable information span extraction across Hindi, Portuguese, Polish, Swedish, Chinese, and Arabic. After deduplication, the record contains 24,939 prompts, roughly 4,100 per language, from seven business domains and twelve task categories.\",\n      \"reason\": \"The poster provides identifying information about the dataset, including the number of prompts, languages, and task categories, matching the reference.\"\n    },\n    \"chk_setup\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Every reference-choice measurement uses the audited subset, where all four labellings coexist. Each annotator labelling is treated as a fixed system output and scored first against delivered gold and then against reviewer gold. STRICT matching requires identical start offset, end offset, and type. RELAXED matching requires identical boundaries but ignores type. Both use micro-averaged span F1 and give no credit for partial overlap.\",\n      \"reason\": \"The poster describes the evaluation setup, including the use of the audited subset, scoring outputs against two references, and the matching rules, consistent with the reference.\"\n    },\n    \"chk_primary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Holding the output fixed and changing only the reference moves pooled scores by 2.00–4.95 F1 points and by as much as 7.55 points in one language.\",\n      \"reason\": \"The poster accurately reports the primary result, including the score movement range and the worst-case language result, as stated in the reference.\"\n    },\n    \"chk_secondary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"It also changes the comparison between outputs: the pooled interaction is +2.95 points, survives correction for multiple testing, and changes the Hindi margin’s sign.\",\n      \"reason\": \"The poster correctly reports the secondary result, including the paired interaction and the Hindi margin change, as described in the reference.\"\n    },\n    \"chk_baseline\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"To test whether reference choice changes the comparison between outputs, we compute the paired interaction: the A-minus-B margin under delivered gold minus the A-minus-B margin under reviewer gold.\",\n      \"reason\": \"The poster describes the comparison between scores obtained using delivered gold and reviewer gold references, consistent with the reference.\"\n    },\n    \"chk_conclusion\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"A benchmark score measures both a system and a reference. Reference sensitivity should therefore be reported alongside the score. Computing it requires no new annotation—only retaining the annotation record and scoring fixed outputs against more than one defensible reference.\",\n      \"reason\": \"The poster accurately conveys the paper's conclusion that benchmarks should report a reference-sensitivity band alongside scores to reflect evaluation uncertainty.\"\n    },\n    \"chk_limitation\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"All measurements come from one benchmark and one annotation pipeline, so the method transfers but the numerical band does not. The reviewer sample was documented as random, but randomness could not be verified from the export. The export contains no annotator identifiers, preventing separation of differences in skill from differences in convention. The audited subset supports pooled conclusions but gives limited per-language power, while the 135-prompt decontaminated subset is too small for firm conclusions. The scored outputs are human annotation passes, not independently developed model systems, so the magnitude and pattern of reference sensitivity for model predictions remain empirical questions.\",\n      \"reason\": \"The poster explicitly discusses the limitations of the study, including the single annotation record, lack of annotator identifiers, and the use of human annotation passes rather than model predictions, aligning with the reference.\"\n    }\n  }\n}\n```"
+}

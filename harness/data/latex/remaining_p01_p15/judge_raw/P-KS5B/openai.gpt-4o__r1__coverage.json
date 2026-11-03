@@ -1,0 +1,59 @@
+{
+  "model": "openai.gpt-4o",
+  "repeat": 1,
+  "judge_prompt_sha256": "4ec65050cfdc718218dbc587f672291e733fd03b1254c20d77b61b0933e16162",
+  "error": null,
+  "tokens_in": 5513,
+  "tokens_out": 781,
+  "max_output_tokens": 16384,
+  "parsed": {
+    "items": {
+      "chk_problem": {
+        "label": "accurate",
+        "poster_evidence": "In this work, to address issues in traditional shopping guidance query generation pipelines, such as semantic drift and the inability to capture personalized user intent, we propose an LLM-based AI guidance query generation framework for multi-interest users.",
+        "reason": "The poster explicitly identifies semantic drift and the inability to capture personalized user intent as the research problem, matching the reference."
+      },
+      "chk_method": {
+        "label": "accurate",
+        "poster_evidence": "We propose LLM4AIGQ, an LLM-based solution for generating AI guidance queries tailored to users’ multi-interests. This approach segments user interests by integrating user profiles and historical interaction sequences, infers specific consumption intents for each sub-interest, and subsequently generates corresponding AIGQ. In terms of model training, we employ a post-training pipeline comprising Supervised Fine-Tuning (SFT), Reinforcement Learning (RL), and Direct Preference Optimization (DPO) to enhance the model’s capability in generating AIGQ.",
+        "reason": "The poster describes the LLM4AIGQ framework and its three-stage SFT-RL-DPO training pipeline, aligning with the reference."
+      },
+      "chk_data": {
+        "label": "missing",
+        "poster_evidence": "",
+        "reason": "The poster does not provide specific details about the dataset, such as the Taobao and Tmall user interaction logs or the sample sizes mentioned in the reference."
+      },
+      "chk_setup": {
+        "label": "missing",
+        "poster_evidence": "",
+        "reason": "The poster does not describe the evaluation setup, including the Qwen3-30B-A3B backbone, hardware, or training configurations mentioned in the reference."
+      },
+      "chk_primary_result": {
+        "label": "accurate",
+        "poster_evidence": "Experimental results show that introducing AIGQ consistently improves user click performance in the query recommendation pipeline. Table 1: Performance comparison among Different Models on Taobao Dataset with Relation and Value Metrics.",
+        "reason": "The poster mentions improved user click performance and provides metrics in Table 1, aligning with the reference's primary result of uCTR improvement and Recall@10."
+      },
+      "chk_secondary_result": {
+        "label": "accurate",
+        "poster_evidence": "Table 4: Pairwise Evaluation Result between LLMAIGQ variants and Teacher Model. The experiment adopts A/B randomization to prevent positional bias in the experimental results.",
+        "reason": "The poster includes pairwise evaluation results showing a win rate improvement, consistent with the reference's secondary result."
+      },
+      "chk_baseline": {
+        "label": "accurate",
+        "poster_evidence": "Table 1: Performance comparison among Different Models on Taobao Dataset with Relation and Value Metrics.",
+        "reason": "The poster compares LLM4AIGQ against baseline models, including zero-shot LLMs and variants, as described in the reference."
+      },
+      "chk_conclusion": {
+        "label": "accurate",
+        "poster_evidence": "Our approach has already been deployed online and has achieved significant results at the scale of hundreds of millions of users.",
+        "reason": "The poster concludes that LLM4AIGQ successfully segments user interests and generates high-quality queries, achieving significant deployment results, matching the reference."
+      },
+      "chk_limitation": {
+        "label": "missing",
+        "poster_evidence": "",
+        "reason": "The poster does not mention any specific limitation or trade-off, such as reasoning quality versus inference efficiency, as described in the reference."
+      }
+    }
+  },
+  "raw": "```json\n{\n  \"items\": {\n    \"chk_problem\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"In this work, to address issues in traditional shopping guidance query generation pipelines, such as semantic drift and the inability to capture personalized user intent, we propose an LLM-based AI guidance query generation framework for multi-interest users.\",\n      \"reason\": \"The poster explicitly identifies semantic drift and the inability to capture personalized user intent as the research problem, matching the reference.\"\n    },\n    \"chk_method\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"We propose LLM4AIGQ, an LLM-based solution for generating AI guidance queries tailored to users’ multi-interests. This approach segments user interests by integrating user profiles and historical interaction sequences, infers specific consumption intents for each sub-interest, and subsequently generates corresponding AIGQ. In terms of model training, we employ a post-training pipeline comprising Supervised Fine-Tuning (SFT), Reinforcement Learning (RL), and Direct Preference Optimization (DPO) to enhance the model’s capability in generating AIGQ.\",\n      \"reason\": \"The poster describes the LLM4AIGQ framework and its three-stage SFT-RL-DPO training pipeline, aligning with the reference.\"\n    },\n    \"chk_data\": {\n      \"label\": \"missing\",\n      \"poster_evidence\": \"\",\n      \"reason\": \"The poster does not provide specific details about the dataset, such as the Taobao and Tmall user interaction logs or the sample sizes mentioned in the reference.\"\n    },\n    \"chk_setup\": {\n      \"label\": \"missing\",\n      \"poster_evidence\": \"\",\n      \"reason\": \"The poster does not describe the evaluation setup, including the Qwen3-30B-A3B backbone, hardware, or training configurations mentioned in the reference.\"\n    },\n    \"chk_primary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Experimental results show that introducing AIGQ consistently improves user click performance in the query recommendation pipeline. Table 1: Performance comparison among Different Models on Taobao Dataset with Relation and Value Metrics.\",\n      \"reason\": \"The poster mentions improved user click performance and provides metrics in Table 1, aligning with the reference's primary result of uCTR improvement and Recall@10.\"\n    },\n    \"chk_secondary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Table 4: Pairwise Evaluation Result between LLMAIGQ variants and Teacher Model. The experiment adopts A/B randomization to prevent positional bias in the experimental results.\",\n      \"reason\": \"The poster includes pairwise evaluation results showing a win rate improvement, consistent with the reference's secondary result.\"\n    },\n    \"chk_baseline\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Table 1: Performance comparison among Different Models on Taobao Dataset with Relation and Value Metrics.\",\n      \"reason\": \"The poster compares LLM4AIGQ against baseline models, including zero-shot LLMs and variants, as described in the reference.\"\n    },\n    \"chk_conclusion\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Our approach has already been deployed online and has achieved significant results at the scale of hundreds of millions of users.\",\n      \"reason\": \"The poster concludes that LLM4AIGQ successfully segments user interests and generates high-quality queries, achieving significant deployment results, matching the reference.\"\n    },\n    \"chk_limitation\": {\n      \"label\": \"missing\",\n      \"poster_evidence\": \"\",\n      \"reason\": \"The poster does not mention any specific limitation or trade-off, such as reasoning quality versus inference efficiency, as described in the reference.\"\n    }\n  }\n}\n```"
+}

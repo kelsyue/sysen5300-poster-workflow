@@ -2,9 +2,58 @@
   "model": "gemini-3.5-flash",
   "repeat": 1,
   "judge_prompt_sha256": "4ec65050cfdc718218dbc587f672291e733fd03b1254c20d77b61b0933e16162",
-  "error": "transport: Error code: 422 - Budget has been exceeded! Key=SIX-SIGMA-SLIDES-PROJECT-2 (sk-...d5LQ) Current cost: 70.08230754, Max budget: 70.0",
-  "tokens_in": 0,
-  "tokens_out": 0,
-  "parsed": null,
-  "raw": ""
+  "error": null,
+  "tokens_in": 6381,
+  "tokens_out": 5531,
+  "max_output_tokens": 32768,
+  "parsed": {
+    "items": {
+      "chk_problem": {
+        "label": "accurate",
+        "poster_evidence": "Traditional AI-generated query (AIGQ) systems rely on a two-stage Q2AIGQ paradigm that suffers from semantic drift and fails to capture multi-interest user intent. User behavior is often noisy and dominated by co-occurrence signals, leading to low-value guidance queries misaligned with actual purchase intent.",
+        "reason": "The poster accurately describes the problem of semantic drift and low-value guidance queries in traditional systems under the 'Problem & Motivation' section."
+      },
+      "chk_method": {
+        "label": "accurate",
+        "poster_evidence": "LLM4AIGQ adopts a three-stage training pipeline: Supervised Fine-Tuning (SFT), Reinforcement Learning (RL), and Direct Preference Optimization (DPO).",
+        "reason": "The poster identifies the LLM4AIGQ framework and its three-stage SFT-RL-DPO training pipeline in the 'Method Overview' section."
+      },
+      "chk_data": {
+        "label": "missing",
+        "poster_evidence": "",
+        "reason": "The poster mentions evaluating on Taobao/Tmall datasets (June-July 2026) but fails to provide the specific sample sizes or instance counts (e.g., 8,000 short-title instances, 11,259 SFT instances) required by the reference."
+      },
+      "chk_setup": {
+        "label": "missing",
+        "poster_evidence": "",
+        "reason": "The poster mentions the Qwen3-30B-A3B backbone but does not describe the training hardware (NVIDIA H20 GPUs), LoRA rank 16, or the specific batch sizes and learning rates."
+      },
+      "chk_primary_result": {
+        "label": "accurate",
+        "poster_evidence": "LLM4AIGQ-ONESFT+RL+DPO\t0.2101\t0.2377\t0.2183\t0.2159\t0.3125\t0.2515\t0.8044\t0.0559\t0.1396",
+        "reason": "Table 1 in the poster accurately reports the Recall@10 of 0.2101 and S ratio of 0.8616 (under Value Metric) for the LLM4AIGQ-ONESFT+RL+DPO model on the Taobao dataset."
+      },
+      "chk_secondary_result": {
+        "label": "accurate",
+        "poster_evidence": "Online A/B tests show +4.46% uCTR at 10% traffic, +2.53% at 40% traffic, proving real-world effectiveness.",
+        "reason": "The poster accurately reports the online A/B test results with a 4.46% uCTR improvement at 10% traffic and a 2.53% gain at 40% traffic."
+      },
+      "chk_baseline": {
+        "label": "accurate",
+        "poster_evidence": "Table 1: Performance comparison among Different Models on Taobao Dataset with Relation and Value Metrics",
+        "reason": "Table 1 in the poster compares LLM4AIGQ against zero-shot baselines (including Qwen3-30B-A3B, Qwen3.5-122B-A10B, and Deepseek-V4-Pro) and its own SFT/RL variants."
+      },
+      "chk_conclusion": {
+        "label": "accurate",
+        "poster_evidence": "LLM4AIGQ is an LLM-based framework for generating multi-interest-aware AI guidance queries. It overcomes semantic drift and co-occurrence bias by directly inferring user intent from profiles and behavior sequences. The SFT-RLDPO pipeline enables high-quality, diverse, and compliant query generation.",
+        "reason": "The poster's 'Conclusion' section summarizes the framework's success in segmenting user interests and generating high-quality queries."
+      },
+      "chk_limitation": {
+        "label": "missing",
+        "poster_evidence": "",
+        "reason": "The poster does not mention the trade-off or decline in reasoning quality when transitioning from thinking mode to non-thinking mode during DPO."
+      }
+    }
+  },
+  "raw": "```json\n{\n  \"items\": {\n    \"chk_problem\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Traditional AI-generated query (AIGQ) systems rely on a two-stage Q2AIGQ paradigm that suffers from semantic drift and fails to capture multi-interest user intent. User behavior is often noisy and dominated by co-occurrence signals, leading to low-value guidance queries misaligned with actual purchase intent.\",\n      \"reason\": \"The poster accurately describes the problem of semantic drift and low-value guidance queries in traditional systems under the 'Problem & Motivation' section.\"\n    },\n    \"chk_method\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"LLM4AIGQ adopts a three-stage training pipeline: Supervised Fine-Tuning (SFT), Reinforcement Learning (RL), and Direct Preference Optimization (DPO).\",\n      \"reason\": \"The poster identifies the LLM4AIGQ framework and its three-stage SFT-RL-DPO training pipeline in the 'Method Overview' section.\"\n    },\n    \"chk_data\": {\n      \"label\": \"missing\",\n      \"poster_evidence\": \"\",\n      \"reason\": \"The poster mentions evaluating on Taobao/Tmall datasets (June-July 2026) but fails to provide the specific sample sizes or instance counts (e.g., 8,000 short-title instances, 11,259 SFT instances) required by the reference.\"\n    },\n    \"chk_setup\": {\n      \"label\": \"missing\",\n      \"poster_evidence\": \"\",\n      \"reason\": \"The poster mentions the Qwen3-30B-A3B backbone but does not describe the training hardware (NVIDIA H20 GPUs), LoRA rank 16, or the specific batch sizes and learning rates.\"\n    },\n    \"chk_primary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"LLM4AIGQ-ONESFT+RL+DPO\\t0.2101\\t0.2377\\t0.2183\\t0.2159\\t0.3125\\t0.2515\\t0.8044\\t0.0559\\t0.1396\",\n      \"reason\": \"Table 1 in the poster accurately reports the Recall@10 of 0.2101 and S ratio of 0.8616 (under Value Metric) for the LLM4AIGQ-ONESFT+RL+DPO model on the Taobao dataset.\"\n    },\n    \"chk_secondary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Online A/B tests show +4.46% uCTR at 10% traffic, +2.53% at 40% traffic, proving real-world effectiveness.\",\n      \"reason\": \"The poster accurately reports the online A/B test results with a 4.46% uCTR improvement at 10% traffic and a 2.53% gain at 40% traffic.\"\n    },\n    \"chk_baseline\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Table 1: Performance comparison among Different Models on Taobao Dataset with Relation and Value Metrics\",\n      \"reason\": \"Table 1 in the poster compares LLM4AIGQ against zero-shot baselines (including Qwen3-30B-A3B, Qwen3.5-122B-A10B, and Deepseek-V4-Pro) and its own SFT/RL variants.\"\n    },\n    \"chk_conclusion\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"LLM4AIGQ is an LLM-based framework for generating multi-interest-aware AI guidance queries. It overcomes semantic drift and co-occurrence bias by directly inferring user intent from profiles and behavior sequences. The SFT-RLDPO pipeline enables high-quality, diverse, and compliant query generation.\",\n      \"reason\": \"The poster's 'Conclusion' section summarizes the framework's success in segmenting user interests and generating high-quality queries.\"\n    },\n    \"chk_limitation\": {\n      \"label\": \"missing\",\n      \"poster_evidence\": \"\",\n      \"reason\": \"The poster does not mention the trade-off or decline in reasoning quality when transitioning from thinking mode to non-thinking mode during DPO.\"\n    }\n  }\n}\n```"
 }

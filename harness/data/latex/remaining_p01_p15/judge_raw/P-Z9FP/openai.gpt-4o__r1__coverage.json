@@ -1,0 +1,59 @@
+{
+  "model": "openai.gpt-4o",
+  "repeat": 1,
+  "judge_prompt_sha256": "4ec65050cfdc718218dbc587f672291e733fd03b1254c20d77b61b0933e16162",
+  "error": null,
+  "tokens_in": 8432,
+  "tokens_out": 1082,
+  "max_output_tokens": 16384,
+  "parsed": {
+    "items": {
+      "chk_problem": {
+        "label": "accurate",
+        "poster_evidence": "Edge video object detection has matured into a production technology. Dashcams, traffic-monitoring nodes, autonomous vehicles, and security cameras now routinely run convolutional or transformer-based detectors on dedicated edge systems, such as the NVIDIA Jetson family. The dominant cost in these pipelines is the per-frame forward pass through the detector.",
+        "reason": "The poster accurately describes the high energy consumption and sustained GPU utilization caused by running computationally expensive video object detectors on edge devices, matching the reference."
+      },
+      "chk_method": {
+        "label": "accurate",
+        "poster_evidence": "ALBIREO wraps an off-the-shelf object detector with three mechanisms: i) a forward-looking uncertainty trigger that gates detector invocation using per-object Kalman covariance growth, ii) a detector-flicker rescue mechanism that keeps confirmed object states alive when the detector briefly misses them, and iii) a lightweight empty-scene screen that avoids full detector calls on objectless frames. These mechanisms require no detector modifications or detector retraining.",
+        "reason": "The poster correctly describes the method as a detector-agnostic, codec-free adaptive inference framework using Kalman filter uncertainty, detector-flicker rescue, and empty-scene screening to skip redundant detector calls."
+      },
+      "chk_data": {
+        "label": "accurate",
+        "poster_evidence": "Based on our empirical study on the BDD100K dataset’s multi-object tracking (MOT) validation split, running YOLO26x on every frame draws 70 W of total board power on Jetson AGX Thor, of which 34 W is the GPU power; on the AGX Orin, the same workload draws 43 W total of which 31 W is the GPU power.",
+        "reason": "The poster specifies the BDD100K dataset’s multi-object tracking validation split, consistent with the reference."
+      },
+      "chk_setup": {
+        "label": "accurate",
+        "poster_evidence": "We evaluate ALBIREO on the BDD100K MOT across three architecturally distinct detectors (YOLO11x, YOLO26x, RF-DETR-Large) and two Jetson SoC generations (AGX Thor and AGX Orin).",
+        "reason": "The poster describes the evaluation setup, including the three detectors and two NVIDIA Jetson platforms, as specified in the reference."
+      },
+      "chk_primary_result": {
+        "label": "accurate",
+        "poster_evidence": "On the primary YOLO26x configuration, at its default operating point, ALBIREO improves the accuracy-energy-latency tradeoff over Vanilla per-frame inference: on Thor, it improves AP@50 by +0.8 pp while reducing energy by 17.6%, frame time by 8.8%, and per-frame energy-delay product (EDP) by 24.9%; on Orin, it achieves the same AP@50 gain with 14.4% lower energy and 26.1% lower EDP.",
+        "reason": "The poster provides the primary result, including AP@50 improvement and energy reduction, consistent with one of the reference's uncertain drafts."
+      },
+      "chk_secondary_result": {
+        "label": "accurate",
+        "poster_evidence": "On the primary YOLO26x configuration, the default operating point Pareto-dominates per-frame inference on AP@50, energy, and latency, and the uncertainty-threshold sweep forms the upper Pareto frontier over FixedSkipN, CTD, and Statues in the target operating region (AP@50 ≥ 0.50).",
+        "reason": "The poster describes the secondary result of forming the upper Pareto frontier over baselines in the AP@50 ≥ 0.50 region, consistent with one of the reference's uncertain drafts."
+      },
+      "chk_baseline": {
+        "label": "accurate",
+        "poster_evidence": "The uncertainty-threshold sweep forms the upper Pareto frontier over FixedSkipN, CTD, and Statues in the target operating region (AP@50 ≥ 0.50).",
+        "reason": "The poster mentions comparisons against FixedSkipN, CTD, and Statues baselines, consistent with the reference."
+      },
+      "chk_conclusion": {
+        "label": "accurate",
+        "poster_evidence": "In this paper, we have presented ALBIREO, a detector-agnostic, codec-free, content-aware frame-skipping system for edge video object detection that requires no detector modification or detector retraining.",
+        "reason": "The poster accurately conveys the paper's conclusion that ALBIREO serves as a practical drop-in efficiency layer for edge video detection pipelines."
+      },
+      "chk_limitation": {
+        "label": "missing",
+        "poster_evidence": "",
+        "reason": "The poster does not mention specific limitations or implications, such as Kalman dynamics drifting under erratic motion or the domain dependency of the empty-scene screen, as described in the reference."
+      }
+    }
+  },
+  "raw": "```json\n{\n  \"items\": {\n    \"chk_problem\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Edge video object detection has matured into a production technology. Dashcams, traffic-monitoring nodes, autonomous vehicles, and security cameras now routinely run convolutional or transformer-based detectors on dedicated edge systems, such as the NVIDIA Jetson family. The dominant cost in these pipelines is the per-frame forward pass through the detector.\",\n      \"reason\": \"The poster accurately describes the high energy consumption and sustained GPU utilization caused by running computationally expensive video object detectors on edge devices, matching the reference.\"\n    },\n    \"chk_method\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"ALBIREO wraps an off-the-shelf object detector with three mechanisms: i) a forward-looking uncertainty trigger that gates detector invocation using per-object Kalman covariance growth, ii) a detector-flicker rescue mechanism that keeps confirmed object states alive when the detector briefly misses them, and iii) a lightweight empty-scene screen that avoids full detector calls on objectless frames. These mechanisms require no detector modifications or detector retraining.\",\n      \"reason\": \"The poster correctly describes the method as a detector-agnostic, codec-free adaptive inference framework using Kalman filter uncertainty, detector-flicker rescue, and empty-scene screening to skip redundant detector calls.\"\n    },\n    \"chk_data\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Based on our empirical study on the BDD100K dataset’s multi-object tracking (MOT) validation split, running YOLO26x on every frame draws 70 W of total board power on Jetson AGX Thor, of which 34 W is the GPU power; on the AGX Orin, the same workload draws 43 W total of which 31 W is the GPU power.\",\n      \"reason\": \"The poster specifies the BDD100K dataset’s multi-object tracking validation split, consistent with the reference.\"\n    },\n    \"chk_setup\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"We evaluate ALBIREO on the BDD100K MOT across three architecturally distinct detectors (YOLO11x, YOLO26x, RF-DETR-Large) and two Jetson SoC generations (AGX Thor and AGX Orin).\",\n      \"reason\": \"The poster describes the evaluation setup, including the three detectors and two NVIDIA Jetson platforms, as specified in the reference.\"\n    },\n    \"chk_primary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"On the primary YOLO26x configuration, at its default operating point, ALBIREO improves the accuracy-energy-latency tradeoff over Vanilla per-frame inference: on Thor, it improves AP@50 by +0.8 pp while reducing energy by 17.6%, frame time by 8.8%, and per-frame energy-delay product (EDP) by 24.9%; on Orin, it achieves the same AP@50 gain with 14.4% lower energy and 26.1% lower EDP.\",\n      \"reason\": \"The poster provides the primary result, including AP@50 improvement and energy reduction, consistent with one of the reference's uncertain drafts.\"\n    },\n    \"chk_secondary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"On the primary YOLO26x configuration, the default operating point Pareto-dominates per-frame inference on AP@50, energy, and latency, and the uncertainty-threshold sweep forms the upper Pareto frontier over FixedSkipN, CTD, and Statues in the target operating region (AP@50 ≥ 0.50).\",\n      \"reason\": \"The poster describes the secondary result of forming the upper Pareto frontier over baselines in the AP@50 ≥ 0.50 region, consistent with one of the reference's uncertain drafts.\"\n    },\n    \"chk_baseline\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"The uncertainty-threshold sweep forms the upper Pareto frontier over FixedSkipN, CTD, and Statues in the target operating region (AP@50 ≥ 0.50).\",\n      \"reason\": \"The poster mentions comparisons against FixedSkipN, CTD, and Statues baselines, consistent with the reference.\"\n    },\n    \"chk_conclusion\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"In this paper, we have presented ALBIREO, a detector-agnostic, codec-free, content-aware frame-skipping system for edge video object detection that requires no detector modification or detector retraining.\",\n      \"reason\": \"The poster accurately conveys the paper's conclusion that ALBIREO serves as a practical drop-in efficiency layer for edge video detection pipelines.\"\n    },\n    \"chk_limitation\": {\n      \"label\": \"missing\",\n      \"poster_evidence\": \"\",\n      \"reason\": \"The poster does not mention specific limitations or implications, such as Kalman dynamics drifting under erratic motion or the domain dependency of the empty-scene screen, as described in the reference.\"\n    }\n  }\n}\n```"
+}

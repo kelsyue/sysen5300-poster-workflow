@@ -1,0 +1,59 @@
+{
+  "model": "openai.gpt-4o",
+  "repeat": 1,
+  "judge_prompt_sha256": "4ec65050cfdc718218dbc587f672291e733fd03b1254c20d77b61b0933e16162",
+  "error": null,
+  "tokens_in": 6142,
+  "tokens_out": 804,
+  "max_output_tokens": 16384,
+  "parsed": {
+    "items": {
+      "chk_problem": {
+        "label": "accurate",
+        "poster_evidence": "Benchmark scores compare system output against a reference, but the reference is rarely questioned. We show that reference choice — not just system output — significantly moves scores.",
+        "reason": "The poster accurately describes the research problem as measuring how reference choice affects scores and model rankings in multilingual benchmarks."
+      },
+      "chk_method": {
+        "label": "accurate",
+        "poster_evidence": "We invert the standard evaluation: fix the output, vary the reference. We use a six-language PII benchmark (24,939 prompts) with retained records: two independent annotator labels, shipped gold, and expert reviewer labels on 10.5% of data.",
+        "reason": "The poster correctly describes the method of holding system output fixed and varying the reference to isolate the effect of reference choice."
+      },
+      "chk_data": {
+        "label": "accurate",
+        "poster_evidence": "We use a six-language PII benchmark (24,939 prompts) with retained records: two independent annotator labels, shipped gold, and expert reviewer labels on 10.5% of data.",
+        "reason": "The poster accurately identifies the dataset as a multilingual PII extraction benchmark with 24,939 prompts and retained annotation records."
+      },
+      "chk_setup": {
+        "label": "accurate",
+        "poster_evidence": "We score each annotator’s output against both the shipped gold and reviewer gold, measuring movement and ranking changes. All uncertainty is quantified via paired bootstrap resampling (2,000 resamples, stratified by language).",
+        "reason": "The poster describes the evaluation setup, including scoring outputs against two references under strict matching rules and using bootstrap resampling for uncertainty quantification."
+      },
+      "chk_primary_result": {
+        "label": "accurate",
+        "poster_evidence": "Pooled, swapping references moves scores by 4.95 F1 for Annotator A and 2.00 for B (95% CIs [3.23,6.27] and [0.26,3.37]). The largest shift is 7.55 in Hindi.",
+        "reason": "The poster correctly reports the primary result, including the pooled score shifts and the largest shift in Hindi."
+      },
+      "chk_secondary_result": {
+        "label": "accurate",
+        "poster_evidence": "Crucially, the comparison between outputs changes: the paired interaction is +2.95 (CI [+1.97,+3.87]), surviving Holm correction. Hindi’s margin reverses sign.",
+        "reason": "The poster accurately reports the secondary result, including the paired interaction and the reversal of Hindi’s margin."
+      },
+      "chk_baseline": {
+        "label": "accurate",
+        "poster_evidence": "The shipped gold systematically favors Annotator A (83.4% vs 76.1% exact match), while reviewer gold is neutral.",
+        "reason": "The poster compares scores obtained using the delivered gold reference versus the reviewer gold reference, matching the reference description."
+      },
+      "chk_conclusion": {
+        "label": "accurate",
+        "poster_evidence": "We urge the community to report reference-sensitivity bands — a simple, no-cost addition that reveals evaluation uncertainty.",
+        "reason": "The poster accurately conveys the paper’s conclusion that benchmarks should report reference-sensitivity bands to reflect evaluation uncertainty."
+      },
+      "chk_limitation": {
+        "label": "accurate",
+        "poster_evidence": "The method transfers; the number does not — it’s a property of the pipeline.",
+        "reason": "The poster mentions the limitation that the findings are specific to the pipeline and annotation record, matching the reference."
+      }
+    }
+  },
+  "raw": "```json\n{\n  \"items\": {\n    \"chk_problem\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Benchmark scores compare system output against a reference, but the reference is rarely questioned. We show that reference choice — not just system output — significantly moves scores.\",\n      \"reason\": \"The poster accurately describes the research problem as measuring how reference choice affects scores and model rankings in multilingual benchmarks.\"\n    },\n    \"chk_method\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"We invert the standard evaluation: fix the output, vary the reference. We use a six-language PII benchmark (24,939 prompts) with retained records: two independent annotator labels, shipped gold, and expert reviewer labels on 10.5% of data.\",\n      \"reason\": \"The poster correctly describes the method of holding system output fixed and varying the reference to isolate the effect of reference choice.\"\n    },\n    \"chk_data\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"We use a six-language PII benchmark (24,939 prompts) with retained records: two independent annotator labels, shipped gold, and expert reviewer labels on 10.5% of data.\",\n      \"reason\": \"The poster accurately identifies the dataset as a multilingual PII extraction benchmark with 24,939 prompts and retained annotation records.\"\n    },\n    \"chk_setup\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"We score each annotator’s output against both the shipped gold and reviewer gold, measuring movement and ranking changes. All uncertainty is quantified via paired bootstrap resampling (2,000 resamples, stratified by language).\",\n      \"reason\": \"The poster describes the evaluation setup, including scoring outputs against two references under strict matching rules and using bootstrap resampling for uncertainty quantification.\"\n    },\n    \"chk_primary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Pooled, swapping references moves scores by 4.95 F1 for Annotator A and 2.00 for B (95% CIs [3.23,6.27] and [0.26,3.37]). The largest shift is 7.55 in Hindi.\",\n      \"reason\": \"The poster correctly reports the primary result, including the pooled score shifts and the largest shift in Hindi.\"\n    },\n    \"chk_secondary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Crucially, the comparison between outputs changes: the paired interaction is +2.95 (CI [+1.97,+3.87]), surviving Holm correction. Hindi’s margin reverses sign.\",\n      \"reason\": \"The poster accurately reports the secondary result, including the paired interaction and the reversal of Hindi’s margin.\"\n    },\n    \"chk_baseline\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"The shipped gold systematically favors Annotator A (83.4% vs 76.1% exact match), while reviewer gold is neutral.\",\n      \"reason\": \"The poster compares scores obtained using the delivered gold reference versus the reviewer gold reference, matching the reference description.\"\n    },\n    \"chk_conclusion\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"We urge the community to report reference-sensitivity bands — a simple, no-cost addition that reveals evaluation uncertainty.\",\n      \"reason\": \"The poster accurately conveys the paper’s conclusion that benchmarks should report reference-sensitivity bands to reflect evaluation uncertainty.\"\n    },\n    \"chk_limitation\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"The method transfers; the number does not — it’s a property of the pipeline.\",\n      \"reason\": \"The poster mentions the limitation that the findings are specific to the pipeline and annotation record, matching the reference.\"\n    }\n  }\n}\n```"
+}

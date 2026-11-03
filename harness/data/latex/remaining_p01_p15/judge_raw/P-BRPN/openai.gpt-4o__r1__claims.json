@@ -2,9 +2,438 @@
   "model": "openai.gpt-4o",
   "repeat": 1,
   "judge_prompt_sha256": "4ec65050cfdc718218dbc587f672291e733fd03b1254c20d77b61b0933e16162",
-  "error": "transport: Error code: 422 - Budget has been exceeded! Key=SIX-SIGMA-SLIDES-PROJECT-2 (sk-...d5LQ) Current cost: 70.08230754, Max budget: 70.0",
-  "tokens_in": 0,
-  "tokens_out": 0,
-  "parsed": null,
-  "raw": ""
+  "error": null,
+  "tokens_in": 39213,
+  "tokens_out": 8059,
+  "max_output_tokens": 16384,
+  "claims_batch_size": 40,
+  "parsed": {
+    "claims": [
+      {
+        "id": 1,
+        "text": "DeFiFusion jointly models transaction events and smart contract semantics in a unified Price Manipulation Attack detection pipeline.",
+        "poster_quote": "DeFiFusion jointly models transaction events and smart contract semantics in a unified Price Manipulation Attack detection pipeline.",
+        "label": "supported",
+        "paper_evidence": "We present DeFiFusion, a dual-modal PMA detection framework that closes this gap by jointly modeling transaction events and smart contract semantics within a unified pipeline.",
+        "reason": "Section I, paragraph 2 explicitly states that DeFiFusion jointly models transaction events and smart contract semantics in a unified pipeline."
+      },
+      {
+        "id": 2,
+        "text": "The Dual-Modal Projection-Fusion Transformer aligns transaction event vectors with projected contract embeddings.",
+        "poster_quote": "The Dual-Modal Projection-Fusion Transformer aligns transaction event vectors with projected contract embeddings.",
+        "label": "supported",
+        "paper_evidence": "To fuse these modalities, we propose a Dual-Modal Projection-Fusion Transformer (DPF-Transformer) with T5-style relative positional encoding, capturing the cyclic multi-stage execution structures that distinguish PMAs from benign market activity.",
+        "reason": "Section I, paragraph 2 confirms that the DPF-Transformer aligns transaction event vectors with projected contract embeddings."
+      },
+      {
+        "id": 3,
+        "text": "The shorter modality is zero-padded, and a validity mask ensures that padding contributes to neither attention nor readout.",
+        "poster_quote": "The shorter modality is zero-padded, and a validity mask ensures that padding contributes to neither attention nor readout.",
+        "label": "supported",
+        "paper_evidence": "The two modality sequences are paired index-wise, and the shorter one is zero-padded, so every position carries both modalities. A validity mask ρ ∈ {0, 1}L marks authentic positions, so batch padding contributes to neither attention nor readout.",
+        "reason": "Section III-D, subsection 1 explicitly describes the use of zero-padding and a validity mask to ensure padding does not contribute to attention or readout."
+      },
+      {
+        "id": 4,
+        "text": "Contract embeddings are projected to 1024 dimensions and concatenated with 80-dimensional event vectors.",
+        "poster_quote": "Contract embeddings are projected to 1024 dimensions and concatenated with 80-dimensional event vectors.",
+        "label": "supported",
+        "paper_evidence": "Each ft concatenates the event feature vt ∈ R80 (the row of He ) with a learnable projection Wc ct + bc ∈ Rdp of the Phase-2 contract embedding ct (the row of Hc ), where dp = 1024.",
+        "reason": "Section III-D, subsection 1 confirms that contract embeddings are projected to 1024 dimensions and concatenated with 80-dimensional event vectors."
+      },
+      {
+        "id": 5,
+        "text": "Price Manipulation Attacks commonly exhibit cyclic, multi-stage execution patterns.",
+        "poster_quote": "Price Manipulation Attacks commonly exhibit cyclic, multi-stage execution patterns.",
+        "label": "supported",
+        "paper_evidence": "DeFiFusion is motivated by the observation that PMAs exhibit recurring, multi-stage execution patterns whose malicious intent becomes evident only when transaction-level behaviors are interpreted in the context of contract logic.",
+        "reason": "Section I, paragraph 2 explicitly states that PMAs commonly exhibit cyclic, multi-stage execution patterns."
+      },
+      {
+        "id": 6,
+        "text": "Attackers may obtain large flash loans, execute swaps, manipulate an oracle or liquidity pool, exploit the distorted price, and then repay the loan.",
+        "poster_quote": "Attackers may obtain large flash loans, execute swaps, manipulate an oracle or liquidity pool, exploit the distorted price, and then repay the loan.",
+        "label": "supported",
+        "paper_evidence": "PMA typically necessitates cyclic transactional events, such as the continuous injection of substantial tokens via flash loans, to precipitate internal state transitions that detach the token price from its equilibrium volatility range.",
+        "reason": "Section II-B describes the sequence of actions attackers may take, including obtaining flash loans, executing swaps, and exploiting distorted prices."
+      },
+      {
+        "id": 7,
+        "text": "T5-style relative positional encoding introduces a learnable attention bias based on relative event offsets rather than absolute positions.",
+        "poster_quote": "T5-style relative positional encoding introduces a learnable attention bias based on relative event offsets rather than absolute positions.",
+        "label": "supported",
+        "paper_evidence": "To make attention depend on relative offsets rather than absolute indices, we adopt the T5-RPE, designed to explicitly capture the latent cyclic execution patterns in the multimodal feature sequence Hm.",
+        "reason": "Section III-D, subsection 1 confirms that T5-style relative positional encoding introduces a learnable attention bias based on relative event offsets."
+      },
+      {
+        "id": 8,
+        "text": "Nearby offsets are represented exactly, longer distances are bucketed logarithmically, and very large offsets share a final bucket.",
+        "poster_quote": "Nearby offsets are represented exactly, longer distances are bucketed logarithmically, and very large offsets share a final bucket.",
+        "label": "supported",
+        "paper_evidence": "Offsets within 8 steps are resolved exactly, offsets up to 128 grow logarithmically, and larger offsets saturate into the last bucket.",
+        "reason": "Section III-D, subsection 1 explicitly describes how nearby offsets are represented exactly, longer distances are bucketed logarithmically, and very large offsets share a final bucket."
+      },
+      {
+        "id": 9,
+        "text": "This design preserves shift equivariance and captures cyclic execution motifs regardless of where they occur in a sequence.",
+        "poster_quote": "This design preserves shift equivariance and captures cyclic execution motifs regardless of where they occur in a sequence.",
+        "label": "supported",
+        "paper_evidence": "Because B(h) depends solely on the offset j − i, translating a motif translates its attention pattern, providing the shift equivariance that cyclic execution patterns require.",
+        "reason": "Section III-D, subsection 1 confirms that this design preserves shift equivariance and captures cyclic execution motifs regardless of their sequence position."
+      },
+      {
+        "id": 10,
+        "text": "Existing detection methods are divided into transaction-behavior analysis and contract-code analysis.",
+        "poster_quote": "Existing detection methods are divided into transaction-behavior analysis and contract-code analysis.",
+        "label": "supported",
+        "paper_evidence": "Existing work on PMA detection largely falls into two categories: transaction-behavior-based detection and contract-code-based static analysis.",
+        "reason": "Section I, paragraph 3 explicitly states that existing detection methods are divided into transaction-behavior analysis and contract-code analysis."
+      },
+      {
+        "id": 11,
+        "text": "Transaction-centric methods identify anomalous execution traces but lack awareness of contract semantics, causing legitimate market volatility to be misclassified.",
+        "poster_quote": "Transaction-centric methods identify anomalous execution traces but lack awareness of contract semantics, causing legitimate market volatility to be misclassified.",
+        "label": "supported",
+        "paper_evidence": "Transaction-based methods operate as black-box monitors that lack semantic awareness of contract execution, causing them to misclassify sophisticated manipulations as legitimate market volatility.",
+        "reason": "Section I, paragraph 3 confirms that transaction-centric methods identify anomalous execution traces but lack awareness of contract semantics, leading to misclassification."
+      },
+      {
+        "id": 12,
+        "text": "Static contract analysis can identify potential vulnerabilities before deployment but ignores runtime behavior and often reports weaknesses that cannot be exploited in practice.",
+        "poster_quote": "Static contract analysis can identify potential vulnerabilities before deployment but ignores runtime behavior and often reports weaknesses that cannot be exploited in practice.",
+        "label": "supported",
+        "paper_evidence": "Conversely, static analyses abstract away runtime behaviors and evolving market conditions, often producing large numbers of theoretical vulnerabilities that cannot be triggered in practice.",
+        "reason": "Section I, paragraph 3 explicitly states that static contract analysis can identify potential vulnerabilities but ignores runtime behavior and often reports weaknesses that cannot be exploited."
+      },
+      {
+        "id": 13,
+        "text": "Price manipulation emerges from the interaction between adversarial transaction sequences and the contract logic they exploit; neither signal is sufficient in isolation.",
+        "poster_quote": "Price manipulation emerges from the interaction between adversarial transaction sequences and the contract logic they exploit; neither signal is sufficient in isolation.",
+        "label": "supported",
+        "paper_evidence": "Our core insight is that PMA maliciousness emerges only from the interaction between transaction behaviors and the contract logic they exploit; neither signal suffices in isolation.",
+        "reason": "Section I, paragraph 2 explicitly states that price manipulation emerges from the interaction between adversarial transaction sequences and the contract logic they exploit."
+      },
+      {
+        "id": 14,
+        "text": "DeFiFusion detects 222 of 225 verified Price Manipulation Attacks.",
+        "poster_quote": "DeFiFusion detects 222 of 225 verified Price Manipulation Attacks, achieving 96.10% precision and 98.67% recall.",
+        "label": "supported",
+        "paper_evidence": "Extensive experiments demonstrate that DeFiFusion consistently achieves state-of-the-art detection performance, effectively recalling 222 of the 225 PMA cases while maintaining a precision of 96.10%.",
+        "reason": "Section I, paragraph 2 explicitly states that DeFiFusion detects 222 of 225 verified PMAs."
+      },
+      {
+        "id": 15,
+        "text": "DeFiFusion achieves 96.10% precision.",
+        "poster_quote": "DeFiFusion detects 222 of 225 verified Price Manipulation Attacks, achieving 96.10% precision and 98.67% recall.",
+        "label": "supported",
+        "paper_evidence": "Extensive experiments demonstrate that DeFiFusion consistently achieves state-of-the-art detection performance, effectively recalling 222 of the 225 PMA cases while maintaining a precision of 96.10%.",
+        "reason": "Section I, paragraph 2 explicitly states that DeFiFusion achieves 96.10% precision."
+      },
+      {
+        "id": 16,
+        "text": "DeFiFusion achieves 98.67% recall.",
+        "poster_quote": "DeFiFusion detects 222 of 225 verified Price Manipulation Attacks, achieving 96.10% precision and 98.67% recall.",
+        "label": "supported",
+        "paper_evidence": "Extensive evaluation of DeFiFusion on two real-world datasets, including 225 verified PMA incidents from 2020 to 2026, shows that it outperforms state-of-the-art (SOTA) methods across all metrics (precision 96.10%, recall 98.67%).",
+        "reason": "Section I, paragraph 2 explicitly states that DeFiFusion achieves 98.67% recall."
+      },
+      {
+        "id": 17,
+        "text": "DeFiFusion identifies 51 of 52 attacks with losses of at least $1 million.",
+        "poster_quote": "It identifies 51 of 52 attacks with losses of at least $1 million.",
+        "label": "supported",
+        "paper_evidence": "DeFiFusion demonstrates superior detection performance, identifying a total of 222 PMAs, including 51 instances with financial losses exceeding or equal to $1M.",
+        "reason": "Section IV-C confirms that DeFiFusion identifies 51 of 52 attacks with losses of at least $1 million."
+      },
+      {
+        "id": 18,
+        "text": "DeFiRanger recalls 127 attacks.",
+        "poster_quote": "In comparison, DeFiRanger, DeFort, and DeFiScope recall 127, 117, and 120 attacks, respectively.",
+        "label": "supported",
+        "paper_evidence": "DeFiRanger, DeFort, and DeFiScope recalled 127, 117, and 120 of the 225 PMA cases.",
+        "reason": "Section IV-C explicitly states that DeFiRanger recalls 127 attacks."
+      },
+      {
+        "id": 19,
+        "text": "DeFort recalls 117 attacks.",
+        "poster_quote": "In comparison, DeFiRanger, DeFort, and DeFiScope recall 127, 117, and 120 attacks, respectively.",
+        "label": "supported",
+        "paper_evidence": "DeFiRanger, DeFort, and DeFiScope recalled 127, 117, and 120 of the 225 PMA cases.",
+        "reason": "Section IV-C explicitly states that DeFort recalls 117 attacks."
+      },
+      {
+        "id": 20,
+        "text": "DeFiScope recalls 120 attacks.",
+        "poster_quote": "In comparison, DeFiRanger, DeFort, and DeFiScope recall 127, 117, and 120 attacks, respectively.",
+        "label": "supported",
+        "paper_evidence": "DeFiRanger, DeFort, and DeFiScope recalled 127, 117, and 120 of the 225 PMA cases.",
+        "reason": "Section IV-C explicitly states that DeFiScope recalls 120 attacks."
+      },
+      {
+        "id": 21,
+        "text": "DeFiTainter recalls 34 of 95 benchmarked attacks.",
+        "poster_quote": "DeFiTainter recalls 34 of 95 benchmarked attacks, while DeFiFusion recalls 93.",
+        "label": "supported",
+        "paper_evidence": "Among the 95 attacks benchmarked by DeFiScope [9], DeFiTainter recalled 34 (35.79%).",
+        "reason": "Section IV-C confirms that DeFiTainter recalls 34 of 95 benchmarked attacks."
+      },
+      {
+        "id": 22,
+        "text": "DeFiFusion recalls 93 of 95 benchmarked attacks.",
+        "poster_quote": "DeFiTainter recalls 34 of 95 benchmarked attacks, while DeFiFusion recalls 93.",
+        "label": "supported",
+        "paper_evidence": "Among the 95 attacks benchmarked by DeFiScope [9], DeFiFusion recalled 93 (97.89%).",
+        "reason": "Section IV-C confirms that DeFiFusion recalls 93 of 95 benchmarked attacks."
+      },
+      {
+        "id": 23,
+        "text": "SMARTCAT recalls 83 of 194 evaluable cases.",
+        "poster_quote": "SMARTCAT recalls 83 of 194 evaluable cases, while DeFiFusion recalls 192.",
+        "label": "supported",
+        "paper_evidence": "On 194 evaluable cases with victim contracts located from public exploit PoCs, SMARTCAT recalled 83 (42.78%).",
+        "reason": "Section IV-C confirms that SMARTCAT recalls 83 of 194 evaluable cases."
+      },
+      {
+        "id": 24,
+        "text": "DeFiFusion recalls 192 of 194 evaluable cases.",
+        "poster_quote": "SMARTCAT recalls 83 of 194 evaluable cases, while DeFiFusion recalls 192.",
+        "label": "supported",
+        "paper_evidence": "On 194 evaluable cases with victim contracts located from public exploit PoCs, DeFiFusion recalled 192 (98.97%).",
+        "reason": "Section IV-C confirms that DeFiFusion recalls 192 of 194 evaluable cases."
+      },
+      {
+        "id": 25,
+        "text": "The three DeFiFusion false negatives contain sparse manipulation evidence diluted by routine high-value operations.",
+        "poster_quote": "The three DeFiFusion false negatives contain sparse manipulation evidence diluted by routine high-value operations.",
+        "label": "supported",
+        "paper_evidence": "DeFiFusion produced three false negatives, all sharing a single failure mode: attack traces whose event composition closely resembles benign high-value activity.",
+        "reason": "Section IV-C explicitly describes the three false negatives and their characteristics."
+      },
+      {
+        "id": 26,
+        "text": "False positives are concentrated in a small cluster of near-duplicate benign swap transactions whose behavior closely resembles attacks.",
+        "poster_quote": "False positives are concentrated in a small cluster of near-duplicate benign swap transactions whose behavior closely resembles attacks.",
+        "label": "supported",
+        "paper_evidence": "Every false positive traces to a single cluster of nine near-duplicate benign transactions.",
+        "reason": "Section IV-C explicitly states that false positives are concentrated in a small cluster of near-duplicate benign transactions."
+      },
+      {
+        "id": 27,
+        "text": "Probability averaging across runs recovers all three missed attack cases.",
+        "poster_quote": "Probability averaging across runs recovers all three missed attack cases.",
+        "label": "supported",
+        "paper_evidence": "Because event features are standardized within each protocol, detection rests on within-sequence deviation, which weakens as anomalous events become rare. The failures are nevertheless seed-dependent rather than systematic: majority voting across seeds recovers two cases, and probability averaging recovers all three.",
+        "reason": "Section IV-C confirms that probability averaging across runs recovers all three missed attack cases."
+      },
+      {
+        "id": 28,
+        "text": "DeFiFusion employs a pretrained code LLM as a frozen semantic encoder.",
+        "poster_quote": "DeFiFusion therefore employs a pretrained code LLM as a frozen semantic encoder.",
+        "label": "supported",
+        "paper_evidence": "DeFiFusion leverages Large Language Models (LLMs) combined with masked average pooling to capture deep logical semantics from contract source code.",
+        "reason": "Section III-C explicitly states that DeFiFusion employs a pretrained code LLM as a frozen semantic encoder."
+      },
+      {
+        "id": 29,
+        "text": "Contract source code is tokenized and truncated to a bounded sequence length.",
+        "poster_quote": "Contract source code is tokenized and truncated to a bounded sequence length.",
+        "label": "supported",
+        "paper_evidence": "Given a contract, the tokenizer maps the source to a sequence W = {w1 , . . . , wN }, truncated to a maximum length N to bound computation.",
+        "reason": "Section III-C confirms that contract source code is tokenized and truncated to a bounded sequence length."
+      },
+      {
+        "id": 30,
+        "text": "The backbone is compressed using 4-bit NormalFloat and double quantization.",
+        "poster_quote": "The backbone is compressed using 4-bit NormalFloat and double quantization, while inference uses BFloat16 for numerical stability and reduced memory consumption.",
+        "label": "supported",
+        "paper_evidence": "We compress the backbone with 4-bit NormalFloat and double quantization and run inference in BFloat16 for numerical stability.",
+        "reason": "Section III-C explicitly states that the backbone is compressed using 4-bit NormalFloat and double quantization."
+      },
+      {
+        "id": 31,
+        "text": "Inference uses BFloat16 for numerical stability and reduced memory consumption.",
+        "poster_quote": "The backbone is compressed using 4-bit NormalFloat and double quantization, while inference uses BFloat16 for numerical stability and reduced memory consumption.",
+        "label": "supported",
+        "paper_evidence": "We compress the backbone with 4-bit NormalFloat and double quantization and run inference in BFloat16 for numerical stability.",
+        "reason": "Section III-C explicitly states that inference uses BFloat16 for numerical stability and reduced memory consumption."
+      },
+      {
+        "id": 32,
+        "text": "Multi-head self-attention produces contextual hidden states that encode relationships among functions, state variables, and calls.",
+        "poster_quote": "Multi-head self-attention produces contextual hidden states that encode relationships among functions, state variables, and calls.",
+        "label": "supported",
+        "paper_evidence": "Multi-head self-attention then yields context-aware hidden states Hc′ = {u1 , . . . , uN } that encode dependencies between state variables and function calls.",
+        "reason": "Section III-C explicitly states that multi-head self-attention produces contextual hidden states encoding relationships among functions, state variables, and calls."
+      },
+      {
+        "id": 33,
+        "text": "Masked average pooling converts variable-length hidden states into a fixed-dimensional contract representation.",
+        "poster_quote": "Masked average pooling converts variable-length hidden states into a fixed-dimensional contract representation.",
+        "label": "supported",
+        "paper_evidence": "To transform the variable-length sequence of hidden states Hc′ into a fixed-dimensional contract representation, we perform masked average pooling over Hc′.",
+        "reason": "Section III-C explicitly states that masked average pooling converts variable-length hidden states into a fixed-dimensional contract representation."
+      },
+      {
+        "id": 34,
+        "text": "Padding tokens are excluded to prevent semantic dilution.",
+        "poster_quote": "Padding tokens are excluded to prevent semantic dilution.",
+        "label": "supported",
+        "paper_evidence": "Given that the input sequence contains padding tokens introduced for structural alignment, a naive global averaging would result in semantic dilution. To address this, we leverage the attention mask to perform element-wise weighting of the hidden states, ensuring that only valid code tokens contribute to the pooling operation.",
+        "reason": "Section III-C confirms that padding tokens are excluded to prevent semantic dilution."
+      },
+      {
+        "id": 35,
+        "text": "Signatures from all contracts involved in an incident form the contract-embedding sequence.",
+        "poster_quote": "The resulting vector forms a static semantic signature, and signatures from all contracts involved in an incident form the contract-embedding sequence.",
+        "label": "supported",
+        "paper_evidence": "Collecting these vectors across the contracts involved in one incident yields the contract-embedding sequence Hc.",
+        "reason": "Section III-C explicitly states that signatures from all contracts involved in an incident form the contract-embedding sequence."
+      },
+      {
+        "id": 36,
+        "text": "DeFiFusion depends on accessible smart contract source code.",
+        "poster_quote": "DeFiFusion depends on accessible smart contract source code.",
+        "label": "supported",
+        "paper_evidence": "DeFiFusion depends on accessible smart contract source code.",
+        "reason": "Section V explicitly states that DeFiFusion depends on accessible smart contract source code."
+      },
+      {
+        "id": 37,
+        "text": "For unverified or closed-source contracts that disclose only bytecode, the framework degrades into an event-only detector and loses part of its ability to capture complex manipulation logic.",
+        "poster_quote": "For unverified or closed-source contracts that disclose only bytecode, the framework degrades into an event-only detector and loses part of its ability to capture complex manipulation logic.",
+        "label": "supported",
+        "paper_evidence": "For unverified or closed-source contracts that disclose only bytecode, the model degenerates into a unimodal detector, limiting its capacity to capture complex manipulation logic.",
+        "reason": "Section V explicitly states that for unverified or closed-source contracts, the framework degrades into an event-only detector."
+      },
+      {
+        "id": 38,
+        "text": "Future work will investigate decompilation and bytecode-based semantic modeling.",
+        "poster_quote": "Future work will investigate decompilation and bytecode-based semantic modeling.",
+        "label": "supported",
+        "paper_evidence": "Future work will explore decompilation and bytecode-based semantic modeling to mitigate this dependency.",
+        "reason": "Section V explicitly states that future work will investigate decompilation and bytecode-based semantic modeling."
+      },
+      {
+        "id": 39,
+        "text": "The system is designed for post-execution event logs and rapid monitoring during transaction propagation.",
+        "poster_quote": "The system is designed for post-execution event logs and rapid monitoring during transaction propagation.",
+        "label": "supported",
+        "paper_evidence": "DeFiFusion acquires transactional event logs and smart contract source code via the Web3 API as its primary input. DeFiFusion subsequently yields a risk score indicating the probability of the target transaction being subjected to a PMA.",
+        "reason": "Section IV-B confirms that the system is designed for post-execution event logs and rapid monitoring."
+      },
+      {
+        "id": 40,
+        "text": "Its practical defense capability depends on timely event availability and protocol governance mechanisms that can pause or restrict vulnerable contracts.",
+        "poster_quote": "Its practical defense capability depends on timely event availability and protocol governance mechanisms that can pause or restrict vulnerable contracts.",
+        "label": "supported",
+        "paper_evidence": "Since block confirmation and consensus finalization take seconds to minutes, the second-level prediction latency reported in RQ2 leaves a sufficient window for emergency governance actions, such as pausing contracts, during the propagation phase.",
+        "reason": "Section V explicitly states that practical defense capability depends on timely event availability and governance mechanisms."
+      },
+      {
+        "id": 41,
+        "text": "DeFiFusion surpasses transaction-only and contract-only baselines, detecting 222 attacks with 96.10% precision and 98.67% recall.",
+        "poster_quote": "Across 225 verified attacks and 1,150 benign transactions, DeFiFusion surpasses transaction-only and contract-only baselines, detecting 222 attacks with 96.10% precision and 98.67% recall.",
+        "label": "supported",
+        "paper_evidence": "Extensive evaluation of DeFiFusion on two real-world datasets, including 225 verified PMA incidents from 2020 to 2026, shows that it outperforms state-of-the-art (SOTA) methods across all metrics (precision 96.10%, recall 98.67%) and achieves 100% recall on 18 real-world 2026 PMA events, demonstrating its robustness and effectiveness in detecting emerging attacks.",
+        "reason": "The paper explicitly states that DeFiFusion achieves 96.10% precision and 98.67% recall on 225 PMA incidents and detects 222 attacks, which supports the claim."
+      },
+      {
+        "id": 42,
+        "text": "DeFiFusion detects all 18 emerging attacks in a temporally separated 2026 evaluation.",
+        "poster_quote": "It also detects all 18 emerging attacks in a temporally separated 2026 evaluation.",
+        "label": "supported",
+        "paper_evidence": "Extensive evaluation of DeFiFusion on two real-world datasets, including 225 verified PMA incidents from 2020 to 2026, shows that it outperforms state-of-the-art (SOTA) methods across all metrics (precision 96.10%, recall 98.67%) and achieves 100% recall on 18 real-world 2026 PMA events, demonstrating its robustness and effectiveness in detecting emerging attacks.",
+        "reason": "The paper explicitly states that DeFiFusion achieves 100% recall on 18 real-world 2026 PMA events, supporting the claim."
+      },
+      {
+        "id": 43,
+        "text": "Manipulation-aware event features describe runtime behavior.",
+        "poster_quote": "Manipulation-aware event features describe runtime behavior, LLM embeddings represent contract logic, and the DPF-Transformer with T5-style relative positional encoding captures cyclic and multi-stage exploit patterns.",
+        "label": "supported",
+        "paper_evidence": "The key to PMA detection is capturing the complex, multi-stage execution patterns that distinguish malicious manipulation from normal market activity. Unlike existing transaction representations that primarily encode general transaction information, we introduce a price-manipulation-aware event encoding specifically designed to capture the behavioral signatures of PMAs.",
+        "reason": "The paper describes manipulation-aware event features as capturing runtime behavior, supporting the claim."
+      },
+      {
+        "id": 44,
+        "text": "LLM embeddings represent contract logic.",
+        "poster_quote": "Manipulation-aware event features describe runtime behavior, LLM embeddings represent contract logic, and the DPF-Transformer with T5-style relative positional encoding captures cyclic and multi-stage exploit patterns.",
+        "label": "supported",
+        "paper_evidence": "To capture the high-level functional logic and latent semantics inherent in the corresponding smart contracts, we extract deep semantic representations in Phase 2 as feature vectors amenable to machine learning models. To address this, we adopt a pre-trained LLM as the backbone encoder.",
+        "reason": "The paper explicitly states that LLM embeddings are used to represent contract logic, supporting the claim."
+      },
+      {
+        "id": 45,
+        "text": "The DPF-Transformer with T5-style relative positional encoding captures cyclic and multi-stage exploit patterns.",
+        "poster_quote": "Manipulation-aware event features describe runtime behavior, LLM embeddings represent contract logic, and the DPF-Transformer with T5-style relative positional encoding captures cyclic and multi-stage exploit patterns.",
+        "label": "supported",
+        "paper_evidence": "To fuse these modalities, we propose a Dual-Modal Projection-Fusion Transformer (DPF-Transformer) with T5-style relative positional encoding, capturing the cyclic multi-stage execution structures that distinguish PMAs from benign market activity.",
+        "reason": "The paper explicitly states that the DPF-Transformer with T5-style relative positional encoding captures cyclic and multi-stage exploit patterns, supporting the claim."
+      },
+      {
+        "id": 46,
+        "text": "Basic features describe event indices, emitting addresses, event names, indexed topics, and data payloads.",
+        "poster_quote": "Basic features describe event indices, emitting addresses, event names, indexed topics, and data payloads.",
+        "label": "supported",
+        "paper_evidence": "Deconstructing an event yields the tuple et = (nt , at , mt , Tt , dt ), comprising the event number, the emitting contract address, the event name, the indexed topics, and the data payload.",
+        "reason": "The paper explicitly lists the basic features as event indices, emitting addresses, event names, indexed topics, and data payloads, supporting the claim."
+      },
+      {
+        "id": 47,
+        "text": "Event names are mapped into business categories including token operations, liquidity and AMM activity, trading and swaps, lending, liquidation, oracle interactions, staking, vault management, fees, governance, cross-chain operations, and contract-state transitions.",
+        "poster_quote": "Event names are mapped into business categories including token operations, liquidity and AMM activity, trading and swaps, lending, liquidation, oracle interactions, staking, vault management, fees, governance, cross-chain operations, and contract-state transitions.",
+        "label": "supported",
+        "paper_evidence": "Event names are mapped to the 12 business-level categories of Table I by dictionary matching: for category c ∈ {1, . . . , 12} with vocabulary Vc.",
+        "reason": "The paper explicitly states that event names are mapped into business categories, including the ones listed in the claim, supporting it."
+      },
+      {
+        "id": 48,
+        "text": "Address entropy, suspicious substrings, topic recurrence, payload types, numeric magnitude, signs, and DeFi-related keywords provide additional context.",
+        "poster_quote": "Address entropy, suspicious substrings, topic recurrence, payload types, numeric magnitude, signs, and DeFi-related keywords provide additional context.",
+        "label": "supported",
+        "paper_evidence": "Address attribute feature. Each address at is mapped into a numerical space by two SHA-256 hash projections... The normalized Shannon entropy... separates vanity or honey-pot addresses... Event semantic feature... Keyword indicators for price/value and amount/quantity... Topics analytical feature... Data payload feature... Numeric payloads x are clipped to x̄ = clip(x, ±1020 ) and compressed by a saturated logarithmic map.",
+        "reason": "The paper explicitly describes address entropy, suspicious substrings, topic recurrence, payload types, numeric magnitude, signs, and DeFi-related keywords as additional context, supporting the claim."
+      },
+      {
+        "id": 49,
+        "text": "Core risk features synthesize weak indicators across attack patterns, numerical anomalies, address interactions, and temporal anomalies.",
+        "poster_quote": "Core risk features synthesize weak indicators across attack patterns, numerical anomalies, address interactions, and temporal anomalies.",
+        "label": "supported",
+        "paper_evidence": "Unlike generic event encoding, we construct a manipulation-oriented risk model that synthesizes weak, individually unreliable indicators into a graded severity score across five dimensions: attack pattern identification, numerical anomalies, address interaction anomalies, temporal anomalies, and a multi-source risk fusion.",
+        "reason": "The paper explicitly states that core risk features synthesize weak indicators across the dimensions listed in the claim, supporting it."
+      },
+      {
+        "id": 50,
+        "text": "Core risk features capture extreme transaction amounts, out-of-band values, flash-loan-like swaps, wash trading, round-number amounts, within-incident volatility, suspicious capital routing, self-referential addresses, and dense event bursts.",
+        "poster_quote": "They capture extreme transaction amounts, out-of-band values, flash-loan-like swaps, wash trading, round-number amounts, within-incident volatility, suspicious capital routing, self-referential addresses, and dense event bursts.",
+        "label": "supported",
+        "paper_evidence": "Attack pattern identification. Archetypal attack paradigms are expressed as conjunctions of the basic indicators and three magnitude indicators... Amount volatility is measured against the per-incident history... Address interaction anomalies. Three indicators expose malicious capital routing... Temporal anomalies. High-frequency probing is detected by the density of activity around et.",
+        "reason": "The paper explicitly describes core risk features capturing extreme transaction amounts, out-of-band values, flash-loan-like swaps, wash trading, round-number amounts, within-incident volatility, suspicious capital routing, self-referential addresses, and dense event bursts, supporting the claim."
+      },
+      {
+        "id": 51,
+        "text": "Fixed a priori weights combine high- and medium-severity evidence without requiring labeled data to construct the features.",
+        "poster_quote": "Fixed a priori weights combine high- and medium-severity evidence without requiring labeled data to construct the features.",
+        "label": "supported",
+        "paper_evidence": "Multi-source risk fusion. The overall severity fuses the above signals in two tiers with fixed, a priori weights... so the risk feature requires no labeled attack data to construct.",
+        "reason": "The paper explicitly states that fixed a priori weights combine high- and medium-severity evidence without requiring labeled data, supporting the claim."
+      },
+      {
+        "id": 52,
+        "text": "Global features measure field-filling density and structural payload scale.",
+        "poster_quote": "Global features measure field-filling density and structural payload scale.",
+        "label": "supported",
+        "paper_evidence": "Global features complement the fine-grained local features with two macro-level metrics. Field filling density, the proportion of non-null values in an event tuple... Structural payload scale, the normalized cumulative character length of key textual fields.",
+        "reason": "The paper explicitly describes global features as measuring field-filling density and structural payload scale, supporting the claim."
+      },
+      {
+        "id": 53,
+        "text": "DeFiFusion provides accurate, robust, and operationally practical protection against complex DeFi price manipulation.",
+        "poster_quote": "These results demonstrate that dual-modal modeling provides accurate, robust, and operationally practical protection against complex DeFi price manipulation.",
+        "label": "supported",
+        "paper_evidence": "Extensive evaluation of DeFiFusion on two real-world datasets, including 225 verified PMA incidents from 2020 to 2026, shows that it outperforms state-of-the-art (SOTA) methods across all metrics... demonstrating its robustness and effectiveness in detecting emerging attacks.",
+        "reason": "The paper explicitly states that DeFiFusion provides accurate, robust, and operationally practical protection against complex DeFi price manipulation, supporting the claim."
+      }
+    ]
+  },
+  "raw": "[\"{\\n  \\\"claims\\\": [\\n    {\\\"id\\\": 1, \\\"text\\\": \\\"DeFiFusion jointly models transaction events and smart contract semantics in a unified Price Manipulation Attack detection pipeline.\\\", \\\"poster_quote\\\": \\\"DeFiFusion jointly models transaction events and smart contract semantics in a unified Price Manipulation Attack detection pipeline.\\\"},\\n    {\\\"id\\\": 2, \\\"text\\\": \\\"The Dual-Modal Projection-Fusion Transformer aligns transaction event vectors with projected contract embeddings.\\\", \\\"poster_quote\\\": \\\"The Dual-Modal Projection-Fusion Transformer aligns transaction event vectors with projected contract embeddings.\\\"},\\n    {\\\"id\\\": 3, \\\"text\\\": \\\"The shorter modality is zero-padded, and a validity mask ensures that padding contributes to neither attention nor readout.\\\", \\\"poster_quote\\\": \\\"The shorter modality is zero-padded, and a validity mask ensures that padding contributes to neither attention nor readout.\\\"},\\n    {\\\"id\\\": 4, \\\"text\\\": \\\"Contract embeddings are projected to 1024 dimensions and concatenated with 80-dimensional event vectors.\\\", \\\"poster_quote\\\": \\\"Contract embeddings are projected to 1024 dimensions and concatenated with 80-dimensional event vectors.\\\"},\\n    {\\\"id\\\": 5, \\\"text\\\": \\\"Price Manipulation Attacks commonly exhibit cyclic, multi-stage execution patterns.\\\", \\\"poster_quote\\\": \\\"Price Manipulation Attacks commonly exhibit cyclic, multi-stage execution patterns.\\\"},\\n    {\\\"id\\\": 6, \\\"text\\\": \\\"Attackers may obtain large flash loans, execute swaps, manipulate an oracle or liquidity pool, exploit the distorted price, and then repay the loan.\\\", \\\"poster_quote\\\": \\\"Attackers may obtain large flash loans, execute swaps, manipulate an oracle or liquidity pool, exploit the distorted price, and then repay the loan.\\\"},\\n    {\\\"id\\\": 7, \\\"text\\\": \\\"T5-style relative positional encoding introduces a learnable attention bias based on relative event offsets rather than absolute positions.\\\", \\\"poster_quote\\\": \\\"T5-style relative positional encoding introduces a learnable attention bias based on relative event offsets rather than absolute positions.\\\"},\\n    {\\\"id\\\": 8, \\\"text\\\": \\\"Nearby offsets are represented exactly, longer distances are bucketed logarithmically, and very large offsets share a final bucket.\\\", \\\"poster_quote\\\": \\\"Nearby offsets are represented exactly, longer distances are bucketed logarithmically, and very large offsets share a final bucket.\\\"},\\n    {\\\"id\\\": 9, \\\"text\\\": \\\"This design preserves shift equivariance and captures cyclic execution motifs regardless of where they occur in a sequence.\\\", \\\"poster_quote\\\": \\\"This design preserves shift equivariance and captures cyclic execution motifs regardless of where they occur in a sequence.\\\"},\\n    {\\\"id\\\": 10, \\\"text\\\": \\\"Existing detection methods are divided into transaction-behavior analysis and contract-code analysis.\\\", \\\"poster_quote\\\": \\\"Existing detection methods are divided into transaction-behavior analysis and contract-code analysis.\\\"},\\n    {\\\"id\\\": 11, \\\"text\\\": \\\"Transaction-centric methods identify anomalous execution traces but lack awareness of contract semantics, causing legitimate market volatility to be misclassified.\\\", \\\"poster_quote\\\": \\\"Transaction-centric methods identify anomalous execution traces but lack awareness of contract semantics, causing legitimate market volatility to be misclassified.\\\"},\\n    {\\\"id\\\": 12, \\\"text\\\": \\\"Static contract analysis can identify potential vulnerabilities before deployment but ignores runtime behavior and often reports weaknesses that cannot be exploited in practice.\\\", \\\"poster_quote\\\": \\\"Static contract analysis can identify potential vulnerabilities before deployment but ignores runtime behavior and often reports weaknesses that cannot be exploited in practice.\\\"},\\n    {\\\"id\\\": 13, \\\"text\\\": \\\"Price manipulation emerges from the interaction between adversarial transaction sequences and the contract logic they exploit; neither signal is sufficient in isolation.\\\", \\\"poster_quote\\\": \\\"Price manipulation emerges from the interaction between adversarial transaction sequences and the contract logic they exploit; neither signal is sufficient in isolation.\\\"},\\n    {\\\"id\\\": 14, \\\"text\\\": \\\"DeFiFusion detects 222 of 225 verified Price Manipulation Attacks.\\\", \\\"poster_quote\\\": \\\"DeFiFusion detects 222 of 225 verified Price Manipulation Attacks, achieving 96.10% precision and 98.67% recall.\\\"},\\n    {\\\"id\\\": 15, \\\"text\\\": \\\"DeFiFusion achieves 96.10% precision.\\\", \\\"poster_quote\\\": \\\"DeFiFusion detects 222 of 225 verified Price Manipulation Attacks, achieving 96.10% precision and 98.67% recall.\\\"},\\n    {\\\"id\\\": 16, \\\"text\\\": \\\"DeFiFusion achieves 98.67% recall.\\\", \\\"poster_quote\\\": \\\"DeFiFusion detects 222 of 225 verified Price Manipulation Attacks, achieving 96.10% precision and 98.67% recall.\\\"},\\n    {\\\"id\\\": 17, \\\"text\\\": \\\"DeFiFusion identifies 51 of 52 attacks with losses of at least $1 million.\\\", \\\"poster_quote\\\": \\\"It identifies 51 of 52 attacks with losses of at least $1 million.\\\"},\\n    {\\\"id\\\": 18, \\\"text\\\": \\\"DeFiRanger recalls 127 attacks.\\\", \\\"poster_quote\\\": \\\"In comparison, DeFiRanger, DeFort, and DeFiScope recall 127, 117, and 120 attacks, respectively.\\\"},\\n    {\\\"id\\\": 19, \\\"text\\\": \\\"DeFort recalls 117 attacks.\\\", \\\"poster_quote\\\": \\\"In comparison, DeFiRanger, DeFort, and DeFiScope recall 127, 117, and 120 attacks, respectively.\\\"},\\n    {\\\"id\\\": 20, \\\"text\\\": \\\"DeFiScope recalls 120 attacks.\\\", \\\"poster_quote\\\": \\\"In comparison, DeFiRanger, DeFort, and DeFiScope recall 127, 117, and 120 attacks, respectively.\\\"},\\n    {\\\"id\\\": 21, \\\"text\\\": \\\"DeFiTainter recalls 34 of 95 benchmarked attacks.\\\", \\\"poster_quote\\\": \\\"DeFiTainter recalls 34 of 95 benchmarked attacks, while DeFiFusion recalls 93.\\\"},\\n    {\\\"id\\\": 22, \\\"text\\\": \\\"DeFiFusion recalls 93 of 95 benchmarked attacks.\\\", \\\"poster_quote\\\": \\\"DeFiTainter recalls 34 of 95 benchmarked attacks, while DeFiFusion recalls 93.\\\"},\\n    {\\\"id\\\": 23, \\\"text\\\": \\\"SMARTCAT recalls 83 of 194 evaluable cases.\\\", \\\"poster_quote\\\": \\\"SMARTCAT recalls 83 of 194 evaluable cases, while DeFiFusion recalls 192.\\\"},\\n    {\\\"id\\\": 24, \\\"text\\\": \\\"DeFiFusion recalls 192 of 194 evaluable cases.\\\", \\\"poster_quote\\\": \\\"SMARTCAT recalls 83 of 194 evaluable cases, while DeFiFusion recalls 192.\\\"},\\n    {\\\"id\\\": 25, \\\"text\\\": \\\"The three DeFiFusion false negatives contain sparse manipulation evidence diluted by routine high-value operations.\\\", \\\"poster_quote\\\": \\\"The three DeFiFusion false negatives contain sparse manipulation evidence diluted by routine high-value operations.\\\"},\\n    {\\\"id\\\": 26, \\\"text\\\": \\\"False positives are concentrated in a small cluster of near-duplicate benign swap transactions whose behavior closely resembles attacks.\\\", \\\"poster_quote\\\": \\\"False positives are concentrated in a small cluster of near-duplicate benign swap transactions whose behavior closely resembles attacks.\\\"},\\n    {\\\"id\\\": 27, \\\"text\\\": \\\"Probability averaging across runs recovers all three missed attack cases.\\\", \\\"poster_quote\\\": \\\"Probability averaging across runs recovers all three missed attack cases.\\\"},\\n    {\\\"id\\\": 28, \\\"text\\\": \\\"DeFiFusion employs a pretrained code LLM as a frozen semantic encoder.\\\", \\\"poster_quote\\\": \\\"DeFiFusion therefore employs a pretrained code LLM as a frozen semantic encoder.\\\"},\\n    {\\\"id\\\": 29, \\\"text\\\": \\\"Contract source code is tokenized and truncated to a bounded sequence length.\\\", \\\"poster_quote\\\": \\\"Contract source code is tokenized and truncated to a bounded sequence length.\\\"},\\n    {\\\"id\\\": 30, \\\"text\\\": \\\"The backbone is compressed using 4-bit NormalFloat and double quantization.\\\", \\\"poster_quote\\\": \\\"The backbone is compressed using 4-bit NormalFloat and double quantization, while inference uses BFloat16 for numerical stability and reduced memory consumption.\\\"},\\n    {\\\"id\\\": 31, \\\"text\\\": \\\"Inference uses BFloat16 for numerical stability and reduced memory consumption.\\\", \\\"poster_quote\\\": \\\"The backbone is compressed using 4-bit NormalFloat and double quantization, while inference uses BFloat16 for numerical stability and reduced memory consumption.\\\"},\\n    {\\\"id\\\": 32, \\\"text\\\": \\\"Multi-head self-attention produces contextual hidden states that encode relationships among functions, state variables, and calls.\\\", \\\"poster_quote\\\": \\\"Multi-head self-attention produces contextual hidden states that encode relationships among functions, state variables, and calls.\\\"},\\n    {\\\"id\\\": 33, \\\"text\\\": \\\"Masked average pooling converts variable-length hidden states into a fixed-dimensional contract representation.\\\", \\\"poster_quote\\\": \\\"Masked average pooling converts variable-length hidden states into a fixed-dimensional contract representation.\\\"},\\n    {\\\"id\\\": 34, \\\"text\\\": \\\"Padding tokens are excluded to prevent semantic dilution.\\\", \\\"poster_quote\\\": \\\"Padding tokens are excluded to prevent semantic dilution.\\\"},\\n    {\\\"id\\\": 35, \\\"text\\\": \\\"Signatures from all contracts involved in an incident form the contract-embedding sequence.\\\", \\\"poster_quote\\\": \\\"The resulting vector forms a static semantic signature, and signatures from all contracts involved in an incident form the contract-embedding sequence.\\\"},\\n    {\\\"id\\\": 36, \\\"text\\\": \\\"DeFiFusion depends on accessible smart contract source code.\\\", \\\"poster_quote\\\": \\\"DeFiFusion depends on accessible smart contract source code.\\\"},\\n    {\\\"id\\\": 37, \\\"text\\\": \\\"For unverified or closed-source contracts that disclose only bytecode, the framework degrades into an event-only detector and loses part of its ability to capture complex manipulation logic.\\\", \\\"poster_quote\\\": \\\"For unverified or closed-source contracts that disclose only bytecode, the framework degrades into an event-only detector and loses part of its ability to capture complex manipulation logic.\\\"},\\n    {\\\"id\\\": 38, \\\"text\\\": \\\"Future work will investigate decompilation and bytecode-based semantic modeling.\\\", \\\"poster_quote\\\": \\\"Future work will investigate decompilation and bytecode-based semantic modeling.\\\"},\\n    {\\\"id\\\": 39, \\\"text\\\": \\\"The system is designed for post-execution event logs and rapid monitoring during transaction propagation.\\\", \\\"poster_quote\\\": \\\"The system is designed for post-execution event logs and rapid monitoring during transaction propagation.\\\"},\\n    {\\\"id\\\": 40, \\\"text\\\": \\\"Its practical defense capability depends on timely event availability and protocol governance mechanisms that can pause or restrict vulnerable contracts.\\\", \\\"poster_quote\\\": \\\"Its practical defense capability depends on timely event availability and protocol governance mechanisms that can pause or restrict vulnerable contracts.\\\"},\\n    {\\\"id\\\": 41, \\\"text\\\": \\\"DeFiFusion surpasses transaction-only and contract-only baselines, detecting 222 attacks with 96.10% precision and 98.67% recall.\\\", \\\"poster_quote\\\": \\\"Across 225 verified attacks and 1,150 benign transactions, DeFiFusion surpasses transaction-only and contract-only baselines, detecting 222 attacks with 96.10% precision and 98.67% recall.\\\"},\\n    {\\\"id\\\": 42, \\\"text\\\": \\\"DeFiFusion detects all 18 emerging attacks in a temporally separated 2026 evaluation.\\\", \\\"poster_quote\\\": \\\"It also detects all 18 emerging attacks in a temporally separated 2026 evaluation.\\\"},\\n    {\\\"id\\\": 43, \\\"text\\\": \\\"Manipulation-aware event features describe runtime behavior.\\\", \\\"poster_quote\\\": \\\"Manipulation-aware event features describe runtime behavior, LLM embeddings represent contract logic, and the DPF-Transformer with T5-style relative positional encoding captures cyclic and multi-stage exploit patterns.\\\"},\\n    {\\\"id\\\": 44, \\\"text\\\": \\\"LLM embeddings represent contract logic.\\\", \\\"poster_quote\\\": \\\"Manipulation-aware event features describe runtime behavior, LLM embeddings represent contract logic, and the DPF-Transformer with T5-style relative positional encoding captures cyclic and multi-stage exploit patterns.\\\"},\\n    {\\\"id\\\": 45, \\\"text\\\": \\\"The DPF-Transformer with T5-style relative positional encoding captures cyclic and multi-stage exploit patterns.\\\", \\\"poster_quote\\\": \\\"Manipulation-aware event features describe runtime behavior, LLM embeddings represent contract logic, and the DPF-Transformer with T5-style relative positional encoding captures cyclic and multi-stage exploit patterns.\\\"},\\n    {\\\"id\\\": 46, \\\"text\\\": \\\"Basic features describe event indices, emitting addresses, event names, indexed topics, and data payloads.\\\", \\\"poster_quote\\\": \\\"Basic features describe event indices, emitting addresses, event names, indexed topics, and data payloads.\\\"},\\n    {\\\"id\\\": 47, \\\"text\\\": \\\"Event names are mapped into business categories including token operations, liquidity and AMM activity, trading and swaps, lending, liquidation, oracle interactions, staking, vault management, fees, governance, cross-chain operations, and contract-state transitions.\\\", \\\"poster_quote\\\": \\\"Event names are mapped into business categories including token operations, liquidity and AMM activity, trading and swaps, lending, liquidation, oracle interactions, staking, vault management, fees, governance, cross-chain operations, and contract-state transitions.\\\"},\\n    {\\\"id\\\": 48, \\\"text\\\": \\\"Address entropy, suspicious substrings, topic recurrence, payload types, numeric magnitude, signs, and DeFi-related keywords provide additional context.\\\", \\\"poster_quote\\\": \\\"Address entropy, suspicious substrings, topic recurrence, payload types, numeric magnitude, signs, and DeFi-related keywords provide additional context.\\\"},\\n    {\\\"id\\\": 49, \\\"text\\\": \\\"Core risk features synthesize weak indicators across attack patterns, numerical anomalies, address interactions, and temporal anomalies.\\\", \\\"poster_quote\\\": \\\"Core risk features synthesize weak indicators across attack patterns, numerical anomalies, address interactions, and temporal anomalies.\\\"},\\n    {\\\"id\\\": 50, \\\"text\\\": \\\"Core risk features capture extreme transaction amounts, out-of-band values, flash-loan-like swaps, wash trading, round-number amounts, within-incident volatility, suspicious capital routing, self-referential addresses, and dense event bursts.\\\", \\\"poster_quote\\\": \\\"They capture extreme transaction amounts, out-of-band values, flash-loan-like swaps, wash trading, round-number amounts, within-incident volatility, suspicious capital routing, self-referential addresses, and dense event bursts.\\\"},\\n    {\\\"id\\\": 51, \\\"text\\\": \\\"Fixed a priori weights combine high- and medium-severity evidence without requiring labeled data to construct the features.\\\", \\\"poster_quote\\\": \\\"Fixed a priori weights combine high- and medium-severity evidence without requiring labeled data to construct the features.\\\"},\\n    {\\\"id\\\": 52, \\\"text\\\": \\\"Global features measure field-filling density and structural payload scale.\\\", \\\"poster_quote\\\": \\\"Global features measure field-filling density and structural payload scale.\\\"},\\n    {\\\"id\\\": 53, \\\"text\\\": \\\"DeFiFusion provides accurate, robust, and operationally practical protection against complex DeFi price manipulation.\\\", \\\"poster_quote\\\": \\\"These results demonstrate that dual-modal modeling provides accurate, robust, and operationally practical protection against complex DeFi price manipulation.\\\"}\\n  ]\\n}\", \"{\\n  \\\"verdicts\\\": [\\n    {\\n      \\\"id\\\": 1,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"We present DeFiFusion, a dual-modal PMA detection framework that closes this gap by jointly modeling transaction events and smart contract semantics within a unified pipeline.\\\",\\n      \\\"reason\\\": \\\"Section I, paragraph 2 explicitly states that DeFiFusion jointly models transaction events and smart contract semantics in a unified pipeline.\\\"\\n    },\\n    {\\n      \\\"id\\\": 2,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"To fuse these modalities, we propose a Dual-Modal Projection-Fusion Transformer (DPF-Transformer) with T5-style relative positional encoding, capturing the cyclic multi-stage execution structures that distinguish PMAs from benign market activity.\\\",\\n      \\\"reason\\\": \\\"Section I, paragraph 2 confirms that the DPF-Transformer aligns transaction event vectors with projected contract embeddings.\\\"\\n    },\\n    {\\n      \\\"id\\\": 3,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The two modality sequences are paired index-wise, and the shorter one is zero-padded, so every position carries both modalities. A validity mask ρ ∈ {0, 1}L marks authentic positions, so batch padding contributes to neither attention nor readout.\\\",\\n      \\\"reason\\\": \\\"Section III-D, subsection 1 explicitly describes the use of zero-padding and a validity mask to ensure padding does not contribute to attention or readout.\\\"\\n    },\\n    {\\n      \\\"id\\\": 4,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Each ft concatenates the event feature vt ∈ R80 (the row of He ) with a learnable projection Wc ct + bc ∈ Rdp of the Phase-2 contract embedding ct (the row of Hc ), where dp = 1024.\\\",\\n      \\\"reason\\\": \\\"Section III-D, subsection 1 confirms that contract embeddings are projected to 1024 dimensions and concatenated with 80-dimensional event vectors.\\\"\\n    },\\n    {\\n      \\\"id\\\": 5,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"DeFiFusion is motivated by the observation that PMAs exhibit recurring, multi-stage execution patterns whose malicious intent becomes evident only when transaction-level behaviors are interpreted in the context of contract logic.\\\",\\n      \\\"reason\\\": \\\"Section I, paragraph 2 explicitly states that PMAs commonly exhibit cyclic, multi-stage execution patterns.\\\"\\n    },\\n    {\\n      \\\"id\\\": 6,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"PMA typically necessitates cyclic transactional events, such as the continuous injection of substantial tokens via flash loans, to precipitate internal state transitions that detach the token price from its equilibrium volatility range.\\\",\\n      \\\"reason\\\": \\\"Section II-B describes the sequence of actions attackers may take, including obtaining flash loans, executing swaps, and exploiting distorted prices.\\\"\\n    },\\n    {\\n      \\\"id\\\": 7,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"To make attention depend on relative offsets rather than absolute indices, we adopt the T5-RPE, designed to explicitly capture the latent cyclic execution patterns in the multimodal feature sequence Hm.\\\",\\n      \\\"reason\\\": \\\"Section III-D, subsection 1 confirms that T5-style relative positional encoding introduces a learnable attention bias based on relative event offsets.\\\"\\n    },\\n    {\\n      \\\"id\\\": 8,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Offsets within 8 steps are resolved exactly, offsets up to 128 grow logarithmically, and larger offsets saturate into the last bucket.\\\",\\n      \\\"reason\\\": \\\"Section III-D, subsection 1 explicitly describes how nearby offsets are represented exactly, longer distances are bucketed logarithmically, and very large offsets share a final bucket.\\\"\\n    },\\n    {\\n      \\\"id\\\": 9,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Because B(h) depends solely on the offset j − i, translating a motif translates its attention pattern, providing the shift equivariance that cyclic execution patterns require.\\\",\\n      \\\"reason\\\": \\\"Section III-D, subsection 1 confirms that this design preserves shift equivariance and captures cyclic execution motifs regardless of their sequence position.\\\"\\n    },\\n    {\\n      \\\"id\\\": 10,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Existing work on PMA detection largely falls into two categories: transaction-behavior-based detection and contract-code-based static analysis.\\\",\\n      \\\"reason\\\": \\\"Section I, paragraph 3 explicitly states that existing detection methods are divided into transaction-behavior analysis and contract-code analysis.\\\"\\n    },\\n    {\\n      \\\"id\\\": 11,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Transaction-based methods operate as black-box monitors that lack semantic awareness of contract execution, causing them to misclassify sophisticated manipulations as legitimate market volatility.\\\",\\n      \\\"reason\\\": \\\"Section I, paragraph 3 confirms that transaction-centric methods identify anomalous execution traces but lack awareness of contract semantics, leading to misclassification.\\\"\\n    },\\n    {\\n      \\\"id\\\": 12,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Conversely, static analyses abstract away runtime behaviors and evolving market conditions, often producing large numbers of theoretical vulnerabilities that cannot be triggered in practice.\\\",\\n      \\\"reason\\\": \\\"Section I, paragraph 3 explicitly states that static contract analysis can identify potential vulnerabilities but ignores runtime behavior and often reports weaknesses that cannot be exploited.\\\"\\n    },\\n    {\\n      \\\"id\\\": 13,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Our core insight is that PMA maliciousness emerges only from the interaction between transaction behaviors and the contract logic they exploit; neither signal suffices in isolation.\\\",\\n      \\\"reason\\\": \\\"Section I, paragraph 2 explicitly states that price manipulation emerges from the interaction between adversarial transaction sequences and the contract logic they exploit.\\\"\\n    },\\n    {\\n      \\\"id\\\": 14,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Extensive experiments demonstrate that DeFiFusion consistently achieves state-of-the-art detection performance, effectively recalling 222 of the 225 PMA cases while maintaining a precision of 96.10%.\\\",\\n      \\\"reason\\\": \\\"Section I, paragraph 2 explicitly states that DeFiFusion detects 222 of 225 verified PMAs.\\\"\\n    },\\n    {\\n      \\\"id\\\": 15,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Extensive experiments demonstrate that DeFiFusion consistently achieves state-of-the-art detection performance, effectively recalling 222 of the 225 PMA cases while maintaining a precision of 96.10%.\\\",\\n      \\\"reason\\\": \\\"Section I, paragraph 2 explicitly states that DeFiFusion achieves 96.10% precision.\\\"\\n    },\\n    {\\n      \\\"id\\\": 16,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Extensive evaluation of DeFiFusion on two real-world datasets, including 225 verified PMA incidents from 2020 to 2026, shows that it outperforms state-of-the-art (SOTA) methods across all metrics (precision 96.10%, recall 98.67%).\\\",\\n      \\\"reason\\\": \\\"Section I, paragraph 2 explicitly states that DeFiFusion achieves 98.67% recall.\\\"\\n    },\\n    {\\n      \\\"id\\\": 17,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"DeFiFusion demonstrates superior detection performance, identifying a total of 222 PMAs, including 51 instances with financial losses exceeding or equal to $1M.\\\",\\n      \\\"reason\\\": \\\"Section IV-C confirms that DeFiFusion identifies 51 of 52 attacks with losses of at least $1 million.\\\"\\n    },\\n    {\\n      \\\"id\\\": 18,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"DeFiRanger, DeFort, and DeFiScope recalled 127, 117, and 120 of the 225 PMA cases.\\\",\\n      \\\"reason\\\": \\\"Section IV-C explicitly states that DeFiRanger recalls 127 attacks.\\\"\\n    },\\n    {\\n      \\\"id\\\": 19,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"DeFiRanger, DeFort, and DeFiScope recalled 127, 117, and 120 of the 225 PMA cases.\\\",\\n      \\\"reason\\\": \\\"Section IV-C explicitly states that DeFort recalls 117 attacks.\\\"\\n    },\\n    {\\n      \\\"id\\\": 20,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"DeFiRanger, DeFort, and DeFiScope recalled 127, 117, and 120 of the 225 PMA cases.\\\",\\n      \\\"reason\\\": \\\"Section IV-C explicitly states that DeFiScope recalls 120 attacks.\\\"\\n    },\\n    {\\n      \\\"id\\\": 21,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Among the 95 attacks benchmarked by DeFiScope [9], DeFiTainter recalled 34 (35.79%).\\\",\\n      \\\"reason\\\": \\\"Section IV-C confirms that DeFiTainter recalls 34 of 95 benchmarked attacks.\\\"\\n    },\\n    {\\n      \\\"id\\\": 22,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Among the 95 attacks benchmarked by DeFiScope [9], DeFiFusion recalled 93 (97.89%).\\\",\\n      \\\"reason\\\": \\\"Section IV-C confirms that DeFiFusion recalls 93 of 95 benchmarked attacks.\\\"\\n    },\\n    {\\n      \\\"id\\\": 23,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"On 194 evaluable cases with victim contracts located from public exploit PoCs, SMARTCAT recalled 83 (42.78%).\\\",\\n      \\\"reason\\\": \\\"Section IV-C confirms that SMARTCAT recalls 83 of 194 evaluable cases.\\\"\\n    },\\n    {\\n      \\\"id\\\": 24,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"On 194 evaluable cases with victim contracts located from public exploit PoCs, DeFiFusion recalled 192 (98.97%).\\\",\\n      \\\"reason\\\": \\\"Section IV-C confirms that DeFiFusion recalls 192 of 194 evaluable cases.\\\"\\n    },\\n    {\\n      \\\"id\\\": 25,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"DeFiFusion produced three false negatives, all sharing a single failure mode: attack traces whose event composition closely resembles benign high-value activity.\\\",\\n      \\\"reason\\\": \\\"Section IV-C explicitly describes the three false negatives and their characteristics.\\\"\\n    },\\n    {\\n      \\\"id\\\": 26,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Every false positive traces to a single cluster of nine near-duplicate benign transactions.\\\",\\n      \\\"reason\\\": \\\"Section IV-C explicitly states that false positives are concentrated in a small cluster of near-duplicate benign transactions.\\\"\\n    },\\n    {\\n      \\\"id\\\": 27,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Because event features are standardized within each protocol, detection rests on within-sequence deviation, which weakens as anomalous events become rare. The failures are nevertheless seed-dependent rather than systematic: majority voting across seeds recovers two cases, and probability averaging recovers all three.\\\",\\n      \\\"reason\\\": \\\"Section IV-C confirms that probability averaging across runs recovers all three missed attack cases.\\\"\\n    },\\n    {\\n      \\\"id\\\": 28,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"DeFiFusion leverages Large Language Models (LLMs) combined with masked average pooling to capture deep logical semantics from contract source code.\\\",\\n      \\\"reason\\\": \\\"Section III-C explicitly states that DeFiFusion employs a pretrained code LLM as a frozen semantic encoder.\\\"\\n    },\\n    {\\n      \\\"id\\\": 29,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Given a contract, the tokenizer maps the source to a sequence W = {w1 , . . . , wN }, truncated to a maximum length N to bound computation.\\\",\\n      \\\"reason\\\": \\\"Section III-C confirms that contract source code is tokenized and truncated to a bounded sequence length.\\\"\\n    },\\n    {\\n      \\\"id\\\": 30,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"We compress the backbone with 4-bit NormalFloat and double quantization and run inference in BFloat16 for numerical stability.\\\",\\n      \\\"reason\\\": \\\"Section III-C explicitly states that the backbone is compressed using 4-bit NormalFloat and double quantization.\\\"\\n    },\\n    {\\n      \\\"id\\\": 31,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"We compress the backbone with 4-bit NormalFloat and double quantization and run inference in BFloat16 for numerical stability.\\\",\\n      \\\"reason\\\": \\\"Section III-C explicitly states that inference uses BFloat16 for numerical stability and reduced memory consumption.\\\"\\n    },\\n    {\\n      \\\"id\\\": 32,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Multi-head self-attention then yields context-aware hidden states Hc′ = {u1 , . . . , uN } that encode dependencies between state variables and function calls.\\\",\\n      \\\"reason\\\": \\\"Section III-C explicitly states that multi-head self-attention produces contextual hidden states encoding relationships among functions, state variables, and calls.\\\"\\n    },\\n    {\\n      \\\"id\\\": 33,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"To transform the variable-length sequence of hidden states Hc′ into a fixed-dimensional contract representation, we perform masked average pooling over Hc′.\\\",\\n      \\\"reason\\\": \\\"Section III-C explicitly states that masked average pooling converts variable-length hidden states into a fixed-dimensional contract representation.\\\"\\n    },\\n    {\\n      \\\"id\\\": 34,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Given that the input sequence contains padding tokens introduced for structural alignment, a naive global averaging would result in semantic dilution. To address this, we leverage the attention mask to perform element-wise weighting of the hidden states, ensuring that only valid code tokens contribute to the pooling operation.\\\",\\n      \\\"reason\\\": \\\"Section III-C confirms that padding tokens are excluded to prevent semantic dilution.\\\"\\n    },\\n    {\\n      \\\"id\\\": 35,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Collecting these vectors across the contracts involved in one incident yields the contract-embedding sequence Hc.\\\",\\n      \\\"reason\\\": \\\"Section III-C explicitly states that signatures from all contracts involved in an incident form the contract-embedding sequence.\\\"\\n    },\\n    {\\n      \\\"id\\\": 36,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"DeFiFusion depends on accessible smart contract source code.\\\",\\n      \\\"reason\\\": \\\"Section V explicitly states that DeFiFusion depends on accessible smart contract source code.\\\"\\n    },\\n    {\\n      \\\"id\\\": 37,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"For unverified or closed-source contracts that disclose only bytecode, the model degenerates into a unimodal detector, limiting its capacity to capture complex manipulation logic.\\\",\\n      \\\"reason\\\": \\\"Section V explicitly states that for unverified or closed-source contracts, the framework degrades into an event-only detector.\\\"\\n    },\\n    {\\n      \\\"id\\\": 38,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Future work will explore decompilation and bytecode-based semantic modeling to mitigate this dependency.\\\",\\n      \\\"reason\\\": \\\"Section V explicitly states that future work will investigate decompilation and bytecode-based semantic modeling.\\\"\\n    },\\n    {\\n      \\\"id\\\": 39,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"DeFiFusion acquires transactional event logs and smart contract source code via the Web3 API as its primary input. DeFiFusion subsequently yields a risk score indicating the probability of the target transaction being subjected to a PMA.\\\",\\n      \\\"reason\\\": \\\"Section IV-B confirms that the system is designed for post-execution event logs and rapid monitoring.\\\"\\n    },\\n    {\\n      \\\"id\\\": 40,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Since block confirmation and consensus finalization take seconds to minutes, the second-level prediction latency reported in RQ2 leaves a sufficient window for emergency governance actions, such as pausing contracts, during the propagation phase.\\\",\\n      \\\"reason\\\": \\\"Section V explicitly states that practical defense capability depends on timely event availability and governance mechanisms.\\\"\\n    }\\n  ]\\n}\", \"{\\n  \\\"verdicts\\\": [\\n    {\\n      \\\"id\\\": 1,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Extensive evaluation of DeFiFusion on two real-world datasets, including 225 verified PMA incidents from 2020 to 2026, shows that it outperforms state-of-the-art (SOTA) methods across all metrics (precision 96.10%, recall 98.67%) and achieves 100% recall on 18 real-world 2026 PMA events, demonstrating its robustness and effectiveness in detecting emerging attacks.\\\",\\n      \\\"reason\\\": \\\"The paper explicitly states that DeFiFusion achieves 96.10% precision and 98.67% recall on 225 PMA incidents and detects 222 attacks, which supports the claim.\\\"\\n    },\\n    {\\n      \\\"id\\\": 2,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Extensive evaluation of DeFiFusion on two real-world datasets, including 225 verified PMA incidents from 2020 to 2026, shows that it outperforms state-of-the-art (SOTA) methods across all metrics (precision 96.10%, recall 98.67%) and achieves 100% recall on 18 real-world 2026 PMA events, demonstrating its robustness and effectiveness in detecting emerging attacks.\\\",\\n      \\\"reason\\\": \\\"The paper explicitly states that DeFiFusion achieves 100% recall on 18 real-world 2026 PMA events, supporting the claim.\\\"\\n    },\\n    {\\n      \\\"id\\\": 3,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The key to PMA detection is capturing the complex, multi-stage execution patterns that distinguish malicious manipulation from normal market activity. Unlike existing transaction representations that primarily encode general transaction information, we introduce a price-manipulation-aware event encoding specifically designed to capture the behavioral signatures of PMAs.\\\",\\n      \\\"reason\\\": \\\"The paper describes manipulation-aware event features as capturing runtime behavior, supporting the claim.\\\"\\n    },\\n    {\\n      \\\"id\\\": 4,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"To capture the high-level functional logic and latent semantics inherent in the corresponding smart contracts, we extract deep semantic representations in Phase 2 as feature vectors amenable to machine learning models. To address this, we adopt a pre-trained LLM as the backbone encoder.\\\",\\n      \\\"reason\\\": \\\"The paper explicitly states that LLM embeddings are used to represent contract logic, supporting the claim.\\\"\\n    },\\n    {\\n      \\\"id\\\": 5,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"To fuse these modalities, we propose a Dual-Modal Projection-Fusion Transformer (DPF-Transformer) with T5-style relative positional encoding, capturing the cyclic multi-stage execution structures that distinguish PMAs from benign market activity.\\\",\\n      \\\"reason\\\": \\\"The paper explicitly states that the DPF-Transformer with T5-style relative positional encoding captures cyclic and multi-stage exploit patterns, supporting the claim.\\\"\\n    },\\n    {\\n      \\\"id\\\": 6,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Deconstructing an event yields the tuple et = (nt , at , mt , Tt , dt ), comprising the event number, the emitting contract address, the event name, the indexed topics, and the data payload.\\\",\\n      \\\"reason\\\": \\\"The paper explicitly lists the basic features as event indices, emitting addresses, event names, indexed topics, and data payloads, supporting the claim.\\\"\\n    },\\n    {\\n      \\\"id\\\": 7,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Event names are mapped to the 12 business-level categories of Table I by dictionary matching: for category c ∈ {1, . . . , 12} with vocabulary Vc.\\\",\\n      \\\"reason\\\": \\\"The paper explicitly states that event names are mapped into business categories, including the ones listed in the claim, supporting it.\\\"\\n    },\\n    {\\n      \\\"id\\\": 8,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Address attribute feature. Each address at is mapped into a numerical space by two SHA-256 hash projections... The normalized Shannon entropy... separates vanity or honey-pot addresses... Event semantic feature... Keyword indicators for price/value and amount/quantity... Topics analytical feature... Data payload feature... Numeric payloads x are clipped to x̄ = clip(x, ±1020 ) and compressed by a saturated logarithmic map.\\\",\\n      \\\"reason\\\": \\\"The paper explicitly describes address entropy, suspicious substrings, topic recurrence, payload types, numeric magnitude, signs, and DeFi-related keywords as additional context, supporting the claim.\\\"\\n    },\\n    {\\n      \\\"id\\\": 9,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Unlike generic event encoding, we construct a manipulation-oriented risk model that synthesizes weak, individually unreliable indicators into a graded severity score across five dimensions: attack pattern identification, numerical anomalies, address interaction anomalies, temporal anomalies, and a multi-source risk fusion.\\\",\\n      \\\"reason\\\": \\\"The paper explicitly states that core risk features synthesize weak indicators across the dimensions listed in the claim, supporting it.\\\"\\n    },\\n    {\\n      \\\"id\\\": 10,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Attack pattern identification. Archetypal attack paradigms are expressed as conjunctions of the basic indicators and three magnitude indicators... Amount volatility is measured against the per-incident history... Address interaction anomalies. Three indicators expose malicious capital routing... Temporal anomalies. High-frequency probing is detected by the density of activity around et.\\\",\\n      \\\"reason\\\": \\\"The paper explicitly describes core risk features capturing extreme transaction amounts, out-of-band values, flash-loan-like swaps, wash trading, round-number amounts, within-incident volatility, suspicious capital routing, self-referential addresses, and dense event bursts, supporting the claim.\\\"\\n    },\\n    {\\n      \\\"id\\\": 11,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Multi-source risk fusion. The overall severity fuses the above signals in two tiers with fixed, a priori weights... so the risk feature requires no labeled attack data to construct.\\\",\\n      \\\"reason\\\": \\\"The paper explicitly states that fixed a priori weights combine high- and medium-severity evidence without requiring labeled data, supporting the claim.\\\"\\n    },\\n    {\\n      \\\"id\\\": 12,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Global features complement the fine-grained local features with two macro-level metrics. Field filling density, the proportion of non-null values in an event tuple... Structural payload scale, the normalized cumulative character length of key textual fields.\\\",\\n      \\\"reason\\\": \\\"The paper explicitly describes global features as measuring field-filling density and structural payload scale, supporting the claim.\\\"\\n    },\\n    {\\n      \\\"id\\\": 13,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Extensive evaluation of DeFiFusion on two real-world datasets, including 225 verified PMA incidents from 2020 to 2026, shows that it outperforms state-of-the-art (SOTA) methods across all metrics... demonstrating its robustness and effectiveness in detecting emerging attacks.\\\",\\n      \\\"reason\\\": \\\"The paper explicitly states that DeFiFusion provides accurate, robust, and operationally practical protection against complex DeFi price manipulation, supporting the claim.\\\"\\n    }\\n  ]\\n}\"]"
 }

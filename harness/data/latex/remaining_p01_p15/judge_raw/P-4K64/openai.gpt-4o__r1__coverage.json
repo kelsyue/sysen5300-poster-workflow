@@ -2,9 +2,58 @@
   "model": "openai.gpt-4o",
   "repeat": 1,
   "judge_prompt_sha256": "4ec65050cfdc718218dbc587f672291e733fd03b1254c20d77b61b0933e16162",
-  "error": "transport: Error code: 422 - Budget has been exceeded! Key=SIX-SIGMA-SLIDES-PROJECT-2 (sk-...d5LQ) Current cost: 70.08230754, Max budget: 70.0",
-  "tokens_in": 0,
-  "tokens_out": 0,
-  "parsed": null,
-  "raw": ""
+  "error": null,
+  "tokens_in": 5887,
+  "tokens_out": 951,
+  "max_output_tokens": 16384,
+  "parsed": {
+    "items": {
+      "chk_problem": {
+        "label": "accurate",
+        "poster_evidence": "Two character-level Transformer systems exceed 97% aggregate accuracy on Japanese past-tense inflection, yet this performance conceals a rare, systematic failure. Type 4-2 verbs, whose stems end in /e/ and require gemination before the past-tense suffix, comprise only 0.9% of the data but account for 30–43% of residual errors.",
+        "reason": "The poster correctly identifies the research problem as systematic errors clustered in rare morphological subclasses, particularly Type 4-2 in Japanese past-tense verb inflection."
+      },
+      "chk_method": {
+        "label": "accurate",
+        "poster_evidence": "Two character-level Transformer encoder-decoder architectures operate over hiragana and generate past-tense forms autoregressively. The Pointer-Generator Transformer uses an input-copying mechanism with attention over the lemma. The Lemma-Split Transformer prevents the same lemma from appearing in both training and test data, providing a stricter test of generalization to unseen lemmas.",
+        "reason": "The poster describes the orthography-aware diagnosis and subgroup-level analysis, including the ablation experiments, matching the reference method."
+      },
+      "chk_data": {
+        "label": "accurate",
+        "poster_evidence": "Evaluation uses lemma-level exact-match accuracy, subgroup accuracy by verb type, and the Disparity Ratio: a subgroup’s share of all errors divided by its share of the dataset. Residual outputs are also manually classified into six orthography-sensitive categories.",
+        "reason": "The poster specifies the dataset as Japanese past-tense verb inflection data in hiragana format, consistent with the reference."
+      },
+      "chk_setup": {
+        "label": "accurate",
+        "poster_evidence": "Each model is evaluated across five random seeds using an 80/10/10 training, development, and test split.",
+        "reason": "The poster describes the evaluation setup, including the random seeds and data split, matching the reference."
+      },
+      "chk_primary_result": {
+        "label": "accurate",
+        "poster_evidence": "Type 4-2 verbs, whose stems end in /e/ and require gemination before the past-tense suffix, comprise only 0.9% of the data but account for 30–43% of residual errors. Their contribution to total errors is approximately 34–48 times their prevalence.",
+        "reason": "The poster correctly reports the primary result, including the error concentration and disparity ratio for Type 4-2 verbs."
+      },
+      "chk_secondary_result": {
+        "label": "accurate",
+        "poster_evidence": "Controlled ablations show that removing this subtype alone improves accuracy more than removing all irregular verbs.",
+        "reason": "The poster accurately states the secondary finding that removing Type 4-2 alone yields larger accuracy gains than removing all irregular verbs combined."
+      },
+      "chk_baseline": {
+        "label": "accurate",
+        "poster_evidence": "Pointer-Generator accuracy rises from 97.98% to 98.98%, a gain of 1.00 point. Lemma-Split accuracy rises from 97.73% to 99.75%, a gain of 2.02 points.",
+        "reason": "The poster provides baseline accuracy values for both models, consistent with the reference."
+      },
+      "chk_conclusion": {
+        "label": "accurate",
+        "poster_evidence": "Removing this subtype improves generalization more than removing all irregular verbs, demonstrating that irregularity itself is not the decisive factor. Fine-grained, orthography-aware, subgroup-level evaluation is necessary to reveal and causally test failures hidden by high aggregate accuracy.",
+        "reason": "The poster captures the substantive conclusion that error concentration is driven by structural factors rather than irregularity itself, and emphasizes the need for fine-grained evaluation."
+      },
+      "chk_limitation": {
+        "label": "accurate",
+        "poster_evidence": "Each ablation condition was run once, so multi-seed replication would strengthen the causal claim. The study covers one language, one inflectional paradigm, and two Transformer architectures. The experiments establish a causal role for the presence of Type 4-2 but do not independently separate frequency from structural complexity.",
+        "reason": "The poster identifies limitations regarding replication, scope, and the correlational nature of the analysis, consistent with the reference."
+      }
+    }
+  },
+  "raw": "```json\n{\n  \"items\": {\n    \"chk_problem\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Two character-level Transformer systems exceed 97% aggregate accuracy on Japanese past-tense inflection, yet this performance conceals a rare, systematic failure. Type 4-2 verbs, whose stems end in /e/ and require gemination before the past-tense suffix, comprise only 0.9% of the data but account for 30–43% of residual errors.\",\n      \"reason\": \"The poster correctly identifies the research problem as systematic errors clustered in rare morphological subclasses, particularly Type 4-2 in Japanese past-tense verb inflection.\"\n    },\n    \"chk_method\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Two character-level Transformer encoder-decoder architectures operate over hiragana and generate past-tense forms autoregressively. The Pointer-Generator Transformer uses an input-copying mechanism with attention over the lemma. The Lemma-Split Transformer prevents the same lemma from appearing in both training and test data, providing a stricter test of generalization to unseen lemmas.\",\n      \"reason\": \"The poster describes the orthography-aware diagnosis and subgroup-level analysis, including the ablation experiments, matching the reference method.\"\n    },\n    \"chk_data\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Evaluation uses lemma-level exact-match accuracy, subgroup accuracy by verb type, and the Disparity Ratio: a subgroup’s share of all errors divided by its share of the dataset. Residual outputs are also manually classified into six orthography-sensitive categories.\",\n      \"reason\": \"The poster specifies the dataset as Japanese past-tense verb inflection data in hiragana format, consistent with the reference.\"\n    },\n    \"chk_setup\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Each model is evaluated across five random seeds using an 80/10/10 training, development, and test split.\",\n      \"reason\": \"The poster describes the evaluation setup, including the random seeds and data split, matching the reference.\"\n    },\n    \"chk_primary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Type 4-2 verbs, whose stems end in /e/ and require gemination before the past-tense suffix, comprise only 0.9% of the data but account for 30–43% of residual errors. Their contribution to total errors is approximately 34–48 times their prevalence.\",\n      \"reason\": \"The poster correctly reports the primary result, including the error concentration and disparity ratio for Type 4-2 verbs.\"\n    },\n    \"chk_secondary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Controlled ablations show that removing this subtype alone improves accuracy more than removing all irregular verbs.\",\n      \"reason\": \"The poster accurately states the secondary finding that removing Type 4-2 alone yields larger accuracy gains than removing all irregular verbs combined.\"\n    },\n    \"chk_baseline\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Pointer-Generator accuracy rises from 97.98% to 98.98%, a gain of 1.00 point. Lemma-Split accuracy rises from 97.73% to 99.75%, a gain of 2.02 points.\",\n      \"reason\": \"The poster provides baseline accuracy values for both models, consistent with the reference.\"\n    },\n    \"chk_conclusion\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Removing this subtype improves generalization more than removing all irregular verbs, demonstrating that irregularity itself is not the decisive factor. Fine-grained, orthography-aware, subgroup-level evaluation is necessary to reveal and causally test failures hidden by high aggregate accuracy.\",\n      \"reason\": \"The poster captures the substantive conclusion that error concentration is driven by structural factors rather than irregularity itself, and emphasizes the need for fine-grained evaluation.\"\n    },\n    \"chk_limitation\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Each ablation condition was run once, so multi-seed replication would strengthen the causal claim. The study covers one language, one inflectional paradigm, and two Transformer architectures. The experiments establish a causal role for the presence of Type 4-2 but do not independently separate frequency from structural complexity.\",\n      \"reason\": \"The poster identifies limitations regarding replication, scope, and the correlational nature of the analysis, consistent with the reference.\"\n    }\n  }\n}\n```"
 }

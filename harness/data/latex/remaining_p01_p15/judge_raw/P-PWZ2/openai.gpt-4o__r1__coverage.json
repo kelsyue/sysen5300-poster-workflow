@@ -1,0 +1,59 @@
+{
+  "model": "openai.gpt-4o",
+  "repeat": 1,
+  "judge_prompt_sha256": "4ec65050cfdc718218dbc587f672291e733fd03b1254c20d77b61b0933e16162",
+  "error": null,
+  "tokens_in": 5831,
+  "tokens_out": 884,
+  "max_output_tokens": 16384,
+  "parsed": {
+    "items": {
+      "chk_problem": {
+        "label": "accurate",
+        "poster_evidence": "A benchmark score compares two things: what a system produced, and what a reference says it should have produced. Almost all methodological attention falls on the first; the second is treated as a fixed property of the dataset, reported once and thereafter left implicit.",
+        "reason": "The poster accurately describes the research problem as investigating how reference choice affects scores and model rankings in multilingual benchmarks."
+      },
+      "chk_method": {
+        "label": "accurate",
+        "poster_evidence": "The design holds one thing fixed and varies exactly one other. The scored output stays constant; only the reference against which it is scored changes.",
+        "reason": "The poster correctly describes the method of holding system outputs fixed and varying the reference to isolate the effect of reference choice."
+      },
+      "chk_data": {
+        "label": "accurate",
+        "poster_evidence": "The retained annotation record of a six-language benchmark for personally identifiable information contains two independent annotator labellings, the aggregate shipped as gold, and a reviewer gold from independent expert re-annotation of a sample.",
+        "reason": "The poster accurately describes the dataset as the annotation record of a production multilingual PII extraction benchmark covering six languages and 24,939 prompts."
+      },
+      "chk_setup": {
+        "label": "accurate",
+        "poster_evidence": "The design holds one thing fixed and varies exactly one other. The scored output stays constant; only the reference against which it is scored changes. The unit of analysis is the prompt, the outputs are the two annotator labellings, the references are the delivered gold and the reviewer gold, and the metric is span F1 under two matching rules.",
+        "reason": "The poster provides sufficient detail about the evaluation setup, including scoring outputs against two references under strict and relaxed matching rules, consistent with the reference."
+      },
+      "chk_primary_result": {
+        "label": "accurate",
+        "poster_evidence": "The score moves by 4.95 F1 points for one output and 2.00 for the other (95% CIs [3.23, 6.27] and [0.26, 3.37]), and by 7.55 in the worst language.",
+        "reason": "The poster correctly reports the primary quantitative findings, including the score shifts and the worst-case language result."
+      },
+      "chk_secondary_result": {
+        "label": "accurate",
+        "poster_evidence": "The comparison between two outputs moves as well: the paired interaction between reference and system is +2.95 points (CI [+1.97, +3.87]), survives correction for multiple testing, and changes one language’s margin outright.",
+        "reason": "The poster accurately reports the secondary finding of the paired interaction and the change in the Hindi margin."
+      },
+      "chk_baseline": {
+        "label": "accurate",
+        "poster_evidence": "The delivered gold reproduces Annotator A’s span set exactly on 83.4% of prompts and Annotator B’s on 76.1%. That is a skew of +7.3 points toward A, present in every language and ranging from +2.7 (Polish) to +12.9 (Swedish).",
+        "reason": "The poster compares scores obtained using the delivered gold reference versus the reviewer gold reference, consistent with the reference."
+      },
+      "chk_conclusion": {
+        "label": "accurate",
+        "poster_evidence": "We suggest benchmarks report a reference-sensitivity band alongside the score.",
+        "reason": "The poster accurately conveys the paper's conclusion that benchmarks should report a reference-sensitivity band alongside the score."
+      },
+      "chk_limitation": {
+        "label": "accurate",
+        "poster_evidence": "The cause is an undocumented aggregation default that usually kept one annotator when adjudication did not fire, making the shipped reference a partial copy of an output being scored.",
+        "reason": "The poster identifies a specific limitation related to the aggregation default in the annotation pipeline, consistent with the reference."
+      }
+    }
+  },
+  "raw": "```json\n{\n  \"items\": {\n    \"chk_problem\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"A benchmark score compares two things: what a system produced, and what a reference says it should have produced. Almost all methodological attention falls on the first; the second is treated as a fixed property of the dataset, reported once and thereafter left implicit.\",\n      \"reason\": \"The poster accurately describes the research problem as investigating how reference choice affects scores and model rankings in multilingual benchmarks.\"\n    },\n    \"chk_method\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"The design holds one thing fixed and varies exactly one other. The scored output stays constant; only the reference against which it is scored changes.\",\n      \"reason\": \"The poster correctly describes the method of holding system outputs fixed and varying the reference to isolate the effect of reference choice.\"\n    },\n    \"chk_data\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"The retained annotation record of a six-language benchmark for personally identifiable information contains two independent annotator labellings, the aggregate shipped as gold, and a reviewer gold from independent expert re-annotation of a sample.\",\n      \"reason\": \"The poster accurately describes the dataset as the annotation record of a production multilingual PII extraction benchmark covering six languages and 24,939 prompts.\"\n    },\n    \"chk_setup\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"The design holds one thing fixed and varies exactly one other. The scored output stays constant; only the reference against which it is scored changes. The unit of analysis is the prompt, the outputs are the two annotator labellings, the references are the delivered gold and the reviewer gold, and the metric is span F1 under two matching rules.\",\n      \"reason\": \"The poster provides sufficient detail about the evaluation setup, including scoring outputs against two references under strict and relaxed matching rules, consistent with the reference.\"\n    },\n    \"chk_primary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"The score moves by 4.95 F1 points for one output and 2.00 for the other (95% CIs [3.23, 6.27] and [0.26, 3.37]), and by 7.55 in the worst language.\",\n      \"reason\": \"The poster correctly reports the primary quantitative findings, including the score shifts and the worst-case language result.\"\n    },\n    \"chk_secondary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"The comparison between two outputs moves as well: the paired interaction between reference and system is +2.95 points (CI [+1.97, +3.87]), survives correction for multiple testing, and changes one language’s margin outright.\",\n      \"reason\": \"The poster accurately reports the secondary finding of the paired interaction and the change in the Hindi margin.\"\n    },\n    \"chk_baseline\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"The delivered gold reproduces Annotator A’s span set exactly on 83.4% of prompts and Annotator B’s on 76.1%. That is a skew of +7.3 points toward A, present in every language and ranging from +2.7 (Polish) to +12.9 (Swedish).\",\n      \"reason\": \"The poster compares scores obtained using the delivered gold reference versus the reviewer gold reference, consistent with the reference.\"\n    },\n    \"chk_conclusion\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"We suggest benchmarks report a reference-sensitivity band alongside the score.\",\n      \"reason\": \"The poster accurately conveys the paper's conclusion that benchmarks should report a reference-sensitivity band alongside the score.\"\n    },\n    \"chk_limitation\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"The cause is an undocumented aggregation default that usually kept one annotator when adjudication did not fire, making the shipped reference a partial copy of an output being scored.\",\n      \"reason\": \"The poster identifies a specific limitation related to the aggregation default in the annotation pipeline, consistent with the reference.\"\n    }\n  }\n}\n```"
+}

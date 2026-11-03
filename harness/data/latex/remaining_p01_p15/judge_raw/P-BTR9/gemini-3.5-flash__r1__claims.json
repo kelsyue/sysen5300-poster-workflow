@@ -2,9 +2,726 @@
   "model": "gemini-3.5-flash",
   "repeat": 1,
   "judge_prompt_sha256": "4ec65050cfdc718218dbc587f672291e733fd03b1254c20d77b61b0933e16162",
-  "error": "transport: Error code: 422 - Budget has been exceeded! Key=SIX-SIGMA-SLIDES-PROJECT-2 (sk-...d5LQ) Current cost: 70.08230754, Max budget: 70.0",
-  "tokens_in": 0,
-  "tokens_out": 0,
-  "parsed": null,
-  "raw": ""
+  "error": null,
+  "tokens_in": 29830,
+  "tokens_out": 28455,
+  "max_output_tokens": 32768,
+  "claims_batch_size": 40,
+  "parsed": {
+    "claims": [
+      {
+        "id": 1,
+        "text": "Only 1% of R&D funding targets non-cancer women’s health.",
+        "poster_quote": "Only 1% of R&D funding targets non-cancer women’s health",
+        "label": "supported",
+        "paper_evidence": "Only 1% of research and development funding focuses on non-cancer-related women’s health",
+        "reason": "Section 1, Introduction"
+      },
+      {
+        "id": 2,
+        "text": "7% of pharma R&D targets conditions unique to women.",
+        "poster_quote": "7% of pharma R&D targets conditions unique to women.",
+        "label": "supported",
+        "paper_evidence": "only 7% of pharmaceutical research and development is targeted at conditions that uniquely affect women",
+        "reason": "Section 1, Introduction"
+      },
+      {
+        "id": 3,
+        "text": "PCOS affects 6–20% of premenopausal women.",
+        "poster_quote": "PCOS affects 6–20% of premenopausal women",
+        "label": "supported",
+        "paper_evidence": "it affects 6 to 20% of premenopausal women worldwide",
+        "reason": "Section 1, Introduction"
+      },
+      {
+        "id": 4,
+        "text": "PCOS is screened via ultrasound.",
+        "poster_quote": "is screened via ultrasound.",
+        "label": "supported",
+        "paper_evidence": "and is conventionally screened via ultrasound.",
+        "reason": "Section 1, Introduction"
+      },
+      {
+        "id": 5,
+        "text": "Pelvic fracture carries a greater than 50% disability rate.",
+        "poster_quote": "carries >50% disability",
+        "label": "supported",
+        "paper_evidence": "carries a disability rate exceeding 50%",
+        "reason": "Section 1, Introduction"
+      },
+      {
+        "id": 6,
+        "text": "Pelvic fracture carries a greater than 13% mortality rate.",
+        "poster_quote": "and >13% mortality rates.",
+        "label": "supported",
+        "paper_evidence": "a mortality rate above 13%",
+        "reason": "Section 1, Introduction"
+      },
+      {
+        "id": 7,
+        "text": "PCOSGen contains 4,668 ultrasound images.",
+        "poster_quote": "PCOSGen (4,668 ultrasound images)",
+        "label": "supported",
+        "paper_evidence": "PCOSGen is, to our knowledge, the only gynaecologist-annotated public PCOS ultrasound dataset, comprising 4,668 images",
+        "reason": "Section 1, Introduction"
+      },
+      {
+        "id": 8,
+        "text": "PXR150 contains 150 X-rays.",
+        "poster_quote": "PXR150 (150 X-rays)",
+        "label": "supported",
+        "paper_evidence": "PXR150 is, to our knowledge, the only public dataset for this task, comprising 150 radiographs",
+        "reason": "Section 1, Introduction"
+      },
+      {
+        "id": 9,
+        "text": "PCOSGen and PXR150 are the only public benchmarks for pelvic pathologies.",
+        "poster_quote": "PCOSGen (4,668 ultrasound images) and PXR150 (150 X-rays) are the only public benchmarks.",
+        "label": "unsupported",
+        "paper_evidence": "",
+        "reason": "The paper states that PCOSGen is the only public PCOS ultrasound dataset and PXR150 is the only public pelvic fracture dataset, but does not state that they are the only public benchmarks for pelvic pathologies in general."
+      },
+      {
+        "id": 10,
+        "text": "Prior models for pelvic pathologies are modality-specific.",
+        "poster_quote": "Prior models are modality-specific,",
+        "label": "supported",
+        "paper_evidence": "Existing architectures for these tasks are largely single-modality.",
+        "reason": "Section 1, Introduction"
+      },
+      {
+        "id": 11,
+        "text": "PCOSGen contains extensive duplicate contamination.",
+        "poster_quote": "PCOSGen contains extensive duplicate contamination",
+        "label": "supported",
+        "paper_evidence": "we identified extensive exact and near-duplicate contamination within and across the dataset.",
+        "reason": "Abstract"
+      },
+      {
+        "id": 12,
+        "text": "PelviNeXt is a modality-agnostic hybrid architecture applied identically to ultrasound and X-ray.",
+        "poster_quote": "PelviNeXt is a modality-agnostic hybrid architecture applied identically to ultrasound and X-ray.",
+        "label": "supported",
+        "paper_evidence": "We introduce PelviNeXt, a modality-agnostic hybrid architecture... applied without modification to both pelvic ultrasound and X-ray inputs.",
+        "reason": "Abstract"
+      },
+      {
+        "id": 13,
+        "text": "PelviNeXt consists of a Dense Feature Extractor (DFE) with 4 dense blocks.",
+        "poster_quote": "Dense Feature Extractor (DFE) with 4 dense blocks",
+        "label": "supported",
+        "paper_evidence": "using four dense blocks of 6, 12, 24, and 16 layers respectively (DFE-1 through DFE-4)",
+        "reason": "Section 2.1, Dense Feature Extractor (DFE)"
+      },
+      {
+        "id": 14,
+        "text": "The DFE dense blocks have 6, 12, 24, and 16 layers.",
+        "poster_quote": "(6,12,24,16 layers)",
+        "label": "supported",
+        "paper_evidence": "using four dense blocks of 6, 12, 24, and 16 layers respectively (DFE-1 through DFE-4)",
+        "reason": "Section 2.1, Dense Feature Extractor (DFE)"
+      },
+      {
+        "id": 15,
+        "text": "The DFE is inspired by DenseNet.",
+        "poster_quote": "inspired by DenseNet",
+        "label": "supported",
+        "paper_evidence": "The feature extraction stage is inspired by the depth and dense connectivity of DenseNet [10]",
+        "reason": "Section 2.1, Dense Feature Extractor (DFE)"
+      },
+      {
+        "id": 16,
+        "text": "The DFE produces multi-scale feature maps.",
+        "poster_quote": "producing multi-scale feature maps",
+        "label": "supported",
+        "paper_evidence": "producing feature maps of 256×56×56, 512×28×28, 1024×14×14, and 1024×7×7 after DFE-1 through DFE-4 respectively",
+        "reason": "Section 2.1, Dense Feature Extractor (DFE)"
+      },
+      {
+        "id": 17,
+        "text": "PelviNeXt has a Hierarchical CBAM (H-CBAM) after each DFE block.",
+        "poster_quote": "Hierarchical CBAM (H-CBAM) after each DFE block",
+        "label": "supported",
+        "paper_evidence": "Following each DFE block, an H-CBAM module refines the feature map along channel and spatial dimensions [18].",
+        "reason": "Section 2.2, Hierarchical CBAM (H-CBAM)"
+      },
+      {
+        "id": 18,
+        "text": "H-CBAM applies channel and spatial attention at 4 scales from 56×56 to 7×7.",
+        "poster_quote": "applying channel and spatial attention at 4 scales (56×56 to 7×7)",
+        "label": "supported",
+        "paper_evidence": "applying attention at four progressively coarser scales from 56×56 down to 7×7",
+        "reason": "Section 2.2, Hierarchical CBAM (H-CBAM)"
+      },
+      {
+        "id": 19,
+        "text": "PelviNeXt has a Multi-Scale Fusion Module (MSFM) aligning and fusing outputs of DFE-2,3,4 to 7×7.",
+        "poster_quote": "Multi-Scale Fusion Module (MSFM) aligning and fusing outputs of DFE-2,3,4 to 7×7",
+        "label": "supported",
+        "paper_evidence": "The outputs of DFE-2, DFE-3, and DFE-4 after their respective H-CBAM modules... are spatially aligned to 7×7 via bilinear interpolation and concatenated into a 2560-channel tensor.",
+        "reason": "Section 2.3, Multi-Scale Fusion Module (MSFM)"
+      },
+      {
+        "id": 20,
+        "text": "MSFM reduces outputs to 512 channels.",
+        "poster_quote": "reducing to 512 channels",
+        "label": "supported",
+        "paper_evidence": "A 1×1 convolution reduces this to 512 channels",
+        "reason": "Section 2.3, Multi-Scale Fusion Module (MSFM)"
+      },
+      {
+        "id": 21,
+        "text": "PelviNeXt has Talking-Heads Multi-Head Self-Attention (TH-MHSA) with head-mixing projections before/after softmax.",
+        "poster_quote": "Talking-Heads Multi-Head Self-Attention (TH-MHSA) with head-mixing projections before/after softmax",
+        "label": "supported",
+        "paper_evidence": "processed by a talking-heads self-attention block [17], which inserts learned linear projections across the head dimension before and after the softmax",
+        "reason": "Section 2.4, Talking-Heads Multi-Head Self-Attention (TH-MHSA)"
+      },
+      {
+        "id": 22,
+        "text": "PelviNeXt has a classification head.",
+        "poster_quote": "Classification head.",
+        "label": "supported",
+        "paper_evidence": "followed by a classification head (Fig. 1).",
+        "reason": "Section 2, Methodology"
+      },
+      {
+        "id": 23,
+        "text": "No task-specific preprocessing is applied to PelviNeXt.",
+        "poster_quote": "No task-specific preprocessing",
+        "label": "supported",
+        "paper_evidence": "No task-specific preprocessing is applied to either modality.",
+        "reason": "Section 3.4, Implementation Details"
+      },
+      {
+        "id": 24,
+        "text": "No modality-specific tuning is applied to PelviNeXt.",
+        "poster_quote": "or modality-specific tuning is applied.",
+        "label": "supported",
+        "paper_evidence": "The same pipeline with identical hyperparameters is applied to both ultrasound and X-ray inputs.",
+        "reason": "Section 2, Methodology"
+      },
+      {
+        "id": 25,
+        "text": "Training of PelviNeXt uses AdamW.",
+        "poster_quote": "Training uses AdamW",
+        "label": "supported",
+        "paper_evidence": "All models are trained from scratch using AdamW",
+        "reason": "Section 3.4, Implementation Details"
+      },
+      {
+        "id": 26,
+        "text": "Training of PelviNeXt uses a batch size of 16.",
+        "poster_quote": "batch size 16",
+        "label": "supported",
+        "paper_evidence": "batch size 16",
+        "reason": "Section 3.4, Implementation Details"
+      },
+      {
+        "id": 27,
+        "text": "Training of PelviNeXt uses 30 epochs.",
+        "poster_quote": "30 epochs",
+        "label": "supported",
+        "paper_evidence": "for 30 epochs",
+        "reason": "Section 3.4, Implementation Details"
+      },
+      {
+        "id": 28,
+        "text": "Training of PelviNeXt uses 5-fold CV.",
+        "poster_quote": "5-fold CV",
+        "label": "supported",
+        "paper_evidence": "under 5-fold stratified cross-validation",
+        "reason": "Section 3.4, Implementation Details"
+      },
+      {
+        "id": 29,
+        "text": "Training of PelviNeXt uses augmentation including rotation, shear, flip, and translate.",
+        "poster_quote": "augmentation (rotation, shear, flip, translate)",
+        "label": "supported",
+        "paper_evidence": "Augmentation uses random combinations of rotation (within 25◦ ), shearing (within 10%), horizontal flipping, and translation (within 10%)",
+        "reason": "Section 3.4, Implementation Details"
+      },
+      {
+        "id": 30,
+        "text": "Training of PelviNeXt uses class-aware multipliers.",
+        "poster_quote": "and class-aware multipliers.",
+        "label": "supported",
+        "paper_evidence": "with class-aware multipliers: fracture images 2× and normal images 4× for PXR150; abnormal images 2× and normal images 6× for the deduplicated PCOS dataset.",
+        "reason": "Section 3.4, Implementation Details"
+      },
+      {
+        "id": 31,
+        "text": "On deduplicated PCOSGen, PelviNeXt achieves 92.00% accuracy.",
+        "poster_quote": "On deduplicated PCOSGen, PelviNeXt achieves 92.00% accuracy",
+        "label": "supported",
+        "paper_evidence": "92.00%",
+        "reason": "Table 2, row 'PelviNeXt', column 'Acc.'"
+      },
+      {
+        "id": 32,
+        "text": "On deduplicated PCOSGen, PelviNeXt's accuracy has a spread of ±1.60.",
+        "poster_quote": "(±1.60)",
+        "label": "supported",
+        "paper_evidence": "±1.60",
+        "reason": "Table 2, row 'PelviNeXt', column 'Acc.'"
+      },
+      {
+        "id": 33,
+        "text": "On deduplicated PCOSGen, PelviNeXt achieves 91.74% recall.",
+        "poster_quote": "91.74% recall",
+        "label": "supported",
+        "paper_evidence": "91.74%",
+        "reason": "Table 2, row 'PelviNeXt', column 'Rec.'"
+      },
+      {
+        "id": 34,
+        "text": "On deduplicated PCOSGen, PelviNeXt achieves 86.48% specificity.",
+        "poster_quote": "86.48% specificity",
+        "label": "supported",
+        "paper_evidence": "86.48%",
+        "reason": "Table 2, row 'PelviNeXt', column 'Spec.'"
+      },
+      {
+        "id": 35,
+        "text": "On deduplicated PCOSGen, PelviNeXt achieves 0.8890 F1.",
+        "poster_quote": "0.8890 F1",
+        "label": "supported",
+        "paper_evidence": "0.8890",
+        "reason": "Table 2, row 'PelviNeXt', column 'F1'"
+      },
+      {
+        "id": 36,
+        "text": "On deduplicated PCOSGen, PelviNeXt achieves 0.9051 AUROC.",
+        "poster_quote": "and 0.9051 AUROC",
+        "label": "supported",
+        "paper_evidence": "0.9051",
+        "reason": "Table 2, row 'PelviNeXt', column 'AUROC'"
+      },
+      {
+        "id": 37,
+        "text": "On deduplicated PCOSGen, PelviNeXt outperforms ViT-B/16, ResNet-101, and DenseNet-169 by ≥2.67% in accuracy.",
+        "poster_quote": "outperforming ViT-B/16, ResNet-101, and DenseNet-169 by ≥2.67% in accuracy",
+        "label": "supported",
+        "paper_evidence": "outperforming ViT-B/16 [5], ResNet-101 [9], and DenseNet-169 [10] by at least 2.67 percentage points in accuracy",
+        "reason": "Section 4.1, PCOS Classification (92.00 - 89.33 = 2.67%)"
+      },
+      {
+        "id": 38,
+        "text": "On deduplicated PCOSGen, PelviNeXt outperforms ViT-B/16, ResNet-101, and DenseNet-169 by ≥0.0422 in AUROC.",
+        "poster_quote": "and ≥0.0422 in AUROC.",
+        "label": "supported",
+        "paper_evidence": "and 0.0422 in AUROC.",
+        "reason": "Section 4.1, PCOS Classification (0.9051 - 0.8629 = 0.0422)"
+      },
+      {
+        "id": 39,
+        "text": "On PXR150, PelviNeXt achieves 87.33% accuracy.",
+        "poster_quote": "On PXR150, PelviNeXt achieves 87.33% accuracy",
+        "label": "supported",
+        "paper_evidence": "87.33%",
+        "reason": "Table 3, row 'PelviNeXt', column 'Acc.'"
+      },
+      {
+        "id": 40,
+        "text": "On PXR150, PelviNeXt's accuracy has a spread of ±2.45.",
+        "poster_quote": "(±2.45)",
+        "label": "supported",
+        "paper_evidence": "±2.45",
+        "reason": "Table 3, row 'PelviNeXt', column 'Acc.'"
+      },
+      {
+        "id": 41,
+        "text": "On PXR150, PelviNeXt achieves 89.00% recall.",
+        "poster_quote": "89.00% recall",
+        "label": "supported",
+        "paper_evidence": "89.00%\n±5.71",
+        "reason": "Table 3, row 'PelviNeXt', column 'Rec.' shows 89.00% recall."
+      },
+      {
+        "id": 42,
+        "text": "On PXR150, PelviNeXt achieves 87.00% specificity.",
+        "poster_quote": "87.00% specificity",
+        "label": "supported",
+        "paper_evidence": "87.00%\n±3.92",
+        "reason": "Table 3, row 'PelviNeXt', column 'Spec.' shows 87.00% specificity."
+      },
+      {
+        "id": 43,
+        "text": "On PXR150, PelviNeXt achieves 0.8774 F1.",
+        "poster_quote": "0.8774 F1",
+        "label": "supported",
+        "paper_evidence": "0.8774\n±0.0191",
+        "reason": "Table 3, row 'PelviNeXt', column 'F1' shows 0.8774 F1."
+      },
+      {
+        "id": 44,
+        "text": "On PXR150, PelviNeXt achieves 0.8920 AUROC.",
+        "poster_quote": "and 0.8920 AUROC",
+        "label": "supported",
+        "paper_evidence": "0.8920\n±0.0288",
+        "reason": "Table 3, row 'PelviNeXt', column 'AUROC' shows 0.8920 AUROC."
+      },
+      {
+        "id": 45,
+        "text": "On PXR150, PelviNeXt exceeds prior SOTA (Patch Ensemble: 84.00% acc, 0.8700 AUROC) across all metrics.",
+        "poster_quote": "exceeding prior SOTA (Patch Ensemble: 84.00% acc, 0.8700 AUROC) across all metrics",
+        "label": "supported",
+        "paper_evidence": "exceeding the strongest prior result, Patch Ensemble [2] (84.00% accuracy, 87.00% recall, 82.00% specificity, 0.8700 AUROC), across every reported metric.",
+        "reason": "Section 4.2, paragraph 1 shows PelviNeXt exceeds Patch Ensemble across all metrics."
+      },
+      {
+        "id": 46,
+        "text": "On PXR150, PelviNeXt achieves 87.00% specificity compared to Patch Ensemble's 82.00%.",
+        "poster_quote": "especially specificity (87.00% vs 82.00%)",
+        "label": "supported",
+        "paper_evidence": "Notably, the gap between PelviNeXt and prior SOTA is most pronounced in specificity (87.00% vs. 82.00%)",
+        "reason": "Section 4.2, paragraph 1 compares PelviNeXt's specificity to Patch Ensemble's."
+      },
+      {
+        "id": 47,
+        "text": "Ablation shows H-CBAM improves fracture detection most, causing a -2.66% accuracy drop when removed.",
+        "poster_quote": "H-CBAM improves fracture detection most (−2.66% acc)",
+        "label": "contradicted",
+        "paper_evidence": "w/o MSFM\n83.33%±2.92",
+        "reason": "Table 4 shows that removing MSFM causes a larger accuracy drop (87.33% - 83.33% = 4.00%) than removing H-CBAM (87.33% - 84.67% = 2.66%), meaning H-CBAM does not improve fracture detection most."
+      },
+      {
+        "id": 48,
+        "text": "MSFM is critical for AUROC on PCOS, dropping from 0.9051 to 0.8735 when removed.",
+        "poster_quote": "MSFM is critical for AUROC (PCOS: 0.90510.8735",
+        "label": "supported",
+        "paper_evidence": "Removing MSFM causes the largest AUROC drop on both tasks (PCOS: 0.9051 → 0.8735; fracture: 0.8920 → 0.8576)",
+        "reason": "Section 4.3, paragraph 1 states the AUROC drop for PCOS when MSFM is removed."
+      },
+      {
+        "id": 49,
+        "text": "MSFM is critical for AUROC on Fracture, dropping from 0.8920 to 0.8576 when removed.",
+        "poster_quote": "Fracture: 0.89200.8576)",
+        "label": "supported",
+        "paper_evidence": "Removing MSFM causes the largest AUROC drop on both tasks (PCOS: 0.9051 → 0.8735; fracture: 0.8920 → 0.8576)",
+        "reason": "Section 4.3, paragraph 1 states the AUROC drop for Fracture when MSFM is removed."
+      },
+      {
+        "id": 50,
+        "text": "TH-MHSA outperforms vanilla MHSA.",
+        "poster_quote": "and TH-MHSA outperforms vanilla MHSA.",
+        "label": "supported",
+        "paper_evidence": "Replacing TH-MHSA with vanilla MHSA yields a smaller but consistent drop (PCOS: 0.9051 → 0.8851; fracture: 0.8920 → 0.8860), confirming that head-mixing provides additional gains beyond standard self-attention.",
+        "reason": "Section 4.3, paragraph 1 confirms TH-MHSA outperforms vanilla MHSA."
+      },
+      {
+        "id": 51,
+        "text": "Grad-CAM visualizations confirm anatomically relevant attention on ovarian follicles in PCOS.",
+        "poster_quote": "Grad-CAM visualizations confirm anatomically relevant attention: ovarian follicles in PCOS",
+        "label": "supported",
+        "paper_evidence": "For PCOS ultrasound, the abnormal case exhibits localized activations around the ovarian follicles, whereas the normal case shows more diffuse attention across the ovary.",
+        "reason": "Section 4.4, paragraph 1 confirms localized activations around ovarian follicles."
+      },
+      {
+        "id": 52,
+        "text": "Grad-CAM visualizations confirm anatomically relevant attention on bone regions in fracture X-rays.",
+        "poster_quote": "bone regions in fracture X-rays.",
+        "label": "supported",
+        "paper_evidence": "For pelvic fracture radiographs, the fracture case demonstrates concentrated activations within the bone regions, while the normal case produces only weak responses outside the pelvic bones.",
+        "reason": "Section 4.4, paragraph 1 confirms concentrated activations within bone regions."
+      },
+      {
+        "id": 53,
+        "text": "PCOSGen was audited using perceptual hashing (pHash) to detect exact and near-duplicates.",
+        "poster_quote": "We audited PCOSGen using perceptual hashing (pHash) to detect exact and near-duplicates.",
+        "label": "supported",
+        "paper_evidence": "We audit this contamination via perceptual hashing, publicly release a deduplicated version of the dataset",
+        "reason": "Section 1, paragraph 5 states that the contamination was audited via perceptual hashing."
+      },
+      {
+        "id": 54,
+        "text": "Images with Hamming distance ≤14 were grouped and deduplicated.",
+        "poster_quote": "Images with Hamming distance ≤14 were grouped and deduplicated.",
+        "label": "supported",
+        "paper_evidence": "near-duplicates (distance ≤ 14) are then removed from the remaining images.",
+        "reason": "Section 3.2, paragraph 2 states that near-duplicates with distance <= 14 were removed."
+      },
+      {
+        "id": 55,
+        "text": "Visual inspection confirmed distance 14 as threshold where pairs are indistinguishable.",
+        "poster_quote": "Visual inspection confirmed distance 14 as threshold: pairs at 14 are indistinguishable",
+        "label": "supported",
+        "paper_evidence": "The threshold of 14 was selected by visual inspection: pairs at distance 14 are visually indistinguishable",
+        "reason": "Section 3.2, paragraph 2 states that visual inspection confirmed distance 14 as the threshold where pairs are indistinguishable."
+      },
+      {
+        "id": 56,
+        "text": "Visual inspection confirmed pairs at distance 16 are distinct.",
+        "poster_quote": "at 16 are distinct.",
+        "label": "supported",
+        "paper_evidence": "while pairs at distance 16 are visually distinct (Fig. 2).",
+        "reason": "Section 3.2, paragraph 2 states that pairs at distance 16 are visually distinct."
+      },
+      {
+        "id": 57,
+        "text": "Original PCOSGen contains 4,668 images.",
+        "poster_quote": "Original PCOSGen (4,668 images",
+        "label": "supported",
+        "paper_evidence": "4,668",
+        "reason": "Table 1, row 'Original PCOSGen', column 'Total' shows 4,668 images."
+      },
+      {
+        "id": 58,
+        "text": "Original PCOSGen contains 1,319 Normal images.",
+        "poster_quote": "1,319 Normal",
+        "label": "supported",
+        "paper_evidence": "1,319",
+        "reason": "Table 1, row 'Original PCOSGen', column 'Normal' shows 1,319 images."
+      },
+      {
+        "id": 59,
+        "text": "Original PCOSGen contains 3,349 Abnormal images.",
+        "poster_quote": "3,349 Abnormal",
+        "label": "supported",
+        "paper_evidence": "3,349",
+        "reason": "Table 1, row 'Original PCOSGen', column 'Abnormal' shows 3,349 images."
+      },
+      {
+        "id": 60,
+        "text": "Deduplicated PCOSGen contains 225 images.",
+        "poster_quote": "reduced to 225 images",
+        "label": "supported",
+        "paper_evidence": "225",
+        "reason": "Table 1, row 'After near-duplicate removal (≤ 14)', column 'Total' shows 225 images."
+      },
+      {
+        "id": 61,
+        "text": "Deduplicated PCOSGen contains 63 Normal images.",
+        "poster_quote": "(63 Normal",
+        "label": "supported",
+        "paper_evidence": "63",
+        "reason": "Table 1, row 'After near-duplicate removal (≤ 14)', column 'Normal' shows 63 images."
+      },
+      {
+        "id": 62,
+        "text": "Deduplicated PCOSGen contains 162 Abnormal images.",
+        "poster_quote": "162 Abnormal)",
+        "label": "supported",
+        "paper_evidence": "162",
+        "reason": "Table 1, row 'After near-duplicate removal (≤ 14)', column 'Abnormal' shows 162 images."
+      },
+      {
+        "id": 63,
+        "text": "Deduplication of PCOSGen resulted in a 95.2% reduction.",
+        "poster_quote": "— a 95.2% reduction.",
+        "label": "supported",
+        "paper_evidence": "The original pool of 4,668 images reduces to 225 (63 Normal, 162 Abnormal), a 95.2% reduction.",
+        "reason": "Section 3.2, paragraph 3 states that deduplication resulted in a 95.2% reduction."
+      },
+      {
+        "id": 64,
+        "text": "The authors publicly release the deduplicated version of PCOSGen.",
+        "poster_quote": "We publicly release this deduplicated version.",
+        "label": "supported",
+        "paper_evidence": "The deduplicated dataset is publicly released (see Data Availability).",
+        "reason": "Section 3.2, paragraph 3 states that the deduplicated dataset is publicly released."
+      },
+      {
+        "id": 65,
+        "text": "PXR150 contains 150 X-rays.",
+        "poster_quote": "PXR150 (150 X-rays",
+        "label": "supported",
+        "paper_evidence": "PXR150 is a publicly available 150-image subset of the test set from [4]",
+        "reason": "Section 3.3, paragraph 1 states that PXR150 contains 150 images."
+      },
+      {
+        "id": 66,
+        "text": "PXR150 contains 100 fracture images.",
+        "poster_quote": "100 fracture",
+        "label": "supported",
+        "paper_evidence": "giving 100 fracture and 50 normal cases.",
+        "reason": "Section 3.3, paragraph 1 states that PXR150 contains 100 fracture cases."
+      },
+      {
+        "id": 67,
+        "text": "PXR150 contains 50 normal images.",
+        "poster_quote": "50 normal)",
+        "label": "supported",
+        "paper_evidence": "giving 100 fracture and 50 normal cases.",
+        "reason": "Section 3.3, paragraph 1 states that PXR150 contains 50 normal cases."
+      },
+      {
+        "id": 68,
+        "text": "Both datasets are evaluated under 5-fold stratified CV.",
+        "poster_quote": "Both datasets are evaluated under 5-fold stratified CV",
+        "label": "supported",
+        "paper_evidence": "under 5-fold stratified cross-validation with augmentation applied only to training folds.",
+        "reason": "Section 3.4, paragraph 1 states that models are trained under 5-fold stratified cross-validation."
+      },
+      {
+        "id": 69,
+        "text": "Evaluation of both datasets uses 95% confidence intervals.",
+        "poster_quote": "with 95% confidence intervals.",
+        "label": "supported",
+        "paper_evidence": "with mean and 95% confidence interval (CI) computed across the 5 cross-validation folds.",
+        "reason": "Section 3.5, paragraph 1 states that 95% confidence intervals are reported."
+      },
+      {
+        "id": 70,
+        "text": "No prior work has evaluated on the deduplicated PCOSGen.",
+        "poster_quote": "No prior work has evaluated on the deduplicated PCOSGen",
+        "label": "supported",
+        "paper_evidence": "As no prior work has been evaluated on the deduplicated dataset, these results constitute the first reliable, integrity-audited baseline for PCOS classification on PCOSGen.",
+        "reason": "Section 4.1, paragraph 1 states that no prior work has been evaluated on the deduplicated dataset."
+      },
+      {
+        "id": 71,
+        "text": "PelviNeXt is the first modality-agnostic architecture validated on both pelvic ultrasound and X-ray without task-specific tuning.",
+        "poster_quote": "PelviNeXt is the first modality-agnostic architecture validated on both pelvic ultrasound and X-ray without task-specific tuning.",
+        "label": "unsupported",
+        "paper_evidence": "",
+        "reason": "The paper does not state that PelviNeXt is the first modality-agnostic architecture validated on both pelvic ultrasound and X-ray without task-specific tuning."
+      },
+      {
+        "id": 72,
+        "text": "The authors exposed and corrected severe contamination in PCOSGen.",
+        "poster_quote": "We exposed and corrected severe contamination in PCOSGen",
+        "label": "supported",
+        "paper_evidence": "we identified extensive exact and near-duplicate contamination within and across the dataset. We audit this contamination via perceptual hashing, publicly release a deduplicated version of the dataset",
+        "reason": "Abstract and Section 1 state that the authors identified and audited the contamination, releasing a deduplicated version."
+      },
+      {
+        "id": 73,
+        "text": "The authors released a deduplicated benchmark.",
+        "poster_quote": "releasing a deduplicated benchmark",
+        "label": "supported",
+        "paper_evidence": "The deduplicated PCOSGen benchmark is publicly available at:",
+        "reason": "Section 'Data Availability' states that the deduplicated benchmark is publicly available."
+      },
+      {
+        "id": 74,
+        "text": "PelviNeXt sets new SOTA on PXR150.",
+        "poster_quote": "PelviNeXt sets new SOTA on PXR150",
+        "label": "supported",
+        "paper_evidence": "On the only publicly available pelvic fracture X-ray dataset (PXR150), PelviNeXt exceeds previously reported state-of-the-art results across accuracy, recall, specificity, and AUROC.",
+        "reason": "Abstract and Section 1 state that PelviNeXt exceeds prior state-of-the-art results on PXR150."
+      },
+      {
+        "id": 75,
+        "text": "PelviNeXt outperforms all baselines on PCOSGen.",
+        "poster_quote": "and outperforms all baselines on PCOSGen.",
+        "label": "supported",
+        "paper_evidence": "PelviNeXt achieves the highest performance across all five metrics, with a mean accuracy of 92.00% (±1.60) and AUROC of 0.9051 (±0.0156), outperforming ViT-B/16 [5], ResNet-101 [9], and DenseNet-169 [10]",
+        "reason": "Section 4.1, paragraph 1 states that PelviNeXt outperforms all baselines on the deduplicated PCOSGen dataset."
+      },
+      {
+        "id": 76,
+        "text": "Ablation confirms each component’s contribution.",
+        "poster_quote": "Ablation confirms each component’s contribution.",
+        "label": "supported",
+        "paper_evidence": "Ablation studies confirm that each architectural component contributes to performance on both tasks.",
+        "reason": "Abstract and Section 4.3 state that ablation studies confirm each component's contribution."
+      },
+      {
+        "id": 77,
+        "text": "Limitations include small dataset sizes of 225 PCOS and 150 fracture images.",
+        "poster_quote": "small dataset sizes (225 PCOS, 150 fracture images)",
+        "label": "supported",
+        "paper_evidence": "A limitation of this work is the small size of both datasets: the deduplicated PCOS dataset contains 225 images and PXR150 contains 150 images",
+        "reason": "Section 4.5, paragraph 1 states the small dataset sizes as a limitation."
+      },
+      {
+        "id": 78,
+        "text": "Data is available at https://www.kaggle.com/datasets/siamtbhuiyan/pcosgen-deduplicated.",
+        "poster_quote": "Data available at: https://www.kaggle.com/datasets/siamtbhuiyan/pcosgen-deduplicated.",
+        "label": "supported",
+        "paper_evidence": "The deduplicated PCOSGen benchmark is publicly available at:\nhttps://www.kaggle.com/datasets/siamtbhuiyan/pcosgen-deduplicated.",
+        "reason": "Section 'Data Availability' provides the URL for the deduplicated dataset."
+      },
+      {
+        "id": 79,
+        "text": "Distance 0 represents an exact duplicate.",
+        "poster_quote": "Distance 0: exact duplicate.",
+        "label": "supported",
+        "paper_evidence": "exact duplicates (distance = 0) are removed first",
+        "reason": "Section 3.2, paragraph 2 states that distance = 0 represents exact duplicates."
+      },
+      {
+        "id": 80,
+        "text": "Distance 14 represents visually indistinguishable images and is used as the deduplication threshold.",
+        "poster_quote": "Distance 14: visually indistinguishable, used as the deduplication threshold.",
+        "label": "supported",
+        "paper_evidence": "The threshold of 14 was selected by visual inspection: pairs at distance 14 are visually indistinguishable",
+        "reason": "Section 3.2, paragraph 2 states that distance 14 represents visually indistinguishable images and is used as the threshold."
+      },
+      {
+        "id": 81,
+        "text": "Distance 16 represents visually distinct images, confirming the threshold boundary.",
+        "poster_quote": "Distance 16: visually distinct, confirming the threshold boundary.",
+        "label": "supported",
+        "paper_evidence": "Distance 16: visually distinct, confirming the threshold boundary.",
+        "reason": "Figure 2 caption explicitly states that distance 16 represents visually distinct images, confirming the threshold boundary."
+      },
+      {
+        "id": 82,
+        "text": "Table 2 shows PCOS classification results on the deduplicated PCOSGen dataset.",
+        "poster_quote": "Table 2. PCOS classification results on the deduplicated PCOSGen dataset.",
+        "label": "supported",
+        "paper_evidence": "Table 2. PCOS classification results on the deduplicated PCOSGen dataset.",
+        "reason": "Table 2 title explicitly states that it shows PCOS classification results on the deduplicated PCOSGen dataset."
+      },
+      {
+        "id": 83,
+        "text": "Table 2 results are mean over 5-fold CV.",
+        "poster_quote": "Mean over 5-fold CV;",
+        "label": "supported",
+        "paper_evidence": "Mean over 5-fold CV",
+        "reason": "Table 2 title explicitly states that the results are the mean over 5-fold CV."
+      },
+      {
+        "id": 84,
+        "text": "Table 2 shows 95% CI in the row below each model’s results.",
+        "poster_quote": "95% CI shown in the row below each model’s results.",
+        "label": "supported",
+        "paper_evidence": "95% CI shown in the row below each model’s results.",
+        "reason": "Table 2 title explicitly states that the 95% CI is shown in the row below each model's results."
+      },
+      {
+        "id": 85,
+        "text": "Fig. 3 shows Grad-CAM visualizations from PelviNeXt.",
+        "poster_quote": "Fig. 3. Grad-CAM visualizations from PelviNeXt.",
+        "label": "supported",
+        "paper_evidence": "Fig. 3. Grad-CAM visualizations from PelviNeXt.",
+        "reason": "Figure 3 caption explicitly states that it shows Grad-CAM visualizations from PelviNeXt."
+      },
+      {
+        "id": 86,
+        "text": "Fig. 3a shows a correctly predicted Abnormal PCOS ultrasound.",
+        "poster_quote": "(a) Correctly predicted Abnormal PCOS ultrasound.",
+        "label": "supported",
+        "paper_evidence": "(a) Correctly predicted Abnormal PCOS ultrasound.",
+        "reason": "Figure 3 caption explicitly states that (a) shows a correctly predicted Abnormal PCOS ultrasound."
+      },
+      {
+        "id": 87,
+        "text": "Fig. 3b shows a correctly predicted Normal PCOS ultrasound.",
+        "poster_quote": "(b) Correctly predicted Normal PCOS ultrasound.",
+        "label": "supported",
+        "paper_evidence": "(b) Correctly predicted Normal PCOS ultrasound.",
+        "reason": "Figure 3 caption explicitly states that (b) shows a correctly predicted Normal PCOS ultrasound."
+      },
+      {
+        "id": 88,
+        "text": "Fig. 3c shows a correctly predicted Fracture pelvic X-ray.",
+        "poster_quote": "(c) Correctly predicted Fracture pelvic X-ray.",
+        "label": "supported",
+        "paper_evidence": "(c) Correctly predicted Fracture pelvic X-ray.",
+        "reason": "Figure 3 caption explicitly states that (c) shows a correctly predicted Fracture pelvic X-ray."
+      },
+      {
+        "id": 89,
+        "text": "Fig. 3d shows a correctly predicted Normal pelvic X-ray.",
+        "poster_quote": "(d) Correctly predicted Normal pelvic X-ray.",
+        "label": "supported",
+        "paper_evidence": "(d) Correctly predicted Normal pelvic X-ray.",
+        "reason": "Figure 3 caption explicitly states that (d) shows a correctly predicted Normal pelvic X-ray."
+      }
+    ]
+  },
+  "raw": "[\"```json\\n{\\n  \\\"claims\\\": [\\n    {\\n      \\\"id\\\": 1,\\n      \\\"text\\\": \\\"Only 1% of R&D funding targets non-cancer women’s health.\\\",\\n      \\\"poster_quote\\\": \\\"Only 1% of R&D funding targets non-cancer women’s health\\\"\\n    },\\n    {\\n      \\\"id\\\": 2,\\n      \\\"text\\\": \\\"7% of pharma R&D targets conditions unique to women.\\\",\\n      \\\"poster_quote\\\": \\\"7% of pharma R&D targets conditions unique to women.\\\"\\n    },\\n    {\\n      \\\"id\\\": 3,\\n      \\\"text\\\": \\\"PCOS affects 6–20% of premenopausal women.\\\",\\n      \\\"poster_quote\\\": \\\"PCOS affects 6–20% of premenopausal women\\\"\\n    },\\n    {\\n      \\\"id\\\": 4,\\n      \\\"text\\\": \\\"PCOS is screened via ultrasound.\\\",\\n      \\\"poster_quote\\\": \\\"is screened via ultrasound.\\\"\\n    },\\n    {\\n      \\\"id\\\": 5,\\n      \\\"text\\\": \\\"Pelvic fracture carries a greater than 50% disability rate.\\\",\\n      \\\"poster_quote\\\": \\\"carries >50% disability\\\"\\n    },\\n    {\\n      \\\"id\\\": 6,\\n      \\\"text\\\": \\\"Pelvic fracture carries a greater than 13% mortality rate.\\\",\\n      \\\"poster_quote\\\": \\\"and >13% mortality rates.\\\"\\n    },\\n    {\\n      \\\"id\\\": 7,\\n      \\\"text\\\": \\\"PCOSGen contains 4,668 ultrasound images.\\\",\\n      \\\"poster_quote\\\": \\\"PCOSGen (4,668 ultrasound images)\\\"\\n    },\\n    {\\n      \\\"id\\\": 8,\\n      \\\"text\\\": \\\"PXR150 contains 150 X-rays.\\\",\\n      \\\"poster_quote\\\": \\\"PXR150 (150 X-rays)\\\"\\n    },\\n    {\\n      \\\"id\\\": 9,\\n      \\\"text\\\": \\\"PCOSGen and PXR150 are the only public benchmarks for pelvic pathologies.\\\",\\n      \\\"poster_quote\\\": \\\"PCOSGen (4,668 ultrasound images) and PXR150 (150 X-rays) are the only public benchmarks.\\\"\\n    },\\n    {\\n      \\\"id\\\": 10,\\n      \\\"text\\\": \\\"Prior models for pelvic pathologies are modality-specific.\\\",\\n      \\\"poster_quote\\\": \\\"Prior models are modality-specific,\\\"\\n    },\\n    {\\n      \\\"id\\\": 11,\\n      \\\"text\\\": \\\"PCOSGen contains extensive duplicate contamination.\\\",\\n      \\\"poster_quote\\\": \\\"PCOSGen contains extensive duplicate contamination\\\"\\n    },\\n    {\\n      \\\"id\\\": 12,\\n      \\\"text\\\": \\\"PelviNeXt is a modality-agnostic hybrid architecture applied identically to ultrasound and X-ray.\\\",\\n      \\\"poster_quote\\\": \\\"PelviNeXt is a modality-agnostic hybrid architecture applied identically to ultrasound and X-ray.\\\"\\n    },\\n    {\\n      \\\"id\\\": 13,\\n      \\\"text\\\": \\\"PelviNeXt consists of a Dense Feature Extractor (DFE) with 4 dense blocks.\\\",\\n      \\\"poster_quote\\\": \\\"Dense Feature Extractor (DFE) with 4 dense blocks\\\"\\n    },\\n    {\\n      \\\"id\\\": 14,\\n      \\\"text\\\": \\\"The DFE dense blocks have 6, 12, 24, and 16 layers.\\\",\\n      \\\"poster_quote\\\": \\\"(6,12,24,16 layers)\\\"\\n    },\\n    {\\n      \\\"id\\\": 15,\\n      \\\"text\\\": \\\"The DFE is inspired by DenseNet.\\\",\\n      \\\"poster_quote\\\": \\\"inspired by DenseNet\\\"\\n    },\\n    {\\n      \\\"id\\\": 16,\\n      \\\"text\\\": \\\"The DFE produces multi-scale feature maps.\\\",\\n      \\\"poster_quote\\\": \\\"producing multi-scale feature maps\\\"\\n    },\\n    {\\n      \\\"id\\\": 17,\\n      \\\"text\\\": \\\"PelviNeXt has a Hierarchical CBAM (H-CBAM) after each DFE block.\\\",\\n      \\\"poster_quote\\\": \\\"Hierarchical CBAM (H-CBAM) after each DFE block\\\"\\n    },\\n    {\\n      \\\"id\\\": 18,\\n      \\\"text\\\": \\\"H-CBAM applies channel and spatial attention at 4 scales from 56×56 to 7×7.\\\",\\n      \\\"poster_quote\\\": \\\"applying channel and spatial attention at 4 scales (56×56 to 7×7)\\\"\\n    },\\n    {\\n      \\\"id\\\": 19,\\n      \\\"text\\\": \\\"PelviNeXt has a Multi-Scale Fusion Module (MSFM) aligning and fusing outputs of DFE-2,3,4 to 7×7.\\\",\\n      \\\"poster_quote\\\": \\\"Multi-Scale Fusion Module (MSFM) aligning and fusing outputs of DFE-2,3,4 to 7×7\\\"\\n    },\\n    {\\n      \\\"id\\\": 20,\\n      \\\"text\\\": \\\"MSFM reduces outputs to 512 channels.\\\",\\n      \\\"poster_quote\\\": \\\"reducing to 512 channels\\\"\\n    },\\n    {\\n      \\\"id\\\": 21,\\n      \\\"text\\\": \\\"PelviNeXt has Talking-Heads Multi-Head Self-Attention (TH-MHSA) with head-mixing projections before/after softmax.\\\",\\n      \\\"poster_quote\\\": \\\"Talking-Heads Multi-Head Self-Attention (TH-MHSA) with head-mixing projections before/after softmax\\\"\\n    },\\n    {\\n      \\\"id\\\": 22,\\n      \\\"text\\\": \\\"PelviNeXt has a classification head.\\\",\\n      \\\"poster_quote\\\": \\\"Classification head.\\\"\\n    },\\n    {\\n      \\\"id\\\": 23,\\n      \\\"text\\\": \\\"No task-specific preprocessing is applied to PelviNeXt.\\\",\\n      \\\"poster_quote\\\": \\\"No task-specific preprocessing\\\"\\n    },\\n    {\\n      \\\"id\\\": 24,\\n      \\\"text\\\": \\\"No modality-specific tuning is applied to PelviNeXt.\\\",\\n      \\\"poster_quote\\\": \\\"or modality-specific tuning is applied.\\\"\\n    },\\n    {\\n      \\\"id\\\": 25,\\n      \\\"text\\\": \\\"Training of PelviNeXt uses AdamW.\\\",\\n      \\\"poster_quote\\\": \\\"Training uses AdamW\\\"\\n    },\\n    {\\n      \\\"id\\\": 26,\\n      \\\"text\\\": \\\"Training of PelviNeXt uses a batch size of 16.\\\",\\n      \\\"poster_quote\\\": \\\"batch size 16\\\"\\n    },\\n    {\\n      \\\"id\\\": 27,\\n      \\\"text\\\": \\\"Training of PelviNeXt uses 30 epochs.\\\",\\n      \\\"poster_quote\\\": \\\"30 epochs\\\"\\n    },\\n    {\\n      \\\"id\\\": 28,\\n      \\\"text\\\": \\\"Training of PelviNeXt uses 5-fold CV.\\\",\\n      \\\"poster_quote\\\": \\\"5-fold CV\\\"\\n    },\\n    {\\n      \\\"id\\\": 29,\\n      \\\"text\\\": \\\"Training of PelviNeXt uses augmentation including rotation, shear, flip, and translate.\\\",\\n      \\\"poster_quote\\\": \\\"augmentation (rotation, shear, flip, translate)\\\"\\n    },\\n    {\\n      \\\"id\\\": 30,\\n      \\\"text\\\": \\\"Training of PelviNeXt uses class-aware multipliers.\\\",\\n      \\\"poster_quote\\\": \\\"and class-aware multipliers.\\\"\\n    },\\n    {\\n      \\\"id\\\": 31,\\n      \\\"text\\\": \\\"On deduplicated PCOSGen, PelviNeXt achieves 92.00% accuracy.\\\",\\n      \\\"poster_quote\\\": \\\"On deduplicated PCOSGen, PelviNeXt achieves 92.00% accuracy\\\"\\n    },\\n    {\\n      \\\"id\\\": 32,\\n      \\\"text\\\": \\\"On deduplicated PCOSGen, PelviNeXt's accuracy has a spread of ±1.60.\\\",\\n      \\\"poster_quote\\\": \\\"(±1.60)\\\"\\n    },\\n    {\\n      \\\"id\\\": 33,\\n      \\\"text\\\": \\\"On deduplicated PCOSGen, PelviNeXt achieves 91.74% recall.\\\",\\n      \\\"poster_quote\\\": \\\"91.74% recall\\\"\\n    },\\n    {\\n      \\\"id\\\": 34,\\n      \\\"text\\\": \\\"On deduplicated PCOSGen, PelviNeXt achieves 86.48% specificity.\\\",\\n      \\\"poster_quote\\\": \\\"86.48% specificity\\\"\\n    },\\n    {\\n      \\\"id\\\": 35,\\n      \\\"text\\\": \\\"On deduplicated PCOSGen, PelviNeXt achieves 0.8890 F1.\\\",\\n      \\\"poster_quote\\\": \\\"0.8890 F1\\\"\\n    },\\n    {\\n      \\\"id\\\": 36,\\n      \\\"text\\\": \\\"On deduplicated PCOSGen, PelviNeXt achieves 0.9051 AUROC.\\\",\\n      \\\"poster_quote\\\": \\\"and 0.9051 AUROC\\\"\\n    },\\n    {\\n      \\\"id\\\": 37,\\n      \\\"text\\\": \\\"On deduplicated PCOSGen, PelviNeXt outperforms ViT-B/16, ResNet-101, and DenseNet-169 by ≥2.67% in accuracy.\\\",\\n      \\\"poster_quote\\\": \\\"outperforming ViT-B/16, ResNet-101, and DenseNet-169 by ≥2.67% in accuracy\\\"\\n    },\\n    {\\n      \\\"id\\\": 38,\\n      \\\"text\\\": \\\"On deduplicated PCOSGen, PelviNeXt outperforms ViT-B/16, ResNet-101, and DenseNet-169 by ≥0.0422 in AUROC.\\\",\\n      \\\"poster_quote\\\": \\\"and ≥0.0422 in AUROC.\\\"\\n    },\\n    {\\n      \\\"id\\\": 39,\\n      \\\"text\\\": \\\"On PXR150, PelviNeXt achieves 87.33% accuracy.\\\",\\n      \\\"poster_quote\\\": \\\"On PXR150, PelviNeXt achieves 87.33% accuracy\\\"\\n    },\\n    {\\n      \\\"id\\\": 40,\\n      \\\"text\\\": \\\"On PXR150, PelviNeXt's accuracy has a spread of ±2.45.\\\",\\n      \\\"poster_quote\\\": \\\"(±2.45)\\\"\\n    },\\n    {\\n      \\\"id\\\": 41,\\n      \\\"text\\\": \\\"On PXR150, PelviNeXt achieves 89.00% recall.\\\",\\n      \\\"poster_quote\\\": \\\"89.00% recall\\\"\\n    },\\n    {\\n      \\\"id\\\": 42,\\n      \\\"text\\\": \\\"On PXR150, PelviNeXt achieves 87.00% specificity.\\\",\\n      \\\"poster_quote\\\": \\\"87.00% specificity\\\"\\n    },\\n    {\\n      \\\"id\\\": 43,\\n      \\\"text\\\": \\\"On PXR150, PelviNeXt achieves 0.8774 F1.\\\",\\n      \\\"poster_quote\\\": \\\"0.8774 F1\\\"\\n    },\\n    {\\n      \\\"id\\\": 44,\\n      \\\"text\\\": \\\"On PXR150, PelviNeXt achieves 0.8920 AUROC.\\\",\\n      \\\"poster_quote\\\": \\\"and 0.8920 AUROC\\\"\\n    },\\n    {\\n      \\\"id\\\": 45,\\n      \\\"text\\\": \\\"On PXR150, PelviNeXt exceeds prior SOTA (Patch Ensemble: 84.00% acc, 0.8700 AUROC) across all metrics.\\\",\\n      \\\"poster_quote\\\": \\\"exceeding prior SOTA (Patch Ensemble: 84.00% acc, 0.8700 AUROC) across all metrics\\\"\\n    },\\n    {\\n      \\\"id\\\": 46,\\n      \\\"text\\\": \\\"On PXR150, PelviNeXt achieves 87.00% specificity compared to Patch Ensemble's 82.00%.\\\",\\n      \\\"poster_quote\\\": \\\"especially specificity (87.00% vs 82.00%)\\\"\\n    },\\n    {\\n      \\\"id\\\": 47,\\n      \\\"text\\\": \\\"Ablation shows H-CBAM improves fracture detection most, causing a -2.66% accuracy drop when removed.\\\",\\n      \\\"poster_quote\\\": \\\"H-CBAM improves fracture detection most (−2.66% acc)\\\"\\n    },\\n    {\\n      \\\"id\\\": 48,\\n      \\\"text\\\": \\\"MSFM is critical for AUROC on PCOS, dropping from 0.9051 to 0.8735 when removed.\\\",\\n      \\\"poster_quote\\\": \\\"MSFM is critical for AUROC (PCOS: 0.90510.8735\\\"\\n    },\\n    {\\n      \\\"id\\\": 49,\\n      \\\"text\\\": \\\"MSFM is critical for AUROC on Fracture, dropping from 0.8920 to 0.8576 when removed.\\\",\\n      \\\"poster_quote\\\": \\\"Fracture: 0.89200.8576)\\\"\\n    },\\n    {\\n      \\\"id\\\": 50,\\n      \\\"text\\\": \\\"TH-MHSA outperforms vanilla MHSA.\\\",\\n      \\\"poster_quote\\\": \\\"and TH-MHSA outperforms vanilla MHSA.\\\"\\n    },\\n    {\\n      \\\"id\\\": 51,\\n      \\\"text\\\": \\\"Grad-CAM visualizations confirm anatomically relevant attention on ovarian follicles in PCOS.\\\",\\n      \\\"poster_quote\\\": \\\"Grad-CAM visualizations confirm anatomically relevant attention: ovarian follicles in PCOS\\\"\\n    },\\n    {\\n      \\\"id\\\": 52,\\n      \\\"text\\\": \\\"Grad-CAM visualizations confirm anatomically relevant attention on bone regions in fracture X-rays.\\\",\\n      \\\"poster_quote\\\": \\\"bone regions in fracture X-rays.\\\"\\n    },\\n    {\\n      \\\"id\\\": 53,\\n      \\\"text\\\": \\\"PCOSGen was audited using perceptual hashing (pHash) to detect exact and near-duplicates.\\\",\\n      \\\"poster_quote\\\": \\\"We audited PCOSGen using perceptual hashing (pHash) to detect exact and near-duplicates.\\\"\\n    },\\n    {\\n      \\\"id\\\": 54,\\n      \\\"text\\\": \\\"Images with Hamming distance ≤14 were grouped and deduplicated.\\\",\\n      \\\"poster_quote\\\": \\\"Images with Hamming distance ≤14 were grouped and deduplicated.\\\"\\n    },\\n    {\\n      \\\"id\\\": 55,\\n      \\\"text\\\": \\\"Visual inspection confirmed distance 14 as threshold where pairs are indistinguishable.\\\",\\n      \\\"poster_quote\\\": \\\"Visual inspection confirmed distance 14 as threshold: pairs at 14 are indistinguishable\\\"\\n    },\\n    {\\n      \\\"id\\\": 56,\\n      \\\"text\\\": \\\"Visual inspection confirmed pairs at distance 16 are distinct.\\\",\\n      \\\"poster_quote\\\": \\\"at 16 are distinct.\\\"\\n    },\\n    {\\n      \\\"id\\\": 57,\\n      \\\"text\\\": \\\"Original PCOSGen contains 4,668 images.\\\",\\n      \\\"poster_quote\\\": \\\"Original PCOSGen (4,668 images\\\"\\n    },\\n    {\\n      \\\"id\\\": 58,\\n      \\\"text\\\": \\\"Original PCOSGen contains 1,319 Normal images.\\\",\\n      \\\"poster_quote\\\": \\\"1,319 Normal\\\"\\n    },\\n    {\\n      \\\"id\\\": 59,\\n      \\\"text\\\": \\\"Original PCOSGen contains 3,349 Abnormal images.\\\",\\n      \\\"poster_quote\\\": \\\"3,349 Abnormal\\\"\\n    },\\n    {\\n      \\\"id\\\": 60,\\n      \\\"text\\\": \\\"Deduplicated PCOSGen contains 225 images.\\\",\\n      \\\"poster_quote\\\": \\\"reduced to 225 images\\\"\\n    },\\n    {\\n      \\\"id\\\": 61,\\n      \\\"text\\\": \\\"Deduplicated PCOSGen contains 63 Normal images.\\\",\\n      \\\"poster_quote\\\": \\\"(63 Normal\\\"\\n    },\\n    {\\n      \\\"id\\\": 62,\\n      \\\"text\\\": \\\"Deduplicated PCOSGen contains 162 Abnormal images.\\\",\\n      \\\"poster_quote\\\": \\\"162 Abnormal)\\\"\\n    },\\n    {\\n      \\\"id\\\": 63,\\n      \\\"text\\\": \\\"Deduplication of PCOSGen resulted in a 95.2% reduction.\\\",\\n      \\\"poster_quote\\\": \\\"— a 95.2% reduction.\\\"\\n    },\\n    {\\n      \\\"id\\\": 64,\\n      \\\"text\\\": \\\"The authors publicly release the deduplicated version of PCOSGen.\\\",\\n      \\\"poster_quote\\\": \\\"We publicly release this deduplicated version.\\\"\\n    },\\n    {\\n      \\\"id\\\": 65,\\n      \\\"text\\\": \\\"PXR150 contains 150 X-rays.\\\",\\n      \\\"poster_quote\\\": \\\"PXR150 (150 X-rays\\\"\\n    },\\n    {\\n      \\\"id\\\": 66,\\n      \\\"text\\\": \\\"PXR150 contains 100 fracture images.\\\",\\n      \\\"poster_quote\\\": \\\"100 fracture\\\"\\n    },\\n    {\\n      \\\"id\\\": 67,\\n      \\\"text\\\": \\\"PXR150 contains 50 normal images.\\\",\\n      \\\"poster_quote\\\": \\\"50 normal)\\\"\\n    },\\n    {\\n      \\\"id\\\": 68,\\n      \\\"text\\\": \\\"Both datasets are evaluated under 5-fold stratified CV.\\\",\\n      \\\"poster_quote\\\": \\\"Both datasets are evaluated under 5-fold stratified CV\\\"\\n    },\\n    {\\n      \\\"id\\\": 69,\\n      \\\"text\\\": \\\"Evaluation of both datasets uses 95% confidence intervals.\\\",\\n      \\\"poster_quote\\\": \\\"with 95% confidence intervals.\\\"\\n    },\\n    {\\n      \\\"id\\\": 70,\\n      \\\"text\\\": \\\"No prior work has evaluated on the deduplicated PCOSGen.\\\",\\n      \\\"poster_quote\\\": \\\"No prior work has evaluated on the deduplicated PCOSGen\\\"\\n    },\\n    {\\n      \\\"id\\\": 71,\\n      \\\"text\\\": \\\"PelviNeXt is the first modality-agnostic architecture validated on both pelvic ultrasound and X-ray without task-specific tuning.\\\",\\n      \\\"poster_quote\\\": \\\"PelviNeXt is the first modality-agnostic architecture validated on both pelvic ultrasound and X-ray without task-specific tuning.\\\"\\n    },\\n    {\\n      \\\"id\\\": 72,\\n      \\\"text\\\": \\\"The authors exposed and corrected severe contamination in PCOSGen.\\\",\\n      \\\"poster_quote\\\": \\\"We exposed and corrected severe contamination in PCOSGen\\\"\\n    },\\n    {\\n      \\\"id\\\": 73,\\n      \\\"text\\\": \\\"The authors released a deduplicated benchmark.\\\",\\n      \\\"poster_quote\\\": \\\"releasing a deduplicated benchmark\\\"\\n    },\\n    {\\n      \\\"id\\\": 74,\\n      \\\"text\\\": \\\"PelviNeXt sets new SOTA on PXR150.\\\",\\n      \\\"poster_quote\\\": \\\"PelviNeXt sets new SOTA on PXR150\\\"\\n    },\\n    {\\n      \\\"id\\\": 75,\\n      \\\"text\\\": \\\"PelviNeXt outperforms all baselines on PCOSGen.\\\",\\n      \\\"poster_quote\\\": \\\"and outperforms all baselines on PCOSGen.\\\"\\n    },\\n    {\\n      \\\"id\\\": 76,\\n      \\\"text\\\": \\\"Ablation confirms each component’s contribution.\\\",\\n      \\\"poster_quote\\\": \\\"Ablation confirms each component’s contribution.\\\"\\n    },\\n    {\\n      \\\"id\\\": 77,\\n      \\\"text\\\": \\\"Limitations include small dataset sizes of 225 PCOS and 150 fracture images.\\\",\\n      \\\"poster_quote\\\": \\\"small dataset sizes (225 PCOS, 150 fracture images)\\\"\\n    },\\n    {\\n      \\\"id\\\": 78,\\n      \\\"text\\\": \\\"Data is available at https://www.kaggle.com/datasets/siamtbhuiyan/pcosgen-deduplicated.\\\",\\n      \\\"poster_quote\\\": \\\"Data available at: https://www.kaggle.com/datasets/siamtbhuiyan/pcosgen-deduplicated.\\\"\\n    },\\n    {\\n      \\\"id\\\": 79,\\n      \\\"text\\\": \\\"Distance 0 represents an exact duplicate.\\\",\\n      \\\"poster_quote\\\": \\\"Distance 0: exact duplicate.\\\"\\n    },\\n    {\\n      \\\"id\\\": 80,\\n      \\\"text\\\": \\\"Distance 14 represents visually indistinguishable images and is used as the deduplication threshold.\\\",\\n      \\\"poster_quote\\\": \\\"Distance 14: visually indistinguishable, used as the deduplication threshold.\\\"\\n    },\\n    {\\n      \\\"id\\\": 81,\\n      \\\"text\\\": \\\"Distance 16 represents visually distinct images, confirming the threshold boundary.\\\",\\n      \\\"poster_quote\\\": \\\"Distance 16: visually distinct, confirming the threshold boundary.\\\"\\n    },\\n    {\\n      \\\"id\\\": 82,\\n      \\\"text\\\": \\\"Table 2 shows PCOS classification results on the deduplicated PCOSGen dataset.\\\",\\n      \\\"poster_quote\\\": \\\"Table 2. PCOS classification results on the deduplicated PCOSGen dataset.\\\"\\n    },\\n    {\\n      \\\"id\\\": 83,\\n      \\\"text\\\": \\\"Table 2 results are mean over 5-fold CV.\\\",\\n      \\\"poster_quote\\\": \\\"Mean over 5-fold CV;\\\"\\n    },\\n    {\\n      \\\"id\\\": 84,\\n      \\\"text\\\": \\\"Table 2 shows 95% CI in the row below each model’s results.\\\",\\n      \\\"poster_quote\\\": \\\"95% CI shown in the row below each model’s results.\\\"\\n    },\\n    {\\n      \\\"id\\\": 85,\\n      \\\"text\\\": \\\"Fig. 3 shows Grad-CAM visualizations from PelviNeXt.\\\",\\n      \\\"poster_quote\\\": \\\"Fig. 3. Grad-CAM visualizations from PelviNeXt.\\\"\\n    },\\n    {\\n      \\\"id\\\": 86,\\n      \\\"text\\\": \\\"Fig. 3a shows a correctly predicted Abnormal PCOS ultrasound.\\\",\\n      \\\"poster_quote\\\": \\\"(a) Correctly predicted Abnormal PCOS ultrasound.\\\"\\n    },\\n    {\\n      \\\"id\\\": 87,\\n      \\\"text\\\": \\\"Fig. 3b shows a correctly predicted Normal PCOS ultrasound.\\\",\\n      \\\"poster_quote\\\": \\\"(b) Correctly predicted Normal PCOS ultrasound.\\\"\\n    },\\n    {\\n      \\\"id\\\": 88,\\n      \\\"text\\\": \\\"Fig. 3c shows a correctly predicted Fracture pelvic X-ray.\\\",\\n      \\\"poster_quote\\\": \\\"(c) Correctly predicted Fracture pelvic X-ray.\\\"\\n    },\\n    {\\n      \\\"id\\\": 89,\\n      \\\"text\\\": \\\"Fig. 3d shows a correctly predicted Normal pelvic X-ray.\\\",\\n      \\\"poster_quote\\\": \\\"(d) Correctly predicted Normal pelvic X-ray.\\\"\\n    }\\n  ]\\n}\\n```\", \"```json\\n{\\n  \\\"verdicts\\\": [\\n    {\\\"id\\\": 1, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"Only 1% of research and development funding focuses on non-cancer-related women’s health\\\", \\\"reason\\\": \\\"Section 1, Introduction\\\"},\\n    {\\\"id\\\": 2, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"only 7% of pharmaceutical research and development is targeted at conditions that uniquely affect women\\\", \\\"reason\\\": \\\"Section 1, Introduction\\\"},\\n    {\\\"id\\\": 3, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"it affects 6 to 20% of premenopausal women worldwide\\\", \\\"reason\\\": \\\"Section 1, Introduction\\\"},\\n    {\\\"id\\\": 4, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"and is conventionally screened via ultrasound.\\\", \\\"reason\\\": \\\"Section 1, Introduction\\\"},\\n    {\\\"id\\\": 5, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"carries a disability rate exceeding 50%\\\", \\\"reason\\\": \\\"Section 1, Introduction\\\"},\\n    {\\\"id\\\": 6, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"a mortality rate above 13%\\\", \\\"reason\\\": \\\"Section 1, Introduction\\\"},\\n    {\\\"id\\\": 7, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"PCOSGen is, to our knowledge, the only gynaecologist-annotated public PCOS ultrasound dataset, comprising 4,668 images\\\", \\\"reason\\\": \\\"Section 1, Introduction\\\"},\\n    {\\\"id\\\": 8, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"PXR150 is, to our knowledge, the only public dataset for this task, comprising 150 radiographs\\\", \\\"reason\\\": \\\"Section 1, Introduction\\\"},\\n    {\\\"id\\\": 9, \\\"label\\\": \\\"unsupported\\\", \\\"paper_evidence\\\": \\\"\\\", \\\"reason\\\": \\\"The paper states that PCOSGen is the only public PCOS ultrasound dataset and PXR150 is the only public pelvic fracture dataset, but does not state that they are the only public benchmarks for pelvic pathologies in general.\\\"},\\n    {\\\"id\\\": 10, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"Existing architectures for these tasks are largely single-modality.\\\", \\\"reason\\\": \\\"Section 1, Introduction\\\"},\\n    {\\\"id\\\": 11, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"we identified extensive exact and near-duplicate contamination within and across the dataset.\\\", \\\"reason\\\": \\\"Abstract\\\"},\\n    {\\\"id\\\": 12, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"We introduce PelviNeXt, a modality-agnostic hybrid architecture... applied without modification to both pelvic ultrasound and X-ray inputs.\\\", \\\"reason\\\": \\\"Abstract\\\"},\\n    {\\\"id\\\": 13, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"using four dense blocks of 6, 12, 24, and 16 layers respectively (DFE-1 through DFE-4)\\\", \\\"reason\\\": \\\"Section 2.1, Dense Feature Extractor (DFE)\\\"},\\n    {\\\"id\\\": 14, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"using four dense blocks of 6, 12, 24, and 16 layers respectively (DFE-1 through DFE-4)\\\", \\\"reason\\\": \\\"Section 2.1, Dense Feature Extractor (DFE)\\\"},\\n    {\\\"id\\\": 15, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"The feature extraction stage is inspired by the depth and dense connectivity of DenseNet [10]\\\", \\\"reason\\\": \\\"Section 2.1, Dense Feature Extractor (DFE)\\\"},\\n    {\\\"id\\\": 16, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"producing feature maps of 256×56×56, 512×28×28, 1024×14×14, and 1024×7×7 after DFE-1 through DFE-4 respectively\\\", \\\"reason\\\": \\\"Section 2.1, Dense Feature Extractor (DFE)\\\"},\\n    {\\\"id\\\": 17, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"Following each DFE block, an H-CBAM module refines the feature map along channel and spatial dimensions [18].\\\", \\\"reason\\\": \\\"Section 2.2, Hierarchical CBAM (H-CBAM)\\\"},\\n    {\\\"id\\\": 18, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"applying attention at four progressively coarser scales from 56×56 down to 7×7\\\", \\\"reason\\\": \\\"Section 2.2, Hierarchical CBAM (H-CBAM)\\\"},\\n    {\\\"id\\\": 19, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"The outputs of DFE-2, DFE-3, and DFE-4 after their respective H-CBAM modules... are spatially aligned to 7×7 via bilinear interpolation and concatenated into a 2560-channel tensor.\\\", \\\"reason\\\": \\\"Section 2.3, Multi-Scale Fusion Module (MSFM)\\\"},\\n    {\\\"id\\\": 20, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"A 1×1 convolution reduces this to 512 channels\\\", \\\"reason\\\": \\\"Section 2.3, Multi-Scale Fusion Module (MSFM)\\\"},\\n    {\\\"id\\\": 21, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"processed by a talking-heads self-attention block [17], which inserts learned linear projections across the head dimension before and after the softmax\\\", \\\"reason\\\": \\\"Section 2.4, Talking-Heads Multi-Head Self-Attention (TH-MHSA)\\\"},\\n    {\\\"id\\\": 22, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"followed by a classification head (Fig. 1).\\\", \\\"reason\\\": \\\"Section 2, Methodology\\\"},\\n    {\\\"id\\\": 23, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"No task-specific preprocessing is applied to either modality.\\\", \\\"reason\\\": \\\"Section 3.4, Implementation Details\\\"},\\n    {\\\"id\\\": 24, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"The same pipeline with identical hyperparameters is applied to both ultrasound and X-ray inputs.\\\", \\\"reason\\\": \\\"Section 2, Methodology\\\"},\\n    {\\\"id\\\": 25, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"All models are trained from scratch using AdamW\\\", \\\"reason\\\": \\\"Section 3.4, Implementation Details\\\"},\\n    {\\\"id\\\": 26, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"batch size 16\\\", \\\"reason\\\": \\\"Section 3.4, Implementation Details\\\"},\\n    {\\\"id\\\": 27, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"for 30 epochs\\\", \\\"reason\\\": \\\"Section 3.4, Implementation Details\\\"},\\n    {\\\"id\\\": 28, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"under 5-fold stratified cross-validation\\\", \\\"reason\\\": \\\"Section 3.4, Implementation Details\\\"},\\n    {\\\"id\\\": 29, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"Augmentation uses random combinations of rotation (within 25◦ ), shearing (within 10%), horizontal flipping, and translation (within 10%)\\\", \\\"reason\\\": \\\"Section 3.4, Implementation Details\\\"},\\n    {\\\"id\\\": 30, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"with class-aware multipliers: fracture images 2× and normal images 4× for PXR150; abnormal images 2× and normal images 6× for the deduplicated PCOS dataset.\\\", \\\"reason\\\": \\\"Section 3.4, Implementation Details\\\"},\\n    {\\\"id\\\": 31, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"92.00%\\\", \\\"reason\\\": \\\"Table 2, row 'PelviNeXt', column 'Acc.'\\\"},\\n    {\\\"id\\\": 32, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"±1.60\\\", \\\"reason\\\": \\\"Table 2, row 'PelviNeXt', column 'Acc.'\\\"},\\n    {\\\"id\\\": 33, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"91.74%\\\", \\\"reason\\\": \\\"Table 2, row 'PelviNeXt', column 'Rec.'\\\"},\\n    {\\\"id\\\": 34, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"86.48%\\\", \\\"reason\\\": \\\"Table 2, row 'PelviNeXt', column 'Spec.'\\\"},\\n    {\\\"id\\\": 35, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"0.8890\\\", \\\"reason\\\": \\\"Table 2, row 'PelviNeXt', column 'F1'\\\"},\\n    {\\\"id\\\": 36, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"0.9051\\\", \\\"reason\\\": \\\"Table 2, row 'PelviNeXt', column 'AUROC'\\\"},\\n    {\\\"id\\\": 37, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"outperforming ViT-B/16 [5], ResNet-101 [9], and DenseNet-169 [10] by at least 2.67 percentage points in accuracy\\\", \\\"reason\\\": \\\"Section 4.1, PCOS Classification (92.00 - 89.33 = 2.67%)\\\"},\\n    {\\\"id\\\": 38, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"and 0.0422 in AUROC.\\\", \\\"reason\\\": \\\"Section 4.1, PCOS Classification (0.9051 - 0.8629 = 0.0422)\\\"},\\n    {\\\"id\\\": 39, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"87.33%\\\", \\\"reason\\\": \\\"Table 3, row 'PelviNeXt', column 'Acc.'\\\"},\\n    {\\\"id\\\": 40, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"±2.45\\\", \\\"reason\\\": \\\"Table 3, row 'PelviNeXt', column 'Acc.'\\\"}\\n  ]\\n}\\n```\", \"```json\\n{\\n  \\\"verdicts\\\": [\\n    {\\n      \\\"id\\\": 1,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"89.00%\\\\n±5.71\\\",\\n      \\\"reason\\\": \\\"Table 3, row 'PelviNeXt', column 'Rec.' shows 89.00% recall.\\\"\\n    },\\n    {\\n      \\\"id\\\": 2,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"87.00%\\\\n±3.92\\\",\\n      \\\"reason\\\": \\\"Table 3, row 'PelviNeXt', column 'Spec.' shows 87.00% specificity.\\\"\\n    },\\n    {\\n      \\\"id\\\": 3,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"0.8774\\\\n±0.0191\\\",\\n      \\\"reason\\\": \\\"Table 3, row 'PelviNeXt', column 'F1' shows 0.8774 F1.\\\"\\n    },\\n    {\\n      \\\"id\\\": 4,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"0.8920\\\\n±0.0288\\\",\\n      \\\"reason\\\": \\\"Table 3, row 'PelviNeXt', column 'AUROC' shows 0.8920 AUROC.\\\"\\n    },\\n    {\\n      \\\"id\\\": 5,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"exceeding the strongest prior result, Patch Ensemble [2] (84.00% accuracy, 87.00% recall, 82.00% specificity, 0.8700 AUROC), across every reported metric.\\\",\\n      \\\"reason\\\": \\\"Section 4.2, paragraph 1 shows PelviNeXt exceeds Patch Ensemble across all metrics.\\\"\\n    },\\n    {\\n      \\\"id\\\": 6,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Notably, the gap between PelviNeXt and prior SOTA is most pronounced in specificity (87.00% vs. 82.00%)\\\",\\n      \\\"reason\\\": \\\"Section 4.2, paragraph 1 compares PelviNeXt's specificity to Patch Ensemble's.\\\"\\n    },\\n    {\\n      \\\"id\\\": 7,\\n      \\\"label\\\": \\\"contradicted\\\",\\n      \\\"paper_evidence\\\": \\\"w/o MSFM\\\\n83.33%±2.92\\\",\\n      \\\"reason\\\": \\\"Table 4 shows that removing MSFM causes a larger accuracy drop (87.33% - 83.33% = 4.00%) than removing H-CBAM (87.33% - 84.67% = 2.66%), meaning H-CBAM does not improve fracture detection most.\\\"\\n    },\\n    {\\n      \\\"id\\\": 8,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Removing MSFM causes the largest AUROC drop on both tasks (PCOS: 0.9051 → 0.8735; fracture: 0.8920 → 0.8576)\\\",\\n      \\\"reason\\\": \\\"Section 4.3, paragraph 1 states the AUROC drop for PCOS when MSFM is removed.\\\"\\n    },\\n    {\\n      \\\"id\\\": 9,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Removing MSFM causes the largest AUROC drop on both tasks (PCOS: 0.9051 → 0.8735; fracture: 0.8920 → 0.8576)\\\",\\n      \\\"reason\\\": \\\"Section 4.3, paragraph 1 states the AUROC drop for Fracture when MSFM is removed.\\\"\\n    },\\n    {\\n      \\\"id\\\": 10,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Replacing TH-MHSA with vanilla MHSA yields a smaller but consistent drop (PCOS: 0.9051 → 0.8851; fracture: 0.8920 → 0.8860), confirming that head-mixing provides additional gains beyond standard self-attention.\\\",\\n      \\\"reason\\\": \\\"Section 4.3, paragraph 1 confirms TH-MHSA outperforms vanilla MHSA.\\\"\\n    },\\n    {\\n      \\\"id\\\": 11,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"For PCOS ultrasound, the abnormal case exhibits localized activations around the ovarian follicles, whereas the normal case shows more diffuse attention across the ovary.\\\",\\n      \\\"reason\\\": \\\"Section 4.4, paragraph 1 confirms localized activations around ovarian follicles.\\\"\\n    },\\n    {\\n      \\\"id\\\": 12,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"For pelvic fracture radiographs, the fracture case demonstrates concentrated activations within the bone regions, while the normal case produces only weak responses outside the pelvic bones.\\\",\\n      \\\"reason\\\": \\\"Section 4.4, paragraph 1 confirms concentrated activations within bone regions.\\\"\\n    },\\n    {\\n      \\\"id\\\": 13,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"We audit this contamination via perceptual hashing, publicly release a deduplicated version of the dataset\\\",\\n      \\\"reason\\\": \\\"Section 1, paragraph 5 states that the contamination was audited via perceptual hashing.\\\"\\n    },\\n    {\\n      \\\"id\\\": 14,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"near-duplicates (distance ≤ 14) are then removed from the remaining images.\\\",\\n      \\\"reason\\\": \\\"Section 3.2, paragraph 2 states that near-duplicates with distance <= 14 were removed.\\\"\\n    },\\n    {\\n      \\\"id\\\": 15,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The threshold of 14 was selected by visual inspection: pairs at distance 14 are visually indistinguishable\\\",\\n      \\\"reason\\\": \\\"Section 3.2, paragraph 2 states that visual inspection confirmed distance 14 as the threshold where pairs are indistinguishable.\\\"\\n    },\\n    {\\n      \\\"id\\\": 16,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"while pairs at distance 16 are visually distinct (Fig. 2).\\\",\\n      \\\"reason\\\": \\\"Section 3.2, paragraph 2 states that pairs at distance 16 are visually distinct.\\\"\\n    },\\n    {\\n      \\\"id\\\": 17,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"4,668\\\",\\n      \\\"reason\\\": \\\"Table 1, row 'Original PCOSGen', column 'Total' shows 4,668 images.\\\"\\n    },\\n    {\\n      \\\"id\\\": 18,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"1,319\\\",\\n      \\\"reason\\\": \\\"Table 1, row 'Original PCOSGen', column 'Normal' shows 1,319 images.\\\"\\n    },\\n    {\\n      \\\"id\\\": 19,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"3,349\\\",\\n      \\\"reason\\\": \\\"Table 1, row 'Original PCOSGen', column 'Abnormal' shows 3,349 images.\\\"\\n    },\\n    {\\n      \\\"id\\\": 20,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"225\\\",\\n      \\\"reason\\\": \\\"Table 1, row 'After near-duplicate removal (≤ 14)', column 'Total' shows 225 images.\\\"\\n    },\\n    {\\n      \\\"id\\\": 21,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"63\\\",\\n      \\\"reason\\\": \\\"Table 1, row 'After near-duplicate removal (≤ 14)', column 'Normal' shows 63 images.\\\"\\n    },\\n    {\\n      \\\"id\\\": 22,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"162\\\",\\n      \\\"reason\\\": \\\"Table 1, row 'After near-duplicate removal (≤ 14)', column 'Abnormal' shows 162 images.\\\"\\n    },\\n    {\\n      \\\"id\\\": 23,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The original pool of 4,668 images reduces to 225 (63 Normal, 162 Abnormal), a 95.2% reduction.\\\",\\n      \\\"reason\\\": \\\"Section 3.2, paragraph 3 states that deduplication resulted in a 95.2% reduction.\\\"\\n    },\\n    {\\n      \\\"id\\\": 24,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The deduplicated dataset is publicly released (see Data Availability).\\\",\\n      \\\"reason\\\": \\\"Section 3.2, paragraph 3 states that the deduplicated dataset is publicly released.\\\"\\n    },\\n    {\\n      \\\"id\\\": 25,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"PXR150 is a publicly available 150-image subset of the test set from [4]\\\",\\n      \\\"reason\\\": \\\"Section 3.3, paragraph 1 states that PXR150 contains 150 images.\\\"\\n    },\\n    {\\n      \\\"id\\\": 26,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"giving 100 fracture and 50 normal cases.\\\",\\n      \\\"reason\\\": \\\"Section 3.3, paragraph 1 states that PXR150 contains 100 fracture cases.\\\"\\n    },\\n    {\\n      \\\"id\\\": 27,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"giving 100 fracture and 50 normal cases.\\\",\\n      \\\"reason\\\": \\\"Section 3.3, paragraph 1 states that PXR150 contains 50 normal cases.\\\"\\n    },\\n    {\\n      \\\"id\\\": 28,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"under 5-fold stratified cross-validation with augmentation applied only to training folds.\\\",\\n      \\\"reason\\\": \\\"Section 3.4, paragraph 1 states that models are trained under 5-fold stratified cross-validation.\\\"\\n    },\\n    {\\n      \\\"id\\\": 29,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"with mean and 95% confidence interval (CI) computed across the 5 cross-validation folds.\\\",\\n      \\\"reason\\\": \\\"Section 3.5, paragraph 1 states that 95% confidence intervals are reported.\\\"\\n    },\\n    {\\n      \\\"id\\\": 30,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"As no prior work has been evaluated on the deduplicated dataset, these results constitute the first reliable, integrity-audited baseline for PCOS classification on PCOSGen.\\\",\\n      \\\"reason\\\": \\\"Section 4.1, paragraph 1 states that no prior work has been evaluated on the deduplicated dataset.\\\"\\n    },\\n    {\\n      \\\"id\\\": 31,\\n      \\\"label\\\": \\\"unsupported\\\",\\n      \\\"paper_evidence\\\": \\\"\\\",\\n      \\\"reason\\\": \\\"The paper does not state that PelviNeXt is the first modality-agnostic architecture validated on both pelvic ultrasound and X-ray without task-specific tuning.\\\"\\n    },\\n    {\\n      \\\"id\\\": 32,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"we identified extensive exact and near-duplicate contamination within and across the dataset. We audit this contamination via perceptual hashing, publicly release a deduplicated version of the dataset\\\",\\n      \\\"reason\\\": \\\"Abstract and Section 1 state that the authors identified and audited the contamination, releasing a deduplicated version.\\\"\\n    },\\n    {\\n      \\\"id\\\": 33,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The deduplicated PCOSGen benchmark is publicly available at:\\\",\\n      \\\"reason\\\": \\\"Section 'Data Availability' states that the deduplicated benchmark is publicly available.\\\"\\n    },\\n    {\\n      \\\"id\\\": 34,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"On the only publicly available pelvic fracture X-ray dataset (PXR150), PelviNeXt exceeds previously reported state-of-the-art results across accuracy, recall, specificity, and AUROC.\\\",\\n      \\\"reason\\\": \\\"Abstract and Section 1 state that PelviNeXt exceeds prior state-of-the-art results on PXR150.\\\"\\n    },\\n    {\\n      \\\"id\\\": 35,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"PelviNeXt achieves the highest performance across all five metrics, with a mean accuracy of 92.00% (±1.60) and AUROC of 0.9051 (±0.0156), outperforming ViT-B/16 [5], ResNet-101 [9], and DenseNet-169 [10]\\\",\\n      \\\"reason\\\": \\\"Section 4.1, paragraph 1 states that PelviNeXt outperforms all baselines on the deduplicated PCOSGen dataset.\\\"\\n    },\\n    {\\n      \\\"id\\\": 36,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Ablation studies confirm that each architectural component contributes to performance on both tasks.\\\",\\n      \\\"reason\\\": \\\"Abstract and Section 4.3 state that ablation studies confirm each component's contribution.\\\"\\n    },\\n    {\\n      \\\"id\\\": 37,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"A limitation of this work is the small size of both datasets: the deduplicated PCOS dataset contains 225 images and PXR150 contains 150 images\\\",\\n      \\\"reason\\\": \\\"Section 4.5, paragraph 1 states the small dataset sizes as a limitation.\\\"\\n    },\\n    {\\n      \\\"id\\\": 38,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The deduplicated PCOSGen benchmark is publicly available at:\\\\nhttps://www.kaggle.com/datasets/siamtbhuiyan/pcosgen-deduplicated.\\\",\\n      \\\"reason\\\": \\\"Section 'Data Availability' provides the URL for the deduplicated dataset.\\\"\\n    },\\n    {\\n      \\\"id\\\": 39,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"exact duplicates (distance = 0) are removed first\\\",\\n      \\\"reason\\\": \\\"Section 3.2, paragraph 2 states that distance = 0 represents exact duplicates.\\\"\\n    },\\n    {\\n      \\\"id\\\": 40,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The threshold of 14 was selected by visual inspection: pairs at distance 14 are visually indistinguishable\\\",\\n      \\\"reason\\\": \\\"Section 3.2, paragraph 2 states that distance 14 represents visually indistinguishable images and is used as the threshold.\\\"\\n    }\\n  ]\\n}\\n```\", \"```json\\n{\\n  \\\"verdicts\\\": [\\n    {\\n      \\\"id\\\": 1,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Distance 16: visually distinct, confirming the threshold boundary.\\\",\\n      \\\"reason\\\": \\\"Figure 2 caption explicitly states that distance 16 represents visually distinct images, confirming the threshold boundary.\\\"\\n    },\\n    {\\n      \\\"id\\\": 2,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Table 2. PCOS classification results on the deduplicated PCOSGen dataset.\\\",\\n      \\\"reason\\\": \\\"Table 2 title explicitly states that it shows PCOS classification results on the deduplicated PCOSGen dataset.\\\"\\n    },\\n    {\\n      \\\"id\\\": 3,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Mean over 5-fold CV\\\",\\n      \\\"reason\\\": \\\"Table 2 title explicitly states that the results are the mean over 5-fold CV.\\\"\\n    },\\n    {\\n      \\\"id\\\": 4,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"95% CI shown in the row below each model’s results.\\\",\\n      \\\"reason\\\": \\\"Table 2 title explicitly states that the 95% CI is shown in the row below each model's results.\\\"\\n    },\\n    {\\n      \\\"id\\\": 5,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Fig. 3. Grad-CAM visualizations from PelviNeXt.\\\",\\n      \\\"reason\\\": \\\"Figure 3 caption explicitly states that it shows Grad-CAM visualizations from PelviNeXt.\\\"\\n    },\\n    {\\n      \\\"id\\\": 6,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"(a) Correctly predicted Abnormal PCOS ultrasound.\\\",\\n      \\\"reason\\\": \\\"Figure 3 caption explicitly states that (a) shows a correctly predicted Abnormal PCOS ultrasound.\\\"\\n    },\\n    {\\n      \\\"id\\\": 7,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"(b) Correctly predicted Normal PCOS ultrasound.\\\",\\n      \\\"reason\\\": \\\"Figure 3 caption explicitly states that (b) shows a correctly predicted Normal PCOS ultrasound.\\\"\\n    },\\n    {\\n      \\\"id\\\": 8,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"(c) Correctly predicted Fracture pelvic X-ray.\\\",\\n      \\\"reason\\\": \\\"Figure 3 caption explicitly states that (c) shows a correctly predicted Fracture pelvic X-ray.\\\"\\n    },\\n    {\\n      \\\"id\\\": 9,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"(d) Correctly predicted Normal pelvic X-ray.\\\",\\n      \\\"reason\\\": \\\"Figure 3 caption explicitly states that (d) shows a correctly predicted Normal pelvic X-ray.\\\"\\n    }\\n  ]\\n}\\n```\"]"
 }

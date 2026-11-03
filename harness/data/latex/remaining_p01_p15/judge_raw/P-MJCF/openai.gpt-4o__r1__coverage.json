@@ -1,0 +1,59 @@
+{
+  "model": "openai.gpt-4o",
+  "repeat": 1,
+  "judge_prompt_sha256": "4ec65050cfdc718218dbc587f672291e733fd03b1254c20d77b61b0933e16162",
+  "error": null,
+  "tokens_in": 6754,
+  "tokens_out": 750,
+  "max_output_tokens": 16384,
+  "parsed": {
+    "items": {
+      "chk_problem": {
+        "label": "accurate",
+        "poster_evidence": "Designing and authoring high-performance custom kernels for accelerators is a complex task that requires deep hardware-level expertise.",
+        "reason": "The poster accurately states the research problem as described in the reference."
+      },
+      "chk_method": {
+        "label": "accurate",
+        "poster_evidence": "MaxKernel, a multi-agent system that implements three distinct paradigms for TPU kernel development: (1) a Human-in-the-Loop (HITL) agent for collaborative, step-by-step design; (2) an Autonomous (Auto) agent that executes a fully automated, metric/trace-driven optimization loop; and (3) a Graph-Based Autonomous Search that scales the Auto agent for global exploration of the design space.",
+        "reason": "The poster correctly describes the method and its three paradigms as outlined in the reference."
+      },
+      "chk_data": {
+        "label": "accurate",
+        "poster_evidence": "We systematically evaluate the MaxKernel system on JaxBench, a curated suite of 50 diverse hardware-accelerated workloads.",
+        "reason": "The poster mentions JaxBench and real-world workloads, matching the reference description."
+      },
+      "chk_setup": {
+        "label": "missing",
+        "poster_evidence": "",
+        "reason": "The poster does not provide details about the evaluation setup, such as the use of TPU v6e hardware or XProf profiling."
+      },
+      "chk_primary_result": {
+        "label": "accurate",
+        "poster_evidence": "MaxKernel successfully bridges the gap between static LLM code generation and high-performance kernel engineering, achieving a 1.58× geometric mean speedup across the JAXBench workloads.",
+        "reason": "The poster correctly reports the primary result of a 1.58× geometric mean speedup on JaxBench."
+      },
+      "chk_secondary_result": {
+        "label": "accurate",
+        "poster_evidence": "Furthermore, on the eight production kernels where human-written kernels exist, MaxKernel achieves a 2.32× geometric mean speedup over the reference code, outperforming human-written ones (2.02×).",
+        "reason": "The poster accurately states the secondary result of a 2.32× speedup over reference code and 2.02× over human-written kernels."
+      },
+      "chk_baseline": {
+        "label": "accurate",
+        "poster_evidence": "Table 2 | Speedups on the 8 kernels compared against JAX/XLA compile baselines and hand-tuned Pallas references.",
+        "reason": "The poster mentions comparisons against XLA baselines and hand-tuned Pallas references, matching the reference."
+      },
+      "chk_conclusion": {
+        "label": "accurate",
+        "poster_evidence": "MaxKernel demonstrates that agentic systems can successfully handle the complexities of low-level accelerator programming. In particular, we showed how a harness comprising context synthesis, automated diagnosis, bottleneck identification via XProf profiling, and structured optimization heuristics can accelerate hill-climbing on TPUs.",
+        "reason": "The poster accurately reflects the conclusion from the reference, emphasizing the ability of agentic systems to handle low-level accelerator programming complexities."
+      },
+      "chk_limitation": {
+        "label": "missing",
+        "poster_evidence": "",
+        "reason": "The poster does not mention any specific limitations or implications as described in the reference."
+      }
+    }
+  },
+  "raw": "```json\n{\n  \"items\": {\n    \"chk_problem\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Designing and authoring high-performance custom kernels for accelerators is a complex task that requires deep hardware-level expertise.\",\n      \"reason\": \"The poster accurately states the research problem as described in the reference.\"\n    },\n    \"chk_method\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"MaxKernel, a multi-agent system that implements three distinct paradigms for TPU kernel development: (1) a Human-in-the-Loop (HITL) agent for collaborative, step-by-step design; (2) an Autonomous (Auto) agent that executes a fully automated, metric/trace-driven optimization loop; and (3) a Graph-Based Autonomous Search that scales the Auto agent for global exploration of the design space.\",\n      \"reason\": \"The poster correctly describes the method and its three paradigms as outlined in the reference.\"\n    },\n    \"chk_data\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"We systematically evaluate the MaxKernel system on JaxBench, a curated suite of 50 diverse hardware-accelerated workloads.\",\n      \"reason\": \"The poster mentions JaxBench and real-world workloads, matching the reference description.\"\n    },\n    \"chk_setup\": {\n      \"label\": \"missing\",\n      \"poster_evidence\": \"\",\n      \"reason\": \"The poster does not provide details about the evaluation setup, such as the use of TPU v6e hardware or XProf profiling.\"\n    },\n    \"chk_primary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"MaxKernel successfully bridges the gap between static LLM code generation and high-performance kernel engineering, achieving a 1.58× geometric mean speedup across the JAXBench workloads.\",\n      \"reason\": \"The poster correctly reports the primary result of a 1.58× geometric mean speedup on JaxBench.\"\n    },\n    \"chk_secondary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Furthermore, on the eight production kernels where human-written kernels exist, MaxKernel achieves a 2.32× geometric mean speedup over the reference code, outperforming human-written ones (2.02×).\",\n      \"reason\": \"The poster accurately states the secondary result of a 2.32× speedup over reference code and 2.02× over human-written kernels.\"\n    },\n    \"chk_baseline\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Table 2 | Speedups on the 8 kernels compared against JAX/XLA compile baselines and hand-tuned Pallas references.\",\n      \"reason\": \"The poster mentions comparisons against XLA baselines and hand-tuned Pallas references, matching the reference.\"\n    },\n    \"chk_conclusion\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"MaxKernel demonstrates that agentic systems can successfully handle the complexities of low-level accelerator programming. In particular, we showed how a harness comprising context synthesis, automated diagnosis, bottleneck identification via XProf profiling, and structured optimization heuristics can accelerate hill-climbing on TPUs.\",\n      \"reason\": \"The poster accurately reflects the conclusion from the reference, emphasizing the ability of agentic systems to handle low-level accelerator programming complexities.\"\n    },\n    \"chk_limitation\": {\n      \"label\": \"missing\",\n      \"poster_evidence\": \"\",\n      \"reason\": \"The poster does not mention any specific limitations or implications as described in the reference.\"\n    }\n  }\n}\n```"
+}

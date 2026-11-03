@@ -2,9 +2,814 @@
   "model": "gemini-3.5-flash",
   "repeat": 1,
   "judge_prompt_sha256": "4ec65050cfdc718218dbc587f672291e733fd03b1254c20d77b61b0933e16162",
-  "error": "truncated at max_output_tokens=8192",
-  "tokens_in": 4059,
-  "tokens_out": 8188,
-  "parsed": null,
-  "raw": "frame timestamps\"\n      Quote: \"Melody tokens retain reference-frame timestamps, whereas target lyric tokens retain sequence order without note, duration, or edit-boundary labels.\"\n    - Claim 13: \"target lyric tokens retain sequence order without note, duration, or edit-boundary labels.\"\n      Quote: \"Melody tokens retain reference-frame timestamps, whereas target lyric tokens retain sequence order without note, duration, or edit-boundary labels.\"\n    - Claim 14: \"A frozen Whisper-style 32-layer, 1280-D causal audio encoder provides the compact path\"\n      Quote: \"A frozen Whisper-style 32-layer, 1280-D causal audio encoder provides the compact path; states are projected to 1024-D before five-frame pooling.\"\n    - Claim 15: \"states are projected to 1024-D before five-frame pooling.\"\n      Quote: \"A frozen Whisper-style 32-layer, 1280-D causal audio encoder provides the compact path; states are projected to 1024-D before five-frame pooling.\"\n    - Claim 16: \"the previous latent patch enters an 8-block Flow-DiT combining conditional flow matching with a transformer denoiser.\"\n      Quote: \"In parallel, the previous latent patch enters an 8-block Flow-DiT combining conditional flow matching with a transformer denoiser.\"\n    - Claim 1"
+  "error": null,
+  "tokens_in": 46151,
+  "tokens_out": 39659,
+  "max_output_tokens": 32768,
+  "claims_batch_size": 40,
+  "parsed": {
+    "claims": [
+      {
+        "id": 1,
+        "text": "On two Mandarin benchmarks, CLASVS improves all four operations over discrete-AR Vevo2.",
+        "poster_quote": "On two Mandarin benchmarks, CLASVS improves all four operations over discrete-AR Vevo2",
+        "label": "supported",
+        "paper_evidence": "On two Mandarin benchmarks, CLASVS improves all four operations over discrete-AR Vevo2 and reduces macro-PER by 46.2%, while maintaining melody, singer similarity, and perceptual quality.",
+        "reason": "Abstract. The paper explicitly states that CLASVS improves all four operations over discrete-AR Vevo2 on two Mandarin benchmarks."
+      },
+      {
+        "id": 2,
+        "text": "CLASVS reduces macro-PER by 46.2% compared to discrete-AR Vevo2.",
+        "poster_quote": "reduces macro-PER by 46.2%",
+        "label": "supported",
+        "paper_evidence": "On two Mandarin benchmarks, CLASVS improves all four operations over discrete-AR Vevo2 and reduces macro-PER by 46.2%, while maintaining melody, singer similarity, and perceptual quality.",
+        "reason": "Abstract. The paper explicitly states that CLASVS reduces macro-PER by 46.2%."
+      },
+      {
+        "id": 3,
+        "text": "CLASVS maintains melody, singer similarity, and perceptual quality.",
+        "poster_quote": "maintaining melody, singer similarity, and perceptual quality.",
+        "label": "supported",
+        "paper_evidence": "On two Mandarin benchmarks, CLASVS improves all four operations over discrete-AR Vevo2 and reduces macro-PER by 46.2%, while maintaining melody, singer similarity, and perceptual quality.",
+        "reason": "Abstract. The paper explicitly states that CLASVS maintains melody, singer similarity, and perceptual quality."
+      },
+      {
+        "id": 4,
+        "text": "Under the common automatic-input protocol, CLASVS reduces macro-PER by 46.2% versus discrete-AR Vevo2 across two Mandarin benchmarks.",
+        "poster_quote": "Under the common automatic-input protocol, CLASVS reduces macro-PER by 46.2% versus discrete-AR Vevo2 across two Mandarin benchmarks",
+        "label": "supported",
+        "paper_evidence": "Under the common automatic-input protocol, CLASVS reduces macro-PER by 46.2% versus discrete-AR Vevo2 across two Mandarin benchmarks, improving all four operations while preserving melody, similarity, and perceptual quality.",
+        "reason": "Introduction. The paper explicitly states that under the common automatic-input protocol, CLASVS reduces macro-PER by 46.2% versus discrete-AR Vevo2 across two Mandarin benchmarks."
+      },
+      {
+        "id": 5,
+        "text": "Lyric and melody tokens prefill a Qwen3-0.6B causal planner.",
+        "poster_quote": "Lyric and melody tokens prefill a Qwen3-0.6B causal planner.",
+        "label": "supported",
+        "paper_evidence": "Lyric and melody tokens prefill a Qwen3-0.6B causal planner (Yang et al. 2025a).",
+        "reason": "Method -> State-Control-Transition Routing. The paper explicitly states that lyric and melody tokens prefill a Qwen3-0.6B causal planner."
+      },
+      {
+        "id": 6,
+        "text": "After the first step, only semantic feedback is appended to the planner cache.",
+        "poster_quote": "After the first step, only semantic feedback is appended; the cache retains the full controls and all earlier feedback.",
+        "label": "supported",
+        "paper_evidence": "After the first step, only semantic feedback ak−1 is appended:",
+        "reason": "Method -> State-Control-Transition Routing. The paper explicitly states that after the first step, only semantic feedback is appended."
+      },
+      {
+        "id": 7,
+        "text": "A separate linear head predicts continue/stop.",
+        "poster_quote": "A separate linear head predicts continue/stop.",
+        "label": "supported",
+        "paper_evidence": "A separate linear head predicts continue/stop from hk.",
+        "reason": "Method -> State-Control-Transition Routing. The paper explicitly states that a separate linear head predicts continue/stop."
+      },
+      {
+        "id": 8,
+        "text": "Singer identity bypasses the planner and modulates each Flow-DiT block through adaptive layer normalization.",
+        "poster_quote": "Singer identity bypasses the planner and modulates each Flow-DiT block through adaptive layer normalization.",
+        "label": "supported",
+        "paper_evidence": "Singer identity bypasses the planner and modulates each Flow-DiT block through adaptive layer normalization.",
+        "reason": "Method -> State-Control-Transition Routing. The paper explicitly states that singer identity bypasses the planner and modulates each Flow-DiT block through adaptive layer normalization."
+      },
+      {
+        "id": 9,
+        "text": "Melody tokens retain reference-frame timestamps.",
+        "poster_quote": "Melody tokens retain reference-frame timestamps",
+        "label": "supported",
+        "paper_evidence": "Melody tokens retain reference-frame timestamps, whereas target lyric tokens retain sequence order without requiring note, duration, or edit-boundary labels.",
+        "reason": "Method -> State-Control-Transition Routing -> Control serialization and time bases. The paper explicitly states that melody tokens retain reference-frame timestamps."
+      },
+      {
+        "id": 10,
+        "text": "Target lyric tokens retain sequence order without note, duration, or edit-boundary labels.",
+        "poster_quote": "whereas target lyric tokens retain sequence order without note, duration, or edit-boundary labels.",
+        "label": "supported",
+        "paper_evidence": "Melody tokens retain reference-frame timestamps, whereas target lyric tokens retain sequence order without requiring note, duration, or edit-boundary labels.",
+        "reason": "Method -> State-Control-Transition Routing -> Control serialization and time bases. The paper explicitly states that target lyric tokens retain sequence order without note, duration, or edit-boundary labels."
+      },
+      {
+        "id": 11,
+        "text": "A query for patch k can attend to both complete control spans and semantic feedback through k-1, but never to a future generated patch.",
+        "poster_quote": "A query for patch k can attend to both complete control spans and semantic feedback through k-1, but never to a future generated patch.",
+        "label": "supported",
+        "paper_evidence": "A query for patch k can attend to both complete control spans and semantic feedback through k−1, but never to a future generated patch.",
+        "reason": "Method -> State-Control-Transition Routing -> Control serialization and time bases. The paper explicitly states that a query for patch k can attend to both complete control spans and semantic feedback through k-1, but never to a future generated patch."
+      },
+      {
+        "id": 12,
+        "text": "A frozen Whisper-style 32-layer, 1280-D causal audio encoder provides the compact path.",
+        "poster_quote": "A frozen Whisper-style 32-layer, 1280-D causal audio encoder provides the compact path",
+        "label": "supported",
+        "paper_evidence": "A frozen Whisper-style 32-layer, 1280-D causal audio encoder (Radford et al. 2023) provides the compact path;",
+        "reason": "Method -> State-Control-Transition Routing -> Control serialization and time bases. The paper explicitly states that a frozen Whisper-style 32-layer, 1280-D causal audio encoder provides the compact path."
+      },
+      {
+        "id": 13,
+        "text": "States are projected to 1024-D before five-frame pooling.",
+        "poster_quote": "states are projected to 1024-D before five-frame pooling.",
+        "label": "supported",
+        "paper_evidence": "its states are projected to 1024-D before five-frame pooling:",
+        "reason": "Method -> State-Control-Transition Routing -> Control serialization and time bases. The paper explicitly states that states are projected to 1024-D before five-frame pooling."
+      },
+      {
+        "id": 14,
+        "text": "The previous latent patch enters an 8-block Flow-DiT combining conditional flow matching with a transformer denoiser.",
+        "poster_quote": "In parallel, the previous latent patch enters an 8-block Flow-DiT combining conditional flow matching with a transformer denoiser.",
+        "label": "supported",
+        "paper_evidence": "In parallel, the previous latent patch enters an 8-block Flow-DiT that combines conditional flow matching with a transformer denoiser (Lipman et al. 2023; Peebles and Xie 2023).",
+        "reason": "Method -> State-Control-Transition Routing -> Control serialization and time bases. The paper explicitly states that the previous latent patch enters an 8-block Flow-DiT combining conditional flow matching with a transformer denoiser."
+      },
+      {
+        "id": 15,
+        "text": "Each transition receives one flow-time/planner token, five predecessor tokens, and five noisy current-patch tokens.",
+        "poster_quote": "Each transition receives one flow-time/planner token, five predecessor tokens, and five noisy current-patch tokens.",
+        "label": "supported",
+        "paper_evidence": "Each transition receives one flow-time/planner token, five predecessor tokens, and five noisy current-patch tokens.",
+        "reason": "Method -> State-Control-Transition Routing -> Control serialization and time bases. The paper explicitly states that each transition receives one flow-time/planner token, five predecessor tokens, and five noisy current-patch tokens."
+      },
+      {
+        "id": 16,
+        "text": "Semantic feedback persists in the planner cache for all later steps.",
+        "poster_quote": "Semantic feedback persists in the planner cache for all later steps",
+        "label": "supported",
+        "paper_evidence": "semantic feedback persists in the planner cache for all later steps, whereas the previous latent patch conditions only the next Flow-DiT transition.",
+        "reason": "Method -> State-Control-Transition Routing -> Control serialization and time bases. The paper explicitly states that semantic feedback persists in the planner cache for all later steps."
+      },
+      {
+        "id": 17,
+        "text": "The previous latent patch conditions only the next Flow-DiT transition.",
+        "poster_quote": "whereas the previous latent patch conditions only the next Flow-DiT transition.",
+        "label": "supported",
+        "paper_evidence": "semantic feedback persists in the planner cache for all later steps, whereas the previous latent patch conditions only the next Flow-DiT transition.",
+        "reason": "Method -> State-Control-Transition Routing -> Control serialization and time bases. The paper explicitly states that the previous latent patch conditions only the next Flow-DiT transition."
+      },
+      {
+        "id": 18,
+        "text": "State Grounding pretrains the causal semantic encoder with L_state = L_ASR + 5 L_MSMel before freezing it.",
+        "poster_quote": "State Grounding pretrains the causal semantic encoder with L_state = L_ASR + 5 L_MSMel before freezing it",
+        "label": "supported",
+        "paper_evidence": "State Grounding pretrains the causal semantic encoder with Lstate = LASR + 5LMSMel before freezing it, so semantic feedback tracks realized content rather than copying acoustics.",
+        "reason": "Method -> Progressive State–Control Grounding. The paper explicitly states that State Grounding pretrains the causal semantic encoder with L_state = L_ASR + 5 L_MSMel before freezing it."
+      },
+      {
+        "id": 19,
+        "text": "Control Grounding applies history dropout (p_h = .10) to the teacher-forced previous latent patch.",
+        "poster_quote": "Control Grounding applies history dropout (p_h = .10) to the teacher-forced previous latent patch",
+        "label": "supported",
+        "paper_evidence": "Control Grounding applies history dropout (ph = .10) to the teacher-forced previous latent patch and masks reference-melody spans (pm = .15), forcing recovery from imperfect local evidence while retaining both controls.",
+        "reason": "Method -> Progressive State–Control Grounding. The paper explicitly states that Control Grounding applies history dropout (p_h = .10) to the teacher-forced previous latent patch."
+      },
+      {
+        "id": 20,
+        "text": "Control Grounding masks reference-melody spans with p_m = .15.",
+        "poster_quote": "and masks reference-melody spans (p_m = .15)",
+        "label": "supported",
+        "paper_evidence": "Control Grounding applies history dropout (ph = .10) to the teacher-forced previous latent patch and masks reference-melody spans (pm = .15), forcing recovery from imperfect local evidence while retaining both controls.",
+        "reason": "Method -> Progressive State–Control Grounding. The paper explicitly states that Control Grounding masks reference-melody spans with p_m = .15."
+      },
+      {
+        "id": 21,
+        "text": "Task Grounding schedules 72K broad-singing, 24K speech-assisted, and 24K curated-singing updates.",
+        "poster_quote": "Task Grounding schedules 72K broad-singing, 24K speech-assisted, and 24K curated-singing updates",
+        "label": "supported",
+        "paper_evidence": "Task Grounding schedules 72K broad-singing, 24K speech-assisted, and 24K curated-singing updates, supplying coverage before editing fidelity (Geng et al. 2026).",
+        "reason": "Method -> Progressive State–Control Grounding. The paper explicitly states that Task Grounding schedules 72K broad-singing, 24K speech-assisted, and 24K curated-singing updates."
+      },
+      {
+        "id": 22,
+        "text": "Joint lyric-melody-singer dropout (p = .10) trains the unconditional guidance branch for classifier-free guidance.",
+        "poster_quote": "Joint lyric-melody-singer dropout (p = .10) trains the unconditional guidance branch for classifier-free guidance.",
+        "label": "supported",
+        "paper_evidence": "Joint lyric–melody–singer dropout (p = .10) trains the unconditional guidance branch (Ho and Salimans 2022), which supports classifier-free guidance during sampling.",
+        "reason": "Method -> Progressive State–Control Grounding. The paper explicitly states that joint lyric-melody-singer dropout (p = .10) trains the unconditional guidance branch for classifier-free guidance."
+      },
+      {
+        "id": 23,
+        "text": "Each patch starts from Gaussian noise and uses 24 Euler steps with guidance 2.0.",
+        "poster_quote": "Each patch starts from Gaussian noise and uses 24 Euler steps with guidance 2.0",
+        "label": "supported",
+        "paper_evidence": "Each patch starts from Gaussian noise and uses 24 Euler steps with guidance 2.0.",
+        "reason": "Method -> Progressive State–Control Grounding. The paper explicitly states that each patch starts from Gaussian noise and uses 24 Euler steps with guidance 2.0."
+      },
+      {
+        "id": 24,
+        "text": "Pretrained-frozen PER is .0376.",
+        "poster_quote": "Pretrained-frozen / pretrained-joint / random-joint / random-frozen PER is .0376",
+        "label": "supported",
+        "paper_evidence": "Pretrained-frozen/pretrained-joint/random-joint/random-frozen PER is .0376/.0391/.0511/.0918.",
+        "reason": "Method -> Progressive State–Control Grounding. The paper explicitly states that pretrained-frozen PER is .0376."
+      },
+      {
+        "id": 25,
+        "text": "Pretrained-joint PER is .0391.",
+        "poster_quote": "Pretrained-frozen / pretrained-joint / random-joint / random-frozen PER is .0376 / .0391",
+        "label": "supported",
+        "paper_evidence": "Pretrained-frozen/pretrained-joint/random-joint/random-frozen PER is .0376/.0391/.0511/.0918.",
+        "reason": "Method -> Progressive State–Control Grounding. The paper explicitly states that pretrained-joint PER is .0391."
+      },
+      {
+        "id": 26,
+        "text": "Random-joint PER is .0511.",
+        "poster_quote": "Pretrained-frozen / pretrained-joint / random-joint / random-frozen PER is .0376 / .0391 / .0511",
+        "label": "supported",
+        "paper_evidence": "Pretrained-frozen/pretrained-joint/random-joint/random-frozen PER is .0376/.0391/.0511/.0918.",
+        "reason": "Method -> Progressive State–Control Grounding. The paper explicitly states that random-joint PER is .0511."
+      },
+      {
+        "id": 27,
+        "text": "Random-frozen PER is .0918.",
+        "poster_quote": "Pretrained-frozen / pretrained-joint / random-joint / random-frozen PER is .0376 / .0391 / .0511 / .0918.",
+        "label": "supported",
+        "paper_evidence": "Pretrained-frozen/pretrained-joint/random-joint/random-frozen PER is .0376/.0391/.0511/.0918.",
+        "reason": "Method -> Progressive State–Control Grounding. The paper explicitly states that random-frozen PER is .0918."
+      },
+      {
+        "id": 28,
+        "text": "History-dropout removal yields PER .0441.",
+        "poster_quote": "History-dropout, melody-mask, joint-corruption, and curriculum-order removals yield PER .0441",
+        "label": "supported",
+        "paper_evidence": "History-dropout, melody-mask, joint-corruption, and curriculum-order removals yield PER .0441/.0419/.0468/.0415;",
+        "reason": "Method -> Progressive State–Control Grounding. The paper explicitly states that history-dropout removal yields PER .0441."
+      },
+      {
+        "id": 29,
+        "text": "Melody-mask removal yields PER .0419.",
+        "poster_quote": "History-dropout, melody-mask, joint-corruption, and curriculum-order removals yield PER .0441 / .0419",
+        "label": "supported",
+        "paper_evidence": "History-dropout, melody-mask, joint-corruption, and curriculum-order removals yield PER .0441/.0419/.0468/.0415;",
+        "reason": "Method -> Progressive State–Control Grounding. The paper explicitly states that melody-mask removal yields PER .0419."
+      },
+      {
+        "id": 30,
+        "text": "Joint-corruption removal yields PER .0468.",
+        "poster_quote": "History-dropout, melody-mask, joint-corruption, and curriculum-order removals yield PER .0441 / .0419 / .0468",
+        "label": "supported",
+        "paper_evidence": "History-dropout, melody-mask, joint-corruption, and curriculum-order removals yield PER .0441/.0419/.0468/.0415;",
+        "reason": "Method -> Progressive State–Control Grounding. The paper explicitly states that joint-corruption removal yields PER .0468."
+      },
+      {
+        "id": 31,
+        "text": "Curriculum-order removal yields PER .0415.",
+        "poster_quote": "History-dropout, melody-mask, joint-corruption, and curriculum-order removals yield PER .0441 / .0419 / .0468 / .0415.",
+        "label": "supported",
+        "paper_evidence": "History-dropout, melody-mask, joint-corruption, and curriculum-order removals yield PER .0441/.0419/.0468/.0415;",
+        "reason": "Method -> Progressive State–Control Grounding. The paper explicitly states that curriculum-order removal yields PER .0415."
+      },
+      {
+        "id": 32,
+        "text": "CLASVS generates 64-D continuous AudioVAE latent patches every 100 ms.",
+        "poster_quote": "CLASVS generates 64-D continuous AudioVAE latent patches every 100 ms.",
+        "label": "supported",
+        "paper_evidence": "CLASVS generates 64-D continuous AudioVAE latent patches every 100 ms.",
+        "reason": "Figure 1 caption. The paper explicitly states that CLASVS generates 64-D continuous AudioVAE latent patches every 100 ms."
+      },
+      {
+        "id": 33,
+        "text": "Full SCT + PSCG configuration achieves a PER of .0376.",
+        "poster_quote": "Full SCT + PSCG\n.0376",
+        "label": "supported",
+        "paper_evidence": "Full SCT + PSCG | .0376 | .9410 | .081",
+        "reason": "Table 5. The paper explicitly states that the Full SCT + PSCG configuration achieves a PER of .0376."
+      },
+      {
+        "id": 34,
+        "text": "Full SCT + PSCG configuration achieves an FPC of .9410.",
+        "poster_quote": "Full SCT + PSCG\n.0376\n.9410",
+        "label": "supported",
+        "paper_evidence": "Full SCT + PSCG | .0376 | .9410 | .081",
+        "reason": "Table 5. The paper explicitly states that the Full SCT + PSCG configuration achieves an FPC of .9410."
+      },
+      {
+        "id": 35,
+        "text": "Full SCT + PSCG configuration achieves a SrcRev of .081.",
+        "poster_quote": "Full SCT + PSCG\n.0376\n.9410\n.081",
+        "label": "supported",
+        "paper_evidence": "Full SCT + PSCG | .0376 | .9410 | .081",
+        "reason": "Table 5. The paper explicitly states that the Full SCT + PSCG configuration achieves a SrcRev of .081."
+      },
+      {
+        "id": 36,
+        "text": "No semantic-feedback route configuration achieves a PER of .0564.",
+        "poster_quote": "No semantic-feedback route\n.0564",
+        "label": "supported",
+        "paper_evidence": "No semantic-feedback route | .0564 | .9205 | .154",
+        "reason": "Table 5. The paper explicitly states that the No semantic-feedback route configuration achieves a PER of .0564."
+      },
+      {
+        "id": 37,
+        "text": "No semantic-feedback route configuration achieves an FPC of .9205.",
+        "poster_quote": "No semantic-feedback route\n.0564\n.9205",
+        "label": "supported",
+        "paper_evidence": "No semantic-feedback route | .0564 | .9205 | .154",
+        "reason": "Table 5. The paper explicitly states that the No semantic-feedback route configuration achieves an FPC of .9205."
+      },
+      {
+        "id": 38,
+        "text": "No semantic-feedback route configuration achieves a SrcRev of .154.",
+        "poster_quote": "No semantic-feedback route\n.0564\n.9205\n.154",
+        "label": "supported",
+        "paper_evidence": "No semantic-feedback route | .0564 | .9205 | .154",
+        "reason": "Table 5. The paper explicitly states that the No semantic-feedback route configuration achieves a SrcRev of .154."
+      },
+      {
+        "id": 39,
+        "text": "No latent-patch route configuration achieves a PER of .0492.",
+        "poster_quote": "No latent-patch route\n.0492",
+        "label": "supported",
+        "paper_evidence": "No latent-patch route | .0492 | .8896 | .086",
+        "reason": "Table 5. The paper explicitly states that the No latent-patch route configuration achieves a PER of .0492."
+      },
+      {
+        "id": 40,
+        "text": "No latent-patch route configuration achieves an FPC of .8896.",
+        "poster_quote": "No latent-patch route\n.0492\n.8896",
+        "label": "supported",
+        "paper_evidence": "No latent-patch route | .0492 | .8896 | .086",
+        "reason": "Table 5. The paper explicitly states that the No latent-patch route configuration achieves an FPC of .8896."
+      },
+      {
+        "id": 41,
+        "text": "No latent-patch route configuration achieves a SrcRev of .086.",
+        "poster_quote": "No latent-patch route\n.0492\n.8896\n.086",
+        "label": "supported",
+        "paper_evidence": "No latent-patch route\t.0492\t.8896\t.086",
+        "reason": "Table 5, row 'No latent-patch route', column 'SrcRev' shows the value is exactly .086."
+      },
+      {
+        "id": 42,
+        "text": "Unified-context AR configuration achieves a PER of .0447.",
+        "poster_quote": "Unified-context AR\n.0447",
+        "label": "supported",
+        "paper_evidence": "Unified-context AR\t.0447\t.9279\t.118",
+        "reason": "Table 5, row 'Unified-context AR', column 'PER' shows the value is exactly .0447."
+      },
+      {
+        "id": 43,
+        "text": "Unified-context AR configuration achieves an FPC of .9279.",
+        "poster_quote": "Unified-context AR\n.0447\n.9279",
+        "label": "supported",
+        "paper_evidence": "Unified-context AR\t.0447\t.9279\t.118",
+        "reason": "Table 5, row 'Unified-context AR', column 'FPC' shows the value is exactly .9279."
+      },
+      {
+        "id": 44,
+        "text": "Unified-context AR configuration achieves a SrcRev of .118.",
+        "poster_quote": "Unified-context AR\n.0447\n.9279\n.118",
+        "label": "supported",
+        "paper_evidence": "Unified-context AR\t.0447\t.9279\t.118",
+        "reason": "Table 5, row 'Unified-context AR', column 'SrcRev' shows the value is exactly .118."
+      },
+      {
+        "id": 45,
+        "text": "- State Grounding configuration achieves a PER of .0511.",
+        "poster_quote": "- State Grounding\n.0511",
+        "label": "supported",
+        "paper_evidence": "− State Grounding\t.0511\t.9168\t.143",
+        "reason": "Table 5, row '− State Grounding', column 'PER' shows the value is exactly .0511."
+      },
+      {
+        "id": 46,
+        "text": "- State Grounding configuration achieves an FPC of .9168.",
+        "poster_quote": "- State Grounding\n.0511\n.9168",
+        "label": "supported",
+        "paper_evidence": "− State Grounding\t.0511\t.9168\t.143",
+        "reason": "Table 5, row '− State Grounding', column 'FPC' shows the value is exactly .9168."
+      },
+      {
+        "id": 47,
+        "text": "- State Grounding configuration achieves a SrcRev of .143.",
+        "poster_quote": "- State Grounding\n.0511\n.9168\n.143",
+        "label": "supported",
+        "paper_evidence": "− State Grounding\t.0511\t.9168\t.143",
+        "reason": "Table 5, row '− State Grounding', column 'SrcRev' shows the value is exactly .143."
+      },
+      {
+        "id": 48,
+        "text": "- Control Grounding configuration achieves a PER of .0468.",
+        "poster_quote": "- Control Grounding\n.0468",
+        "label": "supported",
+        "paper_evidence": "− Control Grounding\t.0468\t.9242\t.121",
+        "reason": "Table 5, row '− Control Grounding', column 'PER' shows the value is exactly .0468."
+      },
+      {
+        "id": 49,
+        "text": "- Control Grounding configuration achieves an FPC of .9242.",
+        "poster_quote": "- Control Grounding\n.0468\n.9242",
+        "label": "supported",
+        "paper_evidence": "− Control Grounding\t.0468\t.9242\t.121",
+        "reason": "Table 5, row '− Control Grounding', column 'FPC' shows the value is exactly .9242."
+      },
+      {
+        "id": 50,
+        "text": "- Control Grounding configuration achieves a SrcRev of .121.",
+        "poster_quote": "- Control Grounding\n.0468\n.9242\n.121",
+        "label": "supported",
+        "paper_evidence": "− Control Grounding\t.0468\t.9242\t.121",
+        "reason": "Table 5, row '− Control Grounding', column 'SrcRev' shows the value is exactly .121."
+      },
+      {
+        "id": 51,
+        "text": "- Task Grounding configuration achieves a PER of .0439.",
+        "poster_quote": "- Task Grounding\n.0439",
+        "label": "supported",
+        "paper_evidence": "− Task Grounding\t.0439\t.9298\t.102",
+        "reason": "Table 5, row '− Task Grounding', column 'PER' shows the value is exactly .0439."
+      },
+      {
+        "id": 52,
+        "text": "- Task Grounding configuration achieves an FPC of .9298.",
+        "poster_quote": "- Task Grounding\n.0439\n.9298",
+        "label": "supported",
+        "paper_evidence": "− Task Grounding\t.0439\t.9298\t.102",
+        "reason": "Table 5, row '− Task Grounding', column 'FPC' shows the value is exactly .9298."
+      },
+      {
+        "id": 53,
+        "text": "- Task Grounding configuration achieves a SrcRev of .102.",
+        "poster_quote": "- Task Grounding\n.0439\n.9298\n.102",
+        "label": "supported",
+        "paper_evidence": "− Task Grounding\t.0439\t.9298\t.102",
+        "reason": "Table 5, row '− Task Grounding', column 'SrcRev' shows the value is exactly .102."
+      },
+      {
+        "id": 54,
+        "text": "Full versus matched unified-context AR improves PER by -.0071 [-.0085,-.0057].",
+        "poster_quote": "Full versus matched unified-context AR improves PER by -.0071 [-.0085,-.0057]",
+        "label": "supported",
+        "paper_evidence": "Full versus matched unified improves PER by −.0071 [−.0085, −.0057]",
+        "reason": "Section 'PSCG and Inference Diagnostics' explicitly states this improvement in PER."
+      },
+      {
+        "id": 55,
+        "text": "Full versus matched unified-context AR improves FPC by +.0131 [+.0098,+.0164].",
+        "poster_quote": "FPC by +.0131 [+.0098,+.0164]",
+        "label": "supported",
+        "paper_evidence": "FPC by +.0131 [+.0098, +.0164]",
+        "reason": "Section 'PSCG and Inference Diagnostics' explicitly states this improvement in FPC."
+      },
+      {
+        "id": 56,
+        "text": "Full versus matched unified-context AR improves SrcRev by -.037 [-.048,-.026].",
+        "poster_quote": "SrcRev by -.037 [-.048,-.026]",
+        "label": "supported",
+        "paper_evidence": "and SrcRev by −.037 [−.048, −.026]",
+        "reason": "Section 'PSCG and Inference Diagnostics' explicitly states this improvement in SrcRev."
+      },
+      {
+        "id": 57,
+        "text": "Removing L_text raises PER to .0458.",
+        "poster_quote": "Removing L_text raises PER to .0458",
+        "label": "supported",
+        "paper_evidence": "Removing Ltext raises PER to .0458",
+        "reason": "Section 'PSCG and Inference Diagnostics' explicitly states that removing Ltext raises PER to .0458."
+      },
+      {
+        "id": 58,
+        "text": "Removing L_text raises SrcRev to .137.",
+        "poster_quote": "and SrcRev to .137.",
+        "label": "supported",
+        "paper_evidence": "and SrcRev to .137",
+        "reason": "Section 'PSCG and Inference Diagnostics' explicitly states that removing Ltext raises SrcRev to .137."
+      },
+      {
+        "id": 59,
+        "text": "All matched rows retain the same frontends, data, width, 0.765B trainable budget, 120K updates, manifest, and checkpoint rule.",
+        "poster_quote": "All matched rows retain the same frontends, data, width, 0.765B trainable budget, 120K updates, manifest, and checkpoint rule",
+        "label": "supported",
+        "paper_evidence": "All matched rows retain the same frontends, data, width, 0.765B trainable budget, 120K updates, manifest, and checkpoint rule;",
+        "reason": "Section 'PSCG and Inference Diagnostics' explicitly states this configuration discipline."
+      },
+      {
+        "id": 60,
+        "text": "Three-seed PER SD is .0009-.0016.",
+        "poster_quote": "three-seed PER SD is .0009-.0016.",
+        "label": "supported",
+        "paper_evidence": "three-seed PER SD across routing/stage rows is .0009–.0016.",
+        "reason": "Section 'PSCG and Inference Diagnostics' explicitly states this standard deviation range."
+      },
+      {
+        "id": 61,
+        "text": "Increasing p_h from .10 to .20 lowers PSub PER from .0505 to .0437.",
+        "poster_quote": "increasing p_h from .10 to .20 lowers PSub PER (.0505 to .0437)",
+        "label": "supported",
+        "paper_evidence": "increasing ph from .10 to .20 lowers PSub PER from .0505 to .0437",
+        "reason": "Section 'PSCG and Inference Diagnostics' explicitly states this effect of increasing ph."
+      },
+      {
+        "id": 62,
+        "text": "Increasing p_h from .10 to .20 lowers SrcRev from .081 to .055.",
+        "poster_quote": "and SrcRev (.081 to .055)",
+        "label": "supported",
+        "paper_evidence": "and SrcRev from .081 to .055",
+        "reason": "Section 'PSCG and Inference Diagnostics' explicitly states this effect of increasing ph."
+      },
+      {
+        "id": 63,
+        "text": "Increasing p_h from .10 to .20 worsens macro-PER to .0397.",
+        "poster_quote": "but worsens macro-PER to .0397",
+        "label": "supported",
+        "paper_evidence": "but worsens macro-PER to .0397;",
+        "reason": "Section 'PSCG and Inference Diagnostics' explicitly states this effect of increasing ph."
+      },
+      {
+        "id": 64,
+        "text": "A progress probe favors semantic feedback with MAE .082 vs .191.",
+        "poster_quote": "A progress probe favors semantic feedback (MAE .082 vs .191).",
+        "label": "supported",
+        "paper_evidence": "progress-probe MAE (.082 versus .191)",
+        "reason": "Section 'Analysis and Discussion' explicitly states these MAE values for the progress probe."
+      },
+      {
+        "id": 65,
+        "text": "YingMusic+ leads substitution and steady-tail RTF.",
+        "poster_quote": "YingMusic+ leads substitution and steady-tail RTF",
+        "label": "supported",
+        "paper_evidence": "YingMusic+ leads substitution and steady-tail RTF;",
+        "reason": "Section 'Analysis and Discussion' explicitly states that YingMusic+ leads in these metrics."
+      },
+      {
+        "id": 66,
+        "text": "Vevo2 leads cold-start RTF.",
+        "poster_quote": "Vevo2 leads cold-start RTF",
+        "label": "supported",
+        "paper_evidence": "Vevo2 leads cold-start RTF;",
+        "reason": "Section 'Analysis and Discussion' explicitly states that Vevo2 leads in cold-start RTF."
+      },
+      {
+        "id": 67,
+        "text": "CLASVS leads deletion, insertion, voiced-onset MAE, N-MOS, L-MOS, and macro-PER.",
+        "poster_quote": "CLASVS leads deletion, insertion, voiced-onset MAE, N-MOS, L-MOS, and macro-PER.",
+        "label": "supported",
+        "paper_evidence": "CLASVS leads deletion, insertion, voiced-onset MAE, N-MOS, L-MOS, and macro-PER.",
+        "reason": "Section 'Analysis and Discussion' explicitly states that CLASVS leads in these metrics."
+      },
+      {
+        "id": 68,
+        "text": "One 1024-D semantic-feedback vector enters the cache per patch.",
+        "poster_quote": "One 1024-D semantic-feedback vector enters the cache per patch",
+        "label": "supported",
+        "paper_evidence": "one 1024-D semantic-feedback vector enters the cache per patch;",
+        "reason": "Section 'Analysis and Discussion' explicitly states this cache entry size."
+      },
+      {
+        "id": 69,
+        "text": "Incremental memory is 5.82 GiB.",
+        "poster_quote": "incremental memory is 5.82 GiB",
+        "label": "supported",
+        "paper_evidence": "and incremental memory is 5.82 GiB;",
+        "reason": "Section 'Analysis and Discussion' explicitly states this incremental memory value."
+      },
+      {
+        "id": 70,
+        "text": "CLASVS has cold-start/steady-tail RTF of 3.840/1.395.",
+        "poster_quote": "With cold-start/steady-tail RTF 3.840/1.395",
+        "label": "supported",
+        "paper_evidence": "With cold-start/steady-tail RTF 3.840/1.395, it remains better suited to offline use.",
+        "reason": "Section 'Analysis and Discussion' explicitly states these RTF values."
+      },
+      {
+        "id": 71,
+        "text": "No-edit output-target NED is .018.",
+        "poster_quote": "no-edit output-target/source NED is .018/.019",
+        "label": "supported",
+        "paper_evidence": "No-edit output–target/source is .018/.019.",
+        "reason": "Table 2 footnote explicitly states that the no-edit output-target NED is .018."
+      },
+      {
+        "id": 72,
+        "text": "No-edit output-source NED is .019.",
+        "poster_quote": "no-edit output-target/source NED is .018/.019",
+        "label": "supported",
+        "paper_evidence": "No-edit output–target/source is .018/.019.",
+        "reason": "Table 2 footnote explicitly states that the no-edit output-source NED is .019."
+      },
+      {
+        "id": 73,
+        "text": "Output-target NED for PSub is .0490.",
+        "poster_quote": "Output-target NED\n(lower better)\n.0490",
+        "label": "supported",
+        "paper_evidence": "Output–target NED↓\t.0490\t.0430\t.0252\t.0289\t.0365",
+        "reason": "Table 2, row 'Output–target NED↓', column 'PSub' shows the value is exactly .0490."
+      },
+      {
+        "id": 74,
+        "text": "Output-target NED for FSub is .0430.",
+        "poster_quote": "Output-target NED\n(lower better)\n.0490\t.0430",
+        "label": "supported",
+        "paper_evidence": "Output–target NED↓\t.0490\t.0430\t.0252\t.0289\t.0365",
+        "reason": "Table 2, row 'Output–target NED↓', column 'FSub' shows the value is exactly .0430."
+      },
+      {
+        "id": 75,
+        "text": "Output-target NED for Del is .0252.",
+        "poster_quote": "Output-target NED\n(lower better)\n.0490\t.0430\t.0252",
+        "label": "supported",
+        "paper_evidence": "Output–target NED↓\t.0490\t.0430\t.0252\t.0289\t.0365",
+        "reason": "Table 2, row 'Output–target NED↓', column 'Del' shows the value is exactly .0252."
+      },
+      {
+        "id": 76,
+        "text": "Output-target NED for Ins is .0289.",
+        "poster_quote": "Output-target NED\n(lower better)\n.0490\t.0430\t.0252\t.0289",
+        "label": "supported",
+        "paper_evidence": "Output–target NED↓\t.0490\t.0430\t.0252\t.0289\t.0365",
+        "reason": "Table 2, row 'Output–target NED↓', column 'Ins' shows the value is exactly .0289."
+      },
+      {
+        "id": 77,
+        "text": "Output-target NED for Overall is .0365.",
+        "poster_quote": "Output-target NED\n(lower better)\n.0490\t.0430\t.0252\t.0289\t.0365",
+        "label": "supported",
+        "paper_evidence": "Output–target NED↓\t.0490\t.0430\t.0252\t.0289\t.0365",
+        "reason": "Table 2, row 'Output–target NED↓', column 'Overall' shows the value is exactly .0365."
+      },
+      {
+        "id": 78,
+        "text": "Output-source NED for PSub is .3107.",
+        "poster_quote": "Output-source NED\n(higher better)\n.3107",
+        "label": "supported",
+        "paper_evidence": "Output–source NED↑\t.3107\t.7639\t.2500\t.2954\t.4050",
+        "reason": "Table 2, row 'Output–source NED↑', column 'PSub' shows the value is exactly .3107."
+      },
+      {
+        "id": 79,
+        "text": "Output-source NED for FSub is .7639.",
+        "poster_quote": "Output-source NED\n(higher better)\n.3107\t.7639",
+        "label": "supported",
+        "paper_evidence": "Output–source NED↑\t.3107\t.7639\t.2500\t.2954\t.4050",
+        "reason": "Table 2, row 'Output–source NED↑', column 'FSub' shows the value is exactly .7639."
+      },
+      {
+        "id": 80,
+        "text": "Output-source NED for Del is .2500.",
+        "poster_quote": "Output-source NED\n(higher better)\n.3107\t.7639\t.2500",
+        "label": "supported",
+        "paper_evidence": "Output–source NED↑\t.3107\t.7639\t.2500\t.2954\t.4050",
+        "reason": "Table 2, row 'Output–source NED↑', column 'Del' shows the value is exactly .2500."
+      },
+      {
+        "id": 81,
+        "text": "Output-source NED for Ins is .2954.",
+        "poster_quote": "Output-source NED\n(higher better)\n.3107\t.7639\t.2500\t.2954",
+        "label": "supported",
+        "paper_evidence": ".2954",
+        "reason": "Table 2, row 'Output–source NED↑', column 'Ins' shows .2954."
+      },
+      {
+        "id": 82,
+        "text": "Output-source NED for Overall is .4050.",
+        "poster_quote": "Output-source NED\n(higher better)\n.3107\t.7639\t.2500\t.2954\t.4050",
+        "label": "supported",
+        "paper_evidence": ".4050",
+        "reason": "Table 2, row 'Output–source NED↑', column 'Overall' shows .4050."
+      },
+      {
+        "id": 83,
+        "text": "Target-source NED for PSub is .302.",
+        "poster_quote": "Target-source NED\n(required change)\n.302",
+        "label": "supported",
+        "paper_evidence": ".3020",
+        "reason": "Table 2, row 'Target–source NED', column 'PSub' shows .3020."
+      },
+      {
+        "id": 84,
+        "text": "Target-source NED for FSub is .760.",
+        "poster_quote": "Target-source NED\n(required change)\n.302\t.760",
+        "label": "supported",
+        "paper_evidence": ".7600",
+        "reason": "Table 2, row 'Target–source NED', column 'FSub' shows .7600."
+      },
+      {
+        "id": 85,
+        "text": "Target-source NED for Del is .238.",
+        "poster_quote": "Target-source NED\n(required change)\n.302\t.760\t.238",
+        "label": "supported",
+        "paper_evidence": ".2380",
+        "reason": "Table 2, row 'Target–source NED', column 'Del' shows .2380."
+      },
+      {
+        "id": 86,
+        "text": "Target-source NED for Ins is .286.",
+        "poster_quote": "Target-source NED\n(required change)\n.302\t.760\t.238\t.286",
+        "label": "supported",
+        "paper_evidence": ".2860",
+        "reason": "Table 2, row 'Target–source NED', column 'Ins' shows .2860."
+      },
+      {
+        "id": 87,
+        "text": "Target-source NED for Overall is .3965.",
+        "poster_quote": "Target-source NED\n(required change)\n.302\t.760\t.238\t.286\t.3965",
+        "label": "supported",
+        "paper_evidence": ".3965",
+        "reason": "Table 2, row 'Target–source NED', column 'Overall' shows .3965."
+      },
+      {
+        "id": 88,
+        "text": "Target-preference margin for PSub is .2617.",
+        "poster_quote": "Target-preference\nmargin\n.2617",
+        "label": "supported",
+        "paper_evidence": ".2617",
+        "reason": "Table 2, row 'Target-preference margin↑', column 'PSub' shows .2617."
+      },
+      {
+        "id": 89,
+        "text": "Target-preference margin for FSub is .7209.",
+        "poster_quote": "Target-preference\nmargin\n.2617\t.7209",
+        "label": "supported",
+        "paper_evidence": ".7209",
+        "reason": "Table 2, row 'Target-preference margin↑', column 'FSub' shows .7209."
+      },
+      {
+        "id": 90,
+        "text": "Target-preference margin for Del is .2248.",
+        "poster_quote": "Target-preference\nmargin\n.2617\t.7209\t.2248",
+        "label": "supported",
+        "paper_evidence": ".2248",
+        "reason": "Table 2, row 'Target-preference margin↑', column 'Del' shows .2248."
+      },
+      {
+        "id": 91,
+        "text": "Target-preference margin for Ins is .2665.",
+        "poster_quote": "Target-preference\nmargin\n.2617\t.7209\t.2248\t.2665",
+        "label": "supported",
+        "paper_evidence": ".2665",
+        "reason": "Table 2, row 'Target-preference margin↑', column 'Ins' shows .2665."
+      },
+      {
+        "id": 92,
+        "text": "Target-preference margin for Overall is .3685.",
+        "poster_quote": "Target-preference\nmargin\n.2617\t.7209\t.2248\t.2665\t.3685",
+        "label": "supported",
+        "paper_evidence": ".3685",
+        "reason": "Table 2, row 'Target-preference margin↑', column 'Overall' shows .3685."
+      },
+      {
+        "id": 93,
+        "text": "Budget-hit rates are 0/0/0/1.25% for PSub/FSub/Del/Ins.",
+        "poster_quote": "Budget-hit rates are 0/0/0/1.25% for PSub/FSub/Del/Ins",
+        "label": "supported",
+        "paper_evidence": "Budget-hit rates are 0/0/0/1.25% for PSub/FSub/Del/Ins",
+        "reason": "Section 'What the stopping audit adds' explicitly states these budget-hit rates."
+      },
+      {
+        "id": 94,
+        "text": "Premature-stop rates never exceed 1.25%.",
+        "poster_quote": "premature/delayed-stop rates never exceed 1.25/2.50%",
+        "label": "supported",
+        "paper_evidence": "premature/delayed-stop rates never exceed 1.25/2.50%",
+        "reason": "Section 'What the stopping audit adds' states that premature-stop rates never exceed 1.25%."
+      },
+      {
+        "id": 95,
+        "text": "Delayed-stop rates never exceed 2.50%.",
+        "poster_quote": "premature/delayed-stop rates never exceed 1.25/2.50%",
+        "label": "supported",
+        "paper_evidence": "premature/delayed-stop rates never exceed 1.25/2.50%",
+        "reason": "Section 'What the stopping audit adds' states that delayed-stop rates never exceed 2.50%."
+      },
+      {
+        "id": 96,
+        "text": "Across 24 post-freeze singers (192 edits), CLASVS/YingMusic+ gives PER .0472/.0521.",
+        "poster_quote": "Across 24 post-freeze singers (192 edits), CLASVS/YingMusic+ gives PER .0472/.0521",
+        "label": "supported",
+        "paper_evidence": "Across 24 post-freeze singers (192 edits), CLASVS/YingMusic+ gives PER .0472/.0521",
+        "reason": "Section 'Transfer audits' explicitly states these PER values."
+      },
+      {
+        "id": 97,
+        "text": "Across 24 post-freeze singers (192 edits), CLASVS/YingMusic+ gives FPC .934/.928.",
+        "poster_quote": "FPC .934/.928",
+        "label": "supported",
+        "paper_evidence": "Across 24 post-freeze singers (192 edits), CLASVS/YingMusic+ gives PER .0472/.0521, FPC .934/.928",
+        "reason": "Section 'Transfer audits' explicitly states these FPC values."
+      },
+      {
+        "id": 98,
+        "text": "Across 24 post-freeze singers (192 edits), CLASVS/YingMusic+ gives SIM .905/.898.",
+        "poster_quote": "SIM .905/.898",
+        "label": "supported",
+        "paper_evidence": "Across 24 post-freeze singers (192 edits), CLASVS/YingMusic+ gives PER .0472/.0521, FPC .934/.928, SIM .905/.898",
+        "reason": "Section 'Transfer audits' explicitly states these SIM values."
+      },
+      {
+        "id": 99,
+        "text": "Across 24 post-freeze singers (192 edits), CLASVS/YingMusic+ gives voiced-onset MAE 9.4/21.6 ms.",
+        "poster_quote": "voiced-onset MAE 9.4/21.6 ms",
+        "label": "supported",
+        "paper_evidence": "Across 24 post-freeze singers (192 edits), CLASVS/YingMusic+ gives PER .0472/.0521, FPC .934/.928, SIM .905/.898, and voiced-onset MAE 9.4/21.6 ms.",
+        "reason": "Section 'Transfer audits' explicitly states these voiced-onset MAE values."
+      },
+      {
+        "id": 100,
+        "text": "Evaluation uses one recognizer and reference-timing metrics on Mandarin 2-6-syllable edits.",
+        "poster_quote": "Evaluation uses one recognizer and reference-timing metrics on Mandarin 2-6-syllable edits",
+        "label": "supported",
+        "paper_evidence": "Evaluation uses one recognizer and reference-timing metrics on Mandarin 2–6-syllable edits",
+        "reason": "Section 'Limitations, Reproducibility, and Ethics' explicitly states this scope of evaluation."
+      }
+    ]
+  },
+  "raw": "[\"```json\\n{\\n  \\\"claims\\\": [\\n    {\\n      \\\"id\\\": 1,\\n      \\\"text\\\": \\\"On two Mandarin benchmarks, CLASVS improves all four operations over discrete-AR Vevo2.\\\",\\n      \\\"poster_quote\\\": \\\"On two Mandarin benchmarks, CLASVS improves all four operations over discrete-AR Vevo2\\\"\\n    },\\n    {\\n      \\\"id\\\": 2,\\n      \\\"text\\\": \\\"CLASVS reduces macro-PER by 46.2% compared to discrete-AR Vevo2.\\\",\\n      \\\"poster_quote\\\": \\\"reduces macro-PER by 46.2%\\\"\\n    },\\n    {\\n      \\\"id\\\": 3,\\n      \\\"text\\\": \\\"CLASVS maintains melody, singer similarity, and perceptual quality.\\\",\\n      \\\"poster_quote\\\": \\\"maintaining melody, singer similarity, and perceptual quality.\\\"\\n    },\\n    {\\n      \\\"id\\\": 4,\\n      \\\"text\\\": \\\"Under the common automatic-input protocol, CLASVS reduces macro-PER by 46.2% versus discrete-AR Vevo2 across two Mandarin benchmarks.\\\",\\n      \\\"poster_quote\\\": \\\"Under the common automatic-input protocol, CLASVS reduces macro-PER by 46.2% versus discrete-AR Vevo2 across two Mandarin benchmarks\\\"\\n    },\\n    {\\n      \\\"id\\\": 5,\\n      \\\"text\\\": \\\"Lyric and melody tokens prefill a Qwen3-0.6B causal planner.\\\",\\n      \\\"poster_quote\\\": \\\"Lyric and melody tokens prefill a Qwen3-0.6B causal planner.\\\"\\n    },\\n    {\\n      \\\"id\\\": 6,\\n      \\\"text\\\": \\\"After the first step, only semantic feedback is appended to the planner cache.\\\",\\n      \\\"poster_quote\\\": \\\"After the first step, only semantic feedback is appended; the cache retains the full controls and all earlier feedback.\\\"\\n    },\\n    {\\n      \\\"id\\\": 7,\\n      \\\"text\\\": \\\"A separate linear head predicts continue/stop.\\\",\\n      \\\"poster_quote\\\": \\\"A separate linear head predicts continue/stop.\\\"\\n    },\\n    {\\n      \\\"id\\\": 8,\\n      \\\"text\\\": \\\"Singer identity bypasses the planner and modulates each Flow-DiT block through adaptive layer normalization.\\\",\\n      \\\"poster_quote\\\": \\\"Singer identity bypasses the planner and modulates each Flow-DiT block through adaptive layer normalization.\\\"\\n    },\\n    {\\n      \\\"id\\\": 9,\\n      \\\"text\\\": \\\"Melody tokens retain reference-frame timestamps.\\\",\\n      \\\"poster_quote\\\": \\\"Melody tokens retain reference-frame timestamps\\\"\\n    },\\n    {\\n      \\\"id\\\": 10,\\n      \\\"text\\\": \\\"Target lyric tokens retain sequence order without note, duration, or edit-boundary labels.\\\",\\n      \\\"poster_quote\\\": \\\"whereas target lyric tokens retain sequence order without note, duration, or edit-boundary labels.\\\"\\n    },\\n    {\\n      \\\"id\\\": 11,\\n      \\\"text\\\": \\\"A query for patch k can attend to both complete control spans and semantic feedback through k-1, but never to a future generated patch.\\\",\\n      \\\"poster_quote\\\": \\\"A query for patch k can attend to both complete control spans and semantic feedback through k-1, but never to a future generated patch.\\\"\\n    },\\n    {\\n      \\\"id\\\": 12,\\n      \\\"text\\\": \\\"A frozen Whisper-style 32-layer, 1280-D causal audio encoder provides the compact path.\\\",\\n      \\\"poster_quote\\\": \\\"A frozen Whisper-style 32-layer, 1280-D causal audio encoder provides the compact path\\\"\\n    },\\n    {\\n      \\\"id\\\": 13,\\n      \\\"text\\\": \\\"States are projected to 1024-D before five-frame pooling.\\\",\\n      \\\"poster_quote\\\": \\\"states are projected to 1024-D before five-frame pooling.\\\"\\n    },\\n    {\\n      \\\"id\\\": 14,\\n      \\\"text\\\": \\\"The previous latent patch enters an 8-block Flow-DiT combining conditional flow matching with a transformer denoiser.\\\",\\n      \\\"poster_quote\\\": \\\"In parallel, the previous latent patch enters an 8-block Flow-DiT combining conditional flow matching with a transformer denoiser.\\\"\\n    },\\n    {\\n      \\\"id\\\": 15,\\n      \\\"text\\\": \\\"Each transition receives one flow-time/planner token, five predecessor tokens, and five noisy current-patch tokens.\\\",\\n      \\\"poster_quote\\\": \\\"Each transition receives one flow-time/planner token, five predecessor tokens, and five noisy current-patch tokens.\\\"\\n    },\\n    {\\n      \\\"id\\\": 16,\\n      \\\"text\\\": \\\"Semantic feedback persists in the planner cache for all later steps.\\\",\\n      \\\"poster_quote\\\": \\\"Semantic feedback persists in the planner cache for all later steps\\\"\\n    },\\n    {\\n      \\\"id\\\": 17,\\n      \\\"text\\\": \\\"The previous latent patch conditions only the next Flow-DiT transition.\\\",\\n      \\\"poster_quote\\\": \\\"whereas the previous latent patch conditions only the next Flow-DiT transition.\\\"\\n    },\\n    {\\n      \\\"id\\\": 18,\\n      \\\"text\\\": \\\"State Grounding pretrains the causal semantic encoder with L_state = L_ASR + 5 L_MSMel before freezing it.\\\",\\n      \\\"poster_quote\\\": \\\"State Grounding pretrains the causal semantic encoder with L_state = L_ASR + 5 L_MSMel before freezing it\\\"\\n    },\\n    {\\n      \\\"id\\\": 19,\\n      \\\"text\\\": \\\"Control Grounding applies history dropout (p_h = .10) to the teacher-forced previous latent patch.\\\",\\n      \\\"poster_quote\\\": \\\"Control Grounding applies history dropout (p_h = .10) to the teacher-forced previous latent patch\\\"\\n    },\\n    {\\n      \\\"id\\\": 20,\\n      \\\"text\\\": \\\"Control Grounding masks reference-melody spans with p_m = .15.\\\",\\n      \\\"poster_quote\\\": \\\"and masks reference-melody spans (p_m = .15)\\\"\\n    },\\n    {\\n      \\\"id\\\": 21,\\n      \\\"text\\\": \\\"Task Grounding schedules 72K broad-singing, 24K speech-assisted, and 24K curated-singing updates.\\\",\\n      \\\"poster_quote\\\": \\\"Task Grounding schedules 72K broad-singing, 24K speech-assisted, and 24K curated-singing updates\\\"\\n    },\\n    {\\n      \\\"id\\\": 22,\\n      \\\"text\\\": \\\"Joint lyric-melody-singer dropout (p = .10) trains the unconditional guidance branch for classifier-free guidance.\\\",\\n      \\\"poster_quote\\\": \\\"Joint lyric-melody-singer dropout (p = .10) trains the unconditional guidance branch for classifier-free guidance.\\\"\\n    },\\n    {\\n      \\\"id\\\": 23,\\n      \\\"text\\\": \\\"Each patch starts from Gaussian noise and uses 24 Euler steps with guidance 2.0.\\\",\\n      \\\"poster_quote\\\": \\\"Each patch starts from Gaussian noise and uses 24 Euler steps with guidance 2.0\\\"\\n    },\\n    {\\n      \\\"id\\\": 24,\\n      \\\"text\\\": \\\"Pretrained-frozen PER is .0376.\\\",\\n      \\\"poster_quote\\\": \\\"Pretrained-frozen / pretrained-joint / random-joint / random-frozen PER is .0376\\\"\\n    },\\n    {\\n      \\\"id\\\": 25,\\n      \\\"text\\\": \\\"Pretrained-joint PER is .0391.\\\",\\n      \\\"poster_quote\\\": \\\"Pretrained-frozen / pretrained-joint / random-joint / random-frozen PER is .0376 / .0391\\\"\\n    },\\n    {\\n      \\\"id\\\": 26,\\n      \\\"text\\\": \\\"Random-joint PER is .0511.\\\",\\n      \\\"poster_quote\\\": \\\"Pretrained-frozen / pretrained-joint / random-joint / random-frozen PER is .0376 / .0391 / .0511\\\"\\n    },\\n    {\\n      \\\"id\\\": 27,\\n      \\\"text\\\": \\\"Random-frozen PER is .0918.\\\",\\n      \\\"poster_quote\\\": \\\"Pretrained-frozen / pretrained-joint / random-joint / random-frozen PER is .0376 / .0391 / .0511 / .0918.\\\"\\n    },\\n    {\\n      \\\"id\\\": 28,\\n      \\\"text\\\": \\\"History-dropout removal yields PER .0441.\\\",\\n      \\\"poster_quote\\\": \\\"History-dropout, melody-mask, joint-corruption, and curriculum-order removals yield PER .0441\\\"\\n    },\\n    {\\n      \\\"id\\\": 29,\\n      \\\"text\\\": \\\"Melody-mask removal yields PER .0419.\\\",\\n      \\\"poster_quote\\\": \\\"History-dropout, melody-mask, joint-corruption, and curriculum-order removals yield PER .0441 / .0419\\\"\\n    },\\n    {\\n      \\\"id\\\": 30,\\n      \\\"text\\\": \\\"Joint-corruption removal yields PER .0468.\\\",\\n      \\\"poster_quote\\\": \\\"History-dropout, melody-mask, joint-corruption, and curriculum-order removals yield PER .0441 / .0419 / .0468\\\"\\n    },\\n    {\\n      \\\"id\\\": 31,\\n      \\\"text\\\": \\\"Curriculum-order removal yields PER .0415.\\\",\\n      \\\"poster_quote\\\": \\\"History-dropout, melody-mask, joint-corruption, and curriculum-order removals yield PER .0441 / .0419 / .0468 / .0415.\\\"\\n    },\\n    {\\n      \\\"id\\\": 32,\\n      \\\"text\\\": \\\"CLASVS generates 64-D continuous AudioVAE latent patches every 100 ms.\\\",\\n      \\\"poster_quote\\\": \\\"CLASVS generates 64-D continuous AudioVAE latent patches every 100 ms.\\\"\\n    },\\n    {\\n      \\\"id\\\": 33,\\n      \\\"text\\\": \\\"Full SCT + PSCG configuration achieves a PER of .0376.\\\",\\n      \\\"poster_quote\\\": \\\"Full SCT + PSCG\\\\n.0376\\\"\\n    },\\n    {\\n      \\\"id\\\": 34,\\n      \\\"text\\\": \\\"Full SCT + PSCG configuration achieves an FPC of .9410.\\\",\\n      \\\"poster_quote\\\": \\\"Full SCT + PSCG\\\\n.0376\\\\n.9410\\\"\\n    },\\n    {\\n      \\\"id\\\": 35,\\n      \\\"text\\\": \\\"Full SCT + PSCG configuration achieves a SrcRev of .081.\\\",\\n      \\\"poster_quote\\\": \\\"Full SCT + PSCG\\\\n.0376\\\\n.9410\\\\n.081\\\"\\n    },\\n    {\\n      \\\"id\\\": 36,\\n      \\\"text\\\": \\\"No semantic-feedback route configuration achieves a PER of .0564.\\\",\\n      \\\"poster_quote\\\": \\\"No semantic-feedback route\\\\n.0564\\\"\\n    },\\n    {\\n      \\\"id\\\": 37,\\n      \\\"text\\\": \\\"No semantic-feedback route configuration achieves an FPC of .9205.\\\",\\n      \\\"poster_quote\\\": \\\"No semantic-feedback route\\\\n.0564\\\\n.9205\\\"\\n    },\\n    {\\n      \\\"id\\\": 38,\\n      \\\"text\\\": \\\"No semantic-feedback route configuration achieves a SrcRev of .154.\\\",\\n      \\\"poster_quote\\\": \\\"No semantic-feedback route\\\\n.0564\\\\n.9205\\\\n.154\\\"\\n    },\\n    {\\n      \\\"id\\\": 39,\\n      \\\"text\\\": \\\"No latent-patch route configuration achieves a PER of .0492.\\\",\\n      \\\"poster_quote\\\": \\\"No latent-patch route\\\\n.0492\\\"\\n    },\\n    {\\n      \\\"id\\\": 40,\\n      \\\"text\\\": \\\"No latent-patch route configuration achieves an FPC of .8896.\\\",\\n      \\\"poster_quote\\\": \\\"No latent-patch route\\\\n.0492\\\\n.8896\\\"\\n    },\\n    {\\n      \\\"id\\\": 41,\\n      \\\"text\\\": \\\"No latent-patch route configuration achieves a SrcRev of .086.\\\",\\n      \\\"poster_quote\\\": \\\"No latent-patch route\\\\n.0492\\\\n.8896\\\\n.086\\\"\\n    },\\n    {\\n      \\\"id\\\": 42,\\n      \\\"text\\\": \\\"Unified-context AR configuration achieves a PER of .0447.\\\",\\n      \\\"poster_quote\\\": \\\"Unified-context AR\\\\n.0447\\\"\\n    },\\n    {\\n      \\\"id\\\": 43,\\n      \\\"text\\\": \\\"Unified-context AR configuration achieves an FPC of .9279.\\\",\\n      \\\"poster_quote\\\": \\\"Unified-context AR\\\\n.0447\\\\n.9279\\\"\\n    },\\n    {\\n      \\\"id\\\": 44,\\n      \\\"text\\\": \\\"Unified-context AR configuration achieves a SrcRev of .118.\\\",\\n      \\\"poster_quote\\\": \\\"Unified-context AR\\\\n.0447\\\\n.9279\\\\n.118\\\"\\n    },\\n    {\\n      \\\"id\\\": 45,\\n      \\\"text\\\": \\\"- State Grounding configuration achieves a PER of .0511.\\\",\\n      \\\"poster_quote\\\": \\\"- State Grounding\\\\n.0511\\\"\\n    },\\n    {\\n      \\\"id\\\": 46,\\n      \\\"text\\\": \\\"- State Grounding configuration achieves an FPC of .9168.\\\",\\n      \\\"poster_quote\\\": \\\"- State Grounding\\\\n.0511\\\\n.9168\\\"\\n    },\\n    {\\n      \\\"id\\\": 47,\\n      \\\"text\\\": \\\"- State Grounding configuration achieves a SrcRev of .143.\\\",\\n      \\\"poster_quote\\\": \\\"- State Grounding\\\\n.0511\\\\n.9168\\\\n.143\\\"\\n    },\\n    {\\n      \\\"id\\\": 48,\\n      \\\"text\\\": \\\"- Control Grounding configuration achieves a PER of .0468.\\\",\\n      \\\"poster_quote\\\": \\\"- Control Grounding\\\\n.0468\\\"\\n    },\\n    {\\n      \\\"id\\\": 49,\\n      \\\"text\\\": \\\"- Control Grounding configuration achieves an FPC of .9242.\\\",\\n      \\\"poster_quote\\\": \\\"- Control Grounding\\\\n.0468\\\\n.9242\\\"\\n    },\\n    {\\n      \\\"id\\\": 50,\\n      \\\"text\\\": \\\"- Control Grounding configuration achieves a SrcRev of .121.\\\",\\n      \\\"poster_quote\\\": \\\"- Control Grounding\\\\n.0468\\\\n.9242\\\\n.121\\\"\\n    },\\n    {\\n      \\\"id\\\": 51,\\n      \\\"text\\\": \\\"- Task Grounding configuration achieves a PER of .0439.\\\",\\n      \\\"poster_quote\\\": \\\"- Task Grounding\\\\n.0439\\\"\\n    },\\n    {\\n      \\\"id\\\": 52,\\n      \\\"text\\\": \\\"- Task Grounding configuration achieves an FPC of .9298.\\\",\\n      \\\"poster_quote\\\": \\\"- Task Grounding\\\\n.0439\\\\n.9298\\\"\\n    },\\n    {\\n      \\\"id\\\": 53,\\n      \\\"text\\\": \\\"- Task Grounding configuration achieves a SrcRev of .102.\\\",\\n      \\\"poster_quote\\\": \\\"- Task Grounding\\\\n.0439\\\\n.9298\\\\n.102\\\"\\n    },\\n    {\\n      \\\"id\\\": 54,\\n      \\\"text\\\": \\\"Full versus matched unified-context AR improves PER by -.0071 [-.0085,-.0057].\\\",\\n      \\\"poster_quote\\\": \\\"Full versus matched unified-context AR improves PER by -.0071 [-.0085,-.0057]\\\"\\n    },\\n    {\\n      \\\"id\\\": 55,\\n      \\\"text\\\": \\\"Full versus matched unified-context AR improves FPC by +.0131 [+.0098,+.0164].\\\",\\n      \\\"poster_quote\\\": \\\"FPC by +.0131 [+.0098,+.0164]\\\"\\n    },\\n    {\\n      \\\"id\\\": 56,\\n      \\\"text\\\": \\\"Full versus matched unified-context AR improves SrcRev by -.037 [-.048,-.026].\\\",\\n      \\\"poster_quote\\\": \\\"SrcRev by -.037 [-.048,-.026]\\\"\\n    },\\n    {\\n      \\\"id\\\": 57,\\n      \\\"text\\\": \\\"Removing L_text raises PER to .0458.\\\",\\n      \\\"poster_quote\\\": \\\"Removing L_text raises PER to .0458\\\"\\n    },\\n    {\\n      \\\"id\\\": 58,\\n      \\\"text\\\": \\\"Removing L_text raises SrcRev to .137.\\\",\\n      \\\"poster_quote\\\": \\\"and SrcRev to .137.\\\"\\n    },\\n    {\\n      \\\"id\\\": 59,\\n      \\\"text\\\": \\\"All matched rows retain the same frontends, data, width, 0.765B trainable budget, 120K updates, manifest, and checkpoint rule.\\\",\\n      \\\"poster_quote\\\": \\\"All matched rows retain the same frontends, data, width, 0.765B trainable budget, 120K updates, manifest, and checkpoint rule\\\"\\n    },\\n    {\\n      \\\"id\\\": 60,\\n      \\\"text\\\": \\\"Three-seed PER SD is .0009-.0016.\\\",\\n      \\\"poster_quote\\\": \\\"three-seed PER SD is .0009-.0016.\\\"\\n    },\\n    {\\n      \\\"id\\\": 61,\\n      \\\"text\\\": \\\"Increasing p_h from .10 to .20 lowers PSub PER from .0505 to .0437.\\\",\\n      \\\"poster_quote\\\": \\\"increasing p_h from .10 to .20 lowers PSub PER (.0505 to .0437)\\\"\\n    },\\n    {\\n      \\\"id\\\": 62,\\n      \\\"text\\\": \\\"Increasing p_h from .10 to .20 lowers SrcRev from .081 to .055.\\\",\\n      \\\"poster_quote\\\": \\\"and SrcRev (.081 to .055)\\\"\\n    },\\n    {\\n      \\\"id\\\": 63,\\n      \\\"text\\\": \\\"Increasing p_h from .10 to .20 worsens macro-PER to .0397.\\\",\\n      \\\"poster_quote\\\": \\\"but worsens macro-PER to .0397\\\"\\n    },\\n    {\\n      \\\"id\\\": 64,\\n      \\\"text\\\": \\\"A progress probe favors semantic feedback with MAE .082 vs .191.\\\",\\n      \\\"poster_quote\\\": \\\"A progress probe favors semantic feedback (MAE .082 vs .191).\\\"\\n    },\\n    {\\n      \\\"id\\\": 65,\\n      \\\"text\\\": \\\"YingMusic+ leads substitution and steady-tail RTF.\\\",\\n      \\\"poster_quote\\\": \\\"YingMusic+ leads substitution and steady-tail RTF\\\"\\n    },\\n    {\\n      \\\"id\\\": 66,\\n      \\\"text\\\": \\\"Vevo2 leads cold-start RTF.\\\",\\n      \\\"poster_quote\\\": \\\"Vevo2 leads cold-start RTF\\\"\\n    },\\n    {\\n      \\\"id\\\": 67,\\n      \\\"text\\\": \\\"CLASVS leads deletion, insertion, voiced-onset MAE, N-MOS, L-MOS, and macro-PER.\\\",\\n      \\\"poster_quote\\\": \\\"CLASVS leads deletion, insertion, voiced-onset MAE, N-MOS, L-MOS, and macro-PER.\\\"\\n    },\\n    {\\n      \\\"id\\\": 68,\\n      \\\"text\\\": \\\"One 1024-D semantic-feedback vector enters the cache per patch.\\\",\\n      \\\"poster_quote\\\": \\\"One 1024-D semantic-feedback vector enters the cache per patch\\\"\\n    },\\n    {\\n      \\\"id\\\": 69,\\n      \\\"text\\\": \\\"Incremental memory is 5.82 GiB.\\\",\\n      \\\"poster_quote\\\": \\\"incremental memory is 5.82 GiB\\\"\\n    },\\n    {\\n      \\\"id\\\": 70,\\n      \\\"text\\\": \\\"CLASVS has cold-start/steady-tail RTF of 3.840/1.395.\\\",\\n      \\\"poster_quote\\\": \\\"With cold-start/steady-tail RTF 3.840/1.395\\\"\\n    },\\n    {\\n      \\\"id\\\": 71,\\n      \\\"text\\\": \\\"No-edit output-target NED is .018.\\\",\\n      \\\"poster_quote\\\": \\\"no-edit output-target/source NED is .018/.019\\\"\\n    },\\n    {\\n      \\\"id\\\": 72,\\n      \\\"text\\\": \\\"No-edit output-source NED is .019.\\\",\\n      \\\"poster_quote\\\": \\\"no-edit output-target/source NED is .018/.019\\\"\\n    },\\n    {\\n      \\\"id\\\": 73,\\n      \\\"text\\\": \\\"Output-target NED for PSub is .0490.\\\",\\n      \\\"poster_quote\\\": \\\"Output-target NED\\\\n(lower better)\\\\n.0490\\\"\\n    },\\n    {\\n      \\\"id\\\": 74,\\n      \\\"text\\\": \\\"Output-target NED for FSub is .0430.\\\",\\n      \\\"poster_quote\\\": \\\"Output-target NED\\\\n(lower better)\\\\n.0490\\\\t.0430\\\"\\n    },\\n    {\\n      \\\"id\\\": 75,\\n      \\\"text\\\": \\\"Output-target NED for Del is .0252.\\\",\\n      \\\"poster_quote\\\": \\\"Output-target NED\\\\n(lower better)\\\\n.0490\\\\t.0430\\\\t.0252\\\"\\n    },\\n    {\\n      \\\"id\\\": 76,\\n      \\\"text\\\": \\\"Output-target NED for Ins is .0289.\\\",\\n      \\\"poster_quote\\\": \\\"Output-target NED\\\\n(lower better)\\\\n.0490\\\\t.0430\\\\t.0252\\\\t.0289\\\"\\n    },\\n    {\\n      \\\"id\\\": 77,\\n      \\\"text\\\": \\\"Output-target NED for Overall is .0365.\\\",\\n      \\\"poster_quote\\\": \\\"Output-target NED\\\\n(lower better)\\\\n.0490\\\\t.0430\\\\t.0252\\\\t.0289\\\\t.0365\\\"\\n    },\\n    {\\n      \\\"id\\\": 78,\\n      \\\"text\\\": \\\"Output-source NED for PSub is .3107.\\\",\\n      \\\"poster_quote\\\": \\\"Output-source NED\\\\n(higher better)\\\\n.3107\\\"\\n    },\\n    {\\n      \\\"id\\\": 79,\\n      \\\"text\\\": \\\"Output-source NED for FSub is .7639.\\\",\\n      \\\"poster_quote\\\": \\\"Output-source NED\\\\n(higher better)\\\\n.3107\\\\t.7639\\\"\\n    },\\n    {\\n      \\\"id\\\": 80,\\n      \\\"text\\\": \\\"Output-source NED for Del is .2500.\\\",\\n      \\\"poster_quote\\\": \\\"Output-source NED\\\\n(higher better)\\\\n.3107\\\\t.7639\\\\t.2500\\\"\\n    },\\n    {\\n      \\\"id\\\": 81,\\n      \\\"text\\\": \\\"Output-source NED for Ins is .2954.\\\",\\n      \\\"poster_quote\\\": \\\"Output-source NED\\\\n(higher better)\\\\n.3107\\\\t.7639\\\\t.2500\\\\t.2954\\\"\\n    },\\n    {\\n      \\\"id\\\": 82,\\n      \\\"text\\\": \\\"Output-source NED for Overall is .4050.\\\",\\n      \\\"poster_quote\\\": \\\"Output-source NED\\\\n(higher better)\\\\n.3107\\\\t.7639\\\\t.2500\\\\t.2954\\\\t.4050\\\"\\n    },\\n    {\\n      \\\"id\\\": 83,\\n      \\\"text\\\": \\\"Target-source NED for PSub is .302.\\\",\\n      \\\"poster_quote\\\": \\\"Target-source NED\\\\n(required change)\\\\n.302\\\"\\n    },\\n    {\\n      \\\"id\\\": 84,\\n      \\\"text\\\": \\\"Target-source NED for FSub is .760.\\\",\\n      \\\"poster_quote\\\": \\\"Target-source NED\\\\n(required change)\\\\n.302\\\\t.760\\\"\\n    },\\n    {\\n      \\\"id\\\": 85,\\n      \\\"text\\\": \\\"Target-source NED for Del is .238.\\\",\\n      \\\"poster_quote\\\": \\\"Target-source NED\\\\n(required change)\\\\n.302\\\\t.760\\\\t.238\\\"\\n    },\\n    {\\n      \\\"id\\\": 86,\\n      \\\"text\\\": \\\"Target-source NED for Ins is .286.\\\",\\n      \\\"poster_quote\\\": \\\"Target-source NED\\\\n(required change)\\\\n.302\\\\t.760\\\\t.238\\\\t.286\\\"\\n    },\\n    {\\n      \\\"id\\\": 87,\\n      \\\"text\\\": \\\"Target-source NED for Overall is .3965.\\\",\\n      \\\"poster_quote\\\": \\\"Target-source NED\\\\n(required change)\\\\n.302\\\\t.760\\\\t.238\\\\t.286\\\\t.3965\\\"\\n    },\\n    {\\n      \\\"id\\\": 88,\\n      \\\"text\\\": \\\"Target-preference margin for PSub is .2617.\\\",\\n      \\\"poster_quote\\\": \\\"Target-preference\\\\nmargin\\\\n.2617\\\"\\n    },\\n    {\\n      \\\"id\\\": 89,\\n      \\\"text\\\": \\\"Target-preference margin for FSub is .7209.\\\",\\n      \\\"poster_quote\\\": \\\"Target-preference\\\\nmargin\\\\n.2617\\\\t.7209\\\"\\n    },\\n    {\\n      \\\"id\\\": 90,\\n      \\\"text\\\": \\\"Target-preference margin for Del is .2248.\\\",\\n      \\\"poster_quote\\\": \\\"Target-preference\\\\nmargin\\\\n.2617\\\\t.7209\\\\t.2248\\\"\\n    },\\n    {\\n      \\\"id\\\": 91,\\n      \\\"text\\\": \\\"Target-preference margin for Ins is .2665.\\\",\\n      \\\"poster_quote\\\": \\\"Target-preference\\\\nmargin\\\\n.2617\\\\t.7209\\\\t.2248\\\\t.2665\\\"\\n    },\\n    {\\n      \\\"id\\\": 92,\\n      \\\"text\\\": \\\"Target-preference margin for Overall is .3685.\\\",\\n      \\\"poster_quote\\\": \\\"Target-preference\\\\nmargin\\\\n.2617\\\\t.7209\\\\t.2248\\\\t.2665\\\\t.3685\\\"\\n    },\\n    {\\n      \\\"id\\\": 93,\\n      \\\"text\\\": \\\"Budget-hit rates are 0/0/0/1.25% for PSub/FSub/Del/Ins.\\\",\\n      \\\"poster_quote\\\": \\\"Budget-hit rates are 0/0/0/1.25% for PSub/FSub/Del/Ins\\\"\\n    },\\n    {\\n      \\\"id\\\": 94,\\n      \\\"text\\\": \\\"Premature-stop rates never exceed 1.25%.\\\",\\n      \\\"poster_quote\\\": \\\"premature/delayed-stop rates never exceed 1.25/2.50%\\\"\\n    },\\n    {\\n      \\\"id\\\": 95,\\n      \\\"text\\\": \\\"Delayed-stop rates never exceed 2.50%.\\\",\\n      \\\"poster_quote\\\": \\\"premature/delayed-stop rates never exceed 1.25/2.50%\\\"\\n    },\\n    {\\n      \\\"id\\\": 96,\\n      \\\"text\\\": \\\"Across 24 post-freeze singers (192 edits), CLASVS/YingMusic+ gives PER .0472/.0521.\\\",\\n      \\\"poster_quote\\\": \\\"Across 24 post-freeze singers (192 edits), CLASVS/YingMusic+ gives PER .0472/.0521\\\"\\n    },\\n    {\\n      \\\"id\\\": 97,\\n      \\\"text\\\": \\\"Across 24 post-freeze singers (192 edits), CLASVS/YingMusic+ gives FPC .934/.928.\\\",\\n      \\\"poster_quote\\\": \\\"FPC .934/.928\\\"\\n    },\\n    {\\n      \\\"id\\\": 98,\\n      \\\"text\\\": \\\"Across 24 post-freeze singers (192 edits), CLASVS/YingMusic+ gives SIM .905/.898.\\\",\\n      \\\"poster_quote\\\": \\\"SIM .905/.898\\\"\\n    },\\n    {\\n      \\\"id\\\": 99,\\n      \\\"text\\\": \\\"Across 24 post-freeze singers (192 edits), CLASVS/YingMusic+ gives voiced-onset MAE 9.4/21.6 ms.\\\",\\n      \\\"poster_quote\\\": \\\"voiced-onset MAE 9.4/21.6 ms\\\"\\n    },\\n    {\\n      \\\"id\\\": 100,\\n      \\\"text\\\": \\\"Evaluation uses one recognizer and reference-timing metrics on Mandarin 2-6-syllable edits.\\\",\\n      \\\"poster_quote\\\": \\\"Evaluation uses one recognizer and reference-timing metrics on Mandarin 2-6-syllable edits\\\"\\n    }\\n  ]\\n}\\n```\", \"```json\\n{\\n  \\\"verdicts\\\": [\\n    {\\n      \\\"id\\\": 1,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"On two Mandarin benchmarks, CLASVS improves all four operations over discrete-AR Vevo2 and reduces macro-PER by 46.2%, while maintaining melody, singer similarity, and perceptual quality.\\\",\\n      \\\"reason\\\": \\\"Abstract. The paper explicitly states that CLASVS improves all four operations over discrete-AR Vevo2 on two Mandarin benchmarks.\\\"\\n    },\\n    {\\n      \\\"id\\\": 2,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"On two Mandarin benchmarks, CLASVS improves all four operations over discrete-AR Vevo2 and reduces macro-PER by 46.2%, while maintaining melody, singer similarity, and perceptual quality.\\\",\\n      \\\"reason\\\": \\\"Abstract. The paper explicitly states that CLASVS reduces macro-PER by 46.2%.\\\"\\n    },\\n    {\\n      \\\"id\\\": 3,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"On two Mandarin benchmarks, CLASVS improves all four operations over discrete-AR Vevo2 and reduces macro-PER by 46.2%, while maintaining melody, singer similarity, and perceptual quality.\\\",\\n      \\\"reason\\\": \\\"Abstract. The paper explicitly states that CLASVS maintains melody, singer similarity, and perceptual quality.\\\"\\n    },\\n    {\\n      \\\"id\\\": 4,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Under the common automatic-input protocol, CLASVS reduces macro-PER by 46.2% versus discrete-AR Vevo2 across two Mandarin benchmarks, improving all four operations while preserving melody, similarity, and perceptual quality.\\\",\\n      \\\"reason\\\": \\\"Introduction. The paper explicitly states that under the common automatic-input protocol, CLASVS reduces macro-PER by 46.2% versus discrete-AR Vevo2 across two Mandarin benchmarks.\\\"\\n    },\\n    {\\n      \\\"id\\\": 5,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Lyric and melody tokens prefill a Qwen3-0.6B causal planner (Yang et al. 2025a).\\\",\\n      \\\"reason\\\": \\\"Method -> State-Control-Transition Routing. The paper explicitly states that lyric and melody tokens prefill a Qwen3-0.6B causal planner.\\\"\\n    },\\n    {\\n      \\\"id\\\": 6,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"After the first step, only semantic feedback ak−1 is appended:\\\",\\n      \\\"reason\\\": \\\"Method -> State-Control-Transition Routing. The paper explicitly states that after the first step, only semantic feedback is appended.\\\"\\n    },\\n    {\\n      \\\"id\\\": 7,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"A separate linear head predicts continue/stop from hk.\\\",\\n      \\\"reason\\\": \\\"Method -> State-Control-Transition Routing. The paper explicitly states that a separate linear head predicts continue/stop.\\\"\\n    },\\n    {\\n      \\\"id\\\": 8,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Singer identity bypasses the planner and modulates each Flow-DiT block through adaptive layer normalization.\\\",\\n      \\\"reason\\\": \\\"Method -> State-Control-Transition Routing. The paper explicitly states that singer identity bypasses the planner and modulates each Flow-DiT block through adaptive layer normalization.\\\"\\n    },\\n    {\\n      \\\"id\\\": 9,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Melody tokens retain reference-frame timestamps, whereas target lyric tokens retain sequence order without requiring note, duration, or edit-boundary labels.\\\",\\n      \\\"reason\\\": \\\"Method -> State-Control-Transition Routing -> Control serialization and time bases. The paper explicitly states that melody tokens retain reference-frame timestamps.\\\"\\n    },\\n    {\\n      \\\"id\\\": 10,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Melody tokens retain reference-frame timestamps, whereas target lyric tokens retain sequence order without requiring note, duration, or edit-boundary labels.\\\",\\n      \\\"reason\\\": \\\"Method -> State-Control-Transition Routing -> Control serialization and time bases. The paper explicitly states that target lyric tokens retain sequence order without note, duration, or edit-boundary labels.\\\"\\n    },\\n    {\\n      \\\"id\\\": 11,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"A query for patch k can attend to both complete control spans and semantic feedback through k−1, but never to a future generated patch.\\\",\\n      \\\"reason\\\": \\\"Method -> State-Control-Transition Routing -> Control serialization and time bases. The paper explicitly states that a query for patch k can attend to both complete control spans and semantic feedback through k-1, but never to a future generated patch.\\\"\\n    },\\n    {\\n      \\\"id\\\": 12,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"A frozen Whisper-style 32-layer, 1280-D causal audio encoder (Radford et al. 2023) provides the compact path;\\\",\\n      \\\"reason\\\": \\\"Method -> State-Control-Transition Routing -> Control serialization and time bases. The paper explicitly states that a frozen Whisper-style 32-layer, 1280-D causal audio encoder provides the compact path.\\\"\\n    },\\n    {\\n      \\\"id\\\": 13,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"its states are projected to 1024-D before five-frame pooling:\\\",\\n      \\\"reason\\\": \\\"Method -> State-Control-Transition Routing -> Control serialization and time bases. The paper explicitly states that states are projected to 1024-D before five-frame pooling.\\\"\\n    },\\n    {\\n      \\\"id\\\": 14,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"In parallel, the previous latent patch enters an 8-block Flow-DiT that combines conditional flow matching with a transformer denoiser (Lipman et al. 2023; Peebles and Xie 2023).\\\",\\n      \\\"reason\\\": \\\"Method -> State-Control-Transition Routing -> Control serialization and time bases. The paper explicitly states that the previous latent patch enters an 8-block Flow-DiT combining conditional flow matching with a transformer denoiser.\\\"\\n    },\\n    {\\n      \\\"id\\\": 15,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Each transition receives one flow-time/planner token, five predecessor tokens, and five noisy current-patch tokens.\\\",\\n      \\\"reason\\\": \\\"Method -> State-Control-Transition Routing -> Control serialization and time bases. The paper explicitly states that each transition receives one flow-time/planner token, five predecessor tokens, and five noisy current-patch tokens.\\\"\\n    },\\n    {\\n      \\\"id\\\": 16,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"semantic feedback persists in the planner cache for all later steps, whereas the previous latent patch conditions only the next Flow-DiT transition.\\\",\\n      \\\"reason\\\": \\\"Method -> State-Control-Transition Routing -> Control serialization and time bases. The paper explicitly states that semantic feedback persists in the planner cache for all later steps.\\\"\\n    },\\n    {\\n      \\\"id\\\": 17,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"semantic feedback persists in the planner cache for all later steps, whereas the previous latent patch conditions only the next Flow-DiT transition.\\\",\\n      \\\"reason\\\": \\\"Method -> State-Control-Transition Routing -> Control serialization and time bases. The paper explicitly states that the previous latent patch conditions only the next Flow-DiT transition.\\\"\\n    },\\n    {\\n      \\\"id\\\": 18,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"State Grounding pretrains the causal semantic encoder with Lstate = LASR + 5LMSMel before freezing it, so semantic feedback tracks realized content rather than copying acoustics.\\\",\\n      \\\"reason\\\": \\\"Method -> Progressive State–Control Grounding. The paper explicitly states that State Grounding pretrains the causal semantic encoder with L_state = L_ASR + 5 L_MSMel before freezing it.\\\"\\n    },\\n    {\\n      \\\"id\\\": 19,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Control Grounding applies history dropout (ph = .10) to the teacher-forced previous latent patch and masks reference-melody spans (pm = .15), forcing recovery from imperfect local evidence while retaining both controls.\\\",\\n      \\\"reason\\\": \\\"Method -> Progressive State–Control Grounding. The paper explicitly states that Control Grounding applies history dropout (p_h = .10) to the teacher-forced previous latent patch.\\\"\\n    },\\n    {\\n      \\\"id\\\": 20,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Control Grounding applies history dropout (ph = .10) to the teacher-forced previous latent patch and masks reference-melody spans (pm = .15), forcing recovery from imperfect local evidence while retaining both controls.\\\",\\n      \\\"reason\\\": \\\"Method -> Progressive State–Control Grounding. The paper explicitly states that Control Grounding masks reference-melody spans with p_m = .15.\\\"\\n    },\\n    {\\n      \\\"id\\\": 21,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Task Grounding schedules 72K broad-singing, 24K speech-assisted, and 24K curated-singing updates, supplying coverage before editing fidelity (Geng et al. 2026).\\\",\\n      \\\"reason\\\": \\\"Method -> Progressive State–Control Grounding. The paper explicitly states that Task Grounding schedules 72K broad-singing, 24K speech-assisted, and 24K curated-singing updates.\\\"\\n    },\\n    {\\n      \\\"id\\\": 22,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Joint lyric–melody–singer dropout (p = .10) trains the unconditional guidance branch (Ho and Salimans 2022), which supports classifier-free guidance during sampling.\\\",\\n      \\\"reason\\\": \\\"Method -> Progressive State–Control Grounding. The paper explicitly states that joint lyric-melody-singer dropout (p = .10) trains the unconditional guidance branch for classifier-free guidance.\\\"\\n    },\\n    {\\n      \\\"id\\\": 23,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Each patch starts from Gaussian noise and uses 24 Euler steps with guidance 2.0.\\\",\\n      \\\"reason\\\": \\\"Method -> Progressive State–Control Grounding. The paper explicitly states that each patch starts from Gaussian noise and uses 24 Euler steps with guidance 2.0.\\\"\\n    },\\n    {\\n      \\\"id\\\": 24,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Pretrained-frozen/pretrained-joint/random-joint/random-frozen PER is .0376/.0391/.0511/.0918.\\\",\\n      \\\"reason\\\": \\\"Method -> Progressive State–Control Grounding. The paper explicitly states that pretrained-frozen PER is .0376.\\\"\\n    },\\n    {\\n      \\\"id\\\": 25,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Pretrained-frozen/pretrained-joint/random-joint/random-frozen PER is .0376/.0391/.0511/.0918.\\\",\\n      \\\"reason\\\": \\\"Method -> Progressive State–Control Grounding. The paper explicitly states that pretrained-joint PER is .0391.\\\"\\n    },\\n    {\\n      \\\"id\\\": 26,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Pretrained-frozen/pretrained-joint/random-joint/random-frozen PER is .0376/.0391/.0511/.0918.\\\",\\n      \\\"reason\\\": \\\"Method -> Progressive State–Control Grounding. The paper explicitly states that random-joint PER is .0511.\\\"\\n    },\\n    {\\n      \\\"id\\\": 27,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Pretrained-frozen/pretrained-joint/random-joint/random-frozen PER is .0376/.0391/.0511/.0918.\\\",\\n      \\\"reason\\\": \\\"Method -> Progressive State–Control Grounding. The paper explicitly states that random-frozen PER is .0918.\\\"\\n    },\\n    {\\n      \\\"id\\\": 28,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"History-dropout, melody-mask, joint-corruption, and curriculum-order removals yield PER .0441/.0419/.0468/.0415;\\\",\\n      \\\"reason\\\": \\\"Method -> Progressive State–Control Grounding. The paper explicitly states that history-dropout removal yields PER .0441.\\\"\\n    },\\n    {\\n      \\\"id\\\": 29,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"History-dropout, melody-mask, joint-corruption, and curriculum-order removals yield PER .0441/.0419/.0468/.0415;\\\",\\n      \\\"reason\\\": \\\"Method -> Progressive State–Control Grounding. The paper explicitly states that melody-mask removal yields PER .0419.\\\"\\n    },\\n    {\\n      \\\"id\\\": 30,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"History-dropout, melody-mask, joint-corruption, and curriculum-order removals yield PER .0441/.0419/.0468/.0415;\\\",\\n      \\\"reason\\\": \\\"Method -> Progressive State–Control Grounding. The paper explicitly states that joint-corruption removal yields PER .0468.\\\"\\n    },\\n    {\\n      \\\"id\\\": 31,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"History-dropout, melody-mask, joint-corruption, and curriculum-order removals yield PER .0441/.0419/.0468/.0415;\\\",\\n      \\\"reason\\\": \\\"Method -> Progressive State–Control Grounding. The paper explicitly states that curriculum-order removal yields PER .0415.\\\"\\n    },\\n    {\\n      \\\"id\\\": 32,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"CLASVS generates 64-D continuous AudioVAE latent patches every 100 ms.\\\",\\n      \\\"reason\\\": \\\"Figure 1 caption. The paper explicitly states that CLASVS generates 64-D continuous AudioVAE latent patches every 100 ms.\\\"\\n    },\\n    {\\n      \\\"id\\\": 33,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Full SCT + PSCG | .0376 | .9410 | .081\\\",\\n      \\\"reason\\\": \\\"Table 5. The paper explicitly states that the Full SCT + PSCG configuration achieves a PER of .0376.\\\"\\n    },\\n    {\\n      \\\"id\\\": 34,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Full SCT + PSCG | .0376 | .9410 | .081\\\",\\n      \\\"reason\\\": \\\"Table 5. The paper explicitly states that the Full SCT + PSCG configuration achieves an FPC of .9410.\\\"\\n    },\\n    {\\n      \\\"id\\\": 35,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Full SCT + PSCG | .0376 | .9410 | .081\\\",\\n      \\\"reason\\\": \\\"Table 5. The paper explicitly states that the Full SCT + PSCG configuration achieves a SrcRev of .081.\\\"\\n    },\\n    {\\n      \\\"id\\\": 36,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"No semantic-feedback route | .0564 | .9205 | .154\\\",\\n      \\\"reason\\\": \\\"Table 5. The paper explicitly states that the No semantic-feedback route configuration achieves a PER of .0564.\\\"\\n    },\\n    {\\n      \\\"id\\\": 37,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"No semantic-feedback route | .0564 | .9205 | .154\\\",\\n      \\\"reason\\\": \\\"Table 5. The paper explicitly states that the No semantic-feedback route configuration achieves an FPC of .9205.\\\"\\n    },\\n    {\\n      \\\"id\\\": 38,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"No semantic-feedback route | .0564 | .9205 | .154\\\",\\n      \\\"reason\\\": \\\"Table 5. The paper explicitly states that the No semantic-feedback route configuration achieves a SrcRev of .154.\\\"\\n    },\\n    {\\n      \\\"id\\\": 39,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"No latent-patch route | .0492 | .8896 | .086\\\",\\n      \\\"reason\\\": \\\"Table 5. The paper explicitly states that the No latent-patch route configuration achieves a PER of .0492.\\\"\\n    },\\n    {\\n      \\\"id\\\": 40,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"No latent-patch route | .0492 | .8896 | .086\\\",\\n      \\\"reason\\\": \\\"Table 5. The paper explicitly states that the No latent-patch route configuration achieves an FPC of .8896.\\\"\\n    }\\n  ]\\n}\\n```\", \"```json\\n{\\n  \\\"verdicts\\\": [\\n    {\\n      \\\"id\\\": 1,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"No latent-patch route\\\\t.0492\\\\t.8896\\\\t.086\\\",\\n      \\\"reason\\\": \\\"Table 5, row 'No latent-patch route', column 'SrcRev' shows the value is exactly .086.\\\"\\n    },\\n    {\\n      \\\"id\\\": 2,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Unified-context AR\\\\t.0447\\\\t.9279\\\\t.118\\\",\\n      \\\"reason\\\": \\\"Table 5, row 'Unified-context AR', column 'PER' shows the value is exactly .0447.\\\"\\n    },\\n    {\\n      \\\"id\\\": 3,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Unified-context AR\\\\t.0447\\\\t.9279\\\\t.118\\\",\\n      \\\"reason\\\": \\\"Table 5, row 'Unified-context AR', column 'FPC' shows the value is exactly .9279.\\\"\\n    },\\n    {\\n      \\\"id\\\": 4,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Unified-context AR\\\\t.0447\\\\t.9279\\\\t.118\\\",\\n      \\\"reason\\\": \\\"Table 5, row 'Unified-context AR', column 'SrcRev' shows the value is exactly .118.\\\"\\n    },\\n    {\\n      \\\"id\\\": 5,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"− State Grounding\\\\t.0511\\\\t.9168\\\\t.143\\\",\\n      \\\"reason\\\": \\\"Table 5, row '− State Grounding', column 'PER' shows the value is exactly .0511.\\\"\\n    },\\n    {\\n      \\\"id\\\": 6,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"− State Grounding\\\\t.0511\\\\t.9168\\\\t.143\\\",\\n      \\\"reason\\\": \\\"Table 5, row '− State Grounding', column 'FPC' shows the value is exactly .9168.\\\"\\n    },\\n    {\\n      \\\"id\\\": 7,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"− State Grounding\\\\t.0511\\\\t.9168\\\\t.143\\\",\\n      \\\"reason\\\": \\\"Table 5, row '− State Grounding', column 'SrcRev' shows the value is exactly .143.\\\"\\n    },\\n    {\\n      \\\"id\\\": 8,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"− Control Grounding\\\\t.0468\\\\t.9242\\\\t.121\\\",\\n      \\\"reason\\\": \\\"Table 5, row '− Control Grounding', column 'PER' shows the value is exactly .0468.\\\"\\n    },\\n    {\\n      \\\"id\\\": 9,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"− Control Grounding\\\\t.0468\\\\t.9242\\\\t.121\\\",\\n      \\\"reason\\\": \\\"Table 5, row '− Control Grounding', column 'FPC' shows the value is exactly .9242.\\\"\\n    },\\n    {\\n      \\\"id\\\": 10,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"− Control Grounding\\\\t.0468\\\\t.9242\\\\t.121\\\",\\n      \\\"reason\\\": \\\"Table 5, row '− Control Grounding', column 'SrcRev' shows the value is exactly .121.\\\"\\n    },\\n    {\\n      \\\"id\\\": 11,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"− Task Grounding\\\\t.0439\\\\t.9298\\\\t.102\\\",\\n      \\\"reason\\\": \\\"Table 5, row '− Task Grounding', column 'PER' shows the value is exactly .0439.\\\"\\n    },\\n    {\\n      \\\"id\\\": 12,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"− Task Grounding\\\\t.0439\\\\t.9298\\\\t.102\\\",\\n      \\\"reason\\\": \\\"Table 5, row '− Task Grounding', column 'FPC' shows the value is exactly .9298.\\\"\\n    },\\n    {\\n      \\\"id\\\": 13,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"− Task Grounding\\\\t.0439\\\\t.9298\\\\t.102\\\",\\n      \\\"reason\\\": \\\"Table 5, row '− Task Grounding', column 'SrcRev' shows the value is exactly .102.\\\"\\n    },\\n    {\\n      \\\"id\\\": 14,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Full versus matched unified improves PER by −.0071 [−.0085, −.0057]\\\",\\n      \\\"reason\\\": \\\"Section 'PSCG and Inference Diagnostics' explicitly states this improvement in PER.\\\"\\n    },\\n    {\\n      \\\"id\\\": 15,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"FPC by +.0131 [+.0098, +.0164]\\\",\\n      \\\"reason\\\": \\\"Section 'PSCG and Inference Diagnostics' explicitly states this improvement in FPC.\\\"\\n    },\\n    {\\n      \\\"id\\\": 16,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"and SrcRev by −.037 [−.048, −.026]\\\",\\n      \\\"reason\\\": \\\"Section 'PSCG and Inference Diagnostics' explicitly states this improvement in SrcRev.\\\"\\n    },\\n    {\\n      \\\"id\\\": 17,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Removing Ltext raises PER to .0458\\\",\\n      \\\"reason\\\": \\\"Section 'PSCG and Inference Diagnostics' explicitly states that removing Ltext raises PER to .0458.\\\"\\n    },\\n    {\\n      \\\"id\\\": 18,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"and SrcRev to .137\\\",\\n      \\\"reason\\\": \\\"Section 'PSCG and Inference Diagnostics' explicitly states that removing Ltext raises SrcRev to .137.\\\"\\n    },\\n    {\\n      \\\"id\\\": 19,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"All matched rows retain the same frontends, data, width, 0.765B trainable budget, 120K updates, manifest, and checkpoint rule;\\\",\\n      \\\"reason\\\": \\\"Section 'PSCG and Inference Diagnostics' explicitly states this configuration discipline.\\\"\\n    },\\n    {\\n      \\\"id\\\": 20,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"three-seed PER SD across routing/stage rows is .0009–.0016.\\\",\\n      \\\"reason\\\": \\\"Section 'PSCG and Inference Diagnostics' explicitly states this standard deviation range.\\\"\\n    },\\n    {\\n      \\\"id\\\": 21,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"increasing ph from .10 to .20 lowers PSub PER from .0505 to .0437\\\",\\n      \\\"reason\\\": \\\"Section 'PSCG and Inference Diagnostics' explicitly states this effect of increasing ph.\\\"\\n    },\\n    {\\n      \\\"id\\\": 22,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"and SrcRev from .081 to .055\\\",\\n      \\\"reason\\\": \\\"Section 'PSCG and Inference Diagnostics' explicitly states this effect of increasing ph.\\\"\\n    },\\n    {\\n      \\\"id\\\": 23,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"but worsens macro-PER to .0397;\\\",\\n      \\\"reason\\\": \\\"Section 'PSCG and Inference Diagnostics' explicitly states this effect of increasing ph.\\\"\\n    },\\n    {\\n      \\\"id\\\": 24,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"progress-probe MAE (.082 versus .191)\\\",\\n      \\\"reason\\\": \\\"Section 'Analysis and Discussion' explicitly states these MAE values for the progress probe.\\\"\\n    },\\n    {\\n      \\\"id\\\": 25,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"YingMusic+ leads substitution and steady-tail RTF;\\\",\\n      \\\"reason\\\": \\\"Section 'Analysis and Discussion' explicitly states that YingMusic+ leads in these metrics.\\\"\\n    },\\n    {\\n      \\\"id\\\": 26,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Vevo2 leads cold-start RTF;\\\",\\n      \\\"reason\\\": \\\"Section 'Analysis and Discussion' explicitly states that Vevo2 leads in cold-start RTF.\\\"\\n    },\\n    {\\n      \\\"id\\\": 27,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"CLASVS leads deletion, insertion, voiced-onset MAE, N-MOS, L-MOS, and macro-PER.\\\",\\n      \\\"reason\\\": \\\"Section 'Analysis and Discussion' explicitly states that CLASVS leads in these metrics.\\\"\\n    },\\n    {\\n      \\\"id\\\": 28,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"one 1024-D semantic-feedback vector enters the cache per patch;\\\",\\n      \\\"reason\\\": \\\"Section 'Analysis and Discussion' explicitly states this cache entry size.\\\"\\n    },\\n    {\\n      \\\"id\\\": 29,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"and incremental memory is 5.82 GiB;\\\",\\n      \\\"reason\\\": \\\"Section 'Analysis and Discussion' explicitly states this incremental memory value.\\\"\\n    },\\n    {\\n      \\\"id\\\": 30,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"With cold-start/steady-tail RTF 3.840/1.395, it remains better suited to offline use.\\\",\\n      \\\"reason\\\": \\\"Section 'Analysis and Discussion' explicitly states these RTF values.\\\"\\n    },\\n    {\\n      \\\"id\\\": 31,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"No-edit output–target/source is .018/.019.\\\",\\n      \\\"reason\\\": \\\"Table 2 footnote explicitly states that the no-edit output-target NED is .018.\\\"\\n    },\\n    {\\n      \\\"id\\\": 32,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"No-edit output–target/source is .018/.019.\\\",\\n      \\\"reason\\\": \\\"Table 2 footnote explicitly states that the no-edit output-source NED is .019.\\\"\\n    },\\n    {\\n      \\\"id\\\": 33,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Output–target NED↓\\\\t.0490\\\\t.0430\\\\t.0252\\\\t.0289\\\\t.0365\\\",\\n      \\\"reason\\\": \\\"Table 2, row 'Output–target NED↓', column 'PSub' shows the value is exactly .0490.\\\"\\n    },\\n    {\\n      \\\"id\\\": 34,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Output–target NED↓\\\\t.0490\\\\t.0430\\\\t.0252\\\\t.0289\\\\t.0365\\\",\\n      \\\"reason\\\": \\\"Table 2, row 'Output–target NED↓', column 'FSub' shows the value is exactly .0430.\\\"\\n    },\\n    {\\n      \\\"id\\\": 35,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Output–target NED↓\\\\t.0490\\\\t.0430\\\\t.0252\\\\t.0289\\\\t.0365\\\",\\n      \\\"reason\\\": \\\"Table 2, row 'Output–target NED↓', column 'Del' shows the value is exactly .0252.\\\"\\n    },\\n    {\\n      \\\"id\\\": 36,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Output–target NED↓\\\\t.0490\\\\t.0430\\\\t.0252\\\\t.0289\\\\t.0365\\\",\\n      \\\"reason\\\": \\\"Table 2, row 'Output–target NED↓', column 'Ins' shows the value is exactly .0289.\\\"\\n    },\\n    {\\n      \\\"id\\\": 37,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Output–target NED↓\\\\t.0490\\\\t.0430\\\\t.0252\\\\t.0289\\\\t.0365\\\",\\n      \\\"reason\\\": \\\"Table 2, row 'Output–target NED↓', column 'Overall' shows the value is exactly .0365.\\\"\\n    },\\n    {\\n      \\\"id\\\": 38,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Output–source NED↑\\\\t.3107\\\\t.7639\\\\t.2500\\\\t.2954\\\\t.4050\\\",\\n      \\\"reason\\\": \\\"Table 2, row 'Output–source NED↑', column 'PSub' shows the value is exactly .3107.\\\"\\n    },\\n    {\\n      \\\"id\\\": 39,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Output–source NED↑\\\\t.3107\\\\t.7639\\\\t.2500\\\\t.2954\\\\t.4050\\\",\\n      \\\"reason\\\": \\\"Table 2, row 'Output–source NED↑', column 'FSub' shows the value is exactly .7639.\\\"\\n    },\\n    {\\n      \\\"id\\\": 40,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Output–source NED↑\\\\t.3107\\\\t.7639\\\\t.2500\\\\t.2954\\\\t.4050\\\",\\n      \\\"reason\\\": \\\"Table 2, row 'Output–source NED↑', column 'Del' shows the value is exactly .2500.\\\"\\n    }\\n  ]\\n}\\n```\", \"```json\\n{\\n  \\\"verdicts\\\": [\\n    {\\n      \\\"id\\\": 1,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\".2954\\\",\\n      \\\"reason\\\": \\\"Table 2, row 'Output–source NED↑', column 'Ins' shows .2954.\\\"\\n    },\\n    {\\n      \\\"id\\\": 2,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\".4050\\\",\\n      \\\"reason\\\": \\\"Table 2, row 'Output–source NED↑', column 'Overall' shows .4050.\\\"\\n    },\\n    {\\n      \\\"id\\\": 3,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\".3020\\\",\\n      \\\"reason\\\": \\\"Table 2, row 'Target–source NED', column 'PSub' shows .3020.\\\"\\n    },\\n    {\\n      \\\"id\\\": 4,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\".7600\\\",\\n      \\\"reason\\\": \\\"Table 2, row 'Target–source NED', column 'FSub' shows .7600.\\\"\\n    },\\n    {\\n      \\\"id\\\": 5,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\".2380\\\",\\n      \\\"reason\\\": \\\"Table 2, row 'Target–source NED', column 'Del' shows .2380.\\\"\\n    },\\n    {\\n      \\\"id\\\": 6,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\".2860\\\",\\n      \\\"reason\\\": \\\"Table 2, row 'Target–source NED', column 'Ins' shows .2860.\\\"\\n    },\\n    {\\n      \\\"id\\\": 7,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\".3965\\\",\\n      \\\"reason\\\": \\\"Table 2, row 'Target–source NED', column 'Overall' shows .3965.\\\"\\n    },\\n    {\\n      \\\"id\\\": 8,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\".2617\\\",\\n      \\\"reason\\\": \\\"Table 2, row 'Target-preference margin↑', column 'PSub' shows .2617.\\\"\\n    },\\n    {\\n      \\\"id\\\": 9,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\".7209\\\",\\n      \\\"reason\\\": \\\"Table 2, row 'Target-preference margin↑', column 'FSub' shows .7209.\\\"\\n    },\\n    {\\n      \\\"id\\\": 10,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\".2248\\\",\\n      \\\"reason\\\": \\\"Table 2, row 'Target-preference margin↑', column 'Del' shows .2248.\\\"\\n    },\\n    {\\n      \\\"id\\\": 11,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\".2665\\\",\\n      \\\"reason\\\": \\\"Table 2, row 'Target-preference margin↑', column 'Ins' shows .2665.\\\"\\n    },\\n    {\\n      \\\"id\\\": 12,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\".3685\\\",\\n      \\\"reason\\\": \\\"Table 2, row 'Target-preference margin↑', column 'Overall' shows .3685.\\\"\\n    },\\n    {\\n      \\\"id\\\": 13,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Budget-hit rates are 0/0/0/1.25% for PSub/FSub/Del/Ins\\\",\\n      \\\"reason\\\": \\\"Section 'What the stopping audit adds' explicitly states these budget-hit rates.\\\"\\n    },\\n    {\\n      \\\"id\\\": 14,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"premature/delayed-stop rates never exceed 1.25/2.50%\\\",\\n      \\\"reason\\\": \\\"Section 'What the stopping audit adds' states that premature-stop rates never exceed 1.25%.\\\"\\n    },\\n    {\\n      \\\"id\\\": 15,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"premature/delayed-stop rates never exceed 1.25/2.50%\\\",\\n      \\\"reason\\\": \\\"Section 'What the stopping audit adds' states that delayed-stop rates never exceed 2.50%.\\\"\\n    },\\n    {\\n      \\\"id\\\": 16,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Across 24 post-freeze singers (192 edits), CLASVS/YingMusic+ gives PER .0472/.0521\\\",\\n      \\\"reason\\\": \\\"Section 'Transfer audits' explicitly states these PER values.\\\"\\n    },\\n    {\\n      \\\"id\\\": 17,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Across 24 post-freeze singers (192 edits), CLASVS/YingMusic+ gives PER .0472/.0521, FPC .934/.928\\\",\\n      \\\"reason\\\": \\\"Section 'Transfer audits' explicitly states these FPC values.\\\"\\n    },\\n    {\\n      \\\"id\\\": 18,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Across 24 post-freeze singers (192 edits), CLASVS/YingMusic+ gives PER .0472/.0521, FPC .934/.928, SIM .905/.898\\\",\\n      \\\"reason\\\": \\\"Section 'Transfer audits' explicitly states these SIM values.\\\"\\n    },\\n    {\\n      \\\"id\\\": 19,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Across 24 post-freeze singers (192 edits), CLASVS/YingMusic+ gives PER .0472/.0521, FPC .934/.928, SIM .905/.898, and voiced-onset MAE 9.4/21.6 ms.\\\",\\n      \\\"reason\\\": \\\"Section 'Transfer audits' explicitly states these voiced-onset MAE values.\\\"\\n    },\\n    {\\n      \\\"id\\\": 20,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Evaluation uses one recognizer and reference-timing metrics on Mandarin 2–6-syllable edits\\\",\\n      \\\"reason\\\": \\\"Section 'Limitations, Reproducibility, and Ethics' explicitly states this scope of evaluation.\\\"\\n    }\\n  ]\\n}\\n```\"]"
 }

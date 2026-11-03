@@ -1,0 +1,59 @@
+{
+  "model": "openai.gpt-4o",
+  "repeat": 1,
+  "judge_prompt_sha256": "4ec65050cfdc718218dbc587f672291e733fd03b1254c20d77b61b0933e16162",
+  "error": null,
+  "tokens_in": 6278,
+  "tokens_out": 862,
+  "max_output_tokens": 16384,
+  "parsed": {
+    "items": {
+      "chk_problem": {
+        "label": "accurate",
+        "poster_evidence": "Existing training paradigms usually assume stable environments with minimal user intervention, leaving agents underprepared for failure detection and recovery.",
+        "reason": "The poster accurately describes the research problem as the lack of proactive reflection and failure recovery capabilities in language agents under noisy tool feedback and user corrections."
+      },
+      "chk_method": {
+        "label": "accurate",
+        "poster_evidence": "Agent-Reflex is a general three-stage framework for incentivizing proactive reflective thinking in language agents. 1. Environment Reflection Skill Discovery (RSD)... 2. Reflective Supervised Fine-Tuning (ReSFT)... 3. On-Policy Reflective Policy Optimization (ORPO)...",
+        "reason": "The poster correctly outlines the three stages of the Agent-Reflex framework as described in the paper."
+      },
+      "chk_data": {
+        "label": "accurate",
+        "poster_evidence": "Stage 1 perturbs tool returns of 557 MCP-anchored executable environments with mined failure families, contrasting success/failure rollouts into an offline skill library. Stage 2 samples local-repair (SR), global-recovery (KR), and user-correction (UR) continuations from that library, keeping only verifier-validated ones with skill prompts stripped.",
+        "reason": "The poster provides details about the dataset, including the 557 environments and the reflection meta-skills, matching the reference."
+      },
+      "chk_setup": {
+        "label": "accurate",
+        "poster_evidence": "Agent-Reflex is evaluated on two groups of benchmarks. Long-horizon tool use covers BFCL-v4, ACEBench, a stratified set of 200 ToolSandbox tasks, τ2-Bench, and VitaBench. Noisy interaction is evaluated with AgentNoiseBench under tool-noise and user-noise settings derived from τ2-Bench and VitaBench.",
+        "reason": "The poster specifies the evaluation benchmarks and conditions, aligning with the reference."
+      },
+      "chk_primary_result": {
+        "label": "accurate",
+        "poster_evidence": "Built on Qwen3-8B, Agent-Reflex reaches 58.6 overall on five long-horizon tool-use benchmarks and 29.1 on AgentNoiseBench.",
+        "reason": "The poster correctly reports the primary quantitative results from the paper."
+      },
+      "chk_secondary_result": {
+        "label": "accurate",
+        "poster_evidence": "Across six challenging benchmark suites, Agent-Reflex improves long-horizon tool use, robustness to tool and user noise, and training stability.",
+        "reason": "The poster mentions improved robustness to noise and stable training dynamics, matching the reference."
+      },
+      "chk_baseline": {
+        "label": "accurate",
+        "poster_evidence": "Comparisons include inference-time and training-time reflection methods, environment-scaling methods, and trajectory-level reinforcement-learning algorithms.",
+        "reason": "The poster describes comparisons against reflection methods, environment-scaling methods, and trajectory-level RL algorithms, consistent with the reference."
+      },
+      "chk_conclusion": {
+        "label": "accurate",
+        "poster_evidence": "Agent-Reflex is a general framework for teaching language agents to act reflectively under noisy interaction. RSD mines reusable environment-level reflection skills from matched success-failure trajectories under grounded tool perturbations. ReSFT turns these skills into verified supervision for self-reflection, global recovery, and user-centric correction. ORPO combines noisy agentic reinforcement learning with skill-guided on-policy distillation to sharpen proactive reflection.",
+        "reason": "The poster summarizes the take-home conclusion of the paper accurately."
+      },
+      "chk_limitation": {
+        "label": "accurate",
+        "poster_evidence": "The current skill library is mined offline from a fixed environment snapshot and may require maintenance when tool interfaces or service behavior change.",
+        "reason": "The poster explicitly mentions the limitation of the fixed skill library, matching the reference."
+      }
+    }
+  },
+  "raw": "```json\n{\n  \"items\": {\n    \"chk_problem\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Existing training paradigms usually assume stable environments with minimal user intervention, leaving agents underprepared for failure detection and recovery.\",\n      \"reason\": \"The poster accurately describes the research problem as the lack of proactive reflection and failure recovery capabilities in language agents under noisy tool feedback and user corrections.\"\n    },\n    \"chk_method\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Agent-Reflex is a general three-stage framework for incentivizing proactive reflective thinking in language agents. 1. Environment Reflection Skill Discovery (RSD)... 2. Reflective Supervised Fine-Tuning (ReSFT)... 3. On-Policy Reflective Policy Optimization (ORPO)...\",\n      \"reason\": \"The poster correctly outlines the three stages of the Agent-Reflex framework as described in the paper.\"\n    },\n    \"chk_data\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Stage 1 perturbs tool returns of 557 MCP-anchored executable environments with mined failure families, contrasting success/failure rollouts into an offline skill library. Stage 2 samples local-repair (SR), global-recovery (KR), and user-correction (UR) continuations from that library, keeping only verifier-validated ones with skill prompts stripped.\",\n      \"reason\": \"The poster provides details about the dataset, including the 557 environments and the reflection meta-skills, matching the reference.\"\n    },\n    \"chk_setup\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Agent-Reflex is evaluated on two groups of benchmarks. Long-horizon tool use covers BFCL-v4, ACEBench, a stratified set of 200 ToolSandbox tasks, τ2-Bench, and VitaBench. Noisy interaction is evaluated with AgentNoiseBench under tool-noise and user-noise settings derived from τ2-Bench and VitaBench.\",\n      \"reason\": \"The poster specifies the evaluation benchmarks and conditions, aligning with the reference.\"\n    },\n    \"chk_primary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Built on Qwen3-8B, Agent-Reflex reaches 58.6 overall on five long-horizon tool-use benchmarks and 29.1 on AgentNoiseBench.\",\n      \"reason\": \"The poster correctly reports the primary quantitative results from the paper.\"\n    },\n    \"chk_secondary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Across six challenging benchmark suites, Agent-Reflex improves long-horizon tool use, robustness to tool and user noise, and training stability.\",\n      \"reason\": \"The poster mentions improved robustness to noise and stable training dynamics, matching the reference.\"\n    },\n    \"chk_baseline\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Comparisons include inference-time and training-time reflection methods, environment-scaling methods, and trajectory-level reinforcement-learning algorithms.\",\n      \"reason\": \"The poster describes comparisons against reflection methods, environment-scaling methods, and trajectory-level RL algorithms, consistent with the reference.\"\n    },\n    \"chk_conclusion\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Agent-Reflex is a general framework for teaching language agents to act reflectively under noisy interaction. RSD mines reusable environment-level reflection skills from matched success-failure trajectories under grounded tool perturbations. ReSFT turns these skills into verified supervision for self-reflection, global recovery, and user-centric correction. ORPO combines noisy agentic reinforcement learning with skill-guided on-policy distillation to sharpen proactive reflection.\",\n      \"reason\": \"The poster summarizes the take-home conclusion of the paper accurately.\"\n    },\n    \"chk_limitation\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"The current skill library is mined offline from a fixed environment snapshot and may require maintenance when tool interfaces or service behavior change.\",\n      \"reason\": \"The poster explicitly mentions the limitation of the fixed skill library, matching the reference.\"\n    }\n  }\n}\n```"
+}

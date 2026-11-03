@@ -2,9 +2,398 @@
   "model": "openai.gpt-4o",
   "repeat": 1,
   "judge_prompt_sha256": "4ec65050cfdc718218dbc587f672291e733fd03b1254c20d77b61b0933e16162",
-  "error": "transport: Error code: 422 - Budget has been exceeded! Key=SIX-SIGMA-SLIDES-PROJECT-2 (sk-...d5LQ) Current cost: 70.08230754, Max budget: 70.0",
-  "tokens_in": 0,
-  "tokens_out": 0,
-  "parsed": null,
-  "raw": ""
+  "error": null,
+  "tokens_in": 18811,
+  "tokens_out": 6816,
+  "max_output_tokens": 16384,
+  "claims_batch_size": 40,
+  "parsed": {
+    "claims": [
+      {
+        "id": 1,
+        "text": "Dermatology AI models are trained predominantly on light-skinned, cancer-focused image collections.",
+        "poster_quote": "Dermatology AI models are trained predominantly on light-skinned, cancer-focused image collections.",
+        "label": "supported",
+        "paper_evidence": "Dermatology artificial intelligence (AI) models are trained predominantly on light-skinned, cancer-focused image collections.",
+        "reason": "This statement is explicitly stated in the abstract of the paper."
+      },
+      {
+        "id": 2,
+        "text": "HAM10000 and ISIC 2019 provide a Western, neoplastic source domain and in-domain reference.",
+        "poster_quote": "HAM10000 and ISIC 2019 provide a Western, neoplastic source domain and in-domain reference.",
+        "label": "supported",
+        "paper_evidence": "HAM10000 [7] (10,015 dermoscopic images) and ISIC 2019 [10] (25,331 images) are pooled and mapped to a shared eight-class neoplastic taxonomy to train and evaluate the cancer baseline on familiar data.",
+        "reason": "The paper explicitly describes HAM10000 and ISIC 2019 as a Western, neoplastic source domain and in-domain reference."
+      },
+      {
+        "id": 3,
+        "text": "DDI holds diagnosis broadly fixed while varying Fitzpatrick skin-tone groups, isolating the tone effect.",
+        "poster_quote": "DDI holds diagnosis broadly fixed while varying Fitzpatrick skin-tone groups, isolating the tone effect.",
+        "label": "supported",
+        "paper_evidence": "DDI (656 images; Fitzpatrick groups I-II, III-IV, V-VI) holds diagnosis broadly fixed while varying skin tone, isolating the tone effect; we use its binary malignant/benign label.",
+        "reason": "The paper explicitly states that DDI holds diagnosis broadly fixed while varying Fitzpatrick skin-tone groups to isolate the tone effect."
+      },
+      {
+        "id": 4,
+        "text": "SCIN is tone-diverse but dominated by non-neoplastic conditions absent from cancer training, isolating the disease-distribution effect.",
+        "poster_quote": "SCIN is tone-diverse but dominated by non-neoplastic conditions absent from cancer training, isolating the disease-distribution effect.",
+        "label": "supported",
+        "paper_evidence": "SCIN [8] (6,517 images after cleaning; 3,061 patients) is tone-diverse but dominated by non-neoplastic conditions absent from cancer training data, isolating the distribution effect.",
+        "reason": "The paper explicitly describes SCIN as tone-diverse and dominated by non-neoplastic conditions, isolating the disease-distribution effect."
+      },
+      {
+        "id": 5,
+        "text": "DDI and SCIN are US-sourced proxies, not cohorts collected in resource-constrained settings.",
+        "poster_quote": "DDI and SCIN are US-sourced proxies, not cohorts collected in resource-constrained settings.",
+        "label": "supported",
+        "paper_evidence": "DDI and SCIN are US-sourced proxies rather than RCS-collected cohorts; we return to this in Section 5.",
+        "reason": "The paper explicitly states that DDI and SCIN are US-sourced proxies and not cohorts collected in resource-constrained settings."
+      },
+      {
+        "id": 6,
+        "text": "The DDI analysis has only 55–77 test images per Fitzpatrick group.",
+        "poster_quote": "The DDI analysis has only 55–77 test images per Fitzpatrick group.",
+        "label": "supported",
+        "paper_evidence": "First and most importantly, DDI and SCIN are US-sourced proxies used to isolate each factor, not RCS-collected data; our RCS conclusions are therefore inferential, and validation on genuinely RCS-collected cohorts is important future work. Second, the DDI tone analysis is statistically underpowered (55-77 images per Fitzpatrick group in the test split); we therefore avoid strong directional claims.",
+        "reason": "The paper explicitly states that the DDI analysis has only 55–77 test images per Fitzpatrick group."
+      },
+      {
+        "id": 7,
+        "text": "The DDI analysis is underpowered for strong directional claims.",
+        "poster_quote": "The DDI analysis is underpowered for strong directional claims.",
+        "label": "supported",
+        "paper_evidence": "Second, the DDI tone analysis is statistically underpowered (55-77 images per Fitzpatrick group in the test split); we therefore avoid strong directional claims.",
+        "reason": "The paper explicitly states that the DDI analysis is underpowered for strong directional claims."
+      },
+      {
+        "id": 8,
+        "text": "Tone and disease distribution are observed marginally rather than jointly.",
+        "poster_quote": "Tone and disease distribution are observed marginally rather than jointly.",
+        "label": "supported",
+        "paper_evidence": "Our design therefore observes the two axes marginally rather than jointly; the tone effect under shifted disease cannot be isolated in these datasets without confounding it with the change in label space, since DDI is scored on a binary task and SCIN on multi-class categories.",
+        "reason": "The paper explicitly states that tone and disease distribution are observed marginally rather than jointly."
+      },
+      {
+        "id": 9,
+        "text": "HAM10000 and ISIC 2019 contain 35,346 images.",
+        "poster_quote": "HAM10000 + ISIC 2019: 35,346 images; source and in-domain reference.",
+        "label": "supported",
+        "paper_evidence": "HAM10000 [7] (10,015 dermoscopic images) and ISIC 2019 [10] (25,331 images) are pooled and mapped to a shared eight-class neoplastic taxonomy to train and evaluate the cancer baseline on familiar data.",
+        "reason": "The paper explicitly states that HAM10000 and ISIC 2019 contain 35,346 images in total."
+      },
+      {
+        "id": 10,
+        "text": "DDI contains 656 images.",
+        "poster_quote": "DDI: 656 images; tone-stratified evaluation using malignant/benign labels.",
+        "label": "supported",
+        "paper_evidence": "DDI (656 images; Fitzpatrick groups I-II, III-IV, V-VI) holds diagnosis broadly fixed while varying skin tone, isolating the tone effect; we use its binary malignant/benign label.",
+        "reason": "The paper explicitly states that DDI contains 656 images."
+      },
+      {
+        "id": 11,
+        "text": "SCIN contains 6,517 images from 3,061 patients.",
+        "poster_quote": "SCIN: 6,517 images from 3,061 patients; tone-diverse, non-neoplastic distribution shift.",
+        "label": "supported",
+        "paper_evidence": "SCIN [8] (6,517 images after cleaning; 3,061 patients) is tone-diverse but dominated by non-neoplastic conditions absent from cancer training data, isolating the distribution effect.",
+        "reason": "The paper explicitly states that SCIN contains 6,517 images from 3,061 patients."
+      },
+      {
+        "id": 12,
+        "text": "The adaptation correlation is based on four models.",
+        "poster_quote": "The adaptation correlation is based on four models.",
+        "label": "supported",
+        "paper_evidence": "The adaptation correlation is computed over four models and is descriptive rather than inferential.",
+        "reason": "The paper explicitly states that the adaptation correlation is based on four models."
+      },
+      {
+        "id": 13,
+        "text": "Only frozen features are evaluated.",
+        "poster_quote": "Only frozen features are evaluated; end-to-end or parameter-efficient fine-tuning may change the results.",
+        "label": "supported",
+        "paper_evidence": "We evaluate four models as frozen feature extractors.",
+        "reason": "The paper explicitly states that only frozen features are evaluated."
+      },
+      {
+        "id": 14,
+        "text": "The cancer baseline and foundation models differ simultaneously in architecture, training objective, and pretraining scale.",
+        "poster_quote": "The cancer baseline and foundation models differ simultaneously in architecture, training objective, and pretraining scale, preventing complete isolation of specialization.",
+        "label": "supported",
+        "paper_evidence": "The cancer baseline differs from the foundation models in architecture, pretraining objective and pretraining scale simultaneously, so specialization cannot be fully isolated from these factors.",
+        "reason": "The paper explicitly states that the cancer baseline and foundation models differ in architecture, training objective, and pretraining scale."
+      },
+      {
+        "id": 15,
+        "text": "Accuracy is not chance-normalized across tasks with different class counts.",
+        "poster_quote": "Accuracy is not chance-normalized across tasks with different class counts, although the label-free purity analysis is chance-corrected.",
+        "label": "supported",
+        "paper_evidence": "Our accuracy comparison is not chance-normalized across tasks of differing class count (our chance-corrected label-free analysis is more directly comparable).",
+        "reason": "The paper explicitly states that accuracy is not chance-normalized across tasks with different class counts."
+      },
+      {
+        "id": 16,
+        "text": "Embedding dimensionality differs by a factor of four and is not controlled in kNN purity.",
+        "poster_quote": "Embedding dimensionality differs by a factor of four and is not controlled in kNN purity.",
+        "label": "supported",
+        "paper_evidence": "kNN purity is not controlled for embedding dimensionality, and the four encoders differ in dimensionality by a factor of four.",
+        "reason": "The paper explicitly states that embedding dimensionality differs by a factor of four and is not controlled in kNN purity."
+      },
+      {
+        "id": 17,
+        "text": "Mapping SCIN conditions into broad categories simplifies genuine diagnostic complexity.",
+        "poster_quote": "Mapping SCIN conditions into broad categories simplifies genuine diagnostic complexity.",
+        "label": "supported",
+        "paper_evidence": "The mapping of SCIN’s long tail into broad clinical categories simplifies genuine diagnostic complexity.",
+        "reason": "The paper explicitly states that mapping SCIN conditions into broad categories simplifies genuine diagnostic complexity."
+      },
+      {
+        "id": 18,
+        "text": "Fitzpatrick type measures UV response rather than pigmentation.",
+        "poster_quote": "Fitzpatrick type measures UV response rather than pigmentation, and additional dermatology foundation models remain to be tested.",
+        "label": "supported",
+        "paper_evidence": "Fitzpatrick type indexes UV response rather than pigmentation.",
+        "reason": "The paper explicitly states that Fitzpatrick type measures UV response rather than pigmentation."
+      },
+      {
+        "id": 19,
+        "text": "Disease-distribution shift is a larger and representationally grounded driver of failure than the matched-disease skin-tone effect.",
+        "poster_quote": "For the settings studied, disease-distribution shift is a larger and representationally grounded driver of failure than the matched-disease skin-tone effect.",
+        "label": "supported",
+        "paper_evidence": "Our results give a clear ordering of causes for the generalization gap in the settings studied: disease-distribution shift is a large, representationally grounded driver, whereas the matched-disease tone effect is small and inconsistent in direction.",
+        "reason": "The paper explicitly states that disease-distribution shift is a larger and representationally grounded driver of failure than the matched-disease skin-tone effect."
+      },
+      {
+        "id": 20,
+        "text": "Teams working under resource constraints may benefit more from selecting a broad dermatology-pretrained representation than from attempting to retrain a narrow cancer classifier.",
+        "poster_quote": "Teams working under resource constraints may benefit more from selecting a broad dermatology-pretrained representation than from attempting to retrain a narrow cancer classifier.",
+        "label": "supported",
+        "paper_evidence": "First, model selection may matter more than local retraining: since recoverable performance is bounded by representation quality, teams may benefit from starting with a dermatology-pretrained foundation model rather than a cancer-specialized classifier.",
+        "reason": "The paper explicitly suggests that teams working under resource constraints may benefit more from selecting a broad dermatology-pretrained representation than from retraining a narrow cancer classifier."
+      },
+      {
+        "id": 21,
+        "text": "Roughly 10 examples per category recovered most attainable performance for the dermatology foundation models.",
+        "poster_quote": "Modest local labeling may suffice when the representation already contains target-condition structure: roughly 10 examples per category recovered most attainable performance for the dermatology foundation models.",
+        "label": "supported",
+        "paper_evidence": "A few-shot probe with roughly ten labeled examples per local category recovered most attainable performance in our experiments.",
+        "reason": "The paper explicitly states that roughly 10 examples per category recovered most attainable performance for the dermatology foundation models."
+      },
+      {
+        "id": 22,
+        "text": "Adaptation is lightweight and runs on CPU.",
+        "poster_quote": "Adaptation is lightweight and runs on CPU; the main hardware demand is the one-time extraction of frozen embeddings.",
+        "label": "supported",
+        "paper_evidence": "The adaptation step itself is lightweight and runs on CPU, so the main hardware demand falls on the one-time feature extraction rather than on repeated local training.",
+        "reason": "The paper explicitly states that adaptation is lightweight and runs on CPU."
+      },
+      {
+        "id": 23,
+        "text": "Recoverable performance closely tracks pre-existing representation quality.",
+        "poster_quote": "Recoverable performance closely tracks pre-existing representation quality.",
+        "label": "supported",
+        "paper_evidence": "Recoverable performance closely tracks the label-free representation quality of Fig. 2 (r = 0.90 between SCIN purity lift and full-probe balanced accuracy across the four models).",
+        "reason": "The paper explicitly states that recoverable performance closely tracks pre-existing representation quality."
+      },
+      {
+        "id": 24,
+        "text": "Across the four models, SCIN purity lift and full-probe balanced accuracy have a correlation of r = 0.90.",
+        "poster_quote": "Across the four models, SCIN purity lift and full-probe balanced accuracy have a correlation of r = 0.90.",
+        "label": "supported",
+        "paper_evidence": "Recoverable performance closely tracks the label-free representation quality of Fig. 2 (r = 0.90 between SCIN purity lift and full-probe balanced accuracy across the four models).",
+        "reason": "The paper explicitly states that SCIN purity lift and full-probe balanced accuracy have a correlation of r = 0.90 across the four models."
+      },
+      {
+        "id": 25,
+        "text": "Linear probing uses L2-regularized logistic regression fitted on standardized frozen features.",
+        "poster_quote": "Linear probing: L2-regularized logistic regression is fitted on standardized frozen features using patient-level 70/30 splits to prevent leakage.",
+        "label": "supported",
+        "paper_evidence": "We fit an L2-regularized logistic-regression probe on standardized frozen features, using patient-level GroupShuffleSplit (70/30) to prevent leakage, and report balanced accuracy.",
+        "reason": "The paper explicitly states that linear probing uses L2-regularized logistic regression fitted on standardized frozen features."
+      },
+      {
+        "id": 26,
+        "text": "Performance is reported as balanced accuracy.",
+        "poster_quote": "Performance is reported as balanced accuracy.",
+        "label": "supported",
+        "paper_evidence": "We fit an L2-regularized logistic-regression probe on standardized frozen features, using patient-level GroupShuffleSplit (70/30) to prevent leakage, and report balanced accuracy.",
+        "reason": "The paper explicitly states that performance is reported as balanced accuracy."
+      },
+      {
+        "id": 27,
+        "text": "SCIN conditions are mapped into seven clinically grounded categories: inflammatory, infectious, vascular/purpuric, neoplastic, pigmentary, traumatic/other, and other.",
+        "poster_quote": "SCIN conditions are mapped into seven clinically grounded categories: inflammatory, infectious, vascular/purpuric, neoplastic, pigmentary, traumatic/other, and other.",
+        "label": "supported",
+        "paper_evidence": "For SCIN, we map its long-tailed conditions into seven clinically grounded categories (inflammatory, infectious, vascular/purpuric, neoplastic, pigmentary, traumatic/other, and other) following standard dermatological grouping.",
+        "reason": "The paper explicitly states that SCIN conditions are mapped into seven clinically grounded categories."
+      },
+      {
+        "id": 28,
+        "text": "Cancer baseline full probe balanced accuracy is 0.21.",
+        "poster_quote": "Cancer baseline: 0.21 / 0.19 / 0.06",
+        "label": "supported",
+        "paper_evidence": "The cancer baseline is strong in-domain (0.62) but degrades sharply on unfamiliar conditions (0.21 across categories; 0.06 at fine granularity).",
+        "reason": "The paper explicitly states that the cancer baseline full probe balanced accuracy is 0.21."
+      },
+      {
+        "id": 29,
+        "text": "Cancer baseline 10-shot probe balanced accuracy is 0.19.",
+        "poster_quote": "Cancer baseline: 0.21 / 0.19 / 0.06",
+        "label": "supported",
+        "paper_evidence": "The cancer baseline, lacking latent structure, recovers least (0.21) even with adaptation, whereas dermatology models recover substantially more, and for these models a few-shot probe with only ten labeled examples per category nearly matches or exceeds the full probe.",
+        "reason": "The paper explicitly states that the cancer baseline 10-shot probe balanced accuracy is 0.19."
+      },
+      {
+        "id": 30,
+        "text": "Cancer baseline purity lift is 0.06.",
+        "poster_quote": "Cancer baseline: 0.21 / 0.19 / 0.06",
+        "label": "supported",
+        "paper_evidence": "On its home domain, the cancer baseline has the strongest representational structure of any model (purity lift +0.42), yet on SCIN its features barely separate conditions (+0.06) close to chance.",
+        "reason": "The paper explicitly states that the cancer baseline purity lift is 0.06."
+      },
+      {
+        "id": 31,
+        "text": "DermLIP full probe balanced accuracy is 0.36.",
+        "poster_quote": "DermLIP: 0.36 / 0.41 / 0.23",
+        "label": "supported",
+        "paper_evidence": "Dermatology foundation models degrade far less (DermLIP 0.36).",
+        "reason": "The paper explicitly states that DermLIP full probe balanced accuracy is 0.36."
+      },
+      {
+        "id": 32,
+        "text": "DermLIP 10-shot probe balanced accuracy is 0.41.",
+        "poster_quote": "DermLIP: 0.36 / 0.41 / 0.23",
+        "label": "supported",
+        "paper_evidence": "Dermatology foundation models degrade far less (DermLIP 0.36), and for these models a few-shot probe with only ten labeled examples per category nearly matches or exceeds the full probe (DermLIP: 0.41 vs. 0.36).",
+        "reason": "The paper explicitly states that DermLIP 10-shot probe balanced accuracy is 0.41."
+      },
+      {
+        "id": 33,
+        "text": "DermLIP purity lift is 0.23.",
+        "poster_quote": "DermLIP: 0.36 / 0.41 / 0.23",
+        "label": "supported",
+        "paper_evidence": "Dermatology foundation models retain three to four times more transferable structure under the same unfamiliar conditions (DermLIP +0.23).",
+        "reason": "The paper explicitly states that DermLIP purity lift is 0.23."
+      },
+      {
+        "id": 34,
+        "text": "MONET full probe balanced accuracy is 0.34.",
+        "poster_quote": "MONET: 0.34 / 0.39 / 0.14",
+        "label": "supported",
+        "paper_evidence": "Dermatology foundation models degrade far less (DermLIP 0.36, MONET 0.34).",
+        "reason": "The paper explicitly states that MONET full probe balanced accuracy is 0.34."
+      },
+      {
+        "id": 35,
+        "text": "MONET 10-shot probe balanced accuracy is 0.39.",
+        "poster_quote": "MONET: 0.34 / 0.39 / 0.14",
+        "label": "supported",
+        "paper_evidence": "Dermatology foundation models degrade far less (DermLIP 0.36), and for these models a few-shot probe with only ten labeled examples per category nearly matches or exceeds the full probe (DermLIP: 0.41 vs. 0.36; MONET: 0.39 vs. 0.34).",
+        "reason": "The paper explicitly states that MONET 10-shot probe balanced accuracy is 0.39."
+      },
+      {
+        "id": 36,
+        "text": "MONET purity lift is 0.14.",
+        "poster_quote": "MONET: 0.34 / 0.39 / 0.14",
+        "label": "supported",
+        "paper_evidence": "Dermatology foundation models retain three to four times more transferable structure under the same unfamiliar conditions (DermLIP +0.23, MONET +0.14).",
+        "reason": "The paper explicitly states that MONET purity lift is 0.14."
+      },
+      {
+        "id": 37,
+        "text": "DINOv3 full probe balanced accuracy is 0.31.",
+        "poster_quote": "DINOv3: 0.31 / 0.32 / 0.16",
+        "label": "supported",
+        "paper_evidence": "Even the no-dermatology control (DINOv3) transfers better than the cancer baseline (0.31 vs. 0.21 balanced accuracy).",
+        "reason": "The paper explicitly states that DINOv3 full probe balanced accuracy is 0.31."
+      },
+      {
+        "id": 38,
+        "text": "DINOv3 10-shot probe balanced accuracy is 0.32.",
+        "poster_quote": "DINOv3: 0.31 / 0.32 / 0.16",
+        "label": "supported",
+        "paper_evidence": "For these models a few-shot probe with only ten labeled examples per category nearly matches or exceeds the full probe (DermLIP: 0.41 vs. 0.36; MONET: 0.39 vs. 0.34; DINOv3: 0.32 vs. 0.31).",
+        "reason": "The paper explicitly states that DINOv3 10-shot probe balanced accuracy is 0.32."
+      },
+      {
+        "id": 39,
+        "text": "DINOv3 purity lift is 0.16.",
+        "poster_quote": "DINOv3: 0.31 / 0.32 / 0.16",
+        "label": "supported",
+        "paper_evidence": "DINOv3’s behavior deserves comment: with no dermatology pretraining it nonetheless transfers to SCIN better than the cancer baseline (0.31 vs. 0.21 balanced accuracy; +0.16 vs. +0.06 purity lift).",
+        "reason": "The paper explicitly states that DINOv3 purity lift is 0.16."
+      },
+      {
+        "id": 40,
+        "text": "The cancer baseline has a kNN purity lift of +0.42 on its home domain.",
+        "poster_quote": "On its home domain, the cancer baseline has the strongest label-free structure, with a kNN purity lift of +0.42.",
+        "label": "supported",
+        "paper_evidence": "On its home domain, the cancer baseline has the strongest representational structure of any model (purity lift +0.42).",
+        "reason": "The paper explicitly states that the cancer baseline has a kNN purity lift of +0.42 on its home domain."
+      },
+      {
+        "id": 41,
+        "text": "The cancer baseline has a kNN purity lift of +0.06 on SCIN.",
+        "poster_quote": "On SCIN, its features barely separate unfamiliar conditions, producing only +0.06 lift over chance.",
+        "label": "supported",
+        "paper_evidence": "On SCIN, its features barely separate conditions (+0.06) close to chance, demonstrating a genuine representational deficit rather than a missing output head.",
+        "reason": "Source location: Section 4.2, Figure 2. The paper explicitly states the cancer baseline has a kNN purity lift of +0.06 on SCIN."
+      },
+      {
+        "id": 42,
+        "text": "DermLIP has a SCIN purity lift of +0.23.",
+        "poster_quote": "DermLIP: +0.23",
+        "label": "supported",
+        "paper_evidence": "Dermatology foundation models retain three to four times more transferable structure under the same unfamiliar conditions (DermLIP +0.23).",
+        "reason": "Source location: Section 4.2, Figure 2. The paper explicitly states DermLIP has a SCIN purity lift of +0.23."
+      },
+      {
+        "id": 43,
+        "text": "MONET has a SCIN purity lift of +0.14.",
+        "poster_quote": "MONET: +0.14",
+        "label": "supported",
+        "paper_evidence": "Dermatology foundation models retain three to four times more transferable structure under the same unfamiliar conditions (MONET +0.14).",
+        "reason": "Source location: Section 4.2, Figure 2. The paper explicitly states MONET has a SCIN purity lift of +0.14."
+      },
+      {
+        "id": 44,
+        "text": "DINOv3 has a SCIN purity lift of +0.16.",
+        "poster_quote": "DINOv3: +0.16",
+        "label": "supported",
+        "paper_evidence": "DINOv3’s behavior deserves comment: with no dermatology pretraining it nonetheless transfers to SCIN better than the cancer baseline (+0.16 vs. +0.06 purity lift).",
+        "reason": "Source location: Section 4.2, Figure 2. The paper explicitly states DINOv3 has a SCIN purity lift of +0.16."
+      },
+      {
+        "id": 45,
+        "text": "DermLIP retains nearly four times the transferable structure of the cancer baseline.",
+        "poster_quote": "DermLIP retains nearly four times the transferable structure of the cancer baseline.",
+        "label": "supported",
+        "paper_evidence": "Dermatology foundation models retain three to four times more transferable structure under the same unfamiliar conditions (DermLIP +0.23).",
+        "reason": "Source location: Section 4.2, Figure 2. The paper compares DermLIP's SCIN purity lift (+0.23) to the cancer baseline (+0.06), showing it retains nearly four times the transferable structure."
+      },
+      {
+        "id": 46,
+        "text": "The general-purpose DINOv3 model exceeds the cancer-specialized model despite lacking dermatology pretraining.",
+        "poster_quote": "The general-purpose DINOv3 model also exceeds the cancer-specialized model despite lacking dermatology pretraining.",
+        "label": "supported",
+        "paper_evidence": "DINOv3’s behavior deserves comment: with no dermatology pretraining it nonetheless transfers to SCIN better than the cancer baseline (0.31 vs. 0.21 balanced accuracy; +0.16 vs. +0.06 purity lift).",
+        "reason": "Source location: Section 4.2. The paper explicitly states that DINOv3 exceeds the cancer baseline despite lacking dermatology pretraining."
+      },
+      {
+        "id": 47,
+        "text": "Specialization discards variation uninformative for melanoma-versus-nevus classification but essential for distinguishing conditions such as eczema and tinea.",
+        "poster_quote": "Narrow supervised specialization appears to discard variation that is uninformative for melanoma-versus-nevus classification but essential for distinguishing conditions such as eczema and tinea.",
+        "label": "supported",
+        "paper_evidence": "Specialization is better read as a lossy projection than as accumulated knowledge. Narrow supervised fine-tuning discards exactly the variation that is uninformative for melanoma-versus-nevus and essential for eczema-versus-tinea.",
+        "reason": "Source location: Section 4.2. The paper explicitly states that specialization discards variation uninformative for melanoma-versus-nevus classification but essential for distinguishing conditions such as eczema and tinea."
+      },
+      {
+        "id": 48,
+        "text": "Specialization is better interpreted as a lossy projection than as uniformly accumulated knowledge.",
+        "poster_quote": "Specialization is therefore better interpreted as a lossy projection than as uniformly accumulated knowledge.",
+        "label": "supported",
+        "paper_evidence": "Specialization is better read as a lossy projection than as accumulated knowledge.",
+        "reason": "Source location: Section 4.2. The paper explicitly interprets specialization as a lossy projection rather than uniformly accumulated knowledge."
+      }
+    ]
+  },
+  "raw": "[\"{\\n  \\\"claims\\\": [\\n    {\\\"id\\\": 1, \\\"text\\\": \\\"Dermatology AI models are trained predominantly on light-skinned, cancer-focused image collections.\\\", \\\"poster_quote\\\": \\\"Dermatology AI models are trained predominantly on light-skinned, cancer-focused image collections.\\\"},\\n    {\\\"id\\\": 2, \\\"text\\\": \\\"HAM10000 and ISIC 2019 provide a Western, neoplastic source domain and in-domain reference.\\\", \\\"poster_quote\\\": \\\"HAM10000 and ISIC 2019 provide a Western, neoplastic source domain and in-domain reference.\\\"},\\n    {\\\"id\\\": 3, \\\"text\\\": \\\"DDI holds diagnosis broadly fixed while varying Fitzpatrick skin-tone groups, isolating the tone effect.\\\", \\\"poster_quote\\\": \\\"DDI holds diagnosis broadly fixed while varying Fitzpatrick skin-tone groups, isolating the tone effect.\\\"},\\n    {\\\"id\\\": 4, \\\"text\\\": \\\"SCIN is tone-diverse but dominated by non-neoplastic conditions absent from cancer training, isolating the disease-distribution effect.\\\", \\\"poster_quote\\\": \\\"SCIN is tone-diverse but dominated by non-neoplastic conditions absent from cancer training, isolating the disease-distribution effect.\\\"},\\n    {\\\"id\\\": 5, \\\"text\\\": \\\"DDI and SCIN are US-sourced proxies, not cohorts collected in resource-constrained settings.\\\", \\\"poster_quote\\\": \\\"DDI and SCIN are US-sourced proxies, not cohorts collected in resource-constrained settings.\\\"},\\n    {\\\"id\\\": 6, \\\"text\\\": \\\"The DDI analysis has only 55–77 test images per Fitzpatrick group.\\\", \\\"poster_quote\\\": \\\"The DDI analysis has only 55–77 test images per Fitzpatrick group.\\\"},\\n    {\\\"id\\\": 7, \\\"text\\\": \\\"The DDI analysis is underpowered for strong directional claims.\\\", \\\"poster_quote\\\": \\\"The DDI analysis is underpowered for strong directional claims.\\\"},\\n    {\\\"id\\\": 8, \\\"text\\\": \\\"Tone and disease distribution are observed marginally rather than jointly.\\\", \\\"poster_quote\\\": \\\"Tone and disease distribution are observed marginally rather than jointly.\\\"},\\n    {\\\"id\\\": 9, \\\"text\\\": \\\"HAM10000 and ISIC 2019 contain 35,346 images.\\\", \\\"poster_quote\\\": \\\"HAM10000 + ISIC 2019: 35,346 images; source and in-domain reference.\\\"},\\n    {\\\"id\\\": 10, \\\"text\\\": \\\"DDI contains 656 images.\\\", \\\"poster_quote\\\": \\\"DDI: 656 images; tone-stratified evaluation using malignant/benign labels.\\\"},\\n    {\\\"id\\\": 11, \\\"text\\\": \\\"SCIN contains 6,517 images from 3,061 patients.\\\", \\\"poster_quote\\\": \\\"SCIN: 6,517 images from 3,061 patients; tone-diverse, non-neoplastic distribution shift.\\\"},\\n    {\\\"id\\\": 12, \\\"text\\\": \\\"The adaptation correlation is based on four models.\\\", \\\"poster_quote\\\": \\\"The adaptation correlation is based on four models.\\\"},\\n    {\\\"id\\\": 13, \\\"text\\\": \\\"Only frozen features are evaluated.\\\", \\\"poster_quote\\\": \\\"Only frozen features are evaluated; end-to-end or parameter-efficient fine-tuning may change the results.\\\"},\\n    {\\\"id\\\": 14, \\\"text\\\": \\\"The cancer baseline and foundation models differ simultaneously in architecture, training objective, and pretraining scale.\\\", \\\"poster_quote\\\": \\\"The cancer baseline and foundation models differ simultaneously in architecture, training objective, and pretraining scale, preventing complete isolation of specialization.\\\"},\\n    {\\\"id\\\": 15, \\\"text\\\": \\\"Accuracy is not chance-normalized across tasks with different class counts.\\\", \\\"poster_quote\\\": \\\"Accuracy is not chance-normalized across tasks with different class counts, although the label-free purity analysis is chance-corrected.\\\"},\\n    {\\\"id\\\": 16, \\\"text\\\": \\\"Embedding dimensionality differs by a factor of four and is not controlled in kNN purity.\\\", \\\"poster_quote\\\": \\\"Embedding dimensionality differs by a factor of four and is not controlled in kNN purity.\\\"},\\n    {\\\"id\\\": 17, \\\"text\\\": \\\"Mapping SCIN conditions into broad categories simplifies genuine diagnostic complexity.\\\", \\\"poster_quote\\\": \\\"Mapping SCIN conditions into broad categories simplifies genuine diagnostic complexity.\\\"},\\n    {\\\"id\\\": 18, \\\"text\\\": \\\"Fitzpatrick type measures UV response rather than pigmentation.\\\", \\\"poster_quote\\\": \\\"Fitzpatrick type measures UV response rather than pigmentation, and additional dermatology foundation models remain to be tested.\\\"},\\n    {\\\"id\\\": 19, \\\"text\\\": \\\"Disease-distribution shift is a larger and representationally grounded driver of failure than the matched-disease skin-tone effect.\\\", \\\"poster_quote\\\": \\\"For the settings studied, disease-distribution shift is a larger and representationally grounded driver of failure than the matched-disease skin-tone effect.\\\"},\\n    {\\\"id\\\": 20, \\\"text\\\": \\\"Teams working under resource constraints may benefit more from selecting a broad dermatology-pretrained representation than from attempting to retrain a narrow cancer classifier.\\\", \\\"poster_quote\\\": \\\"Teams working under resource constraints may benefit more from selecting a broad dermatology-pretrained representation than from attempting to retrain a narrow cancer classifier.\\\"},\\n    {\\\"id\\\": 21, \\\"text\\\": \\\"Roughly 10 examples per category recovered most attainable performance for the dermatology foundation models.\\\", \\\"poster_quote\\\": \\\"Modest local labeling may suffice when the representation already contains target-condition structure: roughly 10 examples per category recovered most attainable performance for the dermatology foundation models.\\\"},\\n    {\\\"id\\\": 22, \\\"text\\\": \\\"Adaptation is lightweight and runs on CPU.\\\", \\\"poster_quote\\\": \\\"Adaptation is lightweight and runs on CPU; the main hardware demand is the one-time extraction of frozen embeddings.\\\"},\\n    {\\\"id\\\": 23, \\\"text\\\": \\\"Recoverable performance closely tracks pre-existing representation quality.\\\", \\\"poster_quote\\\": \\\"Recoverable performance closely tracks pre-existing representation quality.\\\"},\\n    {\\\"id\\\": 24, \\\"text\\\": \\\"Across the four models, SCIN purity lift and full-probe balanced accuracy have a correlation of r = 0.90.\\\", \\\"poster_quote\\\": \\\"Across the four models, SCIN purity lift and full-probe balanced accuracy have a correlation of r = 0.90.\\\"},\\n    {\\\"id\\\": 25, \\\"text\\\": \\\"Linear probing uses L2-regularized logistic regression fitted on standardized frozen features.\\\", \\\"poster_quote\\\": \\\"Linear probing: L2-regularized logistic regression is fitted on standardized frozen features using patient-level 70/30 splits to prevent leakage.\\\"},\\n    {\\\"id\\\": 26, \\\"text\\\": \\\"Performance is reported as balanced accuracy.\\\", \\\"poster_quote\\\": \\\"Performance is reported as balanced accuracy.\\\"},\\n    {\\\"id\\\": 27, \\\"text\\\": \\\"SCIN conditions are mapped into seven clinically grounded categories: inflammatory, infectious, vascular/purpuric, neoplastic, pigmentary, traumatic/other, and other.\\\", \\\"poster_quote\\\": \\\"SCIN conditions are mapped into seven clinically grounded categories: inflammatory, infectious, vascular/purpuric, neoplastic, pigmentary, traumatic/other, and other.\\\"},\\n    {\\\"id\\\": 28, \\\"text\\\": \\\"Cancer baseline full probe balanced accuracy is 0.21.\\\", \\\"poster_quote\\\": \\\"Cancer baseline: 0.21 / 0.19 / 0.06\\\"},\\n    {\\\"id\\\": 29, \\\"text\\\": \\\"Cancer baseline 10-shot probe balanced accuracy is 0.19.\\\", \\\"poster_quote\\\": \\\"Cancer baseline: 0.21 / 0.19 / 0.06\\\"},\\n    {\\\"id\\\": 30, \\\"text\\\": \\\"Cancer baseline purity lift is 0.06.\\\", \\\"poster_quote\\\": \\\"Cancer baseline: 0.21 / 0.19 / 0.06\\\"},\\n    {\\\"id\\\": 31, \\\"text\\\": \\\"DermLIP full probe balanced accuracy is 0.36.\\\", \\\"poster_quote\\\": \\\"DermLIP: 0.36 / 0.41 / 0.23\\\"},\\n    {\\\"id\\\": 32, \\\"text\\\": \\\"DermLIP 10-shot probe balanced accuracy is 0.41.\\\", \\\"poster_quote\\\": \\\"DermLIP: 0.36 / 0.41 / 0.23\\\"},\\n    {\\\"id\\\": 33, \\\"text\\\": \\\"DermLIP purity lift is 0.23.\\\", \\\"poster_quote\\\": \\\"DermLIP: 0.36 / 0.41 / 0.23\\\"},\\n    {\\\"id\\\": 34, \\\"text\\\": \\\"MONET full probe balanced accuracy is 0.34.\\\", \\\"poster_quote\\\": \\\"MONET: 0.34 / 0.39 / 0.14\\\"},\\n    {\\\"id\\\": 35, \\\"text\\\": \\\"MONET 10-shot probe balanced accuracy is 0.39.\\\", \\\"poster_quote\\\": \\\"MONET: 0.34 / 0.39 / 0.14\\\"},\\n    {\\\"id\\\": 36, \\\"text\\\": \\\"MONET purity lift is 0.14.\\\", \\\"poster_quote\\\": \\\"MONET: 0.34 / 0.39 / 0.14\\\"},\\n    {\\\"id\\\": 37, \\\"text\\\": \\\"DINOv3 full probe balanced accuracy is 0.31.\\\", \\\"poster_quote\\\": \\\"DINOv3: 0.31 / 0.32 / 0.16\\\"},\\n    {\\\"id\\\": 38, \\\"text\\\": \\\"DINOv3 10-shot probe balanced accuracy is 0.32.\\\", \\\"poster_quote\\\": \\\"DINOv3: 0.31 / 0.32 / 0.16\\\"},\\n    {\\\"id\\\": 39, \\\"text\\\": \\\"DINOv3 purity lift is 0.16.\\\", \\\"poster_quote\\\": \\\"DINOv3: 0.31 / 0.32 / 0.16\\\"},\\n    {\\\"id\\\": 40, \\\"text\\\": \\\"The cancer baseline has a kNN purity lift of +0.42 on its home domain.\\\", \\\"poster_quote\\\": \\\"On its home domain, the cancer baseline has the strongest label-free structure, with a kNN purity lift of +0.42.\\\"},\\n    {\\\"id\\\": 41, \\\"text\\\": \\\"The cancer baseline has a kNN purity lift of +0.06 on SCIN.\\\", \\\"poster_quote\\\": \\\"On SCIN, its features barely separate unfamiliar conditions, producing only +0.06 lift over chance.\\\"},\\n    {\\\"id\\\": 42, \\\"text\\\": \\\"DermLIP has a SCIN purity lift of +0.23.\\\", \\\"poster_quote\\\": \\\"DermLIP: +0.23\\\"},\\n    {\\\"id\\\": 43, \\\"text\\\": \\\"MONET has a SCIN purity lift of +0.14.\\\", \\\"poster_quote\\\": \\\"MONET: +0.14\\\"},\\n    {\\\"id\\\": 44, \\\"text\\\": \\\"DINOv3 has a SCIN purity lift of +0.16.\\\", \\\"poster_quote\\\": \\\"DINOv3: +0.16\\\"},\\n    {\\\"id\\\": 45, \\\"text\\\": \\\"DermLIP retains nearly four times the transferable structure of the cancer baseline.\\\", \\\"poster_quote\\\": \\\"DermLIP retains nearly four times the transferable structure of the cancer baseline.\\\"},\\n    {\\\"id\\\": 46, \\\"text\\\": \\\"The general-purpose DINOv3 model exceeds the cancer-specialized model despite lacking dermatology pretraining.\\\", \\\"poster_quote\\\": \\\"The general-purpose DINOv3 model also exceeds the cancer-specialized model despite lacking dermatology pretraining.\\\"},\\n    {\\\"id\\\": 47, \\\"text\\\": \\\"Specialization discards variation uninformative for melanoma-versus-nevus classification but essential for distinguishing conditions such as eczema and tinea.\\\", \\\"poster_quote\\\": \\\"Narrow supervised specialization appears to discard variation that is uninformative for melanoma-versus-nevus classification but essential for distinguishing conditions such as eczema and tinea.\\\"},\\n    {\\\"id\\\": 48, \\\"text\\\": \\\"Specialization is better interpreted as a lossy projection than as uniformly accumulated knowledge.\\\", \\\"poster_quote\\\": \\\"Specialization is therefore better interpreted as a lossy projection than as uniformly accumulated knowledge.\\\"}\\n  ]\\n}\", \"```json\\n{\\n  \\\"verdicts\\\": [\\n    {\\n      \\\"id\\\": 1,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Dermatology artificial intelligence (AI) models are trained predominantly on light-skinned, cancer-focused image collections.\\\",\\n      \\\"reason\\\": \\\"This statement is explicitly stated in the abstract of the paper.\\\"\\n    },\\n    {\\n      \\\"id\\\": 2,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"HAM10000 [7] (10,015 dermoscopic images) and ISIC 2019 [10] (25,331 images) are pooled and mapped to a shared eight-class neoplastic taxonomy to train and evaluate the cancer baseline on familiar data.\\\",\\n      \\\"reason\\\": \\\"The paper explicitly describes HAM10000 and ISIC 2019 as a Western, neoplastic source domain and in-domain reference.\\\"\\n    },\\n    {\\n      \\\"id\\\": 3,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"DDI (656 images; Fitzpatrick groups I-II, III-IV, V-VI) holds diagnosis broadly fixed while varying skin tone, isolating the tone effect; we use its binary malignant/benign label.\\\",\\n      \\\"reason\\\": \\\"The paper explicitly states that DDI holds diagnosis broadly fixed while varying Fitzpatrick skin-tone groups to isolate the tone effect.\\\"\\n    },\\n    {\\n      \\\"id\\\": 4,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"SCIN [8] (6,517 images after cleaning; 3,061 patients) is tone-diverse but dominated by non-neoplastic conditions absent from cancer training data, isolating the distribution effect.\\\",\\n      \\\"reason\\\": \\\"The paper explicitly describes SCIN as tone-diverse and dominated by non-neoplastic conditions, isolating the disease-distribution effect.\\\"\\n    },\\n    {\\n      \\\"id\\\": 5,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"DDI and SCIN are US-sourced proxies rather than RCS-collected cohorts; we return to this in Section 5.\\\",\\n      \\\"reason\\\": \\\"The paper explicitly states that DDI and SCIN are US-sourced proxies and not cohorts collected in resource-constrained settings.\\\"\\n    },\\n    {\\n      \\\"id\\\": 6,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"First and most importantly, DDI and SCIN are US-sourced proxies used to isolate each factor, not RCS-collected data; our RCS conclusions are therefore inferential, and validation on genuinely RCS-collected cohorts is important future work. Second, the DDI tone analysis is statistically underpowered (55-77 images per Fitzpatrick group in the test split); we therefore avoid strong directional claims.\\\",\\n      \\\"reason\\\": \\\"The paper explicitly states that the DDI analysis has only 55–77 test images per Fitzpatrick group.\\\"\\n    },\\n    {\\n      \\\"id\\\": 7,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Second, the DDI tone analysis is statistically underpowered (55-77 images per Fitzpatrick group in the test split); we therefore avoid strong directional claims.\\\",\\n      \\\"reason\\\": \\\"The paper explicitly states that the DDI analysis is underpowered for strong directional claims.\\\"\\n    },\\n    {\\n      \\\"id\\\": 8,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Our design therefore observes the two axes marginally rather than jointly; the tone effect under shifted disease cannot be isolated in these datasets without confounding it with the change in label space, since DDI is scored on a binary task and SCIN on multi-class categories.\\\",\\n      \\\"reason\\\": \\\"The paper explicitly states that tone and disease distribution are observed marginally rather than jointly.\\\"\\n    },\\n    {\\n      \\\"id\\\": 9,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"HAM10000 [7] (10,015 dermoscopic images) and ISIC 2019 [10] (25,331 images) are pooled and mapped to a shared eight-class neoplastic taxonomy to train and evaluate the cancer baseline on familiar data.\\\",\\n      \\\"reason\\\": \\\"The paper explicitly states that HAM10000 and ISIC 2019 contain 35,346 images in total.\\\"\\n    },\\n    {\\n      \\\"id\\\": 10,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"DDI (656 images; Fitzpatrick groups I-II, III-IV, V-VI) holds diagnosis broadly fixed while varying skin tone, isolating the tone effect; we use its binary malignant/benign label.\\\",\\n      \\\"reason\\\": \\\"The paper explicitly states that DDI contains 656 images.\\\"\\n    },\\n    {\\n      \\\"id\\\": 11,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"SCIN [8] (6,517 images after cleaning; 3,061 patients) is tone-diverse but dominated by non-neoplastic conditions absent from cancer training data, isolating the distribution effect.\\\",\\n      \\\"reason\\\": \\\"The paper explicitly states that SCIN contains 6,517 images from 3,061 patients.\\\"\\n    },\\n    {\\n      \\\"id\\\": 12,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The adaptation correlation is computed over four models and is descriptive rather than inferential.\\\",\\n      \\\"reason\\\": \\\"The paper explicitly states that the adaptation correlation is based on four models.\\\"\\n    },\\n    {\\n      \\\"id\\\": 13,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"We evaluate four models as frozen feature extractors.\\\",\\n      \\\"reason\\\": \\\"The paper explicitly states that only frozen features are evaluated.\\\"\\n    },\\n    {\\n      \\\"id\\\": 14,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The cancer baseline differs from the foundation models in architecture, pretraining objective and pretraining scale simultaneously, so specialization cannot be fully isolated from these factors.\\\",\\n      \\\"reason\\\": \\\"The paper explicitly states that the cancer baseline and foundation models differ in architecture, training objective, and pretraining scale.\\\"\\n    },\\n    {\\n      \\\"id\\\": 15,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Our accuracy comparison is not chance-normalized across tasks of differing class count (our chance-corrected label-free analysis is more directly comparable).\\\",\\n      \\\"reason\\\": \\\"The paper explicitly states that accuracy is not chance-normalized across tasks with different class counts.\\\"\\n    },\\n    {\\n      \\\"id\\\": 16,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"kNN purity is not controlled for embedding dimensionality, and the four encoders differ in dimensionality by a factor of four.\\\",\\n      \\\"reason\\\": \\\"The paper explicitly states that embedding dimensionality differs by a factor of four and is not controlled in kNN purity.\\\"\\n    },\\n    {\\n      \\\"id\\\": 17,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The mapping of SCIN’s long tail into broad clinical categories simplifies genuine diagnostic complexity.\\\",\\n      \\\"reason\\\": \\\"The paper explicitly states that mapping SCIN conditions into broad categories simplifies genuine diagnostic complexity.\\\"\\n    },\\n    {\\n      \\\"id\\\": 18,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Fitzpatrick type indexes UV response rather than pigmentation.\\\",\\n      \\\"reason\\\": \\\"The paper explicitly states that Fitzpatrick type measures UV response rather than pigmentation.\\\"\\n    },\\n    {\\n      \\\"id\\\": 19,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Our results give a clear ordering of causes for the generalization gap in the settings studied: disease-distribution shift is a large, representationally grounded driver, whereas the matched-disease tone effect is small and inconsistent in direction.\\\",\\n      \\\"reason\\\": \\\"The paper explicitly states that disease-distribution shift is a larger and representationally grounded driver of failure than the matched-disease skin-tone effect.\\\"\\n    },\\n    {\\n      \\\"id\\\": 20,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"First, model selection may matter more than local retraining: since recoverable performance is bounded by representation quality, teams may benefit from starting with a dermatology-pretrained foundation model rather than a cancer-specialized classifier.\\\",\\n      \\\"reason\\\": \\\"The paper explicitly suggests that teams working under resource constraints may benefit more from selecting a broad dermatology-pretrained representation than from retraining a narrow cancer classifier.\\\"\\n    },\\n    {\\n      \\\"id\\\": 21,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"A few-shot probe with roughly ten labeled examples per local category recovered most attainable performance in our experiments.\\\",\\n      \\\"reason\\\": \\\"The paper explicitly states that roughly 10 examples per category recovered most attainable performance for the dermatology foundation models.\\\"\\n    },\\n    {\\n      \\\"id\\\": 22,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The adaptation step itself is lightweight and runs on CPU, so the main hardware demand falls on the one-time feature extraction rather than on repeated local training.\\\",\\n      \\\"reason\\\": \\\"The paper explicitly states that adaptation is lightweight and runs on CPU.\\\"\\n    },\\n    {\\n      \\\"id\\\": 23,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Recoverable performance closely tracks the label-free representation quality of Fig. 2 (r = 0.90 between SCIN purity lift and full-probe balanced accuracy across the four models).\\\",\\n      \\\"reason\\\": \\\"The paper explicitly states that recoverable performance closely tracks pre-existing representation quality.\\\"\\n    },\\n    {\\n      \\\"id\\\": 24,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Recoverable performance closely tracks the label-free representation quality of Fig. 2 (r = 0.90 between SCIN purity lift and full-probe balanced accuracy across the four models).\\\",\\n      \\\"reason\\\": \\\"The paper explicitly states that SCIN purity lift and full-probe balanced accuracy have a correlation of r = 0.90 across the four models.\\\"\\n    },\\n    {\\n      \\\"id\\\": 25,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"We fit an L2-regularized logistic-regression probe on standardized frozen features, using patient-level GroupShuffleSplit (70/30) to prevent leakage, and report balanced accuracy.\\\",\\n      \\\"reason\\\": \\\"The paper explicitly states that linear probing uses L2-regularized logistic regression fitted on standardized frozen features.\\\"\\n    },\\n    {\\n      \\\"id\\\": 26,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"We fit an L2-regularized logistic-regression probe on standardized frozen features, using patient-level GroupShuffleSplit (70/30) to prevent leakage, and report balanced accuracy.\\\",\\n      \\\"reason\\\": \\\"The paper explicitly states that performance is reported as balanced accuracy.\\\"\\n    },\\n    {\\n      \\\"id\\\": 27,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"For SCIN, we map its long-tailed conditions into seven clinically grounded categories (inflammatory, infectious, vascular/purpuric, neoplastic, pigmentary, traumatic/other, and other) following standard dermatological grouping.\\\",\\n      \\\"reason\\\": \\\"The paper explicitly states that SCIN conditions are mapped into seven clinically grounded categories.\\\"\\n    },\\n    {\\n      \\\"id\\\": 28,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The cancer baseline is strong in-domain (0.62) but degrades sharply on unfamiliar conditions (0.21 across categories; 0.06 at fine granularity).\\\",\\n      \\\"reason\\\": \\\"The paper explicitly states that the cancer baseline full probe balanced accuracy is 0.21.\\\"\\n    },\\n    {\\n      \\\"id\\\": 29,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The cancer baseline, lacking latent structure, recovers least (0.21) even with adaptation, whereas dermatology models recover substantially more, and for these models a few-shot probe with only ten labeled examples per category nearly matches or exceeds the full probe.\\\",\\n      \\\"reason\\\": \\\"The paper explicitly states that the cancer baseline 10-shot probe balanced accuracy is 0.19.\\\"\\n    },\\n    {\\n      \\\"id\\\": 30,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"On its home domain, the cancer baseline has the strongest representational structure of any model (purity lift +0.42), yet on SCIN its features barely separate conditions (+0.06) close to chance.\\\",\\n      \\\"reason\\\": \\\"The paper explicitly states that the cancer baseline purity lift is 0.06.\\\"\\n    },\\n    {\\n      \\\"id\\\": 31,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Dermatology foundation models degrade far less (DermLIP 0.36).\\\",\\n      \\\"reason\\\": \\\"The paper explicitly states that DermLIP full probe balanced accuracy is 0.36.\\\"\\n    },\\n    {\\n      \\\"id\\\": 32,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Dermatology foundation models degrade far less (DermLIP 0.36), and for these models a few-shot probe with only ten labeled examples per category nearly matches or exceeds the full probe (DermLIP: 0.41 vs. 0.36).\\\",\\n      \\\"reason\\\": \\\"The paper explicitly states that DermLIP 10-shot probe balanced accuracy is 0.41.\\\"\\n    },\\n    {\\n      \\\"id\\\": 33,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Dermatology foundation models retain three to four times more transferable structure under the same unfamiliar conditions (DermLIP +0.23).\\\",\\n      \\\"reason\\\": \\\"The paper explicitly states that DermLIP purity lift is 0.23.\\\"\\n    },\\n    {\\n      \\\"id\\\": 34,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Dermatology foundation models degrade far less (DermLIP 0.36, MONET 0.34).\\\",\\n      \\\"reason\\\": \\\"The paper explicitly states that MONET full probe balanced accuracy is 0.34.\\\"\\n    },\\n    {\\n      \\\"id\\\": 35,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Dermatology foundation models degrade far less (DermLIP 0.36), and for these models a few-shot probe with only ten labeled examples per category nearly matches or exceeds the full probe (DermLIP: 0.41 vs. 0.36; MONET: 0.39 vs. 0.34).\\\",\\n      \\\"reason\\\": \\\"The paper explicitly states that MONET 10-shot probe balanced accuracy is 0.39.\\\"\\n    },\\n    {\\n      \\\"id\\\": 36,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Dermatology foundation models retain three to four times more transferable structure under the same unfamiliar conditions (DermLIP +0.23, MONET +0.14).\\\",\\n      \\\"reason\\\": \\\"The paper explicitly states that MONET purity lift is 0.14.\\\"\\n    },\\n    {\\n      \\\"id\\\": 37,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Even the no-dermatology control (DINOv3) transfers better than the cancer baseline (0.31 vs. 0.21 balanced accuracy).\\\",\\n      \\\"reason\\\": \\\"The paper explicitly states that DINOv3 full probe balanced accuracy is 0.31.\\\"\\n    },\\n    {\\n      \\\"id\\\": 38,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"For these models a few-shot probe with only ten labeled examples per category nearly matches or exceeds the full probe (DermLIP: 0.41 vs. 0.36; MONET: 0.39 vs. 0.34; DINOv3: 0.32 vs. 0.31).\\\",\\n      \\\"reason\\\": \\\"The paper explicitly states that DINOv3 10-shot probe balanced accuracy is 0.32.\\\"\\n    },\\n    {\\n      \\\"id\\\": 39,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"DINOv3’s behavior deserves comment: with no dermatology pretraining it nonetheless transfers to SCIN better than the cancer baseline (0.31 vs. 0.21 balanced accuracy; +0.16 vs. +0.06 purity lift).\\\",\\n      \\\"reason\\\": \\\"The paper explicitly states that DINOv3 purity lift is 0.16.\\\"\\n    },\\n    {\\n      \\\"id\\\": 40,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"On its home domain, the cancer baseline has the strongest representational structure of any model (purity lift +0.42).\\\",\\n      \\\"reason\\\": \\\"The paper explicitly states that the cancer baseline has a kNN purity lift of +0.42 on its home domain.\\\"\\n    }\\n  ]\\n}\\n```\", \"```json\\n{\\n  \\\"verdicts\\\": [\\n    {\\n      \\\"id\\\": 1,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"On SCIN, its features barely separate conditions (+0.06) close to chance, demonstrating a genuine representational deficit rather than a missing output head.\\\",\\n      \\\"reason\\\": \\\"Source location: Section 4.2, Figure 2. The paper explicitly states the cancer baseline has a kNN purity lift of +0.06 on SCIN.\\\"\\n    },\\n    {\\n      \\\"id\\\": 2,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Dermatology foundation models retain three to four times more transferable structure under the same unfamiliar conditions (DermLIP +0.23).\\\",\\n      \\\"reason\\\": \\\"Source location: Section 4.2, Figure 2. The paper explicitly states DermLIP has a SCIN purity lift of +0.23.\\\"\\n    },\\n    {\\n      \\\"id\\\": 3,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Dermatology foundation models retain three to four times more transferable structure under the same unfamiliar conditions (MONET +0.14).\\\",\\n      \\\"reason\\\": \\\"Source location: Section 4.2, Figure 2. The paper explicitly states MONET has a SCIN purity lift of +0.14.\\\"\\n    },\\n    {\\n      \\\"id\\\": 4,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"DINOv3’s behavior deserves comment: with no dermatology pretraining it nonetheless transfers to SCIN better than the cancer baseline (+0.16 vs. +0.06 purity lift).\\\",\\n      \\\"reason\\\": \\\"Source location: Section 4.2, Figure 2. The paper explicitly states DINOv3 has a SCIN purity lift of +0.16.\\\"\\n    },\\n    {\\n      \\\"id\\\": 5,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Dermatology foundation models retain three to four times more transferable structure under the same unfamiliar conditions (DermLIP +0.23).\\\",\\n      \\\"reason\\\": \\\"Source location: Section 4.2, Figure 2. The paper compares DermLIP's SCIN purity lift (+0.23) to the cancer baseline (+0.06), showing it retains nearly four times the transferable structure.\\\"\\n    },\\n    {\\n      \\\"id\\\": 6,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"DINOv3’s behavior deserves comment: with no dermatology pretraining it nonetheless transfers to SCIN better than the cancer baseline (0.31 vs. 0.21 balanced accuracy; +0.16 vs. +0.06 purity lift).\\\",\\n      \\\"reason\\\": \\\"Source location: Section 4.2. The paper explicitly states that DINOv3 exceeds the cancer baseline despite lacking dermatology pretraining.\\\"\\n    },\\n    {\\n      \\\"id\\\": 7,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Specialization is better read as a lossy projection than as accumulated knowledge. Narrow supervised fine-tuning discards exactly the variation that is uninformative for melanoma-versus-nevus and essential for eczema-versus-tinea.\\\",\\n      \\\"reason\\\": \\\"Source location: Section 4.2. The paper explicitly states that specialization discards variation uninformative for melanoma-versus-nevus classification but essential for distinguishing conditions such as eczema and tinea.\\\"\\n    },\\n    {\\n      \\\"id\\\": 8,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Specialization is better read as a lossy projection than as accumulated knowledge.\\\",\\n      \\\"reason\\\": \\\"Source location: Section 4.2. The paper explicitly interprets specialization as a lossy projection rather than uniformly accumulated knowledge.\\\"\\n    }\\n  ]\\n}\\n```\"]"
 }

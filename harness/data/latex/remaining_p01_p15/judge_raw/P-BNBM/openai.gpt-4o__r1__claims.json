@@ -1,0 +1,383 @@
+{
+  "model": "openai.gpt-4o",
+  "repeat": 1,
+  "judge_prompt_sha256": "4ec65050cfdc718218dbc587f672291e733fd03b1254c20d77b61b0933e16162",
+  "error": null,
+  "tokens_in": 30982,
+  "tokens_out": 6526,
+  "max_output_tokens": 16384,
+  "claims_batch_size": 40,
+  "parsed": {
+    "claims": [
+      {
+        "id": 1,
+        "text": "Benchmark scores compare system output against a reference.",
+        "poster_quote": "Benchmark scores compare system output against a reference, but the reference is rarely questioned.",
+        "label": "supported",
+        "paper_evidence": "A benchmark score compares a system output against a reference, and methodological attention falls almost entirely on the first term.",
+        "reason": "Section 1, first sentence of the abstract, explicitly states that benchmark scores compare system output against a reference."
+      },
+      {
+        "id": 2,
+        "text": "Reference choice significantly moves scores.",
+        "poster_quote": "We show that reference choice — not just system output — significantly moves scores.",
+        "label": "supported",
+        "paper_evidence": "The score moves by 4.95 F1 points for one output and 2.00 for the other (95% CIs [3.23, 6.27] and [0.26, 3.37]), and by 7.55 in the worst language.",
+        "reason": "Section 1, abstract, explicitly states that reference choice significantly moves scores."
+      },
+      {
+        "id": 3,
+        "text": "Using a multilingual PII extraction benchmark with retained annotation records, system output is held fixed and references are swapped.",
+        "poster_quote": "Using a multilingual PII extraction benchmark with retained annotation records, we hold system output fixed and swap references.",
+        "label": "supported",
+        "paper_evidence": "We invert the usual arrangement: instead of varying the system and fixing the reference, we hold the system output fixed and vary the reference, so any movement is attributable to reference choice alone.",
+        "reason": "Section 1, abstract, and Section 3, Method, explicitly describe the experimental design of holding system output fixed and swapping references."
+      },
+      {
+        "id": 4,
+        "text": "Scores shift by up to 7.55 F1 points.",
+        "poster_quote": "Scores shift by up to 7.55 F1 points, and pairwise comparisons reverse in Hindi.",
+        "label": "supported",
+        "paper_evidence": "The score moves by 4.95 F1 points for one output and 2.00 for the other (95% CIs [3.23, 6.27] and [0.26, 3.37]), and by 7.55 in the worst language.",
+        "reason": "Section 1, abstract, explicitly states that scores shift by up to 7.55 F1 points."
+      },
+      {
+        "id": 5,
+        "text": "Pairwise comparisons reverse in Hindi.",
+        "poster_quote": "Scores shift by up to 7.55 F1 points, and pairwise comparisons reverse in Hindi.",
+        "label": "supported",
+        "paper_evidence": "The Hindi margin changes sign (Section 4.3).",
+        "reason": "Section 1, abstract, and Section 4.3 explicitly state that pairwise comparisons reverse in Hindi."
+      },
+      {
+        "id": 6,
+        "text": "An undocumented aggregation rule copied one annotator’s output as gold 94.9% of the time.",
+        "poster_quote": "The cause: an undocumented aggregation rule that copied one annotator’s output as gold 94.9% of the time, biasing every reported score.",
+        "label": "supported",
+        "paper_evidence": "On 94.9% of audited prompts the shipped reference is identical to one of the two annotator labellings, because an undocumented aggregation default usually kept Annotator A when adjudication did not fire.",
+        "reason": "Section 1, abstract, and Section 2.2 explicitly state that an undocumented aggregation rule copied one annotator’s output as gold 94.9% of the time."
+      },
+      {
+        "id": 7,
+        "text": "Pooled, swapping references moves scores by 4.95 F1 for Annotator A.",
+        "poster_quote": "Pooled, swapping references moves scores by 4.95 F1 for Annotator A and 2.00 for B (95% CIs [3.23,6.27] and [0.26,3.37]).",
+        "label": "supported",
+        "paper_evidence": "The score moves by 4.95 F1 points for one output and 2.00 for the other (95% CIs [3.23, 6.27] and [0.26, 3.37]).",
+        "reason": "Section 1, abstract, explicitly states that swapping references moves scores by 4.95 F1 for Annotator A."
+      },
+      {
+        "id": 8,
+        "text": "Pooled, swapping references moves scores by 2.00 F1 for Annotator B.",
+        "poster_quote": "Pooled, swapping references moves scores by 4.95 F1 for Annotator A and 2.00 for B (95% CIs [3.23,6.27] and [0.26,3.37]).",
+        "label": "supported",
+        "paper_evidence": "The score moves by 4.95 F1 points for one output and 2.00 for the other (95% CIs [3.23, 6.27] and [0.26, 3.37]).",
+        "reason": "Section 1, abstract, explicitly states that swapping references moves scores by 2.00 F1 for Annotator B."
+      },
+      {
+        "id": 9,
+        "text": "95% CI for Annotator A score shift is [3.23,6.27].",
+        "poster_quote": "Pooled, swapping references moves scores by 4.95 F1 for Annotator A and 2.00 for B (95% CIs [3.23,6.27] and [0.26,3.37]).",
+        "label": "supported",
+        "paper_evidence": "The score moves by 4.95 F1 points for one output and 2.00 for the other (95% CIs [3.23, 6.27] and [0.26, 3.37]).",
+        "reason": "Section 1, abstract, explicitly provides the 95% CI for Annotator A score shift as [3.23, 6.27]."
+      },
+      {
+        "id": 10,
+        "text": "95% CI for Annotator B score shift is [0.26,3.37].",
+        "poster_quote": "Pooled, swapping references moves scores by 4.95 F1 for Annotator A and 2.00 for B (95% CIs [3.23,6.27] and [0.26,3.37]).",
+        "label": "supported",
+        "paper_evidence": "The score moves by 4.95 F1 points for one output and 2.00 for the other (95% CIs [3.23, 6.27] and [0.26, 3.37]).",
+        "reason": "Section 1, abstract, explicitly provides the 95% CI for Annotator B score shift as [0.26, 3.37]."
+      },
+      {
+        "id": 11,
+        "text": "The largest score shift is 7.55 in Hindi.",
+        "poster_quote": "The largest shift is 7.55 in Hindi.",
+        "label": "supported",
+        "paper_evidence": "The score moves by 4.95 F1 points for one output and 2.00 for the other (95% CIs [3.23, 6.27] and [0.26, 3.37]), and by 7.55 in the worst language.",
+        "reason": "Section 1, abstract, explicitly states that the largest score shift is 7.55 in Hindi."
+      },
+      {
+        "id": 12,
+        "text": "The paired interaction is +2.95 (CI [+1.97,+3.87]), surviving Holm correction.",
+        "poster_quote": "Crucially, the comparison between outputs changes: the paired interaction is +2.95 (CI [+1.97,+3.87]), surviving Holm correction.",
+        "label": "supported",
+        "paper_evidence": "The paired interaction between reference and system is +2.95 points (CI [+1.97, +3.87]), survives correction for multiple testing.",
+        "reason": "Section 1, abstract, explicitly states the paired interaction is +2.95 (CI [+1.97, +3.87]), surviving Holm correction."
+      },
+      {
+        "id": 13,
+        "text": "Hindi’s margin reverses sign.",
+        "poster_quote": "Hindi’s margin reverses sign.",
+        "label": "supported",
+        "paper_evidence": "The Hindi margin changes sign (Section 4.3).",
+        "reason": "Section 1, abstract, and Section 4.3 explicitly state that Hindi’s margin reverses sign."
+      },
+      {
+        "id": 14,
+        "text": "The shipped gold systematically favors Annotator A (83.4% vs 76.1% exact match).",
+        "poster_quote": "The shipped gold systematically favors Annotator A (83.4% vs 76.1% exact match), while reviewer gold is neutral.",
+        "label": "supported",
+        "paper_evidence": "The delivered gold reproduces Annotator A’s span set exactly on 83.4% of prompts and Annotator B’s on 76.1%.",
+        "reason": "Section 4.1 explicitly states that the shipped gold systematically favors Annotator A (83.4% vs 76.1% exact match)."
+      },
+      {
+        "id": 15,
+        "text": "Reviewer gold is neutral.",
+        "poster_quote": "The shipped gold systematically favors Annotator A (83.4% vs 76.1% exact match), while reviewer gold is neutral.",
+        "label": "supported",
+        "paper_evidence": "The reviewer gold coincides with A on 70.55% and B on 70.51%, a pooled skew of +0.04.",
+        "reason": "Section 4.1 explicitly states that the reviewer gold is neutral."
+      },
+      {
+        "id": 16,
+        "text": "Bias stems from an undocumented default that kept Annotator A’s label when adjudication didn’t fire.",
+        "poster_quote": "This bias stems from an undocumented default that kept Annotator A’s label when adjudication didn’t fire.",
+        "label": "supported",
+        "paper_evidence": "The cause is an undocumented aggregation default that usually kept Annotator A when adjudication did not fire.",
+        "reason": "Section 1, abstract, and Section 2.2 explicitly state that bias stems from an undocumented default that kept Annotator A’s label when adjudication didn’t fire."
+      },
+      {
+        "id": 17,
+        "text": "Retain and release annotation records — not just final gold.",
+        "poster_quote": "1. Retain and release annotation records — not just final gold.",
+        "label": "supported",
+        "paper_evidence": "Retain and release the annotation record, not only the aggregate.",
+        "reason": "Section 5.2 explicitly recommends retaining and releasing annotation records, not just the final gold."
+      },
+      {
+        "id": 18,
+        "text": "Report a reference-sensitivity band alongside headline scores.",
+        "poster_quote": "2. Report a reference-sensitivity band alongside headline scores: swap references, hold outputs fixed, report score and margin movement, test interaction.",
+        "label": "supported",
+        "paper_evidence": "Report a reference-sensitivity band alongside the headline score.",
+        "reason": "Section 5.2 explicitly recommends reporting a reference-sensitivity band alongside headline scores."
+      },
+      {
+        "id": 19,
+        "text": "Document and test aggregation rules for neutrality — how often does gold copy each annotator?",
+        "poster_quote": "3. Document and test aggregation rules for neutrality — how often does gold copy each annotator?",
+        "label": "supported",
+        "paper_evidence": "Document the aggregation rule and test it for neutrality: how often does the gold reproduce each annotator exactly?",
+        "reason": "Section 5.2 explicitly recommends documenting and testing aggregation rules for neutrality."
+      },
+      {
+        "id": 20,
+        "text": "Report per-language annotator agreement — it varies by 16 points here.",
+        "poster_quote": "4. Report per-language annotator agreement — it varies by 16 points here.",
+        "label": "supported",
+        "paper_evidence": "Report per-language annotator agreement, which varies by 16 points across the six languages here.",
+        "reason": "Section 5.2 explicitly recommends reporting per-language annotator agreement, noting its 16-point variation in this study."
+      },
+      {
+        "id": 21,
+        "text": "None of the recommendations require new annotation.",
+        "poster_quote": "None requires new annotation; all treat evaluation as measurable.",
+        "label": "supported",
+        "paper_evidence": "None requires new annotation; all require treating the evaluation as an object of measurement in its own right.",
+        "reason": "Section 5.2 explicitly states that none of the recommendations require new annotation."
+      },
+      {
+        "id": 22,
+        "text": "A small reference-sensitivity band is a good outcome, not a failed experiment.",
+        "poster_quote": "A small band is a good outcome, not a failed experiment.",
+        "label": "supported",
+        "paper_evidence": "A small band is a good outcome, not a failed experiment.",
+        "reason": "Section 5.2 explicitly states that a small reference-sensitivity band is a good outcome, not a failed experiment."
+      },
+      {
+        "id": 23,
+        "text": "Agreement is microF1 between the two annotator labellings over the whole corpus.",
+        "poster_quote": "Agreement is microF 1 between the two annotator labellings over the whole corpus.",
+        "label": "supported",
+        "paper_evidence": "Agreement is micro-averaged F1 over span sets, summed over prompts.",
+        "reason": "Appendix E explicitly defines agreement as microF1 between the two annotator labellings over the whole corpus."
+      },
+      {
+        "id": 24,
+        "text": "Identical is the share of prompts on which their span sets match exactly.",
+        "poster_quote": "Identical is the share of prompts on which their span sets match exactly.",
+        "label": "supported",
+        "paper_evidence": "Identical is the share of prompts on which their span sets match exactly.",
+        "reason": "Table 1 explicitly defines 'Identical' as the share of prompts on which annotators’ span sets match exactly."
+      },
+      {
+        "id": 25,
+        "text": "Type is the share of boundary-matched spans that also agree on type.",
+        "poster_quote": "Type is the share of boundary-matched spans that also agree on type.",
+        "label": "supported",
+        "paper_evidence": "Type is the share of boundary-matched spans that also agree on type.",
+        "reason": "Table 1 explicitly defines 'Type' as the share of boundary-matched spans that also agree on type."
+      },
+      {
+        "id": 26,
+        "text": "3rd pass is how often the selective third pass (the pipeline’s adjudication step) fired.",
+        "poster_quote": "3rd pass is how often the selective third pass (the pipeline’s adjudication step) fired.",
+        "label": "supported",
+        "paper_evidence": "3rd pass is how often the selective third pass (the pipeline’s adjudication step) fired.",
+        "reason": "Table 1 explicitly defines '3rd pass' as how often the selective third pass fired."
+      },
+      {
+        "id": 27,
+        "text": "Silent is the share of prompts where the annotators differed, no third pass fired, and the delivered gold reproduced Annotator A.",
+        "poster_quote": "Silent is the share of prompts where the annotators differed, no third pass fired, and the delivered gold reproduced Annotator A.",
+        "label": "supported",
+        "paper_evidence": "Silent is the share of prompts where the annotators differed, no third pass fired, and the delivered gold reproduced Annotator A.",
+        "reason": "Table 1 explicitly defines 'Silent' as the share of prompts where annotators differed, no third pass fired, and the delivered gold reproduced Annotator A."
+      },
+      {
+        "id": 28,
+        "text": "The delivered gold favors Annotator A in every language.",
+        "poster_quote": "The delivered gold favours Annotator A in every language; the reviewer gold does not.",
+        "label": "supported",
+        "paper_evidence": "The delivered gold reproduces Annotator A’s span set exactly on 83.4% of prompts and Annotator B’s on 76.1%.",
+        "reason": "Section 4.1 explicitly states that the delivered gold favors Annotator A in every language."
+      },
+      {
+        "id": 29,
+        "text": "The reviewer gold does not favor Annotator A.",
+        "poster_quote": "The delivered gold favours Annotator A in every language; the reviewer gold does not.",
+        "label": "supported",
+        "paper_evidence": "The reviewer gold coincides with A on 70.55% and B on 70.51%, a pooled skew of +0.04.",
+        "reason": "Section 4.1 explicitly states that the reviewer gold does not favor Annotator A."
+      },
+      {
+        "id": 30,
+        "text": "We invert the standard evaluation: fix the output, vary the reference.",
+        "poster_quote": "We invert the standard evaluation: fix the output, vary the reference.",
+        "label": "supported",
+        "paper_evidence": "We invert the usual arrangement: instead of varying the system and fixing the reference, we hold the system output fixed and vary the reference.",
+        "reason": "Section 1, abstract, and Section 3 explicitly describe the inversion of the standard evaluation by fixing the output and varying the reference."
+      },
+      {
+        "id": 31,
+        "text": "We use a six-language PII benchmark (24,939 prompts) with retained records.",
+        "poster_quote": "We use a six-language PII benchmark (24,939 prompts) with retained records: two independent annotator labels, shipped gold, and expert reviewer labels on 10.5% of data.",
+        "label": "supported",
+        "paper_evidence": "We use the annotation record of a production multilingual benchmark for PII span extraction across six languages (Hindi, Portuguese, Polish, Swedish, Chinese, and Arabic), holding 24,939 prompts after deduplication.",
+        "reason": "Section 2 explicitly states the use of a six-language PII benchmark with 24,939 prompts."
+      },
+      {
+        "id": 32,
+        "text": "Two independent annotator labels, shipped gold, and expert reviewer labels are retained on 10.5% of data.",
+        "poster_quote": "We use a six-language PII benchmark (24,939 prompts) with retained records: two independent annotator labels, shipped gold, and expert reviewer labels on 10.5% of data.",
+        "label": "supported",
+        "paper_evidence": "The delivered gold and the expert re-annotation are both defensible; a practitioner could have adopted either.",
+        "reason": "Section 2.3 explicitly states that two independent annotator labels, shipped gold, and expert reviewer labels are retained on 10.5% of data."
+      },
+      {
+        "id": 33,
+        "text": "All uncertainty is quantified via paired bootstrap resampling (2,000 resamples, stratified by language).",
+        "poster_quote": "All uncertainty is quantified via paired bootstrap resampling (2,000 resamples, stratified by language).",
+        "label": "supported",
+        "paper_evidence": "All uncertainty is a paired prompt-level bootstrap, and the ranking claim is tested as an interaction rather than as two separate verdicts.",
+        "reason": "Section 3.4 explicitly states that all uncertainty is quantified via paired bootstrap resampling (2,000 resamples, stratified by language)."
+      },
+      {
+        "id": 34,
+        "text": "Reference-sensitivity band is defined as the maximum score movement from reference choice alone.",
+        "poster_quote": "We define a ’reference-sensitivity band’ — the maximum score movement from reference choice alone.",
+        "label": "supported",
+        "paper_evidence": "Taking the upper 95% bound on the largest pooled reference-swap delta gives 6.3 F1 points under STRICT.",
+        "reason": "Section 4.5 explicitly defines the reference-sensitivity band as the maximum score movement from reference choice alone."
+      },
+      {
+        "id": 35,
+        "text": "Under STRICT matching, the reference-sensitivity band is 6.3 F1 points (upper 95% CI of largest delta).",
+        "poster_quote": "Under STRICT matching, it’s 6.3 F1 points (upper 95% CI of largest delta).",
+        "label": "supported",
+        "paper_evidence": "Taking the upper 95% bound on the largest pooled reference-swap delta gives 6.3 F1 points under STRICT.",
+        "reason": "Section 4.5 explicitly states that under STRICT matching, the reference-sensitivity band is 6.3 F1 points (upper 95% CI of largest delta)."
+      },
+      {
+        "id": 36,
+        "text": "The reference-sensitivity band exceeds all observed margins between annotators under shipped gold (max 4.59).",
+        "poster_quote": "This band exceeds all observed margins between annotators under shipped gold (max 4.59).",
+        "label": "supported",
+        "paper_evidence": "Every margin between the two annotators under the delivered gold (2.83 pooled, magnitudes 1.46 to 4.59 across languages) falls below the 6.3-point band.",
+        "reason": "Section 4.5 explicitly states that the reference-sensitivity band exceeds all observed margins between annotators under shipped gold (max 4.59)."
+      },
+      {
+        "id": 37,
+        "text": "The band is inflated by self-scoring since gold often copies Annotator A.",
+        "poster_quote": "The band is inflated by self-scoring (since gold often copies A), but even using B’s delta (3.4 points), several margins fall within it.",
+        "label": "supported",
+        "paper_evidence": "The largest pooled delta belongs to A, whose score against the delivered gold is partly circular (Section 4.4); the same band computed from B’s delta gives 3.4 points instead of 6.3.",
+        "reason": "Section 4.5 explicitly states that the band is inflated by self-scoring since gold often copies Annotator A."
+      },
+      {
+        "id": 38,
+        "text": "Using Annotator B’s delta (3.4 points), several margins fall within the reference-sensitivity band.",
+        "poster_quote": "The band is inflated by self-scoring (since gold often copies A), but even using B’s delta (3.4 points), several margins fall within it.",
+        "label": "supported",
+        "paper_evidence": "The largest pooled delta belongs to A, whose score against the delivered gold is partly circular (Section 4.4); the same band computed from B’s delta gives 3.4 points instead of 6.3.",
+        "reason": "Section 4.5 explicitly states that using Annotator B’s delta (3.4 points), several margins fall within the reference-sensitivity band."
+      },
+      {
+        "id": 39,
+        "text": "The reference-sensitivity band is pipeline-specific.",
+        "poster_quote": "This band is pipeline-specific: a neutral aggregation rule would yield a smaller band, as Swedish demonstrates.",
+        "label": "supported",
+        "paper_evidence": "The sensitivity we report is a property of how these particular references were constructed, not a law holding wherever two references exist.",
+        "reason": "Section 4.2 explicitly states that the reference-sensitivity band is pipeline-specific."
+      },
+      {
+        "id": 40,
+        "text": "A neutral aggregation rule would yield a smaller reference-sensitivity band, as Swedish demonstrates.",
+        "poster_quote": "This band is pipeline-specific: a neutral aggregation rule would yield a smaller band, as Swedish demonstrates.",
+        "label": "supported",
+        "paper_evidence": "A benchmark whose adjudication policy varies by language is not applying one protocol to six languages, whatever its documentation says. A third mechanism, a type merge applied before release, is described in Appendix C.",
+        "reason": "Section 2.2 and Appendix C explicitly state that a neutral aggregation rule would yield a smaller reference-sensitivity band, as Swedish demonstrates."
+      },
+      {
+        "id": 41,
+        "text": "Benchmark scores measure both system and reference.",
+        "poster_quote": "Benchmark scores measure both system and reference.",
+        "label": "supported",
+        "paper_evidence": "A benchmark score compares a system output against a reference, and methodological attention falls almost entirely on the first term. We measure the second.",
+        "reason": "Section 1, Introduction: The paper explicitly states that benchmark scores measure both the system and the reference."
+      },
+      {
+        "id": 42,
+        "text": "Reference choice can move scores more than system differences.",
+        "poster_quote": "Reference choice can move scores more than system differences.",
+        "label": "supported",
+        "paper_evidence": "The score moves by 4.95 F1 points for one output and 2.00 for the other (95% CIs [3.23, 6.27] and [0.26, 3.37]), and by 7.55 in the worst language.",
+        "reason": "Section 1, Abstract: The paper provides evidence that reference choice can move scores more than system differences, with specific numerical examples."
+      },
+      {
+        "id": 43,
+        "text": "An undocumented aggregation default put a measurable thumb on every score in this benchmark.",
+        "poster_quote": "An undocumented aggregation default put a measurable thumb on every score in this benchmark.",
+        "label": "supported",
+        "paper_evidence": "The cause is an undocumented aggregation default that usually kept one annotator when adjudication did not fire, making the shipped reference a partial copy of an output being scored.",
+        "reason": "Section 1, Abstract: The paper explicitly identifies an undocumented aggregation default as a source of bias in the benchmark scores."
+      },
+      {
+        "id": 44,
+        "text": "The community is urged to report reference-sensitivity bands.",
+        "poster_quote": "We urge the community to report reference-sensitivity bands — a simple, no-cost addition that reveals evaluation uncertainty.",
+        "label": "supported",
+        "paper_evidence": "We suggest benchmarks report a reference-sensitivity band alongside the score.",
+        "reason": "Section 5.2, What we recommend: The paper explicitly urges the community to report reference-sensitivity bands."
+      },
+      {
+        "id": 45,
+        "text": "Until reference-sensitivity bands are reported, we cannot know if a reported improvement is robust to defensible reference choices.",
+        "poster_quote": "Until then, we cannot know if a reported improvement is robust to defensible reference choices.",
+        "label": "supported",
+        "paper_evidence": "Until reference sensitivity is measured, we cannot know whether a reported improvement is robust to defensible choices in the benchmark’s reference-construction process.",
+        "reason": "Section 6, Conclusion: The paper explicitly states that without reference-sensitivity bands, the robustness of reported improvements cannot be determined."
+      },
+      {
+        "id": 46,
+        "text": "The method transfers; the number does not — it’s a property of the pipeline.",
+        "poster_quote": "The method transfers; the number does not — it’s a property of the pipeline.",
+        "label": "supported",
+        "paper_evidence": "We claim the method transfers, not the number. The reviewer sample is documented, not observed.",
+        "reason": "Section 5.3, Limitations: The paper explicitly states that the method is transferable, but the specific numerical results are a property of the pipeline."
+      }
+    ]
+  },
+  "raw": "[\"{\\n  \\\"claims\\\": [\\n    {\\\"id\\\": 1, \\\"text\\\": \\\"Benchmark scores compare system output against a reference.\\\", \\\"poster_quote\\\": \\\"Benchmark scores compare system output against a reference, but the reference is rarely questioned.\\\"},\\n    {\\\"id\\\": 2, \\\"text\\\": \\\"Reference choice significantly moves scores.\\\", \\\"poster_quote\\\": \\\"We show that reference choice — not just system output — significantly moves scores.\\\"},\\n    {\\\"id\\\": 3, \\\"text\\\": \\\"Using a multilingual PII extraction benchmark with retained annotation records, system output is held fixed and references are swapped.\\\", \\\"poster_quote\\\": \\\"Using a multilingual PII extraction benchmark with retained annotation records, we hold system output fixed and swap references.\\\"},\\n    {\\\"id\\\": 4, \\\"text\\\": \\\"Scores shift by up to 7.55 F1 points.\\\", \\\"poster_quote\\\": \\\"Scores shift by up to 7.55 F1 points, and pairwise comparisons reverse in Hindi.\\\"},\\n    {\\\"id\\\": 5, \\\"text\\\": \\\"Pairwise comparisons reverse in Hindi.\\\", \\\"poster_quote\\\": \\\"Scores shift by up to 7.55 F1 points, and pairwise comparisons reverse in Hindi.\\\"},\\n    {\\\"id\\\": 6, \\\"text\\\": \\\"An undocumented aggregation rule copied one annotator’s output as gold 94.9% of the time.\\\", \\\"poster_quote\\\": \\\"The cause: an undocumented aggregation rule that copied one annotator’s output as gold 94.9% of the time, biasing every reported score.\\\"},\\n    {\\\"id\\\": 7, \\\"text\\\": \\\"Pooled, swapping references moves scores by 4.95 F1 for Annotator A.\\\", \\\"poster_quote\\\": \\\"Pooled, swapping references moves scores by 4.95 F1 for Annotator A and 2.00 for B (95% CIs [3.23,6.27] and [0.26,3.37]).\\\"},\\n    {\\\"id\\\": 8, \\\"text\\\": \\\"Pooled, swapping references moves scores by 2.00 F1 for Annotator B.\\\", \\\"poster_quote\\\": \\\"Pooled, swapping references moves scores by 4.95 F1 for Annotator A and 2.00 for B (95% CIs [3.23,6.27] and [0.26,3.37]).\\\"},\\n    {\\\"id\\\": 9, \\\"text\\\": \\\"95% CI for Annotator A score shift is [3.23,6.27].\\\", \\\"poster_quote\\\": \\\"Pooled, swapping references moves scores by 4.95 F1 for Annotator A and 2.00 for B (95% CIs [3.23,6.27] and [0.26,3.37]).\\\"},\\n    {\\\"id\\\": 10, \\\"text\\\": \\\"95% CI for Annotator B score shift is [0.26,3.37].\\\", \\\"poster_quote\\\": \\\"Pooled, swapping references moves scores by 4.95 F1 for Annotator A and 2.00 for B (95% CIs [3.23,6.27] and [0.26,3.37]).\\\"},\\n    {\\\"id\\\": 11, \\\"text\\\": \\\"The largest score shift is 7.55 in Hindi.\\\", \\\"poster_quote\\\": \\\"The largest shift is 7.55 in Hindi.\\\"},\\n    {\\\"id\\\": 12, \\\"text\\\": \\\"The paired interaction is +2.95 (CI [+1.97,+3.87]), surviving Holm correction.\\\", \\\"poster_quote\\\": \\\"Crucially, the comparison between outputs changes: the paired interaction is +2.95 (CI [+1.97,+3.87]), surviving Holm correction.\\\"},\\n    {\\\"id\\\": 13, \\\"text\\\": \\\"Hindi’s margin reverses sign.\\\", \\\"poster_quote\\\": \\\"Hindi’s margin reverses sign.\\\"},\\n    {\\\"id\\\": 14, \\\"text\\\": \\\"The shipped gold systematically favors Annotator A (83.4% vs 76.1% exact match).\\\", \\\"poster_quote\\\": \\\"The shipped gold systematically favors Annotator A (83.4% vs 76.1% exact match), while reviewer gold is neutral.\\\"},\\n    {\\\"id\\\": 15, \\\"text\\\": \\\"Reviewer gold is neutral.\\\", \\\"poster_quote\\\": \\\"The shipped gold systematically favors Annotator A (83.4% vs 76.1% exact match), while reviewer gold is neutral.\\\"},\\n    {\\\"id\\\": 16, \\\"text\\\": \\\"Bias stems from an undocumented default that kept Annotator A’s label when adjudication didn’t fire.\\\", \\\"poster_quote\\\": \\\"This bias stems from an undocumented default that kept Annotator A’s label when adjudication didn’t fire.\\\"},\\n    {\\\"id\\\": 17, \\\"text\\\": \\\"Retain and release annotation records — not just final gold.\\\", \\\"poster_quote\\\": \\\"1. Retain and release annotation records — not just final gold.\\\"},\\n    {\\\"id\\\": 18, \\\"text\\\": \\\"Report a reference-sensitivity band alongside headline scores.\\\", \\\"poster_quote\\\": \\\"2. Report a reference-sensitivity band alongside headline scores: swap references, hold outputs fixed, report score and margin movement, test interaction.\\\"},\\n    {\\\"id\\\": 19, \\\"text\\\": \\\"Document and test aggregation rules for neutrality — how often does gold copy each annotator?\\\", \\\"poster_quote\\\": \\\"3. Document and test aggregation rules for neutrality — how often does gold copy each annotator?\\\"},\\n    {\\\"id\\\": 20, \\\"text\\\": \\\"Report per-language annotator agreement — it varies by 16 points here.\\\", \\\"poster_quote\\\": \\\"4. Report per-language annotator agreement — it varies by 16 points here.\\\"},\\n    {\\\"id\\\": 21, \\\"text\\\": \\\"None of the recommendations require new annotation.\\\", \\\"poster_quote\\\": \\\"None requires new annotation; all treat evaluation as measurable.\\\"},\\n    {\\\"id\\\": 22, \\\"text\\\": \\\"A small reference-sensitivity band is a good outcome, not a failed experiment.\\\", \\\"poster_quote\\\": \\\"A small band is a good outcome, not a failed experiment.\\\"},\\n    {\\\"id\\\": 23, \\\"text\\\": \\\"Agreement is microF1 between the two annotator labellings over the whole corpus.\\\", \\\"poster_quote\\\": \\\"Agreement is microF 1 between the two annotator labellings over the whole corpus.\\\"},\\n    {\\\"id\\\": 24, \\\"text\\\": \\\"Identical is the share of prompts on which their span sets match exactly.\\\", \\\"poster_quote\\\": \\\"Identical is the share of prompts on which their span sets match exactly.\\\"},\\n    {\\\"id\\\": 25, \\\"text\\\": \\\"Type is the share of boundary-matched spans that also agree on type.\\\", \\\"poster_quote\\\": \\\"Type is the share of boundary-matched spans that also agree on type.\\\"},\\n    {\\\"id\\\": 26, \\\"text\\\": \\\"3rd pass is how often the selective third pass (the pipeline’s adjudication step) fired.\\\", \\\"poster_quote\\\": \\\"3rd pass is how often the selective third pass (the pipeline’s adjudication step) fired.\\\"},\\n    {\\\"id\\\": 27, \\\"text\\\": \\\"Silent is the share of prompts where the annotators differed, no third pass fired, and the delivered gold reproduced Annotator A.\\\", \\\"poster_quote\\\": \\\"Silent is the share of prompts where the annotators differed, no third pass fired, and the delivered gold reproduced Annotator A.\\\"},\\n    {\\\"id\\\": 28, \\\"text\\\": \\\"The delivered gold favors Annotator A in every language.\\\", \\\"poster_quote\\\": \\\"The delivered gold favours Annotator A in every language; the reviewer gold does not.\\\"},\\n    {\\\"id\\\": 29, \\\"text\\\": \\\"The reviewer gold does not favor Annotator A.\\\", \\\"poster_quote\\\": \\\"The delivered gold favours Annotator A in every language; the reviewer gold does not.\\\"},\\n    {\\\"id\\\": 30, \\\"text\\\": \\\"We invert the standard evaluation: fix the output, vary the reference.\\\", \\\"poster_quote\\\": \\\"We invert the standard evaluation: fix the output, vary the reference.\\\"},\\n    {\\\"id\\\": 31, \\\"text\\\": \\\"We use a six-language PII benchmark (24,939 prompts) with retained records.\\\", \\\"poster_quote\\\": \\\"We use a six-language PII benchmark (24,939 prompts) with retained records: two independent annotator labels, shipped gold, and expert reviewer labels on 10.5% of data.\\\"},\\n    {\\\"id\\\": 32, \\\"text\\\": \\\"Two independent annotator labels, shipped gold, and expert reviewer labels are retained on 10.5% of data.\\\", \\\"poster_quote\\\": \\\"We use a six-language PII benchmark (24,939 prompts) with retained records: two independent annotator labels, shipped gold, and expert reviewer labels on 10.5% of data.\\\"},\\n    {\\\"id\\\": 33, \\\"text\\\": \\\"All uncertainty is quantified via paired bootstrap resampling (2,000 resamples, stratified by language).\\\", \\\"poster_quote\\\": \\\"All uncertainty is quantified via paired bootstrap resampling (2,000 resamples, stratified by language).\\\"},\\n    {\\\"id\\\": 34, \\\"text\\\": \\\"Reference-sensitivity band is defined as the maximum score movement from reference choice alone.\\\", \\\"poster_quote\\\": \\\"We define a ’reference-sensitivity band’ — the maximum score movement from reference choice alone.\\\"},\\n    {\\\"id\\\": 35, \\\"text\\\": \\\"Under STRICT matching, the reference-sensitivity band is 6.3 F1 points (upper 95% CI of largest delta).\\\", \\\"poster_quote\\\": \\\"Under STRICT matching, it’s 6.3 F1 points (upper 95% CI of largest delta).\\\"},\\n    {\\\"id\\\": 36, \\\"text\\\": \\\"The reference-sensitivity band exceeds all observed margins between annotators under shipped gold (max 4.59).\\\", \\\"poster_quote\\\": \\\"This band exceeds all observed margins between annotators under shipped gold (max 4.59).\\\"},\\n    {\\\"id\\\": 37, \\\"text\\\": \\\"The band is inflated by self-scoring since gold often copies Annotator A.\\\", \\\"poster_quote\\\": \\\"The band is inflated by self-scoring (since gold often copies A), but even using B’s delta (3.4 points), several margins fall within it.\\\"},\\n    {\\\"id\\\": 38, \\\"text\\\": \\\"Using Annotator B’s delta (3.4 points), several margins fall within the reference-sensitivity band.\\\", \\\"poster_quote\\\": \\\"The band is inflated by self-scoring (since gold often copies A), but even using B’s delta (3.4 points), several margins fall within it.\\\"},\\n    {\\\"id\\\": 39, \\\"text\\\": \\\"The reference-sensitivity band is pipeline-specific.\\\", \\\"poster_quote\\\": \\\"This band is pipeline-specific: a neutral aggregation rule would yield a smaller band, as Swedish demonstrates.\\\"},\\n    {\\\"id\\\": 40, \\\"text\\\": \\\"A neutral aggregation rule would yield a smaller reference-sensitivity band, as Swedish demonstrates.\\\", \\\"poster_quote\\\": \\\"This band is pipeline-specific: a neutral aggregation rule would yield a smaller band, as Swedish demonstrates.\\\"},\\n    {\\\"id\\\": 41, \\\"text\\\": \\\"Benchmark scores measure both system and reference.\\\", \\\"poster_quote\\\": \\\"Benchmark scores measure both system and reference.\\\"},\\n    {\\\"id\\\": 42, \\\"text\\\": \\\"Reference choice can move scores more than system differences.\\\", \\\"poster_quote\\\": \\\"Reference choice can move scores more than system differences.\\\"},\\n    {\\\"id\\\": 43, \\\"text\\\": \\\"An undocumented aggregation default put a measurable thumb on every score in this benchmark.\\\", \\\"poster_quote\\\": \\\"An undocumented aggregation default put a measurable thumb on every score in this benchmark.\\\"},\\n    {\\\"id\\\": 44, \\\"text\\\": \\\"The community is urged to report reference-sensitivity bands.\\\", \\\"poster_quote\\\": \\\"We urge the community to report reference-sensitivity bands — a simple, no-cost addition that reveals evaluation uncertainty.\\\"},\\n    {\\\"id\\\": 45, \\\"text\\\": \\\"Until reference-sensitivity bands are reported, we cannot know if a reported improvement is robust to defensible reference choices.\\\", \\\"poster_quote\\\": \\\"Until then, we cannot know if a reported improvement is robust to defensible reference choices.\\\"},\\n    {\\\"id\\\": 46, \\\"text\\\": \\\"The method transfers; the number does not — it’s a property of the pipeline.\\\", \\\"poster_quote\\\": \\\"The method transfers; the number does not — it’s a property of the pipeline.\\\"}\\n  ]\\n}\", \"```json\\n{\\n  \\\"verdicts\\\": [\\n    {\\n      \\\"id\\\": 1,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"A benchmark score compares a system output against a reference, and methodological attention falls almost entirely on the first term.\\\",\\n      \\\"reason\\\": \\\"Section 1, first sentence of the abstract, explicitly states that benchmark scores compare system output against a reference.\\\"\\n    },\\n    {\\n      \\\"id\\\": 2,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The score moves by 4.95 F1 points for one output and 2.00 for the other (95% CIs [3.23, 6.27] and [0.26, 3.37]), and by 7.55 in the worst language.\\\",\\n      \\\"reason\\\": \\\"Section 1, abstract, explicitly states that reference choice significantly moves scores.\\\"\\n    },\\n    {\\n      \\\"id\\\": 3,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"We invert the usual arrangement: instead of varying the system and fixing the reference, we hold the system output fixed and vary the reference, so any movement is attributable to reference choice alone.\\\",\\n      \\\"reason\\\": \\\"Section 1, abstract, and Section 3, Method, explicitly describe the experimental design of holding system output fixed and swapping references.\\\"\\n    },\\n    {\\n      \\\"id\\\": 4,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The score moves by 4.95 F1 points for one output and 2.00 for the other (95% CIs [3.23, 6.27] and [0.26, 3.37]), and by 7.55 in the worst language.\\\",\\n      \\\"reason\\\": \\\"Section 1, abstract, explicitly states that scores shift by up to 7.55 F1 points.\\\"\\n    },\\n    {\\n      \\\"id\\\": 5,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The Hindi margin changes sign (Section 4.3).\\\",\\n      \\\"reason\\\": \\\"Section 1, abstract, and Section 4.3 explicitly state that pairwise comparisons reverse in Hindi.\\\"\\n    },\\n    {\\n      \\\"id\\\": 6,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"On 94.9% of audited prompts the shipped reference is identical to one of the two annotator labellings, because an undocumented aggregation default usually kept Annotator A when adjudication did not fire.\\\",\\n      \\\"reason\\\": \\\"Section 1, abstract, and Section 2.2 explicitly state that an undocumented aggregation rule copied one annotator’s output as gold 94.9% of the time.\\\"\\n    },\\n    {\\n      \\\"id\\\": 7,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The score moves by 4.95 F1 points for one output and 2.00 for the other (95% CIs [3.23, 6.27] and [0.26, 3.37]).\\\",\\n      \\\"reason\\\": \\\"Section 1, abstract, explicitly states that swapping references moves scores by 4.95 F1 for Annotator A.\\\"\\n    },\\n    {\\n      \\\"id\\\": 8,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The score moves by 4.95 F1 points for one output and 2.00 for the other (95% CIs [3.23, 6.27] and [0.26, 3.37]).\\\",\\n      \\\"reason\\\": \\\"Section 1, abstract, explicitly states that swapping references moves scores by 2.00 F1 for Annotator B.\\\"\\n    },\\n    {\\n      \\\"id\\\": 9,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The score moves by 4.95 F1 points for one output and 2.00 for the other (95% CIs [3.23, 6.27] and [0.26, 3.37]).\\\",\\n      \\\"reason\\\": \\\"Section 1, abstract, explicitly provides the 95% CI for Annotator A score shift as [3.23, 6.27].\\\"\\n    },\\n    {\\n      \\\"id\\\": 10,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The score moves by 4.95 F1 points for one output and 2.00 for the other (95% CIs [3.23, 6.27] and [0.26, 3.37]).\\\",\\n      \\\"reason\\\": \\\"Section 1, abstract, explicitly provides the 95% CI for Annotator B score shift as [0.26, 3.37].\\\"\\n    },\\n    {\\n      \\\"id\\\": 11,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The score moves by 4.95 F1 points for one output and 2.00 for the other (95% CIs [3.23, 6.27] and [0.26, 3.37]), and by 7.55 in the worst language.\\\",\\n      \\\"reason\\\": \\\"Section 1, abstract, explicitly states that the largest score shift is 7.55 in Hindi.\\\"\\n    },\\n    {\\n      \\\"id\\\": 12,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The paired interaction between reference and system is +2.95 points (CI [+1.97, +3.87]), survives correction for multiple testing.\\\",\\n      \\\"reason\\\": \\\"Section 1, abstract, explicitly states the paired interaction is +2.95 (CI [+1.97, +3.87]), surviving Holm correction.\\\"\\n    },\\n    {\\n      \\\"id\\\": 13,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The Hindi margin changes sign (Section 4.3).\\\",\\n      \\\"reason\\\": \\\"Section 1, abstract, and Section 4.3 explicitly state that Hindi’s margin reverses sign.\\\"\\n    },\\n    {\\n      \\\"id\\\": 14,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The delivered gold reproduces Annotator A’s span set exactly on 83.4% of prompts and Annotator B’s on 76.1%.\\\",\\n      \\\"reason\\\": \\\"Section 4.1 explicitly states that the shipped gold systematically favors Annotator A (83.4% vs 76.1% exact match).\\\"\\n    },\\n    {\\n      \\\"id\\\": 15,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The reviewer gold coincides with A on 70.55% and B on 70.51%, a pooled skew of +0.04.\\\",\\n      \\\"reason\\\": \\\"Section 4.1 explicitly states that the reviewer gold is neutral.\\\"\\n    },\\n    {\\n      \\\"id\\\": 16,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The cause is an undocumented aggregation default that usually kept Annotator A when adjudication did not fire.\\\",\\n      \\\"reason\\\": \\\"Section 1, abstract, and Section 2.2 explicitly state that bias stems from an undocumented default that kept Annotator A’s label when adjudication didn’t fire.\\\"\\n    },\\n    {\\n      \\\"id\\\": 17,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Retain and release the annotation record, not only the aggregate.\\\",\\n      \\\"reason\\\": \\\"Section 5.2 explicitly recommends retaining and releasing annotation records, not just the final gold.\\\"\\n    },\\n    {\\n      \\\"id\\\": 18,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Report a reference-sensitivity band alongside the headline score.\\\",\\n      \\\"reason\\\": \\\"Section 5.2 explicitly recommends reporting a reference-sensitivity band alongside headline scores.\\\"\\n    },\\n    {\\n      \\\"id\\\": 19,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Document the aggregation rule and test it for neutrality: how often does the gold reproduce each annotator exactly?\\\",\\n      \\\"reason\\\": \\\"Section 5.2 explicitly recommends documenting and testing aggregation rules for neutrality.\\\"\\n    },\\n    {\\n      \\\"id\\\": 20,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Report per-language annotator agreement, which varies by 16 points across the six languages here.\\\",\\n      \\\"reason\\\": \\\"Section 5.2 explicitly recommends reporting per-language annotator agreement, noting its 16-point variation in this study.\\\"\\n    },\\n    {\\n      \\\"id\\\": 21,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"None requires new annotation; all require treating the evaluation as an object of measurement in its own right.\\\",\\n      \\\"reason\\\": \\\"Section 5.2 explicitly states that none of the recommendations require new annotation.\\\"\\n    },\\n    {\\n      \\\"id\\\": 22,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"A small band is a good outcome, not a failed experiment.\\\",\\n      \\\"reason\\\": \\\"Section 5.2 explicitly states that a small reference-sensitivity band is a good outcome, not a failed experiment.\\\"\\n    },\\n    {\\n      \\\"id\\\": 23,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Agreement is micro-averaged F1 over span sets, summed over prompts.\\\",\\n      \\\"reason\\\": \\\"Appendix E explicitly defines agreement as microF1 between the two annotator labellings over the whole corpus.\\\"\\n    },\\n    {\\n      \\\"id\\\": 24,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Identical is the share of prompts on which their span sets match exactly.\\\",\\n      \\\"reason\\\": \\\"Table 1 explicitly defines 'Identical' as the share of prompts on which annotators’ span sets match exactly.\\\"\\n    },\\n    {\\n      \\\"id\\\": 25,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Type is the share of boundary-matched spans that also agree on type.\\\",\\n      \\\"reason\\\": \\\"Table 1 explicitly defines 'Type' as the share of boundary-matched spans that also agree on type.\\\"\\n    },\\n    {\\n      \\\"id\\\": 26,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"3rd pass is how often the selective third pass (the pipeline’s adjudication step) fired.\\\",\\n      \\\"reason\\\": \\\"Table 1 explicitly defines '3rd pass' as how often the selective third pass fired.\\\"\\n    },\\n    {\\n      \\\"id\\\": 27,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Silent is the share of prompts where the annotators differed, no third pass fired, and the delivered gold reproduced Annotator A.\\\",\\n      \\\"reason\\\": \\\"Table 1 explicitly defines 'Silent' as the share of prompts where annotators differed, no third pass fired, and the delivered gold reproduced Annotator A.\\\"\\n    },\\n    {\\n      \\\"id\\\": 28,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The delivered gold reproduces Annotator A’s span set exactly on 83.4% of prompts and Annotator B’s on 76.1%.\\\",\\n      \\\"reason\\\": \\\"Section 4.1 explicitly states that the delivered gold favors Annotator A in every language.\\\"\\n    },\\n    {\\n      \\\"id\\\": 29,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The reviewer gold coincides with A on 70.55% and B on 70.51%, a pooled skew of +0.04.\\\",\\n      \\\"reason\\\": \\\"Section 4.1 explicitly states that the reviewer gold does not favor Annotator A.\\\"\\n    },\\n    {\\n      \\\"id\\\": 30,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"We invert the usual arrangement: instead of varying the system and fixing the reference, we hold the system output fixed and vary the reference.\\\",\\n      \\\"reason\\\": \\\"Section 1, abstract, and Section 3 explicitly describe the inversion of the standard evaluation by fixing the output and varying the reference.\\\"\\n    },\\n    {\\n      \\\"id\\\": 31,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"We use the annotation record of a production multilingual benchmark for PII span extraction across six languages (Hindi, Portuguese, Polish, Swedish, Chinese, and Arabic), holding 24,939 prompts after deduplication.\\\",\\n      \\\"reason\\\": \\\"Section 2 explicitly states the use of a six-language PII benchmark with 24,939 prompts.\\\"\\n    },\\n    {\\n      \\\"id\\\": 32,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The delivered gold and the expert re-annotation are both defensible; a practitioner could have adopted either.\\\",\\n      \\\"reason\\\": \\\"Section 2.3 explicitly states that two independent annotator labels, shipped gold, and expert reviewer labels are retained on 10.5% of data.\\\"\\n    },\\n    {\\n      \\\"id\\\": 33,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"All uncertainty is a paired prompt-level bootstrap, and the ranking claim is tested as an interaction rather than as two separate verdicts.\\\",\\n      \\\"reason\\\": \\\"Section 3.4 explicitly states that all uncertainty is quantified via paired bootstrap resampling (2,000 resamples, stratified by language).\\\"\\n    },\\n    {\\n      \\\"id\\\": 34,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Taking the upper 95% bound on the largest pooled reference-swap delta gives 6.3 F1 points under STRICT.\\\",\\n      \\\"reason\\\": \\\"Section 4.5 explicitly defines the reference-sensitivity band as the maximum score movement from reference choice alone.\\\"\\n    },\\n    {\\n      \\\"id\\\": 35,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Taking the upper 95% bound on the largest pooled reference-swap delta gives 6.3 F1 points under STRICT.\\\",\\n      \\\"reason\\\": \\\"Section 4.5 explicitly states that under STRICT matching, the reference-sensitivity band is 6.3 F1 points (upper 95% CI of largest delta).\\\"\\n    },\\n    {\\n      \\\"id\\\": 36,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Every margin between the two annotators under the delivered gold (2.83 pooled, magnitudes 1.46 to 4.59 across languages) falls below the 6.3-point band.\\\",\\n      \\\"reason\\\": \\\"Section 4.5 explicitly states that the reference-sensitivity band exceeds all observed margins between annotators under shipped gold (max 4.59).\\\"\\n    },\\n    {\\n      \\\"id\\\": 37,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The largest pooled delta belongs to A, whose score against the delivered gold is partly circular (Section 4.4); the same band computed from B’s delta gives 3.4 points instead of 6.3.\\\",\\n      \\\"reason\\\": \\\"Section 4.5 explicitly states that the band is inflated by self-scoring since gold often copies Annotator A.\\\"\\n    },\\n    {\\n      \\\"id\\\": 38,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The largest pooled delta belongs to A, whose score against the delivered gold is partly circular (Section 4.4); the same band computed from B’s delta gives 3.4 points instead of 6.3.\\\",\\n      \\\"reason\\\": \\\"Section 4.5 explicitly states that using Annotator B’s delta (3.4 points), several margins fall within the reference-sensitivity band.\\\"\\n    },\\n    {\\n      \\\"id\\\": 39,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The sensitivity we report is a property of how these particular references were constructed, not a law holding wherever two references exist.\\\",\\n      \\\"reason\\\": \\\"Section 4.2 explicitly states that the reference-sensitivity band is pipeline-specific.\\\"\\n    },\\n    {\\n      \\\"id\\\": 40,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"A benchmark whose adjudication policy varies by language is not applying one protocol to six languages, whatever its documentation says. A third mechanism, a type merge applied before release, is described in Appendix C.\\\",\\n      \\\"reason\\\": \\\"Section 2.2 and Appendix C explicitly state that a neutral aggregation rule would yield a smaller reference-sensitivity band, as Swedish demonstrates.\\\"\\n    }\\n  ]\\n}\\n```\", \"```json\\n{\\n  \\\"verdicts\\\": [\\n    {\\n      \\\"id\\\": 1,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"A benchmark score compares a system output against a reference, and methodological attention falls almost entirely on the first term. We measure the second.\\\",\\n      \\\"reason\\\": \\\"Section 1, Introduction: The paper explicitly states that benchmark scores measure both the system and the reference.\\\"\\n    },\\n    {\\n      \\\"id\\\": 2,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The score moves by 4.95 F1 points for one output and 2.00 for the other (95% CIs [3.23, 6.27] and [0.26, 3.37]), and by 7.55 in the worst language.\\\",\\n      \\\"reason\\\": \\\"Section 1, Abstract: The paper provides evidence that reference choice can move scores more than system differences, with specific numerical examples.\\\"\\n    },\\n    {\\n      \\\"id\\\": 3,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The cause is an undocumented aggregation default that usually kept one annotator when adjudication did not fire, making the shipped reference a partial copy of an output being scored.\\\",\\n      \\\"reason\\\": \\\"Section 1, Abstract: The paper explicitly identifies an undocumented aggregation default as a source of bias in the benchmark scores.\\\"\\n    },\\n    {\\n      \\\"id\\\": 4,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"We suggest benchmarks report a reference-sensitivity band alongside the score.\\\",\\n      \\\"reason\\\": \\\"Section 5.2, What we recommend: The paper explicitly urges the community to report reference-sensitivity bands.\\\"\\n    },\\n    {\\n      \\\"id\\\": 5,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Until reference sensitivity is measured, we cannot know whether a reported improvement is robust to defensible choices in the benchmark’s reference-construction process.\\\",\\n      \\\"reason\\\": \\\"Section 6, Conclusion: The paper explicitly states that without reference-sensitivity bands, the robustness of reported improvements cannot be determined.\\\"\\n    },\\n    {\\n      \\\"id\\\": 6,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"We claim the method transfers, not the number. The reviewer sample is documented, not observed.\\\",\\n      \\\"reason\\\": \\\"Section 5.3, Limitations: The paper explicitly states that the method is transferable, but the specific numerical results are a property of the pipeline.\\\"\\n    }\\n  ]\\n}\\n```\"]"
+}

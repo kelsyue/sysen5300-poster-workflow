@@ -1,0 +1,59 @@
+{
+  "model": "gemini-3.5-flash",
+  "repeat": 1,
+  "judge_prompt_sha256": "4ec65050cfdc718218dbc587f672291e733fd03b1254c20d77b61b0933e16162",
+  "error": null,
+  "tokens_in": 9955,
+  "tokens_out": 3424,
+  "max_output_tokens": 32768,
+  "parsed": {
+    "items": {
+      "chk_problem": {
+        "label": "accurate",
+        "poster_evidence": "Accurate T-staging in laryngopharyngeal cancer is pivotal for clinical decision-making, as treatment strategies differ markedly between T stages. The current reference standard relies on biopsy-derived pathology, which is invasive and time-consuming. Recent computer-aided approaches face challenges in structural relationship modeling and fine-grained cross-modal alignment.",
+        "reason": "The poster accurately describes the clinical importance of T-staging, the limitations of current biopsy-based and CT-based staging, and the challenges of existing computer-aided methods in the Introduction section."
+      },
+      "chk_method": {
+        "label": "accurate",
+        "poster_evidence": "The proposed framework comprises three key components: Anatomy-Structured Organ Graph (AOG), Organ-Anchored Cross-Modal Alignment (OCA), and Report-Enhanced Graph-Refinement (REG).",
+        "reason": "The poster explicitly names and describes the three key components of the proposed framework in the Methodology section."
+      },
+      "chk_data": {
+        "label": "accurate",
+        "poster_evidence": "The dataset consists of 656 patients across four medical centers.",
+        "reason": "The poster identifies the dataset size of 656 patients across four medical centers in the Experiments section."
+      },
+      "chk_setup": {
+        "label": "missing",
+        "poster_evidence": "",
+        "reason": "The poster does not describe the experimental setup, such as the PyTorch framework, GPU hardware, CT resampling, resizing, or Hounsfield Unit normalization."
+      },
+      "chk_primary_result": {
+        "label": "accurate",
+        "poster_evidence": "achieving an F1 score of 80.83% and accuracy of 81.53% in binary classification",
+        "reason": "The poster reports the correct F1 score (80.83%) and accuracy (81.53%) for the binary classification task on the internal test set, which is also shown in Table II."
+      },
+      "chk_secondary_result": {
+        "label": "accurate",
+        "poster_evidence": "and F1 score of 61.43% and accuracy of 63.33% in three-class classification.",
+        "reason": "The poster reports the correct F1 score (61.43%) and accuracy (63.33%) for the three-class classification task on the internal test set, which is also shown in Table II."
+      },
+      "chk_baseline": {
+        "label": "accurate",
+        "poster_evidence": "SwinViT [37], VDPF [38], MRSN [39] ... CPAM [5], TGCAM [2], MMBCD [1], LViT [4], MMI [3]",
+        "reason": "Table II in the poster lists the image-only baselines (SwinViT, VDPF, MRSN) and multimodal baselines (CPAM, TGCAM, MMBCD, LViT, MMI) used for comparison."
+      },
+      "chk_conclusion": {
+        "label": "accurate",
+        "poster_evidence": "The proposed anatomy-structured multimodal framework effectively captures organ-specific invasion patterns and their textual evidence, achieving state-of-the-art performance in laryngopharyngeal cancer T-staging. The framework offers improved interpretability by aligning decision-making with clinically meaningful invasion pathways.",
+        "reason": "The poster's Conclusion section summarizes the main take-home message regarding the framework's performance and its clinical interpretability."
+      },
+      "chk_limitation": {
+        "label": "missing",
+        "poster_evidence": "",
+        "reason": "The poster does not mention any limitations of the framework (such as reliance on pre-trained segmentation models or CT-based assessment errors) or specific clinical implications."
+      }
+    }
+  },
+  "raw": "```json\n{\n  \"items\": {\n    \"chk_problem\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Accurate T-staging in laryngopharyngeal cancer is pivotal for clinical decision-making, as treatment strategies differ markedly between T stages. The current reference standard relies on biopsy-derived pathology, which is invasive and time-consuming. Recent computer-aided approaches face challenges in structural relationship modeling and fine-grained cross-modal alignment.\",\n      \"reason\": \"The poster accurately describes the clinical importance of T-staging, the limitations of current biopsy-based and CT-based staging, and the challenges of existing computer-aided methods in the Introduction section.\"\n    },\n    \"chk_method\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"The proposed framework comprises three key components: Anatomy-Structured Organ Graph (AOG), Organ-Anchored Cross-Modal Alignment (OCA), and Report-Enhanced Graph-Refinement (REG).\",\n      \"reason\": \"The poster explicitly names and describes the three key components of the proposed framework in the Methodology section.\"\n    },\n    \"chk_data\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"The dataset consists of 656 patients across four medical centers.\",\n      \"reason\": \"The poster identifies the dataset size of 656 patients across four medical centers in the Experiments section.\"\n    },\n    \"chk_setup\": {\n      \"label\": \"missing\",\n      \"poster_evidence\": \"\",\n      \"reason\": \"The poster does not describe the experimental setup, such as the PyTorch framework, GPU hardware, CT resampling, resizing, or Hounsfield Unit normalization.\"\n    },\n    \"chk_primary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"achieving an F1 score of 80.83% and accuracy of 81.53% in binary classification\",\n      \"reason\": \"The poster reports the correct F1 score (80.83%) and accuracy (81.53%) for the binary classification task on the internal test set, which is also shown in Table II.\"\n    },\n    \"chk_secondary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"and F1 score of 61.43% and accuracy of 63.33% in three-class classification.\",\n      \"reason\": \"The poster reports the correct F1 score (61.43%) and accuracy (63.33%) for the three-class classification task on the internal test set, which is also shown in Table II.\"\n    },\n    \"chk_baseline\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"SwinViT [37], VDPF [38], MRSN [39] ... CPAM [5], TGCAM [2], MMBCD [1], LViT [4], MMI [3]\",\n      \"reason\": \"Table II in the poster lists the image-only baselines (SwinViT, VDPF, MRSN) and multimodal baselines (CPAM, TGCAM, MMBCD, LViT, MMI) used for comparison.\"\n    },\n    \"chk_conclusion\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"The proposed anatomy-structured multimodal framework effectively captures organ-specific invasion patterns and their textual evidence, achieving state-of-the-art performance in laryngopharyngeal cancer T-staging. The framework offers improved interpretability by aligning decision-making with clinically meaningful invasion pathways.\",\n      \"reason\": \"The poster's Conclusion section summarizes the main take-home message regarding the framework's performance and its clinical interpretability.\"\n    },\n    \"chk_limitation\": {\n      \"label\": \"missing\",\n      \"poster_evidence\": \"\",\n      \"reason\": \"The poster does not mention any limitations of the framework (such as reliance on pre-trained segmentation models or CT-based assessment errors) or specific clinical implications.\"\n    }\n  }\n}\n```"
+}

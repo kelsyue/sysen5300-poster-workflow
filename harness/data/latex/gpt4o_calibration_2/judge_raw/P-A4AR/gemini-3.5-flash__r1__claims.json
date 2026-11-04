@@ -1,0 +1,847 @@
+{
+  "model": "gemini-3.5-flash",
+  "repeat": 1,
+  "judge_prompt_sha256": "4ec65050cfdc718218dbc587f672291e733fd03b1254c20d77b61b0933e16162",
+  "error": null,
+  "tokens_in": 70301,
+  "tokens_out": 45944,
+  "max_output_tokens": 32768,
+  "claims_batch_size": 40,
+  "parsed": {
+    "claims": [
+      {
+        "id": 1,
+        "text": "Current clinical practice for laryngopharyngeal cancer T-staging relies on invasive biopsy procedures.",
+        "poster_quote": "current clinical practice relies on invasive biopsy procedures",
+        "label": "supported",
+        "paper_evidence": "However, current clinical practice relies on invasive biopsy procedures, whereas CT-based staging remains challenging due to the complex patterns of tumor invasion.",
+        "reason": "Abstract, page 1. The paper explicitly states that current clinical practice relies on invasive biopsy procedures."
+      },
+      {
+        "id": 2,
+        "text": "CT-based staging remains challenging due to the complex patterns of tumor invasion.",
+        "poster_quote": "CT-based staging remains challenging due to the complex patterns of tumor invasion.",
+        "label": "supported",
+        "paper_evidence": "whereas CT-based staging remains challenging due to the complex patterns of tumor invasion.",
+        "reason": "Abstract, page 1. The paper states that CT-based staging is challenging due to complex tumor invasion patterns."
+      },
+      {
+        "id": 3,
+        "text": "The proposed framework constructs an Anatomy-Structured Organ Graph (AOG) that captures invasion patterns between primary sites and surrounding organs.",
+        "poster_quote": "The framework first constructs an Anatomy-Structured Organ Graph (AOG) that captures invasion patterns between primary sites and surrounding organs",
+        "label": "supported",
+        "paper_evidence": "The framework first constructs an Anatomy-Structured Organ Graph (AOG) that captures invasion patterns between primary sites and surrounding organs",
+        "reason": "Abstract, page 1. The paper states that the framework constructs an AOG to capture invasion patterns."
+      },
+      {
+        "id": 4,
+        "text": "The proposed framework performs Organ-Anchored Cross-Modal Alignment (OCA) so that each organ node aggregates textual evidence from the radiology report.",
+        "poster_quote": "performs Organ-Anchored Cross-Modal Alignment (OCA) so that each organ node aggregates textual evidence from the radiology report",
+        "label": "supported",
+        "paper_evidence": "then performs Organ-Anchored Cross-Modal Alignment (OCA) so that each organ node aggregates textual evidence from the radiology report",
+        "reason": "Abstract, page 1. The paper states that OCA is performed to aggregate textual evidence at each organ node."
+      },
+      {
+        "id": 5,
+        "text": "The proposed framework refines the graph representation by injecting organ-specific invasion cues extracted from the report via Report-Enhanced Graph-Refinement (REG).",
+        "poster_quote": "refines this graph representation by injecting organ-specific invasion cues extracted from the report via Report-Enhanced Graph-Refinement (REG)",
+        "label": "supported",
+        "paper_evidence": "and finally refines this graph representation by injecting organ-specific invasion cues extracted from the report via Report-Enhanced Graph-Refinement (REG)",
+        "reason": "Abstract, page 1. The paper states that REG refines the graph representation by injecting organ-specific invasion cues."
+      },
+      {
+        "id": 6,
+        "text": "The framework comprises three key components: an Anatomy-Structured Organ Graph (AOG), an Organ-Anchored Cross-Modal Alignment (OCA) module, and a Report-Enhanced Graph-Refinement (REG) module.",
+        "poster_quote": "The framework comprises three key components: an Anatomy-Structured Organ Graph (AOG), an Organ-Anchored Cross-Modal Alignment (OCA) module, and a Report-Enhanced Graph-Refinement (REG) module.",
+        "label": "supported",
+        "paper_evidence": "Our framework comprises three key components: an Anatomy-Structured Organ Graph (AOG), an Organ-Anchored Cross-Modal Alignment (OCA) module, and a Report-Enhanced Graph-Refinement (REG) module.",
+        "reason": "Section III-A, page 3. The paper explicitly lists these three key components of the framework."
+      },
+      {
+        "id": 7,
+        "text": "The proposed method is superior across all settings compared to image-only methods (SwinViT, VDPF, MRSN) and state-of-the-art multimodal methods (CPAM, TGCAM, MMBCD, LViT, MMI).",
+        "poster_quote": "Comparison with image-only methods (SwinViT, VDPF, MRSN) and state-of-the-art multimodal methods (CPAM, TGCAM, MMBCD, LViT, MMI). Our method is superior across all settings.",
+        "label": "supported",
+        "paper_evidence": "Our method demonstrates superior performance across all experimental settings.",
+        "reason": "Section IV-C, page 8. The paper states that the proposed method is superior across all experimental settings compared to the listed baselines."
+      },
+      {
+        "id": 8,
+        "text": "AOG uses pre-trained organ segmentations and anatomy-guided connectivity rules to construct an organ-level graph.",
+        "poster_quote": "AOG addresses the challenge of modeling complex invasion patterns by using pre-trained organ segmentations and anatomyguided connectivity rules to construct an organ-level graph",
+        "label": "supported",
+        "paper_evidence": "First, AOG addresses the challenge of modeling complex invasion patterns by using pre-trained organ segmentations and anatomy-guided connectivity rules to construct an organ-level graph that encodes potential spread between primary sites and surrounding structures.",
+        "reason": "Section III-A, page 3. The paper states that AOG uses pre-trained organ segmentations and anatomy-guided connectivity rules."
+      },
+      {
+        "id": 9,
+        "text": "OCA performs fine-grained, organ-level image-text interaction, enhancing CT-derived organ features with organ-specific cues from the radiology report while preserving the anatomy-driven topology.",
+        "poster_quote": "OCA then performs fine-grained, organ-level image-text interaction, enhancing CT-derived organ features with organspecific cues from the radiology report while preserving the anatomy-driven topology.",
+        "label": "supported",
+        "paper_evidence": "OCA then performs fine-grained, organ-level image–text interaction, enhancing CT-derived organ features with organ-specific cues from the radiology report while preserving the anatomy-driven topology.",
+        "reason": "Section III-A, page 3. The paper describes OCA as performing fine-grained organ-level image-text interaction while preserving topology."
+      },
+      {
+        "id": 10,
+        "text": "REG uses a large language model (LLM) to incorporate report-derived invasion statements as a guidance signal on top of AOG.",
+        "poster_quote": "REG uses a large language model (LLM) to incorporate report-derived invasion statements as a guidance signal on top of AOG, refining the multimodal organ graph without discarding anatomy-based risk connections.",
+        "label": "supported",
+        "paper_evidence": "Finally, REG uses a large language model (LLM) to incorporate report-derived invasion statements as a guidance signal on top of AOG, refining the multimodal organ graph without discarding anatomy-based risk connections.",
+        "reason": "Section III-A, page 3. The paper states that REG uses an LLM to incorporate report-derived invasion statements as guidance."
+      },
+      {
+        "id": 11,
+        "text": "In binary classification (Early T1-T2 vs. Late T3-T4), the proposed method achieves an internal F1 of 80.83%.",
+        "poster_quote": "Binary (Early T1-T2 vs. Late T3-T4): internal F1 80.83%",
+        "label": "supported",
+        "paper_evidence": "80.83 ± 5.35",
+        "reason": "Table II, row 'Ours', column '2-Class (Early T1–T2 vs. Late T3–T4) F1 (Internal)'. The proposed method achieves an internal F1 of 80.83%."
+      },
+      {
+        "id": 12,
+        "text": "In binary classification (Early T1-T2 vs. Late T3-T4), the proposed method achieves an internal Accuracy of 81.53%.",
+        "poster_quote": "internal F1 80.83% / Acc 81.53%",
+        "label": "supported",
+        "paper_evidence": "81.53 ± 5.41",
+        "reason": "Table II, row 'Ours', column '2-Class (Early T1–T2 vs. Late T3–T4) Acc (Internal)'. The proposed method achieves an internal Accuracy of 81.53%."
+      },
+      {
+        "id": 13,
+        "text": "The proposed method's internal binary F1 of 80.83% surpasses the second-best MMI's F1 of 77.59%.",
+        "poster_quote": "surpassing the second-best MMI (77.59% F1",
+        "label": "supported",
+        "paper_evidence": "For internal testing, we achieve an F1 score of 80.83% and accuracy of 81.53%, surpassing the second-best method MMI [3] (77.59% F1 score and 78.57% accuracy).",
+        "reason": "Section IV-C, page 8. The paper explicitly states that the internal binary F1 of 80.83% surpasses MMI's 77.59%."
+      },
+      {
+        "id": 14,
+        "text": "The proposed method's internal binary Accuracy of 81.53% surpasses the second-best MMI's Accuracy of 78.57%.",
+        "poster_quote": "78.57% Acc).",
+        "label": "supported",
+        "paper_evidence": "For internal testing, we achieve an F1 score of 80.83% and accuracy of 81.53%, surpassing the second-best method MMI [3] (77.59% F1 score and 78.57% accuracy).",
+        "reason": "Section IV-C, page 8. The paper explicitly states that the internal binary Accuracy of 81.53% surpasses MMI's 78.57%."
+      },
+      {
+        "id": 15,
+        "text": "In binary classification, the proposed method achieves an external F1 of 76.46%.",
+        "poster_quote": "External F1 76.46%",
+        "label": "supported",
+        "paper_evidence": "76.46 ± 1.35",
+        "reason": "Table II, row 'Ours', column '2-Class (Early T1–T2 vs. Late T3–T4) F1 (External)'. The proposed method achieves an external F1 of 76.46%."
+      },
+      {
+        "id": 16,
+        "text": "In binary classification, the proposed method achieves an external Accuracy of 76.50%.",
+        "poster_quote": "External F1 76.46% / Acc 76.50%",
+        "label": "supported",
+        "paper_evidence": "76.50 ± 1.34",
+        "reason": "Table II, row 'Ours', column '2-Class (Early T1–T2 vs. Late T3–T4) Acc (External)'. The proposed method achieves an external Accuracy of 76.50%."
+      },
+      {
+        "id": 17,
+        "text": "The proposed method's external binary F1 of 76.46% outperforms TGCAM's F1 of 74.09%.",
+        "poster_quote": "outperforming TGCAM (74.09% F1",
+        "label": "supported",
+        "paper_evidence": "On the external test set, our method maintains its leading position with an F1 score of 76.46% and accuracy of 76.50%, outperforming TGCAM [2] (74.09% F1 score and 74.38% accuracy) by a significant margin.",
+        "reason": "Section IV-C, page 8. The paper explicitly states that the external binary F1 of 76.46% outperforms TGCAM's 74.09%."
+      },
+      {
+        "id": 18,
+        "text": "The proposed method's external binary Accuracy of 76.50% outperforms TGCAM's Accuracy of 74.38%.",
+        "poster_quote": "74.38% Acc) by a significant margin.",
+        "label": "supported",
+        "paper_evidence": "On the external test set, our method maintains its leading position with an F1 score of 76.46% and accuracy of 76.50%, outperforming TGCAM [2] (74.09% F1 score and 74.38% accuracy) by a significant margin.",
+        "reason": "Section IV-C, page 8. The paper explicitly states that the external binary Accuracy of 76.50% outperforms TGCAM's 74.38%."
+      },
+      {
+        "id": 19,
+        "text": "The setting uses K = 7 predefined anatomical structures.",
+        "poster_quote": "Setting: K = 7 predefined anatomical structures",
+        "label": "supported",
+        "paper_evidence": "K=7 | Number of predefined anatomical structures",
+        "reason": "Table I, page 4. The number of predefined anatomical structures is defined as K = 7."
+      },
+      {
+        "id": 20,
+        "text": "The primary sites are defined as P = {supraglottic, glottic, subglottic}.",
+        "poster_quote": "primary sites P = {supraglottic, glottic, subglottic}",
+        "label": "supported",
+        "paper_evidence": "P = {1, 2, 3} | Indices of primary sites (supraglottic, glottic, subglottic)",
+        "reason": "Table I, page 4. The primary sites are defined as supraglottic, glottic, and subglottic, indexed by P."
+      },
+      {
+        "id": 21,
+        "text": "The potentially invaded organs are defined as T = {esophagus, thyroid gland, trachea, oral cavity}.",
+        "poster_quote": "potentially invaded organs T = {esophagus, thyroid gland, trachea, oral cavity}.",
+        "label": "supported",
+        "paper_evidence": "T = {4, 5, 6, 7} | Indices of potentially invaded organs (esophagus, thyroid gland, trachea, oral cavity)",
+        "reason": "Table I, page 4. The potentially invaded organs are defined as esophagus, thyroid gland, trachea, and oral cavity, indexed by T."
+      },
+      {
+        "id": 22,
+        "text": "The model is trained end-to-end with cross-entropy loss for T-staging classification.",
+        "poster_quote": "The model is trained end-to-end with cross-entropy loss for T-staging classification.",
+        "label": "supported",
+        "paper_evidence": "We train our framework end-to-end using cross-entropy loss for T-staging classification:",
+        "reason": "Section III-D-3, page 6. The model is trained end-to-end with cross-entropy loss."
+      },
+      {
+        "id": 23,
+        "text": "In three-class classification (T1, T2, T3-T4), the proposed method achieves an internal F1 of 61.43%.",
+        "poster_quote": "Three-class (T1, T2, T3-T4): internal F1 61.43%",
+        "label": "supported",
+        "paper_evidence": "61.43 ± 3.25",
+        "reason": "Table II, row 'Ours', column '3-Class (T1, T2, T3–T4) F1 (Internal)'. The proposed method achieves an internal F1 of 61.43%."
+      },
+      {
+        "id": 24,
+        "text": "In three-class classification, the proposed method achieves an internal Accuracy of 63.33%.",
+        "poster_quote": "internal F1 61.43% / Acc 63.33%",
+        "label": "supported",
+        "paper_evidence": "63.33 ± 3.25",
+        "reason": "Table II, row 'Ours', column '3-Class (T1, T2, T3–T4) Acc (Internal)'. The proposed method achieves an internal Accuracy of 63.33%."
+      },
+      {
+        "id": 25,
+        "text": "The proposed method's internal three-class F1 of 61.43% improves over MMBCD's F1 of 58.44%.",
+        "poster_quote": "improving over MMBCD (58.44% F1",
+        "label": "supported",
+        "paper_evidence": "On the internal test set, we achieve an F1 score of 61.43% and accuracy of 63.33%, showing notable improvements over MMBCD [1] (58.44% F1 score and 61.14% accuracy).",
+        "reason": "Section IV-C, page 8. The paper explicitly states that the internal three-class F1 of 61.43% improves over MMBCD's 58.44%."
+      },
+      {
+        "id": 26,
+        "text": "The proposed method's internal three-class Accuracy of 63.33% improves over MMBCD's Accuracy of 61.14%.",
+        "poster_quote": "61.14% Acc).",
+        "label": "supported",
+        "paper_evidence": "On the internal test set, we achieve an F1 score of 61.43% and accuracy of 63.33%, showing notable improvements over MMBCD [1] (58.44% F1 score and 61.14% accuracy).",
+        "reason": "Section IV-C, page 8. The paper explicitly states that the internal three-class Accuracy of 63.33% improves over MMBCD's 61.14%."
+      },
+      {
+        "id": 27,
+        "text": "In three-class classification, the proposed method achieves an external F1 of 60.27%.",
+        "poster_quote": "External F1 60.27%",
+        "label": "supported",
+        "paper_evidence": "60.27 ± 3.03",
+        "reason": "Table II, row 'Ours', column '3-Class (T1, T2, T3–T4) F1 (External)'. The proposed method achieves an external F1 of 60.27%."
+      },
+      {
+        "id": 28,
+        "text": "In three-class classification, the proposed method achieves an external Accuracy of 63.78%.",
+        "poster_quote": "External F1 60.27% / Acc 63.78%",
+        "label": "supported",
+        "paper_evidence": "63.78 ± 2.98",
+        "reason": "Table II, row 'Ours', column '3-Class (T1, T2, T3–T4) Acc (External)'. The proposed method achieves an external Accuracy of 63.78%."
+      },
+      {
+        "id": 29,
+        "text": "The proposed method's external three-class F1 of 60.27% outperforms the second-best method by a margin of 8.73% F1.",
+        "poster_quote": "outperforming the second-best method by a large margin of 8.73% F1",
+        "label": "supported",
+        "paper_evidence": "significantly outperforming the second best method by a large margin of 8.73% F1 score and 7.78% accuracy.",
+        "reason": "Section IV-C, page 8. The paper states that the external three-class F1 of 60.27% outperforms the second-best method (MMI with 51.54%) by 8.73% (60.27 - 51.54 = 8.73)."
+      },
+      {
+        "id": 30,
+        "text": "The proposed method's external three-class Accuracy of 63.78% outperforms the second-best method by a margin of 7.78% accuracy.",
+        "poster_quote": "and 7.78% accuracy.",
+        "label": "supported",
+        "paper_evidence": "significantly outperforming the second best method by a large margin of 8.73% F1 score and 7.78% accuracy.",
+        "reason": "Section IV-C, page 8. The paper states that the external three-class Accuracy of 63.78% outperforms the second-best method (MMBCD with 56.00%) by 7.78% (63.78 - 56.00 = 7.78)."
+      },
+      {
+        "id": 31,
+        "text": "The image-only baseline SwinViT achieves 58.82% internal binary F1.",
+        "poster_quote": "SwinViT 58.82% internal binary F1",
+        "label": "supported",
+        "paper_evidence": "58.82 ± 0.57",
+        "reason": "Table II, row 'SwinViT', column '2-Class (Early T1–T2 vs. Late T3–T4) F1 (Internal)'. SwinViT achieves 58.82% internal binary F1."
+      },
+      {
+        "id": 32,
+        "text": "The image-only baseline VDPF achieves 71.47% internal binary F1.",
+        "poster_quote": "VDPF 71.47%",
+        "label": "supported",
+        "paper_evidence": "71.47 ± 3.71",
+        "reason": "Table II, row 'VDPF', column '2-Class (Early T1–T2 vs. Late T3–T4) F1 (Internal)'. VDPF achieves 71.47% internal binary F1."
+      },
+      {
+        "id": 33,
+        "text": "TABLE V compares different attention mechanisms in OCA on a representative internal fold.",
+        "poster_quote": "TABLE V : Comparison of different attention mechanisms in our OCA on a representative internal fold.",
+        "label": "supported",
+        "paper_evidence": "TABLE V: Comparison of different attention mechanisms in our OCA on a representative internal fold.",
+        "reason": "Table V caption, page 9. Table V compares different attention mechanisms in OCA on a representative internal fold."
+      },
+      {
+        "id": 34,
+        "text": "TABLE VI presents an ablation study of anatomical topology modeling, comparing different approaches on a representative internal fold.",
+        "poster_quote": "TABLE VI : Ablation study of anatomical topology modeling. Comparison between different approaches for modeling anatomical relationships on a representative internal fold.",
+        "label": "supported",
+        "paper_evidence": "TABLE VI: Ablation study of anatomical topology modeling. Comparison between different approaches for modeling anatomical relationships on a representative internal fold.",
+        "reason": "Table VI caption, page 9. Table VI presents an ablation study of anatomical topology modeling on a representative internal fold."
+      },
+      {
+        "id": 35,
+        "text": "In TABLE VI, Fully-Connected Graph represents a complete graph connection strategy.",
+        "poster_quote": "Fully-Connected Graph represents a complete graph connection strategy",
+        "label": "supported",
+        "paper_evidence": "Fully-Connected Graph represents a complete graph connection strategy",
+        "reason": "Table VI caption, page 9. Fully-Connected Graph represents a complete graph connection strategy."
+      },
+      {
+        "id": 36,
+        "text": "In TABLE VI, Direct Fusion uses concatenated organ masks.",
+        "poster_quote": "Direct Fusion uses concatenated organ masks",
+        "label": "supported",
+        "paper_evidence": "Direct Fusion uses concatenated organ masks",
+        "reason": "Table VI caption, page 9. Direct Fusion uses concatenated organ masks."
+      },
+      {
+        "id": 37,
+        "text": "In TABLE VI, Global Context applies global feature pooling.",
+        "poster_quote": "Global Context applies global feature pooling.",
+        "label": "supported",
+        "paper_evidence": "Global Context applies global feature pooling",
+        "reason": "Table VI caption, page 9. Global Context applies global feature pooling."
+      },
+      {
+        "id": 38,
+        "text": "Fig. 2 shows an overview of the proposed framework for laryngopharyngeal cancer T-staging, integrating CT images and radiology reports through AOG, OCA, and REG.",
+        "poster_quote": "Fig. 2 : Overview of the proposed framework for laryngopharyngeal cancer T-staging, integrating CT images and radiology reports through three modules: (a) Anatomy-Structured Organ Graph (AOG) for organ-level feature extraction and graph construction, (b) Organ-Anchored Cross-Modal Alignment (OCA) for fine-grained cross-modal alignment, and (c) ReportEnhanced Graph-Refinement (REG) module for structural refinement using clinical invasion information.",
+        "label": "supported",
+        "paper_evidence": "Fig. 2: Overview of the proposed framework for laryngopharyngeal cancer T-staging, integrating CT images and radiology reports through three modules: (a) Anatomy-Structured Organ Graph (AOG) for organ-level feature extraction and graph construction, (b) Organ-Anchored Cross-Modal Alignment (OCA) for fine-grained cross-modal alignment, and (c) Report-Enhanced Graph-Refinement (REG) module for structural refinement using clinical invasion information.",
+        "reason": "Fig. 2 caption, page 4. Figure 2 shows an overview of the proposed framework integrating CT images and reports through AOG, OCA, and REG."
+      },
+      {
+        "id": 39,
+        "text": "Radiologists typically report only obvious invasion, so building the graph solely from reported invasion would disconnect organs that are anatomically at risk but not mentioned.",
+        "poster_quote": "radiologists typically report only obvious invasion, so building the graph solely from reported invasion would disconnect organs that are anatomically at risk but not mentioned.",
+        "label": "supported",
+        "paper_evidence": "In practice, however, radiologists typically report only obvious and clinically salient invasion, hence subtle or equivocal extension may be omitted. Relying solely on reported invasion would therefore disconnect organs that are anatomically at risk but not explicitly mentioned, leaving their CT features underutilized.",
+        "reason": "Section I, page 2. The paper explains that relying solely on reported invasion would disconnect anatomically at-risk organs that are not explicitly mentioned."
+      },
+      {
+        "id": 40,
+        "text": "Fig. 1 compares conventional coarse-grained image-text fusion based on global CT and report information with the proposed anatomy-structured multimodal framework.",
+        "poster_quote": "Fig. 1 : Comparison between (a) conventional coarse-grained image-text fusion based on global CT and report information [1]-[5], and (b) the proposed anatomy-structured multimodal framework.",
+        "label": "supported",
+        "paper_evidence": "Fig. 1: Comparison between (a) conventional coarse-grained image–text fusion based on global CT and report information [1]–[5], and (b) the proposed anatomy-structured multimodal framework.",
+        "reason": "Fig. 1 caption, page 1. Figure 1 compares conventional coarse-grained image-text fusion with the proposed anatomy-structured framework."
+      },
+      {
+        "id": 41,
+        "text": "The collected dataset comprises 656 patients across four medical centers, all paired with CT reports.",
+        "poster_quote": "We collect the first and largest dataset for CT-based laryngopharyngeal cancer T-staging, comprising 656 patients across four medical centers, all paired with CT reports for multimodal assessment",
+        "label": "supported",
+        "paper_evidence": "To the best of our knowledge, we collect the first and largest dataset for CT-based laryngopharyngeal cancer T-staging, comprising 656 patients across four medical centers. More importantly, all cases are paired with CT reports for multimodal T-staging assessment.",
+        "reason": "Section IV-A, first paragraph. The paper states that the dataset comprises 656 patients across four medical centers, all paired with CT reports."
+      },
+      {
+        "id": 42,
+        "text": "Prior studies on CT-based laryngopharyngeal cancer T-staging are single-center with 118-319 patients and imaging only.",
+        "poster_quote": "(prior studies are single-center with 118-319 patients and imaging only).",
+        "label": "supported",
+        "paper_evidence": "These laryngopharyngeal and head-and-neck staging studies, however, are single-center, limited in scale (118–319 patients), and rely on imaging features alone without exploiting paired radiology reports.",
+        "reason": "Section II-A, last paragraph. The paper states that prior studies are single-center, limited in scale (118-319 patients), and rely on imaging alone."
+      },
+      {
+        "id": 43,
+        "text": "An LLM extracts structured invasion information via prompt engineering, identifying which target organs (esophagus, thyroid gland, trachea, oral cavity) are explicitly described as invaded, excluding negations and distinguishing 'thyroid gland' from 'thyroid cartilage'.",
+        "poster_quote": "Text node construction: an LLM extracts structured invasion information via prompt engineering, identifying which target organs (esophagus, thyroid gland, trachea, oral cavity) are explicitly described as invaded, excluding negations and distinguishing ’thyroid gland’ (endocrine organ) from ’thyroid cartilage’ (laryngeal structure).",
+        "label": "supported",
+        "paper_evidence": "This is a straightforward information extraction task: the LLM identifies whether specific target organ names (esophagus, thyroid gland, trachea, oral cavity) appear in the context of explicit invasion statements. The main subtlety is distinguishing “thyroid gland” (the endocrine organ) from “thyroid cartilage” (the laryngeal structure), which is handled through targeted prompt design. Specifically, the prompt is: “Identify which of the following structures are explicitly described as invaded by the tumor: [esophagus, thyroid gland, trachea, oral cavity]. Only include structures with positive invasion statements; exclude negations. Note: thyroid gland (endocrine organ) and thyroid cartilage (laryngeal structure) are different. Return a JSON list of invaded organs.”",
+        "reason": "Section III-D-1, first paragraph. The paper describes using an LLM with prompt engineering to extract structured invasion information for the target organs, excluding negations and distinguishing thyroid gland from thyroid cartilage."
+      },
+      {
+        "id": 44,
+        "text": "The framework uses Claude 3.5 Haiku for text node construction.",
+        "poster_quote": "We use Claude 3.5 Haiku",
+        "label": "supported",
+        "paper_evidence": "We use Claude 3.5 Haiku [34] in our implementation;",
+        "reason": "Section III-D-1, first paragraph. The paper states that Claude 3.5 Haiku is used in the implementation."
+      },
+      {
+        "id": 45,
+        "text": "GPT-4o and Qwen-2.5-72B yield identical outputs to Claude 3.5 Haiku on all 439 reports.",
+        "poster_quote": "GPT-4o and Qwen-2.5-72B yield identical outputs on all 439 reports",
+        "label": "supported",
+        "paper_evidence": "we verified that GPT-4o [35] and Qwen-2.5-72B [36] yield exactly the same outputs as Claude 3.5 Haiku on all 439 reports,",
+        "reason": "Section III-D-1, first paragraph. The paper states that GPT-4o and Qwen-2.5-72B yield exactly the same outputs as Claude 3.5 Haiku on all 439 reports."
+      },
+      {
+        "id": 46,
+        "text": "Manual review confirms all LLM extractions are correct.",
+        "poster_quote": "manual review confirms all extractions are correct.",
+        "label": "supported",
+        "paper_evidence": "and manual review confirmed all extractions are correct.",
+        "reason": "Section III-D-1, first paragraph. The paper states that manual review confirmed all extractions are correct."
+      },
+      {
+        "id": 47,
+        "text": "The text node feature is built from the global [CLS] report representation projected to the organ feature dimension.",
+        "poster_quote": "The text node feature is built from the global [CLS] report representation projected to the organ feature dimension.",
+        "label": "supported",
+        "paper_evidence": "The text node feature is then constructed using the global text representation: ht = Wt t1 + bt (12) where t1 ∈ Rd is the [CLS] token representation from the report encoder, and Wt ∈ Rd×d, bt ∈ Rd are learnable parameters that align the text feature dimension with organ representations.",
+        "reason": "Section III-D-1, second paragraph. The paper states that the text node feature is constructed from the global [CLS] token representation projected to align with organ representations."
+      },
+      {
+        "id": 48,
+        "text": "In graph refinement, the text node is connected to all primary sites by default, and additionally linked to target organs explicitly mentioned as invaded, while keeping original organ-organ edges unchanged.",
+        "poster_quote": "Graph refinement: the text node is connected to all primary sites by default, and additionally linked to target organs explicitly mentioned as invaded, while keeping original organ-organ edges unchanged.",
+        "label": "supported",
+        "paper_evidence": "where the text node is connected to all primary sites by default, and additionally linked to target organs that are explicitly mentioned as invaded in the report (k ∈ I).",
+        "reason": "Section III-D-2, first paragraph. The paper states that the text node is connected to all primary sites by default and additionally linked to target organs explicitly mentioned as invaded, while keeping original organ-organ edges unchanged."
+      },
+      {
+        "id": 49,
+        "text": "Message passing on the report-enhanced graph followed by global average pooling yields the staging prediction.",
+        "poster_quote": "Message passing on this report-enhanced graph followed by global average pooling yields the staging prediction",
+        "label": "supported",
+        "paper_evidence": "The final node representations are obtained through message passing on this report-enhanced graph: zk = GNN({h̃k}K k=1 ∪ {ht}, Ê) (16) followed by global average pooling for staging classification: y = MLP( 1 K + 1 X k∈V̂ zk) (17)",
+        "reason": "Section III-D-2, second paragraph. The paper states that message passing on the report-enhanced graph followed by global average pooling yields the staging prediction."
+      },
+      {
+        "id": 50,
+        "text": "The primary cohort from Fudan University Zhongshan Hospital (FUZH) consists of 439 patients with contrast-enhanced CT and reports, evaluated using 5-fold cross-validation.",
+        "poster_quote": "Cohorts: (1) Fudan University Zhongshan Hospital (FUZH), 439 patients with contrast-enhanced CT and reports (primary cohort, 5-fold cross-validation);",
+        "label": "supported",
+        "paper_evidence": "(1) Fudan University Zhongshan Hospital (FUZH) as the primary cohort with 439 patients, each with contrast-enhanced CT scans and corresponding radiology reports; ... FUZH is used for 5-fold cross-validation,",
+        "reason": "Section IV-A-1, first paragraph. The paper states that the primary cohort from FUZH consists of 439 patients with contrast-enhanced CT and reports, evaluated using 5-fold cross-validation."
+      },
+      {
+        "id": 51,
+        "text": "The Chang Gung Memorial Hospital (CGMH) cohort consists of 25 cases.",
+        "poster_quote": "(2) Chang Gung Memorial Hospital (CGMH), 25 cases;",
+        "label": "supported",
+        "paper_evidence": "(2) Chang Gung Memorial Hospital (CGMH) with 25 cases;",
+        "reason": "Section IV-A-1, first paragraph. The paper states that the CGMH cohort consists of 25 cases."
+      },
+      {
+        "id": 52,
+        "text": "The Eye & ENT Hospital of Fudan University (EENT) cohort consists of 87 cases.",
+        "poster_quote": "(3) Eye & ENT Hospital of Fudan University (EENT), 87 cases;",
+        "label": "supported",
+        "paper_evidence": "(3) Eye & ENT Hospital of Fudan University (EENT) with 87 cases;",
+        "reason": "Section IV-A-1, first paragraph. The paper states that the EENT cohort consists of 87 cases."
+      },
+      {
+        "id": 53,
+        "text": "The TCGA cohort consists of 105 public cases.",
+        "poster_quote": "(4) TCGA, 105 public cases.",
+        "label": "supported",
+        "paper_evidence": "and (4) The Cancer Genome Atlas (TCGA) with 105 cases for evaluating generalizability on public data [40].",
+        "reason": "Section IV-A-1, first paragraph. The paper states that the TCGA cohort consists of 105 cases."
+      },
+      {
+        "id": 54,
+        "text": "CGMH, EENT, and TCGA form the external test set.",
+        "poster_quote": "CGMH, EENT and TCGA form the external test set.",
+        "label": "supported",
+        "paper_evidence": "while CGMH, EENT, and TCGA [40] form the external test set.",
+        "reason": "Section IV-A-1, first paragraph. The paper states that CGMH, EENT, and TCGA form the external test set."
+      },
+      {
+        "id": 55,
+        "text": "For TCGA, CT reports were written by a board-certified radiologist and verified by a second, describing only imaging findings without assigning T-stage.",
+        "poster_quote": "For TCGA, CT reports were written by a board-certified radiologist and verified by a second, describing only imaging findings without assigning T-stage.",
+        "label": "supported",
+        "paper_evidence": "Specifically, these CT reports were written by a board-certified radiologist and then reviewed and verified by a second, with any disagreements resolved by consensus; the radiologists described only imaging findings and did not assign or infer the T-stage.",
+        "reason": "Section IV-A-1, first paragraph. The paper states that for TCGA, CT reports were written by a board-certified radiologist and verified by a second, describing only imaging findings without assigning T-stage."
+      },
+      {
+        "id": 56,
+        "text": "The stage distribution of the dataset is T1: 197.",
+        "poster_quote": "Stage distribution: T1 197",
+        "label": "supported",
+        "paper_evidence": "Total 197 176 138 145 656",
+        "reason": "Table III, row 'Total', column 'T1'. The stage distribution of the dataset is T1: 197."
+      },
+      {
+        "id": 57,
+        "text": "The stage distribution of the dataset is T2: 176.",
+        "poster_quote": "T2 176",
+        "label": "supported",
+        "paper_evidence": "Total 197 176 138 145 656",
+        "reason": "Table III, row 'Total', column 'T2'. The stage distribution of the dataset is T2: 176."
+      },
+      {
+        "id": 58,
+        "text": "The stage distribution of the dataset is T3: 138.",
+        "poster_quote": "T3 138",
+        "label": "supported",
+        "paper_evidence": "Total 197 176 138 145 656",
+        "reason": "Table III, row 'Total', column 'T3'. The stage distribution of the dataset is T3: 138."
+      },
+      {
+        "id": 59,
+        "text": "The stage distribution of the dataset is T4: 145.",
+        "poster_quote": "T4 145",
+        "label": "supported",
+        "paper_evidence": "Total 197 176 138 145 656",
+        "reason": "Table III, row 'Total', column 'T4'. The stage distribution of the dataset is T4: 145."
+      },
+      {
+        "id": 60,
+        "text": "The total number of patients in the dataset is 656.",
+        "poster_quote": "(total 656)",
+        "label": "supported",
+        "paper_evidence": "Total 197 176 138 145 656",
+        "reason": "Table III, row 'Total', column 'Total'. The total number of patients in the dataset is 656."
+      },
+      {
+        "id": 61,
+        "text": "The training set consists of 439 patients (66.9%).",
+        "poster_quote": "training 439 (66.9%)",
+        "label": "supported",
+        "paper_evidence": "Training 439 66.9%",
+        "reason": "Table III, row 'Training'. The training set consists of 439 patients (66.9%)."
+      },
+      {
+        "id": 62,
+        "text": "The test set consists of 217 patients (33.1%).",
+        "poster_quote": "test 217 (33.1%)",
+        "label": "supported",
+        "paper_evidence": "Test 217 33.1%",
+        "reason": "Table III, row 'Test'. The test set consists of 217 patients (33.1%)."
+      },
+      {
+        "id": 63,
+        "text": "Ground-truth T-stages are from pathological confirmation following AJCC 8th edition criteria, not from CT reports.",
+        "poster_quote": "Ground-truth T-stages are from pathological confirmation following AJCC 8th edition criteria, not from CT reports",
+        "label": "supported",
+        "paper_evidence": "Importantly, the ground-truth T-stage labels in our dataset are derived from pathological confirmation following AJCC 8th edition criteria, not from CT reports.",
+        "reason": "Section IV-A-1, second paragraph. The paper states that ground-truth T-stages are from pathological confirmation following AJCC 8th edition criteria, not from CT reports."
+      },
+      {
+        "id": 64,
+        "text": "None of the 439 training reports contain a T-stage designation.",
+        "poster_quote": "none of the 439 training reports contain a T-stage designation.",
+        "label": "supported",
+        "paper_evidence": "None of the 439 training reports contain any T-stage designation — all reports describe imaging findings following standard clinical templates.",
+        "reason": "Section IV-A-1, second paragraph. The paper states that none of the 439 training reports contain any T-stage designation."
+      },
+      {
+        "id": 65,
+        "text": "The binary classification setting is early (T1-T2) vs. late (T3-T4) stages.",
+        "poster_quote": "(1) binary classification of early (T1-T2) vs. late (T3-T4) stages, reflecting organ-preserving vs. aggressive treatment",
+        "label": "supported",
+        "paper_evidence": "(1) Binary classification between early stages (T1–T2) and late stages (T3–T4),",
+        "reason": "Section IV-A-1, second paragraph. The paper states that the binary classification setting is early (T1-T2) vs. late (T3-T4) stages."
+      },
+      {
+        "id": 66,
+        "text": "The three-class classification setting is T1 vs. T2 vs. T3-T4.",
+        "poster_quote": "(2) three-class classification T1 vs. T2 vs. T3-T4, distinguishing T1/T2 due to different infiltration patterns and recurrence risks while merging T3/T4 given similar treatment protocols.",
+        "label": "supported",
+        "paper_evidence": "(2) Three-class classification: T1 vs. T2 vs. T3–T4,",
+        "reason": "Section IV-A-1, third paragraph. The paper states that the three-class classification setting is T1 vs. T2 vs. T3-T4."
+      },
+      {
+        "id": 67,
+        "text": "The implementation uses PyTorch on NVIDIA H20.",
+        "poster_quote": "Implementation: PyTorch on NVIDIA H20",
+        "label": "supported",
+        "paper_evidence": "All experiments are conducted using PyTorch [41] on an NVIDIA H20 GPU.",
+        "reason": "Section IV-B-1, first paragraph. The paper states that the implementation uses PyTorch on an NVIDIA H20 GPU."
+      },
+      {
+        "id": 68,
+        "text": "CT images are resampled to 1mm isotropic.",
+        "poster_quote": "CT resampled to 1mm isotropic",
+        "label": "supported",
+        "paper_evidence": "For data preprocessing, all CT volumes are resampled to an isotropic spacing of 1mm3",
+        "reason": "Section IV-B-1, first paragraph. The paper states that CT images are resampled to an isotropic spacing of 1mm3."
+      },
+      {
+        "id": 69,
+        "text": "CT images are resized to 128x128x128.",
+        "poster_quote": "resized to 128x128x128",
+        "label": "supported",
+        "paper_evidence": "and resized to a unified spatial dimension of 128×128×128.",
+        "reason": "Section IV-B-1, first paragraph. The paper states that CT images are resized to 128x128x128."
+      },
+      {
+        "id": 70,
+        "text": "The HU window center is 50 and width is 450.",
+        "poster_quote": "HU window center 50 / width 450",
+        "label": "supported",
+        "paper_evidence": "with Hounsfield Unit normalization applied using a window center of 50 and a window width of 450",
+        "reason": "Section IV-B-1, first paragraph. The paper states that the HU window center is 50 and width is 450."
+      },
+      {
+        "id": 71,
+        "text": "Intensities are normalized to [0,1].",
+        "poster_quote": "intensities normalized to [0,1]",
+        "label": "supported",
+        "paper_evidence": "The intensity values are normalized to the range [0, 1],",
+        "reason": "Section IV-B-1, first paragraph. The paper states that intensity values are normalized to [0, 1]."
+      },
+      {
+        "id": 72,
+        "text": "The model is optimized using the Adam optimizer.",
+        "poster_quote": "Adam optimizer",
+        "label": "supported",
+        "paper_evidence": "We train our model with a batch size of 8 using the Adam optimizer.",
+        "reason": "Section IV-B-1, first paragraph. The paper states that the model is trained using the Adam optimizer."
+      },
+      {
+        "id": 73,
+        "text": "The batch size is 8.",
+        "poster_quote": "batch size 8",
+        "label": "supported",
+        "paper_evidence": "We train our model with a batch size of 8 using the Adam optimizer.",
+        "reason": "Section IV-B-1, first paragraph. The paper states that the batch size is 8."
+      },
+      {
+        "id": 74,
+        "text": "The learning rate uses cosine decay from 1e-6 to 1e-7.",
+        "poster_quote": "cosine LR decay from 1e-6 to 1e-7",
+        "label": "supported",
+        "paper_evidence": "The learning rate starts at 1×10−6 and decays to 1×10−7 following a cosine decay schedule,",
+        "reason": "Section IV-B-1, first paragraph. The paper states that the learning rate starts at 1e-6 and decays to 1e-7 following a cosine decay schedule."
+      },
+      {
+        "id": 75,
+        "text": "The weight decay is 1e-5.",
+        "poster_quote": "weight decay 1e-5.",
+        "label": "supported",
+        "paper_evidence": "with a weight decay of 1 × 10−5.",
+        "reason": "Section IV-B-1, first paragraph. The paper states that the weight decay is 1e-5."
+      },
+      {
+        "id": 76,
+        "text": "The evaluation metrics are Accuracy and macro F1-score.",
+        "poster_quote": "Metrics: Accuracy and macro F1-score.",
+        "label": "supported",
+        "paper_evidence": "We evaluate model performance using Accuracy and Macro F1-score.",
+        "reason": "Section IV-B-2, first paragraph. The paper states that the evaluation metrics are Accuracy and Macro F1-score."
+      },
+      {
+        "id": 77,
+        "text": "On 80 randomly selected external samples, the proposed method achieves a binary F1 of 76.25%.",
+        "poster_quote": "Binary: Ours F1 76.25%",
+        "label": "supported",
+        "paper_evidence": "In the Early vs Late classification, our method achieves an F1 score of 76.25% and accuracy of 76.25%,",
+        "reason": "Section IV-H, second paragraph, and Table VII (Ours, Two Class F1 (macro) = 76.25). The paper states that on the randomly selected 80 samples, the proposed method achieves a binary F1 of 76.25%."
+      },
+      {
+        "id": 78,
+        "text": "On 80 randomly selected external samples, the proposed method achieves a binary Accuracy of 76.25%.",
+        "poster_quote": "Ours F1 76.25% / Acc 76.25%",
+        "label": "supported",
+        "paper_evidence": "In the Early vs Late classification, our method achieves an F1 score of 76.25% and accuracy of 76.25%,",
+        "reason": "Section IV-H, second paragraph, and Table VII (Ours, Two Class Acc = 76.25). The paper states that on the randomly selected 80 samples, the proposed method achieves a binary Accuracy of 76.25%."
+      },
+      {
+        "id": 79,
+        "text": "On 80 randomly selected external samples, Radiologist 1 achieves a binary F1 of 76.16%.",
+        "poster_quote": "Radiologist 1 (76.16%",
+        "label": "supported",
+        "paper_evidence": "performing comparably to Radiologists 1 and 2, who achieve F1 scores of 76.16% and 74.98%, and accuracies of 76.25% and 75.00%, respectively.",
+        "reason": "Section IV-H, second paragraph, and Table VII (Radiologist 1, Two Class F1 (macro) = 76.16). The paper states that Radiologist 1 achieves a binary F1 of 76.16%."
+      },
+      {
+        "id": 80,
+        "text": "On 80 randomly selected external samples, Radiologist 1 achieves a binary Accuracy of 76.25%.",
+        "poster_quote": "76.25%)",
+        "label": "supported",
+        "paper_evidence": "performing comparably to Radiologists 1 and 2, who achieve F1 scores of 76.16% and 74.98%, and accuracies of 76.25% and 75.00%, respectively.",
+        "reason": "Section IV-H, second paragraph, and Table VII (Radiologist 1, Two Class Acc = 76.25). The paper states that Radiologist 1 achieves a binary Accuracy of 76.25%."
+      },
+      {
+        "id": 81,
+        "text": "On 80 randomly selected external samples, Radiologist 2 achieves a binary F1 of 74.98%.",
+        "poster_quote": "Radiologist 2 (74.98%",
+        "label": "supported",
+        "paper_evidence": "In the Early vs Late classification, our method achieves an F1 score of 76.25% and accuracy of 76.25%, performing comparably to Radiologists 1 and 2, who achieve F1 scores of 76.16% and 74.98%, and accuracies of 76.25% and 75.00%, respectively.",
+        "reason": "Section IV-H, Table VII. The paper states that Radiologist 2 achieves a binary (Two Class) F1 score of 74.98% on the 80 randomly selected external samples."
+      },
+      {
+        "id": 82,
+        "text": "On 80 randomly selected external samples, Radiologist 2 achieves a binary Accuracy of 75.00%.",
+        "poster_quote": "75.00%).",
+        "label": "supported",
+        "paper_evidence": "In the Early vs Late classification, our method achieves an F1 score of 76.25% and accuracy of 76.25%, performing comparably to Radiologists 1 and 2, who achieve F1 scores of 76.16% and 74.98%, and accuracies of 76.25% and 75.00%, respectively.",
+        "reason": "Section IV-H, Table VII. The paper states that Radiologist 2 achieves a binary (Two Class) Accuracy of 75.00% on the 80 randomly selected external samples."
+      },
+      {
+        "id": 83,
+        "text": "On 80 randomly selected external samples, the proposed method achieves a three-class F1 of 59.71%.",
+        "poster_quote": "Three-class: Ours F1 59.71%",
+        "label": "supported",
+        "paper_evidence": "In the T1, T2, Late (T3–T4) classification, our method achieves an F1 score of 59.71% and an accuracy of 62.50%, outperforming both radiologists by at least 6.08% in F1 score and 2.50% in accuracy.",
+        "reason": "Section IV-H, Table VII. The paper states that the proposed method achieves a three-class F1 score of 59.71% on the 80 randomly selected external samples."
+      },
+      {
+        "id": 84,
+        "text": "On 80 randomly selected external samples, the proposed method achieves a three-class Accuracy of 62.50%.",
+        "poster_quote": "Ours F1 59.71% / Acc 62.50%",
+        "label": "supported",
+        "paper_evidence": "In the T1, T2, Late (T3–T4) classification, our method achieves an F1 score of 59.71% and an accuracy of 62.50%, outperforming both radiologists by at least 6.08% in F1 score and 2.50% in accuracy.",
+        "reason": "Section IV-H, Table VII. The paper states that the proposed method achieves a three-class Accuracy of 62.50% on the 80 randomly selected external samples."
+      },
+      {
+        "id": 85,
+        "text": "On 80 randomly selected external samples, Radiologist 1 achieves a three-class F1 of 53.03%.",
+        "poster_quote": "both radiologists (53.03%",
+        "label": "supported",
+        "paper_evidence": "TABLE VII: Comparison of T-staging prediction performance: our method versus radiologist assessments.",
+        "reason": "Section IV-H, Table VII. Table VII shows that Radiologist 1 achieves a three-class F1 score of 53.03% on the 80 randomly selected external samples."
+      },
+      {
+        "id": 86,
+        "text": "On 80 randomly selected external samples, Radiologist 2 achieves a three-class F1 of 53.63%.",
+        "poster_quote": "and 53.63% F1",
+        "label": "supported",
+        "paper_evidence": "TABLE VII: Comparison of T-staging prediction performance: our method versus radiologist assessments.",
+        "reason": "Section IV-H, Table VII. Table VII shows that Radiologist 2 achieves a three-class F1 score of 53.63% on the 80 randomly selected external samples."
+      },
+      {
+        "id": 87,
+        "text": "On 80 randomly selected external samples, both radiologists achieve a three-class Accuracy of 60.00%.",
+        "poster_quote": "60.00% Acc)",
+        "label": "supported",
+        "paper_evidence": "TABLE VII: Comparison of T-staging prediction performance: our method versus radiologist assessments.",
+        "reason": "Section IV-H, Table VII. Table VII shows that both Radiologist 1 and Radiologist 2 achieve a three-class Accuracy of 60.00% on the 80 randomly selected external samples."
+      },
+      {
+        "id": 88,
+        "text": "The proposed method outperforms both radiologists in three-class classification by at least 6.08% F1.",
+        "poster_quote": "outperforming both radiologists (53.03% and 53.63% F1, 60.00% Acc) by at least 6.08% F1",
+        "label": "supported",
+        "paper_evidence": "In the T1, T2, Late (T3–T4) classification, our method achieves an F1 score of 59.71% and an accuracy of 62.50%, outperforming both radiologists by at least 6.08% in F1 score and 2.50% in accuracy.",
+        "reason": "Section IV-H. The paper explicitly states that the proposed method outperforms both radiologists in three-class classification by at least 6.08% in F1 score."
+      },
+      {
+        "id": 89,
+        "text": "The proposed method outperforms both radiologists in three-class classification by at least 2.50% accuracy.",
+        "poster_quote": "and 2.50% accuracy.",
+        "label": "supported",
+        "paper_evidence": "In the T1, T2, Late (T3–T4) classification, our method achieves an F1 score of 59.71% and an accuracy of 62.50%, outperforming both radiologists by at least 6.08% in F1 score and 2.50% in accuracy.",
+        "reason": "Section IV-H. The paper explicitly states that the proposed method outperforms both radiologists in three-class classification by at least 2.50% in accuracy."
+      },
+      {
+        "id": 90,
+        "text": "Failure analysis on Fold 1 shows 16 misclassified cases out of 88.",
+        "poster_quote": "Failure analysis (16/88 misclassified cases, Fold 1):",
+        "label": "supported",
+        "paper_evidence": "We analyzed the 16 misclassified cases (out of 88 test samples) in Fold 1 and identified two dominant failure patterns inherently linked to the limitations of CT-based invasion assessment.",
+        "reason": "Section IV-H. The paper states that there are 16 misclassified cases out of 88 test samples in Fold 1."
+      },
+      {
+        "id": 91,
+        "text": "Over-staging accounts for 9 out of 16 misclassified cases (56%).",
+        "poster_quote": "over-staging (9/16, 56%)",
+        "label": "supported",
+        "paper_evidence": "Over-staging (9/16 cases, 56%): the model predicted T3–T4 for pathologically confirmed T1–T2 cases.",
+        "reason": "Section IV-H. The paper states that over-staging accounts for 9 out of 16 misclassified cases (56%)."
+      },
+      {
+        "id": 92,
+        "text": "In 7 over-staged cases, the report explicitly described cartilage invasion not confirmed by pathology.",
+        "poster_quote": "in 7 cases the report explicitly described cartilage invasion not confirmed by pathology",
+        "label": "supported",
+        "paper_evidence": "In 7 of these 9 cases, the radiology report explicitly described cartilage invasion that was not confirmed by pathological examination, reflecting CT’s known limitation in distinguishing tumor contact from true cartilage invasion [7], [14].",
+        "reason": "Section IV-H. The paper states that in 7 of the 9 over-staged cases, the report explicitly described cartilage invasion not confirmed by pathology."
+      },
+      {
+        "id": 93,
+        "text": "Under-staging accounts for 7 out of 16 misclassified cases (44%).",
+        "poster_quote": "under-staging (7/16, 44%)",
+        "label": "supported",
+        "paper_evidence": "Under-staging (7/16 cases, 44%): the model predicted T1–T2 for pathologically confirmed T3–T4 cases.",
+        "reason": "Section IV-H. The paper states that under-staging accounts for 7 out of 16 misclassified cases (44%)."
+      },
+      {
+        "id": 94,
+        "text": "In 5 under-staged cases, the report contained no invasion description or stated 'no evidence of invasion' despite pathological confirmation.",
+        "poster_quote": "in 5 cases the report contained no invasion description or stated ’no evidence of invasion’ despite pathological confirmation.",
+        "label": "supported",
+        "paper_evidence": "In 5 of these 7 cases, the report contained no invasion description or explicitly stated “no evidence of invasion,” despite pathological confirmation.",
+        "reason": "Section IV-H. The paper states that in 5 of the 7 under-staged cases, the report contained no invasion description or stated 'no evidence of invasion' despite pathological confirmation."
+      },
+      {
+        "id": 95,
+        "text": "Cross-modal alignment analysis shows invasion-token attention of 0.058 for correct early-stage cases.",
+        "poster_quote": "Cross-modal alignment analysis shows invasion-token attention of 0.058 for correct early-stage",
+        "label": "supported",
+        "paper_evidence": "TABLE VIII: Cross-modal alignment of correct and misclassified cases. Mean invasion-token attention mass placed by the potentially-invaded organ nodes on invasion-related report tokens, on the Fold 1 internal test set.",
+        "reason": "Section IV-H, Table VIII. Table VIII shows that the invasion-token attention for correctly staged (T1–T2) cases is 0.058."
+      },
+      {
+        "id": 96,
+        "text": "Cross-modal alignment analysis shows invasion-token attention of 0.105 for correct advanced-stage cases.",
+        "poster_quote": "0.105 for correct advanced-stage",
+        "label": "supported",
+        "paper_evidence": "TABLE VIII: Cross-modal alignment of correct and misclassified cases. Mean invasion-token attention mass placed by the potentially-invaded organ nodes on invasion-related report tokens, on the Fold 1 internal test set.",
+        "reason": "Section IV-H, Table VIII. Table VIII shows that the invasion-token attention for correctly staged (T3–T4) cases is 0.105."
+      },
+      {
+        "id": 97,
+        "text": "Cross-modal alignment analysis shows invasion-token attention of 0.088 for over-staged cases.",
+        "poster_quote": "0.088 for over-staged",
+        "label": "supported",
+        "paper_evidence": "TABLE VIII: Cross-modal alignment of correct and misclassified cases. Mean invasion-token attention mass placed by the potentially-invaded organ nodes on invasion-related report tokens, on the Fold 1 internal test set.",
+        "reason": "Section IV-H, Table VIII. Table VIII shows that the invasion-token attention for over-staged (T1–T2 → T3–T4) cases is 0.088."
+      },
+      {
+        "id": 98,
+        "text": "Cross-modal alignment analysis shows invasion-token attention of 0.058 for under-staged cases.",
+        "poster_quote": "0.058 for under-staged cases",
+        "label": "supported",
+        "paper_evidence": "TABLE VIII: Cross-modal alignment of correct and misclassified cases. Mean invasion-token attention mass placed by the potentially-invaded organ nodes on invasion-related report tokens, on the Fold 1 internal test set.",
+        "reason": "Section IV-H, Table VIII. Table VIII shows that the invasion-token attention for under-staged (T3–T4 → T1–T2) cases is 0.058."
+      },
+      {
+        "id": 99,
+        "text": "The image-only AOG achieves 77.96% F1.",
+        "poster_quote": "image-only AOG 77.96% F1",
+        "label": "supported",
+        "paper_evidence": "with the image-only AOG variant already attaining 77.96% F1 (Table IV)",
+        "reason": "Section IV-H. The paper states that the image-only AOG variant achieves 77.96% F1."
+      },
+      {
+        "id": 100,
+        "text": "The proposed method enhanced by the report achieves 83.96% F1.",
+        "poster_quote": "and enhanced by the report (83.96%).",
+        "label": "supported",
+        "paper_evidence": "and the report refining this to 83.96%.",
+        "reason": "Section IV-H. The paper states that the report refines the performance to 83.96% F1."
+      },
+      {
+        "id": 101,
+        "text": "TABLE VII compares T-staging prediction performance between the proposed method and radiologist assessments.",
+        "poster_quote": "TABLE VII : Comparison of T-staging prediction performance: our method versus radiologist assessments.",
+        "label": "supported",
+        "paper_evidence": "TABLE VII: Comparison of T-staging prediction performance: our method versus radiologist assessments.",
+        "reason": "Section IV-H, Table VII. Table VII compares T-staging prediction performance between the proposed method and radiologist assessments."
+      },
+      {
+        "id": 102,
+        "text": "TABLE IV compares different component combinations (AOG, OCA, REG) for binary and three-class T-staging tasks on a representative internal fold, reported as mean ± standard deviation over three random seeds.",
+        "poster_quote": "TABLE IV : Ablation Study of Key Components. Performance comparison of different component combinations for binary and three-class T-staging tasks on a representative internal fold, reported as mean ± standard deviation over three random seeds.",
+        "label": "supported",
+        "paper_evidence": "TABLE IV: Ablation Study of Key Components. Performance comparison of different component combinations for binary and three-class T-staging tasks on a representative internal fold, reported as mean ± standard deviation over three random seeds.",
+        "reason": "Section IV-D, Table IV. Table IV compares different component combinations (AOG, OCA, REG) for binary and three-class T-staging tasks on a representative internal fold, reported as mean ± standard deviation over three random seeds."
+      },
+      {
+        "id": 103,
+        "text": "Fig. 4 shows box plots of the distribution of F1-scores and Accuracy for different prediction strategies across fivefold cross-validation and external testing.",
+        "poster_quote": "Fig. 4 : Performance Analysis of Individual Invaded Organs. Box plots showing the distribution of (a) F1-scores and (b) Accuracy for different prediction strategies across fivefold cross-validation and external testing.",
+        "label": "supported",
+        "paper_evidence": "Fig. 4: Performance Analysis of Individual Invaded Organs. Box plots showing the distribution of (a) F1-scores and (b) Accuracy for different prediction strategies across fivefold cross-validation and external testing.",
+        "reason": "Section IV-D, Fig. 4. Fig. 4 shows box plots of the distribution of F1-scores and Accuracy for different prediction strategies across fivefold cross-validation and external testing."
+      },
+      {
+        "id": 104,
+        "text": "Fig. 7 shows representative correct predictions and failure cases, displaying ground truth, radiologist assessments, and the model's prediction.",
+        "poster_quote": "Fig. 7 : Representative correct predictions (top) and failure cases (bottom). Each case shows the ground truth, radiologist assessments, and our model’s prediction.",
+        "label": "supported",
+        "paper_evidence": "Fig. 7: Representative correct predictions (top) and failure cases (bottom). Each case shows the ground truth, radiologist assessments, and our model’s prediction.",
+        "reason": "Section IV-H, Fig. 7. Fig. 7 shows representative correct predictions and failure cases, displaying ground truth, radiologist assessments, and the model's prediction."
+      }
+    ]
+  },
+  "raw": "[\"```json\\n{\\n  \\\"claims\\\": [\\n    {\\n      \\\"id\\\": 1,\\n      \\\"text\\\": \\\"Current clinical practice for laryngopharyngeal cancer T-staging relies on invasive biopsy procedures.\\\",\\n      \\\"poster_quote\\\": \\\"current clinical practice relies on invasive biopsy procedures\\\"\\n    },\\n    {\\n      \\\"id\\\": 2,\\n      \\\"text\\\": \\\"CT-based staging remains challenging due to the complex patterns of tumor invasion.\\\",\\n      \\\"poster_quote\\\": \\\"CT-based staging remains challenging due to the complex patterns of tumor invasion.\\\"\\n    },\\n    {\\n      \\\"id\\\": 3,\\n      \\\"text\\\": \\\"The proposed framework constructs an Anatomy-Structured Organ Graph (AOG) that captures invasion patterns between primary sites and surrounding organs.\\\",\\n      \\\"poster_quote\\\": \\\"The framework first constructs an Anatomy-Structured Organ Graph (AOG) that captures invasion patterns between primary sites and surrounding organs\\\"\\n    },\\n    {\\n      \\\"id\\\": 4,\\n      \\\"text\\\": \\\"The proposed framework performs Organ-Anchored Cross-Modal Alignment (OCA) so that each organ node aggregates textual evidence from the radiology report.\\\",\\n      \\\"poster_quote\\\": \\\"performs Organ-Anchored Cross-Modal Alignment (OCA) so that each organ node aggregates textual evidence from the radiology report\\\"\\n    },\\n    {\\n      \\\"id\\\": 5,\\n      \\\"text\\\": \\\"The proposed framework refines the graph representation by injecting organ-specific invasion cues extracted from the report via Report-Enhanced Graph-Refinement (REG).\\\",\\n      \\\"poster_quote\\\": \\\"refines this graph representation by injecting organ-specific invasion cues extracted from the report via Report-Enhanced Graph-Refinement (REG)\\\"\\n    },\\n    {\\n      \\\"id\\\": 6,\\n      \\\"text\\\": \\\"The framework comprises three key components: an Anatomy-Structured Organ Graph (AOG), an Organ-Anchored Cross-Modal Alignment (OCA) module, and a Report-Enhanced Graph-Refinement (REG) module.\\\",\\n      \\\"poster_quote\\\": \\\"The framework comprises three key components: an Anatomy-Structured Organ Graph (AOG), an Organ-Anchored Cross-Modal Alignment (OCA) module, and a Report-Enhanced Graph-Refinement (REG) module.\\\"\\n    },\\n    {\\n      \\\"id\\\": 7,\\n      \\\"text\\\": \\\"The proposed method is superior across all settings compared to image-only methods (SwinViT, VDPF, MRSN) and state-of-the-art multimodal methods (CPAM, TGCAM, MMBCD, LViT, MMI).\\\",\\n      \\\"poster_quote\\\": \\\"Comparison with image-only methods (SwinViT, VDPF, MRSN) and state-of-the-art multimodal methods (CPAM, TGCAM, MMBCD, LViT, MMI). Our method is superior across all settings.\\\"\\n    },\\n    {\\n      \\\"id\\\": 8,\\n      \\\"text\\\": \\\"AOG uses pre-trained organ segmentations and anatomy-guided connectivity rules to construct an organ-level graph.\\\",\\n      \\\"poster_quote\\\": \\\"AOG addresses the challenge of modeling complex invasion patterns by using pre-trained organ segmentations and anatomyguided connectivity rules to construct an organ-level graph\\\"\\n    },\\n    {\\n      \\\"id\\\": 9,\\n      \\\"text\\\": \\\"OCA performs fine-grained, organ-level image-text interaction, enhancing CT-derived organ features with organ-specific cues from the radiology report while preserving the anatomy-driven topology.\\\",\\n      \\\"poster_quote\\\": \\\"OCA then performs fine-grained, organ-level image-text interaction, enhancing CT-derived organ features with organspecific cues from the radiology report while preserving the anatomy-driven topology.\\\"\\n    },\\n    {\\n      \\\"id\\\": 10,\\n      \\\"text\\\": \\\"REG uses a large language model (LLM) to incorporate report-derived invasion statements as a guidance signal on top of AOG.\\\",\\n      \\\"poster_quote\\\": \\\"REG uses a large language model (LLM) to incorporate report-derived invasion statements as a guidance signal on top of AOG, refining the multimodal organ graph without discarding anatomy-based risk connections.\\\"\\n    },\\n    {\\n      \\\"id\\\": 11,\\n      \\\"text\\\": \\\"In binary classification (Early T1-T2 vs. Late T3-T4), the proposed method achieves an internal F1 of 80.83%.\\\",\\n      \\\"poster_quote\\\": \\\"Binary (Early T1-T2 vs. Late T3-T4): internal F1 80.83%\\\"\\n    },\\n    {\\n      \\\"id\\\": 12,\\n      \\\"text\\\": \\\"In binary classification (Early T1-T2 vs. Late T3-T4), the proposed method achieves an internal Accuracy of 81.53%.\\\",\\n      \\\"poster_quote\\\": \\\"internal F1 80.83% / Acc 81.53%\\\"\\n    },\\n    {\\n      \\\"id\\\": 13,\\n      \\\"text\\\": \\\"The proposed method's internal binary F1 of 80.83% surpasses the second-best MMI's F1 of 77.59%.\\\",\\n      \\\"poster_quote\\\": \\\"surpassing the second-best MMI (77.59% F1\\\"\\n    },\\n    {\\n      \\\"id\\\": 14,\\n      \\\"text\\\": \\\"The proposed method's internal binary Accuracy of 81.53% surpasses the second-best MMI's Accuracy of 78.57%.\\\",\\n      \\\"poster_quote\\\": \\\"78.57% Acc).\\\"\\n    },\\n    {\\n      \\\"id\\\": 15,\\n      \\\"text\\\": \\\"In binary classification, the proposed method achieves an external F1 of 76.46%.\\\",\\n      \\\"poster_quote\\\": \\\"External F1 76.46%\\\"\\n    },\\n    {\\n      \\\"id\\\": 16,\\n      \\\"text\\\": \\\"In binary classification, the proposed method achieves an external Accuracy of 76.50%.\\\",\\n      \\\"poster_quote\\\": \\\"External F1 76.46% / Acc 76.50%\\\"\\n    },\\n    {\\n      \\\"id\\\": 17,\\n      \\\"text\\\": \\\"The proposed method's external binary F1 of 76.46% outperforms TGCAM's F1 of 74.09%.\\\",\\n      \\\"poster_quote\\\": \\\"outperforming TGCAM (74.09% F1\\\"\\n    },\\n    {\\n      \\\"id\\\": 18,\\n      \\\"text\\\": \\\"The proposed method's external binary Accuracy of 76.50% outperforms TGCAM's Accuracy of 74.38%.\\\",\\n      \\\"poster_quote\\\": \\\"74.38% Acc) by a significant margin.\\\"\\n    },\\n    {\\n      \\\"id\\\": 19,\\n      \\\"text\\\": \\\"The setting uses K = 7 predefined anatomical structures.\\\",\\n      \\\"poster_quote\\\": \\\"Setting: K = 7 predefined anatomical structures\\\"\\n    },\\n    {\\n      \\\"id\\\": 20,\\n      \\\"text\\\": \\\"The primary sites are defined as P = {supraglottic, glottic, subglottic}.\\\",\\n      \\\"poster_quote\\\": \\\"primary sites P = {supraglottic, glottic, subglottic}\\\"\\n    },\\n    {\\n      \\\"id\\\": 21,\\n      \\\"text\\\": \\\"The potentially invaded organs are defined as T = {esophagus, thyroid gland, trachea, oral cavity}.\\\",\\n      \\\"poster_quote\\\": \\\"potentially invaded organs T = {esophagus, thyroid gland, trachea, oral cavity}.\\\"\\n    },\\n    {\\n      \\\"id\\\": 22,\\n      \\\"text\\\": \\\"The model is trained end-to-end with cross-entropy loss for T-staging classification.\\\",\\n      \\\"poster_quote\\\": \\\"The model is trained end-to-end with cross-entropy loss for T-staging classification.\\\"\\n    },\\n    {\\n      \\\"id\\\": 23,\\n      \\\"text\\\": \\\"In three-class classification (T1, T2, T3-T4), the proposed method achieves an internal F1 of 61.43%.\\\",\\n      \\\"poster_quote\\\": \\\"Three-class (T1, T2, T3-T4): internal F1 61.43%\\\"\\n    },\\n    {\\n      \\\"id\\\": 24,\\n      \\\"text\\\": \\\"In three-class classification, the proposed method achieves an internal Accuracy of 63.33%.\\\",\\n      \\\"poster_quote\\\": \\\"internal F1 61.43% / Acc 63.33%\\\"\\n    },\\n    {\\n      \\\"id\\\": 25,\\n      \\\"text\\\": \\\"The proposed method's internal three-class F1 of 61.43% improves over MMBCD's F1 of 58.44%.\\\",\\n      \\\"poster_quote\\\": \\\"improving over MMBCD (58.44% F1\\\"\\n    },\\n    {\\n      \\\"id\\\": 26,\\n      \\\"text\\\": \\\"The proposed method's internal three-class Accuracy of 63.33% improves over MMBCD's Accuracy of 61.14%.\\\",\\n      \\\"poster_quote\\\": \\\"61.14% Acc).\\\"\\n    },\\n    {\\n      \\\"id\\\": 27,\\n      \\\"text\\\": \\\"In three-class classification, the proposed method achieves an external F1 of 60.27%.\\\",\\n      \\\"poster_quote\\\": \\\"External F1 60.27%\\\"\\n    },\\n    {\\n      \\\"id\\\": 28,\\n      \\\"text\\\": \\\"In three-class classification, the proposed method achieves an external Accuracy of 63.78%.\\\",\\n      \\\"poster_quote\\\": \\\"External F1 60.27% / Acc 63.78%\\\"\\n    },\\n    {\\n      \\\"id\\\": 29,\\n      \\\"text\\\": \\\"The proposed method's external three-class F1 of 60.27% outperforms the second-best method by a margin of 8.73% F1.\\\",\\n      \\\"poster_quote\\\": \\\"outperforming the second-best method by a large margin of 8.73% F1\\\"\\n    },\\n    {\\n      \\\"id\\\": 30,\\n      \\\"text\\\": \\\"The proposed method's external three-class Accuracy of 63.78% outperforms the second-best method by a margin of 7.78% accuracy.\\\",\\n      \\\"poster_quote\\\": \\\"and 7.78% accuracy.\\\"\\n    },\\n    {\\n      \\\"id\\\": 31,\\n      \\\"text\\\": \\\"The image-only baseline SwinViT achieves 58.82% internal binary F1.\\\",\\n      \\\"poster_quote\\\": \\\"SwinViT 58.82% internal binary F1\\\"\\n    },\\n    {\\n      \\\"id\\\": 32,\\n      \\\"text\\\": \\\"The image-only baseline VDPF achieves 71.47% internal binary F1.\\\",\\n      \\\"poster_quote\\\": \\\"VDPF 71.47%\\\"\\n    },\\n    {\\n      \\\"id\\\": 33,\\n      \\\"text\\\": \\\"TABLE V compares different attention mechanisms in OCA on a representative internal fold.\\\",\\n      \\\"poster_quote\\\": \\\"TABLE V : Comparison of different attention mechanisms in our OCA on a representative internal fold.\\\"\\n    },\\n    {\\n      \\\"id\\\": 34,\\n      \\\"text\\\": \\\"TABLE VI presents an ablation study of anatomical topology modeling, comparing different approaches on a representative internal fold.\\\",\\n      \\\"poster_quote\\\": \\\"TABLE VI : Ablation study of anatomical topology modeling. Comparison between different approaches for modeling anatomical relationships on a representative internal fold.\\\"\\n    },\\n    {\\n      \\\"id\\\": 35,\\n      \\\"text\\\": \\\"In TABLE VI, Fully-Connected Graph represents a complete graph connection strategy.\\\",\\n      \\\"poster_quote\\\": \\\"Fully-Connected Graph represents a complete graph connection strategy\\\"\\n    },\\n    {\\n      \\\"id\\\": 36,\\n      \\\"text\\\": \\\"In TABLE VI, Direct Fusion uses concatenated organ masks.\\\",\\n      \\\"poster_quote\\\": \\\"Direct Fusion uses concatenated organ masks\\\"\\n    },\\n    {\\n      \\\"id\\\": 37,\\n      \\\"text\\\": \\\"In TABLE VI, Global Context applies global feature pooling.\\\",\\n      \\\"poster_quote\\\": \\\"Global Context applies global feature pooling.\\\"\\n    },\\n    {\\n      \\\"id\\\": 38,\\n      \\\"text\\\": \\\"Fig. 2 shows an overview of the proposed framework for laryngopharyngeal cancer T-staging, integrating CT images and radiology reports through AOG, OCA, and REG.\\\",\\n      \\\"poster_quote\\\": \\\"Fig. 2 : Overview of the proposed framework for laryngopharyngeal cancer T-staging, integrating CT images and radiology reports through three modules: (a) Anatomy-Structured Organ Graph (AOG) for organ-level feature extraction and graph construction, (b) Organ-Anchored Cross-Modal Alignment (OCA) for fine-grained cross-modal alignment, and (c) ReportEnhanced Graph-Refinement (REG) module for structural refinement using clinical invasion information.\\\"\\n    },\\n    {\\n      \\\"id\\\": 39,\\n      \\\"text\\\": \\\"Radiologists typically report only obvious invasion, so building the graph solely from reported invasion would disconnect organs that are anatomically at risk but not mentioned.\\\",\\n      \\\"poster_quote\\\": \\\"radiologists typically report only obvious invasion, so building the graph solely from reported invasion would disconnect organs that are anatomically at risk but not mentioned.\\\"\\n    },\\n    {\\n      \\\"id\\\": 40,\\n      \\\"text\\\": \\\"Fig. 1 compares conventional coarse-grained image-text fusion based on global CT and report information with the proposed anatomy-structured multimodal framework.\\\",\\n      \\\"poster_quote\\\": \\\"Fig. 1 : Comparison between (a) conventional coarse-grained image-text fusion based on global CT and report information [1]-[5], and (b) the proposed anatomy-structured multimodal framework.\\\"\\n    },\\n    {\\n      \\\"id\\\": 41,\\n      \\\"text\\\": \\\"The collected dataset comprises 656 patients across four medical centers, all paired with CT reports.\\\",\\n      \\\"poster_quote\\\": \\\"We collect the first and largest dataset for CT-based laryngopharyngeal cancer T-staging, comprising 656 patients across four medical centers, all paired with CT reports for multimodal assessment\\\"\\n    },\\n    {\\n      \\\"id\\\": 42,\\n      \\\"text\\\": \\\"Prior studies on CT-based laryngopharyngeal cancer T-staging are single-center with 118-319 patients and imaging only.\\\",\\n      \\\"poster_quote\\\": \\\"(prior studies are single-center with 118-319 patients and imaging only).\\\"\\n    },\\n    {\\n      \\\"id\\\": 43,\\n      \\\"text\\\": \\\"An LLM extracts structured invasion information via prompt engineering, identifying which target organs (esophagus, thyroid gland, trachea, oral cavity) are explicitly described as invaded, excluding negations and distinguishing 'thyroid gland' from 'thyroid cartilage'.\\\",\\n      \\\"poster_quote\\\": \\\"Text node construction: an LLM extracts structured invasion information via prompt engineering, identifying which target organs (esophagus, thyroid gland, trachea, oral cavity) are explicitly described as invaded, excluding negations and distinguishing ’thyroid gland’ (endocrine organ) from ’thyroid cartilage’ (laryngeal structure).\\\"\\n    },\\n    {\\n      \\\"id\\\": 44,\\n      \\\"text\\\": \\\"The framework uses Claude 3.5 Haiku for text node construction.\\\",\\n      \\\"poster_quote\\\": \\\"We use Claude 3.5 Haiku\\\"\\n    },\\n    {\\n      \\\"id\\\": 45,\\n      \\\"text\\\": \\\"GPT-4o and Qwen-2.5-72B yield identical outputs to Claude 3.5 Haiku on all 439 reports.\\\",\\n      \\\"poster_quote\\\": \\\"GPT-4o and Qwen-2.5-72B yield identical outputs on all 439 reports\\\"\\n    },\\n    {\\n      \\\"id\\\": 46,\\n      \\\"text\\\": \\\"Manual review confirms all LLM extractions are correct.\\\",\\n      \\\"poster_quote\\\": \\\"manual review confirms all extractions are correct.\\\"\\n    },\\n    {\\n      \\\"id\\\": 47,\\n      \\\"text\\\": \\\"The text node feature is built from the global [CLS] report representation projected to the organ feature dimension.\\\",\\n      \\\"poster_quote\\\": \\\"The text node feature is built from the global [CLS] report representation projected to the organ feature dimension.\\\"\\n    },\\n    {\\n      \\\"id\\\": 48,\\n      \\\"text\\\": \\\"In graph refinement, the text node is connected to all primary sites by default, and additionally linked to target organs explicitly mentioned as invaded, while keeping original organ-organ edges unchanged.\\\",\\n      \\\"poster_quote\\\": \\\"Graph refinement: the text node is connected to all primary sites by default, and additionally linked to target organs explicitly mentioned as invaded, while keeping original organ-organ edges unchanged.\\\"\\n    },\\n    {\\n      \\\"id\\\": 49,\\n      \\\"text\\\": \\\"Message passing on the report-enhanced graph followed by global average pooling yields the staging prediction.\\\",\\n      \\\"poster_quote\\\": \\\"Message passing on this report-enhanced graph followed by global average pooling yields the staging prediction\\\"\\n    },\\n    {\\n      \\\"id\\\": 50,\\n      \\\"text\\\": \\\"The primary cohort from Fudan University Zhongshan Hospital (FUZH) consists of 439 patients with contrast-enhanced CT and reports, evaluated using 5-fold cross-validation.\\\",\\n      \\\"poster_quote\\\": \\\"Cohorts: (1) Fudan University Zhongshan Hospital (FUZH), 439 patients with contrast-enhanced CT and reports (primary cohort, 5-fold cross-validation);\\\"\\n    },\\n    {\\n      \\\"id\\\": 51,\\n      \\\"text\\\": \\\"The Chang Gung Memorial Hospital (CGMH) cohort consists of 25 cases.\\\",\\n      \\\"poster_quote\\\": \\\"(2) Chang Gung Memorial Hospital (CGMH), 25 cases;\\\"\\n    },\\n    {\\n      \\\"id\\\": 52,\\n      \\\"text\\\": \\\"The Eye & ENT Hospital of Fudan University (EENT) cohort consists of 87 cases.\\\",\\n      \\\"poster_quote\\\": \\\"(3) Eye & ENT Hospital of Fudan University (EENT), 87 cases;\\\"\\n    },\\n    {\\n      \\\"id\\\": 53,\\n      \\\"text\\\": \\\"The TCGA cohort consists of 105 public cases.\\\",\\n      \\\"poster_quote\\\": \\\"(4) TCGA, 105 public cases.\\\"\\n    },\\n    {\\n      \\\"id\\\": 54,\\n      \\\"text\\\": \\\"CGMH, EENT, and TCGA form the external test set.\\\",\\n      \\\"poster_quote\\\": \\\"CGMH, EENT and TCGA form the external test set.\\\"\\n    },\\n    {\\n      \\\"id\\\": 55,\\n      \\\"text\\\": \\\"For TCGA, CT reports were written by a board-certified radiologist and verified by a second, describing only imaging findings without assigning T-stage.\\\",\\n      \\\"poster_quote\\\": \\\"For TCGA, CT reports were written by a board-certified radiologist and verified by a second, describing only imaging findings without assigning T-stage.\\\"\\n    },\\n    {\\n      \\\"id\\\": 56,\\n      \\\"text\\\": \\\"The stage distribution of the dataset is T1: 197.\\\",\\n      \\\"poster_quote\\\": \\\"Stage distribution: T1 197\\\"\\n    },\\n    {\\n      \\\"id\\\": 57,\\n      \\\"text\\\": \\\"The stage distribution of the dataset is T2: 176.\\\",\\n      \\\"poster_quote\\\": \\\"T2 176\\\"\\n    },\\n    {\\n      \\\"id\\\": 58,\\n      \\\"text\\\": \\\"The stage distribution of the dataset is T3: 138.\\\",\\n      \\\"poster_quote\\\": \\\"T3 138\\\"\\n    },\\n    {\\n      \\\"id\\\": 59,\\n      \\\"text\\\": \\\"The stage distribution of the dataset is T4: 145.\\\",\\n      \\\"poster_quote\\\": \\\"T4 145\\\"\\n    },\\n    {\\n      \\\"id\\\": 60,\\n      \\\"text\\\": \\\"The total number of patients in the dataset is 656.\\\",\\n      \\\"poster_quote\\\": \\\"(total 656)\\\"\\n    },\\n    {\\n      \\\"id\\\": 61,\\n      \\\"text\\\": \\\"The training set consists of 439 patients (66.9%).\\\",\\n      \\\"poster_quote\\\": \\\"training 439 (66.9%)\\\"\\n    },\\n    {\\n      \\\"id\\\": 62,\\n      \\\"text\\\": \\\"The test set consists of 217 patients (33.1%).\\\",\\n      \\\"poster_quote\\\": \\\"test 217 (33.1%)\\\"\\n    },\\n    {\\n      \\\"id\\\": 63,\\n      \\\"text\\\": \\\"Ground-truth T-stages are from pathological confirmation following AJCC 8th edition criteria, not from CT reports.\\\",\\n      \\\"poster_quote\\\": \\\"Ground-truth T-stages are from pathological confirmation following AJCC 8th edition criteria, not from CT reports\\\"\\n    },\\n    {\\n      \\\"id\\\": 64,\\n      \\\"text\\\": \\\"None of the 439 training reports contain a T-stage designation.\\\",\\n      \\\"poster_quote\\\": \\\"none of the 439 training reports contain a T-stage designation.\\\"\\n    },\\n    {\\n      \\\"id\\\": 65,\\n      \\\"text\\\": \\\"The binary classification setting is early (T1-T2) vs. late (T3-T4) stages.\\\",\\n      \\\"poster_quote\\\": \\\"(1) binary classification of early (T1-T2) vs. late (T3-T4) stages, reflecting organ-preserving vs. aggressive treatment\\\"\\n    },\\n    {\\n      \\\"id\\\": 66,\\n      \\\"text\\\": \\\"The three-class classification setting is T1 vs. T2 vs. T3-T4.\\\",\\n      \\\"poster_quote\\\": \\\"(2) three-class classification T1 vs. T2 vs. T3-T4, distinguishing T1/T2 due to different infiltration patterns and recurrence risks while merging T3/T4 given similar treatment protocols.\\\"\\n    },\\n    {\\n      \\\"id\\\": 67,\\n      \\\"text\\\": \\\"The implementation uses PyTorch on NVIDIA H20.\\\",\\n      \\\"poster_quote\\\": \\\"Implementation: PyTorch on NVIDIA H20\\\"\\n    },\\n    {\\n      \\\"id\\\": 68,\\n      \\\"text\\\": \\\"CT images are resampled to 1mm isotropic.\\\",\\n      \\\"poster_quote\\\": \\\"CT resampled to 1mm isotropic\\\"\\n    },\\n    {\\n      \\\"id\\\": 69,\\n      \\\"text\\\": \\\"CT images are resized to 128x128x128.\\\",\\n      \\\"poster_quote\\\": \\\"resized to 128x128x128\\\"\\n    },\\n    {\\n      \\\"id\\\": 70,\\n      \\\"text\\\": \\\"The HU window center is 50 and width is 450.\\\",\\n      \\\"poster_quote\\\": \\\"HU window center 50 / width 450\\\"\\n    },\\n    {\\n      \\\"id\\\": 71,\\n      \\\"text\\\": \\\"Intensities are normalized to [0,1].\\\",\\n      \\\"poster_quote\\\": \\\"intensities normalized to [0,1]\\\"\\n    },\\n    {\\n      \\\"id\\\": 72,\\n      \\\"text\\\": \\\"The model is optimized using the Adam optimizer.\\\",\\n      \\\"poster_quote\\\": \\\"Adam optimizer\\\"\\n    },\\n    {\\n      \\\"id\\\": 73,\\n      \\\"text\\\": \\\"The batch size is 8.\\\",\\n      \\\"poster_quote\\\": \\\"batch size 8\\\"\\n    },\\n    {\\n      \\\"id\\\": 74,\\n      \\\"text\\\": \\\"The learning rate uses cosine decay from 1e-6 to 1e-7.\\\",\\n      \\\"poster_quote\\\": \\\"cosine LR decay from 1e-6 to 1e-7\\\"\\n    },\\n    {\\n      \\\"id\\\": 75,\\n      \\\"text\\\": \\\"The weight decay is 1e-5.\\\",\\n      \\\"poster_quote\\\": \\\"weight decay 1e-5.\\\"\\n    },\\n    {\\n      \\\"id\\\": 76,\\n      \\\"text\\\": \\\"The evaluation metrics are Accuracy and macro F1-score.\\\",\\n      \\\"poster_quote\\\": \\\"Metrics: Accuracy and macro F1-score.\\\"\\n    },\\n    {\\n      \\\"id\\\": 77,\\n      \\\"text\\\": \\\"On 80 randomly selected external samples, the proposed method achieves a binary F1 of 76.25%.\\\",\\n      \\\"poster_quote\\\": \\\"Binary: Ours F1 76.25%\\\"\\n    },\\n    {\\n      \\\"id\\\": 78,\\n      \\\"text\\\": \\\"On 80 randomly selected external samples, the proposed method achieves a binary Accuracy of 76.25%.\\\",\\n      \\\"poster_quote\\\": \\\"Ours F1 76.25% / Acc 76.25%\\\"\\n    },\\n    {\\n      \\\"id\\\": 79,\\n      \\\"text\\\": \\\"On 80 randomly selected external samples, Radiologist 1 achieves a binary F1 of 76.16%.\\\",\\n      \\\"poster_quote\\\": \\\"Radiologist 1 (76.16%\\\"\\n    },\\n    {\\n      \\\"id\\\": 80,\\n      \\\"text\\\": \\\"On 80 randomly selected external samples, Radiologist 1 achieves a binary Accuracy of 76.25%.\\\",\\n      \\\"poster_quote\\\": \\\"76.25%)\\\"\\n    },\\n    {\\n      \\\"id\\\": 81,\\n      \\\"text\\\": \\\"On 80 randomly selected external samples, Radiologist 2 achieves a binary F1 of 74.98%.\\\",\\n      \\\"poster_quote\\\": \\\"Radiologist 2 (74.98%\\\"\\n    },\\n    {\\n      \\\"id\\\": 82,\\n      \\\"text\\\": \\\"On 80 randomly selected external samples, Radiologist 2 achieves a binary Accuracy of 75.00%.\\\",\\n      \\\"poster_quote\\\": \\\"75.00%).\\\"\\n    },\\n    {\\n      \\\"id\\\": 83,\\n      \\\"text\\\": \\\"On 80 randomly selected external samples, the proposed method achieves a three-class F1 of 59.71%.\\\",\\n      \\\"poster_quote\\\": \\\"Three-class: Ours F1 59.71%\\\"\\n    },\\n    {\\n      \\\"id\\\": 84,\\n      \\\"text\\\": \\\"On 80 randomly selected external samples, the proposed method achieves a three-class Accuracy of 62.50%.\\\",\\n      \\\"poster_quote\\\": \\\"Ours F1 59.71% / Acc 62.50%\\\"\\n    },\\n    {\\n      \\\"id\\\": 85,\\n      \\\"text\\\": \\\"On 80 randomly selected external samples, Radiologist 1 achieves a three-class F1 of 53.03%.\\\",\\n      \\\"poster_quote\\\": \\\"both radiologists (53.03%\\\"\\n    },\\n    {\\n      \\\"id\\\": 86,\\n      \\\"text\\\": \\\"On 80 randomly selected external samples, Radiologist 2 achieves a three-class F1 of 53.63%.\\\",\\n      \\\"poster_quote\\\": \\\"and 53.63% F1\\\"\\n    },\\n    {\\n      \\\"id\\\": 87,\\n      \\\"text\\\": \\\"On 80 randomly selected external samples, both radiologists achieve a three-class Accuracy of 60.00%.\\\",\\n      \\\"poster_quote\\\": \\\"60.00% Acc)\\\"\\n    },\\n    {\\n      \\\"id\\\": 88,\\n      \\\"text\\\": \\\"The proposed method outperforms both radiologists in three-class classification by at least 6.08% F1.\\\",\\n      \\\"poster_quote\\\": \\\"outperforming both radiologists (53.03% and 53.63% F1, 60.00% Acc) by at least 6.08% F1\\\"\\n    },\\n    {\\n      \\\"id\\\": 89,\\n      \\\"text\\\": \\\"The proposed method outperforms both radiologists in three-class classification by at least 2.50% accuracy.\\\",\\n      \\\"poster_quote\\\": \\\"and 2.50% accuracy.\\\"\\n    },\\n    {\\n      \\\"id\\\": 90,\\n      \\\"text\\\": \\\"Failure analysis on Fold 1 shows 16 misclassified cases out of 88.\\\",\\n      \\\"poster_quote\\\": \\\"Failure analysis (16/88 misclassified cases, Fold 1):\\\"\\n    },\\n    {\\n      \\\"id\\\": 91,\\n      \\\"text\\\": \\\"Over-staging accounts for 9 out of 16 misclassified cases (56%).\\\",\\n      \\\"poster_quote\\\": \\\"over-staging (9/16, 56%)\\\"\\n    },\\n    {\\n      \\\"id\\\": 92,\\n      \\\"text\\\": \\\"In 7 over-staged cases, the report explicitly described cartilage invasion not confirmed by pathology.\\\",\\n      \\\"poster_quote\\\": \\\"in 7 cases the report explicitly described cartilage invasion not confirmed by pathology\\\"\\n    },\\n    {\\n      \\\"id\\\": 93,\\n      \\\"text\\\": \\\"Under-staging accounts for 7 out of 16 misclassified cases (44%).\\\",\\n      \\\"poster_quote\\\": \\\"under-staging (7/16, 44%)\\\"\\n    },\\n    {\\n      \\\"id\\\": 94,\\n      \\\"text\\\": \\\"In 5 under-staged cases, the report contained no invasion description or stated 'no evidence of invasion' despite pathological confirmation.\\\",\\n      \\\"poster_quote\\\": \\\"in 5 cases the report contained no invasion description or stated ’no evidence of invasion’ despite pathological confirmation.\\\"\\n    },\\n    {\\n      \\\"id\\\": 95,\\n      \\\"text\\\": \\\"Cross-modal alignment analysis shows invasion-token attention of 0.058 for correct early-stage cases.\\\",\\n      \\\"poster_quote\\\": \\\"Cross-modal alignment analysis shows invasion-token attention of 0.058 for correct early-stage\\\"\\n    },\\n    {\\n      \\\"id\\\": 96,\\n      \\\"text\\\": \\\"Cross-modal alignment analysis shows invasion-token attention of 0.105 for correct advanced-stage cases.\\\",\\n      \\\"poster_quote\\\": \\\"0.105 for correct advanced-stage\\\"\\n    },\\n    {\\n      \\\"id\\\": 97,\\n      \\\"text\\\": \\\"Cross-modal alignment analysis shows invasion-token attention of 0.088 for over-staged cases.\\\",\\n      \\\"poster_quote\\\": \\\"0.088 for over-staged\\\"\\n    },\\n    {\\n      \\\"id\\\": 98,\\n      \\\"text\\\": \\\"Cross-modal alignment analysis shows invasion-token attention of 0.058 for under-staged cases.\\\",\\n      \\\"poster_quote\\\": \\\"0.058 for under-staged cases\\\"\\n    },\\n    {\\n      \\\"id\\\": 99,\\n      \\\"text\\\": \\\"The image-only AOG achieves 77.96% F1.\\\",\\n      \\\"poster_quote\\\": \\\"image-only AOG 77.96% F1\\\"\\n    },\\n    {\\n      \\\"id\\\": 100,\\n      \\\"text\\\": \\\"The proposed method enhanced by the report achieves 83.96% F1.\\\",\\n      \\\"poster_quote\\\": \\\"and enhanced by the report (83.96%).\\\"\\n    },\\n    {\\n      \\\"id\\\": 101,\\n      \\\"text\\\": \\\"TABLE VII compares T-staging prediction performance between the proposed method and radiologist assessments.\\\",\\n      \\\"poster_quote\\\": \\\"TABLE VII : Comparison of T-staging prediction performance: our method versus radiologist assessments.\\\"\\n    },\\n    {\\n      \\\"id\\\": 102,\\n      \\\"text\\\": \\\"TABLE IV compares different component combinations (AOG, OCA, REG) for binary and three-class T-staging tasks on a representative internal fold, reported as mean ± standard deviation over three random seeds.\\\",\\n      \\\"poster_quote\\\": \\\"TABLE IV : Ablation Study of Key Components. Performance comparison of different component combinations for binary and three-class T-staging tasks on a representative internal fold, reported as mean ± standard deviation over three random seeds.\\\"\\n    },\\n    {\\n      \\\"id\\\": 103,\\n      \\\"text\\\": \\\"Fig. 4 shows box plots of the distribution of F1-scores and Accuracy for different prediction strategies across fivefold cross-validation and external testing.\\\",\\n      \\\"poster_quote\\\": \\\"Fig. 4 : Performance Analysis of Individual Invaded Organs. Box plots showing the distribution of (a) F1-scores and (b) Accuracy for different prediction strategies across fivefold cross-validation and external testing.\\\"\\n    },\\n    {\\n      \\\"id\\\": 104,\\n      \\\"text\\\": \\\"Fig. 7 shows representative correct predictions and failure cases, displaying ground truth, radiologist assessments, and the model's prediction.\\\",\\n      \\\"poster_quote\\\": \\\"Fig. 7 : Representative correct predictions (top) and failure cases (bottom). Each case shows the ground truth, radiologist assessments, and our model’s prediction.\\\"\\n    }\\n  ]\\n}\\n```\", \"```json\\n{\\n  \\\"verdicts\\\": [\\n    {\\n      \\\"id\\\": 1,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"However, current clinical practice relies on invasive biopsy procedures, whereas CT-based staging remains challenging due to the complex patterns of tumor invasion.\\\",\\n      \\\"reason\\\": \\\"Abstract, page 1. The paper explicitly states that current clinical practice relies on invasive biopsy procedures.\\\"\\n    },\\n    {\\n      \\\"id\\\": 2,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"whereas CT-based staging remains challenging due to the complex patterns of tumor invasion.\\\",\\n      \\\"reason\\\": \\\"Abstract, page 1. The paper states that CT-based staging is challenging due to complex tumor invasion patterns.\\\"\\n    },\\n    {\\n      \\\"id\\\": 3,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The framework first constructs an Anatomy-Structured Organ Graph (AOG) that captures invasion patterns between primary sites and surrounding organs\\\",\\n      \\\"reason\\\": \\\"Abstract, page 1. The paper states that the framework constructs an AOG to capture invasion patterns.\\\"\\n    },\\n    {\\n      \\\"id\\\": 4,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"then performs Organ-Anchored Cross-Modal Alignment (OCA) so that each organ node aggregates textual evidence from the radiology report\\\",\\n      \\\"reason\\\": \\\"Abstract, page 1. The paper states that OCA is performed to aggregate textual evidence at each organ node.\\\"\\n    },\\n    {\\n      \\\"id\\\": 5,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"and finally refines this graph representation by injecting organ-specific invasion cues extracted from the report via Report-Enhanced Graph-Refinement (REG)\\\",\\n      \\\"reason\\\": \\\"Abstract, page 1. The paper states that REG refines the graph representation by injecting organ-specific invasion cues.\\\"\\n    },\\n    {\\n      \\\"id\\\": 6,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Our framework comprises three key components: an Anatomy-Structured Organ Graph (AOG), an Organ-Anchored Cross-Modal Alignment (OCA) module, and a Report-Enhanced Graph-Refinement (REG) module.\\\",\\n      \\\"reason\\\": \\\"Section III-A, page 3. The paper explicitly lists these three key components of the framework.\\\"\\n    },\\n    {\\n      \\\"id\\\": 7,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Our method demonstrates superior performance across all experimental settings.\\\",\\n      \\\"reason\\\": \\\"Section IV-C, page 8. The paper states that the proposed method is superior across all experimental settings compared to the listed baselines.\\\"\\n    },\\n    {\\n      \\\"id\\\": 8,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"First, AOG addresses the challenge of modeling complex invasion patterns by using pre-trained organ segmentations and anatomy-guided connectivity rules to construct an organ-level graph that encodes potential spread between primary sites and surrounding structures.\\\",\\n      \\\"reason\\\": \\\"Section III-A, page 3. The paper states that AOG uses pre-trained organ segmentations and anatomy-guided connectivity rules.\\\"\\n    },\\n    {\\n      \\\"id\\\": 9,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"OCA then performs fine-grained, organ-level image–text interaction, enhancing CT-derived organ features with organ-specific cues from the radiology report while preserving the anatomy-driven topology.\\\",\\n      \\\"reason\\\": \\\"Section III-A, page 3. The paper describes OCA as performing fine-grained organ-level image-text interaction while preserving topology.\\\"\\n    },\\n    {\\n      \\\"id\\\": 10,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Finally, REG uses a large language model (LLM) to incorporate report-derived invasion statements as a guidance signal on top of AOG, refining the multimodal organ graph without discarding anatomy-based risk connections.\\\",\\n      \\\"reason\\\": \\\"Section III-A, page 3. The paper states that REG uses an LLM to incorporate report-derived invasion statements as guidance.\\\"\\n    },\\n    {\\n      \\\"id\\\": 11,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"80.83 ± 5.35\\\",\\n      \\\"reason\\\": \\\"Table II, row 'Ours', column '2-Class (Early T1–T2 vs. Late T3–T4) F1 (Internal)'. The proposed method achieves an internal F1 of 80.83%.\\\"\\n    },\\n    {\\n      \\\"id\\\": 12,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"81.53 ± 5.41\\\",\\n      \\\"reason\\\": \\\"Table II, row 'Ours', column '2-Class (Early T1–T2 vs. Late T3–T4) Acc (Internal)'. The proposed method achieves an internal Accuracy of 81.53%.\\\"\\n    },\\n    {\\n      \\\"id\\\": 13,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"For internal testing, we achieve an F1 score of 80.83% and accuracy of 81.53%, surpassing the second-best method MMI [3] (77.59% F1 score and 78.57% accuracy).\\\",\\n      \\\"reason\\\": \\\"Section IV-C, page 8. The paper explicitly states that the internal binary F1 of 80.83% surpasses MMI's 77.59%.\\\"\\n    },\\n    {\\n      \\\"id\\\": 14,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"For internal testing, we achieve an F1 score of 80.83% and accuracy of 81.53%, surpassing the second-best method MMI [3] (77.59% F1 score and 78.57% accuracy).\\\",\\n      \\\"reason\\\": \\\"Section IV-C, page 8. The paper explicitly states that the internal binary Accuracy of 81.53% surpasses MMI's 78.57%.\\\"\\n    },\\n    {\\n      \\\"id\\\": 15,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"76.46 ± 1.35\\\",\\n      \\\"reason\\\": \\\"Table II, row 'Ours', column '2-Class (Early T1–T2 vs. Late T3–T4) F1 (External)'. The proposed method achieves an external F1 of 76.46%.\\\"\\n    },\\n    {\\n      \\\"id\\\": 16,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"76.50 ± 1.34\\\",\\n      \\\"reason\\\": \\\"Table II, row 'Ours', column '2-Class (Early T1–T2 vs. Late T3–T4) Acc (External)'. The proposed method achieves an external Accuracy of 76.50%.\\\"\\n    },\\n    {\\n      \\\"id\\\": 17,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"On the external test set, our method maintains its leading position with an F1 score of 76.46% and accuracy of 76.50%, outperforming TGCAM [2] (74.09% F1 score and 74.38% accuracy) by a significant margin.\\\",\\n      \\\"reason\\\": \\\"Section IV-C, page 8. The paper explicitly states that the external binary F1 of 76.46% outperforms TGCAM's 74.09%.\\\"\\n    },\\n    {\\n      \\\"id\\\": 18,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"On the external test set, our method maintains its leading position with an F1 score of 76.46% and accuracy of 76.50%, outperforming TGCAM [2] (74.09% F1 score and 74.38% accuracy) by a significant margin.\\\",\\n      \\\"reason\\\": \\\"Section IV-C, page 8. The paper explicitly states that the external binary Accuracy of 76.50% outperforms TGCAM's 74.38%.\\\"\\n    },\\n    {\\n      \\\"id\\\": 19,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"K=7 | Number of predefined anatomical structures\\\",\\n      \\\"reason\\\": \\\"Table I, page 4. The number of predefined anatomical structures is defined as K = 7.\\\"\\n    },\\n    {\\n      \\\"id\\\": 20,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"P = {1, 2, 3} | Indices of primary sites (supraglottic, glottic, subglottic)\\\",\\n      \\\"reason\\\": \\\"Table I, page 4. The primary sites are defined as supraglottic, glottic, and subglottic, indexed by P.\\\"\\n    },\\n    {\\n      \\\"id\\\": 21,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"T = {4, 5, 6, 7} | Indices of potentially invaded organs (esophagus, thyroid gland, trachea, oral cavity)\\\",\\n      \\\"reason\\\": \\\"Table I, page 4. The potentially invaded organs are defined as esophagus, thyroid gland, trachea, and oral cavity, indexed by T.\\\"\\n    },\\n    {\\n      \\\"id\\\": 22,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"We train our framework end-to-end using cross-entropy loss for T-staging classification:\\\",\\n      \\\"reason\\\": \\\"Section III-D-3, page 6. The model is trained end-to-end with cross-entropy loss.\\\"\\n    },\\n    {\\n      \\\"id\\\": 23,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"61.43 ± 3.25\\\",\\n      \\\"reason\\\": \\\"Table II, row 'Ours', column '3-Class (T1, T2, T3–T4) F1 (Internal)'. The proposed method achieves an internal F1 of 61.43%.\\\"\\n    },\\n    {\\n      \\\"id\\\": 24,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"63.33 ± 3.25\\\",\\n      \\\"reason\\\": \\\"Table II, row 'Ours', column '3-Class (T1, T2, T3–T4) Acc (Internal)'. The proposed method achieves an internal Accuracy of 63.33%.\\\"\\n    },\\n    {\\n      \\\"id\\\": 25,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"On the internal test set, we achieve an F1 score of 61.43% and accuracy of 63.33%, showing notable improvements over MMBCD [1] (58.44% F1 score and 61.14% accuracy).\\\",\\n      \\\"reason\\\": \\\"Section IV-C, page 8. The paper explicitly states that the internal three-class F1 of 61.43% improves over MMBCD's 58.44%.\\\"\\n    },\\n    {\\n      \\\"id\\\": 26,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"On the internal test set, we achieve an F1 score of 61.43% and accuracy of 63.33%, showing notable improvements over MMBCD [1] (58.44% F1 score and 61.14% accuracy).\\\",\\n      \\\"reason\\\": \\\"Section IV-C, page 8. The paper explicitly states that the internal three-class Accuracy of 63.33% improves over MMBCD's 61.14%.\\\"\\n    },\\n    {\\n      \\\"id\\\": 27,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"60.27 ± 3.03\\\",\\n      \\\"reason\\\": \\\"Table II, row 'Ours', column '3-Class (T1, T2, T3–T4) F1 (External)'. The proposed method achieves an external F1 of 60.27%.\\\"\\n    },\\n    {\\n      \\\"id\\\": 28,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"63.78 ± 2.98\\\",\\n      \\\"reason\\\": \\\"Table II, row 'Ours', column '3-Class (T1, T2, T3–T4) Acc (External)'. The proposed method achieves an external Accuracy of 63.78%.\\\"\\n    },\\n    {\\n      \\\"id\\\": 29,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"significantly outperforming the second best method by a large margin of 8.73% F1 score and 7.78% accuracy.\\\",\\n      \\\"reason\\\": \\\"Section IV-C, page 8. The paper states that the external three-class F1 of 60.27% outperforms the second-best method (MMI with 51.54%) by 8.73% (60.27 - 51.54 = 8.73).\\\"\\n    },\\n    {\\n      \\\"id\\\": 30,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"significantly outperforming the second best method by a large margin of 8.73% F1 score and 7.78% accuracy.\\\",\\n      \\\"reason\\\": \\\"Section IV-C, page 8. The paper states that the external three-class Accuracy of 63.78% outperforms the second-best method (MMBCD with 56.00%) by 7.78% (63.78 - 56.00 = 7.78).\\\"\\n    },\\n    {\\n      \\\"id\\\": 31,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"58.82 ± 0.57\\\",\\n      \\\"reason\\\": \\\"Table II, row 'SwinViT', column '2-Class (Early T1–T2 vs. Late T3–T4) F1 (Internal)'. SwinViT achieves 58.82% internal binary F1.\\\"\\n    },\\n    {\\n      \\\"id\\\": 32,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"71.47 ± 3.71\\\",\\n      \\\"reason\\\": \\\"Table II, row 'VDPF', column '2-Class (Early T1–T2 vs. Late T3–T4) F1 (Internal)'. VDPF achieves 71.47% internal binary F1.\\\"\\n    },\\n    {\\n      \\\"id\\\": 33,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"TABLE V: Comparison of different attention mechanisms in our OCA on a representative internal fold.\\\",\\n      \\\"reason\\\": \\\"Table V caption, page 9. Table V compares different attention mechanisms in OCA on a representative internal fold.\\\"\\n    },\\n    {\\n      \\\"id\\\": 34,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"TABLE VI: Ablation study of anatomical topology modeling. Comparison between different approaches for modeling anatomical relationships on a representative internal fold.\\\",\\n      \\\"reason\\\": \\\"Table VI caption, page 9. Table VI presents an ablation study of anatomical topology modeling on a representative internal fold.\\\"\\n    },\\n    {\\n      \\\"id\\\": 35,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Fully-Connected Graph represents a complete graph connection strategy\\\",\\n      \\\"reason\\\": \\\"Table VI caption, page 9. Fully-Connected Graph represents a complete graph connection strategy.\\\"\\n    },\\n    {\\n      \\\"id\\\": 36,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Direct Fusion uses concatenated organ masks\\\",\\n      \\\"reason\\\": \\\"Table VI caption, page 9. Direct Fusion uses concatenated organ masks.\\\"\\n    },\\n    {\\n      \\\"id\\\": 37,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Global Context applies global feature pooling\\\",\\n      \\\"reason\\\": \\\"Table VI caption, page 9. Global Context applies global feature pooling.\\\"\\n    },\\n    {\\n      \\\"id\\\": 38,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Fig. 2: Overview of the proposed framework for laryngopharyngeal cancer T-staging, integrating CT images and radiology reports through three modules: (a) Anatomy-Structured Organ Graph (AOG) for organ-level feature extraction and graph construction, (b) Organ-Anchored Cross-Modal Alignment (OCA) for fine-grained cross-modal alignment, and (c) Report-Enhanced Graph-Refinement (REG) module for structural refinement using clinical invasion information.\\\",\\n      \\\"reason\\\": \\\"Fig. 2 caption, page 4. Figure 2 shows an overview of the proposed framework integrating CT images and reports through AOG, OCA, and REG.\\\"\\n    },\\n    {\\n      \\\"id\\\": 39,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"In practice, however, radiologists typically report only obvious and clinically salient invasion, hence subtle or equivocal extension may be omitted. Relying solely on reported invasion would therefore disconnect organs that are anatomically at risk but not explicitly mentioned, leaving their CT features underutilized.\\\",\\n      \\\"reason\\\": \\\"Section I, page 2. The paper explains that relying solely on reported invasion would disconnect anatomically at-risk organs that are not explicitly mentioned.\\\"\\n    },\\n    {\\n      \\\"id\\\": 40,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Fig. 1: Comparison between (a) conventional coarse-grained image–text fusion based on global CT and report information [1]–[5], and (b) the proposed anatomy-structured multimodal framework.\\\",\\n      \\\"reason\\\": \\\"Fig. 1 caption, page 1. Figure 1 compares conventional coarse-grained image-text fusion with the proposed anatomy-structured framework.\\\"\\n    }\\n  ]\\n}\\n```\", \"```json\\n{\\n  \\\"verdicts\\\": [\\n    {\\n      \\\"id\\\": 1,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"To the best of our knowledge, we collect the first and largest dataset for CT-based laryngopharyngeal cancer T-staging, comprising 656 patients across four medical centers. More importantly, all cases are paired with CT reports for multimodal T-staging assessment.\\\",\\n      \\\"reason\\\": \\\"Section IV-A, first paragraph. The paper states that the dataset comprises 656 patients across four medical centers, all paired with CT reports.\\\"\\n    },\\n    {\\n      \\\"id\\\": 2,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"These laryngopharyngeal and head-and-neck staging studies, however, are single-center, limited in scale (118–319 patients), and rely on imaging features alone without exploiting paired radiology reports.\\\",\\n      \\\"reason\\\": \\\"Section II-A, last paragraph. The paper states that prior studies are single-center, limited in scale (118-319 patients), and rely on imaging alone.\\\"\\n    },\\n    {\\n      \\\"id\\\": 3,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"This is a straightforward information extraction task: the LLM identifies whether specific target organ names (esophagus, thyroid gland, trachea, oral cavity) appear in the context of explicit invasion statements. The main subtlety is distinguishing “thyroid gland” (the endocrine organ) from “thyroid cartilage” (the laryngeal structure), which is handled through targeted prompt design. Specifically, the prompt is: “Identify which of the following structures are explicitly described as invaded by the tumor: [esophagus, thyroid gland, trachea, oral cavity]. Only include structures with positive invasion statements; exclude negations. Note: thyroid gland (endocrine organ) and thyroid cartilage (laryngeal structure) are different. Return a JSON list of invaded organs.”\\\",\\n      \\\"reason\\\": \\\"Section III-D-1, first paragraph. The paper describes using an LLM with prompt engineering to extract structured invasion information for the target organs, excluding negations and distinguishing thyroid gland from thyroid cartilage.\\\"\\n    },\\n    {\\n      \\\"id\\\": 4,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"We use Claude 3.5 Haiku [34] in our implementation;\\\",\\n      \\\"reason\\\": \\\"Section III-D-1, first paragraph. The paper states that Claude 3.5 Haiku is used in the implementation.\\\"\\n    },\\n    {\\n      \\\"id\\\": 5,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"we verified that GPT-4o [35] and Qwen-2.5-72B [36] yield exactly the same outputs as Claude 3.5 Haiku on all 439 reports,\\\",\\n      \\\"reason\\\": \\\"Section III-D-1, first paragraph. The paper states that GPT-4o and Qwen-2.5-72B yield exactly the same outputs as Claude 3.5 Haiku on all 439 reports.\\\"\\n    },\\n    {\\n      \\\"id\\\": 6,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"and manual review confirmed all extractions are correct.\\\",\\n      \\\"reason\\\": \\\"Section III-D-1, first paragraph. The paper states that manual review confirmed all extractions are correct.\\\"\\n    },\\n    {\\n      \\\"id\\\": 7,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The text node feature is then constructed using the global text representation: ht = Wt t1 + bt (12) where t1 ∈ Rd is the [CLS] token representation from the report encoder, and Wt ∈ Rd×d, bt ∈ Rd are learnable parameters that align the text feature dimension with organ representations.\\\",\\n      \\\"reason\\\": \\\"Section III-D-1, second paragraph. The paper states that the text node feature is constructed from the global [CLS] token representation projected to align with organ representations.\\\"\\n    },\\n    {\\n      \\\"id\\\": 8,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"where the text node is connected to all primary sites by default, and additionally linked to target organs that are explicitly mentioned as invaded in the report (k ∈ I).\\\",\\n      \\\"reason\\\": \\\"Section III-D-2, first paragraph. The paper states that the text node is connected to all primary sites by default and additionally linked to target organs explicitly mentioned as invaded, while keeping original organ-organ edges unchanged.\\\"\\n    },\\n    {\\n      \\\"id\\\": 9,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The final node representations are obtained through message passing on this report-enhanced graph: zk = GNN({h̃k}K k=1 ∪ {ht}, Ê) (16) followed by global average pooling for staging classification: y = MLP( 1 K + 1 X k∈V̂ zk) (17)\\\",\\n      \\\"reason\\\": \\\"Section III-D-2, second paragraph. The paper states that message passing on the report-enhanced graph followed by global average pooling yields the staging prediction.\\\"\\n    },\\n    {\\n      \\\"id\\\": 10,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"(1) Fudan University Zhongshan Hospital (FUZH) as the primary cohort with 439 patients, each with contrast-enhanced CT scans and corresponding radiology reports; ... FUZH is used for 5-fold cross-validation,\\\",\\n      \\\"reason\\\": \\\"Section IV-A-1, first paragraph. The paper states that the primary cohort from FUZH consists of 439 patients with contrast-enhanced CT and reports, evaluated using 5-fold cross-validation.\\\"\\n    },\\n    {\\n      \\\"id\\\": 11,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"(2) Chang Gung Memorial Hospital (CGMH) with 25 cases;\\\",\\n      \\\"reason\\\": \\\"Section IV-A-1, first paragraph. The paper states that the CGMH cohort consists of 25 cases.\\\"\\n    },\\n    {\\n      \\\"id\\\": 12,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"(3) Eye & ENT Hospital of Fudan University (EENT) with 87 cases;\\\",\\n      \\\"reason\\\": \\\"Section IV-A-1, first paragraph. The paper states that the EENT cohort consists of 87 cases.\\\"\\n    },\\n    {\\n      \\\"id\\\": 13,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"and (4) The Cancer Genome Atlas (TCGA) with 105 cases for evaluating generalizability on public data [40].\\\",\\n      \\\"reason\\\": \\\"Section IV-A-1, first paragraph. The paper states that the TCGA cohort consists of 105 cases.\\\"\\n    },\\n    {\\n      \\\"id\\\": 14,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"while CGMH, EENT, and TCGA [40] form the external test set.\\\",\\n      \\\"reason\\\": \\\"Section IV-A-1, first paragraph. The paper states that CGMH, EENT, and TCGA form the external test set.\\\"\\n    },\\n    {\\n      \\\"id\\\": 15,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Specifically, these CT reports were written by a board-certified radiologist and then reviewed and verified by a second, with any disagreements resolved by consensus; the radiologists described only imaging findings and did not assign or infer the T-stage.\\\",\\n      \\\"reason\\\": \\\"Section IV-A-1, first paragraph. The paper states that for TCGA, CT reports were written by a board-certified radiologist and verified by a second, describing only imaging findings without assigning T-stage.\\\"\\n    },\\n    {\\n      \\\"id\\\": 16,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Total 197 176 138 145 656\\\",\\n      \\\"reason\\\": \\\"Table III, row 'Total', column 'T1'. The stage distribution of the dataset is T1: 197.\\\"\\n    },\\n    {\\n      \\\"id\\\": 17,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Total 197 176 138 145 656\\\",\\n      \\\"reason\\\": \\\"Table III, row 'Total', column 'T2'. The stage distribution of the dataset is T2: 176.\\\"\\n    },\\n    {\\n      \\\"id\\\": 18,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Total 197 176 138 145 656\\\",\\n      \\\"reason\\\": \\\"Table III, row 'Total', column 'T3'. The stage distribution of the dataset is T3: 138.\\\"\\n    },\\n    {\\n      \\\"id\\\": 19,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Total 197 176 138 145 656\\\",\\n      \\\"reason\\\": \\\"Table III, row 'Total', column 'T4'. The stage distribution of the dataset is T4: 145.\\\"\\n    },\\n    {\\n      \\\"id\\\": 20,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Total 197 176 138 145 656\\\",\\n      \\\"reason\\\": \\\"Table III, row 'Total', column 'Total'. The total number of patients in the dataset is 656.\\\"\\n    },\\n    {\\n      \\\"id\\\": 21,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Training 439 66.9%\\\",\\n      \\\"reason\\\": \\\"Table III, row 'Training'. The training set consists of 439 patients (66.9%).\\\"\\n    },\\n    {\\n      \\\"id\\\": 22,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Test 217 33.1%\\\",\\n      \\\"reason\\\": \\\"Table III, row 'Test'. The test set consists of 217 patients (33.1%).\\\"\\n    },\\n    {\\n      \\\"id\\\": 23,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Importantly, the ground-truth T-stage labels in our dataset are derived from pathological confirmation following AJCC 8th edition criteria, not from CT reports.\\\",\\n      \\\"reason\\\": \\\"Section IV-A-1, second paragraph. The paper states that ground-truth T-stages are from pathological confirmation following AJCC 8th edition criteria, not from CT reports.\\\"\\n    },\\n    {\\n      \\\"id\\\": 24,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"None of the 439 training reports contain any T-stage designation — all reports describe imaging findings following standard clinical templates.\\\",\\n      \\\"reason\\\": \\\"Section IV-A-1, second paragraph. The paper states that none of the 439 training reports contain any T-stage designation.\\\"\\n    },\\n    {\\n      \\\"id\\\": 25,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"(1) Binary classification between early stages (T1–T2) and late stages (T3–T4),\\\",\\n      \\\"reason\\\": \\\"Section IV-A-1, second paragraph. The paper states that the binary classification setting is early (T1-T2) vs. late (T3-T4) stages.\\\"\\n    },\\n    {\\n      \\\"id\\\": 26,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"(2) Three-class classification: T1 vs. T2 vs. T3–T4,\\\",\\n      \\\"reason\\\": \\\"Section IV-A-1, third paragraph. The paper states that the three-class classification setting is T1 vs. T2 vs. T3-T4.\\\"\\n    },\\n    {\\n      \\\"id\\\": 27,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"All experiments are conducted using PyTorch [41] on an NVIDIA H20 GPU.\\\",\\n      \\\"reason\\\": \\\"Section IV-B-1, first paragraph. The paper states that the implementation uses PyTorch on an NVIDIA H20 GPU.\\\"\\n    },\\n    {\\n      \\\"id\\\": 28,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"For data preprocessing, all CT volumes are resampled to an isotropic spacing of 1mm3\\\",\\n      \\\"reason\\\": \\\"Section IV-B-1, first paragraph. The paper states that CT images are resampled to an isotropic spacing of 1mm3.\\\"\\n    },\\n    {\\n      \\\"id\\\": 29,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"and resized to a unified spatial dimension of 128×128×128.\\\",\\n      \\\"reason\\\": \\\"Section IV-B-1, first paragraph. The paper states that CT images are resized to 128x128x128.\\\"\\n    },\\n    {\\n      \\\"id\\\": 30,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"with Hounsfield Unit normalization applied using a window center of 50 and a window width of 450\\\",\\n      \\\"reason\\\": \\\"Section IV-B-1, first paragraph. The paper states that the HU window center is 50 and width is 450.\\\"\\n    },\\n    {\\n      \\\"id\\\": 31,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The intensity values are normalized to the range [0, 1],\\\",\\n      \\\"reason\\\": \\\"Section IV-B-1, first paragraph. The paper states that intensity values are normalized to [0, 1].\\\"\\n    },\\n    {\\n      \\\"id\\\": 32,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"We train our model with a batch size of 8 using the Adam optimizer.\\\",\\n      \\\"reason\\\": \\\"Section IV-B-1, first paragraph. The paper states that the model is trained using the Adam optimizer.\\\"\\n    },\\n    {\\n      \\\"id\\\": 33,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"We train our model with a batch size of 8 using the Adam optimizer.\\\",\\n      \\\"reason\\\": \\\"Section IV-B-1, first paragraph. The paper states that the batch size is 8.\\\"\\n    },\\n    {\\n      \\\"id\\\": 34,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The learning rate starts at 1×10−6 and decays to 1×10−7 following a cosine decay schedule,\\\",\\n      \\\"reason\\\": \\\"Section IV-B-1, first paragraph. The paper states that the learning rate starts at 1e-6 and decays to 1e-7 following a cosine decay schedule.\\\"\\n    },\\n    {\\n      \\\"id\\\": 35,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"with a weight decay of 1 × 10−5.\\\",\\n      \\\"reason\\\": \\\"Section IV-B-1, first paragraph. The paper states that the weight decay is 1e-5.\\\"\\n    },\\n    {\\n      \\\"id\\\": 36,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"We evaluate model performance using Accuracy and Macro F1-score.\\\",\\n      \\\"reason\\\": \\\"Section IV-B-2, first paragraph. The paper states that the evaluation metrics are Accuracy and Macro F1-score.\\\"\\n    },\\n    {\\n      \\\"id\\\": 37,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"In the Early vs Late classification, our method achieves an F1 score of 76.25% and accuracy of 76.25%,\\\",\\n      \\\"reason\\\": \\\"Section IV-H, second paragraph, and Table VII (Ours, Two Class F1 (macro) = 76.25). The paper states that on the randomly selected 80 samples, the proposed method achieves a binary F1 of 76.25%.\\\"\\n    },\\n    {\\n      \\\"id\\\": 38,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"In the Early vs Late classification, our method achieves an F1 score of 76.25% and accuracy of 76.25%,\\\",\\n      \\\"reason\\\": \\\"Section IV-H, second paragraph, and Table VII (Ours, Two Class Acc = 76.25). The paper states that on the randomly selected 80 samples, the proposed method achieves a binary Accuracy of 76.25%.\\\"\\n    },\\n    {\\n      \\\"id\\\": 39,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"performing comparably to Radiologists 1 and 2, who achieve F1 scores of 76.16% and 74.98%, and accuracies of 76.25% and 75.00%, respectively.\\\",\\n      \\\"reason\\\": \\\"Section IV-H, second paragraph, and Table VII (Radiologist 1, Two Class F1 (macro) = 76.16). The paper states that Radiologist 1 achieves a binary F1 of 76.16%.\\\"\\n    },\\n    {\\n      \\\"id\\\": 40,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"performing comparably to Radiologists 1 and 2, who achieve F1 scores of 76.16% and 74.98%, and accuracies of 76.25% and 75.00%, respectively.\\\",\\n      \\\"reason\\\": \\\"Section IV-H, second paragraph, and Table VII (Radiologist 1, Two Class Acc = 76.25). The paper states that Radiologist 1 achieves a binary Accuracy of 76.25%.\\\"\\n    }\\n  ]\\n}\\n```\", \"```json\\n{\\n  \\\"verdicts\\\": [\\n    {\\n      \\\"id\\\": 1,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"In the Early vs Late classification, our method achieves an F1 score of 76.25% and accuracy of 76.25%, performing comparably to Radiologists 1 and 2, who achieve F1 scores of 76.16% and 74.98%, and accuracies of 76.25% and 75.00%, respectively.\\\",\\n      \\\"reason\\\": \\\"Section IV-H, Table VII. The paper states that Radiologist 2 achieves a binary (Two Class) F1 score of 74.98% on the 80 randomly selected external samples.\\\"\\n    },\\n    {\\n      \\\"id\\\": 2,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"In the Early vs Late classification, our method achieves an F1 score of 76.25% and accuracy of 76.25%, performing comparably to Radiologists 1 and 2, who achieve F1 scores of 76.16% and 74.98%, and accuracies of 76.25% and 75.00%, respectively.\\\",\\n      \\\"reason\\\": \\\"Section IV-H, Table VII. The paper states that Radiologist 2 achieves a binary (Two Class) Accuracy of 75.00% on the 80 randomly selected external samples.\\\"\\n    },\\n    {\\n      \\\"id\\\": 3,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"In the T1, T2, Late (T3–T4) classification, our method achieves an F1 score of 59.71% and an accuracy of 62.50%, outperforming both radiologists by at least 6.08% in F1 score and 2.50% in accuracy.\\\",\\n      \\\"reason\\\": \\\"Section IV-H, Table VII. The paper states that the proposed method achieves a three-class F1 score of 59.71% on the 80 randomly selected external samples.\\\"\\n    },\\n    {\\n      \\\"id\\\": 4,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"In the T1, T2, Late (T3–T4) classification, our method achieves an F1 score of 59.71% and an accuracy of 62.50%, outperforming both radiologists by at least 6.08% in F1 score and 2.50% in accuracy.\\\",\\n      \\\"reason\\\": \\\"Section IV-H, Table VII. The paper states that the proposed method achieves a three-class Accuracy of 62.50% on the 80 randomly selected external samples.\\\"\\n    },\\n    {\\n      \\\"id\\\": 5,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"TABLE VII: Comparison of T-staging prediction performance: our method versus radiologist assessments.\\\",\\n      \\\"reason\\\": \\\"Section IV-H, Table VII. Table VII shows that Radiologist 1 achieves a three-class F1 score of 53.03% on the 80 randomly selected external samples.\\\"\\n    },\\n    {\\n      \\\"id\\\": 6,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"TABLE VII: Comparison of T-staging prediction performance: our method versus radiologist assessments.\\\",\\n      \\\"reason\\\": \\\"Section IV-H, Table VII. Table VII shows that Radiologist 2 achieves a three-class F1 score of 53.63% on the 80 randomly selected external samples.\\\"\\n    },\\n    {\\n      \\\"id\\\": 7,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"TABLE VII: Comparison of T-staging prediction performance: our method versus radiologist assessments.\\\",\\n      \\\"reason\\\": \\\"Section IV-H, Table VII. Table VII shows that both Radiologist 1 and Radiologist 2 achieve a three-class Accuracy of 60.00% on the 80 randomly selected external samples.\\\"\\n    },\\n    {\\n      \\\"id\\\": 8,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"In the T1, T2, Late (T3–T4) classification, our method achieves an F1 score of 59.71% and an accuracy of 62.50%, outperforming both radiologists by at least 6.08% in F1 score and 2.50% in accuracy.\\\",\\n      \\\"reason\\\": \\\"Section IV-H. The paper explicitly states that the proposed method outperforms both radiologists in three-class classification by at least 6.08% in F1 score.\\\"\\n    },\\n    {\\n      \\\"id\\\": 9,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"In the T1, T2, Late (T3–T4) classification, our method achieves an F1 score of 59.71% and an accuracy of 62.50%, outperforming both radiologists by at least 6.08% in F1 score and 2.50% in accuracy.\\\",\\n      \\\"reason\\\": \\\"Section IV-H. The paper explicitly states that the proposed method outperforms both radiologists in three-class classification by at least 2.50% in accuracy.\\\"\\n    },\\n    {\\n      \\\"id\\\": 10,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"We analyzed the 16 misclassified cases (out of 88 test samples) in Fold 1 and identified two dominant failure patterns inherently linked to the limitations of CT-based invasion assessment.\\\",\\n      \\\"reason\\\": \\\"Section IV-H. The paper states that there are 16 misclassified cases out of 88 test samples in Fold 1.\\\"\\n    },\\n    {\\n      \\\"id\\\": 11,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Over-staging (9/16 cases, 56%): the model predicted T3–T4 for pathologically confirmed T1–T2 cases.\\\",\\n      \\\"reason\\\": \\\"Section IV-H. The paper states that over-staging accounts for 9 out of 16 misclassified cases (56%).\\\"\\n    },\\n    {\\n      \\\"id\\\": 12,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"In 7 of these 9 cases, the radiology report explicitly described cartilage invasion that was not confirmed by pathological examination, reflecting CT’s known limitation in distinguishing tumor contact from true cartilage invasion [7], [14].\\\",\\n      \\\"reason\\\": \\\"Section IV-H. The paper states that in 7 of the 9 over-staged cases, the report explicitly described cartilage invasion not confirmed by pathology.\\\"\\n    },\\n    {\\n      \\\"id\\\": 13,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Under-staging (7/16 cases, 44%): the model predicted T1–T2 for pathologically confirmed T3–T4 cases.\\\",\\n      \\\"reason\\\": \\\"Section IV-H. The paper states that under-staging accounts for 7 out of 16 misclassified cases (44%).\\\"\\n    },\\n    {\\n      \\\"id\\\": 14,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"In 5 of these 7 cases, the report contained no invasion description or explicitly stated “no evidence of invasion,” despite pathological confirmation.\\\",\\n      \\\"reason\\\": \\\"Section IV-H. The paper states that in 5 of the 7 under-staged cases, the report contained no invasion description or stated 'no evidence of invasion' despite pathological confirmation.\\\"\\n    },\\n    {\\n      \\\"id\\\": 15,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"TABLE VIII: Cross-modal alignment of correct and misclassified cases. Mean invasion-token attention mass placed by the potentially-invaded organ nodes on invasion-related report tokens, on the Fold 1 internal test set.\\\",\\n      \\\"reason\\\": \\\"Section IV-H, Table VIII. Table VIII shows that the invasion-token attention for correctly staged (T1–T2) cases is 0.058.\\\"\\n    },\\n    {\\n      \\\"id\\\": 16,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"TABLE VIII: Cross-modal alignment of correct and misclassified cases. Mean invasion-token attention mass placed by the potentially-invaded organ nodes on invasion-related report tokens, on the Fold 1 internal test set.\\\",\\n      \\\"reason\\\": \\\"Section IV-H, Table VIII. Table VIII shows that the invasion-token attention for correctly staged (T3–T4) cases is 0.105.\\\"\\n    },\\n    {\\n      \\\"id\\\": 17,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"TABLE VIII: Cross-modal alignment of correct and misclassified cases. Mean invasion-token attention mass placed by the potentially-invaded organ nodes on invasion-related report tokens, on the Fold 1 internal test set.\\\",\\n      \\\"reason\\\": \\\"Section IV-H, Table VIII. Table VIII shows that the invasion-token attention for over-staged (T1–T2 → T3–T4) cases is 0.088.\\\"\\n    },\\n    {\\n      \\\"id\\\": 18,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"TABLE VIII: Cross-modal alignment of correct and misclassified cases. Mean invasion-token attention mass placed by the potentially-invaded organ nodes on invasion-related report tokens, on the Fold 1 internal test set.\\\",\\n      \\\"reason\\\": \\\"Section IV-H, Table VIII. Table VIII shows that the invasion-token attention for under-staged (T3–T4 → T1–T2) cases is 0.058.\\\"\\n    },\\n    {\\n      \\\"id\\\": 19,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"with the image-only AOG variant already attaining 77.96% F1 (Table IV)\\\",\\n      \\\"reason\\\": \\\"Section IV-H. The paper states that the image-only AOG variant achieves 77.96% F1.\\\"\\n    },\\n    {\\n      \\\"id\\\": 20,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"and the report refining this to 83.96%.\\\",\\n      \\\"reason\\\": \\\"Section IV-H. The paper states that the report refines the performance to 83.96% F1.\\\"\\n    },\\n    {\\n      \\\"id\\\": 21,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"TABLE VII: Comparison of T-staging prediction performance: our method versus radiologist assessments.\\\",\\n      \\\"reason\\\": \\\"Section IV-H, Table VII. Table VII compares T-staging prediction performance between the proposed method and radiologist assessments.\\\"\\n    },\\n    {\\n      \\\"id\\\": 22,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"TABLE IV: Ablation Study of Key Components. Performance comparison of different component combinations for binary and three-class T-staging tasks on a representative internal fold, reported as mean ± standard deviation over three random seeds.\\\",\\n      \\\"reason\\\": \\\"Section IV-D, Table IV. Table IV compares different component combinations (AOG, OCA, REG) for binary and three-class T-staging tasks on a representative internal fold, reported as mean ± standard deviation over three random seeds.\\\"\\n    },\\n    {\\n      \\\"id\\\": 23,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Fig. 4: Performance Analysis of Individual Invaded Organs. Box plots showing the distribution of (a) F1-scores and (b) Accuracy for different prediction strategies across fivefold cross-validation and external testing.\\\",\\n      \\\"reason\\\": \\\"Section IV-D, Fig. 4. Fig. 4 shows box plots of the distribution of F1-scores and Accuracy for different prediction strategies across fivefold cross-validation and external testing.\\\"\\n    },\\n    {\\n      \\\"id\\\": 24,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Fig. 7: Representative correct predictions (top) and failure cases (bottom). Each case shows the ground truth, radiologist assessments, and our model’s prediction.\\\",\\n      \\\"reason\\\": \\\"Section IV-H, Fig. 7. Fig. 7 shows representative correct predictions and failure cases, displaying ground truth, radiologist assessments, and the model's prediction.\\\"\\n    }\\n  ]\\n}\\n```\"]"
+}

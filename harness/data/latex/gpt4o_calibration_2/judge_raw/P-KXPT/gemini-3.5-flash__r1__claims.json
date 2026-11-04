@@ -1,0 +1,1039 @@
+{
+  "model": "gemini-3.5-flash",
+  "repeat": 1,
+  "judge_prompt_sha256": "4ec65050cfdc718218dbc587f672291e733fd03b1254c20d77b61b0933e16162",
+  "error": null,
+  "tokens_in": 116510,
+  "tokens_out": 59010,
+  "max_output_tokens": 32768,
+  "claims_batch_size": 40,
+  "parsed": {
+    "claims": [
+      {
+        "id": 1,
+        "text": "Early-stage laryngopharyngeal cancer is generally managed with organ-preserving surgery, laser resection, or definitive radiotherapy.",
+        "poster_quote": "Early-stage disease is generally managed with organ-preserving surgery, laser resection, or definitive radiotherapy, whereas advanced disease often requires\ntotal laryngectomy and adjuvant treatment.",
+        "label": "supported",
+        "paper_evidence": "Early-stage disease (T1–T2) is usually managed with partial laryngectomy, laser resection, or definitive radiotherapy",
+        "reason": "Section I. The paper states that early-stage disease is managed with partial laryngectomy (which is an organ-preserving procedure, as noted in Section IV.A.1: 'patients with early-stages receive organ-preserving procedures'), laser resection, or definitive radiotherapy."
+      },
+      {
+        "id": 2,
+        "text": "Advanced laryngopharyngeal cancer often requires total laryngectomy and adjuvant treatment.",
+        "poster_quote": "Early-stage disease is generally managed with organ-preserving surgery, laser resection, or definitive radiotherapy, whereas advanced disease often requires\ntotal laryngectomy and adjuvant treatment.",
+        "label": "supported",
+        "paper_evidence": "whereas advanced stages (T3–T4) often require total laryngectomy combined with adjuvant therapies",
+        "reason": "Section I. The paper explicitly states that advanced stages often require total laryngectomy combined with adjuvant therapies."
+      },
+      {
+        "id": 3,
+        "text": "Pathology-based staging is invasive and time-consuming.",
+        "poster_quote": "Pathology-based staging is invasive and time-consuming, while manual review\nof an entire 3D CT volume is labor-intensive and subjective.",
+        "label": "supported",
+        "paper_evidence": "Although the current reference standard relies on biopsy-derived pathology, this process is invasive and time-consuming.",
+        "reason": "Section I. The paper explicitly states that biopsy-derived pathology is invasive and time-consuming."
+      },
+      {
+        "id": 4,
+        "text": "Manual review of an entire 3D CT volume is labor-intensive and subjective.",
+        "poster_quote": "Pathology-based staging is invasive and time-consuming, while manual review\nof an entire 3D CT volume is labor-intensive and subjective.",
+        "label": "supported",
+        "paper_evidence": "manually reviewing an entire 3-D CT volume remains labor-intensive and subjective",
+        "reason": "Section I. The paper explicitly states that manually reviewing an entire 3-D CT volume is labor-intensive and subjective."
+      },
+      {
+        "id": 5,
+        "text": "Radiology reports often explicitly identify invaded organs.",
+        "poster_quote": "Reports often explicitly identify invaded organs, but these observations are incomplete because subtle or equivocal extension may be omitted.",
+        "label": "supported",
+        "paper_evidence": "since radiology reports often contain explicit statements about which organs are invaded",
+        "reason": "Section I. The paper explicitly mentions that radiology reports often contain explicit statements about which organs are invaded."
+      },
+      {
+        "id": 6,
+        "text": "Observations of invaded organs in radiology reports are incomplete because subtle or equivocal extension may be omitted.",
+        "poster_quote": "Reports often explicitly identify invaded organs, but these observations are incomplete because subtle or equivocal extension may be omitted.",
+        "label": "supported",
+        "paper_evidence": "In practice, however, radiologists typically report only obvious and clinically salient invasion, hence subtle or equivocal extension may be omitted.",
+        "reason": "Section I. The paper explicitly states that radiologists typically report only obvious/salient invasion, and subtle or equivocal extension may be omitted."
+      },
+      {
+        "id": 7,
+        "text": "REG uses report evidence to refine, rather than replace, anatomy-based connectivity.",
+        "poster_quote": "REG therefore uses report evidence to refine, rather than replace, anatomy-based connectivity.",
+        "label": "supported",
+        "paper_evidence": "we retain the anatomy-driven connectivity in AOG and use report information as a high-confidence but incomplete guidance signal. Specifically, we design a Report-Enhanced Graph-Refinement (REG) module that reuses the global report representation as a text node in the graph... while keeping the original organ–organ edges unchanged.",
+        "reason": "Section I. The paper states that REG refines the graph by adding a text node while keeping the original organ-organ edges unchanged, rather than replacing the anatomy-driven connectivity."
+      },
+      {
+        "id": 8,
+        "text": "The proposed framework is annotation-free and multimodal.",
+        "poster_quote": "We propose an annotation-free multimodal framework that combines CT-derived organ features with organ-specific evidence from radiology reports.",
+        "label": "supported",
+        "paper_evidence": "An anatomy-guided, annotation-free multimodal T-staging framework.",
+        "reason": "Section I, Contribution 1. The paper explicitly describes the proposed framework as annotation-free and multimodal."
+      },
+      {
+        "id": 9,
+        "text": "The proposed framework combines CT-derived organ features with organ-specific evidence from radiology reports.",
+        "poster_quote": "We propose an annotation-free multimodal framework that combines CT-derived organ features with organ-specific evidence from radiology reports.",
+        "label": "supported",
+        "paper_evidence": "We cast laryngopharyngeal cancer T-staging as prediction over an anatomy-structured organ graph that combines CT-derived organ features with organ-level textual cues.",
+        "reason": "Section I, Contribution 2. The paper states that the framework combines CT-derived organ features with organ-level textual cues from reports."
+      },
+      {
+        "id": 10,
+        "text": "The framework contains three components: Anatomy-Structured Organ Graph (AOG), Organ-Anchored Cross-Modal Alignment (OCA), and Report-Enhanced Graph-Refinement (REG).",
+        "poster_quote": "The framework contains three components: Anatomy-Structured Organ Graph (AOG),\nOrgan-Anchored Cross-Modal Alignment (OCA), and Report-Enhanced Graph-Refinement (REG).",
+        "label": "supported",
+        "paper_evidence": "Our framework comprises three key components: an Anatomy-Structured Organ Graph (AOG), an Organ-Anchored Cross-Modal Alignment (OCA), and a Report-Enhanced Graph-Refinement (REG) module.",
+        "reason": "Section III.A. The paper explicitly lists these three key components of the framework."
+      },
+      {
+        "id": 11,
+        "text": "Whole-volume models and isolated tumor masks underrepresent the anatomy-structured pattern of tumor spread.",
+        "poster_quote": "First, whole-volume models and isolated tumor masks\nunderrepresent the anatomy-structured pattern of tumor spread; manual tumor segmentation is also costly and difficult\nbecause tumors have heterogeneous appearances.",
+        "label": "supported",
+        "paper_evidence": "Operating on global volumes or isolated tumor masks without an explicit organ-level graph underrepresents the relationships between primary sites and anatomically at-risk organs, limiting the ability to reason about stage-defining invasion patterns.",
+        "reason": "Section III.B. The paper states that operating on global volumes or isolated tumor masks underrepresents these anatomy-structured relationships."
+      },
+      {
+        "id": 12,
+        "text": "Manual tumor segmentation is costly and difficult because tumors have heterogeneous appearances.",
+        "poster_quote": "First, whole-volume models and isolated tumor masks\nunderrepresent the anatomy-structured pattern of tumor spread; manual tumor segmentation is also costly and difficult\nbecause tumors have heterogeneous appearances.",
+        "label": "supported",
+        "paper_evidence": "While tumor segmentation seems like a natural solution, the heterogeneous appearance of tumors and the requirement for labor-intensive annotations limit its practical application.",
+        "reason": "Section III.B.1. The paper states that tumor segmentation is limited by the heterogeneous appearance of tumors and the requirement for labor-intensive (costly/difficult) annotations."
+      },
+      {
+        "id": 13,
+        "text": "Conventional multimodal methods fuse global CT and report representations.",
+        "poster_quote": "Second, conventional multimodal methods fuse global CT and report\nrepresentations, making it difficult to align individual anatomical structures with their corresponding textual findings.",
+        "label": "supported",
+        "paper_evidence": "conventional coarse-grained image–text fusion based on global CT and report information",
+        "reason": "Figure 1 caption. The paper states that conventional methods perform coarse-grained fusion based on global CT and report information."
+      },
+      {
+        "id": 14,
+        "text": "Conventional multimodal methods make it difficult to align individual anatomical structures with their corresponding textual findings.",
+        "poster_quote": "Second, conventional multimodal methods fuse global CT and report\nrepresentations, making it difficult to align individual anatomical structures with their corresponding textual findings.",
+        "label": "supported",
+        "paper_evidence": "while radiology reports contain organ-specific invasion details, current methods that apply global feature fusion struggle to accurately align individual anatomical structures with their corresponding textual descriptions.",
+        "reason": "Abstract. The paper states that global feature fusion methods struggle to align individual anatomical structures with their corresponding textual descriptions."
+      },
+      {
+        "id": 15,
+        "text": "AOG extracts features from predefined laryngopharyngeal structures using masks generated by a publicly available pretrained organ segmentation model.",
+        "poster_quote": "AOG extracts features from predefined laryngopharyngeal structures using masks generated by a publicly available pretrained organ segmentation model.",
+        "label": "supported",
+        "paper_evidence": "Rather than operating on whole CT volumes or relying on manual tumor delineation, AOG leverages a publicly available pre-trained organ segmentation model [15] to obtain reliable organ-specific features",
+        "reason": "Section I. The paper states that AOG leverages a publicly available pre-trained organ segmentation model to obtain organ-specific features."
+      },
+      {
+        "id": 16,
+        "text": "AOG constructs an anatomy-guided graph representing potential tumor spread from primary sites to surrounding organs.",
+        "poster_quote": "It then constructs an anatomy-guided graph representing potential tumor spread from primary sites to surrounding organs.",
+        "label": "supported",
+        "paper_evidence": "The framework first constructs an Anatomy-Structured Organ Graph (AOG) that captures invasion patterns between primary sites and surrounding organs",
+        "reason": "Abstract. The paper states that AOG captures invasion patterns between primary sites and surrounding organs."
+      },
+      {
+        "id": 17,
+        "text": "OCA lets every CT organ node query report tokens and aggregate the most relevant textual evidence.",
+        "poster_quote": "OCA lets every CT organ node query report tokens and aggregate the most\nrelevant\ntextual evidence.",
+        "label": "supported",
+        "paper_evidence": "each organ node derived from CT serves as a query over the radiology report and selectively aggregates fine-grained textual evidence that is most relevant to its appearance, location, and suspected involvement",
+        "reason": "Section I. The paper states that each organ node queries the report and aggregates the most relevant textual evidence."
+      },
+      {
+        "id": 18,
+        "text": "REG adds a global report node and connects it to primary sites and organs explicitly described as invaded.",
+        "poster_quote": "REG adds a global report node and connects it to primary sites and organs explicitly described as invaded.",
+        "label": "supported",
+        "paper_evidence": "employs a large language model (LLM) to identify which organs are explicitly described as invaded in the report, and connects this text node only to primary sites and to those invaded organs, while keeping the original organ–organ edges unchanged.",
+        "reason": "Section I. The paper states that REG connects the text node only to primary sites and explicitly invaded organs."
+      },
+      {
+        "id": 19,
+        "text": "The refined multimodal graph is processed by a graph neural network and pooled for T-stage classification.",
+        "poster_quote": "The refined multimodal graph is processed by a graph neural network and pooled for T-stage classification.",
+        "label": "supported",
+        "paper_evidence": "The resulting multimodal organ graph is then fed into a graph neural network that jointly exploits anatomical and report-derived information to predict laryngopharyngeal T-stage.",
+        "reason": "Section I. The paper states that the graph is processed by a GNN to predict the T-stage, and Section III.D.2 details the global average pooling step."
+      },
+      {
+        "id": 20,
+        "text": "The design of the framework preserves anatomically plausible risk pathways while selectively strengthening relationships supported by clinical reports.",
+        "poster_quote": "This design\npreserves anatomically plausible risk pathways while selectively strengthening relationships supported by clinical reports.",
+        "label": "supported",
+        "paper_evidence": "This produces a report-guided organ–text graph in which anatomy-based risk relationships are maintained but selectively strengthened along pathways supported by the report.",
+        "reason": "Section I. The paper states that the design maintains anatomy-based risk relationships while selectively strengthening pathways supported by the report."
+      },
+      {
+        "id": 21,
+        "text": "A large language model extracts positive invasion statements for the esophagus, thyroid gland, trachea, and oral cavity.",
+        "poster_quote": "A large language model extracts positive invasion statements for the esophagus, thyroid gland, trachea, and oral cavity while\nexcluding negations and distinguishing the thyroid gland from thyroid cartilage.",
+        "label": "supported",
+        "paper_evidence": "Identify which of the following structures are explicitly described as invaded by the tumor: [esophagus, thyroid gland, trachea, oral cavity]. Only include structures with positive invasion statements; exclude negations.",
+        "reason": "Section III.D.1. The prompt explicitly instructs the LLM to identify positive invasion statements for these four structures."
+      },
+      {
+        "id": 22,
+        "text": "The large language model excludes negations when extracting positive invasion statements.",
+        "poster_quote": "A large language model extracts positive invasion statements for the esophagus, thyroid gland, trachea, and oral cavity while\nexcluding negations and distinguishing the thyroid gland from thyroid cartilage.",
+        "label": "supported",
+        "paper_evidence": "Only include structures with positive invasion statements; exclude negations.",
+        "reason": "Section III.D.1. The prompt explicitly instructs the LLM to exclude negations."
+      },
+      {
+        "id": 23,
+        "text": "The large language model distinguishes the thyroid gland from thyroid cartilage.",
+        "poster_quote": "A large language model extracts positive invasion statements for the esophagus, thyroid gland, trachea, and oral cavity while\nexcluding negations and distinguishing the thyroid gland from thyroid cartilage.",
+        "label": "supported",
+        "paper_evidence": "Note: thyroid gland (endocrine organ) and thyroid cartilage (laryngeal structure) are different.",
+        "reason": "Section III.D.1. The prompt explicitly instructs the LLM to distinguish the thyroid gland from thyroid cartilage."
+      },
+      {
+        "id": 24,
+        "text": "Manual review confirmed correct extraction of positive invasion statements by the large language model.",
+        "poster_quote": "Manual review confirmed correct extraction, and multiple language models produced identical outputs on all 439 training reports.",
+        "label": "supported",
+        "paper_evidence": "and manual review confirmed all extractions are correct.",
+        "reason": "Section III.D.1. The paper states that manual review confirmed all extractions by the LLM are correct."
+      },
+      {
+        "id": 25,
+        "text": "Multiple language models produced identical outputs on all 439 training reports.",
+        "poster_quote": "Manual review confirmed correct extraction, and multiple language models produced identical outputs on all 439 training reports.",
+        "label": "supported",
+        "paper_evidence": "we verified that GPT-4o [35] and Qwen-2.5-72B [36] yield exactly the same outputs as Claude 3.5 Haiku on all 439 reports",
+        "reason": "Section III.D.1. The paper states that multiple LLMs yielded exactly the same outputs on all 439 reports (which are the training reports from FUZH, as described in Section IV.A.1)."
+      },
+      {
+        "id": 26,
+        "text": "A global report representation is projected into a dedicated text node.",
+        "poster_quote": "A global report representation is projected into a dedicated text node.",
+        "label": "supported",
+        "paper_evidence": "The text node feature is then constructed using the global text representation: ht = Wt t1 + bt",
+        "reason": "Section III.D.1. The paper states that the text node feature is constructed from the global text representation (t1, the [CLS] token representation)."
+      },
+      {
+        "id": 27,
+        "text": "The dedicated text node connects to all primary sites.",
+        "poster_quote": "This node connects to all primary sites and only to target organs explicitly described\nas invaded; the original organ-to-organ edges remain unchanged.",
+        "label": "supported",
+        "paper_evidence": "the text node is connected to all primary sites by default",
+        "reason": "Section III.D.2. The paper states that the text node is connected to all primary sites by default."
+      },
+      {
+        "id": 28,
+        "text": "The dedicated text node connects only to target organs explicitly described as invaded.",
+        "poster_quote": "This node connects to all primary sites and only to target organs explicitly described\nas invaded; the original organ-to-organ edges remain unchanged.",
+        "label": "supported",
+        "paper_evidence": "and additionally linked to target organs that are explicitly mentioned as invaded in the report (k ∈ I).",
+        "reason": "Section III.D.2. The paper states that the text node is additionally linked only to target organs explicitly mentioned as invaded."
+      },
+      {
+        "id": 29,
+        "text": "The original organ-to-organ edges remain unchanged in the report-enhanced topology.",
+        "poster_quote": "This node connects to all primary sites and only to target organs explicitly described\nas invaded; the original organ-to-organ edges remain unchanged.",
+        "label": "supported",
+        "paper_evidence": "while keeping the original organ–organ edges unchanged.",
+        "reason": "Section I and Section III.D.2. The paper states that the original organ-organ edges remain unchanged in the report-enhanced topology."
+      },
+      {
+        "id": 30,
+        "text": "Graph message passing over the report-enhanced topology allows high-confidence clinical evidence to directly guide feature refinement.",
+        "poster_quote": "Graph message passing over this report-enhanced topology allows high-confidence clinical evidence to directly guide feature refinement while retaining CT evidence from all anatomically at-risk organs.",
+        "label": "supported",
+        "paper_evidence": "By explicitly incorporating structured invasion information from reports into the graph topology, our approach ensures that clinical evidence directly guides the feature refinement process, leading to more accurate staging decisions.",
+        "reason": "Section III.D.2. The paper states that incorporating structured invasion information into the graph topology ensures clinical evidence directly guides feature refinement."
+      },
+      {
+        "id": 31,
+        "text": "Graph message passing over the report-enhanced topology retains CT evidence from all anatomically at-risk organs.",
+        "poster_quote": "Graph message passing over this report-enhanced topology allows high-confidence clinical evidence to directly guide feature refinement while retaining CT evidence from all anatomically at-risk organs.",
+        "label": "supported",
+        "paper_evidence": "Relying solely on reported invasion would therefore disconnect organs that are anatomically at risk but not explicitly mentioned, leaving their CT features underutilized. To address this, we retain the anatomy-driven connectivity in AOG",
+        "reason": "Section I. The paper states that retaining the anatomy-driven connectivity ensures that CT features of organs not explicitly mentioned are not left underutilized."
+      },
+      {
+        "id": 32,
+        "text": "Global average pooling and a classification layer produce the final prediction.",
+        "poster_quote": "Global average pooling and a classification layer produce the final prediction.",
+        "label": "supported",
+        "paper_evidence": "followed by global average pooling for staging classification: y = MLP( 1/(K+1) \\sum zk )",
+        "reason": "Section III.D.2. The paper states that global average pooling and an MLP (classification layer) produce the final prediction."
+      },
+      {
+        "id": 33,
+        "text": "The complete framework is trained end-to-end with cross-entropy loss.",
+        "poster_quote": "The complete framework is trained end-to-end with cross-entropy loss, while the biomedical text encoder is frozen in the final configuration to reduce computation and overfitting.",
+        "label": "supported",
+        "paper_evidence": "We train our framework end-to-end using cross-entropy loss for T-staging classification:",
+        "reason": "Section III.D.3. The paper states that the framework is trained end-to-end with cross-entropy loss."
+      },
+      {
+        "id": 34,
+        "text": "The biomedical text encoder is frozen in the final configuration to reduce computation and overfitting.",
+        "poster_quote": "The complete framework is trained end-to-end with cross-entropy loss, while the biomedical text encoder is frozen in the final configuration to reduce computation and overfitting.",
+        "label": "supported",
+        "paper_evidence": "freezing the text encoder not only reduces computational costs but also helps prevent potential overfitting on our specific dataset. Therefore, we adopt the frozen text encoder strategy in our final framework.",
+        "reason": "Section IV.D.2. The paper states that freezing the text encoder reduces computational costs and prevents overfitting, and is adopted in the final framework."
+      },
+      {
+        "id": 35,
+        "text": "The Anatomy-Structured Organ Graph models progressive tumor invasion without requiring manual tumor masks.",
+        "poster_quote": "The Anatomy-Structured Organ Graph models progressive tumor invasion without requiring manual tumor masks.",
+        "label": "supported",
+        "paper_evidence": "We propose, to our knowledge, the first multimodal laryngopharyngeal cancer T-staging framework that constructs an organ-level graph from pre-trained organ segmentations and integrates paired radiology reports without requiring manual tumor masks",
+        "reason": "Section I, Contribution 1. The paper states that the framework constructs an organ-level graph from pre-trained segmentations without requiring manual tumor masks."
+      },
+      {
+        "id": 36,
+        "text": "Seven structures are represented in the Anatomy-Structured Organ Graph.",
+        "poster_quote": "Seven\nstructures are represented: three primary sites—supraglottic, glottic, and subglottic regions—and four potential invasion\ntargets—the esophagus, thyroid gland, trachea, and oral cavity.",
+        "label": "supported",
+        "paper_evidence": "K=7 Number of predefined anatomical structures",
+        "reason": "Table I. The paper defines K=7 as the number of predefined anatomical structures."
+      },
+      {
+        "id": 37,
+        "text": "The three primary sites represented in the Organ Graph are the supraglottic, glottic, and subglottic regions.",
+        "poster_quote": "Seven\nstructures are represented: three primary sites—supraglottic, glottic, and subglottic regions—and four potential invasion\ntargets—the esophagus, thyroid gland, trachea, and oral cavity.",
+        "label": "supported",
+        "paper_evidence": "P = {1, 2, 3} Indices of primary sites (supraglottic, glottic, subglottic)",
+        "reason": "Table I. The paper defines the three primary sites as supraglottic, glottic, and subglottic."
+      },
+      {
+        "id": 38,
+        "text": "The four potential invasion targets represented in the Organ Graph are the esophagus, thyroid gland, trachea, and oral cavity.",
+        "poster_quote": "Seven\nstructures are represented: three primary sites—supraglottic, glottic, and subglottic regions—and four potential invasion\ntargets—the esophagus, thyroid gland, trachea, and oral cavity.",
+        "label": "supported",
+        "paper_evidence": "T = {4, 5, 6, 7} Indices of potentially invaded organs (esophagus, thyroid gland, trachea, oral cavity)",
+        "reason": "Table I. The paper defines the four potentially invaded organs as esophagus, thyroid gland, trachea, and oral cavity."
+      },
+      {
+        "id": 39,
+        "text": "For each CT volume, a pre-trained segmentation model generates organ masks.",
+        "poster_quote": "For each CT volume, a pre-trained segmentation model generates organ masks.",
+        "label": "supported",
+        "paper_evidence": "Specifically, given a CT volume Ii ∈ RH×W ×D , we first employ a pre-trained organ segmentation model to obtain masks for all K organs: Mk = S(Ii), k ∈ {1, ..., K}",
+        "reason": "Section III.B.1. The paper states that a pre-trained organ segmentation model is used to obtain masks for all K organs from each CT volume."
+      },
+      {
+        "id": 40,
+        "text": "Each masked region is processed by a medical-image-pretrained Swin Transformer to obtain an organ-specific feature vector.",
+        "poster_quote": "Each masked region is processed by a medical-image-pretrained Swin Transformer to obtain an organ-specific feature vector.",
+        "label": "supported",
+        "paper_evidence": "To extract organ-specific features, we adopt a Swin Transformer backbone pre-trained on medical images. For each organ mask Mk, we obtain its feature representation through: fk = F(Ii ⊙ Mk)",
+        "reason": "Section III.B.1. The paper states that each masked region is processed by a medical-image-pretrained Swin Transformer to obtain its feature representation."
+      },
+      {
+        "id": 41,
+        "text": "Shared projection layers transform the organ-specific feature vectors into graph nodes.",
+        "poster_quote": "Shared projection layers transform\nthese features into graph nodes.",
+        "label": "supported",
+        "paper_evidence": "To effectively capture tumor invasion patterns, we first transform the organ features through a shared feature projection layer: hk = σ(Wp fk + bp) ... These projected features {hk}K k=1 serve as node representations in our graph.",
+        "reason": "Section III.B.2. The paper explicitly states that a shared feature projection layer transforms the organ features into node representations."
+      },
+      {
+        "id": 42,
+        "text": "Primary sites are interconnected to capture relationships within the larynx.",
+        "poster_quote": "Primary sites are interconnected to capture relationships within the larynx, and each primary site is linked to anatomically plausible invasion targets.",
+        "label": "supported",
+        "paper_evidence": "primary sites are fully interconnected to encode their internal relationships",
+        "reason": "Section I and Section III.B.2. The paper states that primary sites are fully interconnected to capture their internal relationships."
+      },
+      {
+        "id": 43,
+        "text": "Each primary site is linked to anatomically plausible invasion targets.",
+        "poster_quote": "Primary sites are interconnected to capture relationships within the larynx, and each primary site is linked to anatomically plausible invasion targets.",
+        "label": "supported",
+        "paper_evidence": "Et denotes connections between primary sites and their potential invasion targets: Et = {(i, j)|i ∈ P, j ∈ T }",
+        "reason": "Section III.B.2. The paper defines Et as connections between primary sites and potential invasion targets."
+      },
+      {
+        "id": 44,
+        "text": "Graph Attention Network layers propagate information along clinically meaningful pathways.",
+        "poster_quote": "Graph Attention Network layers propagate information along\nthese clinically meaningful pathways and dynamically weight relationships relevant to staging.",
+        "label": "supported",
+        "paper_evidence": "To enable effective information propagation along these anatomically meaningful pathways, we employ Graph Attention Networks (GAT) for message passing",
+        "reason": "Section III.B.2. The paper states that GAT is used to propagate information along anatomically (clinically) meaningful pathways."
+      },
+      {
+        "id": 45,
+        "text": "Graph Attention Network layers dynamically weight relationships relevant to staging.",
+        "poster_quote": "Graph Attention Network layers propagate information along\nthese clinically meaningful pathways and dynamically weight relationships relevant to staging.",
+        "label": "supported",
+        "paper_evidence": "This attention mechanism allows the model to dynamically focus on the most relevant invasion relationships for staging decisions.",
+        "reason": "Section III.B.2. The paper states that the attention mechanism dynamically focuses on the most relevant invasion relationships for staging."
+      },
+      {
+        "id": 46,
+        "text": "The organ-level representation focuses the model on organ-level invasion context rather than irrelevant global regions.",
+        "poster_quote": "This representation focuses the model on organ-level invasion context rather than irrelevant global regions.",
+        "label": "supported",
+        "paper_evidence": "Compared to processing the entire CT volume, focusing on individual organs provides more precise anatomical context, reducing the interference from irrelevant regions.",
+        "reason": "Section IV.D.3. The paper states that focusing on individual organs reduces interference from irrelevant regions compared to processing the entire CT volume."
+      },
+      {
+        "id": 47,
+        "text": "The representation exploits the relatively consistent appearance and boundaries of anatomical organs, providing more reliable anchors than heterogeneous tumors.",
+        "poster_quote": "It also exploits\nthe relatively consistent appearance and boundaries of anatomical organs, providing more reliable anchors than heterogeneous tumors.",
+        "label": "supported",
+        "paper_evidence": "Compared to tumors, anatomical organs exhibit more consistent appearances and clear boundaries, enabling robust feature extraction through pre-trained segmentation models",
+        "reason": "Section III.B.1. The paper states that anatomical organs have more consistent appearances and boundaries than heterogeneous tumors, providing more reliable anchors."
+      },
+      {
+        "id": 48,
+        "text": "The resulting nodes encode local CT appearance, neighboring anatomical context, and global patterns of potential tumor spread.",
+        "poster_quote": "The resulting nodes encode local CT appearance, neighboring anatomical context, and global patterns of\npotential tumor spread.",
+        "label": "supported",
+        "paper_evidence": "Through this graph-based feature refinement, organ representations are enhanced by incorporating both local anatomical context and global invasion patterns.",
+        "reason": "Section III.B.2. The paper states that organ representations are enhanced by incorporating local anatomical context and global invasion patterns, while the node features themselves are extracted from local CT regions."
+      },
+      {
+        "id": 49,
+        "text": "The framework is robust to organ segmentation noise because masks are used primarily to define cropping regions.",
+        "poster_quote": "The framework is robust to organ segmentation noise because masks are used primarily to define cropping regions.",
+        "label": "supported",
+        "paper_evidence": "Moreover, our method uses organ masks only to locate cropping regions, so small boundary errors merely shift the crop window without excluding organ content.",
+        "reason": "Section V. The paper states that the framework is robust to segmentation noise because masks are used only to locate cropping regions."
+      },
+      {
+        "id": 50,
+        "text": "Applying additional proportional dilation or erosion to automatically generated masks reduces F1 by 1.1% at 5% perturbation.",
+        "poster_quote": "Applying\nadditional proportional dilation or erosion to automatically generated masks reduces F1 by only 1.1% at 5% perturbation\nand 2.8% at 10% perturbation.",
+        "label": "supported",
+        "paper_evidence": "the F1 score decreases by only 1.1% and 2.8% under 5% and 10% perturbation levels respectively",
+        "reason": "Section IV.E. The paper states that F1 decreases by 1.1% under 5% perturbation."
+      },
+      {
+        "id": 51,
+        "text": "Applying additional proportional dilation or erosion to automatically generated masks reduces F1 by 2.8% at 10% perturbation.",
+        "poster_quote": "Applying\nadditional proportional dilation or erosion to automatically generated masks reduces F1 by only 1.1% at 5% perturbation\nand 2.8% at 10% perturbation.",
+        "label": "supported",
+        "paper_evidence": "the F1 score decreases by only 1.1% and 2.8% under 5% and 10% perturbation levels respectively",
+        "reason": "Section IV.E. The paper states that F1 decreases by 2.8% under 10% perturbation."
+      },
+      {
+        "id": 52,
+        "text": "Report robustness is evaluated by rewriting reports into less-detailed and more-detailed forms while preserving medical findings.",
+        "poster_quote": "Report robustness is evaluated by rewriting reports into less-detailed and more-detailed forms while preserving medical\nfindings.",
+        "label": "supported",
+        "paper_evidence": "We rewrite each report with a large language model (Claude Haiku), keeping every medical term and measurement verbatim and altering only the level of detail: a less-detailed version drops non-diagnostic content ... and a more-detailed version restates the same findings in more elaborate clinical language without adding new information",
+        "reason": "Section IV.E. The paper describes evaluating report robustness by rewriting reports into less- and more-detailed forms while keeping findings verbatim."
+      },
+      {
+        "id": 53,
+        "text": "With the same CT images and frozen model, macro F1 remains between 80.4% and 82.1% when reports are rewritten.",
+        "poster_quote": "With the same CT images and frozen model, macro F1 remains between 80.4% and 82.1%, and accuracy remains\nbetween 81.8% and 83.0%.",
+        "label": "supported",
+        "paper_evidence": "macro-F1 stays within 80.4–82.1% and accuracy within 81.8–83.0% across the original and both perturbed conditions",
+        "reason": "Section IV.E. The paper states that macro-F1 stays within 80.4–82.1% across the original and perturbed report conditions."
+      },
+      {
+        "id": 54,
+        "text": "With the same CT images and frozen model, accuracy remains between 81.8% and 83.0% when reports are rewritten.",
+        "poster_quote": "With the same CT images and frozen model, macro F1 remains between 80.4% and 82.1%, and accuracy remains\nbetween 81.8% and 83.0%.",
+        "label": "supported",
+        "paper_evidence": "macro-F1 stays within 80.4–82.1% and accuracy within 81.8–83.0% across the original and both perturbed conditions",
+        "reason": "Section IV.E. The paper states that accuracy stays within 81.8–83.0% across the original and perturbed report conditions."
+      },
+      {
+        "id": 55,
+        "text": "The maximum macro-F1 change is 1.7 points when reports are rewritten, indicating resilience to variation in reporting style and completeness.",
+        "poster_quote": "The maximum macro-F1 change is 1.7 points, indicating resilience to variation in reporting style\nand completeness.",
+        "label": "supported",
+        "paper_evidence": "(at most a 1.7-point change in macro-F1). This indicates that the framework is resilient to the level of detail and completeness of the input report.",
+        "reason": "Section IV.E. The paper states that the maximum macro-F1 change is 1.7 points, indicating resilience to report variation."
+      },
+      {
+        "id": 56,
+        "text": "Nine of sixteen errors identified in error analysis are over-staging cases.",
+        "poster_quote": "Nine of sixteen errors are over-staging cases, often caused by reports describing\ncartilage invasion that pathology does not confirm.",
+        "label": "supported",
+        "paper_evidence": "Over-staging (9/16 cases, 56%): the model predicted T3–T4 for pathologically confirmed T1–T2 cases.",
+        "reason": "Section IV.H. The paper states that 9 out of 16 misclassified cases were over-staged."
+      },
+      {
+        "id": 57,
+        "text": "Over-staging cases are often caused by reports describing cartilage invasion that pathology does not confirm.",
+        "poster_quote": "Nine of sixteen errors are over-staging cases, often caused by reports describing\ncartilage invasion that pathology does not confirm.",
+        "label": "supported",
+        "paper_evidence": "In 7 of these 9 cases, the radiology report explicitly described cartilage invasion that was not confirmed by pathological examination, reflecting CT’s known limitation in distinguishing tumor contact from true cartilage invasion",
+        "reason": "Section IV.H. The paper states that over-staging was often due to reports describing cartilage invasion not confirmed by pathology."
+      },
+      {
+        "id": 58,
+        "text": "Seven of sixteen errors identified in error analysis are under-staging cases.",
+        "poster_quote": "Seven are under-staging cases, frequently associated with reports that omit invasion or state that invasion is absent despite pathological confirmation.",
+        "label": "supported",
+        "paper_evidence": "Under-staging (7/16 cases, 44%): the model predicted T1–T2 for pathologically confirmed T3–T4 cases.",
+        "reason": "Section IV.H. The paper states that 7 out of 16 misclassified cases were under-staged."
+      },
+      {
+        "id": 59,
+        "text": "Under-staging cases are frequently associated with reports that omit invasion or state that invasion is absent despite pathological confirmation.",
+        "poster_quote": "Seven are under-staging cases, frequently associated with reports that omit invasion or state that invasion is absent despite pathological confirmation.",
+        "label": "supported",
+        "paper_evidence": "In 5 of these 7 cases, the report contained no invasion description or explicitly stated “no evidence of invasion,” despite pathological confirmation.",
+        "reason": "Section IV.H. The paper states that under-staging was frequently associated with reports omitting invasion or stating it was absent."
+      },
+      {
+        "id": 60,
+        "text": "The error analysis findings reflect inherent CT-pathology discordance rather than simple cross-modal misalignment.",
+        "poster_quote": "These findings reflect inherent\nCT-pathology discordance rather than simple cross-modal misalignment and motivate uncertainty-aware fusion and clinical\nreview of borderline cases.",
+        "label": "supported",
+        "paper_evidence": "These errors arise from discordance between the available CT/report evidence and the pathological ground truth, which the fusion transmits faithfully rather than mis-aligning.",
+        "reason": "Section IV.H. The paper states that errors reflect CT-pathology discordance rather than cross-modal misalignment."
+      },
+      {
+        "id": 61,
+        "text": "A whole-volume CT baseline obtains 58.76% macro F1 for binary staging.",
+        "poster_quote": "A whole-volume CT baseline obtains 58.76% macro F1 for binary staging and 39.16% for three-class staging.",
+        "label": "supported",
+        "paper_evidence": "The baseline model, which directly processes the whole CT volume for prediction without any anatomical guidance or textual information, achieves only 58.76% and 39.16% macro F1-scores in binary and three-class settings, respectively.",
+        "reason": "Section IV.D.1 and Table IV. The baseline model achieves 58.76% macro F1 for binary staging."
+      },
+      {
+        "id": 62,
+        "text": "A whole-volume CT baseline obtains 39.16% macro F1 for three-class staging.",
+        "poster_quote": "A whole-volume CT baseline obtains 58.76% macro F1 for binary staging and 39.16% for three-class staging.",
+        "label": "supported",
+        "paper_evidence": "The baseline model, which directly processes the whole CT volume for prediction without any anatomical guidance or textual information, achieves only 58.76% and 39.16% macro F1-scores in binary and three-class settings, respectively.",
+        "reason": "Section IV.D.1 and Table IV. The baseline model achieves 39.16% macro F1 for three-class staging."
+      },
+      {
+        "id": 63,
+        "text": "Adding AOG raises performance to 77.96% macro F1 for binary staging.",
+        "poster_quote": "Adding AOG\nraises performance to 77.96% and 52.80%, demonstrating the value of explicit anatomical relationship modeling.",
+        "label": "supported",
+        "paper_evidence": "Adding AOG substantially improves the performance (77.96% and 52.80% F1-scores)",
+        "reason": "Section IV.D.1 and Table IV. Adding AOG yields 77.96% macro F1 for binary staging."
+      },
+      {
+        "id": 64,
+        "text": "Adding AOG raises performance to 52.80% macro F1 for three-class staging.",
+        "poster_quote": "Adding AOG\nraises performance to 77.96% and 52.80%, demonstrating the value of explicit anatomical relationship modeling.",
+        "label": "supported",
+        "paper_evidence": "Adding AOG substantially improves the performance (77.96% and 52.80% F1-scores)",
+        "reason": "Section IV.D.1 and Table IV. Adding AOG yields 52.80% macro F1 for three-class staging."
+      },
+      {
+        "id": 65,
+        "text": "OCA produces 80.97% macro F1 for binary staging.",
+        "poster_quote": "OCA produces 80.97% and 58.47%, confirming that organ-level alignment captures useful report evidence.",
+        "label": "supported",
+        "paper_evidence": "When applying the OCA module alone, the performance further increases to 80.97% and 58.47% for binary and three-class settings",
+        "reason": "Section IV.D.1 and Table IV. OCA alone achieves 80.97% macro F1 for binary staging."
+      },
+      {
+        "id": 66,
+        "text": "OCA produces 58.47% macro F1 for three-class staging.",
+        "poster_quote": "OCA produces 80.97% and 58.47%, confirming that organ-level alignment captures useful report evidence.",
+        "label": "supported",
+        "paper_evidence": "When applying the OCA module alone, the performance further increases to 80.97% and 58.47% for binary and three-class settings",
+        "reason": "Section IV.D.1 and Table IV. OCA alone achieves 58.47% macro F1 for three-class staging."
+      },
+      {
+        "id": 67,
+        "text": "Combining AOG and OCA yields 81.63% macro F1 for binary staging.",
+        "poster_quote": "Combining AOG and\nOCA yields 81.63% and 61.52%.",
+        "label": "supported",
+        "paper_evidence": "When combining AOG and OCA, we observe further performance gains (81.63% and 61.52% F1-scores)",
+        "reason": "Section IV.D.1 and Table IV. Combining AOG and OCA yields 81.63% macro F1 for binary staging."
+      },
+      {
+        "id": 68,
+        "text": "Combining AOG and OCA yields 61.52% macro F1 for three-class staging.",
+        "poster_quote": "Combining AOG and\nOCA yields 81.63% and 61.52%.",
+        "label": "supported",
+        "paper_evidence": "When combining AOG and OCA, we observe further performance gains (81.63% and 61.52% F1-scores)",
+        "reason": "Section IV.D.1 and Table IV. Combining AOG and OCA yields 61.52% macro F1 for three-class staging."
+      },
+      {
+        "id": 69,
+        "text": "The full model with REG reaches 83.96% binary F1.",
+        "poster_quote": "The full model with REG reaches 83.96% binary F1 and 64.53% three-class F1, with the\nhighest mean performance and lowest variance.",
+        "label": "supported",
+        "paper_evidence": "Finally, incorporating REG on top of both AOG and OCA yields the best overall performance, with macro F1-scores of 83.96% and 64.53% in binary and three-class settings",
+        "reason": "Section IV.D.1 and Table IV. The full model with REG achieves 83.96% macro F1 for binary staging."
+      },
+      {
+        "id": 70,
+        "text": "The full model with REG reaches 64.53% three-class F1.",
+        "poster_quote": "The full model with REG reaches 83.96% binary F1 and 64.53% three-class F1, with the\nhighest mean performance and lowest variance.",
+        "label": "supported",
+        "paper_evidence": "Finally, incorporating REG on top of both AOG and OCA yields the best overall performance, with macro F1-scores of 83.96% and 64.53% in binary and three-class settings",
+        "reason": "Section IV.D.1 and Table IV. The full model with REG achieves 64.53% macro F1 for three-class staging."
+      },
+      {
+        "id": 71,
+        "text": "The full model with REG achieves the highest mean performance and lowest variance among the compared configurations.",
+        "poster_quote": "The full model with REG reaches 83.96% binary F1 and 64.53% three-class F1, with the\nhighest mean performance and lowest variance.",
+        "label": "supported",
+        "paper_evidence": "the full model attains both the highest mean and the smallest variance, and REG yields a further improvement over AOG+OCA.",
+        "reason": "Section IV.D.1. The paper states that the full model achieves the highest mean and smallest variance."
+      },
+      {
+        "id": 72,
+        "text": "AOG surpasses fully connected graphs, direct organ-mask fusion, and global context pooling.",
+        "poster_quote": "AOG also surpasses fully connected graphs, direct organ-mask fusion, and global context pooling.",
+        "label": "supported",
+        "paper_evidence": "we compare our method with three baseline approaches: 1) Fully-Connected Graph... 2) Direct Fusion... and 3) Global Context... The results demonstrate the clear advantages of our AOG approach.",
+        "reason": "Section IV.F and Table VI. AOG outperforms fully connected graphs, direct fusion, and global context."
+      },
+      {
+        "id": 73,
+        "text": "AOG achieves 77.76% internal F1.",
+        "poster_quote": "It achieves 77.76% internal and 73.33% external F1, improving over the strongest topology baseline by 3.85 and 4.33 points.",
+        "label": "supported",
+        "paper_evidence": "Specifically, our method achieves significant improvements over all baselines, with F1 scores of 77.76% and 73.33% on internal and external tests respectively.",
+        "reason": "Section IV.F and Table VI. Ours (AOG) achieves 77.76% internal F1."
+      },
+      {
+        "id": 74,
+        "text": "AOG achieves 73.33% external F1.",
+        "poster_quote": "It achieves 77.76% internal and 73.33% external F1, improving over the strongest topology baseline by 3.85 and 4.33 points.",
+        "label": "supported",
+        "paper_evidence": "Specifically, our method achieves significant improvements over all baselines, with F1 scores of 77.76% and 73.33% on internal and external tests respectively.",
+        "reason": "Section IV.F and Table VI. Ours (AOG) achieves 73.33% external F1."
+      },
+      {
+        "id": 75,
+        "text": "AOG improves over the strongest topology baseline by 3.85 points on internal F1.",
+        "poster_quote": "It achieves 77.76% internal and 73.33% external F1, improving over the strongest topology baseline by 3.85 and 4.33 points.",
+        "label": "supported",
+        "paper_evidence": "This represents improvements of 3.85% and 4.33% over the strongest baseline (Fully-Connected Graph) in F1 score.",
+        "reason": "Section IV.F. AOG improves over the strongest baseline (Fully-Connected Graph) by 3.85% on internal F1 (77.76% vs 73.91%)."
+      },
+      {
+        "id": 76,
+        "text": "AOG improves over the strongest topology baseline by 4.33 points on external F1.",
+        "poster_quote": "It achieves 77.76% internal and 73.33% external F1, improving over the strongest topology baseline by 3.85 and 4.33 points.",
+        "label": "supported",
+        "paper_evidence": "This represents improvements of 3.85% and 4.33% over the strongest baseline (Fully-Connected Graph) in F1 score.",
+        "reason": "Section IV.F. AOG improves over the strongest baseline (Fully-Connected Graph) by 4.33% on external F1 (73.33% vs 69.00%)."
+      },
+      {
+        "id": 77,
+        "text": "OCA outperforms global, local, common, and multi-token attention variants.",
+        "poster_quote": "OCA outperforms\nglobal, local, common, and multi-token attention variants, reaching 81.93% internal and 76.10% external F1.",
+        "label": "supported",
+        "paper_evidence": "As shown in Table V, our proposed method consistently outperforms other attention mechanisms across both settings.",
+        "reason": "Section IV.G and Table V. OCA outperforms Global+Attention, Local+Attention, Common Attention, and MultiToken Attention."
+      },
+      {
+        "id": 78,
+        "text": "OCA reaches 81.93% internal F1.",
+        "poster_quote": "OCA outperforms\nglobal, local, common, and multi-token attention variants, reaching 81.93% internal and 76.10% external F1.",
+        "label": "supported",
+        "paper_evidence": "For internal testing, our method achieves the highest F1 score of 81.93% and accuracy of 82.95%",
+        "reason": "Section IV.G and Table V. OCA achieves 81.93% internal F1."
+      },
+      {
+        "id": 79,
+        "text": "OCA reaches 76.10% external F1.",
+        "poster_quote": "OCA outperforms\nglobal, local, common, and multi-token attention variants, reaching 81.93% internal and 76.10% external F1.",
+        "label": "supported",
+        "paper_evidence": "More importantly, on the external test set, our method maintains strong performance with 76.10% F1 score and 76.50% accuracy",
+        "reason": "Section IV.G and Table V. OCA achieves 76.10% external F1."
+      },
+      {
+        "id": 80,
+        "text": "Thyroid-focused features achieve an average F1 score of 0.716 internally.",
+        "poster_quote": "Individual organ analysis shows that thyroid-focused features are especially informative, with average F1 scores of 0.716\ninternally and 0.582 externally, compared with 0.588 and 0.436 for global CT processing.",
+        "label": "supported",
+        "paper_evidence": "Particularly, the thyroid-focused model demonstrates the strongest performance, achieving average F1-scores of 0.716 (internal) and 0.582 (external)",
+        "reason": "Section IV.D.3 and Figure 4. The thyroid-focused model achieves an average internal F1 score of 0.716."
+      },
+      {
+        "id": 81,
+        "text": "Thyroid-focused features achieve an average F1 score of 0.582 externally.",
+        "poster_quote": "Individual organ analysis shows that thyroid-focused features are especially informative, with average F1 scores of 0.716\ninternally and 0.582 externally, compared with 0.588 and 0.436 for global CT processing.",
+        "label": "supported",
+        "paper_evidence": "Particularly, the thyroid-focused model demonstrates the strongest performance, achieving average F1-scores of 0.716 (internal) and 0.582 (external), significantly surpassing the global baseline’s 0.588 (internal) and 0.436 (external).",
+        "reason": "Section IV.D.3, page 9. The paper explicitly states that the thyroid-focused model achieves an average F1 score of 0.582 externally."
+      },
+      {
+        "id": 82,
+        "text": "Global CT processing achieves an average F1 score of 0.588 internally.",
+        "poster_quote": "Individual organ analysis shows that thyroid-focused features are especially informative, with average F1 scores of 0.716\ninternally and 0.582 externally, compared with 0.588 and 0.436 for global CT processing.",
+        "label": "supported",
+        "paper_evidence": "Particularly, the thyroid-focused model demonstrates the strongest performance, achieving average F1-scores of 0.716 (internal) and 0.582 (external), significantly surpassing the global baseline’s 0.588 (internal) and 0.436 (external).",
+        "reason": "Section IV.D.3, page 9. The paper explicitly states that the global baseline achieves an average F1 score of 0.588 internally."
+      },
+      {
+        "id": 83,
+        "text": "Global CT processing achieves an average F1 score of 0.436 externally.",
+        "poster_quote": "Individual organ analysis shows that thyroid-focused features are especially informative, with average F1 scores of 0.716\ninternally and 0.582 externally, compared with 0.588 and 0.436 for global CT processing.",
+        "label": "supported",
+        "paper_evidence": "Particularly, the thyroid-focused model demonstrates the strongest performance, achieving average F1-scores of 0.716 (internal) and 0.582 (external), significantly surpassing the global baseline’s 0.588 (internal) and 0.436 (external).",
+        "reason": "Section IV.D.3, page 9. The paper explicitly states that the global baseline achieves an average F1 score of 0.436 externally."
+      },
+      {
+        "id": 84,
+        "text": "Tracheal regions consistently outperform global processing.",
+        "poster_quote": "Tracheal and esophageal regions\nalso consistently outperform global processing, supporting targeted anatomical reasoning.",
+        "label": "supported",
+        "paper_evidence": "Models focusing on the trachea and esophagus also show consistent advantages over global processing, while the oral cavity model exhibits comparable performance.",
+        "reason": "Section IV.D.3, page 9. The paper states that models focusing on the trachea show consistent advantages over global processing."
+      },
+      {
+        "id": 85,
+        "text": "Esophageal regions consistently outperform global processing.",
+        "poster_quote": "Tracheal and esophageal regions\nalso consistently outperform global processing, supporting targeted anatomical reasoning.",
+        "label": "supported",
+        "paper_evidence": "Models focusing on the trachea and esophagus also show consistent advantages over global processing, while the oral cavity model exhibits comparable performance.",
+        "reason": "Section IV.D.3, page 9. The paper states that models focusing on the esophagus show consistent advantages over global processing."
+      },
+      {
+        "id": 86,
+        "text": "Radiology reports contain organ-specific findings that cannot be fully captured through global image-text fusion.",
+        "poster_quote": "Radiology reports contain organ-specific findings that cannot be fully captured through global image-text fusion.",
+        "label": "supported",
+        "paper_evidence": "Coarse image–text Alignment: Global fusion methods cannot reliably associate specific anatomical structures with their relevant clinical descriptions in the radiology report, leaving organ features weakly grounded in textual evidence.",
+        "reason": "Section III.C, page 5. The paper states that global fusion methods cannot reliably associate specific anatomical structures with their relevant clinical descriptions in the radiology report."
+      },
+      {
+        "id": 87,
+        "text": "In OCA, the report is tokenized and encoded using a pre-trained biomedical language model.",
+        "poster_quote": "In OCA, the\nreport is tokenized and encoded using a pre-trained biomedical language model, producing contextualized representations\nfor all tokens.",
+        "label": "supported",
+        "paper_evidence": "To accurately capture this domain-specific information, we employ a pretrained biomedical language model, specifically BioBERT [33] (dmis-lab/biobert-base-cased-v1.2). Given a radiology report Ri , we first tokenize it into a sequence: Ri → {w1 , w2 , ..., wL }",
+        "reason": "Section III.C.1, page 5. The paper describes tokenizing and encoding the report using a pre-trained biomedical language model (BioBERT)."
+      },
+      {
+        "id": 88,
+        "text": "The pre-trained biomedical language model produces contextualized representations for all tokens.",
+        "poster_quote": "In OCA, the\nreport is tokenized and encoded using a pre-trained biomedical language model, producing contextualized representations\nfor all tokens.",
+        "label": "supported",
+        "paper_evidence": "These tokens are then processed through the language model to obtain contextualized representations: T = E({w1 , w2 , ..., wL })",
+        "reason": "Section III.C.1, page 5. The paper states that the tokens are processed through the language model to obtain contextualized representations."
+      },
+      {
+        "id": 89,
+        "text": "Each CT-derived organ node serves as a query over the report tokens.",
+        "poster_quote": "Each CT-derived organ node then serves as a query over\nthese report tokens.",
+        "label": "supported",
+        "paper_evidence": "Specifically, for each organ k, we use its visual feature hk as a query to attend to the text tokens:",
+        "reason": "Section III.C.2, page 5. The paper states that each organ's visual feature is used as a query to attend to the text tokens."
+      },
+      {
+        "id": 90,
+        "text": "Organ-guided cross-attention assigns higher weights to words and phrases relevant to the node’s appearance, location, and suspected involvement.",
+        "poster_quote": "Organ-guided cross-attention assigns higher weights to words and phrases relevant to the node’s appearance,\nlocation, and suspected involvement.",
+        "label": "supported",
+        "paper_evidence": "each organ node derived from CT serves as a query over the radiology report and selectively aggregates fine-grained textual evidence that is most relevant to its appearance, location, and suspected involvement, yielding text-enhanced organ representations while keeping the anatomy-guided graph topology unchanged.",
+        "reason": "Section I, page 2. The paper states that each organ node derived from CT serves as a query to selectively aggregate textual evidence relevant to its appearance, location, and suspected involvement."
+      },
+      {
+        "id": 91,
+        "text": "The weighted report representation is combined with the visual node feature, yielding a text-enhanced organ representation.",
+        "poster_quote": "The weighted report representation is combined with the visual node feature, yielding a text-enhanced organ representation while preserving the anatomy-guided graph topology.",
+        "label": "supported",
+        "paper_evidence": "The enhanced organ features are then computed through weighted aggregation of text features:\n\nh̃k = hk + \\sum_{l=1}^L \\alpha_{k,l} (Wv tl)",
+        "reason": "Section III.C.2, page 5. Equation 11 shows the combination of the visual node feature with the weighted report representation to yield the enhanced organ feature."
+      },
+      {
+        "id": 92,
+        "text": "The combination of weighted report representation and visual node feature preserves the anatomy-guided graph topology.",
+        "poster_quote": "The weighted report representation is combined with the visual node feature, yielding a text-enhanced organ representation while preserving the anatomy-guided graph topology.",
+        "label": "supported",
+        "paper_evidence": "yielding text-enhanced organ representations while keeping the anatomy-guided graph topology unchanged.",
+        "reason": "Section I, page 2. The paper explicitly states that the text-enhanced organ representations are yielded while keeping the anatomy-guided graph topology unchanged."
+      },
+      {
+        "id": 93,
+        "text": "Different organs can attend to different portions of the same report rather than sharing one global text embedding.",
+        "poster_quote": "Thus, different organs can attend to different portions of the same report rather than sharing one global text embedding.",
+        "label": "supported",
+        "paper_evidence": "This design enables each organ to selectively attend to its relevant textual descriptions, facilitating fine-grained cross-modal alignment.",
+        "reason": "Section III.C.2, page 5. The paper states that each organ selectively attends to its relevant textual descriptions rather than sharing a global representation."
+      },
+      {
+        "id": 94,
+        "text": "Early-stage cases mainly attend to anatomical location terms such as supraglottic and epiglottis.",
+        "poster_quote": "Early-stage cases mainly attend to anatomical location terms\nsuch as supraglottic and epiglottis.",
+        "label": "supported",
+        "paper_evidence": "the early-stage case (T1) attends primarily to anatomical location terms (“supraglottic,” “epiglottis”);",
+        "reason": "Section IV.G, page 10. The paper states that early-stage cases attend primarily to anatomical location terms such as supraglottic and epiglottis."
+      },
+      {
+        "id": 95,
+        "text": "Intermediate cases show attention across adjacent structures.",
+        "poster_quote": "Intermediate cases show attention across adjacent structures, while advanced cases\nconcentrate on invasion-related terms such as invades and cartilage.",
+        "label": "supported",
+        "paper_evidence": "the T2 case shows cross-organ attention as the Subglottic node attends to adjacent structure tokens;",
+        "reason": "Section IV.G, page 10. The paper states that the T2 case shows cross-organ attention to adjacent structure tokens."
+      },
+      {
+        "id": 96,
+        "text": "Advanced cases concentrate on invasion-related terms such as invades and cartilage.",
+        "poster_quote": "Intermediate cases show attention across adjacent structures, while advanced cases\nconcentrate on invasion-related terms such as invades and cartilage.",
+        "label": "supported",
+        "paper_evidence": "and the advanced case (T3) concentrates on invasion-related keywords (“invades,” “cartilage”).",
+        "reason": "Section IV.G, page 10. The paper states that the advanced case concentrates on invasion-related keywords such as invades and cartilage."
+      },
+      {
+        "id": 97,
+        "text": "Organ-level correspondence improves staging performance.",
+        "poster_quote": "This organ-level correspondence improves\nboth staging performance and interpretability.",
+        "label": "supported",
+        "paper_evidence": "To address these issues, we propose an anatomy-aware multimodal framework that jointly models anatomical structure and fine-grained alignment to enhance T-staging performance.",
+        "reason": "Section II.B, page 3. The paper states that modeling anatomical structure and fine-grained alignment enhances T-staging performance."
+      },
+      {
+        "id": 98,
+        "text": "Organ-level correspondence improves interpretability.",
+        "poster_quote": "This organ-level correspondence improves\nboth staging performance and interpretability.",
+        "label": "supported",
+        "paper_evidence": "Beyond performance, our framework offers improved interpretability by aligning decision-making with clinically meaningful invasion pathways, thereby enhancing its potential for real-world adoption.",
+        "reason": "Section VI, page 12. The paper states that the framework offers improved interpretability by aligning decision-making with clinically meaningful invasion pathways."
+      },
+      {
+        "id": 99,
+        "text": "The proposed anatomy-structured multimodal framework integrates 3D CT volumes and radiology reports for laryngopharyngeal cancer T-staging without manual tumor masks.",
+        "poster_quote": "We introduce an anatomy-structured multimodal framework that integrates 3D CT volumes and radiology reports for laryngopharyngeal cancer T-staging without manual tumor masks.",
+        "label": "supported",
+        "paper_evidence": "We propose, to our knowledge, the first multimodal laryngopharyngeal cancer T-staging framework that constructs an organ-level graph from pre-trained organ segmentations and integrates paired radiology reports without requiring manual tumor masks, making it practical for full 3D volumes in routine clinical workflows.",
+        "reason": "Section I, page 2. The paper states that the framework integrates paired radiology reports and organ-level graphs from CT without requiring manual tumor masks."
+      },
+      {
+        "id": 100,
+        "text": "AOG models clinically meaningful organ topology.",
+        "poster_quote": "AOG models clinically meaningful organ topology, OCA aligns\neach organ with relevant report evidence, and REG injects explicit invasion findings into graph reasoning while retaining\nanatomy-based risk connections.",
+        "label": "supported",
+        "paper_evidence": "To capture the characteristic pattern of tumor spread in laryngopharyngeal cancer, we first construct an Anatomy-Structured Organ Graph (AOG) that explicitly models spatial relationships among key laryngopharyngeal structures.",
+        "reason": "Section I, page 2. The paper states that AOG explicitly models spatial relationships among key structures to capture tumor spread patterns."
+      },
+      {
+        "id": 101,
+        "text": "OCA aligns each organ with relevant report evidence.",
+        "poster_quote": "AOG models clinically meaningful organ topology, OCA aligns\neach organ with relevant report evidence, and REG injects explicit invasion findings into graph reasoning while retaining\nanatomy-based risk connections.",
+        "label": "supported",
+        "paper_evidence": "then performs Organ-Anchored Cross-Modal Alignment (OCA) so that each organ node aggregates textual evidence from the radiology report,",
+        "reason": "Section I, page 2. The paper states that OCA performs cross-modal alignment so that each organ node aggregates textual evidence from the report."
+      },
+      {
+        "id": 102,
+        "text": "REG injects explicit invasion findings into graph reasoning while retaining anatomy-based risk connections.",
+        "poster_quote": "AOG models clinically meaningful organ topology, OCA aligns\neach organ with relevant report evidence, and REG injects explicit invasion findings into graph reasoning while retaining\nanatomy-based risk connections.",
+        "label": "supported",
+        "paper_evidence": "Specifically, we design a Report-Enhanced Graph-Refinement (REG) module that reuses the global report representation as a text node in the graph, employs a large language model (LLM) to identify which organs are explicitly described as invaded in the report, and connects this text node only to primary sites and to those invaded organs, while keeping the original organ–organ edges unchanged.",
+        "reason": "Section I, page 2. The paper states that REG connects the text node to primary sites and invaded organs while keeping the original organ-organ edges unchanged."
+      },
+      {
+        "id": 103,
+        "text": "Evaluation of the framework was performed on 656 patients.",
+        "poster_quote": "Evaluation on 656 patients from four centers demonstrates consistent improvements over strong image-only and multimodal baselines in binary and three-class staging.",
+        "label": "supported",
+        "paper_evidence": "We conduct extensive experiments on a cohort of 656 patients from four hospitals",
+        "reason": "Section I, page 2-3. The paper states that experiments were conducted on a cohort of 656 patients."
+      },
+      {
+        "id": 104,
+        "text": "The 656 patients evaluated were from four centers.",
+        "poster_quote": "Evaluation on 656 patients from four centers demonstrates consistent improvements over strong image-only and multimodal baselines in binary and three-class staging.",
+        "label": "supported",
+        "paper_evidence": "We conduct extensive experiments on a cohort of 656 patients from four hospitals",
+        "reason": "Section I, page 2-3. The paper states that the 656 patients were from four hospitals."
+      },
+      {
+        "id": 105,
+        "text": "Evaluation demonstrates consistent improvements over strong image-only and multimodal baselines in binary and three-class staging.",
+        "poster_quote": "Evaluation on 656 patients from four centers demonstrates consistent improvements over strong image-only and multimodal baselines in binary and three-class staging.",
+        "label": "supported",
+        "paper_evidence": "in both binary (T1–T2 vs. T3–T4) and three-class settings, and evaluate generalization on internal and external test sets, demonstrating consistent improvements over strong imaging-only and multimodal baselines.",
+        "reason": "Section I, page 3. The paper states that the framework demonstrates consistent improvements over strong imaging-only and multimodal baselines in both binary and three-class settings."
+      },
+      {
+        "id": 106,
+        "text": "The model generalizes to external cohorts.",
+        "poster_quote": "The model generalizes to external cohorts, remains robust to segmentation noise and report variation, and performs on par with or better than experienced radiologists.",
+        "label": "supported",
+        "paper_evidence": "and evaluate generalization on internal and external test sets, demonstrating consistent improvements over strong imaging-only and multimodal baselines.",
+        "reason": "Section I, page 3. The paper states that they evaluate generalization on external test sets."
+      },
+      {
+        "id": 107,
+        "text": "The model remains robust to segmentation noise and report variation.",
+        "poster_quote": "The model generalizes to external cohorts, remains robust to segmentation noise and report variation, and performs on par with or better than experienced radiologists.",
+        "label": "supported",
+        "paper_evidence": "confirming that our region-based cropping design is robust to realistic segmentation errors.",
+        "reason": "Section IV.E, page 9. The paper states that the framework is robust to segmentation errors and resilient to the level of detail and completeness of the input report."
+      },
+      {
+        "id": 108,
+        "text": "The model performs on par with or better than experienced radiologists.",
+        "poster_quote": "The model generalizes to external cohorts, remains robust to segmentation noise and report variation, and performs on par with or better than experienced radiologists.",
+        "label": "supported",
+        "paper_evidence": "These results confirm the effectiveness of our method in predicting laryngopharyngeal cancer T-staging, demonstrating performance on par with or exceeding experienced radiologists.",
+        "reason": "Section IV.H, page 10. The paper states that the method demonstrates performance on par with or exceeding experienced radiologists."
+      },
+      {
+        "id": 109,
+        "text": "The model's organ-level alignment and invasion pathways provide clinically meaningful interpretability.",
+        "poster_quote": "Its organ-level alignment\nand invasion pathways also provide clinically meaningful interpretability.",
+        "label": "supported",
+        "paper_evidence": "Beyond performance, our framework offers improved interpretability by aligning decision-making with clinically meaningful invasion pathways, thereby enhancing its potential for real-world adoption.",
+        "reason": "Section VI, page 12. The paper states that the framework offers improved interpretability by aligning decision-making with clinically meaningful invasion pathways."
+      },
+      {
+        "id": 110,
+        "text": "Table VIII shows cross-modal alignment of correct and misclassified cases, specifically mean invasion-token attention mass placed by potentially-invaded organ nodes on invasion-related report tokens on the Fold 1 internal test set.",
+        "poster_quote": "TABLE VIII : Cross-modal alignment of correct and misclassified cases. Mean invasion-token attention mass placed by the potentiallyinvaded organ nodes on invasion-related\nreport tokens, on the Fold 1 internal test set.",
+        "label": "supported",
+        "paper_evidence": "TABLE VIII: Cross-modal alignment of correct and misclassified cases. Mean invasion-token attention mass placed by the potentially-invaded organ nodes on invasion-related report tokens, on the Fold 1 internal test set.",
+        "reason": "Table VIII, page 12. The caption of Table VIII matches the claim exactly."
+      },
+      {
+        "id": 111,
+        "text": "Table IX shows thyroid cartilage invasion descriptions vs. pathological T-stage across 439 FUZH reports.",
+        "poster_quote": "TABLE IX : Thyroid cartilage invasion descriptions vs. pathological T-stage across 439 FUZH reports. ’Positive invasion’ includes\nboth definite and suspected cartilage invasion descriptions in CT reports.",
+        "label": "supported",
+        "paper_evidence": "TABLE IX: Thyroid cartilage invasion descriptions vs. pathological T-stage across 439 FUZH reports.",
+        "reason": "Table IX, page 12. The caption of Table IX matches the claim exactly."
+      },
+      {
+        "id": 112,
+        "text": "In Table IX, 'Positive invasion' includes both definite and suspected cartilage invasion descriptions in CT reports.",
+        "poster_quote": "TABLE IX : Thyroid cartilage invasion descriptions vs. pathological T-stage across 439 FUZH reports. ’Positive invasion’ includes\nboth definite and suspected cartilage invasion descriptions in CT reports.",
+        "label": "supported",
+        "paper_evidence": "“Positive invasion” includes both definite and suspected cartilage invasion descriptions in CT reports.",
+        "reason": "Table IX, page 12. The caption of Table IX explicitly defines 'Positive invasion' in this way."
+      },
+      {
+        "id": 113,
+        "text": "Table V compares different attention mechanisms in OCA on a representative internal fold.",
+        "poster_quote": "TABLE V : Comparison of different attention mechanisms in our OCA on a representative internal fold. The results demonstrate the superiority of our proposed method across\nboth datasets.",
+        "label": "supported",
+        "paper_evidence": "TABLE V: Comparison of different attention mechanisms in our OCA on a representative internal fold.",
+        "reason": "Table V, page 9. The caption of Table V matches the claim exactly."
+      },
+      {
+        "id": 114,
+        "text": "The results in Table V demonstrate the superiority of the proposed method across both datasets.",
+        "poster_quote": "TABLE V : Comparison of different attention mechanisms in our OCA on a representative internal fold. The results demonstrate the superiority of our proposed method across\nboth datasets.",
+        "label": "supported",
+        "paper_evidence": "The results demonstrate the superiority of our proposed method across both datasets.",
+        "reason": "Table V, page 9. The caption of Table V explicitly states that the results demonstrate the superiority of the proposed method across both datasets."
+      },
+      {
+        "id": 115,
+        "text": "Table VI shows an ablation study of anatomical topology modeling, comparing different approaches for modeling anatomical relationships on a representative internal fold.",
+        "poster_quote": "TABLE VI : Ablation study of anatomical topology modeling. Comparison between different approaches for modeling anatomical relationships on a representative\ninternal fold. Fully-Connected Graph represents a complete graph connection strategy, Direct Fusion uses concatenated organ masks, and Global Context applies global feature\npooling.",
+        "label": "supported",
+        "paper_evidence": "TABLE VI: Ablation study of anatomical topology modeling. Comparison between different approaches for modeling anatomical relationships on a representative internal fold.",
+        "reason": "Table VI, page 9. The caption of Table VI matches the claim exactly."
+      },
+      {
+        "id": 116,
+        "text": "In Table VI, Fully-Connected Graph represents a complete graph connection strategy.",
+        "poster_quote": "TABLE VI : Ablation study of anatomical topology modeling. Comparison between different approaches for modeling anatomical relationships on a representative\ninternal fold. Fully-Connected Graph represents a complete graph connection strategy, Direct Fusion uses concatenated organ masks, and Global Context applies global feature\npooling.",
+        "label": "supported",
+        "paper_evidence": "Fully-Connected Graph represents a complete graph connection strategy, Direct Fusion uses concatenated organ masks, and Global Context applies global feature pooling.",
+        "reason": "Table VI, page 9. The caption of Table VI explicitly defines Fully-Connected Graph in this way."
+      },
+      {
+        "id": 117,
+        "text": "In Table VI, Direct Fusion uses concatenated organ masks.",
+        "poster_quote": "TABLE VI : Ablation study of anatomical topology modeling. Comparison between different approaches for modeling anatomical relationships on a representative\ninternal fold. Fully-Connected Graph represents a complete graph connection strategy, Direct Fusion uses concatenated organ masks, and Global Context applies global feature\npooling.",
+        "label": "supported",
+        "paper_evidence": "Fully-Connected Graph represents a complete graph connection strategy, Direct Fusion uses concatenated organ masks, and Global Context applies global feature pooling.",
+        "reason": "Table VI, page 9. The caption of Table VI explicitly defines Direct Fusion in this way."
+      },
+      {
+        "id": 118,
+        "text": "In Table VI, Global Context applies global feature pooling.",
+        "poster_quote": "TABLE VI : Ablation study of anatomical topology modeling. Comparison between different approaches for modeling anatomical relationships on a representative\ninternal fold. Fully-Connected Graph represents a complete graph connection strategy, Direct Fusion uses concatenated organ masks, and Global Context applies global feature\npooling.",
+        "label": "supported",
+        "paper_evidence": "Fully-Connected Graph represents a complete graph connection strategy, Direct Fusion uses concatenated organ masks, and Global Context applies global feature pooling.",
+        "reason": "Table VI, page 9. The caption of Table VI explicitly defines Global Context in this way."
+      },
+      {
+        "id": 119,
+        "text": "Table IV shows an ablation study of key components, comparing performance of different component combinations for binary and three-class T-staging tasks on a representative internal fold.",
+        "poster_quote": "TABLE IV : Ablation Study of Key Components. Performance comparison of different component combinations for binary and three-class T-staging tasks on a representative\ninternal fold, reported as mean ± standard deviation over three random seeds. AOG, OCA, and REG represent Anatomy-Structured Organ Graph, OrganAnchored\nCross-Modal Alignment, and Report-Enhanced GraphRefinement, respectively.",
+        "label": "supported",
+        "paper_evidence": "TABLE IV: Ablation Study of Key Components. Performance comparison of different component combinations for binary and three-class T-staging tasks on a representative internal fold, reported as mean ± standard deviation over three random seeds.",
+        "reason": "Table IV, page 7. The caption of Table IV matches the claim exactly."
+      },
+      {
+        "id": 120,
+        "text": "The results in Table IV are reported as mean ± standard deviation over three random seeds.",
+        "poster_quote": "TABLE IV : Ablation Study of Key Components. Performance comparison of different component combinations for binary and three-class T-staging tasks on a representative\ninternal fold, reported as mean ± standard deviation over three random seeds. AOG, OCA, and REG represent Anatomy-Structured Organ Graph, OrganAnchored\nCross-Modal Alignment, and Report-Enhanced GraphRefinement, respectively.",
+        "label": "supported",
+        "paper_evidence": "TABLE IV: Ablation Study of Key Components. Performance comparison of different component combinations for binary and three-class T-staging tasks on a representative internal fold, reported as mean ± standard deviation over three random seeds.",
+        "reason": "Table IV, page 7. The caption of Table IV explicitly states that the results are reported as mean ± standard deviation over three random seeds."
+      },
+      {
+        "id": 121,
+        "text": "In Table IV, AOG, OCA, and REG represent Anatomy-Structured Organ Graph, Organ-Anchored Cross-Modal Alignment, and Report-Enhanced Graph-Refinement, respectively.",
+        "poster_quote": "TABLE IV : Ablation Study of Key Components. Performance comparison of different component combinations for binary and three-class T-staging tasks on a representative\ninternal fold, reported as mean ± standard deviation over three random seeds. AOG, OCA, and REG represent Anatomy-Structured Organ Graph, OrganAnchored\nCross-Modal Alignment, and Report-Enhanced GraphRefinement, respectively.",
+        "label": "supported",
+        "paper_evidence": "AOG, OCA, and REG represent Anatomy-Structured Organ Graph, Organ-Anchored Cross-Modal Alignment, and Report-Enhanced Graph-Refinement, respectively.",
+        "reason": "Table IV caption explicitly defines these abbreviations."
+      },
+      {
+        "id": 122,
+        "text": "Table VII compares T-staging prediction performance of the proposed method versus radiologist assessments.",
+        "poster_quote": "TABLE VII : Comparison of T-staging prediction performance: our method versus radiologist assessments.",
+        "label": "supported",
+        "paper_evidence": "TABLE VII: Comparison of T-staging prediction performance: our method versus radiologist assessments.",
+        "reason": "Table VII caption explicitly states this comparison."
+      },
+      {
+        "id": 123,
+        "text": "Fig. 5 evaluates robustness to organ segmentation noise and radiology report variation on a representative internal fold.",
+        "poster_quote": "Fig. 5 : Robustness to (a) organ segmentation noise and (b) radiology report variation, evaluated on a representative internal fold. (a) Macro-F1 under random organ-mask\nperturbation at ± 5% and ± 10% boundary shifts; (b) macro-F1 when each radiology report is rewritten to be less- or more-detailed while the CT images and the trained model\nare held fixed.",
+        "label": "supported",
+        "paper_evidence": "Robustness to (a) organ segmentation noise and (b) radiology report variation, evaluated on a representative internal fold.",
+        "reason": "Fig. 5 caption explicitly states that it evaluates robustness to these factors on a representative internal fold."
+      },
+      {
+        "id": 124,
+        "text": "Fig. 5(a) shows Macro-F1 under random organ-mask perturbation at ± 5% and ± 10% boundary shifts.",
+        "poster_quote": "Fig. 5 : Robustness to (a) organ segmentation noise and (b) radiology report variation, evaluated on a representative internal fold. (a) Macro-F1 under random organ-mask\nperturbation at ± 5% and ± 10% boundary shifts; (b) macro-F1 when each radiology report is rewritten to be less- or more-detailed while the CT images and the trained model\nare held fixed.",
+        "label": "supported",
+        "paper_evidence": "(a) Macro-F1 under random organ-mask perturbation at ±5% and ±10% boundary shifts;",
+        "reason": "Fig. 5 caption explicitly describes subfigure (a) as showing Macro-F1 under these perturbations."
+      },
+      {
+        "id": 125,
+        "text": "Fig. 5(b) shows macro-F1 when each radiology report is rewritten to be less- or more-detailed while the CT images and the trained model are held fixed.",
+        "poster_quote": "Fig. 5 : Robustness to (a) organ segmentation noise and (b) radiology report variation, evaluated on a representative internal fold. (a) Macro-F1 under random organ-mask\nperturbation at ± 5% and ± 10% boundary shifts; (b) macro-F1 when each radiology report is rewritten to be less- or more-detailed while the CT images and the trained model\nare held fixed.",
+        "label": "supported",
+        "paper_evidence": "(b) macro-F1 when each radiology report is rewritten to be less- or more-detailed while the CT images and the trained model are held fixed.",
+        "reason": "Fig. 5 caption explicitly describes subfigure (b) as showing macro-F1 under these conditions."
+      },
+      {
+        "id": 126,
+        "text": "Fig. 1 compares conventional coarse-grained image-text fusion based on global CT and report information with the proposed anatomy-structured multimodal framework.",
+        "poster_quote": "Fig. 1 : Comparison between (a) conventional coarse-grained image-text fusion based on global CT and report information [1]-[5], and (b) the proposed anatomy-structured\nmultimodal framework.",
+        "label": "supported",
+        "paper_evidence": "Comparison between (a) conventional coarse-grained image–text fusion based on global CT and report information [1]–[5], and (b) the proposed anatomy-structured multimodal framework.",
+        "reason": "Fig. 1 caption explicitly states this comparison."
+      },
+      {
+        "id": 127,
+        "text": "Fig. 6 visualizes OCA cross-attention weights for three cases of different T-stages.",
+        "poster_quote": "Fig. 6 : Visualization of OCA cross-attention weights for three cases of different T-stages. Each bipartite graph shows organ nodes (left) connected to the most-attended report\nkeywords (right), with line width proportional to attention weight.",
+        "label": "supported",
+        "paper_evidence": "Visualization of OCA cross-attention weights for three cases of different T-stages.",
+        "reason": "Fig. 6 caption explicitly states that it visualizes OCA cross-attention weights for three cases of different T-stages."
+      },
+      {
+        "id": 128,
+        "text": "In Fig. 6, each bipartite graph shows organ nodes (left) connected to the most-attended report keywords (right), with line width proportional to attention weight.",
+        "poster_quote": "Fig. 6 : Visualization of OCA cross-attention weights for three cases of different T-stages. Each bipartite graph shows organ nodes (left) connected to the most-attended report\nkeywords (right), with line width proportional to attention weight.",
+        "label": "supported",
+        "paper_evidence": "Each bipartite graph shows organ nodes (left) connected to the most-attended report keywords (right), with line width proportional to attention weight.",
+        "reason": "Fig. 6 caption explicitly describes the structure and visual encoding of the bipartite graphs."
+      }
+    ]
+  },
+  "raw": "[\"```json\\n{\\n  \\\"claims\\\": [\\n    {\\n      \\\"id\\\": 1,\\n      \\\"text\\\": \\\"Early-stage laryngopharyngeal cancer is generally managed with organ-preserving surgery, laser resection, or definitive radiotherapy.\\\",\\n      \\\"poster_quote\\\": \\\"Early-stage disease is generally managed with organ-preserving surgery, laser resection, or definitive radiotherapy, whereas advanced disease often requires\\\\ntotal laryngectomy and adjuvant treatment.\\\"\\n    },\\n    {\\n      \\\"id\\\": 2,\\n      \\\"text\\\": \\\"Advanced laryngopharyngeal cancer often requires total laryngectomy and adjuvant treatment.\\\",\\n      \\\"poster_quote\\\": \\\"Early-stage disease is generally managed with organ-preserving surgery, laser resection, or definitive radiotherapy, whereas advanced disease often requires\\\\ntotal laryngectomy and adjuvant treatment.\\\"\\n    },\\n    {\\n      \\\"id\\\": 3,\\n      \\\"text\\\": \\\"Pathology-based staging is invasive and time-consuming.\\\",\\n      \\\"poster_quote\\\": \\\"Pathology-based staging is invasive and time-consuming, while manual review\\\\nof an entire 3D CT volume is labor-intensive and subjective.\\\"\\n    },\\n    {\\n      \\\"id\\\": 4,\\n      \\\"text\\\": \\\"Manual review of an entire 3D CT volume is labor-intensive and subjective.\\\",\\n      \\\"poster_quote\\\": \\\"Pathology-based staging is invasive and time-consuming, while manual review\\\\nof an entire 3D CT volume is labor-intensive and subjective.\\\"\\n    },\\n    {\\n      \\\"id\\\": 5,\\n      \\\"text\\\": \\\"Radiology reports often explicitly identify invaded organs.\\\",\\n      \\\"poster_quote\\\": \\\"Reports often explicitly identify invaded organs, but these observations are incomplete because subtle or equivocal extension may be omitted.\\\"\\n    },\\n    {\\n      \\\"id\\\": 6,\\n      \\\"text\\\": \\\"Observations of invaded organs in radiology reports are incomplete because subtle or equivocal extension may be omitted.\\\",\\n      \\\"poster_quote\\\": \\\"Reports often explicitly identify invaded organs, but these observations are incomplete because subtle or equivocal extension may be omitted.\\\"\\n    },\\n    {\\n      \\\"id\\\": 7,\\n      \\\"text\\\": \\\"REG uses report evidence to refine, rather than replace, anatomy-based connectivity.\\\",\\n      \\\"poster_quote\\\": \\\"REG therefore uses report evidence to refine, rather than replace, anatomy-based connectivity.\\\"\\n    },\\n    {\\n      \\\"id\\\": 8,\\n      \\\"text\\\": \\\"The proposed framework is annotation-free and multimodal.\\\",\\n      \\\"poster_quote\\\": \\\"We propose an annotation-free multimodal framework that combines CT-derived organ features with organ-specific evidence from radiology reports.\\\"\\n    },\\n    {\\n      \\\"id\\\": 9,\\n      \\\"text\\\": \\\"The proposed framework combines CT-derived organ features with organ-specific evidence from radiology reports.\\\",\\n      \\\"poster_quote\\\": \\\"We propose an annotation-free multimodal framework that combines CT-derived organ features with organ-specific evidence from radiology reports.\\\"\\n    },\\n    {\\n      \\\"id\\\": 10,\\n      \\\"text\\\": \\\"The framework contains three components: Anatomy-Structured Organ Graph (AOG), Organ-Anchored Cross-Modal Alignment (OCA), and Report-Enhanced Graph-Refinement (REG).\\\",\\n      \\\"poster_quote\\\": \\\"The framework contains three components: Anatomy-Structured Organ Graph (AOG),\\\\nOrgan-Anchored Cross-Modal Alignment (OCA), and Report-Enhanced Graph-Refinement (REG).\\\"\\n    },\\n    {\\n      \\\"id\\\": 11,\\n      \\\"text\\\": \\\"Whole-volume models and isolated tumor masks underrepresent the anatomy-structured pattern of tumor spread.\\\",\\n      \\\"poster_quote\\\": \\\"First, whole-volume models and isolated tumor masks\\\\nunderrepresent the anatomy-structured pattern of tumor spread; manual tumor segmentation is also costly and difficult\\\\nbecause tumors have heterogeneous appearances.\\\"\\n    },\\n    {\\n      \\\"id\\\": 12,\\n      \\\"text\\\": \\\"Manual tumor segmentation is costly and difficult because tumors have heterogeneous appearances.\\\",\\n      \\\"poster_quote\\\": \\\"First, whole-volume models and isolated tumor masks\\\\nunderrepresent the anatomy-structured pattern of tumor spread; manual tumor segmentation is also costly and difficult\\\\nbecause tumors have heterogeneous appearances.\\\"\\n    },\\n    {\\n      \\\"id\\\": 13,\\n      \\\"text\\\": \\\"Conventional multimodal methods fuse global CT and report representations.\\\",\\n      \\\"poster_quote\\\": \\\"Second, conventional multimodal methods fuse global CT and report\\\\nrepresentations, making it difficult to align individual anatomical structures with their corresponding textual findings.\\\"\\n    },\\n    {\\n      \\\"id\\\": 14,\\n      \\\"text\\\": \\\"Conventional multimodal methods make it difficult to align individual anatomical structures with their corresponding textual findings.\\\",\\n      \\\"poster_quote\\\": \\\"Second, conventional multimodal methods fuse global CT and report\\\\nrepresentations, making it difficult to align individual anatomical structures with their corresponding textual findings.\\\"\\n    },\\n    {\\n      \\\"id\\\": 15,\\n      \\\"text\\\": \\\"AOG extracts features from predefined laryngopharyngeal structures using masks generated by a publicly available pretrained organ segmentation model.\\\",\\n      \\\"poster_quote\\\": \\\"AOG extracts features from predefined laryngopharyngeal structures using masks generated by a publicly available pretrained organ segmentation model.\\\"\\n    },\\n    {\\n      \\\"id\\\": 16,\\n      \\\"text\\\": \\\"AOG constructs an anatomy-guided graph representing potential tumor spread from primary sites to surrounding organs.\\\",\\n      \\\"poster_quote\\\": \\\"It then constructs an anatomy-guided graph representing potential tumor spread from primary sites to surrounding organs.\\\"\\n    },\\n    {\\n      \\\"id\\\": 17,\\n      \\\"text\\\": \\\"OCA lets every CT organ node query report tokens and aggregate the most relevant textual evidence.\\\",\\n      \\\"poster_quote\\\": \\\"OCA lets every CT organ node query report tokens and aggregate the most\\\\nrelevant\\\\ntextual evidence.\\\"\\n    },\\n    {\\n      \\\"id\\\": 18,\\n      \\\"text\\\": \\\"REG adds a global report node and connects it to primary sites and organs explicitly described as invaded.\\\",\\n      \\\"poster_quote\\\": \\\"REG adds a global report node and connects it to primary sites and organs explicitly described as invaded.\\\"\\n    },\\n    {\\n      \\\"id\\\": 19,\\n      \\\"text\\\": \\\"The refined multimodal graph is processed by a graph neural network and pooled for T-stage classification.\\\",\\n      \\\"poster_quote\\\": \\\"The refined multimodal graph is processed by a graph neural network and pooled for T-stage classification.\\\"\\n    },\\n    {\\n      \\\"id\\\": 20,\\n      \\\"text\\\": \\\"The design of the framework preserves anatomically plausible risk pathways while selectively strengthening relationships supported by clinical reports.\\\",\\n      \\\"poster_quote\\\": \\\"This design\\\\npreserves anatomically plausible risk pathways while selectively strengthening relationships supported by clinical reports.\\\"\\n    },\\n    {\\n      \\\"id\\\": 21,\\n      \\\"text\\\": \\\"A large language model extracts positive invasion statements for the esophagus, thyroid gland, trachea, and oral cavity.\\\",\\n      \\\"poster_quote\\\": \\\"A large language model extracts positive invasion statements for the esophagus, thyroid gland, trachea, and oral cavity while\\\\nexcluding negations and distinguishing the thyroid gland from thyroid cartilage.\\\"\\n    },\\n    {\\n      \\\"id\\\": 22,\\n      \\\"text\\\": \\\"The large language model excludes negations when extracting positive invasion statements.\\\",\\n      \\\"poster_quote\\\": \\\"A large language model extracts positive invasion statements for the esophagus, thyroid gland, trachea, and oral cavity while\\\\nexcluding negations and distinguishing the thyroid gland from thyroid cartilage.\\\"\\n    },\\n    {\\n      \\\"id\\\": 23,\\n      \\\"text\\\": \\\"The large language model distinguishes the thyroid gland from thyroid cartilage.\\\",\\n      \\\"poster_quote\\\": \\\"A large language model extracts positive invasion statements for the esophagus, thyroid gland, trachea, and oral cavity while\\\\nexcluding negations and distinguishing the thyroid gland from thyroid cartilage.\\\"\\n    },\\n    {\\n      \\\"id\\\": 24,\\n      \\\"text\\\": \\\"Manual review confirmed correct extraction of positive invasion statements by the large language model.\\\",\\n      \\\"poster_quote\\\": \\\"Manual review confirmed correct extraction, and multiple language models produced identical outputs on all 439 training reports.\\\"\\n    },\\n    {\\n      \\\"id\\\": 25,\\n      \\\"text\\\": \\\"Multiple language models produced identical outputs on all 439 training reports.\\\",\\n      \\\"poster_quote\\\": \\\"Manual review confirmed correct extraction, and multiple language models produced identical outputs on all 439 training reports.\\\"\\n    },\\n    {\\n      \\\"id\\\": 26,\\n      \\\"text\\\": \\\"A global report representation is projected into a dedicated text node.\\\",\\n      \\\"poster_quote\\\": \\\"A global report representation is projected into a dedicated text node.\\\"\\n    },\\n    {\\n      \\\"id\\\": 27,\\n      \\\"text\\\": \\\"The dedicated text node connects to all primary sites.\\\",\\n      \\\"poster_quote\\\": \\\"This node connects to all primary sites and only to target organs explicitly described\\\\nas invaded; the original organ-to-organ edges remain unchanged.\\\"\\n    },\\n    {\\n      \\\"id\\\": 28,\\n      \\\"text\\\": \\\"The dedicated text node connects only to target organs explicitly described as invaded.\\\",\\n      \\\"poster_quote\\\": \\\"This node connects to all primary sites and only to target organs explicitly described\\\\nas invaded; the original organ-to-organ edges remain unchanged.\\\"\\n    },\\n    {\\n      \\\"id\\\": 29,\\n      \\\"text\\\": \\\"The original organ-to-organ edges remain unchanged in the report-enhanced topology.\\\",\\n      \\\"poster_quote\\\": \\\"This node connects to all primary sites and only to target organs explicitly described\\\\nas invaded; the original organ-to-organ edges remain unchanged.\\\"\\n    },\\n    {\\n      \\\"id\\\": 30,\\n      \\\"text\\\": \\\"Graph message passing over the report-enhanced topology allows high-confidence clinical evidence to directly guide feature refinement.\\\",\\n      \\\"poster_quote\\\": \\\"Graph message passing over this report-enhanced topology allows high-confidence clinical evidence to directly guide feature refinement while retaining CT evidence from all anatomically at-risk organs.\\\"\\n    },\\n    {\\n      \\\"id\\\": 31,\\n      \\\"text\\\": \\\"Graph message passing over the report-enhanced topology retains CT evidence from all anatomically at-risk organs.\\\",\\n      \\\"poster_quote\\\": \\\"Graph message passing over this report-enhanced topology allows high-confidence clinical evidence to directly guide feature refinement while retaining CT evidence from all anatomically at-risk organs.\\\"\\n    },\\n    {\\n      \\\"id\\\": 32,\\n      \\\"text\\\": \\\"Global average pooling and a classification layer produce the final prediction.\\\",\\n      \\\"poster_quote\\\": \\\"Global average pooling and a classification layer produce the final prediction.\\\"\\n    },\\n    {\\n      \\\"id\\\": 33,\\n      \\\"text\\\": \\\"The complete framework is trained end-to-end with cross-entropy loss.\\\",\\n      \\\"poster_quote\\\": \\\"The complete framework is trained end-to-end with cross-entropy loss, while the biomedical text encoder is frozen in the final configuration to reduce computation and overfitting.\\\"\\n    },\\n    {\\n      \\\"id\\\": 34,\\n      \\\"text\\\": \\\"The biomedical text encoder is frozen in the final configuration to reduce computation and overfitting.\\\",\\n      \\\"poster_quote\\\": \\\"The complete framework is trained end-to-end with cross-entropy loss, while the biomedical text encoder is frozen in the final configuration to reduce computation and overfitting.\\\"\\n    },\\n    {\\n      \\\"id\\\": 35,\\n      \\\"text\\\": \\\"The Anatomy-Structured Organ Graph models progressive tumor invasion without requiring manual tumor masks.\\\",\\n      \\\"poster_quote\\\": \\\"The Anatomy-Structured Organ Graph models progressive tumor invasion without requiring manual tumor masks.\\\"\\n    },\\n    {\\n      \\\"id\\\": 36,\\n      \\\"text\\\": \\\"Seven structures are represented in the Anatomy-Structured Organ Graph.\\\",\\n      \\\"poster_quote\\\": \\\"Seven\\\\nstructures are represented: three primary sites—supraglottic, glottic, and subglottic regions—and four potential invasion\\\\ntargets—the esophagus, thyroid gland, trachea, and oral cavity.\\\"\\n    },\\n    {\\n      \\\"id\\\": 37,\\n      \\\"text\\\": \\\"The three primary sites represented in the Organ Graph are the supraglottic, glottic, and subglottic regions.\\\",\\n      \\\"poster_quote\\\": \\\"Seven\\\\nstructures are represented: three primary sites—supraglottic, glottic, and subglottic regions—and four potential invasion\\\\ntargets—the esophagus, thyroid gland, trachea, and oral cavity.\\\"\\n    },\\n    {\\n      \\\"id\\\": 38,\\n      \\\"text\\\": \\\"The four potential invasion targets represented in the Organ Graph are the esophagus, thyroid gland, trachea, and oral cavity.\\\",\\n      \\\"poster_quote\\\": \\\"Seven\\\\nstructures are represented: three primary sites—supraglottic, glottic, and subglottic regions—and four potential invasion\\\\ntargets—the esophagus, thyroid gland, trachea, and oral cavity.\\\"\\n    },\\n    {\\n      \\\"id\\\": 39,\\n      \\\"text\\\": \\\"For each CT volume, a pre-trained segmentation model generates organ masks.\\\",\\n      \\\"poster_quote\\\": \\\"For each CT volume, a pre-trained segmentation model generates organ masks.\\\"\\n    },\\n    {\\n      \\\"id\\\": 40,\\n      \\\"text\\\": \\\"Each masked region is processed by a medical-image-pretrained Swin Transformer to obtain an organ-specific feature vector.\\\",\\n      \\\"poster_quote\\\": \\\"Each masked region is processed by a medical-image-pretrained Swin Transformer to obtain an organ-specific feature vector.\\\"\\n    },\\n    {\\n      \\\"id\\\": 41,\\n      \\\"text\\\": \\\"Shared projection layers transform the organ-specific feature vectors into graph nodes.\\\",\\n      \\\"poster_quote\\\": \\\"Shared projection layers transform\\\\nthese features into graph nodes.\\\"\\n    },\\n    {\\n      \\\"id\\\": 42,\\n      \\\"text\\\": \\\"Primary sites are interconnected to capture relationships within the larynx.\\\",\\n      \\\"poster_quote\\\": \\\"Primary sites are interconnected to capture relationships within the larynx, and each primary site is linked to anatomically plausible invasion targets.\\\"\\n    },\\n    {\\n      \\\"id\\\": 43,\\n      \\\"text\\\": \\\"Each primary site is linked to anatomically plausible invasion targets.\\\",\\n      \\\"poster_quote\\\": \\\"Primary sites are interconnected to capture relationships within the larynx, and each primary site is linked to anatomically plausible invasion targets.\\\"\\n    },\\n    {\\n      \\\"id\\\": 44,\\n      \\\"text\\\": \\\"Graph Attention Network layers propagate information along clinically meaningful pathways.\\\",\\n      \\\"poster_quote\\\": \\\"Graph Attention Network layers propagate information along\\\\nthese clinically meaningful pathways and dynamically weight relationships relevant to staging.\\\"\\n    },\\n    {\\n      \\\"id\\\": 45,\\n      \\\"text\\\": \\\"Graph Attention Network layers dynamically weight relationships relevant to staging.\\\",\\n      \\\"poster_quote\\\": \\\"Graph Attention Network layers propagate information along\\\\nthese clinically meaningful pathways and dynamically weight relationships relevant to staging.\\\"\\n    },\\n    {\\n      \\\"id\\\": 46,\\n      \\\"text\\\": \\\"The organ-level representation focuses the model on organ-level invasion context rather than irrelevant global regions.\\\",\\n      \\\"poster_quote\\\": \\\"This representation focuses the model on organ-level invasion context rather than irrelevant global regions.\\\"\\n    },\\n    {\\n      \\\"id\\\": 47,\\n      \\\"text\\\": \\\"The representation exploits the relatively consistent appearance and boundaries of anatomical organs, providing more reliable anchors than heterogeneous tumors.\\\",\\n      \\\"poster_quote\\\": \\\"It also exploits\\\\nthe relatively consistent appearance and boundaries of anatomical organs, providing more reliable anchors than heterogeneous tumors.\\\"\\n    },\\n    {\\n      \\\"id\\\": 48,\\n      \\\"text\\\": \\\"The resulting nodes encode local CT appearance, neighboring anatomical context, and global patterns of potential tumor spread.\\\",\\n      \\\"poster_quote\\\": \\\"The resulting nodes encode local CT appearance, neighboring anatomical context, and global patterns of\\\\npotential tumor spread.\\\"\\n    },\\n    {\\n      \\\"id\\\": 49,\\n      \\\"text\\\": \\\"The framework is robust to organ segmentation noise because masks are used primarily to define cropping regions.\\\",\\n      \\\"poster_quote\\\": \\\"The framework is robust to organ segmentation noise because masks are used primarily to define cropping regions.\\\"\\n    },\\n    {\\n      \\\"id\\\": 50,\\n      \\\"text\\\": \\\"Applying additional proportional dilation or erosion to automatically generated masks reduces F1 by 1.1% at 5% perturbation.\\\",\\n      \\\"poster_quote\\\": \\\"Applying\\\\nadditional proportional dilation or erosion to automatically generated masks reduces F1 by only 1.1% at 5% perturbation\\\\nand 2.8% at 10% perturbation.\\\"\\n    },\\n    {\\n      \\\"id\\\": 51,\\n      \\\"text\\\": \\\"Applying additional proportional dilation or erosion to automatically generated masks reduces F1 by 2.8% at 10% perturbation.\\\",\\n      \\\"poster_quote\\\": \\\"Applying\\\\nadditional proportional dilation or erosion to automatically generated masks reduces F1 by only 1.1% at 5% perturbation\\\\nand 2.8% at 10% perturbation.\\\"\\n    },\\n    {\\n      \\\"id\\\": 52,\\n      \\\"text\\\": \\\"Report robustness is evaluated by rewriting reports into less-detailed and more-detailed forms while preserving medical findings.\\\",\\n      \\\"poster_quote\\\": \\\"Report robustness is evaluated by rewriting reports into less-detailed and more-detailed forms while preserving medical\\\\nfindings.\\\"\\n    },\\n    {\\n      \\\"id\\\": 53,\\n      \\\"text\\\": \\\"With the same CT images and frozen model, macro F1 remains between 80.4% and 82.1% when reports are rewritten.\\\",\\n      \\\"poster_quote\\\": \\\"With the same CT images and frozen model, macro F1 remains between 80.4% and 82.1%, and accuracy remains\\\\nbetween 81.8% and 83.0%.\\\"\\n    },\\n    {\\n      \\\"id\\\": 54,\\n      \\\"text\\\": \\\"With the same CT images and frozen model, accuracy remains between 81.8% and 83.0% when reports are rewritten.\\\",\\n      \\\"poster_quote\\\": \\\"With the same CT images and frozen model, macro F1 remains between 80.4% and 82.1%, and accuracy remains\\\\nbetween 81.8% and 83.0%.\\\"\\n    },\\n    {\\n      \\\"id\\\": 55,\\n      \\\"text\\\": \\\"The maximum macro-F1 change is 1.7 points when reports are rewritten, indicating resilience to variation in reporting style and completeness.\\\",\\n      \\\"poster_quote\\\": \\\"The maximum macro-F1 change is 1.7 points, indicating resilience to variation in reporting style\\\\nand completeness.\\\"\\n    },\\n    {\\n      \\\"id\\\": 56,\\n      \\\"text\\\": \\\"Nine of sixteen errors identified in error analysis are over-staging cases.\\\",\\n      \\\"poster_quote\\\": \\\"Nine of sixteen errors are over-staging cases, often caused by reports describing\\\\ncartilage invasion that pathology does not confirm.\\\"\\n    },\\n    {\\n      \\\"id\\\": 57,\\n      \\\"text\\\": \\\"Over-staging cases are often caused by reports describing cartilage invasion that pathology does not confirm.\\\",\\n      \\\"poster_quote\\\": \\\"Nine of sixteen errors are over-staging cases, often caused by reports describing\\\\ncartilage invasion that pathology does not confirm.\\\"\\n    },\\n    {\\n      \\\"id\\\": 58,\\n      \\\"text\\\": \\\"Seven of sixteen errors identified in error analysis are under-staging cases.\\\",\\n      \\\"poster_quote\\\": \\\"Seven are under-staging cases, frequently associated with reports that omit invasion or state that invasion is absent despite pathological confirmation.\\\"\\n    },\\n    {\\n      \\\"id\\\": 59,\\n      \\\"text\\\": \\\"Under-staging cases are frequently associated with reports that omit invasion or state that invasion is absent despite pathological confirmation.\\\",\\n      \\\"poster_quote\\\": \\\"Seven are under-staging cases, frequently associated with reports that omit invasion or state that invasion is absent despite pathological confirmation.\\\"\\n    },\\n    {\\n      \\\"id\\\": 60,\\n      \\\"text\\\": \\\"The error analysis findings reflect inherent CT-pathology discordance rather than simple cross-modal misalignment.\\\",\\n      \\\"poster_quote\\\": \\\"These findings reflect inherent\\\\nCT-pathology discordance rather than simple cross-modal misalignment and motivate uncertainty-aware fusion and clinical\\\\nreview of borderline cases.\\\"\\n    },\\n    {\\n      \\\"id\\\": 61,\\n      \\\"text\\\": \\\"A whole-volume CT baseline obtains 58.76% macro F1 for binary staging.\\\",\\n      \\\"poster_quote\\\": \\\"A whole-volume CT baseline obtains 58.76% macro F1 for binary staging and 39.16% for three-class staging.\\\"\\n    },\\n    {\\n      \\\"id\\\": 62,\\n      \\\"text\\\": \\\"A whole-volume CT baseline obtains 39.16% macro F1 for three-class staging.\\\",\\n      \\\"poster_quote\\\": \\\"A whole-volume CT baseline obtains 58.76% macro F1 for binary staging and 39.16% for three-class staging.\\\"\\n    },\\n    {\\n      \\\"id\\\": 63,\\n      \\\"text\\\": \\\"Adding AOG raises performance to 77.96% macro F1 for binary staging.\\\",\\n      \\\"poster_quote\\\": \\\"Adding AOG\\\\nraises performance to 77.96% and 52.80%, demonstrating the value of explicit anatomical relationship modeling.\\\"\\n    },\\n    {\\n      \\\"id\\\": 64,\\n      \\\"text\\\": \\\"Adding AOG raises performance to 52.80% macro F1 for three-class staging.\\\",\\n      \\\"poster_quote\\\": \\\"Adding AOG\\\\nraises performance to 77.96% and 52.80%, demonstrating the value of explicit anatomical relationship modeling.\\\"\\n    },\\n    {\\n      \\\"id\\\": 65,\\n      \\\"text\\\": \\\"OCA produces 80.97% macro F1 for binary staging.\\\",\\n      \\\"poster_quote\\\": \\\"OCA produces 80.97% and 58.47%, confirming that organ-level alignment captures useful report evidence.\\\"\\n    },\\n    {\\n      \\\"id\\\": 66,\\n      \\\"text\\\": \\\"OCA produces 58.47% macro F1 for three-class staging.\\\",\\n      \\\"poster_quote\\\": \\\"OCA produces 80.97% and 58.47%, confirming that organ-level alignment captures useful report evidence.\\\"\\n    },\\n    {\\n      \\\"id\\\": 67,\\n      \\\"text\\\": \\\"Combining AOG and OCA yields 81.63% macro F1 for binary staging.\\\",\\n      \\\"poster_quote\\\": \\\"Combining AOG and\\\\nOCA yields 81.63% and 61.52%.\\\"\\n    },\\n    {\\n      \\\"id\\\": 68,\\n      \\\"text\\\": \\\"Combining AOG and OCA yields 61.52% macro F1 for three-class staging.\\\",\\n      \\\"poster_quote\\\": \\\"Combining AOG and\\\\nOCA yields 81.63% and 61.52%.\\\"\\n    },\\n    {\\n      \\\"id\\\": 69,\\n      \\\"text\\\": \\\"The full model with REG reaches 83.96% binary F1.\\\",\\n      \\\"poster_quote\\\": \\\"The full model with REG reaches 83.96% binary F1 and 64.53% three-class F1, with the\\\\nhighest mean performance and lowest variance.\\\"\\n    },\\n    {\\n      \\\"id\\\": 70,\\n      \\\"text\\\": \\\"The full model with REG reaches 64.53% three-class F1.\\\",\\n      \\\"poster_quote\\\": \\\"The full model with REG reaches 83.96% binary F1 and 64.53% three-class F1, with the\\\\nhighest mean performance and lowest variance.\\\"\\n    },\\n    {\\n      \\\"id\\\": 71,\\n      \\\"text\\\": \\\"The full model with REG achieves the highest mean performance and lowest variance among the compared configurations.\\\",\\n      \\\"poster_quote\\\": \\\"The full model with REG reaches 83.96% binary F1 and 64.53% three-class F1, with the\\\\nhighest mean performance and lowest variance.\\\"\\n    },\\n    {\\n      \\\"id\\\": 72,\\n      \\\"text\\\": \\\"AOG surpasses fully connected graphs, direct organ-mask fusion, and global context pooling.\\\",\\n      \\\"poster_quote\\\": \\\"AOG also surpasses fully connected graphs, direct organ-mask fusion, and global context pooling.\\\"\\n    },\\n    {\\n      \\\"id\\\": 73,\\n      \\\"text\\\": \\\"AOG achieves 77.76% internal F1.\\\",\\n      \\\"poster_quote\\\": \\\"It achieves 77.76% internal and 73.33% external F1, improving over the strongest topology baseline by 3.85 and 4.33 points.\\\"\\n    },\\n    {\\n      \\\"id\\\": 74,\\n      \\\"text\\\": \\\"AOG achieves 73.33% external F1.\\\",\\n      \\\"poster_quote\\\": \\\"It achieves 77.76% internal and 73.33% external F1, improving over the strongest topology baseline by 3.85 and 4.33 points.\\\"\\n    },\\n    {\\n      \\\"id\\\": 75,\\n      \\\"text\\\": \\\"AOG improves over the strongest topology baseline by 3.85 points on internal F1.\\\",\\n      \\\"poster_quote\\\": \\\"It achieves 77.76% internal and 73.33% external F1, improving over the strongest topology baseline by 3.85 and 4.33 points.\\\"\\n    },\\n    {\\n      \\\"id\\\": 76,\\n      \\\"text\\\": \\\"AOG improves over the strongest topology baseline by 4.33 points on external F1.\\\",\\n      \\\"poster_quote\\\": \\\"It achieves 77.76% internal and 73.33% external F1, improving over the strongest topology baseline by 3.85 and 4.33 points.\\\"\\n    },\\n    {\\n      \\\"id\\\": 77,\\n      \\\"text\\\": \\\"OCA outperforms global, local, common, and multi-token attention variants.\\\",\\n      \\\"poster_quote\\\": \\\"OCA outperforms\\\\nglobal, local, common, and multi-token attention variants, reaching 81.93% internal and 76.10% external F1.\\\"\\n    },\\n    {\\n      \\\"id\\\": 78,\\n      \\\"text\\\": \\\"OCA reaches 81.93% internal F1.\\\",\\n      \\\"poster_quote\\\": \\\"OCA outperforms\\\\nglobal, local, common, and multi-token attention variants, reaching 81.93% internal and 76.10% external F1.\\\"\\n    },\\n    {\\n      \\\"id\\\": 79,\\n      \\\"text\\\": \\\"OCA reaches 76.10% external F1.\\\",\\n      \\\"poster_quote\\\": \\\"OCA outperforms\\\\nglobal, local, common, and multi-token attention variants, reaching 81.93% internal and 76.10% external F1.\\\"\\n    },\\n    {\\n      \\\"id\\\": 80,\\n      \\\"text\\\": \\\"Thyroid-focused features achieve an average F1 score of 0.716 internally.\\\",\\n      \\\"poster_quote\\\": \\\"Individual organ analysis shows that thyroid-focused features are especially informative, with average F1 scores of 0.716\\\\ninternally and 0.582 externally, compared with 0.588 and 0.436 for global CT processing.\\\"\\n    },\\n    {\\n      \\\"id\\\": 81,\\n      \\\"text\\\": \\\"Thyroid-focused features achieve an average F1 score of 0.582 externally.\\\",\\n      \\\"poster_quote\\\": \\\"Individual organ analysis shows that thyroid-focused features are especially informative, with average F1 scores of 0.716\\\\ninternally and 0.582 externally, compared with 0.588 and 0.436 for global CT processing.\\\"\\n    },\\n    {\\n      \\\"id\\\": 82,\\n      \\\"text\\\": \\\"Global CT processing achieves an average F1 score of 0.588 internally.\\\",\\n      \\\"poster_quote\\\": \\\"Individual organ analysis shows that thyroid-focused features are especially informative, with average F1 scores of 0.716\\\\ninternally and 0.582 externally, compared with 0.588 and 0.436 for global CT processing.\\\"\\n    },\\n    {\\n      \\\"id\\\": 83,\\n      \\\"text\\\": \\\"Global CT processing achieves an average F1 score of 0.436 externally.\\\",\\n      \\\"poster_quote\\\": \\\"Individual organ analysis shows that thyroid-focused features are especially informative, with average F1 scores of 0.716\\\\ninternally and 0.582 externally, compared with 0.588 and 0.436 for global CT processing.\\\"\\n    },\\n    {\\n      \\\"id\\\": 84,\\n      \\\"text\\\": \\\"Tracheal regions consistently outperform global processing.\\\",\\n      \\\"poster_quote\\\": \\\"Tracheal and esophageal regions\\\\nalso consistently outperform global processing, supporting targeted anatomical reasoning.\\\"\\n    },\\n    {\\n      \\\"id\\\": 85,\\n      \\\"text\\\": \\\"Esophageal regions consistently outperform global processing.\\\",\\n      \\\"poster_quote\\\": \\\"Tracheal and esophageal regions\\\\nalso consistently outperform global processing, supporting targeted anatomical reasoning.\\\"\\n    },\\n    {\\n      \\\"id\\\": 86,\\n      \\\"text\\\": \\\"Radiology reports contain organ-specific findings that cannot be fully captured through global image-text fusion.\\\",\\n      \\\"poster_quote\\\": \\\"Radiology reports contain organ-specific findings that cannot be fully captured through global image-text fusion.\\\"\\n    },\\n    {\\n      \\\"id\\\": 87,\\n      \\\"text\\\": \\\"In OCA, the report is tokenized and encoded using a pre-trained biomedical language model.\\\",\\n      \\\"poster_quote\\\": \\\"In OCA, the\\\\nreport is tokenized and encoded using a pre-trained biomedical language model, producing contextualized representations\\\\nfor all tokens.\\\"\\n    },\\n    {\\n      \\\"id\\\": 88,\\n      \\\"text\\\": \\\"The pre-trained biomedical language model produces contextualized representations for all tokens.\\\",\\n      \\\"poster_quote\\\": \\\"In OCA, the\\\\nreport is tokenized and encoded using a pre-trained biomedical language model, producing contextualized representations\\\\nfor all tokens.\\\"\\n    },\\n    {\\n      \\\"id\\\": 89,\\n      \\\"text\\\": \\\"Each CT-derived organ node serves as a query over the report tokens.\\\",\\n      \\\"poster_quote\\\": \\\"Each CT-derived organ node then serves as a query over\\\\nthese report tokens.\\\"\\n    },\\n    {\\n      \\\"id\\\": 90,\\n      \\\"text\\\": \\\"Organ-guided cross-attention assigns higher weights to words and phrases relevant to the node’s appearance, location, and suspected involvement.\\\",\\n      \\\"poster_quote\\\": \\\"Organ-guided cross-attention assigns higher weights to words and phrases relevant to the node’s appearance,\\\\nlocation, and suspected involvement.\\\"\\n    },\\n    {\\n      \\\"id\\\": 91,\\n      \\\"text\\\": \\\"The weighted report representation is combined with the visual node feature, yielding a text-enhanced organ representation.\\\",\\n      \\\"poster_quote\\\": \\\"The weighted report representation is combined with the visual node feature, yielding a text-enhanced organ representation while preserving the anatomy-guided graph topology.\\\"\\n    },\\n    {\\n      \\\"id\\\": 92,\\n      \\\"text\\\": \\\"The combination of weighted report representation and visual node feature preserves the anatomy-guided graph topology.\\\",\\n      \\\"poster_quote\\\": \\\"The weighted report representation is combined with the visual node feature, yielding a text-enhanced organ representation while preserving the anatomy-guided graph topology.\\\"\\n    },\\n    {\\n      \\\"id\\\": 93,\\n      \\\"text\\\": \\\"Different organs can attend to different portions of the same report rather than sharing one global text embedding.\\\",\\n      \\\"poster_quote\\\": \\\"Thus, different organs can attend to different portions of the same report rather than sharing one global text embedding.\\\"\\n    },\\n    {\\n      \\\"id\\\": 94,\\n      \\\"text\\\": \\\"Early-stage cases mainly attend to anatomical location terms such as supraglottic and epiglottis.\\\",\\n      \\\"poster_quote\\\": \\\"Early-stage cases mainly attend to anatomical location terms\\\\nsuch as supraglottic and epiglottis.\\\"\\n    },\\n    {\\n      \\\"id\\\": 95,\\n      \\\"text\\\": \\\"Intermediate cases show attention across adjacent structures.\\\",\\n      \\\"poster_quote\\\": \\\"Intermediate cases show attention across adjacent structures, while advanced cases\\\\nconcentrate on invasion-related terms such as invades and cartilage.\\\"\\n    },\\n    {\\n      \\\"id\\\": 96,\\n      \\\"text\\\": \\\"Advanced cases concentrate on invasion-related terms such as invades and cartilage.\\\",\\n      \\\"poster_quote\\\": \\\"Intermediate cases show attention across adjacent structures, while advanced cases\\\\nconcentrate on invasion-related terms such as invades and cartilage.\\\"\\n    },\\n    {\\n      \\\"id\\\": 97,\\n      \\\"text\\\": \\\"Organ-level correspondence improves staging performance.\\\",\\n      \\\"poster_quote\\\": \\\"This organ-level correspondence improves\\\\nboth staging performance and interpretability.\\\"\\n    },\\n    {\\n      \\\"id\\\": 98,\\n      \\\"text\\\": \\\"Organ-level correspondence improves interpretability.\\\",\\n      \\\"poster_quote\\\": \\\"This organ-level correspondence improves\\\\nboth staging performance and interpretability.\\\"\\n    },\\n    {\\n      \\\"id\\\": 99,\\n      \\\"text\\\": \\\"The proposed anatomy-structured multimodal framework integrates 3D CT volumes and radiology reports for laryngopharyngeal cancer T-staging without manual tumor masks.\\\",\\n      \\\"poster_quote\\\": \\\"We introduce an anatomy-structured multimodal framework that integrates 3D CT volumes and radiology reports for laryngopharyngeal cancer T-staging without manual tumor masks.\\\"\\n    },\\n    {\\n      \\\"id\\\": 100,\\n      \\\"text\\\": \\\"AOG models clinically meaningful organ topology.\\\",\\n      \\\"poster_quote\\\": \\\"AOG models clinically meaningful organ topology, OCA aligns\\\\neach organ with relevant report evidence, and REG injects explicit invasion findings into graph reasoning while retaining\\\\nanatomy-based risk connections.\\\"\\n    },\\n    {\\n      \\\"id\\\": 101,\\n      \\\"text\\\": \\\"OCA aligns each organ with relevant report evidence.\\\",\\n      \\\"poster_quote\\\": \\\"AOG models clinically meaningful organ topology, OCA aligns\\\\neach organ with relevant report evidence, and REG injects explicit invasion findings into graph reasoning while retaining\\\\nanatomy-based risk connections.\\\"\\n    },\\n    {\\n      \\\"id\\\": 102,\\n      \\\"text\\\": \\\"REG injects explicit invasion findings into graph reasoning while retaining anatomy-based risk connections.\\\",\\n      \\\"poster_quote\\\": \\\"AOG models clinically meaningful organ topology, OCA aligns\\\\neach organ with relevant report evidence, and REG injects explicit invasion findings into graph reasoning while retaining\\\\nanatomy-based risk connections.\\\"\\n    },\\n    {\\n      \\\"id\\\": 103,\\n      \\\"text\\\": \\\"Evaluation of the framework was performed on 656 patients.\\\",\\n      \\\"poster_quote\\\": \\\"Evaluation on 656 patients from four centers demonstrates consistent improvements over strong image-only and multimodal baselines in binary and three-class staging.\\\"\\n    },\\n    {\\n      \\\"id\\\": 104,\\n      \\\"text\\\": \\\"The 656 patients evaluated were from four centers.\\\",\\n      \\\"poster_quote\\\": \\\"Evaluation on 656 patients from four centers demonstrates consistent improvements over strong image-only and multimodal baselines in binary and three-class staging.\\\"\\n    },\\n    {\\n      \\\"id\\\": 105,\\n      \\\"text\\\": \\\"Evaluation demonstrates consistent improvements over strong image-only and multimodal baselines in binary and three-class staging.\\\",\\n      \\\"poster_quote\\\": \\\"Evaluation on 656 patients from four centers demonstrates consistent improvements over strong image-only and multimodal baselines in binary and three-class staging.\\\"\\n    },\\n    {\\n      \\\"id\\\": 106,\\n      \\\"text\\\": \\\"The model generalizes to external cohorts.\\\",\\n      \\\"poster_quote\\\": \\\"The model generalizes to external cohorts, remains robust to segmentation noise and report variation, and performs on par with or better than experienced radiologists.\\\"\\n    },\\n    {\\n      \\\"id\\\": 107,\\n      \\\"text\\\": \\\"The model remains robust to segmentation noise and report variation.\\\",\\n      \\\"poster_quote\\\": \\\"The model generalizes to external cohorts, remains robust to segmentation noise and report variation, and performs on par with or better than experienced radiologists.\\\"\\n    },\\n    {\\n      \\\"id\\\": 108,\\n      \\\"text\\\": \\\"The model performs on par with or better than experienced radiologists.\\\",\\n      \\\"poster_quote\\\": \\\"The model generalizes to external cohorts, remains robust to segmentation noise and report variation, and performs on par with or better than experienced radiologists.\\\"\\n    },\\n    {\\n      \\\"id\\\": 109,\\n      \\\"text\\\": \\\"The model's organ-level alignment and invasion pathways provide clinically meaningful interpretability.\\\",\\n      \\\"poster_quote\\\": \\\"Its organ-level alignment\\\\nand invasion pathways also provide clinically meaningful interpretability.\\\"\\n    },\\n    {\\n      \\\"id\\\": 110,\\n      \\\"text\\\": \\\"Table VIII shows cross-modal alignment of correct and misclassified cases, specifically mean invasion-token attention mass placed by potentially-invaded organ nodes on invasion-related report tokens on the Fold 1 internal test set.\\\",\\n      \\\"poster_quote\\\": \\\"TABLE VIII : Cross-modal alignment of correct and misclassified cases. Mean invasion-token attention mass placed by the potentiallyinvaded organ nodes on invasion-related\\\\nreport tokens, on the Fold 1 internal test set.\\\"\\n    },\\n    {\\n      \\\"id\\\": 111,\\n      \\\"text\\\": \\\"Table IX shows thyroid cartilage invasion descriptions vs. pathological T-stage across 439 FUZH reports.\\\",\\n      \\\"poster_quote\\\": \\\"TABLE IX : Thyroid cartilage invasion descriptions vs. pathological T-stage across 439 FUZH reports. ’Positive invasion’ includes\\\\nboth definite and suspected cartilage invasion descriptions in CT reports.\\\"\\n    },\\n    {\\n      \\\"id\\\": 112,\\n      \\\"text\\\": \\\"In Table IX, 'Positive invasion' includes both definite and suspected cartilage invasion descriptions in CT reports.\\\",\\n      \\\"poster_quote\\\": \\\"TABLE IX : Thyroid cartilage invasion descriptions vs. pathological T-stage across 439 FUZH reports. ’Positive invasion’ includes\\\\nboth definite and suspected cartilage invasion descriptions in CT reports.\\\"\\n    },\\n    {\\n      \\\"id\\\": 113,\\n      \\\"text\\\": \\\"Table V compares different attention mechanisms in OCA on a representative internal fold.\\\",\\n      \\\"poster_quote\\\": \\\"TABLE V : Comparison of different attention mechanisms in our OCA on a representative internal fold. The results demonstrate the superiority of our proposed method across\\\\nboth datasets.\\\"\\n    },\\n    {\\n      \\\"id\\\": 114,\\n      \\\"text\\\": \\\"The results in Table V demonstrate the superiority of the proposed method across both datasets.\\\",\\n      \\\"poster_quote\\\": \\\"TABLE V : Comparison of different attention mechanisms in our OCA on a representative internal fold. The results demonstrate the superiority of our proposed method across\\\\nboth datasets.\\\"\\n    },\\n    {\\n      \\\"id\\\": 115,\\n      \\\"text\\\": \\\"Table VI shows an ablation study of anatomical topology modeling, comparing different approaches for modeling anatomical relationships on a representative internal fold.\\\",\\n      \\\"poster_quote\\\": \\\"TABLE VI : Ablation study of anatomical topology modeling. Comparison between different approaches for modeling anatomical relationships on a representative\\\\ninternal fold. Fully-Connected Graph represents a complete graph connection strategy, Direct Fusion uses concatenated organ masks, and Global Context applies global feature\\\\npooling.\\\"\\n    },\\n    {\\n      \\\"id\\\": 116,\\n      \\\"text\\\": \\\"In Table VI, Fully-Connected Graph represents a complete graph connection strategy.\\\",\\n      \\\"poster_quote\\\": \\\"TABLE VI : Ablation study of anatomical topology modeling. Comparison between different approaches for modeling anatomical relationships on a representative\\\\ninternal fold. Fully-Connected Graph represents a complete graph connection strategy, Direct Fusion uses concatenated organ masks, and Global Context applies global feature\\\\npooling.\\\"\\n    },\\n    {\\n      \\\"id\\\": 117,\\n      \\\"text\\\": \\\"In Table VI, Direct Fusion uses concatenated organ masks.\\\",\\n      \\\"poster_quote\\\": \\\"TABLE VI : Ablation study of anatomical topology modeling. Comparison between different approaches for modeling anatomical relationships on a representative\\\\ninternal fold. Fully-Connected Graph represents a complete graph connection strategy, Direct Fusion uses concatenated organ masks, and Global Context applies global feature\\\\npooling.\\\"\\n    },\\n    {\\n      \\\"id\\\": 118,\\n      \\\"text\\\": \\\"In Table VI, Global Context applies global feature pooling.\\\",\\n      \\\"poster_quote\\\": \\\"TABLE VI : Ablation study of anatomical topology modeling. Comparison between different approaches for modeling anatomical relationships on a representative\\\\ninternal fold. Fully-Connected Graph represents a complete graph connection strategy, Direct Fusion uses concatenated organ masks, and Global Context applies global feature\\\\npooling.\\\"\\n    },\\n    {\\n      \\\"id\\\": 119,\\n      \\\"text\\\": \\\"Table IV shows an ablation study of key components, comparing performance of different component combinations for binary and three-class T-staging tasks on a representative internal fold.\\\",\\n      \\\"poster_quote\\\": \\\"TABLE IV : Ablation Study of Key Components. Performance comparison of different component combinations for binary and three-class T-staging tasks on a representative\\\\ninternal fold, reported as mean ± standard deviation over three random seeds. AOG, OCA, and REG represent Anatomy-Structured Organ Graph, OrganAnchored\\\\nCross-Modal Alignment, and Report-Enhanced GraphRefinement, respectively.\\\"\\n    },\\n    {\\n      \\\"id\\\": 120,\\n      \\\"text\\\": \\\"The results in Table IV are reported as mean ± standard deviation over three random seeds.\\\",\\n      \\\"poster_quote\\\": \\\"TABLE IV : Ablation Study of Key Components. Performance comparison of different component combinations for binary and three-class T-staging tasks on a representative\\\\ninternal fold, reported as mean ± standard deviation over three random seeds. AOG, OCA, and REG represent Anatomy-Structured Organ Graph, OrganAnchored\\\\nCross-Modal Alignment, and Report-Enhanced GraphRefinement, respectively.\\\"\\n    },\\n    {\\n      \\\"id\\\": 121,\\n      \\\"text\\\": \\\"In Table IV, AOG, OCA, and REG represent Anatomy-Structured Organ Graph, Organ-Anchored Cross-Modal Alignment, and Report-Enhanced Graph-Refinement, respectively.\\\",\\n      \\\"poster_quote\\\": \\\"TABLE IV : Ablation Study of Key Components. Performance comparison of different component combinations for binary and three-class T-staging tasks on a representative\\\\ninternal fold, reported as mean ± standard deviation over three random seeds. AOG, OCA, and REG represent Anatomy-Structured Organ Graph, OrganAnchored\\\\nCross-Modal Alignment, and Report-Enhanced GraphRefinement, respectively.\\\"\\n    },\\n    {\\n      \\\"id\\\": 122,\\n      \\\"text\\\": \\\"Table VII compares T-staging prediction performance of the proposed method versus radiologist assessments.\\\",\\n      \\\"poster_quote\\\": \\\"TABLE VII : Comparison of T-staging prediction performance: our method versus radiologist assessments.\\\"\\n    },\\n    {\\n      \\\"id\\\": 123,\\n      \\\"text\\\": \\\"Fig. 5 evaluates robustness to organ segmentation noise and radiology report variation on a representative internal fold.\\\",\\n      \\\"poster_quote\\\": \\\"Fig. 5 : Robustness to (a) organ segmentation noise and (b) radiology report variation, evaluated on a representative internal fold. (a) Macro-F1 under random organ-mask\\\\nperturbation at ± 5% and ± 10% boundary shifts; (b) macro-F1 when each radiology report is rewritten to be less- or more-detailed while the CT images and the trained model\\\\nare held fixed.\\\"\\n    },\\n    {\\n      \\\"id\\\": 124,\\n      \\\"text\\\": \\\"Fig. 5(a) shows Macro-F1 under random organ-mask perturbation at ± 5% and ± 10% boundary shifts.\\\",\\n      \\\"poster_quote\\\": \\\"Fig. 5 : Robustness to (a) organ segmentation noise and (b) radiology report variation, evaluated on a representative internal fold. (a) Macro-F1 under random organ-mask\\\\nperturbation at ± 5% and ± 10% boundary shifts; (b) macro-F1 when each radiology report is rewritten to be less- or more-detailed while the CT images and the trained model\\\\nare held fixed.\\\"\\n    },\\n    {\\n      \\\"id\\\": 125,\\n      \\\"text\\\": \\\"Fig. 5(b) shows macro-F1 when each radiology report is rewritten to be less- or more-detailed while the CT images and the trained model are held fixed.\\\",\\n      \\\"poster_quote\\\": \\\"Fig. 5 : Robustness to (a) organ segmentation noise and (b) radiology report variation, evaluated on a representative internal fold. (a) Macro-F1 under random organ-mask\\\\nperturbation at ± 5% and ± 10% boundary shifts; (b) macro-F1 when each radiology report is rewritten to be less- or more-detailed while the CT images and the trained model\\\\nare held fixed.\\\"\\n    },\\n    {\\n      \\\"id\\\": 126,\\n      \\\"text\\\": \\\"Fig. 1 compares conventional coarse-grained image-text fusion based on global CT and report information with the proposed anatomy-structured multimodal framework.\\\",\\n      \\\"poster_quote\\\": \\\"Fig. 1 : Comparison between (a) conventional coarse-grained image-text fusion based on global CT and report information [1]-[5], and (b) the proposed anatomy-structured\\\\nmultimodal framework.\\\"\\n    },\\n    {\\n      \\\"id\\\": 127,\\n      \\\"text\\\": \\\"Fig. 6 visualizes OCA cross-attention weights for three cases of different T-stages.\\\",\\n      \\\"poster_quote\\\": \\\"Fig. 6 : Visualization of OCA cross-attention weights for three cases of different T-stages. Each bipartite graph shows organ nodes (left) connected to the most-attended report\\\\nkeywords (right), with line width proportional to attention weight.\\\"\\n    },\\n    {\\n      \\\"id\\\": 128,\\n      \\\"text\\\": \\\"In Fig. 6, each bipartite graph shows organ nodes (left) connected to the most-attended report keywords (right), with line width proportional to attention weight.\\\",\\n      \\\"poster_quote\\\": \\\"Fig. 6 : Visualization of OCA cross-attention weights for three cases of different T-stages. Each bipartite graph shows organ nodes (left) connected to the most-attended report\\\\nkeywords (right), with line width proportional to attention weight.\\\"\\n    }\\n  ]\\n}\\n```\", \"{\\n  \\\"verdicts\\\": [\\n    {\\n      \\\"id\\\": 1,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Early-stage disease (T1–T2) is usually managed with partial laryngectomy, laser resection, or definitive radiotherapy\\\",\\n      \\\"reason\\\": \\\"Section I. The paper states that early-stage disease is managed with partial laryngectomy (which is an organ-preserving procedure, as noted in Section IV.A.1: 'patients with early-stages receive organ-preserving procedures'), laser resection, or definitive radiotherapy.\\\"\\n    },\\n    {\\n      \\\"id\\\": 2,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"whereas advanced stages (T3–T4) often require total laryngectomy combined with adjuvant therapies\\\",\\n      \\\"reason\\\": \\\"Section I. The paper explicitly states that advanced stages often require total laryngectomy combined with adjuvant therapies.\\\"\\n    },\\n    {\\n      \\\"id\\\": 3,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Although the current reference standard relies on biopsy-derived pathology, this process is invasive and time-consuming.\\\",\\n      \\\"reason\\\": \\\"Section I. The paper explicitly states that biopsy-derived pathology is invasive and time-consuming.\\\"\\n    },\\n    {\\n      \\\"id\\\": 4,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"manually reviewing an entire 3-D CT volume remains labor-intensive and subjective\\\",\\n      \\\"reason\\\": \\\"Section I. The paper explicitly states that manually reviewing an entire 3-D CT volume is labor-intensive and subjective.\\\"\\n    },\\n    {\\n      \\\"id\\\": 5,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"since radiology reports often contain explicit statements about which organs are invaded\\\",\\n      \\\"reason\\\": \\\"Section I. The paper explicitly mentions that radiology reports often contain explicit statements about which organs are invaded.\\\"\\n    },\\n    {\\n      \\\"id\\\": 6,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"In practice, however, radiologists typically report only obvious and clinically salient invasion, hence subtle or equivocal extension may be omitted.\\\",\\n      \\\"reason\\\": \\\"Section I. The paper explicitly states that radiologists typically report only obvious/salient invasion, and subtle or equivocal extension may be omitted.\\\"\\n    },\\n    {\\n      \\\"id\\\": 7,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"we retain the anatomy-driven connectivity in AOG and use report information as a high-confidence but incomplete guidance signal. Specifically, we design a Report-Enhanced Graph-Refinement (REG) module that reuses the global report representation as a text node in the graph... while keeping the original organ–organ edges unchanged.\\\",\\n      \\\"reason\\\": \\\"Section I. The paper states that REG refines the graph by adding a text node while keeping the original organ-organ edges unchanged, rather than replacing the anatomy-driven connectivity.\\\"\\n    },\\n    {\\n      \\\"id\\\": 8,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"An anatomy-guided, annotation-free multimodal T-staging framework.\\\",\\n      \\\"reason\\\": \\\"Section I, Contribution 1. The paper explicitly describes the proposed framework as annotation-free and multimodal.\\\"\\n    },\\n    {\\n      \\\"id\\\": 9,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"We cast laryngopharyngeal cancer T-staging as prediction over an anatomy-structured organ graph that combines CT-derived organ features with organ-level textual cues.\\\",\\n      \\\"reason\\\": \\\"Section I, Contribution 2. The paper states that the framework combines CT-derived organ features with organ-level textual cues from reports.\\\"\\n    },\\n    {\\n      \\\"id\\\": 10,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Our framework comprises three key components: an Anatomy-Structured Organ Graph (AOG), an Organ-Anchored Cross-Modal Alignment (OCA), and a Report-Enhanced Graph-Refinement (REG) module.\\\",\\n      \\\"reason\\\": \\\"Section III.A. The paper explicitly lists these three key components of the framework.\\\"\\n    },\\n    {\\n      \\\"id\\\": 11,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Operating on global volumes or isolated tumor masks without an explicit organ-level graph underrepresents the relationships between primary sites and anatomically at-risk organs, limiting the ability to reason about stage-defining invasion patterns.\\\",\\n      \\\"reason\\\": \\\"Section III.B. The paper states that operating on global volumes or isolated tumor masks underrepresents these anatomy-structured relationships.\\\"\\n    },\\n    {\\n      \\\"id\\\": 12,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"While tumor segmentation seems like a natural solution, the heterogeneous appearance of tumors and the requirement for labor-intensive annotations limit its practical application.\\\",\\n      \\\"reason\\\": \\\"Section III.B.1. The paper states that tumor segmentation is limited by the heterogeneous appearance of tumors and the requirement for labor-intensive (costly/difficult) annotations.\\\"\\n    },\\n    {\\n      \\\"id\\\": 13,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"conventional coarse-grained image–text fusion based on global CT and report information\\\",\\n      \\\"reason\\\": \\\"Figure 1 caption. The paper states that conventional methods perform coarse-grained fusion based on global CT and report information.\\\"\\n    },\\n    {\\n      \\\"id\\\": 14,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"while radiology reports contain organ-specific invasion details, current methods that apply global feature fusion struggle to accurately align individual anatomical structures with their corresponding textual descriptions.\\\",\\n      \\\"reason\\\": \\\"Abstract. The paper states that global feature fusion methods struggle to align individual anatomical structures with their corresponding textual descriptions.\\\"\\n    },\\n    {\\n      \\\"id\\\": 15,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Rather than operating on whole CT volumes or relying on manual tumor delineation, AOG leverages a publicly available pre-trained organ segmentation model [15] to obtain reliable organ-specific features\\\",\\n      \\\"reason\\\": \\\"Section I. The paper states that AOG leverages a publicly available pre-trained organ segmentation model to obtain organ-specific features.\\\"\\n    },\\n    {\\n      \\\"id\\\": 16,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The framework first constructs an Anatomy-Structured Organ Graph (AOG) that captures invasion patterns between primary sites and surrounding organs\\\",\\n      \\\"reason\\\": \\\"Abstract. The paper states that AOG captures invasion patterns between primary sites and surrounding organs.\\\"\\n    },\\n    {\\n      \\\"id\\\": 17,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"each organ node derived from CT serves as a query over the radiology report and selectively aggregates fine-grained textual evidence that is most relevant to its appearance, location, and suspected involvement\\\",\\n      \\\"reason\\\": \\\"Section I. The paper states that each organ node queries the report and aggregates the most relevant textual evidence.\\\"\\n    },\\n    {\\n      \\\"id\\\": 18,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"employs a large language model (LLM) to identify which organs are explicitly described as invaded in the report, and connects this text node only to primary sites and to those invaded organs, while keeping the original organ–organ edges unchanged.\\\",\\n      \\\"reason\\\": \\\"Section I. The paper states that REG connects the text node only to primary sites and explicitly invaded organs.\\\"\\n    },\\n    {\\n      \\\"id\\\": 19,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The resulting multimodal organ graph is then fed into a graph neural network that jointly exploits anatomical and report-derived information to predict laryngopharyngeal T-stage.\\\",\\n      \\\"reason\\\": \\\"Section I. The paper states that the graph is processed by a GNN to predict the T-stage, and Section III.D.2 details the global average pooling step.\\\"\\n    },\\n    {\\n      \\\"id\\\": 20,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"This produces a report-guided organ–text graph in which anatomy-based risk relationships are maintained but selectively strengthened along pathways supported by the report.\\\",\\n      \\\"reason\\\": \\\"Section I. The paper states that the design maintains anatomy-based risk relationships while selectively strengthening pathways supported by the report.\\\"\\n    },\\n    {\\n      \\\"id\\\": 21,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Identify which of the following structures are explicitly described as invaded by the tumor: [esophagus, thyroid gland, trachea, oral cavity]. Only include structures with positive invasion statements; exclude negations.\\\",\\n      \\\"reason\\\": \\\"Section III.D.1. The prompt explicitly instructs the LLM to identify positive invasion statements for these four structures.\\\"\\n    },\\n    {\\n      \\\"id\\\": 22,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Only include structures with positive invasion statements; exclude negations.\\\",\\n      \\\"reason\\\": \\\"Section III.D.1. The prompt explicitly instructs the LLM to exclude negations.\\\"\\n    },\\n    {\\n      \\\"id\\\": 23,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Note: thyroid gland (endocrine organ) and thyroid cartilage (laryngeal structure) are different.\\\",\\n      \\\"reason\\\": \\\"Section III.D.1. The prompt explicitly instructs the LLM to distinguish the thyroid gland from thyroid cartilage.\\\"\\n    },\\n    {\\n      \\\"id\\\": 24,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"and manual review confirmed all extractions are correct.\\\",\\n      \\\"reason\\\": \\\"Section III.D.1. The paper states that manual review confirmed all extractions by the LLM are correct.\\\"\\n    },\\n    {\\n      \\\"id\\\": 25,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"we verified that GPT-4o [35] and Qwen-2.5-72B [36] yield exactly the same outputs as Claude 3.5 Haiku on all 439 reports\\\",\\n      \\\"reason\\\": \\\"Section III.D.1. The paper states that multiple LLMs yielded exactly the same outputs on all 439 reports (which are the training reports from FUZH, as described in Section IV.A.1).\\\"\\n    },\\n    {\\n      \\\"id\\\": 26,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The text node feature is then constructed using the global text representation: ht = Wt t1 + bt\\\",\\n      \\\"reason\\\": \\\"Section III.D.1. The paper states that the text node feature is constructed from the global text representation (t1, the [CLS] token representation).\\\"\\n    },\\n    {\\n      \\\"id\\\": 27,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"the text node is connected to all primary sites by default\\\",\\n      \\\"reason\\\": \\\"Section III.D.2. The paper states that the text node is connected to all primary sites by default.\\\"\\n    },\\n    {\\n      \\\"id\\\": 28,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"and additionally linked to target organs that are explicitly mentioned as invaded in the report (k ∈ I).\\\",\\n      \\\"reason\\\": \\\"Section III.D.2. The paper states that the text node is additionally linked only to target organs explicitly mentioned as invaded.\\\"\\n    },\\n    {\\n      \\\"id\\\": 29,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"while keeping the original organ–organ edges unchanged.\\\",\\n      \\\"reason\\\": \\\"Section I and Section III.D.2. The paper states that the original organ-organ edges remain unchanged in the report-enhanced topology.\\\"\\n    },\\n    {\\n      \\\"id\\\": 30,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"By explicitly incorporating structured invasion information from reports into the graph topology, our approach ensures that clinical evidence directly guides the feature refinement process, leading to more accurate staging decisions.\\\",\\n      \\\"reason\\\": \\\"Section III.D.2. The paper states that incorporating structured invasion information into the graph topology ensures clinical evidence directly guides feature refinement.\\\"\\n    },\\n    {\\n      \\\"id\\\": 31,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Relying solely on reported invasion would therefore disconnect organs that are anatomically at risk but not explicitly mentioned, leaving their CT features underutilized. To address this, we retain the anatomy-driven connectivity in AOG\\\",\\n      \\\"reason\\\": \\\"Section I. The paper states that retaining the anatomy-driven connectivity ensures that CT features of organs not explicitly mentioned are not left underutilized.\\\"\\n    },\\n    {\\n      \\\"id\\\": 32,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"followed by global average pooling for staging classification: y = MLP( 1/(K+1) \\\\\\\\sum zk )\\\",\\n      \\\"reason\\\": \\\"Section III.D.2. The paper states that global average pooling and an MLP (classification layer) produce the final prediction.\\\"\\n    },\\n    {\\n      \\\"id\\\": 33,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"We train our framework end-to-end using cross-entropy loss for T-staging classification:\\\",\\n      \\\"reason\\\": \\\"Section III.D.3. The paper states that the framework is trained end-to-end with cross-entropy loss.\\\"\\n    },\\n    {\\n      \\\"id\\\": 34,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"freezing the text encoder not only reduces computational costs but also helps prevent potential overfitting on our specific dataset. Therefore, we adopt the frozen text encoder strategy in our final framework.\\\",\\n      \\\"reason\\\": \\\"Section IV.D.2. The paper states that freezing the text encoder reduces computational costs and prevents overfitting, and is adopted in the final framework.\\\"\\n    },\\n    {\\n      \\\"id\\\": 35,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"We propose, to our knowledge, the first multimodal laryngopharyngeal cancer T-staging framework that constructs an organ-level graph from pre-trained organ segmentations and integrates paired radiology reports without requiring manual tumor masks\\\",\\n      \\\"reason\\\": \\\"Section I, Contribution 1. The paper states that the framework constructs an organ-level graph from pre-trained segmentations without requiring manual tumor masks.\\\"\\n    },\\n    {\\n      \\\"id\\\": 36,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"K=7 Number of predefined anatomical structures\\\",\\n      \\\"reason\\\": \\\"Table I. The paper defines K=7 as the number of predefined anatomical structures.\\\"\\n    },\\n    {\\n      \\\"id\\\": 37,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"P = {1, 2, 3} Indices of primary sites (supraglottic, glottic, subglottic)\\\",\\n      \\\"reason\\\": \\\"Table I. The paper defines the three primary sites as supraglottic, glottic, and subglottic.\\\"\\n    },\\n    {\\n      \\\"id\\\": 38,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"T = {4, 5, 6, 7} Indices of potentially invaded organs (esophagus, thyroid gland, trachea, oral cavity)\\\",\\n      \\\"reason\\\": \\\"Table I. The paper defines the four potentially invaded organs as esophagus, thyroid gland, trachea, and oral cavity.\\\"\\n    },\\n    {\\n      \\\"id\\\": 39,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Specifically, given a CT volume Ii ∈ RH×W ×D , we first employ a pre-trained organ segmentation model to obtain masks for all K organs: Mk = S(Ii), k ∈ {1, ..., K}\\\",\\n      \\\"reason\\\": \\\"Section III.B.1. The paper states that a pre-trained organ segmentation model is used to obtain masks for all K organs from each CT volume.\\\"\\n    },\\n    {\\n      \\\"id\\\": 40,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"To extract organ-specific features, we adopt a Swin Transformer backbone pre-trained on medical images. For each organ mask Mk, we obtain its feature representation through: fk = F(Ii ⊙ Mk)\\\",\\n      \\\"reason\\\": \\\"Section III.B.1. The paper states that each masked region is processed by a medical-image-pretrained Swin Transformer to obtain its feature representation.\\\"\\n    }\\n  ]\\n}\", \"```json\\n{\\n  \\\"verdicts\\\": [\\n    {\\n      \\\"id\\\": 1,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"To effectively capture tumor invasion patterns, we first transform the organ features through a shared feature projection layer: hk = σ(Wp fk + bp) ... These projected features {hk}K k=1 serve as node representations in our graph.\\\",\\n      \\\"reason\\\": \\\"Section III.B.2. The paper explicitly states that a shared feature projection layer transforms the organ features into node representations.\\\"\\n    },\\n    {\\n      \\\"id\\\": 2,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"primary sites are fully interconnected to encode their internal relationships\\\",\\n      \\\"reason\\\": \\\"Section I and Section III.B.2. The paper states that primary sites are fully interconnected to capture their internal relationships.\\\"\\n    },\\n    {\\n      \\\"id\\\": 3,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Et denotes connections between primary sites and their potential invasion targets: Et = {(i, j)|i ∈ P, j ∈ T }\\\",\\n      \\\"reason\\\": \\\"Section III.B.2. The paper defines Et as connections between primary sites and potential invasion targets.\\\"\\n    },\\n    {\\n      \\\"id\\\": 4,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"To enable effective information propagation along these anatomically meaningful pathways, we employ Graph Attention Networks (GAT) for message passing\\\",\\n      \\\"reason\\\": \\\"Section III.B.2. The paper states that GAT is used to propagate information along anatomically (clinically) meaningful pathways.\\\"\\n    },\\n    {\\n      \\\"id\\\": 5,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"This attention mechanism allows the model to dynamically focus on the most relevant invasion relationships for staging decisions.\\\",\\n      \\\"reason\\\": \\\"Section III.B.2. The paper states that the attention mechanism dynamically focuses on the most relevant invasion relationships for staging.\\\"\\n    },\\n    {\\n      \\\"id\\\": 6,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Compared to processing the entire CT volume, focusing on individual organs provides more precise anatomical context, reducing the interference from irrelevant regions.\\\",\\n      \\\"reason\\\": \\\"Section IV.D.3. The paper states that focusing on individual organs reduces interference from irrelevant regions compared to processing the entire CT volume.\\\"\\n    },\\n    {\\n      \\\"id\\\": 7,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Compared to tumors, anatomical organs exhibit more consistent appearances and clear boundaries, enabling robust feature extraction through pre-trained segmentation models\\\",\\n      \\\"reason\\\": \\\"Section III.B.1. The paper states that anatomical organs have more consistent appearances and boundaries than heterogeneous tumors, providing more reliable anchors.\\\"\\n    },\\n    {\\n      \\\"id\\\": 8,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Through this graph-based feature refinement, organ representations are enhanced by incorporating both local anatomical context and global invasion patterns.\\\",\\n      \\\"reason\\\": \\\"Section III.B.2. The paper states that organ representations are enhanced by incorporating local anatomical context and global invasion patterns, while the node features themselves are extracted from local CT regions.\\\"\\n    },\\n    {\\n      \\\"id\\\": 9,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Moreover, our method uses organ masks only to locate cropping regions, so small boundary errors merely shift the crop window without excluding organ content.\\\",\\n      \\\"reason\\\": \\\"Section V. The paper states that the framework is robust to segmentation noise because masks are used only to locate cropping regions.\\\"\\n    },\\n    {\\n      \\\"id\\\": 10,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"the F1 score decreases by only 1.1% and 2.8% under 5% and 10% perturbation levels respectively\\\",\\n      \\\"reason\\\": \\\"Section IV.E. The paper states that F1 decreases by 1.1% under 5% perturbation.\\\"\\n    },\\n    {\\n      \\\"id\\\": 11,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"the F1 score decreases by only 1.1% and 2.8% under 5% and 10% perturbation levels respectively\\\",\\n      \\\"reason\\\": \\\"Section IV.E. The paper states that F1 decreases by 2.8% under 10% perturbation.\\\"\\n    },\\n    {\\n      \\\"id\\\": 12,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"We rewrite each report with a large language model (Claude Haiku), keeping every medical term and measurement verbatim and altering only the level of detail: a less-detailed version drops non-diagnostic content ... and a more-detailed version restates the same findings in more elaborate clinical language without adding new information\\\",\\n      \\\"reason\\\": \\\"Section IV.E. The paper describes evaluating report robustness by rewriting reports into less- and more-detailed forms while keeping findings verbatim.\\\"\\n    },\\n    {\\n      \\\"id\\\": 13,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"macro-F1 stays within 80.4–82.1% and accuracy within 81.8–83.0% across the original and both perturbed conditions\\\",\\n      \\\"reason\\\": \\\"Section IV.E. The paper states that macro-F1 stays within 80.4–82.1% across the original and perturbed report conditions.\\\"\\n    },\\n    {\\n      \\\"id\\\": 14,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"macro-F1 stays within 80.4–82.1% and accuracy within 81.8–83.0% across the original and both perturbed conditions\\\",\\n      \\\"reason\\\": \\\"Section IV.E. The paper states that accuracy stays within 81.8–83.0% across the original and perturbed report conditions.\\\"\\n    },\\n    {\\n      \\\"id\\\": 15,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"(at most a 1.7-point change in macro-F1). This indicates that the framework is resilient to the level of detail and completeness of the input report.\\\",\\n      \\\"reason\\\": \\\"Section IV.E. The paper states that the maximum macro-F1 change is 1.7 points, indicating resilience to report variation.\\\"\\n    },\\n    {\\n      \\\"id\\\": 16,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Over-staging (9/16 cases, 56%): the model predicted T3–T4 for pathologically confirmed T1–T2 cases.\\\",\\n      \\\"reason\\\": \\\"Section IV.H. The paper states that 9 out of 16 misclassified cases were over-staged.\\\"\\n    },\\n    {\\n      \\\"id\\\": 17,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"In 7 of these 9 cases, the radiology report explicitly described cartilage invasion that was not confirmed by pathological examination, reflecting CT’s known limitation in distinguishing tumor contact from true cartilage invasion\\\",\\n      \\\"reason\\\": \\\"Section IV.H. The paper states that over-staging was often due to reports describing cartilage invasion not confirmed by pathology.\\\"\\n    },\\n    {\\n      \\\"id\\\": 18,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Under-staging (7/16 cases, 44%): the model predicted T1–T2 for pathologically confirmed T3–T4 cases.\\\",\\n      \\\"reason\\\": \\\"Section IV.H. The paper states that 7 out of 16 misclassified cases were under-staged.\\\"\\n    },\\n    {\\n      \\\"id\\\": 19,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"In 5 of these 7 cases, the report contained no invasion description or explicitly stated “no evidence of invasion,” despite pathological confirmation.\\\",\\n      \\\"reason\\\": \\\"Section IV.H. The paper states that under-staging was frequently associated with reports omitting invasion or stating it was absent.\\\"\\n    },\\n    {\\n      \\\"id\\\": 20,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"These errors arise from discordance between the available CT/report evidence and the pathological ground truth, which the fusion transmits faithfully rather than mis-aligning.\\\",\\n      \\\"reason\\\": \\\"Section IV.H. The paper states that errors reflect CT-pathology discordance rather than cross-modal misalignment.\\\"\\n    },\\n    {\\n      \\\"id\\\": 21,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The baseline model, which directly processes the whole CT volume for prediction without any anatomical guidance or textual information, achieves only 58.76% and 39.16% macro F1-scores in binary and three-class settings, respectively.\\\",\\n      \\\"reason\\\": \\\"Section IV.D.1 and Table IV. The baseline model achieves 58.76% macro F1 for binary staging.\\\"\\n    },\\n    {\\n      \\\"id\\\": 22,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The baseline model, which directly processes the whole CT volume for prediction without any anatomical guidance or textual information, achieves only 58.76% and 39.16% macro F1-scores in binary and three-class settings, respectively.\\\",\\n      \\\"reason\\\": \\\"Section IV.D.1 and Table IV. The baseline model achieves 39.16% macro F1 for three-class staging.\\\"\\n    },\\n    {\\n      \\\"id\\\": 23,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Adding AOG substantially improves the performance (77.96% and 52.80% F1-scores)\\\",\\n      \\\"reason\\\": \\\"Section IV.D.1 and Table IV. Adding AOG yields 77.96% macro F1 for binary staging.\\\"\\n    },\\n    {\\n      \\\"id\\\": 24,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Adding AOG substantially improves the performance (77.96% and 52.80% F1-scores)\\\",\\n      \\\"reason\\\": \\\"Section IV.D.1 and Table IV. Adding AOG yields 52.80% macro F1 for three-class staging.\\\"\\n    },\\n    {\\n      \\\"id\\\": 25,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"When applying the OCA module alone, the performance further increases to 80.97% and 58.47% for binary and three-class settings\\\",\\n      \\\"reason\\\": \\\"Section IV.D.1 and Table IV. OCA alone achieves 80.97% macro F1 for binary staging.\\\"\\n    },\\n    {\\n      \\\"id\\\": 26,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"When applying the OCA module alone, the performance further increases to 80.97% and 58.47% for binary and three-class settings\\\",\\n      \\\"reason\\\": \\\"Section IV.D.1 and Table IV. OCA alone achieves 58.47% macro F1 for three-class staging.\\\"\\n    },\\n    {\\n      \\\"id\\\": 27,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"When combining AOG and OCA, we observe further performance gains (81.63% and 61.52% F1-scores)\\\",\\n      \\\"reason\\\": \\\"Section IV.D.1 and Table IV. Combining AOG and OCA yields 81.63% macro F1 for binary staging.\\\"\\n    },\\n    {\\n      \\\"id\\\": 28,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"When combining AOG and OCA, we observe further performance gains (81.63% and 61.52% F1-scores)\\\",\\n      \\\"reason\\\": \\\"Section IV.D.1 and Table IV. Combining AOG and OCA yields 61.52% macro F1 for three-class staging.\\\"\\n    },\\n    {\\n      \\\"id\\\": 29,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Finally, incorporating REG on top of both AOG and OCA yields the best overall performance, with macro F1-scores of 83.96% and 64.53% in binary and three-class settings\\\",\\n      \\\"reason\\\": \\\"Section IV.D.1 and Table IV. The full model with REG achieves 83.96% macro F1 for binary staging.\\\"\\n    },\\n    {\\n      \\\"id\\\": 30,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Finally, incorporating REG on top of both AOG and OCA yields the best overall performance, with macro F1-scores of 83.96% and 64.53% in binary and three-class settings\\\",\\n      \\\"reason\\\": \\\"Section IV.D.1 and Table IV. The full model with REG achieves 64.53% macro F1 for three-class staging.\\\"\\n    },\\n    {\\n      \\\"id\\\": 31,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"the full model attains both the highest mean and the smallest variance, and REG yields a further improvement over AOG+OCA.\\\",\\n      \\\"reason\\\": \\\"Section IV.D.1. The paper states that the full model achieves the highest mean and smallest variance.\\\"\\n    },\\n    {\\n      \\\"id\\\": 32,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"we compare our method with three baseline approaches: 1) Fully-Connected Graph... 2) Direct Fusion... and 3) Global Context... The results demonstrate the clear advantages of our AOG approach.\\\",\\n      \\\"reason\\\": \\\"Section IV.F and Table VI. AOG outperforms fully connected graphs, direct fusion, and global context.\\\"\\n    },\\n    {\\n      \\\"id\\\": 33,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Specifically, our method achieves significant improvements over all baselines, with F1 scores of 77.76% and 73.33% on internal and external tests respectively.\\\",\\n      \\\"reason\\\": \\\"Section IV.F and Table VI. Ours (AOG) achieves 77.76% internal F1.\\\"\\n    },\\n    {\\n      \\\"id\\\": 34,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Specifically, our method achieves significant improvements over all baselines, with F1 scores of 77.76% and 73.33% on internal and external tests respectively.\\\",\\n      \\\"reason\\\": \\\"Section IV.F and Table VI. Ours (AOG) achieves 73.33% external F1.\\\"\\n    },\\n    {\\n      \\\"id\\\": 35,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"This represents improvements of 3.85% and 4.33% over the strongest baseline (Fully-Connected Graph) in F1 score.\\\",\\n      \\\"reason\\\": \\\"Section IV.F. AOG improves over the strongest baseline (Fully-Connected Graph) by 3.85% on internal F1 (77.76% vs 73.91%).\\\"\\n    },\\n    {\\n      \\\"id\\\": 36,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"This represents improvements of 3.85% and 4.33% over the strongest baseline (Fully-Connected Graph) in F1 score.\\\",\\n      \\\"reason\\\": \\\"Section IV.F. AOG improves over the strongest baseline (Fully-Connected Graph) by 4.33% on external F1 (73.33% vs 69.00%).\\\"\\n    },\\n    {\\n      \\\"id\\\": 37,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"As shown in Table V, our proposed method consistently outperforms other attention mechanisms across both settings.\\\",\\n      \\\"reason\\\": \\\"Section IV.G and Table V. OCA outperforms Global+Attention, Local+Attention, Common Attention, and MultiToken Attention.\\\"\\n    },\\n    {\\n      \\\"id\\\": 38,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"For internal testing, our method achieves the highest F1 score of 81.93% and accuracy of 82.95%\\\",\\n      \\\"reason\\\": \\\"Section IV.G and Table V. OCA achieves 81.93% internal F1.\\\"\\n    },\\n    {\\n      \\\"id\\\": 39,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"More importantly, on the external test set, our method maintains strong performance with 76.10% F1 score and 76.50% accuracy\\\",\\n      \\\"reason\\\": \\\"Section IV.G and Table V. OCA achieves 76.10% external F1.\\\"\\n    },\\n    {\\n      \\\"id\\\": 40,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Particularly, the thyroid-focused model demonstrates the strongest performance, achieving average F1-scores of 0.716 (internal) and 0.582 (external)\\\",\\n      \\\"reason\\\": \\\"Section IV.D.3 and Figure 4. The thyroid-focused model achieves an average internal F1 score of 0.716.\\\"\\n    }\\n  ]\\n}\\n```\", \"```json\\n{\\n  \\\"verdicts\\\": [\\n    {\\n      \\\"id\\\": 1,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Particularly, the thyroid-focused model demonstrates the strongest performance, achieving average F1-scores of 0.716 (internal) and 0.582 (external), significantly surpassing the global baseline’s 0.588 (internal) and 0.436 (external).\\\",\\n      \\\"reason\\\": \\\"Section IV.D.3, page 9. The paper explicitly states that the thyroid-focused model achieves an average F1 score of 0.582 externally.\\\"\\n    },\\n    {\\n      \\\"id\\\": 2,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Particularly, the thyroid-focused model demonstrates the strongest performance, achieving average F1-scores of 0.716 (internal) and 0.582 (external), significantly surpassing the global baseline’s 0.588 (internal) and 0.436 (external).\\\",\\n      \\\"reason\\\": \\\"Section IV.D.3, page 9. The paper explicitly states that the global baseline achieves an average F1 score of 0.588 internally.\\\"\\n    },\\n    {\\n      \\\"id\\\": 3,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Particularly, the thyroid-focused model demonstrates the strongest performance, achieving average F1-scores of 0.716 (internal) and 0.582 (external), significantly surpassing the global baseline’s 0.588 (internal) and 0.436 (external).\\\",\\n      \\\"reason\\\": \\\"Section IV.D.3, page 9. The paper explicitly states that the global baseline achieves an average F1 score of 0.436 externally.\\\"\\n    },\\n    {\\n      \\\"id\\\": 4,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Models focusing on the trachea and esophagus also show consistent advantages over global processing, while the oral cavity model exhibits comparable performance.\\\",\\n      \\\"reason\\\": \\\"Section IV.D.3, page 9. The paper states that models focusing on the trachea show consistent advantages over global processing.\\\"\\n    },\\n    {\\n      \\\"id\\\": 5,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Models focusing on the trachea and esophagus also show consistent advantages over global processing, while the oral cavity model exhibits comparable performance.\\\",\\n      \\\"reason\\\": \\\"Section IV.D.3, page 9. The paper states that models focusing on the esophagus show consistent advantages over global processing.\\\"\\n    },\\n    {\\n      \\\"id\\\": 6,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Coarse image–text Alignment: Global fusion methods cannot reliably associate specific anatomical structures with their relevant clinical descriptions in the radiology report, leaving organ features weakly grounded in textual evidence.\\\",\\n      \\\"reason\\\": \\\"Section III.C, page 5. The paper states that global fusion methods cannot reliably associate specific anatomical structures with their relevant clinical descriptions in the radiology report.\\\"\\n    },\\n    {\\n      \\\"id\\\": 7,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"To accurately capture this domain-specific information, we employ a pretrained biomedical language model, specifically BioBERT [33] (dmis-lab/biobert-base-cased-v1.2). Given a radiology report Ri , we first tokenize it into a sequence: Ri → {w1 , w2 , ..., wL }\\\",\\n      \\\"reason\\\": \\\"Section III.C.1, page 5. The paper describes tokenizing and encoding the report using a pre-trained biomedical language model (BioBERT).\\\"\\n    },\\n    {\\n      \\\"id\\\": 8,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"These tokens are then processed through the language model to obtain contextualized representations: T = E({w1 , w2 , ..., wL })\\\",\\n      \\\"reason\\\": \\\"Section III.C.1, page 5. The paper states that the tokens are processed through the language model to obtain contextualized representations.\\\"\\n    },\\n    {\\n      \\\"id\\\": 9,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Specifically, for each organ k, we use its visual feature hk as a query to attend to the text tokens:\\\",\\n      \\\"reason\\\": \\\"Section III.C.2, page 5. The paper states that each organ's visual feature is used as a query to attend to the text tokens.\\\"\\n    },\\n    {\\n      \\\"id\\\": 10,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"each organ node derived from CT serves as a query over the radiology report and selectively aggregates fine-grained textual evidence that is most relevant to its appearance, location, and suspected involvement, yielding text-enhanced organ representations while keeping the anatomy-guided graph topology unchanged.\\\",\\n      \\\"reason\\\": \\\"Section I, page 2. The paper states that each organ node derived from CT serves as a query to selectively aggregate textual evidence relevant to its appearance, location, and suspected involvement.\\\"\\n    },\\n    {\\n      \\\"id\\\": 11,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The enhanced organ features are then computed through weighted aggregation of text features:\\\\n\\\\nh̃k = hk + \\\\\\\\sum_{l=1}^L \\\\\\\\alpha_{k,l} (Wv tl)\\\",\\n      \\\"reason\\\": \\\"Section III.C.2, page 5. Equation 11 shows the combination of the visual node feature with the weighted report representation to yield the enhanced organ feature.\\\"\\n    },\\n    {\\n      \\\"id\\\": 12,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"yielding text-enhanced organ representations while keeping the anatomy-guided graph topology unchanged.\\\",\\n      \\\"reason\\\": \\\"Section I, page 2. The paper explicitly states that the text-enhanced organ representations are yielded while keeping the anatomy-guided graph topology unchanged.\\\"\\n    },\\n    {\\n      \\\"id\\\": 13,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"This design enables each organ to selectively attend to its relevant textual descriptions, facilitating fine-grained cross-modal alignment.\\\",\\n      \\\"reason\\\": \\\"Section III.C.2, page 5. The paper states that each organ selectively attends to its relevant textual descriptions rather than sharing a global representation.\\\"\\n    },\\n    {\\n      \\\"id\\\": 14,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"the early-stage case (T1) attends primarily to anatomical location terms (“supraglottic,” “epiglottis”);\\\",\\n      \\\"reason\\\": \\\"Section IV.G, page 10. The paper states that early-stage cases attend primarily to anatomical location terms such as supraglottic and epiglottis.\\\"\\n    },\\n    {\\n      \\\"id\\\": 15,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"the T2 case shows cross-organ attention as the Subglottic node attends to adjacent structure tokens;\\\",\\n      \\\"reason\\\": \\\"Section IV.G, page 10. The paper states that the T2 case shows cross-organ attention to adjacent structure tokens.\\\"\\n    },\\n    {\\n      \\\"id\\\": 16,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"and the advanced case (T3) concentrates on invasion-related keywords (“invades,” “cartilage”).\\\",\\n      \\\"reason\\\": \\\"Section IV.G, page 10. The paper states that the advanced case concentrates on invasion-related keywords such as invades and cartilage.\\\"\\n    },\\n    {\\n      \\\"id\\\": 17,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"To address these issues, we propose an anatomy-aware multimodal framework that jointly models anatomical structure and fine-grained alignment to enhance T-staging performance.\\\",\\n      \\\"reason\\\": \\\"Section II.B, page 3. The paper states that modeling anatomical structure and fine-grained alignment enhances T-staging performance.\\\"\\n    },\\n    {\\n      \\\"id\\\": 18,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Beyond performance, our framework offers improved interpretability by aligning decision-making with clinically meaningful invasion pathways, thereby enhancing its potential for real-world adoption.\\\",\\n      \\\"reason\\\": \\\"Section VI, page 12. The paper states that the framework offers improved interpretability by aligning decision-making with clinically meaningful invasion pathways.\\\"\\n    },\\n    {\\n      \\\"id\\\": 19,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"We propose, to our knowledge, the first multimodal laryngopharyngeal cancer T-staging framework that constructs an organ-level graph from pre-trained organ segmentations and integrates paired radiology reports without requiring manual tumor masks, making it practical for full 3D volumes in routine clinical workflows.\\\",\\n      \\\"reason\\\": \\\"Section I, page 2. The paper states that the framework integrates paired radiology reports and organ-level graphs from CT without requiring manual tumor masks.\\\"\\n    },\\n    {\\n      \\\"id\\\": 20,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"To capture the characteristic pattern of tumor spread in laryngopharyngeal cancer, we first construct an Anatomy-Structured Organ Graph (AOG) that explicitly models spatial relationships among key laryngopharyngeal structures.\\\",\\n      \\\"reason\\\": \\\"Section I, page 2. The paper states that AOG explicitly models spatial relationships among key structures to capture tumor spread patterns.\\\"\\n    },\\n    {\\n      \\\"id\\\": 21,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"then performs Organ-Anchored Cross-Modal Alignment (OCA) so that each organ node aggregates textual evidence from the radiology report,\\\",\\n      \\\"reason\\\": \\\"Section I, page 2. The paper states that OCA performs cross-modal alignment so that each organ node aggregates textual evidence from the report.\\\"\\n    },\\n    {\\n      \\\"id\\\": 22,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Specifically, we design a Report-Enhanced Graph-Refinement (REG) module that reuses the global report representation as a text node in the graph, employs a large language model (LLM) to identify which organs are explicitly described as invaded in the report, and connects this text node only to primary sites and to those invaded organs, while keeping the original organ–organ edges unchanged.\\\",\\n      \\\"reason\\\": \\\"Section I, page 2. The paper states that REG connects the text node to primary sites and invaded organs while keeping the original organ-organ edges unchanged.\\\"\\n    },\\n    {\\n      \\\"id\\\": 23,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"We conduct extensive experiments on a cohort of 656 patients from four hospitals\\\",\\n      \\\"reason\\\": \\\"Section I, page 2-3. The paper states that experiments were conducted on a cohort of 656 patients.\\\"\\n    },\\n    {\\n      \\\"id\\\": 24,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"We conduct extensive experiments on a cohort of 656 patients from four hospitals\\\",\\n      \\\"reason\\\": \\\"Section I, page 2-3. The paper states that the 656 patients were from four hospitals.\\\"\\n    },\\n    {\\n      \\\"id\\\": 25,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"in both binary (T1–T2 vs. T3–T4) and three-class settings, and evaluate generalization on internal and external test sets, demonstrating consistent improvements over strong imaging-only and multimodal baselines.\\\",\\n      \\\"reason\\\": \\\"Section I, page 3. The paper states that the framework demonstrates consistent improvements over strong imaging-only and multimodal baselines in both binary and three-class settings.\\\"\\n    },\\n    {\\n      \\\"id\\\": 26,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"and evaluate generalization on internal and external test sets, demonstrating consistent improvements over strong imaging-only and multimodal baselines.\\\",\\n      \\\"reason\\\": \\\"Section I, page 3. The paper states that they evaluate generalization on external test sets.\\\"\\n    },\\n    {\\n      \\\"id\\\": 27,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"confirming that our region-based cropping design is robust to realistic segmentation errors.\\\",\\n      \\\"reason\\\": \\\"Section IV.E, page 9. The paper states that the framework is robust to segmentation errors and resilient to the level of detail and completeness of the input report.\\\"\\n    },\\n    {\\n      \\\"id\\\": 28,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"These results confirm the effectiveness of our method in predicting laryngopharyngeal cancer T-staging, demonstrating performance on par with or exceeding experienced radiologists.\\\",\\n      \\\"reason\\\": \\\"Section IV.H, page 10. The paper states that the method demonstrates performance on par with or exceeding experienced radiologists.\\\"\\n    },\\n    {\\n      \\\"id\\\": 29,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Beyond performance, our framework offers improved interpretability by aligning decision-making with clinically meaningful invasion pathways, thereby enhancing its potential for real-world adoption.\\\",\\n      \\\"reason\\\": \\\"Section VI, page 12. The paper states that the framework offers improved interpretability by aligning decision-making with clinically meaningful invasion pathways.\\\"\\n    },\\n    {\\n      \\\"id\\\": 30,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"TABLE VIII: Cross-modal alignment of correct and misclassified cases. Mean invasion-token attention mass placed by the potentially-invaded organ nodes on invasion-related report tokens, on the Fold 1 internal test set.\\\",\\n      \\\"reason\\\": \\\"Table VIII, page 12. The caption of Table VIII matches the claim exactly.\\\"\\n    },\\n    {\\n      \\\"id\\\": 31,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"TABLE IX: Thyroid cartilage invasion descriptions vs. pathological T-stage across 439 FUZH reports.\\\",\\n      \\\"reason\\\": \\\"Table IX, page 12. The caption of Table IX matches the claim exactly.\\\"\\n    },\\n    {\\n      \\\"id\\\": 32,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"“Positive invasion” includes both definite and suspected cartilage invasion descriptions in CT reports.\\\",\\n      \\\"reason\\\": \\\"Table IX, page 12. The caption of Table IX explicitly defines 'Positive invasion' in this way.\\\"\\n    },\\n    {\\n      \\\"id\\\": 33,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"TABLE V: Comparison of different attention mechanisms in our OCA on a representative internal fold.\\\",\\n      \\\"reason\\\": \\\"Table V, page 9. The caption of Table V matches the claim exactly.\\\"\\n    },\\n    {\\n      \\\"id\\\": 34,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The results demonstrate the superiority of our proposed method across both datasets.\\\",\\n      \\\"reason\\\": \\\"Table V, page 9. The caption of Table V explicitly states that the results demonstrate the superiority of the proposed method across both datasets.\\\"\\n    },\\n    {\\n      \\\"id\\\": 35,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"TABLE VI: Ablation study of anatomical topology modeling. Comparison between different approaches for modeling anatomical relationships on a representative internal fold.\\\",\\n      \\\"reason\\\": \\\"Table VI, page 9. The caption of Table VI matches the claim exactly.\\\"\\n    },\\n    {\\n      \\\"id\\\": 36,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Fully-Connected Graph represents a complete graph connection strategy, Direct Fusion uses concatenated organ masks, and Global Context applies global feature pooling.\\\",\\n      \\\"reason\\\": \\\"Table VI, page 9. The caption of Table VI explicitly defines Fully-Connected Graph in this way.\\\"\\n    },\\n    {\\n      \\\"id\\\": 37,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Fully-Connected Graph represents a complete graph connection strategy, Direct Fusion uses concatenated organ masks, and Global Context applies global feature pooling.\\\",\\n      \\\"reason\\\": \\\"Table VI, page 9. The caption of Table VI explicitly defines Direct Fusion in this way.\\\"\\n    },\\n    {\\n      \\\"id\\\": 38,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Fully-Connected Graph represents a complete graph connection strategy, Direct Fusion uses concatenated organ masks, and Global Context applies global feature pooling.\\\",\\n      \\\"reason\\\": \\\"Table VI, page 9. The caption of Table VI explicitly defines Global Context in this way.\\\"\\n    },\\n    {\\n      \\\"id\\\": 39,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"TABLE IV: Ablation Study of Key Components. Performance comparison of different component combinations for binary and three-class T-staging tasks on a representative internal fold, reported as mean ± standard deviation over three random seeds.\\\",\\n      \\\"reason\\\": \\\"Table IV, page 7. The caption of Table IV matches the claim exactly.\\\"\\n    },\\n    {\\n      \\\"id\\\": 40,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"TABLE IV: Ablation Study of Key Components. Performance comparison of different component combinations for binary and three-class T-staging tasks on a representative internal fold, reported as mean ± standard deviation over three random seeds.\\\",\\n      \\\"reason\\\": \\\"Table IV, page 7. The caption of Table IV explicitly states that the results are reported as mean ± standard deviation over three random seeds.\\\"\\n    }\\n  ]\\n}\\n```\", \"```json\\n{\\n  \\\"verdicts\\\": [\\n    {\\n      \\\"id\\\": 1,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"AOG, OCA, and REG represent Anatomy-Structured Organ Graph, Organ-Anchored Cross-Modal Alignment, and Report-Enhanced Graph-Refinement, respectively.\\\",\\n      \\\"reason\\\": \\\"Table IV caption explicitly defines these abbreviations.\\\"\\n    },\\n    {\\n      \\\"id\\\": 2,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"TABLE VII: Comparison of T-staging prediction performance: our method versus radiologist assessments.\\\",\\n      \\\"reason\\\": \\\"Table VII caption explicitly states this comparison.\\\"\\n    },\\n    {\\n      \\\"id\\\": 3,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Robustness to (a) organ segmentation noise and (b) radiology report variation, evaluated on a representative internal fold.\\\",\\n      \\\"reason\\\": \\\"Fig. 5 caption explicitly states that it evaluates robustness to these factors on a representative internal fold.\\\"\\n    },\\n    {\\n      \\\"id\\\": 4,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"(a) Macro-F1 under random organ-mask perturbation at ±5% and ±10% boundary shifts;\\\",\\n      \\\"reason\\\": \\\"Fig. 5 caption explicitly describes subfigure (a) as showing Macro-F1 under these perturbations.\\\"\\n    },\\n    {\\n      \\\"id\\\": 5,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"(b) macro-F1 when each radiology report is rewritten to be less- or more-detailed while the CT images and the trained model are held fixed.\\\",\\n      \\\"reason\\\": \\\"Fig. 5 caption explicitly describes subfigure (b) as showing macro-F1 under these conditions.\\\"\\n    },\\n    {\\n      \\\"id\\\": 6,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Comparison between (a) conventional coarse-grained image–text fusion based on global CT and report information [1]–[5], and (b) the proposed anatomy-structured multimodal framework.\\\",\\n      \\\"reason\\\": \\\"Fig. 1 caption explicitly states this comparison.\\\"\\n    },\\n    {\\n      \\\"id\\\": 7,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Visualization of OCA cross-attention weights for three cases of different T-stages.\\\",\\n      \\\"reason\\\": \\\"Fig. 6 caption explicitly states that it visualizes OCA cross-attention weights for three cases of different T-stages.\\\"\\n    },\\n    {\\n      \\\"id\\\": 8,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Each bipartite graph shows organ nodes (left) connected to the most-attended report keywords (right), with line width proportional to attention weight.\\\",\\n      \\\"reason\\\": \\\"Fig. 6 caption explicitly describes the structure and visual encoding of the bipartite graphs.\\\"\\n    }\\n  ]\\n}\\n```\"]"
+}

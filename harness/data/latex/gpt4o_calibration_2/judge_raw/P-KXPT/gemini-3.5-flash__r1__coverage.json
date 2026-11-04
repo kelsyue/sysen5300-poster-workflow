@@ -1,0 +1,59 @@
+{
+  "model": "gemini-3.5-flash",
+  "repeat": 1,
+  "judge_prompt_sha256": "4ec65050cfdc718218dbc587f672291e733fd03b1254c20d77b61b0933e16162",
+  "error": null,
+  "tokens_in": 11732,
+  "tokens_out": 6900,
+  "max_output_tokens": 32768,
+  "parsed": {
+    "items": {
+      "chk_problem": {
+        "label": "accurate",
+        "poster_evidence": "Accurate T-staging is crucial for personalized treatment of laryngopharyngeal cancer. Early-stage disease is generally managed with organ-preserving surgery, laser resection, or definitive radiotherapy, whereas advanced disease often requires total laryngectomy and adjuvant treatment. Pathology-based staging is invasive and time-consuming, while manual review of an entire 3D CT volume is labor-intensive and subjective. Radiologists must track the tumor across many slices and assess extension into tightly packed adjacent structures, making borderline invasion particularly difficult to determine. Existing computer-aided approaches have two major limitations. First, whole-volume models and isolated tumor masks underrepresent the anatomy-structured pattern of tumor spread; manual tumor segmentation is also costly and difficult because tumors have heterogeneous appearances. Second, conventional multimodal methods fuse global CT and report representations, making it difficult to align individual anatomical structures with their corresponding textual findings.",
+        "reason": "The poster clearly describes the clinical importance of T-staging, the challenges of CT-based staging, and the limitations of existing computer-aided methods in the 'Clinical Need' section."
+      },
+      "chk_method": {
+        "label": "accurate",
+        "poster_evidence": "We propose an annotation-free multimodal framework that combines CT-derived organ features with organ-specific evidence from radiology reports. The framework contains three components: Anatomy-Structured Organ Graph (AOG), Organ-Anchored Cross-Modal Alignment (OCA), and Report-Enhanced Graph-Refinement (REG).",
+        "reason": "The poster introduces the proposed framework and its three core components (AOG, OCA, and REG) in the 'Framework' section."
+      },
+      "chk_data": {
+        "label": "accurate",
+        "poster_evidence": "Evaluation on 656 patients from four centers demonstrates consistent improvements over strong image-only and multimodal baselines in binary and three-class staging.",
+        "reason": "The poster mentions the dataset of 656 patients from four centers with CT and radiology reports in the 'Conclusion' section, and references the 439 training reports in the 'Graph Refinement' section."
+      },
+      "chk_setup": {
+        "label": "missing",
+        "poster_evidence": "",
+        "reason": "The poster does not mention the experimental setup details such as PyTorch, NVIDIA H20 GPU, resampling to 1mm3, resizing to 128x128x128, or Hounsfield Unit normalization."
+      },
+      "chk_primary_result": {
+        "label": "missing",
+        "poster_evidence": "",
+        "reason": "The poster does not report the overall binary classification test results (80.83% F1 and 81.53% accuracy on the internal test set, or 76.46% F1 and 76.50% accuracy on the external test set), only reporting fold-level ablation results."
+      },
+      "chk_secondary_result": {
+        "label": "missing",
+        "poster_evidence": "",
+        "reason": "The poster does not report the overall three-class classification test results (61.43% F1 and 63.33% accuracy on the internal test set, or 60.27% F1 and 63.78% accuracy on the external test set)."
+      },
+      "chk_baseline": {
+        "label": "missing",
+        "poster_evidence": "",
+        "reason": "The poster does not name or identify the specific baselines (SwinViT, VDPF, MRSN, CPAM, TGCAM, MMBCD, LViT, MMI) compared against in the paper."
+      },
+      "chk_conclusion": {
+        "label": "accurate",
+        "poster_evidence": "We introduce an anatomy-structured multimodal framework that integrates 3D CT volumes and radiology reports for laryngopharyngeal cancer T-staging without manual tumor masks... Evaluation on 656 patients from four centers demonstrates consistent improvements over strong image-only and multimodal baselines in binary and three-class staging. The model generalizes to external cohorts, remains robust to segmentation noise and report variation, and performs on par with or better than experienced radiologists.",
+        "reason": "The poster's 'Conclusion' section states that the framework consistently improves over baselines, generalizes to external cohorts, and performs on par with or better than experienced radiologists."
+      },
+      "chk_limitation": {
+        "label": "accurate",
+        "poster_evidence": "Error analysis identifies two dominant patterns. Nine of sixteen errors are over-staging cases, often caused by reports describing cartilage invasion that pathology does not confirm. Seven are under-staging cases, frequently associated with reports that omit invasion or state that invasion is absent despite pathological confirmation. These findings reflect inherent CT-pathology discordance rather than simple cross-modal misalignment and motivate uncertainty-aware fusion and clinical review of borderline cases.",
+        "reason": "The poster describes the inherent CT-pathology discordance (over-staging and under-staging) in the 'Robustness' section under error analysis."
+      }
+    }
+  },
+  "raw": "```json\n{\n  \"items\": {\n    \"chk_problem\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Accurate T-staging is crucial for personalized treatment of laryngopharyngeal cancer. Early-stage disease is generally managed with organ-preserving surgery, laser resection, or definitive radiotherapy, whereas advanced disease often requires total laryngectomy and adjuvant treatment. Pathology-based staging is invasive and time-consuming, while manual review of an entire 3D CT volume is labor-intensive and subjective. Radiologists must track the tumor across many slices and assess extension into tightly packed adjacent structures, making borderline invasion particularly difficult to determine. Existing computer-aided approaches have two major limitations. First, whole-volume models and isolated tumor masks underrepresent the anatomy-structured pattern of tumor spread; manual tumor segmentation is also costly and difficult because tumors have heterogeneous appearances. Second, conventional multimodal methods fuse global CT and report representations, making it difficult to align individual anatomical structures with their corresponding textual findings.\",\n      \"reason\": \"The poster clearly describes the clinical importance of T-staging, the challenges of CT-based staging, and the limitations of existing computer-aided methods in the 'Clinical Need' section.\"\n    },\n    \"chk_method\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"We propose an annotation-free multimodal framework that combines CT-derived organ features with organ-specific evidence from radiology reports. The framework contains three components: Anatomy-Structured Organ Graph (AOG), Organ-Anchored Cross-Modal Alignment (OCA), and Report-Enhanced Graph-Refinement (REG).\",\n      \"reason\": \"The poster introduces the proposed framework and its three core components (AOG, OCA, and REG) in the 'Framework' section.\"\n    },\n    \"chk_data\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Evaluation on 656 patients from four centers demonstrates consistent improvements over strong image-only and multimodal baselines in binary and three-class staging.\",\n      \"reason\": \"The poster mentions the dataset of 656 patients from four centers with CT and radiology reports in the 'Conclusion' section, and references the 439 training reports in the 'Graph Refinement' section.\"\n    },\n    \"chk_setup\": {\n      \"label\": \"missing\",\n      \"poster_evidence\": \"\",\n      \"reason\": \"The poster does not mention the experimental setup details such as PyTorch, NVIDIA H20 GPU, resampling to 1mm3, resizing to 128x128x128, or Hounsfield Unit normalization.\"\n    },\n    \"chk_primary_result\": {\n      \"label\": \"missing\",\n      \"poster_evidence\": \"\",\n      \"reason\": \"The poster does not report the overall binary classification test results (80.83% F1 and 81.53% accuracy on the internal test set, or 76.46% F1 and 76.50% accuracy on the external test set), only reporting fold-level ablation results.\"\n    },\n    \"chk_secondary_result\": {\n      \"label\": \"missing\",\n      \"poster_evidence\": \"\",\n      \"reason\": \"The poster does not report the overall three-class classification test results (61.43% F1 and 63.33% accuracy on the internal test set, or 60.27% F1 and 63.78% accuracy on the external test set).\"\n    },\n    \"chk_baseline\": {\n      \"label\": \"missing\",\n      \"poster_evidence\": \"\",\n      \"reason\": \"The poster does not name or identify the specific baselines (SwinViT, VDPF, MRSN, CPAM, TGCAM, MMBCD, LViT, MMI) compared against in the paper.\"\n    },\n    \"chk_conclusion\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"We introduce an anatomy-structured multimodal framework that integrates 3D CT volumes and radiology reports for laryngopharyngeal cancer T-staging without manual tumor masks... Evaluation on 656 patients from four centers demonstrates consistent improvements over strong image-only and multimodal baselines in binary and three-class staging. The model generalizes to external cohorts, remains robust to segmentation noise and report variation, and performs on par with or better than experienced radiologists.\",\n      \"reason\": \"The poster's 'Conclusion' section states that the framework consistently improves over baselines, generalizes to external cohorts, and performs on par with or better than experienced radiologists.\"\n    },\n    \"chk_limitation\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Error analysis identifies two dominant patterns. Nine of sixteen errors are over-staging cases, often caused by reports describing cartilage invasion that pathology does not confirm. Seven are under-staging cases, frequently associated with reports that omit invasion or state that invasion is absent despite pathological confirmation. These findings reflect inherent CT-pathology discordance rather than simple cross-modal misalignment and motivate uncertainty-aware fusion and clinical review of borderline cases.\",\n      \"reason\": \"The poster describes the inherent CT-pathology discordance (over-staging and under-staging) in the 'Robustness' section under error analysis.\"\n    }\n  }\n}\n```"
+}

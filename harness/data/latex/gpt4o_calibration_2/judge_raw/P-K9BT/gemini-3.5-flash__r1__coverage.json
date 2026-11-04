@@ -1,0 +1,59 @@
+{
+  "model": "gemini-3.5-flash",
+  "repeat": 1,
+  "judge_prompt_sha256": "4ec65050cfdc718218dbc587f672291e733fd03b1254c20d77b61b0933e16162",
+  "error": null,
+  "tokens_in": 8796,
+  "tokens_out": 4309,
+  "max_output_tokens": 32768,
+  "parsed": {
+    "items": {
+      "chk_problem": {
+        "label": "accurate",
+        "poster_evidence": "Clinic notes and structured electronic health record medication history often contain different medication information. Outpatient notes may document medication starts, stops, holds, regimen changes, and formulation details that do not appear in the structured medication list at the same time. Same-visit disagreement may therefore reflect normalization errors, differences in terminology or timing, medication reconciliation practices, or actual documentation differences.",
+        "reason": "The poster accurately describes the problem of disagreement between clinic notes and structured EHR medication history due to normalization errors, terminology differences, or timing in the 'Motivation' section."
+      },
+      "chk_method": {
+        "label": "accurate",
+        "poster_evidence": "We studied clinic-note-only treatment-context medication normalization using a note-grounded reference and characterized its relationship with structured medication history across exact, semantic, and temporal matching levels.",
+        "reason": "The poster describes the note-grounded approach combining LLM-assisted reference construction, human review, deterministic normalization, and semantic-temporal comparisons in the 'Motivation' section and Figure 1."
+      },
+      "chk_data": {
+        "label": "missing",
+        "poster_evidence": "",
+        "reason": "The poster mentions '27,752 note-derived rows' but completely omits the cohort details of 11,812 eligible visits, 761 patients, and 22,483 clinic notes required by both reference options."
+      },
+      "chk_setup": {
+        "label": "accurate",
+        "poster_evidence": "On 5,403 held-out mention rows, surface-exact matching achieved exact canonical agreement of 0.7226...",
+        "reason": "The poster mentions evaluating the deterministic canonicalization pipeline on a held-out test set of 5,403 mention rows."
+      },
+      "chk_primary_result": {
+        "label": "accurate",
+        "poster_evidence": "Alias-aware deterministic normalization improved held-out exact canonical agreement from 0.7226 to 0.8429.",
+        "reason": "The poster reports the exact canonical agreement improvement from 0.7226 to 0.8429 in the 'Conclusion' and 'Normalization Results' sections."
+      },
+      "chk_secondary_result": {
+        "label": "accurate",
+        "poster_evidence": "Only 4,563 of 27,752 note-derived rows, or 16.44%, had same-visit exact overlap with structured medication history. Semantic and temporal relaxation recovered most apparent disagreements: 38.67% had same-visit category-only overlap, and 35.17% matched within ±30 days after failing same-visit comparison. Cumulatively, 55.17% had same-visit semantic overlap, 90.34% had same-visit or ±30-day overlap, and 96.03% had some structured-history overlap.",
+        "reason": "The poster accurately reports the secondary findings regarding same-visit exact overlap (16.44%), same-visit semantic overlap (55.17%), and same-visit or ±30-day overlap (90.34%) in the 'Mismatch Ladder' section."
+      },
+      "chk_baseline": {
+        "label": "accurate",
+        "poster_evidence": "Generic lexical retrieval reached only 0.7759–0.7768 agreement. Public OMOP/RxNorm synonym matching reached 0.6519 when preserving matched terms and 0.5410 under ingredient-style collapse.",
+        "reason": "The poster evaluates public OMOP/RxNorm synonym matching, generic lexical retrieval, and MedXN as baselines in the 'Normalization Results' and 'External Positioning' sections."
+      },
+      "chk_conclusion": {
+        "label": "accurate",
+        "poster_evidence": "Evidence characterization should therefore precede downstream clinical inference when medication information from clinic notes is compared with structured EHR medication history.",
+        "reason": "The poster states this exact take-home conclusion in the 'Conclusion' section."
+      },
+      "chk_limitation": {
+        "label": "accurate",
+        "poster_evidence": "The cohort came from a private, single-center clinic-note environment, and the canonical label space and broad medication categories were project-specific. The reference set used LLM assistance, targeted review, and random review rather than exhaustive manual annotation.",
+        "reason": "The poster lists these specific limitations in the 'Limitations' section, matching both reference options."
+      }
+    }
+  },
+  "raw": "```json\n{\n  \"items\": {\n    \"chk_problem\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Clinic notes and structured electronic health record medication history often contain different medication information. Outpatient notes may document medication starts, stops, holds, regimen changes, and formulation details that do not appear in the structured medication list at the same time. Same-visit disagreement may therefore reflect normalization errors, differences in terminology or timing, medication reconciliation practices, or actual documentation differences.\",\n      \"reason\": \"The poster accurately describes the problem of disagreement between clinic notes and structured EHR medication history due to normalization errors, terminology differences, or timing in the 'Motivation' section.\"\n    },\n    \"chk_method\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"We studied clinic-note-only treatment-context medication normalization using a note-grounded reference and characterized its relationship with structured medication history across exact, semantic, and temporal matching levels.\",\n      \"reason\": \"The poster describes the note-grounded approach combining LLM-assisted reference construction, human review, deterministic normalization, and semantic-temporal comparisons in the 'Motivation' section and Figure 1.\"\n    },\n    \"chk_data\": {\n      \"label\": \"missing\",\n      \"poster_evidence\": \"\",\n      \"reason\": \"The poster mentions '27,752 note-derived rows' but completely omits the cohort details of 11,812 eligible visits, 761 patients, and 22,483 clinic notes required by both reference options.\"\n    },\n    \"chk_setup\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"On 5,403 held-out mention rows, surface-exact matching achieved exact canonical agreement of 0.7226...\",\n      \"reason\": \"The poster mentions evaluating the deterministic canonicalization pipeline on a held-out test set of 5,403 mention rows.\"\n    },\n    \"chk_primary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Alias-aware deterministic normalization improved held-out exact canonical agreement from 0.7226 to 0.8429.\",\n      \"reason\": \"The poster reports the exact canonical agreement improvement from 0.7226 to 0.8429 in the 'Conclusion' and 'Normalization Results' sections.\"\n    },\n    \"chk_secondary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Only 4,563 of 27,752 note-derived rows, or 16.44%, had same-visit exact overlap with structured medication history. Semantic and temporal relaxation recovered most apparent disagreements: 38.67% had same-visit category-only overlap, and 35.17% matched within ±30 days after failing same-visit comparison. Cumulatively, 55.17% had same-visit semantic overlap, 90.34% had same-visit or ±30-day overlap, and 96.03% had some structured-history overlap.\",\n      \"reason\": \"The poster accurately reports the secondary findings regarding same-visit exact overlap (16.44%), same-visit semantic overlap (55.17%), and same-visit or ±30-day overlap (90.34%) in the 'Mismatch Ladder' section.\"\n    },\n    \"chk_baseline\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Generic lexical retrieval reached only 0.7759–0.7768 agreement. Public OMOP/RxNorm synonym matching reached 0.6519 when preserving matched terms and 0.5410 under ingredient-style collapse.\",\n      \"reason\": \"The poster evaluates public OMOP/RxNorm synonym matching, generic lexical retrieval, and MedXN as baselines in the 'Normalization Results' and 'External Positioning' sections.\"\n    },\n    \"chk_conclusion\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Evidence characterization should therefore precede downstream clinical inference when medication information from clinic notes is compared with structured EHR medication history.\",\n      \"reason\": \"The poster states this exact take-home conclusion in the 'Conclusion' section.\"\n    },\n    \"chk_limitation\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"The cohort came from a private, single-center clinic-note environment, and the canonical label space and broad medication categories were project-specific. The reference set used LLM assistance, targeted review, and random review rather than exhaustive manual annotation.\",\n      \"reason\": \"The poster lists these specific limitations in the 'Limitations' section, matching both reference options.\"\n    }\n  }\n}\n```"
+}

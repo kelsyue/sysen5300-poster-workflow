@@ -6,15 +6,22 @@ bounded number of attempts, every attempt's tokens recorded, and a seeded sectio
 selection (see parse_paper).
 The harness-owned planner merges figure filtering and section assignment.
 Completed generation stages are checkpointed per source PDF and candidate.
-Stops after saving tree_split: no bullet JSON generation, vision critics or PPTX.
+With --painter_settings (latex-painter-v3), figure crops are regrown locally
+(figure_crops.py) and one Painter call rewrites the summaries into short poster text
+(poster_painter.py), saved as intermediate/painted_content.json.
+Stops after saving tree_split: no per-section bullet calls, vision critics or PPTX.
 Run from the Paper2Poster working directory using its Python environment.
 """
 import sys
 from pathlib import Path
 sys.path.insert(0, str(Path.cwd()))
 from PosterAgent.parse_raw import gen_image_and_table
+import PosterAgent.parse_raw as upstream_parse
 from paper_parser import parse_paper
-from combined_planner import plan_figures, planning_input, SYSTEM_PROMPT, PLANNING_REQUEST
+from combined_planner import plan_figures, planning_input, SYSTEM_PROMPT, PLANNING_REQUEST, SHARED_SYSTEM, PLAN_TASK
+from gateway_chat import GatewayChat
+import poster_painter
+from figure_crops import regrow_crops
 from preparation_cache import StageCache, file_digest
 from utils.wei_utils import get_agent_config, scale_to_target_area, char_capacity
 from PosterAgent.tree_split_layout import main_train, main_inference, get_arrangments_in_inches, split_textbox, to_inches
@@ -47,6 +54,10 @@ if __name__ == '__main__':
     parser.add_argument('--max_parse_attempts', type=int, default=2)
     parser.add_argument('--seed', type=int, default=0)
     parser.add_argument('--planning_feedback', type=str, default=None)
+    parser.add_argument('--painter_settings', type=str, default=None,
+                        help='JSON Painter settings; enables latex-painter-v3 (crops, Painter, gateway_chat)')
+    parser.add_argument('--prompt_cache', action='store_true',
+                        help='v3: mark the shared source prefix for prompt caching (models that need markers)')
 
     args = parser.parse_args()
 
@@ -126,6 +137,13 @@ if __name__ == '__main__':
     raw_path = Path(f'contents/{tag}_{poster_name}_raw_content.json')
     images_path = Path(f'{tag}_images_and_tables/{poster_name}_images.json')
     tables_path = Path(f'{tag}_images_and_tables/{poster_name}_tables.json')
+    painter_settings = json.loads(args.painter_settings) if args.painter_settings else None
+    # v3: every call goes through gateway_chat (recorded in intermediate/calls/); v2 keeps camel.
+    chat = None
+    if painter_settings is not None:
+        chat = GatewayChat(args.model_name_t, Path(args.intermediate_dir) / 'calls', detail_log, save_usage,
+                           cache_markers=args.prompt_cache)
+    raw_result = None
     parsed = cache.load('parse', {}, destination=Path.cwd())
     if parsed is None:
         parse_usage = {'input_tokens': 0, 'output_tokens': 0}
@@ -136,20 +154,45 @@ if __name__ == '__main__':
             detail_log['parser_out_t'] = detail_log.get('parser_out_t', 0) + tout
             save_usage()
         rng = random.Random(f'{args.seed}-{args.poster_name}')
-        raw_result = parse_paper(args, agent_config_t, record_parse_usage, args.max_parse_attempts, rng)
+        raw_result = parse_paper(args, agent_config_t, record_parse_usage, args.max_parse_attempts, rng,
+                                 **({'ask': chat.ask} if chat else {}))
         _, _, images, tables = gen_image_and_table(args, raw_result)
         assets = [v['image_path'] for v in images.values()] + [v['table_path'] for v in tables.values()]
         parsed = dict(parse_usage)
+        if chat:  # usage was recorded by gateway_chat under parser_*
+            parsed['usage'] = {k: v for k, v in detail_log.items() if k.startswith('parser_')}
         cache.save('parse', {}, parsed, source=Path.cwd(),
                    files=[raw_path, images_path, tables_path, *assets])
     else:
         print('Reusing saved summaries and extracted figures; no parser API call.', flush=True)
         cache_hits.append('parse')
         save_cache_usage()
-        detail_log.setdefault('parser_in_t', parsed['input_tokens'])
-        detail_log.setdefault('parser_out_t', parsed['output_tokens'])
+        if 'usage' in parsed:
+            for key, value in parsed['usage'].items():
+                detail_log.setdefault(key, value)
+        else:
+            detail_log.setdefault('parser_in_t', parsed['input_tokens'])
+            detail_log.setdefault('parser_out_t', parsed['output_tokens'])
         images = json.loads(images_path.read_text())
         tables = json.loads(tables_path.read_text())
+    if painter_settings is not None:
+        # Local, model-free: grow crops that cut through a figure (figure_crops.py).
+        crop_inputs = {'implementation': file_digest(Path(__file__).with_name('figure_crops.py'))}
+        cropped = cache.load('crop', crop_inputs, destination=Path.cwd())
+        if cropped is None:
+            if raw_result is None:  # summaries came from a checkpoint; convert the PDF again locally
+                raw_result = upstream_parse.doc_converter.convert(args.poster_path)
+            assets = [v['image_path'] for v in images.values()] + [v['table_path'] for v in tables.values()]
+            cropped = regrow_crops(raw_result, images, tables, images_path.parent / poster_name, poster_name)
+            images_path.write_text(json.dumps(images, indent=4))
+            tables_path.write_text(json.dumps(tables, indent=4))
+            cache.save('crop', crop_inputs, cropped, source=Path.cwd(),
+                       files=[images_path, tables_path, *assets])
+        else:
+            cache_hits.append('crop')
+            images = json.loads(images_path.read_text())
+            tables = json.loads(tables_path.read_text())
+        print(f'Figure crops regrown: {len(cropped)}', flush=True)
     # Export only artifacts produced/restored by this run, never stale vendor output.
     intermediate = Path(args.intermediate_dir)
     intermediate.mkdir(parents=True, exist_ok=True)
@@ -167,7 +210,7 @@ if __name__ == '__main__':
     # One compact model request replaces filtering followed by planning.
     feedback = json.loads(Path(args.planning_feedback).read_text()) if args.planning_feedback else None
     plan_inputs = {'content': planning_input(document, images, tables),
-                   'prompt': SYSTEM_PROMPT + PLANNING_REQUEST,
+                   'prompt': SHARED_SYSTEM + PLAN_TASK if chat else SYSTEM_PROMPT + PLANNING_REQUEST,
                    'implementation': file_digest(Path(__file__).with_name('combined_planner.py'))}
     if feedback:
         plan_inputs['recovery_feedback'] = feedback
@@ -178,6 +221,8 @@ if __name__ == '__main__':
             detail_log['planning_out_t'] = detail_log.get('planning_out_t', 0) + tout
             save_usage()
         extra = {'feedback': feedback} if feedback else {}
+        if chat:
+            extra['ask'] = chat.ask
         panels, figures = plan_figures(document, images, tables, agent_config_t, record_usage,
                                        raw_path=intermediate / 'planner_response.txt', **extra)
         planned = {'panels': panels, 'figures': figures}
@@ -187,6 +232,25 @@ if __name__ == '__main__':
         cache_hits.append('plan')
         save_cache_usage()
         panels, figures = planned['panels'], planned['figures']
+    if painter_settings is not None:
+        # Painter: one call rewrites every section into bullets (poster_painter.py).
+        paint_inputs = {'content': planning_input(document, images, tables), 'plan': figures,
+                        'settings': painter_settings,
+                        'prompt': SHARED_SYSTEM + poster_painter.PAINT_TASK,
+                        'implementation': file_digest(Path(__file__).with_name('poster_painter.py'))}
+        painted = cache.load('paint', paint_inputs)
+        if painted is None:
+            painted_doc, report = poster_painter.paint_sections(
+                document, figures, images, tables, chat.ask, settings=painter_settings, max_attempts=args.max_parse_attempts,
+                raw_path=intermediate / 'painter_response.txt')
+            painted = {'document': painted_doc, 'report': report}
+            cache.save('paint', paint_inputs, painted)
+        else:
+            print('Reusing saved poster text; no Painter API call.', flush=True)
+            cache_hits.append('paint')
+        (intermediate / 'painted_content.json').write_text(
+            json.dumps(painted['document'], ensure_ascii=False, indent=2))
+        (intermediate / 'painter_check.json').write_text(json.dumps(painted['report'], indent=2))
     save_cache_usage()
     save_usage()
     outline_time = time.time()

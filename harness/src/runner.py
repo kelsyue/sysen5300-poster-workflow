@@ -11,11 +11,18 @@ Usage (from harness/):
     python src/runner.py --models gpt-5.6-sol --papers P01 P02   # subset
     python src/runner.py --rebuild outputs/latex/1   # saved results; no API calls
 
-Re-running resumes: (model, paper, attempt) triples already in the runs file are
-skipped. Failed attempts are kept as data (FR-7) and are not retried on resume.
+Order: papers in sorted ID order; within each paper the selected models run in a seeded
+random order (model_order, experiment.seed). Re-running resumes: (model, paper, attempt)
+triples already in the runs file are skipped. Failed attempts are kept as data (FR-7) and are not retried on resume.
 
 workflow_success here covers the automatic checks only (E_API, E_PIPELINE, E_LATEX,
 E_OVERFLOW, E_UNREADABLE, E_NO_FIGURES). The team fills `visual_check` afterwards (OI-7).
+
+Workflows (fixed.paper2poster.workflow):
+  latex-only-v2      parser summaries typeset as written (judged results in data/latex/)
+  latex-painter-v3   adds figure-crop regrowth, the Painter call (short poster text) and, only
+                     when a poster still overflows at min_font_scale, one shortening call.
+                     Results go to the run set named by fixed.paper2poster.run_set.
 
 latency is the processing time of the attempt: every try plus the local LaTeX build,
 excluding the back-off waits between tries. token_usage and generation_cost count
@@ -28,10 +35,13 @@ import argparse
 import csv
 import fcntl
 import datetime as dt
+import functools
 import hashlib
 import json
 import math
 import os
+import platform
+import random
 import re
 import shutil
 import subprocess
@@ -43,6 +53,7 @@ import yaml
 
 from poster_naming import poster_stem
 from latex_poster import configure_tex_path
+import poster_painter
 
 HARNESS = Path(__file__).resolve().parent.parent
 
@@ -50,9 +61,9 @@ RUN_COLUMNS = [
     "run_id", "run_order", "batch_id", "llm_model", "input_paper_id", "attempt",
     "prompt_sha256", "p2p_commit", "p2p_patch_sha256", "config_sha256", "vision_model", "temperature", "seed",
     "started_at", "finished_at", "latency",
-    "input_tokens", "output_tokens", "cached_tokens",
+    "input_tokens", "output_tokens", "cached_tokens", "cache_write_tokens",
     "vision_input_tokens", "vision_output_tokens", "token_usage",
-    "generation_cost", "vision_cost", "price_table_as_of",
+    "generation_cost", "gateway_cost", "vision_cost", "price_table_as_of",
     "retries", "workflow_success", "failure_reason", "visual_check",
     "poster_path", "poster_word_count",
 ]
@@ -67,6 +78,8 @@ TRANSPORT_ERRORS = re.compile(
 PAPER_ID = re.compile(r"^[A-Za-z0-9_-]+$")
 BACKOFF_S = 30
 SAME_AS_CANDIDATE = "same_as_candidate"
+WORKFLOWS = ("latex-only-v2", "latex-painter-v3")
+HBOX_TOLERANCE_PT = 10.0  # same as latex_poster.HBOX_TOLERANCE_PT
 
 
 def now_utc() -> str:
@@ -76,6 +89,27 @@ def now_utc() -> str:
 def resolve(p: str) -> Path:
     path = Path(p)
     return path if path.is_absolute() else HARNESS / path
+
+
+def run_set(cfg: dict) -> str:
+    """Folder name under data/, outputs/ and results/ for this workflow's attempts."""
+    return cfg["fixed"]["paper2poster"].get("run_set") or "latex"
+
+
+def painter_settings(cfg: dict) -> dict | None:
+    p2c = cfg["fixed"]["paper2poster"]
+    return (p2c.get("painter") or {}) if p2c.get("workflow") == "latex-painter-v3" else None
+
+
+def repair_factor(fit: dict) -> float:
+    """Share of the current words to keep so the measured overflow disappears.
+
+    Assumes text is about 60% of a column's usable height (85% of the page), and keeps
+    a 10-point margin; never cuts more than half or less than a tenth.
+    """
+    page = fit.get("page_height_pt") or 2600.0
+    cut = fit.get("overflow_pt", 0.0) / (0.6 * 0.85 * page) + 0.10
+    return round(min(0.9, max(0.5, 1.0 - cut)), 2)
 
 
 def vision_for(model: str, p2c: dict) -> str:
@@ -102,7 +136,64 @@ def prompt_sha256(p2p: Path) -> str:
     h.update((HARNESS / "src/preparation_cache.py").read_bytes())
     h.update((HARNESS / "src/latex_prepare.py").read_bytes())
     h.update((HARNESS / "src/latex_poster.py").read_bytes())
+    h.update((HARNESS / "src/poster_painter.py").read_bytes())
+    h.update((HARNESS / "src/figure_crops.py").read_bytes())
+    h.update((HARNESS / "src/gateway_chat.py").read_bytes())
+    h.update((HARNESS / "src/paper_parser.py").read_bytes())
     return h.hexdigest()
+
+
+def _output(cmd: list[str], cwd: Path | None = None) -> str:
+    """stdout of a version/status command; '' if it is unavailable."""
+    try:
+        with subprocess.Popen(cmd, cwd=cwd, stdout=subprocess.PIPE, stderr=subprocess.DEVNULL, text=True) as p:
+            return p.communicate(timeout=120)[0] or ""
+    except (OSError, subprocess.SubprocessError):
+        return ""
+
+
+@functools.lru_cache(maxsize=4)
+def environment_record(p2p_python: str) -> dict:
+    """Everything outside the code and config that can change a poster, recorded per run.
+
+    Package lists are hashed (the full lists are in config/*.lock.txt for Paper2Poster);
+    the TeX and Poppler versions and the harness commit (with uncommitted files) are named.
+    """
+    def first_line(cmd):
+        text = _output(cmd)
+        return text.strip().splitlines()[0] if text.strip() else ""
+    def freeze(python):
+        listing = _output([python, "-m", "pip", "freeze", "--all"])
+        pick = {line.split("==")[0].lower(): line for line in listing.splitlines() if "==" in line}
+        return {"sha256": hashlib.sha256(listing.encode()).hexdigest(),
+                "key_packages": [pick[p] for p in ("openai", "docling", "docling-core", "pillow", "numpy",
+                                                   "json-repair", "pyyaml") if p in pick]}
+    status = _output(["git", "status", "--porcelain"], cwd=HARNESS)
+    return {
+        "harness_commit": _output(["git", "rev-parse", "HEAD"], cwd=HARNESS).strip(),
+        "harness_uncommitted_files": sorted(line[3:] for line in status.splitlines()),
+        "harness_source_sha256": {str(f.relative_to(HARNESS)): hashlib.sha256(f.read_bytes()).hexdigest()
+                                  for f in sorted((HARNESS / "src").glob("*.py"))},
+        "platform": f"{platform.system()} {platform.release()} {platform.machine()}",
+        "harness_python": {"version": platform.python_version(), **freeze(sys.executable)},
+        "paper2poster_python": {"version": _output([p2p_python, "-c", "import platform; print(platform.python_version())"]).strip(),
+                                **freeze(p2p_python)},
+        "xelatex": first_line(["xelatex", "--version"]),
+        "pdftoppm": (_output(["pdftoppm", "-v"]) or "").strip().splitlines()[0:1],
+    }
+
+
+def model_order(models: list[str], seed, paper_id: str) -> list[str]:
+    """The candidates for one paper in a seeded random order (paper-major generation).
+
+    All four models run on a paper before the next paper, so drift on the gateway over the
+    batch hits every model alike; the order within each paper is random, so no model is
+    always first or last (the earlier fixed configuration order was a listed limitation).
+    Depends only on experiment.seed and the paper ID, so a resumed batch keeps its order.
+    """
+    order = sorted(models)
+    random.Random(f"{seed}-{paper_id}-models").shuffle(order)
+    return order
 
 
 def check_p2p_commit(p2p: Path, expected: str, patch: Path | None) -> tuple[str, str]:
@@ -147,13 +238,18 @@ def read_runs(path: Path) -> list[dict]:
 
 
 def append_run(path: Path, row: dict) -> None:
+    """Append in the file's own column order (older runs files keep their header)."""
     path.parent.mkdir(parents=True, exist_ok=True)
     new = not path.exists()
+    columns = RUN_COLUMNS
+    if not new:
+        with open(path, newline="") as f:
+            columns = next(csv.reader(f), RUN_COLUMNS)
     with open(path, "a", newline="") as f:
-        w = csv.DictWriter(f, fieldnames=RUN_COLUMNS)
+        w = csv.DictWriter(f, fieldnames=columns)
         if new:
             w.writeheader()
-        w.writerow({k: "" if row.get(k) is None else row.get(k) for k in RUN_COLUMNS})
+        w.writerow({k: "" if row.get(k) is None else row.get(k) for k in columns})
 
 
 def acquire_run_lock(data_dir: Path):
@@ -175,13 +271,23 @@ def load_prices(path: Path) -> tuple[dict, str]:
     return p.get("models") or {}, str(p.get("as_of") or "")
 
 
-def token_cost(prices: dict, model: str, tin, tout):
-    """USD from per-million-token list prices; None if tokens or prices are missing."""
+def token_cost(prices: dict, model: str, tin, tout, cached=0, written=0):
+    """USD from per-million-token list prices; None if tokens or prices are missing.
+
+    tin counts every prompt token. Of these, `cached` were read from the prompt cache and
+    `written` were written to it; they are priced at the gateway's cache-read and
+    cache-write prices (the gateway charges GPT-5.6 cache writes on most input tokens,
+    checked 2026-11-12). Without cache prices they cost the plain input price.
+    """
     pr = prices.get(model) or {}
     pin, pout = pr.get("input_per_mtok"), pr.get("output_per_mtok")
     if tin is None or tout is None or pin is None or pout is None:
         return None
-    return round((tin * pin + tout * pout) / 1e6, 6)
+    cached, written = cached or 0, written or 0
+    pread = pr.get("cache_read_per_mtok") if pr.get("cache_read_per_mtok") is not None else pin
+    pwrite = pr.get("cache_write_per_mtok") if pr.get("cache_write_per_mtok") is not None else pin
+    plain = tin - cached - written
+    return round((plain * pin + cached * pread + written * pwrite + tout * pout) / 1e6, 6)
 
 
 def run_cost(row: dict) -> float:
@@ -217,9 +323,22 @@ def read_tokens(out_dir: Path) -> dict:
     def total(suffix):
         return sum(v for k, v in d.items() if k.endswith(suffix) and isinstance(v, (int, float)))
     tin, tout = total("_in_t"), total("_out_t")
-    return {"input_tokens": tin, "output_tokens": tout,
-            "vision_input_tokens": total("_in_v"), "vision_output_tokens": total("_out_v"),
-            "token_usage": tin + tout + total("_in_v") + total("_out_v")}
+    tokens = {"input_tokens": tin, "output_tokens": tout,
+              "cached_tokens": total("_cached_t"), "cache_write_tokens": total("_cachewrite_t"),
+              "vision_input_tokens": total("_in_v"), "vision_output_tokens": total("_out_v"),
+              "token_usage": tin + tout + total("_in_v") + total("_out_v")}
+    if any(k.endswith("_cost_usd") for k in d):  # gateway_chat calls: cost the gateway charged
+        tokens["gateway_cost"] = round(total("_cost_usd"), 6)
+    return tokens
+
+
+def budget_exhausted(log_text: str) -> bool:
+    return "ExceededBudget" in log_text or "budget_exceeded" in log_text
+
+
+def prompt_cache_flag(cfg: dict, model: str) -> list[str]:
+    """--prompt_cache for models whose gateway route needs explicit cache markers."""
+    return ["--prompt_cache"] if model in (cfg["fixed"]["paper2poster"].get("prompt_cache_models") or []) else []
 
 
 def render_saved(run_dir: Path, cfg: dict) -> tuple[dict, str]:
@@ -292,17 +411,23 @@ def run_attempt(*, run_id: int, model: str, paper_id: str, pdf: Path, cfg: dict,
     cmd += [str(a) for a in p2c.get("extra_args") or []]
     if planning_feedback:
         cmd.append(f"--planning_feedback={planning_feedback}")
+    painter = painter_settings(cfg)
+    if painter is not None:
+        cmd.append(f"--painter_settings={json.dumps(painter, sort_keys=True)}")
+        cmd += prompt_cache_flag(cfg, model)
 
     out_dir = out_root / str(run_id)
     out_dir.mkdir(parents=True, exist_ok=True)
     name = poster_stem(paper_id, model)
     (out_dir / "run_metadata.json").write_text(json.dumps(
         {"input_paper_id": paper_id, "llm_model": model, "workflow": p2c.get("workflow", "latex-only-v2")}, indent=2))
+    max_parse = p2c.get("max_parse_attempts", 2)
     log_path = out_dir / "run.log"
     cmd.append(f"--usage_path={out_dir / 'detail_log.json'}")
     cmd.append(f"--checkpoint_dir={out_dir / 'preparation'}")
     cmd.append(f"--intermediate_dir={out_dir / 'intermediate'}")
     (out_dir / "run_config.yaml").write_text(yaml.safe_dump(cfg))
+    (out_dir / "environment.json").write_text(json.dumps(environment_record(str(resolve(p2c["python"]))), indent=2))
 
     row = {"retries": 0, "workflow_success": 0}
     busy = 0.0  # seconds spent working, summed over tries; back-off waits excluded
@@ -324,7 +449,7 @@ def run_attempt(*, run_id: int, model: str, paper_id: str, pdf: Path, cfg: dict,
         if rc == 0:
             break
         this_try = log_path.read_text(errors="replace").rsplit("=== try ", 1)[-1]
-        if "ExceededBudget" in this_try or "budget_exceeded" in this_try:
+        if budget_exhausted(this_try):
             row["failure_reason"] = "E_BUDGET"
             break
         transport = rc is not None and bool(TRANSPORT_ERRORS.search(this_try))
@@ -344,12 +469,76 @@ def run_attempt(*, run_id: int, model: str, paper_id: str, pdf: Path, cfg: dict,
 
     pdf_path = out_dir / "latex" / f"{name}.pdf"
     t0 = time.monotonic()
-    try:
-        fit, text = render_saved(out_dir, cfg)
-    except (subprocess.SubprocessError, OSError, ValueError) as e:
+
+    def render():
+        try:
+            return render_saved(out_dir, cfg)
+        except (subprocess.SubprocessError, OSError, ValueError) as e:
+            with open(log_path, "a") as log:
+                log.write(f"\n=== harness: LaTeX rendering/text extraction failed: {e!r}\n")
+            return None, ""
+    fit, text = render()
+    painted = out_dir / "intermediate" / "painted_content.json"
+
+    def painter_call(mode: list[str], note: str) -> int | None:
+        """One Painter follow-up call (poster_painter.py) from the Paper2Poster directory.
+        Returns its exit code (None on timeout); E_BUDGET is recorded in row."""
+        cmd = [str(resolve(p2c["python"])), str(HARNESS / "src/poster_painter.py"), *mode,
+               f"--intermediate_dir={out_dir / 'intermediate'}", f"--usage_path={out_dir / 'detail_log.json'}",
+               f"--model_name_t={model}", f"--max_attempts={max_parse}",
+               f"--settings={json.dumps(painter, sort_keys=True)}", *prompt_cache_flag(cfg, model)]
         with open(log_path, "a") as log:
-            log.write(f"\n=== harness: LaTeX rendering/text extraction failed: {e!r}\n")
-        fit, text = None, ""
+            log.write(f"\n=== harness: {note}\n$ {' '.join(cmd)}\n")
+            log.flush()
+            try:
+                rc = subprocess.run(cmd, cwd=p2p, env=env, stdout=log, stderr=subprocess.STDOUT,
+                                    timeout=p2c.get("timeout_s", 3600)).returncode
+            except subprocess.TimeoutExpired:
+                rc = None
+        row.update(read_tokens(out_dir))
+        if budget_exhausted(log_path.read_text(errors="replace").rsplit(f"=== harness: {note}", 1)[-1]):
+            row["failure_reason"] = "E_BUDGET"
+        return rc
+
+    if (fit is not None and not fit["fits"] and painter is not None and painted.exists()
+            and painter.get("overflow_repair_calls", 1) > 0
+            and fit.get("hbox_overflow_pt", 0.0) <= HBOX_TOLERANCE_PT):
+        # The Commenter's "overflow": the poster overflows even at min_font_scale, so ask the
+        # same model once to shorten its text, then render again. Never cut text locally.
+        factor = repair_factor(fit)
+        rc = painter_call(["--repair", f"--factor={factor}"],
+                          f"overflow {fit['overflow_pt']}pt at scale {fit['scale']}; shortening call "
+                          f"(keep {factor:.0%} of words)")
+        if row.get("failure_reason"):
+            row["latency"], row["finished_at"] = round(busy + time.monotonic() - t0, 2), now_utc()
+            return row
+        if rc == 0:
+            fit, text = render()
+
+    if (fit is not None and fit["fits"] and painter is not None and painted.exists()
+            and painter.get("blank_fill_calls", 1) > 0):
+        # The Commenter's "too much blank space": one call lengthens the sections of columns
+        # that end far above the page bottom. Kept only if the poster still fits at the same or
+        # a larger font; otherwise the earlier text is restored, so this never causes a cutoff.
+        targets = poster_painter.expansion_targets(fit, json.loads(painted.read_text()), painter)
+        if targets:
+            before = fit
+            rc = painter_call(["--expand", f"--targets={json.dumps(targets, ensure_ascii=False)}"],
+                              f"blank space {before['layout']['column_gap_pt']}pt per column; expansion call "
+                              f"for {len(targets)} section(s)")
+            if row.get("failure_reason"):
+                row["latency"], row["finished_at"] = round(busy + time.monotonic() - t0, 2), now_utc()
+                return row
+            if rc == 0:
+                fit, text = render()
+                kept = fit is not None and fit["fits"] and fit["scale"] >= before["scale"] - 1e-9
+                with open(log_path, "a") as log:
+                    log.write(f"=== harness: expansion {'kept' if kept else 'reverted'}: scale "
+                              f"{before['scale']} -> {fit and fit['scale']}, fits {fit and fit['fits']}\n")
+                if not kept:
+                    backup = out_dir / "intermediate" / "painted_content.before_expand.json"
+                    shutil.copyfile(backup, painted)
+                    fit, text = render()
     row["latency"] = round(busy + time.monotonic() - t0, 2)
     row["finished_at"] = now_utc()
     if fit is None:
@@ -358,6 +547,9 @@ def run_attempt(*, run_id: int, model: str, paper_id: str, pdf: Path, cfg: dict,
     if not fit["fits"]:
         row["failure_reason"] = "E_OVERFLOW"
         return row
+    if fit.get("missing_glyphs"):  # a character no poster font has: kept visible for the team check
+        with open(log_path, "a") as log:
+            log.write(f"\n=== harness: WARNING characters missing from the fonts: {fit['missing_glyphs']}\n")
     (out_dir / "poster_text.txt").write_text(text)
     words = len(text.split())
     if words == 0:
@@ -373,9 +565,10 @@ def run_attempt(*, run_id: int, model: str, paper_id: str, pdf: Path, cfg: dict,
 
 def estimate(cfg: dict) -> None:
     """Scale mean dry-run cost and latency per model to the full run (NFR-5)."""
-    rows = [r for r in read_runs(HARNESS / "data" / "latex" / "dry_run" / "runs.csv") if r["workflow_success"] == "1"]
+    dry = HARNESS / "data" / run_set(cfg) / "dry_run" / "runs.csv"
+    rows = [r for r in read_runs(dry) if r["workflow_success"] == "1"]
     if not rows:
-        sys.exit("No successful dry-run attempts in data/latex/dry_run/runs.csv. Run --dry-run first.")
+        sys.exit(f"No successful dry-run attempts in {dry.relative_to(HARNESS)}. Run --dry-run first.")
     n = cfg["fixed"]["n_papers"] * cfg["fixed"].get("attempts_per_pair", 1)
     total, missing = 0.0, []
     print(f"{'model':40} {'cost/poster':>12} {'latency/poster':>15} {'full run cost':>14}")
@@ -417,7 +610,8 @@ def main() -> None:
             ap.error("--retry-failed/--summary cannot be combined with --rebuild/--estimate")
         from recovery import recover_batch, write_summary
         if args.summary:
-            write_summary(HARNESS, dry_run=args.dry_run, papers=args.papers, models=args.models)
+            write_summary(HARNESS, dry_run=args.dry_run, papers=args.papers, models=args.models,
+                          config_path=resolve(args.config) if args.config else None)
         else:
             recover_batch(HARNESS, dry_run=args.dry_run, papers=args.papers,
                           models=args.models, config_path=resolve(args.config) if args.config else None)
@@ -432,16 +626,18 @@ def main() -> None:
         if failed:
             sys.exit("Some local rebuilds failed; see rebuild_result.json and run.log.")
         return
-    run_lock = acquire_run_lock(HARNESS / 'data' / 'latex' / ('dry_run' if args.dry_run else ''))
     cfg = yaml.safe_load(open(resolve(args.config or "config/experiment.yaml")))
+    run_lock = acquire_run_lock(HARNESS / 'data' / run_set(cfg) / ('dry_run' if args.dry_run else ''))
     if args.estimate:
         return estimate(cfg)
 
     fixed, p2c, g = cfg["fixed"], cfg["fixed"]["paper2poster"], cfg["gateway"]
-    if p2c.get("workflow") != "latex-only-v2":
-        sys.exit("Set fixed.paper2poster.workflow to latex-only-v2.")
+    if p2c.get("workflow") not in WORKFLOWS:
+        sys.exit(f"Set fixed.paper2poster.workflow to one of {', '.join(WORKFLOWS)}.")
+    if p2c["workflow"] == "latex-painter-v3" and run_set(cfg) == "latex":
+        sys.exit("latex-painter-v3 needs its own fixed.paper2poster.run_set (data/latex holds the v2 results).")
     configure_tex_path()
-    for executable in ("latexmk", "xelatex", "pdftoppm", "pdftotext"):
+    for executable in ("xelatex", "pdftoppm", "pdftotext"):
         if not shutil.which(executable):
             sys.exit(f"Missing {executable}; add your TeX Live/TinyTeX and Poppler binaries to PATH before running.")
     if p2c.get("vision_model") in (None, "", "TBD"):
@@ -500,9 +696,9 @@ def main() -> None:
             sys.exit(f"Not in config candidates: {sorted(unknown)}")
         models = [m for m in models if m in args.models]
 
-    data_dir = HARNESS / "data" / "latex" / ("dry_run" if args.dry_run else "")
+    data_dir = HARNESS / "data" / run_set(cfg) / ("dry_run" if args.dry_run else "")
     runs_path = data_dir / "runs.csv"
-    out_root = HARNESS / "outputs" / "latex" / ("dry_run" if args.dry_run else "")
+    out_root = HARNESS / "outputs" / run_set(cfg) / ("dry_run" if args.dry_run else "")
     prices, as_of = load_prices(resolve(fixed.get("prices_file", "config/prices.yaml")))
     cap = cfg["experiment"].get("spend_cap_usd")
     batch_size = cfg.get("spc", {}).get("p_chart_batch_size", 5)
@@ -520,8 +716,11 @@ def main() -> None:
     if cap is not None and any(not (prices.get(m) or {}).get("input_per_mtok") for m in models):
         print("WARNING: spend_cap_usd is set but prices.yaml is incomplete; the cap can't count those models.")
 
+    seed = cfg["experiment"].get("seed", 0)
     for paper_id, pdf in papers:
-        for model in models:
+        if len(models) > 1:
+            print(f"{paper_id}: model order {', '.join(model_order(models, seed, paper_id))}", flush=True)
+        for model in model_order(models, seed, paper_id):
             for attempt in range(1, fixed.get("attempts_per_pair", 1) + 1):
                 if (model, paper_id, attempt) in done:
                     continue
@@ -537,7 +736,8 @@ def main() -> None:
                            vision_model="",
                            temperature=fixed.get("generation", {}).get("temperature"),
                            seed=fixed.get("generation", {}).get("seed"),
-                           generation_cost=token_cost(prices, model, row.get("input_tokens"), row.get("output_tokens")),
+                           generation_cost=token_cost(prices, model, row.get("input_tokens"), row.get("output_tokens"),
+                                                      row.get("cached_tokens"), row.get("cache_write_tokens")),
                            vision_cost=token_cost(prices, vision,
                                                   row.get("vision_input_tokens"), row.get("vision_output_tokens")),
                            price_table_as_of=as_of)

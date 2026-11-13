@@ -29,6 +29,11 @@ tasks are called; tasks that succeeded are reused from judge_raw/ (--redo-all-ta
 all three). The new row is appended, readers keep the last row per poster, and its
 latency_s / tokens_in / tokens_out count only the calls made in that run.
 
+Order: per judge and repeat, papers in seeded random order and each paper's posters in seeded
+random order within its block (presentation_order), so a provider's prompt cache reuses the
+paper text and reference sheet across that paper's posters. tokens_cached records the prompt
+tokens read from the cache (GPT-4o on the gateway: billed at half price; checked 2026-11-13).
+
 Editing anything in judge/prompts/ changes judge_prompt_sha256: earlier rows are kept,
 and the new prompt version is scored as fresh rows instead of being skipped on resume.
 """
@@ -73,8 +78,10 @@ OUT_COLUMNS = (
        "poster_word_count", "halluc_per1k", "flagged_claims",
        "quality_score", "quality_layout", "quality_readability", "quality_fidelity",
        "parse_ok", "failed_tasks", "evidence_found_rate", "paper_truncated", "reference_sha256",
-       "latency_s", "tokens_in", "tokens_out", "judged_at"]
+       "latency_s", "tokens_in", "tokens_out", "tokens_cached", "judged_at"]
 )
+# Score files written before tokens_cached (2026-11-13) keep their columns when resumed.
+LEGACY_COLUMNS = [c for c in OUT_COLUMNS if c != "tokens_cached"]
 
 
 # --------------------------------------------------------------------------- utilities
@@ -268,6 +275,7 @@ class CallResult:
     tokens_in: int
     tokens_out: int
     error: str | None = None
+    tokens_cached: int = 0  # prompt tokens read from the provider's prompt cache (part of tokens_in)
 
 
 class JudgeClient:
@@ -302,30 +310,33 @@ class JudgeClient:
         messages = [{"role": "system", "content": self.system},
                     {"role": "user", "content": content}]
         t0, tin, tout, raw, err = time.time(), 0, 0, "", None
+        cached = 0
         for attempt in range(2):  # one repair attempt for invalid JSON
             try:
                 r = self._create(messages)
             except BudgetExceeded:
                 raise
             except Exception as e:
-                return CallResult(None, raw, time.time() - t0, tin, tout, f"transport: {e}")
+                return CallResult(None, raw, time.time() - t0, tin, tout, f"transport: {e}", cached)
             raw = r.choices[0].message.content or ""
             if r.usage:
                 tin += r.usage.prompt_tokens or 0
                 tout += r.usage.completion_tokens or 0
+                details = getattr(r.usage, "prompt_tokens_details", None)
+                cached += (getattr(details, "cached_tokens", None) or 0) if details else 0
             if getattr(r.choices[0], "finish_reason", None) == "length":
                 # Cut off at max_output_tokens: a repair turn would be cut off too.
                 return CallResult(None, raw, time.time() - t0, tin, tout,
-                                  f"truncated at max_output_tokens={self.max_tokens}")
+                                  f"truncated at max_output_tokens={self.max_tokens}", cached)
             try:
-                return CallResult(parse_json(raw), raw, time.time() - t0, tin, tout)
+                return CallResult(parse_json(raw), raw, time.time() - t0, tin, tout, tokens_cached=cached)
             except Exception as e:
                 err = f"parse: {e}"
                 messages = messages + [
                     {"role": "assistant", "content": raw},
                     {"role": "user", "content": "That was not a single valid JSON object. "
                                                 "Return only the JSON object, matching the schema."}]
-        return CallResult(None, raw, time.time() - t0, tin, tout, err)
+        return CallResult(None, raw, time.time() - t0, tin, tout, err, cached)
 
 
 # --------------------------------------------------------------------------- tasks
@@ -391,6 +402,7 @@ def task_claims(j: JudgeClient, poster_text, paper_text, batch_size):
         data={"claims": claims}, raw=json.dumps([r.raw for r in results], ensure_ascii=False),
         latency=sum(r.latency for r in results),
         tokens_in=sum(r.tokens_in for r in results), tokens_out=sum(r.tokens_out for r in results),
+        tokens_cached=sum(r.tokens_cached for r in results),
         error=next((r.error for r in results if r.error), None)
               or (f"{sum(c['label'] is None for c in claims)} claims without verdict"
                   if any(c["label"] is None for c in claims) else None))
@@ -474,6 +486,7 @@ def judge_poster(j: JudgeClient, row: dict, repeat: int, cfg: dict, paths: dict)
         path.write_text(json.dumps(
             {"model": j.model, "repeat": repeat, "judge_prompt_sha256": paths["prompt_sha"],
              "error": res.error, "tokens_in": res.tokens_in, "tokens_out": res.tokens_out,
+             "tokens_cached": res.tokens_cached,
              "max_output_tokens": j.max_tokens,
              **({"claims_batch_size": cfg.get("claims_batch_size", 40)} if name == "claims" else {}),
              "parsed": res.data, "raw": res.raw},
@@ -535,12 +548,32 @@ def judge_poster(j: JudgeClient, row: dict, repeat: int, cfg: dict, paths: dict)
         "latency_s": round(cov_res.latency + clm_res.latency + q_res.latency, 2),
         "tokens_in": cov_res.tokens_in + clm_res.tokens_in + q_res.tokens_in,
         "tokens_out": cov_res.tokens_out + clm_res.tokens_out + q_res.tokens_out,
+        "tokens_cached": cov_res.tokens_cached + clm_res.tokens_cached + q_res.tokens_cached,
         "judged_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
     }
     return out
 
 
 # --------------------------------------------------------------------------- main
+
+def presentation_order(rows: list[dict], seed, model: str, rep: int) -> list[dict]:
+    """Seeded paper blocks: papers in random order, each paper's posters in random order
+    within its block. The posters of one paper are judged back to back, so the provider's
+    prompt cache can reuse the shared prompt prefix (system prompt, task text and the paper
+    text in claims_verify / the reference sheet in coverage). Every call still judges one
+    poster alone, so no poster is seen next to another, and no model is always judged first.
+    Sorting before shuffling makes the order depend only on the seed, not on the manifest's
+    file order (src/blinder.py shuffles the manifest with an unseeded generator)."""
+    rng = random.Random(f"{seed}-{model}-{rep}")
+    papers = sorted({r["input_paper_id"] for r in rows})
+    rng.shuffle(papers)
+    order = []
+    for paper in papers:
+        block = sorted((r for r in rows if r["input_paper_id"] == paper), key=lambda r: r["poster_code"])
+        rng.shuffle(block)
+        order += block
+    return order
+
 
 def already_done(out_csv: Path) -> set:
     if not out_csv.exists():
@@ -603,26 +636,27 @@ def main(argv=None, client=None):
              "raw": data / "judge_raw", "images": data / "judge_images", "prompt_sha": prompt_sha256(),
              "reuse": not args.redo_all_tasks}
     out_csv.parent.mkdir(parents=True, exist_ok=True)
+    columns = OUT_COLUMNS
     if out_csv.exists():
         with out_csv.open() as f:
             header = next(csv.reader(f), [])
-        if header != OUT_COLUMNS:
+        if header not in (OUT_COLUMNS, LEGACY_COLUMNS):
             sys.exit(f"{out_csv} has different columns (written by an older judge.py); move it aside.")
+        columns = header  # an older file keeps its columns; tokens_cached is then in judge_raw/ only
     done = already_done(out_csv)
     new_file = not out_csv.exists()
     seed = cfg["experiment"].get("seed", 0)
     print(f"judge prompts sha256 {paths['prompt_sha'][:12]}…  ->  {out_csv}")
 
     with out_csv.open("a", newline="") as f:
-        w = csv.DictWriter(f, fieldnames=OUT_COLUMNS)
+        w = csv.DictWriter(f, fieldnames=columns, extrasaction="ignore")
         if new_file:
             w.writeheader()
         for model in judges:
             mcfg = {**jcfg, **per_judge.get(model, {})}
             jc = JudgeClient(client, model, mcfg)
             for rep in range(1, args.repeats + 1):
-                order = rows[:]
-                random.Random(f"{seed}-{model}-{rep}").shuffle(order)  # randomized presentation order
+                order = presentation_order(rows, seed, model, rep)
                 for k, row in enumerate(order, 1):
                     key = (row["poster_code"], model, rep, paths["prompt_sha"])
                     if key in done:

@@ -38,10 +38,12 @@
 | `started_at` / `finished_at` | ISO-8601 UTC | yes | |
 | `latency` | float (s) | yes | Processing time of the attempt: every try of the preparation process plus the local LaTeX build, excluding back-off waits between tries. Retries reuse completed stages, so the final try alone would understate it |
 | `input_tokens` / `output_tokens` | int | yes* | Text-model tokens summed over the steps in Paper2Poster `detail_log.json` (not `log.json`, see `02_architecture.md` §4.3). *Null if no log was written |
-| `cached_tokens` | int | no | Not reported by Paper2Poster; empty |
+| `cached_tokens` | int | no | v2: not reported (empty). v3: prompt tokens read from the prompt cache (included in `input_tokens`) |
+| `cache_write_tokens` | int | no | v3: prompt tokens written to the prompt cache (included in `input_tokens`) |
 | `vision_input_tokens` / `vision_output_tokens` | int | yes* | Vision-model tokens, kept separate from the text-model tokens |
 | `token_usage` | int | yes* | `input_tokens + output_tokens` (+ vision tokens, zero in the LaTeX workflow), over every candidate call of every try |
-| `generation_cost` | float (USD) | yes* | Candidate tokens × `prices.yaml` (the gateway's own price list, fetched by `scripts/fetch_prices.py`; `price_table_as_of` records its date); null if a price is missing |
+| `generation_cost` | float (USD) | yes* | Candidate tokens × `prices.yaml` (the gateway's own price list, fetched by `scripts/fetch_prices.py`; `price_table_as_of` records its date); cached and cache-written prompt tokens use the cache prices; null if a price is missing |
+| `gateway_cost` | float (USD) | no | v3: cost the gateway reported for the attempt's calls (`x-litellm-response-cost`); should equal `generation_cost` |
 | `vision_cost` | float (USD) | no | Vision tokens × `prices.yaml` |
 | `price_table_as_of` | date | yes | |
 | `retries` | int | yes | Transport retries used |

@@ -19,6 +19,7 @@ Usage (from harness/):
     python src/results.py --dry-run
     python src/results.py
     python src/results.py --dry-run --runs data/dry_run/runs.csv   # older runs file
+    python src/results.py --run-set latex_v3 # latex-painter-v3 posters
 """
 from __future__ import annotations
 
@@ -49,8 +50,11 @@ def judge_table(path: Path, key: pd.DataFrame, prices: dict) -> pd.DataFrame:
     j = j[(j.judge_prompt_sha256 == j.judge_model.map(newest)) & (j.parse_ok == 1)]
     j = j.drop_duplicates(["poster_code", "judge_model", "judge_repeat"], keep="last")
     price = lambda m, col: (prices.get(m) or {}).get(col) or float("nan")
-    j["judge_cost"] = [(ti * price(m, "input_per_mtok") + to * price(m, "output_per_mtok")) / 1e6
-                       for m, ti, to in zip(j.judge_model, j.tokens_in, j.tokens_out)]
+    # Prompt tokens read from the cache (tokens_cached, newer score files) cost the cache-read price.
+    cached = j["tokens_cached"].fillna(0) if "tokens_cached" in j else pd.Series(0, index=j.index)
+    read = lambda m: (prices.get(m) or {}).get("cache_read_per_mtok") or price(m, "input_per_mtok")
+    j["judge_cost"] = [((ti - tc) * price(m, "input_per_mtok") + tc * read(m) + to * price(m, "output_per_mtok")) / 1e6
+                       for m, ti, tc, to in zip(j.judge_model, j.tokens_in, cached, j.tokens_out)]
     j = j.merge(key[["poster_code", "run_id"]], on="poster_code")
     agg = j.groupby(["run_id", "judge_model"]).agg(
         **{m: (m, "mean") for m in MEASURES}, judge_cost=("judge_cost", "sum"), judge_tokens=("tokens_in", "sum"))
@@ -88,11 +92,13 @@ def link(target: Path, link_path: Path) -> None:
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--dry-run", action="store_true")
+    ap.add_argument("--run-set", default="latex",
+                    help="folder under data/ and results/: latex (v2, default) or latex_v3 (latex-painter-v3)")
     ap.add_argument("--runs", help="runs file; default data/latex/runs.csv (or data/latex/dry_run/runs.csv)")
     ap.add_argument("--config", default="config/experiment.yaml")
     args = ap.parse_args()
 
-    sub = Path("latex") / ("dry_run" if args.dry_run else "")
+    sub = Path(args.run_set) / ("dry_run" if args.dry_run else "")
     data, out = HARNESS / "data" / sub, HARNESS / "results" / sub
     runs_path = HARNESS / (args.runs or Path("data") / sub / "runs.csv")
     runs_file = str(runs_path.relative_to(HARNESS))

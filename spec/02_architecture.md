@@ -125,14 +125,16 @@ An attempt is `workflow_success = 1` only if all of the following hold; otherwis
 |---|---|---|
 | `E_API` | Gateway call completed after allowed retries | Runner |
 | `E_BUDGET` | Gateway budget not exhausted | Runner |
-| `E_PIPELINE` | Preparation finished: parser output usable within `max_parse_attempts`, figure plan valid | Runner |
+| `E_PIPELINE` | Preparation finished: parser output usable within `max_parse_attempts`, figure plan valid, Painter bullets valid (v3) | Runner |
 | `E_LATEX` | The LaTeX poster compiled | Runner |
-| `E_OVERFLOW` | Text fits its columns at some font scale down to 0.6 (overflow ≤ 5 pt in the LaTeX log) | Runner |
+| `E_OVERFLOW` | Text fits its columns at some font scale down to `min_font_scale` (v2: 0.6; v3: 0.85, after at most one shortening call): overflow ≤ 5 pt, content above the 1.5% bottom margin, no line wider than its column by > 10 pt | Runner |
 | `E_UNREADABLE` | Poster text can be extracted | Runner |
 | `E_NO_FIGURES` | At least one figure or table image from the paper is placed (`\includegraphics{figures/…}`; logos excluded) | Runner |
 | `E_TRUNCATED` | Content is not cut off at poster edges, text is legible | Team (`visual_check`) |
 
 The visual checks (`E_TRUNCATED`, `E_OVERFLOW`, `E_NO_FIGURES`) come from failure modes reported by Pang et al. (2025). In the LaTeX workflow, overflow and missing figures are checked automatically; the team check covers what code can't see (OI-7).
+
+**latex-painter-v3 (2026-11-12).** Restores Paper2Poster's Painter stage (one call that turns the parser summaries into a short paragraph per section, with a few bullets only where a section lists parallel items, 450 words in total, `**key terms**`, matching the README poster's style) and replaces the vision Commenter with local checks plus at most one shortening call (overflow) and one expansion call (a column more than 10% of the page empty; reverted unless the poster still fits at the same font). Figure crops that cut through a label are regrown locally, and columns are balanced with measured block heights. The parser prompt is unchanged. v3 attempts are a separate run set (`data/latex_v3/`) and are not pooled with the judged v2 posters.
 
 ## 6. Directory layout
 

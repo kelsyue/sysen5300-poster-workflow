@@ -11,8 +11,8 @@ import yaml
 
 import runner
 
-TOKEN_COLUMNS = ('input_tokens', 'output_tokens', 'vision_input_tokens',
-                 'vision_output_tokens', 'token_usage')
+TOKEN_COLUMNS = ('input_tokens', 'output_tokens', 'cached_tokens', 'cache_write_tokens',
+                 'vision_input_tokens', 'vision_output_tokens', 'token_usage')
 RECOVERY_COLUMNS = runner.RUN_COLUMNS + [
     'original_run_id', 'parent_run_id', 'completion_attempt', 'recovery_mode',
     'previous_failure_reason', 'failure_detail', 'checkpoint_source',
@@ -22,8 +22,16 @@ RECOVERY_COLUMNS = runner.RUN_COLUMNS + [
 ]
 
 
-def locations(harness, dry_run=False):
-    sub = Path('latex') / ('dry_run' if dry_run else '')
+def configured_run_set(harness, config_path=None):
+    """Run set (data/<run_set>/...) of the configuration in use; 'latex' for latex-only-v2."""
+    path = Path(config_path) if config_path else Path(harness) / 'config' / 'experiment.yaml'
+    if not path.exists():
+        return 'latex'
+    return runner.run_set(yaml.safe_load(path.read_text()))
+
+
+def locations(harness, dry_run=False, run_set='latex'):
+    sub = Path(run_set) / ('dry_run' if dry_run else '')
     return harness / 'data' / sub, harness / 'outputs' / sub, harness / 'results' / sub
 
 
@@ -69,8 +77,8 @@ def failure_detail(directory, code):
     return code or ''
 
 
-def write_summary(harness, *, dry_run=False, papers=None, models=None):
-    data, outputs, results = locations(harness, dry_run)
+def write_summary(harness, *, dry_run=False, papers=None, models=None, config_path=None):
+    data, outputs, results = locations(harness, dry_run, configured_run_set(harness, config_path))
     original, recoveries = selected_rows(data, papers, models)
     grouped = {}
     for row in recoveries:
@@ -282,7 +290,10 @@ def recover_one(harness, first, parent, history, cfg, outputs, run_id, prices, a
         if delta < 0:
             raise ValueError('Token accounting decreased during recovery')
         row[key] = delta
-    row['generation_cost'] = runner.token_cost(prices, first['llm_model'], row['input_tokens'], row['output_tokens'])
+    row['generation_cost'] = runner.token_cost(prices, first['llm_model'], row['input_tokens'], row['output_tokens'],
+                                               row['cached_tokens'], row['cache_write_tokens'])
+    if 'gateway_cost' in after:
+        row['gateway_cost'] = round(after['gateway_cost'] - baseline.get('gateway_cost', 0.0), 6)
     row['vision_cost'] = 0
     row['price_table_as_of'] = as_of
     row['cumulative_token_usage'] = prior_tokens + row['token_usage']
@@ -304,11 +315,11 @@ def recover_one(harness, first, parent, history, cfg, outputs, run_id, prices, a
 
 
 def recover_batch(harness, *, dry_run=False, papers=None, models=None, config_path=None):
-    data, outputs, _ = locations(harness, dry_run)
+    data, outputs, _ = locations(harness, dry_run, configured_run_set(harness, config_path))
     lock = runner.acquire_run_lock(data)
     original, recoveries = selected_rows(data, papers, models)
     runner.configure_tex_path()
-    if any(not shutil.which(name) for name in ('latexmk', 'xelatex', 'pdftoppm', 'pdftotext')):
+    if any(not shutil.which(name) for name in ('xelatex', 'pdftoppm', 'pdftotext')):
         raise ValueError('Required LaTeX/Poppler executables are missing')
     # Do not overlap an unfinished normal generation attempt or an abruptly killed
     # recovery: its accounting must be resolved before allocating more attempts.
@@ -354,11 +365,11 @@ def recover_batch(harness, *, dry_run=False, papers=None, models=None, config_pa
         print(f"[recovery run {next_id}] {'ok' if row['workflow_success'] else row['failure_reason']} "
               f"new tokens={row['token_usage']} cumulative={row['cumulative_token_usage']} "
               f"checkpoint={row['reused_stages']}", flush=True)
-        write_summary(harness, dry_run=dry_run, papers=papers, models=models)
+        write_summary(harness, dry_run=dry_run, papers=papers, models=models, config_path=config_path)
         next_id += 1
         if interrupted or row.get('failure_reason') == 'E_BUDGET':
             break
     if not attempted:
-        write_summary(harness, dry_run=dry_run, papers=papers, models=models)
+        write_summary(harness, dry_run=dry_run, papers=papers, models=models, config_path=config_path)
     # Keep the advisory lock alive throughout the batch.
     lock.close()

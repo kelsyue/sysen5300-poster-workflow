@@ -71,16 +71,63 @@ Put the 30 PDFs in `papers/` as `<input_paper_id>.pdf` (e.g. `P01.pdf`). IDs may
 
 ### Make a LaTeX poster
 
-The runner now uses **latex-only-v2**: parse the paper, then select figures and assign them to
-sections in one compact candidate-model request. Code computes sizing and layout
-and compiles the existing LaTeX template locally.
-It does not generate PPTX, bullet-formatting JSON, or run visual critic loops.
-PDF and PNG previews are produced automatically; no separate export command is needed.
+The runner now uses **latex-painter-v3** (`fixed.paper2poster.workflow`). It follows
+Paper2Poster's own stages, Parser → Planner → Painter → Commenter, with the Painter and
+Commenter in a cheaper form:
 
-Each poster costs two candidate calls: the paper summary (the whole paper goes in once)
-and the figure plan (summaries and captions only). Generation never calls a judge model;
-judging is a separate command (see "Judging the LaTeX posters"), so test runs of either
-step are independent.
+| Stage | Upstream | Here |
+|---|---|---|
+| Parser | long section summaries ("keep as much raw text as possible") | upstream prompt, unchanged |
+| Planner | zero or one figure/table per section | one combined call (`src/combined_planner.py`), same rule; v3 adds "give every section a fitting visual" |
+| Painter | `bullet_point_agent`: bullets with bold key terms, one call per section | **one call for the whole poster** (`src/poster_painter.py`): a 2–4 sentence paragraph per section, plus 2–4 bullets only where a section lists parallel items (results, contributions, limitations), as in the README poster; `**key terms**`; 450 words in total (upstream skill: 250–500) |
+| Commenter | vision model flags overflow ("1") or too much blank space ("2"); the Painter shortens the text or "adds one more bullet point", up to 10 rounds per text box | LaTeX log + position markers (no model). Overflow at `min_font_scale`: **one** shortening call. A column ending more than `blank_min_frac` (10%) of the page above the bottom: **one** expansion call that lengthens that column's sections with source facts not yet on the poster, kept only if the poster still fits at the same or a larger font (otherwise the earlier text is restored) |
+
+Locally, without model calls: figure/table crops that cut through a label are regrown to
+the surrounding blank page (`src/figure_crops.py`); columns are re-balanced with block
+heights measured in the compiled PDF; the font scale is the largest of 1.5…0.85 that fits;
+figures in columns with empty space are enlarged (up to the column width); duplicate
+tables disappear because the Painter writes short text, not the paper's tables. A poster
+that still overflows (bottom margin, or a line sticking out of its column by more than
+10pt) fails `E_OVERFLOW`; text is never cut.
+
+Each poster costs three candidate calls (paper summary, figure plan, Painter), plus one
+short call only when it overflows and one only when a column has too much blank space
+(the gap is converted to words with the poster's own measured text density; P03, Opus:
+column 2's gap fell from 21% to 10% of the page at the same font, $0.10). The Painter reads the summaries, not the paper. The
+Painter's audit, `intermediate/painter_check.json`, lists per-section budgets and word
+counts and any number in a bullet that does not appear in the summaries or captions.
+Generation never calls a judge model; judging is a separate command (see "Judging the
+LaTeX posters"), so test runs of either step are independent.
+
+v3 results go to their own run set, `fixed.paper2poster.run_set: latex_v3`
+(`data/latex_v3/`, `outputs/latex_v3/`), never mixed with the judged **latex-only-v2**
+posters in `data/latex/`. Saved v2 runs still rebuild with their own `run_config.yaml`.
+
+**Model calls (v3).** Every call goes through `src/gateway_chat.py`, which sends what
+camel sent at the pinned commit (model, messages, `max_tokens`, `temperature`; client
+timeout 180 s, 3 SDK retries) without camel's message windows or context truncation. Each
+call is saved as `intermediate/calls/NN_<stage>.json`: the full request, the reply, its
+finish reason and usage, and the gateway's own record (LiteLLM version, deployment ID,
+charged cost). v2 runs keep camel.
+
+**Prompt caching (v3).** The Planner, Painter and shortening calls start with the same
+system message and source block (section summaries and captions, serialized identically),
+followed by their own task. For the models in `fixed.paper2poster.prompt_cache_models`
+(Opus) the source block carries a 5-minute cache breakpoint, so the Painter and the
+shortening call read it at 0.1× the input price; the Planner pays 1.25× to write it.
+Measured on P03 (Opus): 4,393 cached tokens, about $0.014 net saving per poster (about 4%).
+The parser call (the whole paper) is not marked: it is sent once, and a write would cost
+more than it saves. Gateway checks (2026-11-12): GPT-5.6 on Azure never reported a cache
+read, but the gateway charges it the cache-write price (1.25×) on almost all input tokens
+of every call; Llama and Qwen have no prompt cache. Caching never changes a model's output.
+
+**Reproducibility (v3).** Given a run folder, everything after the model replies is
+deterministic: `python src/runner.py --rebuild <run>` makes a byte-identical PDF (fixed
+`SOURCE_DATE_EPOCH`, single XeLaTeX pass, fixed fonts, seeded section selection). Each run
+also saves `environment.json` (harness commit, uncommitted files, sha256 of every
+`src/*.py`, package-list hashes and key versions of both Python environments, XeLaTeX and
+Poppler versions) next to `run_config.yaml`. Model replies themselves are not
+reproducible even at temperature 0; the saved calls are the record.
 
 Every attempt is one row in `runs.csv`. The codebook variables:
 
@@ -90,7 +137,8 @@ Every attempt is one row in `runs.csv`. The codebook variables:
 | `input_paper_id` | paper used (control) |
 | `run_id` | unique number per attempt in that runs file, including repeats of the same pair |
 | `latency` | seconds of processing for the attempt: every try plus the LaTeX build, without back-off waits |
-| `generation_cost` | USD: `input_tokens` × input price + `output_tokens` × output price, from `config/prices.yaml` |
+| `generation_cost` | USD from `config/prices.yaml`: input tokens × input price + output tokens × output price, except that prompt tokens read from (`cached_tokens`) or written to (`cache_write_tokens`) the prompt cache use the cache-read and cache-write prices |
+| `gateway_cost` | v3: USD the gateway reported charging (`x-litellm-response-cost`), summed over the attempt's calls; a check on `generation_cost` |
 | `workflow_success` | 1 if a usable poster was produced (automatic checks below), else 0 with `failure_reason` |
 | `token_usage` | all tokens of every candidate call in the attempt, including calls in failed tries |
 
@@ -123,10 +171,10 @@ set +a
 caffeinate -i python src/runner.py --models claude-opus-5 --papers P03
 ```
 
-Find the result in `outputs/latex/posters/p03/p03 x claude-opus-5.pdf`.
+Find the result in `outputs/latex_v3/posters/p03/p03 x claude-opus-5.pdf`.
 The PNG preview and all other models' posters for P03 are in that same folder.
 The runner also prints `[run N]`; the archived result is in
-`outputs/latex/N/latex/p03 x claude-opus-5.pdf`.
+`outputs/latex_v3/N/latex/p03 x claude-opus-5.pdf`.
 `caffeinate -i` keeps a Mac awake; omit it on other operating systems.
 Generation makes real API calls and needs available gateway budget.
 
@@ -156,16 +204,18 @@ python src/runner.py --estimate
 Use `--models` with one or more of: `claude-opus-5`, `gpt-5.6-sol`,
 `meta.llama-4-maverick-17b-instruct`, `qwen.qwen3-vl-235b-a22b`.
 Omit `--models` to use all four. Paper IDs match filenames under `papers/`.
-Generation processes papers in sorted ID order, running all selected candidates
-in configuration order for each paper before moving to the next paper.
+Generation processes papers in sorted ID order, running all selected candidates for
+each paper before moving to the next paper, in a seeded random order per paper (printed at
+the start of each paper; `experiment.seed`). Each model generates one poster per paper.
 
 New results are isolated from the original PPTX experiment:
 
-- Full runs: `data/latex/runs.csv`, `outputs/latex/<run_id>/`
-- Dry runs: `data/latex/dry_run/runs.csv`, `outputs/latex/dry_run/<run_id>/`
-- Grouped exports: `outputs/latex/posters/<paper_id lowercase>/`, containing
+- Full runs: `data/<run_set>/runs.csv`, `outputs/<run_set>/<run_id>/` (`<run_set>` is
+  `latex_v3` for v3, `latex` for the judged v2 posters)
+- Dry runs: `data/<run_set>/dry_run/runs.csv`, `outputs/<run_set>/dry_run/<run_id>/`
+- Grouped exports: `outputs/<run_set>/posters/<paper_id lowercase>/`, containing
   `<paper_id lowercase> x <model>.pdf` and `.png` for every generated model.
-  Dry-run exports go in `outputs/latex/dry_run/posters/<paper_id lowercase>/`.
+  Dry-run exports go in `outputs/<run_set>/dry_run/posters/<paper_id lowercase>/`.
   Generation and rebuilds refresh these copies automatically; repeated attempts
   replace that model's grouped copy while preserving each run's archive.
 - Poster: `latex/<paper_id lowercase> x <model>.pdf` inside each run folder,
@@ -177,7 +227,7 @@ in the model comparison. Re-running skips attempts already recorded in the new C
 including failed attempts (FR-7). The v2 configuration/prompt hashes prevent mixing
 results from the previous two-call LaTeX workflow into the same runs table.
 
-The runner checks for `latexmk`, `xelatex`, `pdftoppm` and `pdftotext` on PATH before
+The runner checks for `xelatex`, `pdftoppm` and `pdftotext` on PATH before
 making model calls. Install TeX dependencies with `bash scripts/install_latex_deps.sh`
 and Poppler with `brew install poppler`. The runner also detects the project-local vendor/TinyTeX installation.
 
@@ -195,8 +245,21 @@ the last call. A call cut off by a dropped connection can still go unreported. A
 `experiment.spend_cap_usd` stops the run once the summed `generation_cost` reaches it.
 
 Local LaTeX fitting balances columns and tries a fixed set of scales without
-model calls. Remaining overflow fails the automatic check. The team still needs
+model calls; `fit.json` records the scale, overflow in both directions, column bottoms
+and figure widths. Remaining overflow fails the automatic check. The team still needs
 to review readability, content accuracy and figures in the PNG/PDF.
+
+#### Pilot before the full v3 run
+
+Generate the papers with the worst v2 overflows plus one calibration paper, then blind
+and judge them in the v3 run set, and compare with the v2 scores for the same posters:
+
+```bash
+caffeinate -i python src/runner.py --papers P03 P10 P06            # 12 posters, about $1-2
+python src/blinder.py --run-set latex_v3
+python judge/judge.py --data-dir data/latex_v3
+python src/results.py --run-set latex_v3
+```
 
 ### Reuse saved results without spending tokens
 
@@ -333,6 +396,13 @@ python judge/judge.py --dry-run       # both judges -> data/latex/dry_run/judge_
 ```bash
 python judge/judge.py --data-dir data/latex/remaining_p01_p15 --manifest data/latex/judge_manifest.csv --main-only
 ```
+
+Judging order: per judge and repeat, papers come in seeded random order and each paper's
+posters in seeded random order within its block, so GPT-4o's automatic prompt cache reuses the
+paper text (`claims_verify`) and reference sheet (`coverage`) across that paper's posters
+(cache reads cost half; Gemini reported no cache use). Every call still judges one poster.
+`tokens_cached` in `judge_scores.csv` records the cached prompt tokens, and `src/results.py`
+prices them at the cache-read price. Score files from before this change keep their columns.
 
 The output caps are set per judge in `judges.models`: Gemini 32,768 (its thinking counts toward the cap, and 8,192 truncated 14 claim checks) and GPT-4o 16,384.
 

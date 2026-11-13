@@ -1,7 +1,7 @@
 """Write config/prices.yaml from the Cornell AI Gateway's own price list.
 
 The gateway is a LiteLLM proxy; GET /model/info returns each deployment's
-input_cost_per_token and output_cost_per_token. generation_cost in runs.csv is
+input_cost_per_token and output_cost_per_token (and cache read/write prices). generation_cost in runs.csv is
 tokens x these prices, so re-running this script only changes cost for runs made after it.
 
 Usage (from harness/, credentials loaded):
@@ -41,10 +41,16 @@ def main() -> None:
             missing.append(m)
         prices[m] = {"input_per_mtok": None if pin is None else round(pin * 1e6, 6),
                      "output_per_mtok": None if pout is None else round(pout * 1e6, 6)}
+        # Prompt-cache prices, when the gateway lists them (reads and 5-minute writes).
+        for key, field in (("cache_read_per_mtok", "cache_read_input_token_cost"),
+                           ("cache_write_per_mtok", "cache_creation_input_token_cost")):
+            if mi.get(field) is not None:
+                prices[m][key] = round(mi[field] * 1e6, 6)
 
     out = HARNESS / cfg["fixed"].get("prices_file", "config/prices.yaml")
     header = ("# List prices (USD per million tokens), written by scripts/fetch_prices.py.\n"
-              "# generation_cost = input_tokens x input price + output_tokens x output price.\n")
+              "# generation_cost = input_tokens x input price + output_tokens x output price; prompt tokens read\n"
+              "# from or written to the prompt cache use the cache prices instead (runner.token_cost).\n")
     out.write_text(header + yaml.safe_dump({"as_of": dt.date.today().isoformat(),
                                             "source": f"{url} (LiteLLM model_info)",
                                             "models": prices}, sort_keys=False))

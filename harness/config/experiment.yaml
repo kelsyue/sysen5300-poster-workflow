@@ -8,7 +8,26 @@ experiment:
 
 fixed:
   paper2poster:
-    workflow: latex-only-v2       # summaries + one combined figure/outline call -> local LaTeX
+    # latex-only-v2: parser summaries typeset as written (judged results: data/latex/).
+    # latex-painter-v3: + crop regrowth, one Painter call (short paragraphs, few bullets), measured fit,
+    #   and one shortening call only if a poster overflows at min_font_scale.
+    workflow: latex-painter-v3
+    run_set: latex_v3             # data/latex_v3/, outputs/latex_v3/: never mixed with v2
+    min_font_scale: 0.85          # smallest beamerposter scale; below this the poster fails (E_OVERFLOW)
+    # v3 prompt caching: the Planner, Painter and shortening calls share one source prefix.
+    # Only these routes need explicit cache markers. Checked on the gateway 2026-11-12:
+    # Opus (Bedrock) reads the cached prefix at 0.1x; GPT-5.6 (Azure) never reported a cache
+    # read; Llama and Qwen have no prompt cache. Markers never change the model's output.
+    prompt_cache_models: [claude-opus-5]
+    painter:                      # src/poster_painter.py; densities from upstream skills/references/poster-defaults.md
+      total_words: 450            # visible body copy (upstream: 250-500 words)
+      min_section_words: 35
+      max_section_words: 110
+      max_bullets: 4              # optional bullets per section; every section has a paragraph
+      overflow_repair_calls: 1    # shortening calls when the poster still overflows (0 = fail instead)
+      blank_fill_calls: 1         # expansion calls when a column ends far above the page bottom (0 = off)
+      blank_min_frac: 0.10        # a column's empty space, as a share of the page height, that triggers it
+      blank_fill_share: 0.8       # share of that space the added words aim to fill
     repo: https://github.com/Paper2Poster/Paper2Poster
     commit: 623d042f283acee782b2644d6abd63f75eccfa1f   # 2026-06-08
     path: vendor/Paper2Poster     # checkout location, relative to harness/

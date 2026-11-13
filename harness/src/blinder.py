@@ -20,6 +20,7 @@ Usage (from harness/):
     python src/blinder.py                    # data/latex/runs.csv
     python src/blinder.py --dry-run          # data/latex/dry_run/runs.csv
     python src/blinder.py --dry-run --runs data/dry_run/runs.csv   # older runs with a latex/poster.pdf
+    python src/blinder.py --run-set latex_v3 # latex-painter-v3 posters: data/latex_v3/runs.csv
 """
 from __future__ import annotations
 
@@ -77,10 +78,12 @@ def new_code(taken: set[str]) -> str:
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--dry-run", action="store_true")
+    ap.add_argument("--run-set", default="latex",
+                    help="folder under data/ and results/: latex (v2, default) or latex_v3 (latex-painter-v3)")
     ap.add_argument("--runs", help="runs file; default data/latex/runs.csv (or data/latex/dry_run/runs.csv)")
     args = ap.parse_args()
 
-    sub = Path("latex") / ("dry_run" if args.dry_run else "")
+    sub = Path(args.run_set) / ("dry_run" if args.dry_run else "")
     runs_path = HARNESS / (args.runs or Path("data") / sub / "runs.csv")
     data, private = HARNESS / "data" / sub, HARNESS / "data" / "private" / sub
     runs_file = str(runs_path.relative_to(HARNESS))

@@ -42,12 +42,12 @@ The token budget cut the study from 30 papers to 15 and the posters are not rege
 
 ## 3. Run order
 
-- Models run in alphabetical order of gateway ID: `claude-opus-5` → `gpt-5.6-sol` → `meta.llama-4-maverick-17b-instruct` → `qwen.qwen3-vl-235b-a22b`.
-- Within each model, papers run in one fixed order (same for every model), recorded as `run_order` 1–30.
-- Finish all 30 papers for a model before switching.
+- Papers run in one fixed order (sorted ID), recorded as `run_order`. Each model generates one poster per paper.
+- Paper-major: all four models run on a paper before the next paper starts, so gateway drift over the batch affects every model alike.
+- Within each paper the four models run in a seeded random order (`runner.model_order`, `experiment.seed`; latex-painter-v3 batches from 2026-11-13). Earlier batches used the fixed alphabetical order.
 - Every attempt is a separate stateless call. No prompt iteration.
 
-> Note: running models in sequence confounds model with time of day / gateway load for latency. Latency is reported, not gated, so this is acceptable; mention it as a limitation.
+> Note: models still share the batch's time span with each other, not with other batches; latency is reported, not gated.
 
 ## 4. Blinded author evaluation
 

@@ -12,6 +12,12 @@ exact section titles to {"image": "ID"} or {"table": "ID"}. Omit sections with n
 suitable visual. Return {} if no supplied visual is useful. No reasons or layout
 coordinates are needed: code computes layout and sizing."""
 
+# latex-painter-v3 only (in PLAN_TASK): posters are read visually, so use the paper's figures.
+# Upstream's rule (zero or one visual per section) is unchanged; v2 runs keep SYSTEM_PROMPT.
+FILL_RULE = """
+Give a visual to every section that has a relevant one; leave a section without a visual
+only when none of the remaining visuals fits it."""
+
 # The task is restated in the user turn: with only the system message, Llama 4 Maverick
 # summarized the input instead of planning (first LaTeX dry run, P01). Same text for every model.
 PLANNING_REQUEST = """Task: choose the figures for the poster sections below, following the rules in the system message.
@@ -19,6 +25,25 @@ Output: only a JSON object whose keys are section titles copied exactly and whos
 
 Input:
 """
+
+
+# latex-painter-v3: the Planner, Painter and overflow-shortening calls share one prefix
+# (this system message + source_block) so a model with prompt caching reads it from the
+# cache after the first call. The block must be byte-identical across calls: it is built
+# only from raw_content.json, images.json and tables.json, with fixed JSON formatting.
+SHARED_SYSTEM = """You help turn a scientific paper into a conference poster. The first part of
+the user message is the source: the paper's section summaries and its figure and table
+captions. Follow the task that comes after the source exactly, using only that source."""
+
+PLAN_TASK = ("Task: plan the figures for the poster.\nRules: " + SYSTEM_PROMPT + FILL_RULE + """
+Output: only a JSON object whose keys are section titles copied exactly from the source and whose values are {"image": "ID"} or {"table": "ID"} with IDs from the source, for example {"Results": {"image": "2"}}. No other text.""")
+
+
+def source_block(document, images, tables):
+    """The shared, cacheable prefix: summaries and captions, serialized deterministically."""
+    payload = {'paper_title': (document.get('meta') or {}).get('poster_title', ''),
+               **planning_input(document, images, tables)}
+    return 'SOURCE\n' + json.dumps(payload, ensure_ascii=False, separators=(',', ':'))
 
 
 def planning_input(document, images, tables):
@@ -76,7 +101,27 @@ def make_panels(document, images, tables, plan):
     return panels
 
 
-def plan_figures(document, images, tables, actor_config, record_usage, raw_path=None, feedback=None):
+FEEDBACK = ('\n\nRecovery of this same model\'s failed attempt. The previous response '
+            'below was rejected. Return a corrected mapping using only the supplied '
+            'IDs and exact section titles. Exclude title/authors sections entirely. '
+            'Use each image/table at most once; leave sections without a suitable '
+            'unused visual out. Return only the corrected JSON.\n')
+
+
+def plan_figures(document, images, tables, actor_config, record_usage, raw_path=None, feedback=None,
+                 ask=None):
+    """One planning call. With ask (latex-painter-v3, gateway_chat) the shared cached
+    source prefix is used and ask records usage; otherwise camel, as in latex-only-v2."""
+    if ask is not None:
+        from utils.src.utils import get_json_from_response
+        task = PLAN_TASK + (FEEDBACK + json.dumps(feedback, ensure_ascii=False, separators=(',', ':'))
+                            if feedback else '')
+        text = ask('planning', SHARED_SYSTEM, [source_block(document, images, tables), task], cache=True)
+        if raw_path is not None:
+            raw_path.write_text(text)
+        plan = validate_plan(get_json_from_response(text), document, images, tables)
+        return make_panels(document, images, tables, plan), plan
+
     # Imports resolve in Paper2Poster's environment, not the harness environment.
     from camel.models import ModelFactory
     from camel.agents import ChatAgent
@@ -92,12 +137,7 @@ def plan_figures(document, images, tables, actor_config, record_usage, raw_path=
     prompt = PLANNING_REQUEST + json.dumps(planning_input(document, images, tables),
                                           ensure_ascii=False, separators=(',', ':'))
     if feedback:
-        prompt += ('\n\nRecovery of this same model\'s failed attempt. The previous response '
-                   'below was rejected. Return a corrected mapping using only the supplied '
-                   'IDs and exact section titles. Exclude title/authors sections entirely. '
-                   'Use each image/table at most once; leave sections without a suitable '
-                   'unused visual out. Return only the corrected JSON.\n'
-                   + json.dumps(feedback, ensure_ascii=False, separators=(',', ':')))
+        prompt += FEEDBACK + json.dumps(feedback, ensure_ascii=False, separators=(',', ':'))
     response = agent.step(prompt)
     record_usage(*account_token(response))  # record even if JSON validation fails
     if raw_path is not None:  # kept for audit, and to see why a plan was rejected

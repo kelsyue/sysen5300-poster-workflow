@@ -19,7 +19,10 @@ def parser_output_problem(content):
     return None
 
 
-def parse_paper(args, actor_config, record_usage, max_attempts, rng):
+PARSER_SYSTEM = 'You are the author of the paper, and you will create a poster for the paper.'
+
+
+def parse_paper(args, actor_config, record_usage, max_attempts, rng, ask=None):
     """parse_raw(version=2) at the pinned commit, without its token leaks.
 
     Upstream retries the whole function up to 5 times (re-converting the PDF each time),
@@ -27,6 +30,10 @@ def parse_paper(args, actor_config, record_usage, max_attempts, rng):
     sections with an unseeded random.sample. Here: one PDF conversion, at most
     max_attempts model calls, each one recorded, and the same selection rule with a
     seeded generator.
+
+    With ask (latex-painter-v3, gateway_chat.GatewayChat.ask) the same system message and
+    prompt go straight to the gateway and are recorded there (record_usage is not used);
+    a reply that is not parseable JSON counts as an unusable attempt instead of aborting.
     """
     # Imports resolve in Paper2Poster's environment, not the harness environment.
     import PosterAgent.parse_raw as upstream_parse
@@ -45,11 +52,26 @@ def parse_paper(args, actor_config, record_usage, max_attempts, rng):
     prompt = Template(open('utils/prompts/gen_poster_raw_content_v2.txt').read()).render(
         markdown_document=text_content)
 
+    if ask is not None:
+        problem = None
+        for attempt in range(1, max_attempts + 1):
+            try:
+                content = get_json_from_response(ask('parser', PARSER_SYSTEM, [prompt]))
+                problem = parser_output_problem(content)
+            except RuntimeError as exc:  # upstream's "Failed to parse JSON from response"
+                problem = f'unparseable reply ({exc})'
+            if problem is None:
+                break
+            print(f'Parser output unusable ({problem}); attempt {attempt} of {max_attempts}.', flush=True)
+        else:
+            raise RuntimeError(f'Parser output unusable after {max_attempts} attempts: {problem}')
+        return _finish(args, content, rng, raw_result, keep_order=True)
+
     kwargs = {k: actor_config[k] for k in ('model_platform', 'model_type')}
     kwargs['model_config_dict'] = actor_config['model_config']
     if actor_config.get('url'):
         kwargs['url'] = actor_config['url']
-    agent = ChatAgent(system_message='You are the author of the paper, and you will create a poster for the paper.',
+    agent = ChatAgent(system_message=PARSER_SYSTEM,
                       model=ModelFactory.create(**kwargs), message_window_size=10,
                       token_limit=actor_config.get('token_limit', None))
     for attempt in range(1, max_attempts + 1):
@@ -63,11 +85,20 @@ def parse_paper(args, actor_config, record_usage, max_attempts, rng):
         print(f'Parser output unusable ({problem}); attempt {attempt} of {max_attempts}.', flush=True)
     else:
         raise RuntimeError(f'Parser output unusable after {max_attempts} attempts: {problem}')
+    return _finish(args, content, rng, raw_result)
 
+
+def _finish(args, content, rng, raw_result, keep_order=False):
     if len(content['sections']) > 9:
-        # Upstream rule: first 2 + 5 random middle sections + last 2.
-        content['sections'] = (content['sections'][:2] + rng.sample(content['sections'][2:-2], 5)
-                               + content['sections'][-2:])
+        # Upstream rule: first 2 + 5 random middle sections + last 2. random.sample returns
+        # them in random order (P03, v3 test: Motivation after Contributions); with keep_order
+        # (v3) the same five positions are kept in the paper's order.
+        middle = content['sections'][2:-2]
+        if keep_order:
+            chosen = [middle[i] for i in sorted(rng.sample(range(len(middle)), 5))]
+        else:
+            chosen = rng.sample(middle, 5)
+        content['sections'] = content['sections'][:2] + chosen + content['sections'][-2:]
     os.makedirs('contents', exist_ok=True)
     with open(f'contents/<{args.model_name_t}_{args.model_name_v}>_{args.poster_name}_raw_content.json', 'w') as f:
         json.dump(content, f, indent=4)

@@ -1,0 +1,60 @@
+{
+  "model": "gemini-3.5-flash",
+  "repeat": 2,
+  "judge_prompt_sha256": "4ec65050cfdc718218dbc587f672291e733fd03b1254c20d77b61b0933e16162",
+  "error": null,
+  "tokens_in": 5827,
+  "tokens_out": 2600,
+  "tokens_cached": 0,
+  "max_output_tokens": 32768,
+  "parsed": {
+    "items": {
+      "chk_problem": {
+        "label": "accurate",
+        "poster_evidence": "Complete Bloom-filter updates can be delayed or dropped when communication resources vary, leaving stale state.",
+        "reason": "This statement under 'Motivation' accurately describes the specific research problem and background regarding periodic transmission of Bloom filters under varying channel conditions."
+      },
+      "chk_method": {
+        "label": "accurate",
+        "poster_evidence": "We select the largest qualified folded view supported by each communication opportunity.\n...\nThe online policy selects using current communication conditions. A fine-grained catalog comes from an unchanged canonical filter.",
+        "reason": "The poster describes the online policy that selects the largest qualified folded view from a catalog based on current communication conditions."
+      },
+      "chk_data": {
+        "label": "accurate",
+        "poster_evidence": "PhiUSIIL and URL-Phish each use 5,000 malicious URLs inserted; 50,000 disjoint benign URLs provide absent queries.",
+        "reason": "This matches the reference dataset details exactly, including the names of the datasets and the specific counts for insertion and absent queries."
+      },
+      "chk_setup": {
+        "label": "accurate",
+        "poster_evidence": "Each trace has 500 opportunities of 10 ms; results average 20 paired repetitions across Markov capacity, Gilbert-Elliott, and Rayleigh fading.",
+        "reason": "This matches the experimental setup details, including the 20 repetitions of 500 opportunities and the three specific channel models."
+      },
+      "chk_primary_result": {
+        "label": "accurate",
+        "poster_evidence": "Fig. 4. Communication efficiency under the three channel models. Bars show mean successful deliveries per MB and 95% confidence intervals across 20 paired channel traces; higher values indicate better performance.",
+        "reason": "Figure 4 visually displays the exact values of 191.6 (Adaptive), 66.9 (Best compression), and 27.7 (Classical BF) under the Five-State Markov model."
+      },
+      "chk_secondary_result": {
+        "label": "accurate",
+        "poster_evidence": "Fig. 5. Mean receiver report age under the three channel models. Bars show means and 95% confidence intervals across 20 paired channel traces; the vertical axis is logarithmic and lower values indicate fresher receiver state.",
+        "reason": "Figure 5 visually displays the exact values of 1.24 (Adaptive), 13.5 (Best compression), and 31.6 (Classical BF) under the Five-State Markov model."
+      },
+      "chk_baseline": {
+        "label": "missing",
+        "poster_evidence": "Baselines include uncompressed and losslessly compressed filters",
+        "reason": "The poster mentions uncompressed and losslessly compressed filters, but fails to identify the four specific lossless-compression baselines (gzip, zlib, bzip2, and LZMA) required by the reference."
+      },
+      "chk_conclusion": {
+        "label": "accurate",
+        "poster_evidence": "Channel-aware folding selects the largest qualified view per opportunity without false negatives. It improves efficiency and freshness over complete and compressed baselines under Markov capacity and Rayleigh fading.",
+        "reason": "This matches the take-home conclusion regarding improved communication efficiency and receiver freshness under varying channel conditions."
+      },
+      "chk_limitation": {
+        "label": "accurate",
+        "poster_evidence": "Experiments isolate channel-driven selection but limit generality. Two fixed URL datasets share one cardinality, limiting workload generality. Controller assumes timely channel state; estimation error and metadata costs are unmodeled.",
+        "reason": "The poster lists several specific limitations under the 'Limitations' section, matching the reference's focus on fixed datasets/cardinalities and unmodeled channel estimation errors."
+      }
+    }
+  },
+  "raw": "```json\n{\n  \"items\": {\n    \"chk_problem\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Complete Bloom-filter updates can be delayed or dropped when communication resources vary, leaving stale state.\",\n      \"reason\": \"This statement under 'Motivation' accurately describes the specific research problem and background regarding periodic transmission of Bloom filters under varying channel conditions.\"\n    },\n    \"chk_method\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"We select the largest qualified folded view supported by each communication opportunity.\\n...\\nThe online policy selects using current communication conditions. A fine-grained catalog comes from an unchanged canonical filter.\",\n      \"reason\": \"The poster describes the online policy that selects the largest qualified folded view from a catalog based on current communication conditions.\"\n    },\n    \"chk_data\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"PhiUSIIL and URL-Phish each use 5,000 malicious URLs inserted; 50,000 disjoint benign URLs provide absent queries.\",\n      \"reason\": \"This matches the reference dataset details exactly, including the names of the datasets and the specific counts for insertion and absent queries.\"\n    },\n    \"chk_setup\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Each trace has 500 opportunities of 10 ms; results average 20 paired repetitions across Markov capacity, Gilbert-Elliott, and Rayleigh fading.\",\n      \"reason\": \"This matches the experimental setup details, including the 20 repetitions of 500 opportunities and the three specific channel models.\"\n    },\n    \"chk_primary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Fig. 4. Communication efficiency under the three channel models. Bars show mean successful deliveries per MB and 95% confidence intervals across 20 paired channel traces; higher values indicate better performance.\",\n      \"reason\": \"Figure 4 visually displays the exact values of 191.6 (Adaptive), 66.9 (Best compression), and 27.7 (Classical BF) under the Five-State Markov model.\"\n    },\n    \"chk_secondary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Fig. 5. Mean receiver report age under the three channel models. Bars show means and 95% confidence intervals across 20 paired channel traces; the vertical axis is logarithmic and lower values indicate fresher receiver state.\",\n      \"reason\": \"Figure 5 visually displays the exact values of 1.24 (Adaptive), 13.5 (Best compression), and 31.6 (Classical BF) under the Five-State Markov model.\"\n    },\n    \"chk_baseline\": {\n      \"label\": \"missing\",\n      \"poster_evidence\": \"Baselines include uncompressed and losslessly compressed filters\",\n      \"reason\": \"The poster mentions uncompressed and losslessly compressed filters, but fails to identify the four specific lossless-compression baselines (gzip, zlib, bzip2, and LZMA) required by the reference.\"\n    },\n    \"chk_conclusion\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Channel-aware folding selects the largest qualified view per opportunity without false negatives. It improves efficiency and freshness over complete and compressed baselines under Markov capacity and Rayleigh fading.\",\n      \"reason\": \"This matches the take-home conclusion regarding improved communication efficiency and receiver freshness under varying channel conditions.\"\n    },\n    \"chk_limitation\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Experiments isolate channel-driven selection but limit generality. Two fixed URL datasets share one cardinality, limiting workload generality. Controller assumes timely channel state; estimation error and metadata costs are unmodeled.\",\n      \"reason\": \"The poster lists several specific limitations under the 'Limitations' section, matching the reference's focus on fixed datasets/cardinalities and unmodeled channel estimation errors.\"\n    }\n  }\n}\n```"
+}

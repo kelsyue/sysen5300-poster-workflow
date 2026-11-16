@@ -1,0 +1,552 @@
+{
+  "model": "gemini-3.5-flash",
+  "repeat": 2,
+  "judge_prompt_sha256": "4ec65050cfdc718218dbc587f672291e733fd03b1254c20d77b61b0933e16162",
+  "error": null,
+  "tokens_in": 22164,
+  "tokens_out": 23977,
+  "tokens_cached": 8161,
+  "max_output_tokens": 32768,
+  "claims_batch_size": 40,
+  "parsed": {
+    "claims": [
+      {
+        "id": 1,
+        "text": "Complete Bloom-filter updates can be delayed or dropped when communication resources vary, leaving stale state.",
+        "poster_quote": "Complete Bloom-filter updates can be delayed or dropped when communication resources vary, leaving stale state.",
+        "label": "supported",
+        "paper_evidence": "When communication resources are constrained or time varying, complete-filter updates may be delayed or dropped, leaving stale receiver state.",
+        "reason": "Section I, paragraph 2. The paper explicitly states that complete-filter updates can be delayed or dropped under constrained or time-varying resources, leaving stale receiver state."
+      },
+      {
+        "id": 2,
+        "text": "Lossless compression offers one payload size.",
+        "poster_quote": "Lossless compression offers one payload size, while OR folding offers smaller queryable views with higher false-positive rates.",
+        "label": "supported",
+        "paper_evidence": "Lossless compressed BFs reduce transmission size without changing membership behavior [6], but produce a single payload determined by the filter contents.",
+        "reason": "Section I, paragraph 2. The paper states that lossless compressed BFs produce a single payload."
+      },
+      {
+        "id": 3,
+        "text": "OR folding offers smaller queryable views with higher false-positive rates.",
+        "poster_quote": "Lossless compression offers one payload size, while OR folding offers smaller queryable views with higher false-positive rates.",
+        "label": "supported",
+        "paper_evidence": "OR folding instead produces smaller, directly queryable views with increased FPR while preserving the no-false-negative property.",
+        "reason": "Section I, paragraph 2. The paper states that OR folding produces smaller, directly queryable views with increased FPR."
+      },
+      {
+        "id": 4,
+        "text": "The proposed method selects the largest qualified folded view supported by each communication opportunity.",
+        "poster_quote": "We select the largest qualified folded view supported by each communication opportunity.",
+        "label": "supported",
+        "paper_evidence": "The sender retains an unchanged canonical filter, constructs a catalog satisfying a maximum FPR, and selects the FPR-qualified representation with the largest retained length supported by the communication resources available at each reporting opportunity.",
+        "reason": "Abstract. The paper states that the sender selects the FPR-qualified representation with the largest retained length supported at each reporting opportunity."
+      },
+      {
+        "id": 5,
+        "text": "The example shows canonical query positions mapped into OR-folded views.",
+        "poster_quote": "The example shows canonical query positions mapped into OR-folded views.",
+        "label": "supported",
+        "paper_evidence": "The example shows how the canonical query positions for one element are mapped into each folded representation.",
+        "reason": "Figure 2 caption. The caption explicitly states that the example shows how canonical query positions are mapped into each folded representation."
+      },
+      {
+        "id": 6,
+        "text": "The online policy selects using current communication conditions.",
+        "poster_quote": "The online policy selects using current communication conditions.",
+        "label": "supported",
+        "paper_evidence": "In contrast, the present work holds the inserted set, canonical filter, and hash count fixed while treating current communication conditions as the online selection variable.",
+        "reason": "Section II, paragraph 4. The paper states that current communication conditions serve as the online selection variable."
+      },
+      {
+        "id": 7,
+        "text": "A fine-grained catalog comes from an unchanged canonical filter.",
+        "poster_quote": "A fine-grained catalog comes from an unchanged canonical filter.",
+        "label": "supported",
+        "paper_evidence": "a fine-grained catalog of folded views derived from an unchanged canonical filter; and",
+        "reason": "Section I, list of contributions. The paper lists a fine-grained catalog of folded views derived from an unchanged canonical filter as a contribution."
+      },
+      {
+        "id": 8,
+        "text": "Retained lengths need not be integer divisors.",
+        "poster_quote": "Retained lengths need not be integer divisors.",
+        "label": "supported",
+        "paper_evidence": "This work uses the same OR-folding principle but permits fine-grained retained lengths that need not be integer divisors of the canonical filter length.",
+        "reason": "Section III-B, paragraph 2. The paper states that retained lengths do not need to be integer divisors of the canonical filter length."
+      },
+      {
+        "id": 9,
+        "text": "Evaluation covers two datasets.",
+        "poster_quote": "Evaluation covers two datasets and three channel models.",
+        "label": "supported",
+        "paper_evidence": "Using two phishing URL datasets, the framework is evaluated under Five-State Markov Capacity, Gilbert–Elliott burst-error, and Rayleigh block-fading models.",
+        "reason": "Abstract. The paper states that the framework is evaluated using two phishing URL datasets."
+      },
+      {
+        "id": 10,
+        "text": "Evaluation covers three channel models.",
+        "poster_quote": "Evaluation covers two datasets and three channel models.",
+        "label": "supported",
+        "paper_evidence": "Using two phishing URL datasets, the framework is evaluated under Five-State Markov Capacity, Gilbert–Elliott burst-error, and Rayleigh block-fading models.",
+        "reason": "Abstract. The paper states that the framework is evaluated under three channel models."
+      },
+      {
+        "id": 11,
+        "text": "Both URL datasets show nearly identical false-positive rates.",
+        "poster_quote": "Both URL datasets show nearly identical false-positive rates, indicating that occupancy and deterministic mapping primarily govern folding.",
+        "label": "supported",
+        "paper_evidence": "The two datasets produce nearly identical false positive rates across the evaluated ratios.",
+        "reason": "Section V-A, paragraph 2. The paper states that both datasets produce nearly identical false positive rates."
+      },
+      {
+        "id": 12,
+        "text": "False-positive rates rise gradually under moderate folding, then accelerate near saturation.",
+        "poster_quote": "Rates rise gradually under moderate folding, then accelerate near saturation.",
+        "label": "supported",
+        "paper_evidence": "The false positive rate increases gradually under moderate folding and then rises more rapidly as the reduced representation approaches saturation.",
+        "reason": "Section V-A, paragraph 3. The paper states that the false positive rate increases gradually under moderate folding and then rises more rapidly near saturation."
+      },
+      {
+        "id": 13,
+        "text": "About 50% size reduction remains near the catalog limit, providing multiple accuracy-cost operating points.",
+        "poster_quote": "About 50% size reduction remains near the catalog limit, providing multiple accuracy-cost operating points.",
+        "label": "supported",
+        "paper_evidence": "Approximately 50% size reduction remains near the 10% maximum FPR used by the adaptive policy. The resulting valid representations provide multiple communication-cost and accuracy operating points",
+        "reason": "Section V-A, paragraph 3. The paper states that a 50% size reduction remains near the 10% maximum FPR and provides multiple operating points."
+      },
+      {
+        "id": 14,
+        "text": "The sender keeps an unchanged canonical filter.",
+        "poster_quote": "The sender keeps an unchanged canonical filter and excludes catalog views above the maximum false-positive rate.",
+        "label": "supported",
+        "paper_evidence": "The sender retains an unchanged canonical filter, constructs a catalog satisfying a maximum FPR, and selects the FPR-qualified representation with the largest retained length supported by the communication resources available at each reporting opportunity.",
+        "reason": "Abstract. The paper states that the sender retains an unchanged canonical filter."
+      },
+      {
+        "id": 15,
+        "text": "The sender excludes catalog views above the maximum false-positive rate.",
+        "poster_quote": "The sender keeps an unchanged canonical filter and excludes catalog views above the maximum false-positive rate.",
+        "label": "supported",
+        "paper_evidence": "Each candidate is associated with its retained length and measured FPR, and representations exceeding the application-defined maximum FPR are excluded.",
+        "reason": "Section III-E, paragraph 1. The paper states that representations exceeding the maximum FPR are excluded."
+      },
+      {
+        "id": 16,
+        "text": "At each opportunity, the sender selects the largest qualified view fitting complete wire capacity.",
+        "poster_quote": "At each opportunity, it selects the largest qualified view fitting complete wire capacity; under loss, it considers whole-report delivery probability.",
+        "label": "supported",
+        "paper_evidence": "For the Five-State Markov and Rayleigh models, the sender selects the valid representation with the largest retained-length ratio whose complete wire size fits the current capacity.",
+        "reason": "Section IV-D, paragraph 1. The paper states that the sender selects the largest valid representation whose complete wire size fits the current capacity."
+      },
+      {
+        "id": 17,
+        "text": "Under loss, the sender considers whole-report delivery probability.",
+        "poster_quote": "At each opportunity, it selects the largest qualified view fitting complete wire capacity; under loss, it considers whole-report delivery probability.",
+        "label": "supported",
+        "paper_evidence": "For a loss-based channel without an explicit byte-capacity limit, selection instead considers the probability of complete-report delivery.",
+        "reason": "Section III-E, paragraph 2. The paper states that under loss-based channels, selection considers the probability of complete-report delivery."
+      },
+      {
+        "id": 18,
+        "text": "If none can be delivered, the update is deferred.",
+        "poster_quote": "If none can be delivered, the update is deferred; otherwise, metadata carries retained length and timestamp.",
+        "label": "supported",
+        "paper_evidence": "If no qualified representation can be delivered, the update is deferred.",
+        "reason": "Section III-E, paragraph 1. The paper states that the update is deferred if no qualified representation can be delivered."
+      },
+      {
+        "id": 19,
+        "text": "If delivered, metadata carries retained length and timestamp.",
+        "poster_quote": "If none can be delivered, the update is deferred; otherwise, metadata carries retained length and timestamp.",
+        "label": "supported",
+        "paper_evidence": "Each transmitted update contains the selected Bloom-filter representation, its retained length m′, and a timestamp that serves as its report version.",
+        "reason": "Section III-E, paragraph 3. The paper states that each update contains the selected representation, its retained length, and a timestamp."
+      },
+      {
+        "id": 20,
+        "text": "The receiver installs only complete, newer reports.",
+        "poster_quote": "The receiver installs only complete, newer reports, retains its previous valid view after failure, and never reconstructs the canonical filter.",
+        "label": "supported",
+        "paper_evidence": "The receiver installs only a completely delivered update newer than its currently stored view and queries it using the coordinate mapping in Equation (5).",
+        "reason": "Section III-E, paragraph 3. The paper states that the receiver installs only completely delivered updates newer than its current view."
+      },
+      {
+        "id": 21,
+        "text": "The receiver retains its previous valid view after failure.",
+        "poster_quote": "The receiver installs only complete, newer reports, retains its previous valid view after failure, and never reconstructs the canonical filter.",
+        "label": "supported",
+        "paper_evidence": "after a failed or deferred update, the receiver retains its previous valid view.",
+        "reason": "Section III-E, paragraph 3. The paper states that the receiver retains its previous valid view after a failed or deferred update."
+      },
+      {
+        "id": 22,
+        "text": "The receiver never reconstructs the canonical filter.",
+        "poster_quote": "The receiver installs only complete, newer reports, retains its previous valid view after failure, and never reconstructs the canonical filter.",
+        "label": "supported",
+        "paper_evidence": "Reconstruction of the canonical filter is neither required nor attempted, and the canonical filter retained by the sender is not modified by selection or transmission.",
+        "reason": "Section III-E, paragraph 3. The paper states that reconstruction of the canonical filter is neither required nor attempted."
+      },
+      {
+        "id": 23,
+        "text": "Paired traces compare adaptive folding with complete and compressed baselines.",
+        "poster_quote": "Paired traces compare adaptive folding with complete and compressed baselines.",
+        "label": "supported",
+        "paper_evidence": "Figures 4 and 5 report means and 95% confidence intervals over 20 paired traces of 500 opportunities, with all strategies using the same trace within each repetition.",
+        "reason": "Section IV-F, paragraph 1. The paper states that the evaluation uses paired traces to compare the strategies."
+      },
+      {
+        "id": 24,
+        "text": "PhiUSIIL uses 5,000 malicious URLs inserted.",
+        "poster_quote": "PhiUSIIL and URL-Phish each use 5,000 malicious URLs inserted; 50,000 disjoint benign URLs provide absent queries.",
+        "label": "supported",
+        "paper_evidence": "The PhiUSIIL [14] and URL-Phish [15] datasets are evaluated using 5,000 malicious URLs for insertion and 50,000 disjoint benign URLs as absent queries.",
+        "reason": "Section IV-A, paragraph 1. The paper states that 5,000 malicious URLs are used for insertion in the PhiUSIIL dataset."
+      },
+      {
+        "id": 25,
+        "text": "URL-Phish uses 5,000 malicious URLs inserted.",
+        "poster_quote": "PhiUSIIL and URL-Phish each use 5,000 malicious URLs inserted; 50,000 disjoint benign URLs provide absent queries.",
+        "label": "supported",
+        "paper_evidence": "The PhiUSIIL [14] and URL-Phish [15] datasets are evaluated using 5,000 malicious URLs for insertion and 50,000 disjoint benign URLs as absent queries.",
+        "reason": "Section IV-A, paragraph 1. The paper states that 5,000 malicious URLs are used for insertion in the URL-Phish dataset."
+      },
+      {
+        "id": 26,
+        "text": "50,000 disjoint benign URLs provide absent queries.",
+        "poster_quote": "PhiUSIIL and URL-Phish each use 5,000 malicious URLs inserted; 50,000 disjoint benign URLs provide absent queries.",
+        "label": "supported",
+        "paper_evidence": "The PhiUSIIL [14] and URL-Phish [15] datasets are evaluated using 5,000 malicious URLs for insertion and 50,000 disjoint benign URLs as absent queries.",
+        "reason": "Section IV-A, paragraph 1. The paper states that 50,000 disjoint benign URLs are used as absent queries."
+      },
+      {
+        "id": 27,
+        "text": "Classical targets 1% false positives.",
+        "poster_quote": "Classical targets 1% false positives; sparse targets 25% occupancy with three hashes.",
+        "label": "supported",
+        "paper_evidence": "For each dataset, the classical filter length m is selected for n = 5,000 elements and a target FPR of 1%, then rounded upward to a complete byte.",
+        "reason": "Section IV-B, paragraph 1. The paper states that the classical filter length is selected for a target FPR of 1%."
+      },
+      {
+        "id": 28,
+        "text": "Sparse targets 25% occupancy.",
+        "poster_quote": "Classical targets 1% false positives; sparse targets 25% occupancy with three hashes.",
+        "label": "supported",
+        "paper_evidence": "The sparse canonical filter uses the same m, with its hash count selected for a target occupancy ρ = 0.25:",
+        "reason": "Section IV-B, paragraph 2. The paper states that the sparse canonical filter is selected for a target occupancy of 0.25 (25%)."
+      },
+      {
+        "id": 29,
+        "text": "Sparse targets use three hashes.",
+        "poster_quote": "Classical targets 1% false positives; sparse targets 25% occupancy with three hashes.",
+        "label": "supported",
+        "paper_evidence": "Equation (10) produces three hash functions.",
+        "reason": "Section IV-B, paragraph 3. The paper states that the sparse target equation produces three hash functions."
+      },
+      {
+        "id": 30,
+        "text": "Catalog views cap empirical false positives at 10%.",
+        "poster_quote": "Catalog views cap empirical false positives at 10% with zero observed false negatives.",
+        "label": "supported",
+        "paper_evidence": "Only representations with no observed false negatives and an empirical FPR no greater than 10% enter the adaptive catalog.",
+        "reason": "Section IV-B, paragraph 4. The paper states that only representations with an empirical FPR no greater than 10% enter the catalog."
+      },
+      {
+        "id": 31,
+        "text": "Catalog views have zero observed false negatives.",
+        "poster_quote": "Catalog views cap empirical false positives at 10% with zero observed false negatives.",
+        "label": "supported",
+        "paper_evidence": "Only representations with no observed false negatives and an empirical FPR no greater than 10% enter the adaptive catalog.",
+        "reason": "Section IV-B, paragraph 4. The paper states that only representations with no observed false negatives enter the catalog."
+      },
+      {
+        "id": 32,
+        "text": "Baselines include uncompressed and losslessly compressed filters.",
+        "poster_quote": "Baselines include uncompressed and losslessly compressed filters; payloads use 480-byte packets with 32-byte headers.",
+        "label": "supported",
+        "paper_evidence": "The sparse canonical bit array is compared with gzip [17], zlib [18], bzip2 [19], and LZMA [20]. ... Uncompressed classical and sparse filters are also included.",
+        "reason": "Section IV-C, paragraph 1. The paper states that baselines include uncompressed and losslessly compressed filters."
+      },
+      {
+        "id": 33,
+        "text": "Payloads use 480-byte packets.",
+        "poster_quote": "Baselines include uncompressed and losslessly compressed filters; payloads use 480-byte packets with 32-byte headers.",
+        "label": "supported",
+        "paper_evidence": "Payloads are segmented into 480-byte packets with 32-byte headers.",
+        "reason": "Section IV-C, paragraph 2. The paper states that payloads are segmented into 480-byte packets."
+      },
+      {
+        "id": 34,
+        "text": "Payloads use 32-byte headers.",
+        "poster_quote": "Baselines include uncompressed and losslessly compressed filters; payloads use 480-byte packets with 32-byte headers.",
+        "label": "supported",
+        "paper_evidence": "Payloads are segmented into 480-byte packets with 32-byte headers.",
+        "reason": "Section IV-C, paragraph 2. The paper states that packets have 32-byte headers."
+      },
+      {
+        "id": 35,
+        "text": "Each trace has 500 opportunities.",
+        "poster_quote": "Each trace has 500 opportunities of 10 ms; results average 20 paired repetitions across Markov capacity, Gilbert-Elliott, and Rayleigh fading.",
+        "label": "supported",
+        "paper_evidence": "Figures 4 and 5 report means and 95% confidence intervals over 20 paired traces of 500 opportunities, with all strategies using the same trace within each repetition.",
+        "reason": "Section IV-F, paragraph 1. The paper states that each trace consists of 500 opportunities."
+      },
+      {
+        "id": 36,
+        "text": "Each opportunity is of 10 ms.",
+        "poster_quote": "Each trace has 500 opportunities of 10 ms; results average 20 paired repetitions across Markov capacity, Gilbert-Elliott, and Rayleigh fading.",
+        "label": "supported",
+        "paper_evidence": "For the Five-State Markov and Rayleigh models, each interval is a 10-ms transmission opportunity with a total byte budget.",
+        "reason": "Section IV-C, paragraph 2. The paper states that each interval is a 10-ms transmission opportunity."
+      },
+      {
+        "id": 37,
+        "text": "Results average 20 paired repetitions.",
+        "poster_quote": "Each trace has 500 opportunities of 10 ms; results average 20 paired repetitions across Markov capacity, Gilbert-Elliott, and Rayleigh fading.",
+        "label": "supported",
+        "paper_evidence": "Figures 4 and 5 report means and 95% confidence intervals over 20 paired traces of 500 opportunities, with all strategies using the same trace within each repetition.",
+        "reason": "Section IV-F, paragraph 1. The paper states that results report means and confidence intervals over 20 paired traces (repetitions)."
+      },
+      {
+        "id": 38,
+        "text": "Repetitions are across Markov capacity, Gilbert-Elliott, and Rayleigh fading.",
+        "poster_quote": "Each trace has 500 opportunities of 10 ms; results average 20 paired repetitions across Markov capacity, Gilbert-Elliott, and Rayleigh fading.",
+        "label": "supported",
+        "paper_evidence": "Using two phishing URL datasets, the framework is evaluated under Five-State Markov Capacity, Gilbert–Elliott burst-error, and Rayleigh block-fading models.",
+        "reason": "Abstract. The paper states that the framework is evaluated under these three channel models."
+      },
+      {
+        "id": 39,
+        "text": "Adaptive folding does not universally beat lossless compression.",
+        "poster_quote": "Adaptive folding does not universally beat lossless compression; compression works when one representation is reliably deliverable.",
+        "label": "supported",
+        "paper_evidence": "These results do not show that folding universally outperforms lossless compression.",
+        "reason": "Section V-D, paragraph 2. The paper explicitly states that folding does not universally outperform lossless compression."
+      },
+      {
+        "id": 40,
+        "text": "Compression works when one representation is reliably deliverable.",
+        "poster_quote": "Adaptive folding does not universally beat lossless compression; compression works when one representation is reliably deliverable.",
+        "label": "supported",
+        "paper_evidence": "Fixed lossless compression is effective when a single representation can be delivered reliably, whereas channel-aware folding is most beneficial when communication opportunities vary and smaller FPR-qualified representations can prevent missed updates.",
+        "reason": "Section V-D, paragraph 2. The paper states that fixed lossless compression is effective when a single representation can be delivered reliably."
+      },
+      {
+        "id": 41,
+        "text": "Folding helps when varying opportunities let a smaller qualified view prevent a missed update.",
+        "poster_quote": "Folding helps when varying opportunities let a smaller qualified view prevent a missed update.",
+        "label": "supported",
+        "paper_evidence": "fixed lossless compression is effective when a single representation can be delivered reliably, whereas channel-aware folding is most beneficial when communication opportunities vary and smaller FPR-qualified representations can prevent missed updates.",
+        "reason": "Section V.D: The paper explicitly states that channel-aware folding is most beneficial when communication opportunities vary and smaller FPR-qualified representations can prevent missed updates."
+      },
+      {
+        "id": 42,
+        "text": "Candidate ratios should match false-positive tolerance and channel conditions.",
+        "poster_quote": "Candidate ratios should match false-positive tolerance and channel conditions; folding and compression could be combined.",
+        "label": "supported",
+        "paper_evidence": "Candidate ratios should reflect the application’s FPR tolerance and anticipated communication conditions, and only qualified representations should be retained.",
+        "reason": "Section VI.B: The paper states that candidate ratios should reflect the application's FPR tolerance and anticipated communication conditions."
+      },
+      {
+        "id": 43,
+        "text": "Folding and compression could be combined.",
+        "poster_quote": "Candidate ratios should match false-positive tolerance and channel conditions; folding and compression could be combined.",
+        "label": "supported",
+        "paper_evidence": "The methods could be combined, although increased occupancy may reduce compressibility; this combination was not evaluated.",
+        "reason": "Section VI.B: The paper states that folding and compression could be combined."
+      },
+      {
+        "id": 44,
+        "text": "Experiments isolate channel-driven selection but limit generality.",
+        "poster_quote": "Experiments isolate channel-driven selection but limit generality.",
+        "label": "supported",
+        "paper_evidence": "This isolates channel-driven selection but does not establish generality across other workloads, cardinalities, occupancies, or changing contents.",
+        "reason": "Section VI.C: The paper states that the controlled design isolates channel-driven selection but does not establish generality across other workloads, cardinalities, occupancies, or changing contents."
+      },
+      {
+        "id": 45,
+        "text": "Two fixed URL datasets share one cardinality.",
+        "poster_quote": "Two fixed URL datasets share one cardinality, limiting workload generality.",
+        "label": "supported",
+        "paper_evidence": "The controlled design uses two URL datasets at the same cardinality with fixed contents.",
+        "reason": "Section VI.C: The paper states that the controlled design uses two URL datasets at the same cardinality."
+      },
+      {
+        "id": 46,
+        "text": "The use of two fixed URL datasets limits workload generality.",
+        "poster_quote": "Two fixed URL datasets share one cardinality, limiting workload generality.",
+        "label": "supported",
+        "paper_evidence": "This isolates channel-driven selection but does not establish generality across other workloads, cardinalities, occupancies, or changing contents.",
+        "reason": "Section VI.C: The paper states that using two fixed URL datasets at the same cardinality does not establish generality across other workloads."
+      },
+      {
+        "id": 47,
+        "text": "Controller assumes timely channel state.",
+        "poster_quote": "Controller assumes timely channel state; estimation error and metadata costs are unmodeled.",
+        "label": "supported",
+        "paper_evidence": "The controller also assumes timely communication-state information and does not model estimation error, delayed feedback, or metadata explicitly.",
+        "reason": "Section VI.C: The paper states that the controller assumes timely communication-state information."
+      },
+      {
+        "id": 48,
+        "text": "Estimation error is unmodeled.",
+        "poster_quote": "Controller assumes timely channel state; estimation error and metadata costs are unmodeled.",
+        "label": "supported",
+        "paper_evidence": "The controller also assumes timely communication-state information and does not model estimation error, delayed feedback, or metadata explicitly.",
+        "reason": "Section VI.C: The paper states that the controller does not model estimation error."
+      },
+      {
+        "id": 49,
+        "text": "Metadata costs are unmodeled.",
+        "poster_quote": "Controller assumes timely channel state; estimation error and metadata costs are unmodeled.",
+        "label": "supported",
+        "paper_evidence": "The controller also assumes timely communication-state information and does not model estimation error, delayed feedback, or metadata explicitly.",
+        "reason": "Section VI.C: The paper states that the controller does not model metadata explicitly."
+      },
+      {
+        "id": 50,
+        "text": "No fixed-fold baseline is tested.",
+        "poster_quote": "No fixed-fold baseline is tested; one sender-receiver excludes contention, retransmission, and energy effects.",
+        "label": "supported",
+        "paper_evidence": "Fixed folded representations are not included as baselines.",
+        "reason": "Section VI.C: The paper states that fixed folded representations are not included as baselines."
+      },
+      {
+        "id": 51,
+        "text": "One sender-receiver excludes contention, retransmission, and energy effects.",
+        "poster_quote": "No fixed-fold baseline is tested; one sender-receiver excludes contention, retransmission, and energy effects.",
+        "label": "supported",
+        "paper_evidence": "The single sender–receiver configuration also excludes contention, retransmission, congestion, and fairness effects.",
+        "reason": "Section VI.C: The paper states that the single sender-receiver configuration excludes contention and retransmission, and lists energy costs as future work."
+      },
+      {
+        "id": 52,
+        "text": "Future work should study changing contents, measured channels, multiple senders, and combined folding/compression.",
+        "poster_quote": "Future work should study changing contents, measured channels, multiple senders, and combined folding/compression.",
+        "label": "supported",
+        "paper_evidence": "Future work should examine fixed-fold baselines, changing contents and cardinalities, measured channels, imperfect state estimates, multiple senders, energy costs, and combined folding and compression.",
+        "reason": "Section VII: The paper lists changing contents, measured channels, multiple senders, and combined folding and compression as priorities for future work."
+      },
+      {
+        "id": 53,
+        "text": "Channel-aware folding selects the largest qualified view per opportunity.",
+        "poster_quote": "Channel-aware folding selects the largest qualified view per opportunity without false negatives.",
+        "label": "supported",
+        "paper_evidence": "selects the FPR-qualified representation with the largest retained length supported by the communication resources available at each reporting opportunity.",
+        "reason": "Abstract: The paper states that the sender selects the FPR-qualified representation with the largest retained length supported at each reporting opportunity."
+      },
+      {
+        "id": 54,
+        "text": "Channel-aware folding has no false negatives.",
+        "poster_quote": "Channel-aware folding selects the largest qualified view per opportunity without false negatives.",
+        "label": "supported",
+        "paper_evidence": "while preserving the no-false-negative property.",
+        "reason": "Section I: The paper states that channel-aware selection among FPR-qualified folded views preserves the no-false-negative property."
+      },
+      {
+        "id": 55,
+        "text": "Channel-aware folding improves efficiency over complete and compressed baselines under Markov capacity and Rayleigh fading.",
+        "poster_quote": "It improves efficiency and freshness over complete and compressed baselines under Markov capacity and Rayleigh fading.",
+        "label": "supported",
+        "paper_evidence": "Under the Five-State Markov Capacity model, adaptive folding achieves 191.6 successful deliveries per MB, compared with 66.9 for the strongest compression baseline and 27.7 for the classical full filter.",
+        "reason": "Section V.B: The paper shows that adaptive folding improves communication efficiency over complete-filter and lossless-compression baselines under the Five-State Markov Capacity and Rayleigh block-fading models."
+      },
+      {
+        "id": 56,
+        "text": "Channel-aware folding improves freshness over complete and compressed baselines under Markov capacity and Rayleigh fading.",
+        "poster_quote": "It improves efficiency and freshness over complete and compressed baselines under Markov capacity and Rayleigh fading.",
+        "label": "supported",
+        "paper_evidence": "Under the Five-State Markov Capacity model, adaptive folding reduces mean receiver age to 1.24 intervals, compared with 13.5 for the strongest compression baseline and 31.6 for the classical filter.",
+        "reason": "Section V.C: The paper shows that adaptive folding reduces mean receiver age (improves freshness) over complete-filter and lossless-compression baselines under the Five-State Markov Capacity and Rayleigh block-fading models."
+      },
+      {
+        "id": 57,
+        "text": "Under Gilbert-Elliott loss, channel-aware folding remains competitive.",
+        "poster_quote": "Under Gilbert-Elliott loss, it remains competitive and yields the freshest receiver state.",
+        "label": "supported",
+        "paper_evidence": "Under the more favorable Gilbert–Elliott model, it remains competitive in efficiency while maintaining the freshest receiver state.",
+        "reason": "Abstract: The paper states that under the Gilbert-Elliott model, channel-aware folding remains competitive in efficiency."
+      },
+      {
+        "id": 58,
+        "text": "Under Gilbert-Elliott loss, channel-aware folding yields the freshest receiver state.",
+        "poster_quote": "Under Gilbert-Elliott loss, it remains competitive and yields the freshest receiver state.",
+        "label": "supported",
+        "paper_evidence": "Under the more favorable Gilbert–Elliott model, it remains competitive in efficiency while maintaining the freshest receiver state.",
+        "reason": "Abstract: The paper states that under the Gilbert-Elliott model, channel-aware folding maintains the freshest receiver state."
+      },
+      {
+        "id": 59,
+        "text": "OR-based folding of a 16-bit canonical Bloom filter is shown at r = 0.50 and r = 0.75.",
+        "poster_quote": "Fig. 2. OR-based folding of a 16-bit canonical Bloom filter at r = 0 . 50 and r = 0 . 75 .",
+        "label": "supported",
+        "paper_evidence": "OR-based folding of a 16-bit canonical Bloom filter at r = 0.50 and r = 0.75.",
+        "reason": "Figure 2 caption: The caption explicitly states that OR-based folding of a 16-bit canonical Bloom filter is shown at r = 0.50 and r = 0.75."
+      },
+      {
+        "id": 60,
+        "text": "The example in Fig. 2 shows how the canonical query positions for one element are mapped into each folded representation.",
+        "poster_quote": "The example shows how the canonical query positions for one element are mapped into each folded representation.",
+        "label": "supported",
+        "paper_evidence": "The example shows how the canonical query positions for one element are mapped into each folded representation.",
+        "reason": "Figure 2 caption: The caption states that the example shows how the canonical query positions for one element are mapped into each folded representation."
+      },
+      {
+        "id": 61,
+        "text": "Each curve in Fig. 3 represents one canonical-filter realization for its dataset using the fixed random seed of 42.",
+        "poster_quote": "Each curve represents one canonical-filter realization for its dataset using the fixed random seed of 42; no averaging across filter-construction seeds was performed.",
+        "label": "supported",
+        "paper_evidence": "Each curve represents one canonical-filter realization for its dataset using the fixed random seed of 42; no averaging across filter-construction seeds was performed.",
+        "reason": "Figure 3 caption: The caption states that each curve represents one canonical-filter realization for its dataset using the fixed random seed of 42."
+      },
+      {
+        "id": 62,
+        "text": "No averaging across filter-construction seeds was performed in Fig. 3.",
+        "poster_quote": "Each curve represents one canonical-filter realization for its dataset using the fixed random seed of 42; no averaging across filter-construction seeds was performed.",
+        "label": "supported",
+        "paper_evidence": "Each curve represents one canonical-filter realization for its dataset using the fixed random seed of 42; no averaging across filter-construction seeds was performed.",
+        "reason": "Figure 3 caption: The caption explicitly states that no averaging across filter-construction seeds was performed."
+      },
+      {
+        "id": 63,
+        "text": "Bars in Fig. 4 show mean successful deliveries per MB across 20 paired channel traces.",
+        "poster_quote": "Bars show mean successful deliveries per MB and 95% confidence intervals across 20 paired channel traces",
+        "label": "supported",
+        "paper_evidence": "Bars show mean successful deliveries per MB and 95% confidence intervals across 20 paired channel traces; higher values indicate better performance.",
+        "reason": "Figure 4 caption: The caption states that the bars show mean successful deliveries per MB across 20 paired channel traces."
+      },
+      {
+        "id": 64,
+        "text": "Bars in Fig. 4 show 95% confidence intervals across 20 paired channel traces.",
+        "poster_quote": "Bars show mean successful deliveries per MB and 95% confidence intervals across 20 paired channel traces",
+        "label": "supported",
+        "paper_evidence": "Bars show mean successful deliveries per MB and 95% confidence intervals across 20 paired channel traces; higher values indicate better performance.",
+        "reason": "Figure 4 caption: The caption states that the bars show 95% confidence intervals across 20 paired channel traces."
+      },
+      {
+        "id": 65,
+        "text": "Bars in Fig. 5 show mean receiver report age across 20 paired channel traces.",
+        "poster_quote": "Bars show means and 95% confidence intervals across 20 paired channel traces",
+        "label": "supported",
+        "paper_evidence": "Bars show means and 95% confidence intervals across 20 paired channel traces; the vertical axis is logarithmic and lower values indicate fresher receiver state.",
+        "reason": "Figure 5 caption: The caption states that the bars show means across 20 paired channel traces."
+      },
+      {
+        "id": 66,
+        "text": "Bars in Fig. 5 show 95% confidence intervals across 20 paired channel traces.",
+        "poster_quote": "Bars show means and 95% confidence intervals across 20 paired channel traces",
+        "label": "supported",
+        "paper_evidence": "Bars show means and 95% confidence intervals across 20 paired channel traces; the vertical axis is logarithmic and lower values indicate fresher receiver state.",
+        "reason": "Figure 5 caption: The caption states that the bars show 95% confidence intervals across 20 paired channel traces."
+      },
+      {
+        "id": 67,
+        "text": "The vertical axis of Fig. 5 is logarithmic.",
+        "poster_quote": "the vertical axis is logarithmic and lower values indicate fresher receiver state.",
+        "label": "supported",
+        "paper_evidence": "the vertical axis is logarithmic and lower values indicate fresher receiver state.",
+        "reason": "Figure 5 caption: The caption explicitly states that the vertical axis of Figure 5 is logarithmic."
+      }
+    ]
+  },
+  "raw": "[\"```json\\n{\\n  \\\"claims\\\": [\\n    {\\n      \\\"id\\\": 1,\\n      \\\"text\\\": \\\"Complete Bloom-filter updates can be delayed or dropped when communication resources vary, leaving stale state.\\\",\\n      \\\"poster_quote\\\": \\\"Complete Bloom-filter updates can be delayed or dropped when communication resources vary, leaving stale state.\\\"\\n    },\\n    {\\n      \\\"id\\\": 2,\\n      \\\"text\\\": \\\"Lossless compression offers one payload size.\\\",\\n      \\\"poster_quote\\\": \\\"Lossless compression offers one payload size, while OR folding offers smaller queryable views with higher false-positive rates.\\\"\\n    },\\n    {\\n      \\\"id\\\": 3,\\n      \\\"text\\\": \\\"OR folding offers smaller queryable views with higher false-positive rates.\\\",\\n      \\\"poster_quote\\\": \\\"Lossless compression offers one payload size, while OR folding offers smaller queryable views with higher false-positive rates.\\\"\\n    },\\n    {\\n      \\\"id\\\": 4,\\n      \\\"text\\\": \\\"The proposed method selects the largest qualified folded view supported by each communication opportunity.\\\",\\n      \\\"poster_quote\\\": \\\"We select the largest qualified folded view supported by each communication opportunity.\\\"\\n    },\\n    {\\n      \\\"id\\\": 5,\\n      \\\"text\\\": \\\"The example shows canonical query positions mapped into OR-folded views.\\\",\\n      \\\"poster_quote\\\": \\\"The example shows canonical query positions mapped into OR-folded views.\\\"\\n    },\\n    {\\n      \\\"id\\\": 6,\\n      \\\"text\\\": \\\"The online policy selects using current communication conditions.\\\",\\n      \\\"poster_quote\\\": \\\"The online policy selects using current communication conditions.\\\"\\n    },\\n    {\\n      \\\"id\\\": 7,\\n      \\\"text\\\": \\\"A fine-grained catalog comes from an unchanged canonical filter.\\\",\\n      \\\"poster_quote\\\": \\\"A fine-grained catalog comes from an unchanged canonical filter.\\\"\\n    },\\n    {\\n      \\\"id\\\": 8,\\n      \\\"text\\\": \\\"Retained lengths need not be integer divisors.\\\",\\n      \\\"poster_quote\\\": \\\"Retained lengths need not be integer divisors.\\\"\\n    },\\n    {\\n      \\\"id\\\": 9,\\n      \\\"text\\\": \\\"Evaluation covers two datasets.\\\",\\n      \\\"poster_quote\\\": \\\"Evaluation covers two datasets and three channel models.\\\"\\n    },\\n    {\\n      \\\"id\\\": 10,\\n      \\\"text\\\": \\\"Evaluation covers three channel models.\\\",\\n      \\\"poster_quote\\\": \\\"Evaluation covers two datasets and three channel models.\\\"\\n    },\\n    {\\n      \\\"id\\\": 11,\\n      \\\"text\\\": \\\"Both URL datasets show nearly identical false-positive rates.\\\",\\n      \\\"poster_quote\\\": \\\"Both URL datasets show nearly identical false-positive rates, indicating that occupancy and deterministic mapping primarily govern folding.\\\"\\n    },\\n    {\\n      \\\"id\\\": 12,\\n      \\\"text\\\": \\\"False-positive rates rise gradually under moderate folding, then accelerate near saturation.\\\",\\n      \\\"poster_quote\\\": \\\"Rates rise gradually under moderate folding, then accelerate near saturation.\\\"\\n    },\\n    {\\n      \\\"id\\\": 13,\\n      \\\"text\\\": \\\"About 50% size reduction remains near the catalog limit, providing multiple accuracy-cost operating points.\\\",\\n      \\\"poster_quote\\\": \\\"About 50% size reduction remains near the catalog limit, providing multiple accuracy-cost operating points.\\\"\\n    },\\n    {\\n      \\\"id\\\": 14,\\n      \\\"text\\\": \\\"The sender keeps an unchanged canonical filter.\\\",\\n      \\\"poster_quote\\\": \\\"The sender keeps an unchanged canonical filter and excludes catalog views above the maximum false-positive rate.\\\"\\n    },\\n    {\\n      \\\"id\\\": 15,\\n      \\\"text\\\": \\\"The sender excludes catalog views above the maximum false-positive rate.\\\",\\n      \\\"poster_quote\\\": \\\"The sender keeps an unchanged canonical filter and excludes catalog views above the maximum false-positive rate.\\\"\\n    },\\n    {\\n      \\\"id\\\": 16,\\n      \\\"text\\\": \\\"At each opportunity, the sender selects the largest qualified view fitting complete wire capacity.\\\",\\n      \\\"poster_quote\\\": \\\"At each opportunity, it selects the largest qualified view fitting complete wire capacity; under loss, it considers whole-report delivery probability.\\\"\\n    },\\n    {\\n      \\\"id\\\": 17,\\n      \\\"text\\\": \\\"Under loss, the sender considers whole-report delivery probability.\\\",\\n      \\\"poster_quote\\\": \\\"At each opportunity, it selects the largest qualified view fitting complete wire capacity; under loss, it considers whole-report delivery probability.\\\"\\n    },\\n    {\\n      \\\"id\\\": 18,\\n      \\\"text\\\": \\\"If none can be delivered, the update is deferred.\\\",\\n      \\\"poster_quote\\\": \\\"If none can be delivered, the update is deferred; otherwise, metadata carries retained length and timestamp.\\\"\\n    },\\n    {\\n      \\\"id\\\": 19,\\n      \\\"text\\\": \\\"If delivered, metadata carries retained length and timestamp.\\\",\\n      \\\"poster_quote\\\": \\\"If none can be delivered, the update is deferred; otherwise, metadata carries retained length and timestamp.\\\"\\n    },\\n    {\\n      \\\"id\\\": 20,\\n      \\\"text\\\": \\\"The receiver installs only complete, newer reports.\\\",\\n      \\\"poster_quote\\\": \\\"The receiver installs only complete, newer reports, retains its previous valid view after failure, and never reconstructs the canonical filter.\\\"\\n    },\\n    {\\n      \\\"id\\\": 21,\\n      \\\"text\\\": \\\"The receiver retains its previous valid view after failure.\\\",\\n      \\\"poster_quote\\\": \\\"The receiver installs only complete, newer reports, retains its previous valid view after failure, and never reconstructs the canonical filter.\\\"\\n    },\\n    {\\n      \\\"id\\\": 22,\\n      \\\"text\\\": \\\"The receiver never reconstructs the canonical filter.\\\",\\n      \\\"poster_quote\\\": \\\"The receiver installs only complete, newer reports, retains its previous valid view after failure, and never reconstructs the canonical filter.\\\"\\n    },\\n    {\\n      \\\"id\\\": 23,\\n      \\\"text\\\": \\\"Paired traces compare adaptive folding with complete and compressed baselines.\\\",\\n      \\\"poster_quote\\\": \\\"Paired traces compare adaptive folding with complete and compressed baselines.\\\"\\n    },\\n    {\\n      \\\"id\\\": 24,\\n      \\\"text\\\": \\\"PhiUSIIL uses 5,000 malicious URLs inserted.\\\",\\n      \\\"poster_quote\\\": \\\"PhiUSIIL and URL-Phish each use 5,000 malicious URLs inserted; 50,000 disjoint benign URLs provide absent queries.\\\"\\n    },\\n    {\\n      \\\"id\\\": 25,\\n      \\\"text\\\": \\\"URL-Phish uses 5,000 malicious URLs inserted.\\\",\\n      \\\"poster_quote\\\": \\\"PhiUSIIL and URL-Phish each use 5,000 malicious URLs inserted; 50,000 disjoint benign URLs provide absent queries.\\\"\\n    },\\n    {\\n      \\\"id\\\": 26,\\n      \\\"text\\\": \\\"50,000 disjoint benign URLs provide absent queries.\\\",\\n      \\\"poster_quote\\\": \\\"PhiUSIIL and URL-Phish each use 5,000 malicious URLs inserted; 50,000 disjoint benign URLs provide absent queries.\\\"\\n    },\\n    {\\n      \\\"id\\\": 27,\\n      \\\"text\\\": \\\"Classical targets 1% false positives.\\\",\\n      \\\"poster_quote\\\": \\\"Classical targets 1% false positives; sparse targets 25% occupancy with three hashes.\\\"\\n    },\\n    {\\n      \\\"id\\\": 28,\\n      \\\"text\\\": \\\"Sparse targets 25% occupancy.\\\",\\n      \\\"poster_quote\\\": \\\"Classical targets 1% false positives; sparse targets 25% occupancy with three hashes.\\\"\\n    },\\n    {\\n      \\\"id\\\": 29,\\n      \\\"text\\\": \\\"Sparse targets use three hashes.\\\",\\n      \\\"poster_quote\\\": \\\"Classical targets 1% false positives; sparse targets 25% occupancy with three hashes.\\\"\\n    },\\n    {\\n      \\\"id\\\": 30,\\n      \\\"text\\\": \\\"Catalog views cap empirical false positives at 10%.\\\",\\n      \\\"poster_quote\\\": \\\"Catalog views cap empirical false positives at 10% with zero observed false negatives.\\\"\\n    },\\n    {\\n      \\\"id\\\": 31,\\n      \\\"text\\\": \\\"Catalog views have zero observed false negatives.\\\",\\n      \\\"poster_quote\\\": \\\"Catalog views cap empirical false positives at 10% with zero observed false negatives.\\\"\\n    },\\n    {\\n      \\\"id\\\": 32,\\n      \\\"text\\\": \\\"Baselines include uncompressed and losslessly compressed filters.\\\",\\n      \\\"poster_quote\\\": \\\"Baselines include uncompressed and losslessly compressed filters; payloads use 480-byte packets with 32-byte headers.\\\"\\n    },\\n    {\\n      \\\"id\\\": 33,\\n      \\\"text\\\": \\\"Payloads use 480-byte packets.\\\",\\n      \\\"poster_quote\\\": \\\"Baselines include uncompressed and losslessly compressed filters; payloads use 480-byte packets with 32-byte headers.\\\"\\n    },\\n    {\\n      \\\"id\\\": 34,\\n      \\\"text\\\": \\\"Payloads use 32-byte headers.\\\",\\n      \\\"poster_quote\\\": \\\"Baselines include uncompressed and losslessly compressed filters; payloads use 480-byte packets with 32-byte headers.\\\"\\n    },\\n    {\\n      \\\"id\\\": 35,\\n      \\\"text\\\": \\\"Each trace has 500 opportunities.\\\",\\n      \\\"poster_quote\\\": \\\"Each trace has 500 opportunities of 10 ms; results average 20 paired repetitions across Markov capacity, Gilbert-Elliott, and Rayleigh fading.\\\"\\n    },\\n    {\\n      \\\"id\\\": 36,\\n      \\\"text\\\": \\\"Each opportunity is of 10 ms.\\\",\\n      \\\"poster_quote\\\": \\\"Each trace has 500 opportunities of 10 ms; results average 20 paired repetitions across Markov capacity, Gilbert-Elliott, and Rayleigh fading.\\\"\\n    },\\n    {\\n      \\\"id\\\": 37,\\n      \\\"text\\\": \\\"Results average 20 paired repetitions.\\\",\\n      \\\"poster_quote\\\": \\\"Each trace has 500 opportunities of 10 ms; results average 20 paired repetitions across Markov capacity, Gilbert-Elliott, and Rayleigh fading.\\\"\\n    },\\n    {\\n      \\\"id\\\": 38,\\n      \\\"text\\\": \\\"Repetitions are across Markov capacity, Gilbert-Elliott, and Rayleigh fading.\\\",\\n      \\\"poster_quote\\\": \\\"Each trace has 500 opportunities of 10 ms; results average 20 paired repetitions across Markov capacity, Gilbert-Elliott, and Rayleigh fading.\\\"\\n    },\\n    {\\n      \\\"id\\\": 39,\\n      \\\"text\\\": \\\"Adaptive folding does not universally beat lossless compression.\\\",\\n      \\\"poster_quote\\\": \\\"Adaptive folding does not universally beat lossless compression; compression works when one representation is reliably deliverable.\\\"\\n    },\\n    {\\n      \\\"id\\\": 40,\\n      \\\"text\\\": \\\"Compression works when one representation is reliably deliverable.\\\",\\n      \\\"poster_quote\\\": \\\"Adaptive folding does not universally beat lossless compression; compression works when one representation is reliably deliverable.\\\"\\n    },\\n    {\\n      \\\"id\\\": 41,\\n      \\\"text\\\": \\\"Folding helps when varying opportunities let a smaller qualified view prevent a missed update.\\\",\\n      \\\"poster_quote\\\": \\\"Folding helps when varying opportunities let a smaller qualified view prevent a missed update.\\\"\\n    },\\n    {\\n      \\\"id\\\": 42,\\n      \\\"text\\\": \\\"Candidate ratios should match false-positive tolerance and channel conditions.\\\",\\n      \\\"poster_quote\\\": \\\"Candidate ratios should match false-positive tolerance and channel conditions; folding and compression could be combined.\\\"\\n    },\\n    {\\n      \\\"id\\\": 43,\\n      \\\"text\\\": \\\"Folding and compression could be combined.\\\",\\n      \\\"poster_quote\\\": \\\"Candidate ratios should match false-positive tolerance and channel conditions; folding and compression could be combined.\\\"\\n    },\\n    {\\n      \\\"id\\\": 44,\\n      \\\"text\\\": \\\"Experiments isolate channel-driven selection but limit generality.\\\",\\n      \\\"poster_quote\\\": \\\"Experiments isolate channel-driven selection but limit generality.\\\"\\n    },\\n    {\\n      \\\"id\\\": 45,\\n      \\\"text\\\": \\\"Two fixed URL datasets share one cardinality.\\\",\\n      \\\"poster_quote\\\": \\\"Two fixed URL datasets share one cardinality, limiting workload generality.\\\"\\n    },\\n    {\\n      \\\"id\\\": 46,\\n      \\\"text\\\": \\\"The use of two fixed URL datasets limits workload generality.\\\",\\n      \\\"poster_quote\\\": \\\"Two fixed URL datasets share one cardinality, limiting workload generality.\\\"\\n    },\\n    {\\n      \\\"id\\\": 47,\\n      \\\"text\\\": \\\"Controller assumes timely channel state.\\\",\\n      \\\"poster_quote\\\": \\\"Controller assumes timely channel state; estimation error and metadata costs are unmodeled.\\\"\\n    },\\n    {\\n      \\\"id\\\": 48,\\n      \\\"text\\\": \\\"Estimation error is unmodeled.\\\",\\n      \\\"poster_quote\\\": \\\"Controller assumes timely channel state; estimation error and metadata costs are unmodeled.\\\"\\n    },\\n    {\\n      \\\"id\\\": 49,\\n      \\\"text\\\": \\\"Metadata costs are unmodeled.\\\",\\n      \\\"poster_quote\\\": \\\"Controller assumes timely channel state; estimation error and metadata costs are unmodeled.\\\"\\n    },\\n    {\\n      \\\"id\\\": 50,\\n      \\\"text\\\": \\\"No fixed-fold baseline is tested.\\\",\\n      \\\"poster_quote\\\": \\\"No fixed-fold baseline is tested; one sender-receiver excludes contention, retransmission, and energy effects.\\\"\\n    },\\n    {\\n      \\\"id\\\": 51,\\n      \\\"text\\\": \\\"One sender-receiver excludes contention, retransmission, and energy effects.\\\",\\n      \\\"poster_quote\\\": \\\"No fixed-fold baseline is tested; one sender-receiver excludes contention, retransmission, and energy effects.\\\"\\n    },\\n    {\\n      \\\"id\\\": 52,\\n      \\\"text\\\": \\\"Future work should study changing contents, measured channels, multiple senders, and combined folding/compression.\\\",\\n      \\\"poster_quote\\\": \\\"Future work should study changing contents, measured channels, multiple senders, and combined folding/compression.\\\"\\n    },\\n    {\\n      \\\"id\\\": 53,\\n      \\\"text\\\": \\\"Channel-aware folding selects the largest qualified view per opportunity.\\\",\\n      \\\"poster_quote\\\": \\\"Channel-aware folding selects the largest qualified view per opportunity without false negatives.\\\"\\n    },\\n    {\\n      \\\"id\\\": 54,\\n      \\\"text\\\": \\\"Channel-aware folding has no false negatives.\\\",\\n      \\\"poster_quote\\\": \\\"Channel-aware folding selects the largest qualified view per opportunity without false negatives.\\\"\\n    },\\n    {\\n      \\\"id\\\": 55,\\n      \\\"text\\\": \\\"Channel-aware folding improves efficiency over complete and compressed baselines under Markov capacity and Rayleigh fading.\\\",\\n      \\\"poster_quote\\\": \\\"It improves efficiency and freshness over complete and compressed baselines under Markov capacity and Rayleigh fading.\\\"\\n    },\\n    {\\n      \\\"id\\\": 56,\\n      \\\"text\\\": \\\"Channel-aware folding improves freshness over complete and compressed baselines under Markov capacity and Rayleigh fading.\\\",\\n      \\\"poster_quote\\\": \\\"It improves efficiency and freshness over complete and compressed baselines under Markov capacity and Rayleigh fading.\\\"\\n    },\\n    {\\n      \\\"id\\\": 57,\\n      \\\"text\\\": \\\"Under Gilbert-Elliott loss, channel-aware folding remains competitive.\\\",\\n      \\\"poster_quote\\\": \\\"Under Gilbert-Elliott loss, it remains competitive and yields the freshest receiver state.\\\"\\n    },\\n    {\\n      \\\"id\\\": 58,\\n      \\\"text\\\": \\\"Under Gilbert-Elliott loss, channel-aware folding yields the freshest receiver state.\\\",\\n      \\\"poster_quote\\\": \\\"Under Gilbert-Elliott loss, it remains competitive and yields the freshest receiver state.\\\"\\n    },\\n    {\\n      \\\"id\\\": 59,\\n      \\\"text\\\": \\\"OR-based folding of a 16-bit canonical Bloom filter is shown at r = 0.50 and r = 0.75.\\\",\\n      \\\"poster_quote\\\": \\\"Fig. 2. OR-based folding of a 16-bit canonical Bloom filter at r = 0 . 50 and r = 0 . 75 .\\\"\\n    },\\n    {\\n      \\\"id\\\": 60,\\n      \\\"text\\\": \\\"The example in Fig. 2 shows how the canonical query positions for one element are mapped into each folded representation.\\\",\\n      \\\"poster_quote\\\": \\\"The example shows how the canonical query positions for one element are mapped into each folded representation.\\\"\\n    },\\n    {\\n      \\\"id\\\": 61,\\n      \\\"text\\\": \\\"Each curve in Fig. 3 represents one canonical-filter realization for its dataset using the fixed random seed of 42.\\\",\\n      \\\"poster_quote\\\": \\\"Each curve represents one canonical-filter realization for its dataset using the fixed random seed of 42; no averaging across filter-construction seeds was performed.\\\"\\n    },\\n    {\\n      \\\"id\\\": 62,\\n      \\\"text\\\": \\\"No averaging across filter-construction seeds was performed in Fig. 3.\\\",\\n      \\\"poster_quote\\\": \\\"Each curve represents one canonical-filter realization for its dataset using the fixed random seed of 42; no averaging across filter-construction seeds was performed.\\\"\\n    },\\n    {\\n      \\\"id\\\": 63,\\n      \\\"text\\\": \\\"Bars in Fig. 4 show mean successful deliveries per MB across 20 paired channel traces.\\\",\\n      \\\"poster_quote\\\": \\\"Bars show mean successful deliveries per MB and 95% confidence intervals across 20 paired channel traces\\\"\\n    },\\n    {\\n      \\\"id\\\": 64,\\n      \\\"text\\\": \\\"Bars in Fig. 4 show 95% confidence intervals across 20 paired channel traces.\\\",\\n      \\\"poster_quote\\\": \\\"Bars show mean successful deliveries per MB and 95% confidence intervals across 20 paired channel traces\\\"\\n    },\\n    {\\n      \\\"id\\\": 65,\\n      \\\"text\\\": \\\"Bars in Fig. 5 show mean receiver report age across 20 paired channel traces.\\\",\\n      \\\"poster_quote\\\": \\\"Bars show means and 95% confidence intervals across 20 paired channel traces\\\"\\n    },\\n    {\\n      \\\"id\\\": 66,\\n      \\\"text\\\": \\\"Bars in Fig. 5 show 95% confidence intervals across 20 paired channel traces.\\\",\\n      \\\"poster_quote\\\": \\\"Bars show means and 95% confidence intervals across 20 paired channel traces\\\"\\n    },\\n    {\\n      \\\"id\\\": 67,\\n      \\\"text\\\": \\\"The vertical axis of Fig. 5 is logarithmic.\\\",\\n      \\\"poster_quote\\\": \\\"the vertical axis is logarithmic and lower values indicate fresher receiver state.\\\"\\n    }\\n  ]\\n}\\n```\", \"```json\\n{\\n  \\\"verdicts\\\": [\\n    {\\n      \\\"id\\\": 1,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"When communication resources are constrained or time varying, complete-filter updates may be delayed or dropped, leaving stale receiver state.\\\",\\n      \\\"reason\\\": \\\"Section I, paragraph 2. The paper explicitly states that complete-filter updates can be delayed or dropped under constrained or time-varying resources, leaving stale receiver state.\\\"\\n    },\\n    {\\n      \\\"id\\\": 2,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Lossless compressed BFs reduce transmission size without changing membership behavior [6], but produce a single payload determined by the filter contents.\\\",\\n      \\\"reason\\\": \\\"Section I, paragraph 2. The paper states that lossless compressed BFs produce a single payload.\\\"\\n    },\\n    {\\n      \\\"id\\\": 3,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"OR folding instead produces smaller, directly queryable views with increased FPR while preserving the no-false-negative property.\\\",\\n      \\\"reason\\\": \\\"Section I, paragraph 2. The paper states that OR folding produces smaller, directly queryable views with increased FPR.\\\"\\n    },\\n    {\\n      \\\"id\\\": 4,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The sender retains an unchanged canonical filter, constructs a catalog satisfying a maximum FPR, and selects the FPR-qualified representation with the largest retained length supported by the communication resources available at each reporting opportunity.\\\",\\n      \\\"reason\\\": \\\"Abstract. The paper states that the sender selects the FPR-qualified representation with the largest retained length supported at each reporting opportunity.\\\"\\n    },\\n    {\\n      \\\"id\\\": 5,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The example shows how the canonical query positions for one element are mapped into each folded representation.\\\",\\n      \\\"reason\\\": \\\"Figure 2 caption. The caption explicitly states that the example shows how canonical query positions are mapped into each folded representation.\\\"\\n    },\\n    {\\n      \\\"id\\\": 6,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"In contrast, the present work holds the inserted set, canonical filter, and hash count fixed while treating current communication conditions as the online selection variable.\\\",\\n      \\\"reason\\\": \\\"Section II, paragraph 4. The paper states that current communication conditions serve as the online selection variable.\\\"\\n    },\\n    {\\n      \\\"id\\\": 7,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"a fine-grained catalog of folded views derived from an unchanged canonical filter; and\\\",\\n      \\\"reason\\\": \\\"Section I, list of contributions. The paper lists a fine-grained catalog of folded views derived from an unchanged canonical filter as a contribution.\\\"\\n    },\\n    {\\n      \\\"id\\\": 8,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"This work uses the same OR-folding principle but permits fine-grained retained lengths that need not be integer divisors of the canonical filter length.\\\",\\n      \\\"reason\\\": \\\"Section III-B, paragraph 2. The paper states that retained lengths do not need to be integer divisors of the canonical filter length.\\\"\\n    },\\n    {\\n      \\\"id\\\": 9,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Using two phishing URL datasets, the framework is evaluated under Five-State Markov Capacity, Gilbert–Elliott burst-error, and Rayleigh block-fading models.\\\",\\n      \\\"reason\\\": \\\"Abstract. The paper states that the framework is evaluated using two phishing URL datasets.\\\"\\n    },\\n    {\\n      \\\"id\\\": 10,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Using two phishing URL datasets, the framework is evaluated under Five-State Markov Capacity, Gilbert–Elliott burst-error, and Rayleigh block-fading models.\\\",\\n      \\\"reason\\\": \\\"Abstract. The paper states that the framework is evaluated under three channel models.\\\"\\n    },\\n    {\\n      \\\"id\\\": 11,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The two datasets produce nearly identical false positive rates across the evaluated ratios.\\\",\\n      \\\"reason\\\": \\\"Section V-A, paragraph 2. The paper states that both datasets produce nearly identical false positive rates.\\\"\\n    },\\n    {\\n      \\\"id\\\": 12,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The false positive rate increases gradually under moderate folding and then rises more rapidly as the reduced representation approaches saturation.\\\",\\n      \\\"reason\\\": \\\"Section V-A, paragraph 3. The paper states that the false positive rate increases gradually under moderate folding and then rises more rapidly near saturation.\\\"\\n    },\\n    {\\n      \\\"id\\\": 13,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Approximately 50% size reduction remains near the 10% maximum FPR used by the adaptive policy. The resulting valid representations provide multiple communication-cost and accuracy operating points\\\",\\n      \\\"reason\\\": \\\"Section V-A, paragraph 3. The paper states that a 50% size reduction remains near the 10% maximum FPR and provides multiple operating points.\\\"\\n    },\\n    {\\n      \\\"id\\\": 14,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The sender retains an unchanged canonical filter, constructs a catalog satisfying a maximum FPR, and selects the FPR-qualified representation with the largest retained length supported by the communication resources available at each reporting opportunity.\\\",\\n      \\\"reason\\\": \\\"Abstract. The paper states that the sender retains an unchanged canonical filter.\\\"\\n    },\\n    {\\n      \\\"id\\\": 15,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Each candidate is associated with its retained length and measured FPR, and representations exceeding the application-defined maximum FPR are excluded.\\\",\\n      \\\"reason\\\": \\\"Section III-E, paragraph 1. The paper states that representations exceeding the maximum FPR are excluded.\\\"\\n    },\\n    {\\n      \\\"id\\\": 16,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"For the Five-State Markov and Rayleigh models, the sender selects the valid representation with the largest retained-length ratio whose complete wire size fits the current capacity.\\\",\\n      \\\"reason\\\": \\\"Section IV-D, paragraph 1. The paper states that the sender selects the largest valid representation whose complete wire size fits the current capacity.\\\"\\n    },\\n    {\\n      \\\"id\\\": 17,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"For a loss-based channel without an explicit byte-capacity limit, selection instead considers the probability of complete-report delivery.\\\",\\n      \\\"reason\\\": \\\"Section III-E, paragraph 2. The paper states that under loss-based channels, selection considers the probability of complete-report delivery.\\\"\\n    },\\n    {\\n      \\\"id\\\": 18,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"If no qualified representation can be delivered, the update is deferred.\\\",\\n      \\\"reason\\\": \\\"Section III-E, paragraph 1. The paper states that the update is deferred if no qualified representation can be delivered.\\\"\\n    },\\n    {\\n      \\\"id\\\": 19,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Each transmitted update contains the selected Bloom-filter representation, its retained length m′, and a timestamp that serves as its report version.\\\",\\n      \\\"reason\\\": \\\"Section III-E, paragraph 3. The paper states that each update contains the selected representation, its retained length, and a timestamp.\\\"\\n    },\\n    {\\n      \\\"id\\\": 20,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The receiver installs only a completely delivered update newer than its currently stored view and queries it using the coordinate mapping in Equation (5).\\\",\\n      \\\"reason\\\": \\\"Section III-E, paragraph 3. The paper states that the receiver installs only completely delivered updates newer than its current view.\\\"\\n    },\\n    {\\n      \\\"id\\\": 21,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"after a failed or deferred update, the receiver retains its previous valid view.\\\",\\n      \\\"reason\\\": \\\"Section III-E, paragraph 3. The paper states that the receiver retains its previous valid view after a failed or deferred update.\\\"\\n    },\\n    {\\n      \\\"id\\\": 22,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Reconstruction of the canonical filter is neither required nor attempted, and the canonical filter retained by the sender is not modified by selection or transmission.\\\",\\n      \\\"reason\\\": \\\"Section III-E, paragraph 3. The paper states that reconstruction of the canonical filter is neither required nor attempted.\\\"\\n    },\\n    {\\n      \\\"id\\\": 23,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Figures 4 and 5 report means and 95% confidence intervals over 20 paired traces of 500 opportunities, with all strategies using the same trace within each repetition.\\\",\\n      \\\"reason\\\": \\\"Section IV-F, paragraph 1. The paper states that the evaluation uses paired traces to compare the strategies.\\\"\\n    },\\n    {\\n      \\\"id\\\": 24,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The PhiUSIIL [14] and URL-Phish [15] datasets are evaluated using 5,000 malicious URLs for insertion and 50,000 disjoint benign URLs as absent queries.\\\",\\n      \\\"reason\\\": \\\"Section IV-A, paragraph 1. The paper states that 5,000 malicious URLs are used for insertion in the PhiUSIIL dataset.\\\"\\n    },\\n    {\\n      \\\"id\\\": 25,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The PhiUSIIL [14] and URL-Phish [15] datasets are evaluated using 5,000 malicious URLs for insertion and 50,000 disjoint benign URLs as absent queries.\\\",\\n      \\\"reason\\\": \\\"Section IV-A, paragraph 1. The paper states that 5,000 malicious URLs are used for insertion in the URL-Phish dataset.\\\"\\n    },\\n    {\\n      \\\"id\\\": 26,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The PhiUSIIL [14] and URL-Phish [15] datasets are evaluated using 5,000 malicious URLs for insertion and 50,000 disjoint benign URLs as absent queries.\\\",\\n      \\\"reason\\\": \\\"Section IV-A, paragraph 1. The paper states that 50,000 disjoint benign URLs are used as absent queries.\\\"\\n    },\\n    {\\n      \\\"id\\\": 27,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"For each dataset, the classical filter length m is selected for n = 5,000 elements and a target FPR of 1%, then rounded upward to a complete byte.\\\",\\n      \\\"reason\\\": \\\"Section IV-B, paragraph 1. The paper states that the classical filter length is selected for a target FPR of 1%.\\\"\\n    },\\n    {\\n      \\\"id\\\": 28,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The sparse canonical filter uses the same m, with its hash count selected for a target occupancy ρ = 0.25:\\\",\\n      \\\"reason\\\": \\\"Section IV-B, paragraph 2. The paper states that the sparse canonical filter is selected for a target occupancy of 0.25 (25%).\\\"\\n    },\\n    {\\n      \\\"id\\\": 29,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Equation (10) produces three hash functions.\\\",\\n      \\\"reason\\\": \\\"Section IV-B, paragraph 3. The paper states that the sparse target equation produces three hash functions.\\\"\\n    },\\n    {\\n      \\\"id\\\": 30,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Only representations with no observed false negatives and an empirical FPR no greater than 10% enter the adaptive catalog.\\\",\\n      \\\"reason\\\": \\\"Section IV-B, paragraph 4. The paper states that only representations with an empirical FPR no greater than 10% enter the catalog.\\\"\\n    },\\n    {\\n      \\\"id\\\": 31,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Only representations with no observed false negatives and an empirical FPR no greater than 10% enter the adaptive catalog.\\\",\\n      \\\"reason\\\": \\\"Section IV-B, paragraph 4. The paper states that only representations with no observed false negatives enter the catalog.\\\"\\n    },\\n    {\\n      \\\"id\\\": 32,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The sparse canonical bit array is compared with gzip [17], zlib [18], bzip2 [19], and LZMA [20]. ... Uncompressed classical and sparse filters are also included.\\\",\\n      \\\"reason\\\": \\\"Section IV-C, paragraph 1. The paper states that baselines include uncompressed and losslessly compressed filters.\\\"\\n    },\\n    {\\n      \\\"id\\\": 33,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Payloads are segmented into 480-byte packets with 32-byte headers.\\\",\\n      \\\"reason\\\": \\\"Section IV-C, paragraph 2. The paper states that payloads are segmented into 480-byte packets.\\\"\\n    },\\n    {\\n      \\\"id\\\": 34,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Payloads are segmented into 480-byte packets with 32-byte headers.\\\",\\n      \\\"reason\\\": \\\"Section IV-C, paragraph 2. The paper states that packets have 32-byte headers.\\\"\\n    },\\n    {\\n      \\\"id\\\": 35,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Figures 4 and 5 report means and 95% confidence intervals over 20 paired traces of 500 opportunities, with all strategies using the same trace within each repetition.\\\",\\n      \\\"reason\\\": \\\"Section IV-F, paragraph 1. The paper states that each trace consists of 500 opportunities.\\\"\\n    },\\n    {\\n      \\\"id\\\": 36,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"For the Five-State Markov and Rayleigh models, each interval is a 10-ms transmission opportunity with a total byte budget.\\\",\\n      \\\"reason\\\": \\\"Section IV-C, paragraph 2. The paper states that each interval is a 10-ms transmission opportunity.\\\"\\n    },\\n    {\\n      \\\"id\\\": 37,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Figures 4 and 5 report means and 95% confidence intervals over 20 paired traces of 500 opportunities, with all strategies using the same trace within each repetition.\\\",\\n      \\\"reason\\\": \\\"Section IV-F, paragraph 1. The paper states that results report means and confidence intervals over 20 paired traces (repetitions).\\\"\\n    },\\n    {\\n      \\\"id\\\": 38,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Using two phishing URL datasets, the framework is evaluated under Five-State Markov Capacity, Gilbert–Elliott burst-error, and Rayleigh block-fading models.\\\",\\n      \\\"reason\\\": \\\"Abstract. The paper states that the framework is evaluated under these three channel models.\\\"\\n    },\\n    {\\n      \\\"id\\\": 39,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"These results do not show that folding universally outperforms lossless compression.\\\",\\n      \\\"reason\\\": \\\"Section V-D, paragraph 2. The paper explicitly states that folding does not universally outperform lossless compression.\\\"\\n    },\\n    {\\n      \\\"id\\\": 40,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Fixed lossless compression is effective when a single representation can be delivered reliably, whereas channel-aware folding is most beneficial when communication opportunities vary and smaller FPR-qualified representations can prevent missed updates.\\\",\\n      \\\"reason\\\": \\\"Section V-D, paragraph 2. The paper states that fixed lossless compression is effective when a single representation can be delivered reliably.\\\"\\n    }\\n  ]\\n}\\n```\", \"```json\\n{\\n  \\\"verdicts\\\": [\\n    {\\n      \\\"id\\\": 1,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"fixed lossless compression is effective when a single representation can be delivered reliably, whereas channel-aware folding is most beneficial when communication opportunities vary and smaller FPR-qualified representations can prevent missed updates.\\\",\\n      \\\"reason\\\": \\\"Section V.D: The paper explicitly states that channel-aware folding is most beneficial when communication opportunities vary and smaller FPR-qualified representations can prevent missed updates.\\\"\\n    },\\n    {\\n      \\\"id\\\": 2,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Candidate ratios should reflect the application’s FPR tolerance and anticipated communication conditions, and only qualified representations should be retained.\\\",\\n      \\\"reason\\\": \\\"Section VI.B: The paper states that candidate ratios should reflect the application's FPR tolerance and anticipated communication conditions.\\\"\\n    },\\n    {\\n      \\\"id\\\": 3,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The methods could be combined, although increased occupancy may reduce compressibility; this combination was not evaluated.\\\",\\n      \\\"reason\\\": \\\"Section VI.B: The paper states that folding and compression could be combined.\\\"\\n    },\\n    {\\n      \\\"id\\\": 4,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"This isolates channel-driven selection but does not establish generality across other workloads, cardinalities, occupancies, or changing contents.\\\",\\n      \\\"reason\\\": \\\"Section VI.C: The paper states that the controlled design isolates channel-driven selection but does not establish generality across other workloads, cardinalities, occupancies, or changing contents.\\\"\\n    },\\n    {\\n      \\\"id\\\": 5,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The controlled design uses two URL datasets at the same cardinality with fixed contents.\\\",\\n      \\\"reason\\\": \\\"Section VI.C: The paper states that the controlled design uses two URL datasets at the same cardinality.\\\"\\n    },\\n    {\\n      \\\"id\\\": 6,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"This isolates channel-driven selection but does not establish generality across other workloads, cardinalities, occupancies, or changing contents.\\\",\\n      \\\"reason\\\": \\\"Section VI.C: The paper states that using two fixed URL datasets at the same cardinality does not establish generality across other workloads.\\\"\\n    },\\n    {\\n      \\\"id\\\": 7,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The controller also assumes timely communication-state information and does not model estimation error, delayed feedback, or metadata explicitly.\\\",\\n      \\\"reason\\\": \\\"Section VI.C: The paper states that the controller assumes timely communication-state information.\\\"\\n    },\\n    {\\n      \\\"id\\\": 8,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The controller also assumes timely communication-state information and does not model estimation error, delayed feedback, or metadata explicitly.\\\",\\n      \\\"reason\\\": \\\"Section VI.C: The paper states that the controller does not model estimation error.\\\"\\n    },\\n    {\\n      \\\"id\\\": 9,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The controller also assumes timely communication-state information and does not model estimation error, delayed feedback, or metadata explicitly.\\\",\\n      \\\"reason\\\": \\\"Section VI.C: The paper states that the controller does not model metadata explicitly.\\\"\\n    },\\n    {\\n      \\\"id\\\": 10,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Fixed folded representations are not included as baselines.\\\",\\n      \\\"reason\\\": \\\"Section VI.C: The paper states that fixed folded representations are not included as baselines.\\\"\\n    },\\n    {\\n      \\\"id\\\": 11,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The single sender–receiver configuration also excludes contention, retransmission, congestion, and fairness effects.\\\",\\n      \\\"reason\\\": \\\"Section VI.C: The paper states that the single sender-receiver configuration excludes contention and retransmission, and lists energy costs as future work.\\\"\\n    },\\n    {\\n      \\\"id\\\": 12,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Future work should examine fixed-fold baselines, changing contents and cardinalities, measured channels, imperfect state estimates, multiple senders, energy costs, and combined folding and compression.\\\",\\n      \\\"reason\\\": \\\"Section VII: The paper lists changing contents, measured channels, multiple senders, and combined folding and compression as priorities for future work.\\\"\\n    },\\n    {\\n      \\\"id\\\": 13,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"selects the FPR-qualified representation with the largest retained length supported by the communication resources available at each reporting opportunity.\\\",\\n      \\\"reason\\\": \\\"Abstract: The paper states that the sender selects the FPR-qualified representation with the largest retained length supported at each reporting opportunity.\\\"\\n    },\\n    {\\n      \\\"id\\\": 14,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"while preserving the no-false-negative property.\\\",\\n      \\\"reason\\\": \\\"Section I: The paper states that channel-aware selection among FPR-qualified folded views preserves the no-false-negative property.\\\"\\n    },\\n    {\\n      \\\"id\\\": 15,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Under the Five-State Markov Capacity model, adaptive folding achieves 191.6 successful deliveries per MB, compared with 66.9 for the strongest compression baseline and 27.7 for the classical full filter.\\\",\\n      \\\"reason\\\": \\\"Section V.B: The paper shows that adaptive folding improves communication efficiency over complete-filter and lossless-compression baselines under the Five-State Markov Capacity and Rayleigh block-fading models.\\\"\\n    },\\n    {\\n      \\\"id\\\": 16,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Under the Five-State Markov Capacity model, adaptive folding reduces mean receiver age to 1.24 intervals, compared with 13.5 for the strongest compression baseline and 31.6 for the classical filter.\\\",\\n      \\\"reason\\\": \\\"Section V.C: The paper shows that adaptive folding reduces mean receiver age (improves freshness) over complete-filter and lossless-compression baselines under the Five-State Markov Capacity and Rayleigh block-fading models.\\\"\\n    },\\n    {\\n      \\\"id\\\": 17,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Under the more favorable Gilbert–Elliott model, it remains competitive in efficiency while maintaining the freshest receiver state.\\\",\\n      \\\"reason\\\": \\\"Abstract: The paper states that under the Gilbert-Elliott model, channel-aware folding remains competitive in efficiency.\\\"\\n    },\\n    {\\n      \\\"id\\\": 18,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Under the more favorable Gilbert–Elliott model, it remains competitive in efficiency while maintaining the freshest receiver state.\\\",\\n      \\\"reason\\\": \\\"Abstract: The paper states that under the Gilbert-Elliott model, channel-aware folding maintains the freshest receiver state.\\\"\\n    },\\n    {\\n      \\\"id\\\": 19,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"OR-based folding of a 16-bit canonical Bloom filter at r = 0.50 and r = 0.75.\\\",\\n      \\\"reason\\\": \\\"Figure 2 caption: The caption explicitly states that OR-based folding of a 16-bit canonical Bloom filter is shown at r = 0.50 and r = 0.75.\\\"\\n    },\\n    {\\n      \\\"id\\\": 20,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The example shows how the canonical query positions for one element are mapped into each folded representation.\\\",\\n      \\\"reason\\\": \\\"Figure 2 caption: The caption states that the example shows how the canonical query positions for one element are mapped into each folded representation.\\\"\\n    },\\n    {\\n      \\\"id\\\": 21,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Each curve represents one canonical-filter realization for its dataset using the fixed random seed of 42; no averaging across filter-construction seeds was performed.\\\",\\n      \\\"reason\\\": \\\"Figure 3 caption: The caption states that each curve represents one canonical-filter realization for its dataset using the fixed random seed of 42.\\\"\\n    },\\n    {\\n      \\\"id\\\": 22,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Each curve represents one canonical-filter realization for its dataset using the fixed random seed of 42; no averaging across filter-construction seeds was performed.\\\",\\n      \\\"reason\\\": \\\"Figure 3 caption: The caption explicitly states that no averaging across filter-construction seeds was performed.\\\"\\n    },\\n    {\\n      \\\"id\\\": 23,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Bars show mean successful deliveries per MB and 95% confidence intervals across 20 paired channel traces; higher values indicate better performance.\\\",\\n      \\\"reason\\\": \\\"Figure 4 caption: The caption states that the bars show mean successful deliveries per MB across 20 paired channel traces.\\\"\\n    },\\n    {\\n      \\\"id\\\": 24,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Bars show mean successful deliveries per MB and 95% confidence intervals across 20 paired channel traces; higher values indicate better performance.\\\",\\n      \\\"reason\\\": \\\"Figure 4 caption: The caption states that the bars show 95% confidence intervals across 20 paired channel traces.\\\"\\n    },\\n    {\\n      \\\"id\\\": 25,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Bars show means and 95% confidence intervals across 20 paired channel traces; the vertical axis is logarithmic and lower values indicate fresher receiver state.\\\",\\n      \\\"reason\\\": \\\"Figure 5 caption: The caption states that the bars show means across 20 paired channel traces.\\\"\\n    },\\n    {\\n      \\\"id\\\": 26,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Bars show means and 95% confidence intervals across 20 paired channel traces; the vertical axis is logarithmic and lower values indicate fresher receiver state.\\\",\\n      \\\"reason\\\": \\\"Figure 5 caption: The caption states that the bars show 95% confidence intervals across 20 paired channel traces.\\\"\\n    },\\n    {\\n      \\\"id\\\": 27,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"the vertical axis is logarithmic and lower values indicate fresher receiver state.\\\",\\n      \\\"reason\\\": \\\"Figure 5 caption: The caption explicitly states that the vertical axis of Figure 5 is logarithmic.\\\"\\n    }\\n  ]\\n}\\n```\"]"
+}

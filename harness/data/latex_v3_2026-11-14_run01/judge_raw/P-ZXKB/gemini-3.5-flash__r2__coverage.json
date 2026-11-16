@@ -1,0 +1,60 @@
+{
+  "model": "gemini-3.5-flash",
+  "repeat": 2,
+  "judge_prompt_sha256": "4ec65050cfdc718218dbc587f672291e733fd03b1254c20d77b61b0933e16162",
+  "error": null,
+  "tokens_in": 5601,
+  "tokens_out": 3193,
+  "tokens_cached": 0,
+  "max_output_tokens": 32768,
+  "parsed": {
+    "items": {
+      "chk_problem": {
+        "label": "accurate",
+        "poster_evidence": "Predicting Early Functional Decline from Longitudinal Laboratory and Vital Sign Trajectories:\nA Large-Scale Study Using the All of Us Research Program",
+        "reason": "The title and introduction of the poster clearly state the problem of predicting early functional decline in older adults using longitudinal trajectories of laboratory and vital sign data."
+      },
+      "chk_method": {
+        "label": "accurate",
+        "poster_evidence": "We used the All of Us Research Program and analyzed twelve biomarkers with trajectory features.",
+        "reason": "The poster describes analyzing twelve biomarkers with trajectory features (such as slope and standard deviation, as mentioned in Figure 3) and lists the machine learning models (LR, RF, XGB, LGB) in Table 1."
+      },
+      "chk_data": {
+        "label": "accurate",
+        "poster_evidence": "Table 1: Model performance (3-year window, 5-fold CV, OOF; N = 297,861; 11.1% cases).",
+        "reason": "The poster identifies the All of Us Research Program dataset and specifies the cohort size of N = 297,861 with 11.1% cases."
+      },
+      "chk_setup": {
+        "label": "accurate",
+        "poster_evidence": "Table 1: Model performance (3-year window, 5-fold CV, OOF; N = 297,861; 11.1% cases). Bootstrap 95% CI and AUPRC reported for LightGBM. LR = logistic regression; RF = random forest; XGB = XGBoost; LGB = LightGBM.",
+        "reason": "The poster specifies the 5-fold cross-validation setup with out-of-fold (OOF) predictions, evaluated using AUROC (AUC) and AUPRC across four machine learning algorithms."
+      },
+      "chk_primary_result": {
+        "label": "accurate",
+        "poster_evidence": "Trajectory features improved discrimination with AUROC 0.797 versus 0.755 for static summaries.",
+        "reason": "The poster reports the primary result of AUROC 0.797 (and AUPRC 0.380 in Figure 2 and Table 1) for the trajectory model, outperforming the static baseline."
+      },
+      "chk_secondary_result": {
+        "label": "accurate",
+        "poster_evidence": "Table 2: Prediction horizon performance using trajectory features. Measurements within the specified horizon prior to the index date were excluded.\n3 months 0.768\n12 months 0.740",
+        "reason": "Table 2 displays the prediction horizon analysis showing sustained prediction performance from 3 months (AUROC 0.768) to 12 months (AUROC 0.740) before the index date."
+      },
+      "chk_baseline": {
+        "label": "accurate",
+        "poster_evidence": "Trajectory features improved discrimination with AUROC 0.797 versus 0.755 for static summaries.",
+        "reason": "The poster compares the trajectory model against the static laboratory summaries baseline (AUROC 0.755) and includes demographics-only baselines in Table 1."
+      },
+      "chk_conclusion": {
+        "label": "accurate",
+        "poster_evidence": "Longitudinal trajectory features significantly outperform static laboratory summaries for predicting functional mobility decline.",
+        "reason": "The conclusion section clearly states that longitudinal trajectory features significantly outperform static summaries for predicting functional mobility decline."
+      },
+      "chk_limitation": {
+        "label": "missing",
+        "poster_evidence": "",
+        "reason": "The poster does not mention any limitations of the study, such as the use of ICD-10 codes, missingness, or the need for external validation."
+      }
+    }
+  },
+  "raw": "```json\n{\n  \"items\": {\n    \"chk_problem\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Predicting Early Functional Decline from Longitudinal Laboratory and Vital Sign Trajectories:\\nA Large-Scale Study Using the All of Us Research Program\",\n      \"reason\": \"The title and introduction of the poster clearly state the problem of predicting early functional decline in older adults using longitudinal trajectories of laboratory and vital sign data.\"\n    },\n    \"chk_method\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"We used the All of Us Research Program and analyzed twelve biomarkers with trajectory features.\",\n      \"reason\": \"The poster describes analyzing twelve biomarkers with trajectory features (such as slope and standard deviation, as mentioned in Figure 3) and lists the machine learning models (LR, RF, XGB, LGB) in Table 1.\"\n    },\n    \"chk_data\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Table 1: Model performance (3-year window, 5-fold CV, OOF; N = 297,861; 11.1% cases).\",\n      \"reason\": \"The poster identifies the All of Us Research Program dataset and specifies the cohort size of N = 297,861 with 11.1% cases.\"\n    },\n    \"chk_setup\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Table 1: Model performance (3-year window, 5-fold CV, OOF; N = 297,861; 11.1% cases). Bootstrap 95% CI and AUPRC reported for LightGBM. LR = logistic regression; RF = random forest; XGB = XGBoost; LGB = LightGBM.\",\n      \"reason\": \"The poster specifies the 5-fold cross-validation setup with out-of-fold (OOF) predictions, evaluated using AUROC (AUC) and AUPRC across four machine learning algorithms.\"\n    },\n    \"chk_primary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Trajectory features improved discrimination with AUROC 0.797 versus 0.755 for static summaries.\",\n      \"reason\": \"The poster reports the primary result of AUROC 0.797 (and AUPRC 0.380 in Figure 2 and Table 1) for the trajectory model, outperforming the static baseline.\"\n    },\n    \"chk_secondary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Table 2: Prediction horizon performance using trajectory features. Measurements within the specified horizon prior to the index date were excluded.\\n3 months 0.768\\n12 months 0.740\",\n      \"reason\": \"Table 2 displays the prediction horizon analysis showing sustained prediction performance from 3 months (AUROC 0.768) to 12 months (AUROC 0.740) before the index date.\"\n    },\n    \"chk_baseline\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Trajectory features improved discrimination with AUROC 0.797 versus 0.755 for static summaries.\",\n      \"reason\": \"The poster compares the trajectory model against the static laboratory summaries baseline (AUROC 0.755) and includes demographics-only baselines in Table 1.\"\n    },\n    \"chk_conclusion\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Longitudinal trajectory features significantly outperform static laboratory summaries for predicting functional mobility decline.\",\n      \"reason\": \"The conclusion section clearly states that longitudinal trajectory features significantly outperform static summaries for predicting functional mobility decline.\"\n    },\n    \"chk_limitation\": {\n      \"label\": \"missing\",\n      \"poster_evidence\": \"\",\n      \"reason\": \"The poster does not mention any limitations of the study, such as the use of ICD-10 codes, missingness, or the need for external validation.\"\n    }\n  }\n}\n```"
+}

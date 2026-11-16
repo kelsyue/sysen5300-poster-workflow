@@ -1,0 +1,60 @@
+{
+  "model": "openai.gpt-4o",
+  "repeat": 2,
+  "judge_prompt_sha256": "4ec65050cfdc718218dbc587f672291e733fd03b1254c20d77b61b0933e16162",
+  "error": null,
+  "tokens_in": 5346,
+  "tokens_out": 922,
+  "tokens_cached": 0,
+  "max_output_tokens": 16384,
+  "parsed": {
+    "items": {
+      "chk_problem": {
+        "label": "accurate",
+        "poster_evidence": "Dermatology AI fails in dark-skin, non-cancer settings. Disease shift may matter more than skin tone underrepresentation. Models trained on light-skinned, cancer-focused data are deployed where patients have darker skin and non-cancerous conditions like eczema or tinea.",
+        "reason": "The poster accurately describes the research problem, including the focus on the generalization gap in dermatology AI models due to skin tone and disease-distribution shift in resource-constrained settings."
+      },
+      "chk_method": {
+        "label": "accurate",
+        "poster_evidence": "We test four frozen models on two datasets using linear probing, kNN, and few-shot adaptation. Fig. 1 shows the pipeline. Models include cancer-trained ResNet-50, dermatology foundation models (DermLIP, MONET), and general vision model DINOv3. Experiments use patient-level splits and bootstrap CIs on free-tier compute.",
+        "reason": "The poster describes the evaluation of a cancer-trained baseline and three foundation models using linear probing, kNN, and few-shot adaptation, which matches the reference."
+      },
+      "chk_data": {
+        "label": "accurate",
+        "poster_evidence": "HAM10000 + ISIC (in-domain), DDI (tone axis), SCIN (distribution axis).",
+        "reason": "The poster lists the four datasets (HAM10000, ISIC 2019, DDI, and SCIN) and their roles, which matches the reference."
+      },
+      "chk_setup": {
+        "label": "accurate",
+        "poster_evidence": "Experiments use patient-level splits and bootstrap CIs on free-tier compute.",
+        "reason": "The poster mentions patient-level splits and bootstrap confidence intervals, which aligns with the reference description of the evaluation protocol."
+      },
+      "chk_primary_result": {
+        "label": "accurate",
+        "poster_evidence": "Distribution shift causes bigger drops than tone gaps. Table 2 shows 0.62→0.21 drop for cancer baseline on SCIN.",
+        "reason": "The poster correctly reports the primary result of the cancer baseline's balanced accuracy degrading from 0.62 in-domain to 0.21 on SCIN, as stated in the reference."
+      },
+      "chk_secondary_result": {
+        "label": "accurate",
+        "poster_evidence": "Label-free analysis reveals cancer features collapse to near-chance on unfamiliar conditions (+0.06 purity lift), while dermatology models retain transferable structure (DermLIP +0.23).",
+        "reason": "The poster accurately reports the secondary result of kNN neighbor-purity lift for the cancer baseline (+0.06) and DermLIP (+0.23), matching the reference."
+      },
+      "chk_baseline": {
+        "label": "accurate",
+        "poster_evidence": "Models include cancer-trained ResNet-50, dermatology foundation models (DermLIP, MONET), and general vision model DINOv3.",
+        "reason": "The poster identifies the cancer-trained baseline (ResNet-50 fine-tuned on HAM10000 and ISIC 2019) and the comparison models (DermLIP, MONET, and DINOv3), consistent with the reference."
+      },
+      "chk_conclusion": {
+        "label": "accurate",
+        "poster_evidence": "Disease shift may matter more than skin tone underrepresentation. Use dermatology foundation models, not cancer ones. Adapt with 10 examples/class; runs on CPU.",
+        "reason": "The poster concludes that disease-distribution shift is the dominant driver of the generalization gap and emphasizes the utility of dermatology foundation models for adaptation, aligning with the reference."
+      },
+      "chk_limitation": {
+        "label": "accurate",
+        "poster_evidence": "DDI/SCIN are US proxies; tone analysis underpowered. Table 1 notes dataset roles. Frozen features only tested. n=4 for adaptation correlation — descriptive only. Architecture differences confound specialization effects. SCIN mapping simplifies diagnostic complexity.",
+        "reason": "The poster mentions that DDI and SCIN are US proxies and that tone analysis is underpowered, which matches the reference's discussion of limitations."
+      }
+    }
+  },
+  "raw": "```json\n{\n  \"items\": {\n    \"chk_problem\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Dermatology AI fails in dark-skin, non-cancer settings. Disease shift may matter more than skin tone underrepresentation. Models trained on light-skinned, cancer-focused data are deployed where patients have darker skin and non-cancerous conditions like eczema or tinea.\",\n      \"reason\": \"The poster accurately describes the research problem, including the focus on the generalization gap in dermatology AI models due to skin tone and disease-distribution shift in resource-constrained settings.\"\n    },\n    \"chk_method\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"We test four frozen models on two datasets using linear probing, kNN, and few-shot adaptation. Fig. 1 shows the pipeline. Models include cancer-trained ResNet-50, dermatology foundation models (DermLIP, MONET), and general vision model DINOv3. Experiments use patient-level splits and bootstrap CIs on free-tier compute.\",\n      \"reason\": \"The poster describes the evaluation of a cancer-trained baseline and three foundation models using linear probing, kNN, and few-shot adaptation, which matches the reference.\"\n    },\n    \"chk_data\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"HAM10000 + ISIC (in-domain), DDI (tone axis), SCIN (distribution axis).\",\n      \"reason\": \"The poster lists the four datasets (HAM10000, ISIC 2019, DDI, and SCIN) and their roles, which matches the reference.\"\n    },\n    \"chk_setup\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Experiments use patient-level splits and bootstrap CIs on free-tier compute.\",\n      \"reason\": \"The poster mentions patient-level splits and bootstrap confidence intervals, which aligns with the reference description of the evaluation protocol.\"\n    },\n    \"chk_primary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Distribution shift causes bigger drops than tone gaps. Table 2 shows 0.62→0.21 drop for cancer baseline on SCIN.\",\n      \"reason\": \"The poster correctly reports the primary result of the cancer baseline's balanced accuracy degrading from 0.62 in-domain to 0.21 on SCIN, as stated in the reference.\"\n    },\n    \"chk_secondary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Label-free analysis reveals cancer features collapse to near-chance on unfamiliar conditions (+0.06 purity lift), while dermatology models retain transferable structure (DermLIP +0.23).\",\n      \"reason\": \"The poster accurately reports the secondary result of kNN neighbor-purity lift for the cancer baseline (+0.06) and DermLIP (+0.23), matching the reference.\"\n    },\n    \"chk_baseline\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Models include cancer-trained ResNet-50, dermatology foundation models (DermLIP, MONET), and general vision model DINOv3.\",\n      \"reason\": \"The poster identifies the cancer-trained baseline (ResNet-50 fine-tuned on HAM10000 and ISIC 2019) and the comparison models (DermLIP, MONET, and DINOv3), consistent with the reference.\"\n    },\n    \"chk_conclusion\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Disease shift may matter more than skin tone underrepresentation. Use dermatology foundation models, not cancer ones. Adapt with 10 examples/class; runs on CPU.\",\n      \"reason\": \"The poster concludes that disease-distribution shift is the dominant driver of the generalization gap and emphasizes the utility of dermatology foundation models for adaptation, aligning with the reference.\"\n    },\n    \"chk_limitation\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"DDI/SCIN are US proxies; tone analysis underpowered. Table 1 notes dataset roles. Frozen features only tested. n=4 for adaptation correlation — descriptive only. Architecture differences confound specialization effects. SCIN mapping simplifies diagnostic complexity.\",\n      \"reason\": \"The poster mentions that DDI and SCIN are US proxies and that tone analysis is underpowered, which matches the reference's discussion of limitations.\"\n    }\n  }\n}\n```"
+}

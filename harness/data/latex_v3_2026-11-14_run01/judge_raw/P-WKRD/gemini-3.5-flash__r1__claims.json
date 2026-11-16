@@ -1,0 +1,520 @@
+{
+  "model": "gemini-3.5-flash",
+  "repeat": 1,
+  "judge_prompt_sha256": "4ec65050cfdc718218dbc587f672291e733fd03b1254c20d77b61b0933e16162",
+  "error": null,
+  "tokens_in": 23007,
+  "tokens_out": 21630,
+  "tokens_cached": 0,
+  "max_output_tokens": 32768,
+  "claims_batch_size": 40,
+  "parsed": {
+    "claims": [
+      {
+        "id": 1,
+        "text": "Twelve prespecified biomarkers were modeled over a three-year window.",
+        "poster_quote": "Twelve prespecified biomarkers were modeled over a three-year window",
+        "label": "supported",
+        "paper_evidence": "we derived trajectory features (slope, variability, delta, mean) for twelve biomarkers over a three-year pre-index window.",
+        "reason": "Section Abstract. The paper states that twelve biomarkers were modeled over a three-year pre-index window."
+      },
+      {
+        "id": 2,
+        "text": "All post-index measurements were excluded from the trajectory modeling.",
+        "poster_quote": "with all post-index measurements excluded.",
+        "label": "supported",
+        "paper_evidence": "All measurements on or after the index date were excluded to prevent data leakage.",
+        "reason": "Section Methods - Biomarker Selection and Observation Windows. The paper explicitly states that all post-index measurements were excluded."
+      },
+      {
+        "id": 3,
+        "text": "The baseline model used biomarker means.",
+        "poster_quote": "Baseline used biomarker means",
+        "label": "supported",
+        "paper_evidence": "Baseline features used each biomarker’s mean value within the window.",
+        "reason": "Section Methods - Feature Engineering. The baseline model features were defined as each biomarker's mean value."
+      },
+      {
+        "id": 4,
+        "text": "Trajectories captured variability.",
+        "poster_quote": "trajectories captured variability",
+        "label": "supported",
+        "paper_evidence": "Trajectory features captured five per-biomarker descriptors: mean, standard deviation (intra-individual variability), delta (last minus first, directional change), count (measurement frequency), and linear slope (rate of change per day).",
+        "reason": "Section Methods - Feature Engineering. Trajectory features included standard deviation to represent intra-individual variability."
+      },
+      {
+        "id": 5,
+        "text": "Trajectories captured first-to-last change.",
+        "poster_quote": "trajectories captured... first-to-last change",
+        "label": "supported",
+        "paper_evidence": "Trajectory features captured five per-biomarker descriptors: mean, standard deviation (intra-individual variability), delta (last minus first, directional change), count (measurement frequency), and linear slope (rate of change per day).",
+        "reason": "Section Methods - Feature Engineering. Trajectory features included delta, defined as last minus first value."
+      },
+      {
+        "id": 6,
+        "text": "Trajectories captured measurement count.",
+        "poster_quote": "trajectories captured... measurement count",
+        "label": "supported",
+        "paper_evidence": "Trajectory features captured five per-biomarker descriptors: mean, standard deviation (intra-individual variability), delta (last minus first, directional change), count (measurement frequency), and linear slope (rate of change per day).",
+        "reason": "Section Methods - Feature Engineering. Trajectory features included measurement count."
+      },
+      {
+        "id": 7,
+        "text": "Trajectories captured daily slope.",
+        "poster_quote": "trajectories captured... daily slope.",
+        "label": "supported",
+        "paper_evidence": "Trajectory features captured five per-biomarker descriptors: mean, standard deviation (intra-individual variability), delta (last minus first, directional change), count (measurement frequency), and linear slope (rate of change per day).",
+        "reason": "Section Methods - Feature Engineering. Trajectory features included linear slope representing rate of change per day."
+      },
+      {
+        "id": 8,
+        "text": "Penalized logistic regression, random forest, XGBoost, and LightGBM were compared.",
+        "poster_quote": "Penalized logistic regression, random forest, XGBoost, and LightGBM were compared",
+        "label": "supported",
+        "paper_evidence": "Four algorithms were evaluated: (1) ℓ2 -penalized logistic regression (SAGA solver, max iter = 1000, class weight = ‘balanced’); (2) random forest (200 estimators, balanced class weights, n jobs = −1); (3) XGBoost (300 estimators, learning rate 0.05, eval metric = ‘auc’); and (4) LightGBM (300 estimators, learning rate 0.05).",
+        "reason": "Section Methods - Model Development and Evaluation. The four listed algorithms were compared."
+      },
+      {
+        "id": 9,
+        "text": "The models were compared by five-fold cross-validation.",
+        "poster_quote": "compared by five-fold cross-validation",
+        "label": "supported",
+        "paper_evidence": "All models were trained with 5-fold stratified cross-validation; out-of-fold (OOF) predictions across all folds were aggregated for unbiased evaluation.",
+        "reason": "Section Methods - Model Development and Evaluation. The models were trained and compared using 5-fold cross-validation."
+      },
+      {
+        "id": 10,
+        "text": "The sample size for model comparison was N = 297,861.",
+        "poster_quote": "in N = 297,861.",
+        "label": "supported",
+        "paper_evidence": "Table 1: Model performance (3-year window, 5-fold CV, OOF; N = 297,861; 11.1% cases).",
+        "reason": "Table 1. The sample size for the primary model comparison was N = 297,861."
+      },
+      {
+        "id": 11,
+        "text": "Missing values used training-fold medians.",
+        "poster_quote": "Missing values used training-fold medians",
+        "label": "supported",
+        "paper_evidence": "Missing values were imputed with the median of each biomarker computed from the training partition of each cross-validation fold, ensuring held-out data never informed the imputed values and preventing data leakage.",
+        "reason": "Section Methods - Feature Engineering. Missing values were imputed using the median of the training fold."
+      },
+      {
+        "id": 12,
+        "text": "Evaluation covered out-of-fold discrimination.",
+        "poster_quote": "evaluation covered out-of-fold discrimination",
+        "label": "supported",
+        "paper_evidence": "Primary discrimination was assessed by AUROC on OOF predictions with bootstrap 95% CIs (2,000 resampling iterations).",
+        "reason": "Section Methods - Model Development and Evaluation. Discrimination was evaluated using out-of-fold predictions."
+      },
+      {
+        "id": 13,
+        "text": "Evaluation covered calibration.",
+        "poster_quote": "evaluation covered... calibration",
+        "label": "supported",
+        "paper_evidence": "Calibration was evaluated using Brier scores and reliability curves; isotonic regression calibration was applied via CalibratedClassifierCV (cv = 5) on a held-out 20% stratified test split.",
+        "reason": "Section Methods - Model Development and Evaluation. Calibration was evaluated using Brier scores and reliability curves."
+      },
+      {
+        "id": 14,
+        "text": "Evaluation covered reclassification.",
+        "poster_quote": "evaluation covered... and reclassification.",
+        "label": "supported",
+        "paper_evidence": "Category-based NRI was computed at risk thresholds of 0.10, 0.15, 0.20, 0.25, and 0.30.",
+        "reason": "Section Methods - Model Development and Evaluation. Reclassification was evaluated using Net Reclassification Improvement (NRI)."
+      },
+      {
+        "id": 15,
+        "text": "Age and sex matching yielded AUROC 0.727.",
+        "poster_quote": "Age and sex matching yielded AUROC 0.727",
+        "label": "supported",
+        "paper_evidence": "A 1:1 age- and sex-matched analysis confirmed an independent trajectory signal (AUROC 0.727 vs. demographics-only 0.680).",
+        "reason": "Section Abstract. The matched trajectory model achieved an AUROC of 0.727."
+      },
+      {
+        "id": 16,
+        "text": "Demographics alone yielded AUROC 0.680.",
+        "poster_quote": "versus 0.680 for demographics alone.",
+        "label": "supported",
+        "paper_evidence": "Demographics alone achieved AUROC 0.680 (95% CI: 0.677–0.683).",
+        "reason": "Section Results - Trajectory Features Improve Discrimination. Demographics-only model achieved an AUROC of 0.680."
+      },
+      {
+        "id": 17,
+        "text": "Removing counts reduced AUROC from 0.797 to 0.789.",
+        "poster_quote": "Removing counts reduced AUROC from 0.797 to 0.789",
+        "label": "supported",
+        "paper_evidence": "Removing count features yielded AUROC 0.789 (0.786–0.791), a reduction of 0.009 (DeLong p < 0.001).",
+        "reason": "Section Results - Sensitivity analyses and calibration. Removing count features reduced the AUROC from 0.797 (Table 1) to 0.789."
+      },
+      {
+        "id": 18,
+        "text": "Removing counts preserved approximately 99% of discrimination.",
+        "poster_quote": "preserving approximately 99% of discrimination.",
+        "label": "supported",
+        "paper_evidence": "and removal of utilization-proxy features preserves 99% of discrimination (AUROC 0.789).",
+        "reason": "Section Conclusion. Removing count features preserved 99% of discrimination (0.789 / 0.797 ≈ 99%)."
+      },
+      {
+        "id": 19,
+        "text": "Cases had lower missingness throughout.",
+        "poster_quote": "Cases had lower missingness throughout",
+        "label": "supported",
+        "paper_evidence": "Cases showed systematically lower missingness than controls across all biomarkers (Figure 1)",
+        "reason": "Section Results - Study Population and Missingness. Cases had lower missingness than controls across all biomarkers."
+      },
+      {
+        "id": 20,
+        "text": "Albumin missingness was 32.1% for cases vs 51.4% for controls.",
+        "poster_quote": "albumin was 32.1% vs 51.4%",
+        "label": "supported",
+        "paper_evidence": "with the largest differential for albumin (32.1% vs. 51.4%) and hemoglobin (21.3% vs. 37.0%).",
+        "reason": "Section Results - Study Population and Missingness. Albumin missingness was 32.1% for cases vs 51.4% for controls."
+      },
+      {
+        "id": 21,
+        "text": "Hemoglobin missingness was 21.3% for cases vs 37.0% for controls.",
+        "poster_quote": "hemoglobin 21.3% vs 37.0%.",
+        "label": "supported",
+        "paper_evidence": "with the largest differential for albumin (32.1% vs. 51.4%) and hemoglobin (21.3% vs. 37.0%).",
+        "reason": "Section Results - Study Population and Missingness. Hemoglobin missingness was 21.3% for cases vs 37.0% for controls."
+      },
+      {
+        "id": 22,
+        "text": "Isotonic calibration improved Brier score from 0.174 to 0.083.",
+        "poster_quote": "Isotonic calibration improved Brier score from 0.174 to 0.083",
+        "label": "supported",
+        "paper_evidence": "Isotonic calibration reduced Brier score from 0.174 to 0.083 (52.3% improvement) without degrading discrimination (AUROC 0.797 vs. 0.796; Figure 4).",
+        "reason": "Section Results - Sensitivity analyses and calibration. Isotonic calibration improved the Brier score from 0.174 to 0.083."
+      },
+      {
+        "id": 23,
+        "text": "Isotonic calibration preserved AUC.",
+        "poster_quote": "while preserving AUC.",
+        "label": "supported",
+        "paper_evidence": "Isotonic calibration reduced Brier score from 0.174 to 0.083 (52.3% improvement) without degrading discrimination (AUROC 0.797 vs. 0.796; Figure 4).",
+        "reason": "Section Results - Sensitivity analyses and calibration. Isotonic calibration preserved the AUC (0.797 vs. 0.796)."
+      },
+      {
+        "id": 24,
+        "text": "Isotonic regression improved reliability with Brier score 0.083 vs. 0.174.",
+        "poster_quote": "Isotonic regression substantially improves reliability (Brier 0.083 vs. 0.174)",
+        "label": "supported",
+        "paper_evidence": "Isotonic regression substantially improves reliability (Brier 0.083 vs. 0.174) with AUC preserved.",
+        "reason": "Figure 4 caption. Isotonic regression improved reliability with Brier score 0.083 vs. 0.174."
+      },
+      {
+        "id": 25,
+        "text": "Isotonic regression preserved AUC.",
+        "poster_quote": "with AUC preserved.",
+        "label": "supported",
+        "paper_evidence": "Isotonic regression substantially improves reliability (Brier 0.083 vs. 0.174) with AUC preserved.",
+        "reason": "Figure 4 caption. Isotonic regression preserved the AUC."
+      },
+      {
+        "id": 26,
+        "text": "Trajectory features outperformed static summaries with AUROC 0.797 versus 0.755.",
+        "poster_quote": "Trajectory features outperformed static summaries: AUROC 0.797 versus 0.755",
+        "label": "supported",
+        "paper_evidence": "LightGBM models incorporating trajectories significantly outperformed static laboratory summaries (AUROC 0.797 vs. 0.755; DeLong p < 0.001; AUPRC 0.380 vs. 0.304).",
+        "reason": "Section Abstract. Trajectory features outperformed static summaries with AUROC 0.797 vs. 0.755."
+      },
+      {
+        "id": 27,
+        "text": "Trajectory features outperformed static summaries with AUPRC 0.380 versus 0.304.",
+        "poster_quote": "and AUPRC 0.380 versus 0.304.",
+        "label": "supported",
+        "paper_evidence": "LightGBM models incorporating trajectories significantly outperformed static laboratory summaries (AUROC 0.797 vs. 0.755; DeLong p < 0.001; AUPRC 0.380 vs. 0.304).",
+        "reason": "Section Abstract. Trajectory features outperformed static summaries with AUPRC 0.380 vs. 0.304."
+      },
+      {
+        "id": 28,
+        "text": "Precision-recall performance achieved a 25% relative improvement.",
+        "poster_quote": "Precision-recall performance achieved a 25% relative improvement",
+        "label": "supported",
+        "paper_evidence": "Trajectory AUPRC was 0.380 versus 0.304 for baseline - a 25% relative improvement and 3.4× the no-skill rate of 0.111 (Figure 2).",
+        "reason": "Section Results - Trajectory Features Improve Discrimination. Relative improvement in AUPRC was 25% ((0.380 - 0.304) / 0.304 = 0.25)."
+      },
+      {
+        "id": 29,
+        "text": "The prevalence of cases was 11.1%.",
+        "poster_quote": "at 11.1% prevalence.",
+        "label": "supported",
+        "paper_evidence": "Using the All of Us Research Program (N = 297,861; 11.1% cases)",
+        "reason": "Section Abstract. The prevalence of cases in the primary cohort was 11.1%."
+      },
+      {
+        "id": 30,
+        "text": "Signal persisted up to 12 months before diagnosis.",
+        "poster_quote": "Signal persisted up to 12 months before diagnosis",
+        "label": "supported",
+        "paper_evidence": "demonstrating that biomarker trajectories contain predictive signal up to one year before diagnosis (Table 2).",
+        "reason": "Section Results - Prediction horizon analysis. The signal persisted up to 12 months (one year) before diagnosis."
+      },
+      {
+        "id": 31,
+        "text": "Mean absolute SHAP importance was evaluated on 5,000 held-out observations.",
+        "poster_quote": "Mean absolute SHAP importance on 5,000 held-out observations",
+        "label": "supported",
+        "paper_evidence": "By mean |SHAP| on 5,000 held-out observations, the top physiologic trajectory features were",
+        "reason": "Section Results - Feature importance. SHAP importance was evaluated on 5,000 held-out observations."
+      },
+      {
+        "id": 32,
+        "text": "SHAP importance showed complementary contributions from biomarker levels and change.",
+        "poster_quote": "showed complementary contributions from biomarker levels and change.",
+        "label": "supported",
+        "paper_evidence": "with trajectory-specific features (slope, std) complementing static means.",
+        "reason": "Figure 3 caption. SHAP importance showed complementary contributions from static means and trajectory-specific features."
+      },
+      {
+        "id": 33,
+        "text": "Leading physiologic predictor was BMI mean with SHAP importance 0.141.",
+        "poster_quote": "Leading physiologic predictors were BMI mean (0.141)",
+        "label": "supported",
+        "paper_evidence": "the top physiologic trajectory features were BMI mean (0.141), systolic blood pressure mean (0.113), diastolic blood pressure slope (0.104), RDW mean (0.094), and systolic blood pressure slope (0.088) (Figure 3).",
+        "reason": "Section Results - Feature importance. BMI mean was the leading physiologic predictor with a SHAP value of 0.141."
+      },
+      {
+        "id": 34,
+        "text": "Leading physiologic predictor was systolic BP mean with SHAP importance 0.113.",
+        "poster_quote": "systolic BP mean (0.113)",
+        "label": "supported",
+        "paper_evidence": "the top physiologic trajectory features were BMI mean (0.141), systolic blood pressure mean (0.113), diastolic blood pressure slope (0.104), RDW mean (0.094), and systolic blood pressure slope (0.088) (Figure 3).",
+        "reason": "Section Results - Feature importance. Systolic BP mean was the second leading physiologic predictor with a SHAP value of 0.113."
+      },
+      {
+        "id": 35,
+        "text": "Leading physiologic predictor was diastolic BP slope with SHAP importance 0.104.",
+        "poster_quote": "diastolic BP slope (0.104)",
+        "label": "supported",
+        "paper_evidence": "the top physiologic trajectory features were BMI mean (0.141), systolic blood pressure mean (0.113), diastolic blood pressure slope (0.104), RDW mean (0.094), and systolic blood pressure slope (0.088) (Figure 3).",
+        "reason": "Section Results - Feature importance. Diastolic BP slope was a leading physiologic predictor with a SHAP value of 0.104."
+      },
+      {
+        "id": 36,
+        "text": "Leading physiologic predictor was RDW mean with SHAP importance 0.094.",
+        "poster_quote": "RDW mean (0.094)",
+        "label": "supported",
+        "paper_evidence": "the top physiologic trajectory features were BMI mean (0.141), systolic blood pressure mean (0.113), diastolic blood pressure slope (0.104), RDW mean (0.094), and systolic blood pressure slope (0.088) (Figure 3).",
+        "reason": "Section Results - Feature importance. RDW mean was a leading physiologic predictor with a SHAP value of 0.094."
+      },
+      {
+        "id": 37,
+        "text": "Leading physiologic predictor was systolic BP slope with SHAP importance 0.088.",
+        "poster_quote": "and systolic BP slope (0.088).",
+        "label": "supported",
+        "paper_evidence": "the top physiologic trajectory features were BMI mean (0.141), systolic blood pressure mean (0.113), diastolic blood pressure slope (0.104), RDW mean (0.094), and systolic blood pressure slope (0.088) (Figure 3).",
+        "reason": "Section Results - Feature importance. Systolic BP slope was a leading physiologic predictor with a SHAP value of 0.088."
+      },
+      {
+        "id": 38,
+        "text": "Sodium count SHAP importance was 0.198.",
+        "poster_quote": "Counts ranked highest: sodium 0.198",
+        "label": "supported",
+        "paper_evidence": "Count features ranked highest overall (sodium count: 0.198; BMI count: 0.189; RDW count: 0.161; potassium count: 0.142)",
+        "reason": "Section Results - Feature importance. Sodium count had a SHAP importance of 0.198."
+      },
+      {
+        "id": 39,
+        "text": "BMI count SHAP importance was 0.189.",
+        "poster_quote": "BMI 0.189",
+        "label": "supported",
+        "paper_evidence": "Count features ranked highest overall (sodium count: 0.198; BMI count: 0.189; RDW count: 0.161; potassium count: 0.142)",
+        "reason": "Section Results - Feature importance. BMI count had a SHAP importance of 0.189."
+      },
+      {
+        "id": 40,
+        "text": "RDW count SHAP importance was 0.161.",
+        "poster_quote": "RDW 0.161",
+        "label": "supported",
+        "paper_evidence": "Count features ranked highest overall (sodium count: 0.198; BMI count: 0.189; RDW count: 0.161; potassium count: 0.142)",
+        "reason": "Section Results - Feature importance. RDW count had a SHAP importance of 0.161."
+      },
+      {
+        "id": 41,
+        "text": "Potassium count SHAP importance was 0.142.",
+        "poster_quote": "and potassium 0.142.",
+        "label": "supported",
+        "paper_evidence": "Count features ranked highest overall (sodium count: 0.198; BMI count: 0.189; RDW count: 0.161; potassium count: 0.142), consistent with informative observation.",
+        "reason": "Section \"Results\", subsection \"Feature importance\"."
+      },
+      {
+        "id": 42,
+        "text": "By descriptor, count importance was 0.061.",
+        "poster_quote": "By descriptor, importance was count 0.061",
+        "label": "supported",
+        "paper_evidence": "Aggregating by metric type: count (mean |SHAP| = 0.061), mean (0.047), slope (0.025), std (0.017), delta (0.009).",
+        "reason": "Section \"Results\", subsection \"Feature importance\"."
+      },
+      {
+        "id": 43,
+        "text": "By descriptor, mean importance was 0.047.",
+        "poster_quote": "mean 0.047",
+        "label": "supported",
+        "paper_evidence": "Aggregating by metric type: count (mean |SHAP| = 0.061), mean (0.047), slope (0.025), std (0.017), delta (0.009).",
+        "reason": "Section \"Results\", subsection \"Feature importance\"."
+      },
+      {
+        "id": 44,
+        "text": "By descriptor, slope importance was 0.025.",
+        "poster_quote": "slope 0.025",
+        "label": "supported",
+        "paper_evidence": "Aggregating by metric type: count (mean |SHAP| = 0.061), mean (0.047), slope (0.025), std (0.017), delta (0.009).",
+        "reason": "Section \"Results\", subsection \"Feature importance\"."
+      },
+      {
+        "id": 45,
+        "text": "By descriptor, standard deviation importance was 0.017.",
+        "poster_quote": "standard deviation 0.017",
+        "label": "supported",
+        "paper_evidence": "Aggregating by metric type: count (mean |SHAP| = 0.061), mean (0.047), slope (0.025), std (0.017), delta (0.009).",
+        "reason": "Section \"Results\", subsection \"Feature importance\"."
+      },
+      {
+        "id": 46,
+        "text": "By descriptor, delta importance was 0.009.",
+        "poster_quote": "and delta 0.009.",
+        "label": "supported",
+        "paper_evidence": "Aggregating by metric type: count (mean |SHAP| = 0.061), mean (0.047), slope (0.025), std (0.017), delta (0.009).",
+        "reason": "Section \"Results\", subsection \"Feature importance\"."
+      },
+      {
+        "id": 47,
+        "text": "The trajectory model AP was 0.380.",
+        "poster_quote": "The trajectory model (AP = 0.380)",
+        "label": "supported",
+        "paper_evidence": "The trajectory model (AP = 0.380) achieves 25% relative improvement over baseline (AP = 0.304).",
+        "reason": "Figure 2 caption."
+      },
+      {
+        "id": 48,
+        "text": "The trajectory model achieves 25% relative improvement over baseline.",
+        "poster_quote": "achieves 25% relative improvement over baseline",
+        "label": "supported",
+        "paper_evidence": "The trajectory model (AP = 0.380) achieves 25% relative improvement over baseline (AP = 0.304).",
+        "reason": "Figure 2 caption. Recomputation: (0.380 - 0.304) / 0.304 = 0.25."
+      },
+      {
+        "id": 49,
+        "text": "The baseline model AP was 0.304.",
+        "poster_quote": "(AP = 0.304).",
+        "label": "supported",
+        "paper_evidence": "The trajectory model (AP = 0.380) achieves 25% relative improvement over baseline (AP = 0.304).",
+        "reason": "Figure 2 caption."
+      },
+      {
+        "id": 50,
+        "text": "The dashed line in Figure 2 represents 11.1% prevalence.",
+        "poster_quote": "Dashed line: 11.1% prevalence.",
+        "label": "supported",
+        "paper_evidence": "Dashed line: 11.1% prevalence.",
+        "reason": "Figure 2 caption."
+      },
+      {
+        "id": 51,
+        "text": "Model performance in Table 1 used a 3-year window.",
+        "poster_quote": "Model performance (3-year window",
+        "label": "supported",
+        "paper_evidence": "Table 1: Model performance (3-year window, 5-fold CV, OOF; N = 297,861; 11.1% cases).",
+        "reason": "Table 1 title."
+      },
+      {
+        "id": 52,
+        "text": "Model performance in Table 1 used 5-fold CV.",
+        "poster_quote": "5-fold CV",
+        "label": "supported",
+        "paper_evidence": "Table 1: Model performance (3-year window, 5-fold CV, OOF; N = 297,861; 11.1% cases).",
+        "reason": "Table 1 title."
+      },
+      {
+        "id": 53,
+        "text": "Model performance in Table 1 used OOF.",
+        "poster_quote": "OOF",
+        "label": "supported",
+        "paper_evidence": "Table 1: Model performance (3-year window, 5-fold CV, OOF; N = 297,861; 11.1% cases).",
+        "reason": "Table 1 title."
+      },
+      {
+        "id": 54,
+        "text": "The sample size in Table 1 was N = 297,861.",
+        "poster_quote": "N = 297,861",
+        "label": "supported",
+        "paper_evidence": "Table 1: Model performance (3-year window, 5-fold CV, OOF; N = 297,861; 11.1% cases).",
+        "reason": "Table 1 title."
+      },
+      {
+        "id": 55,
+        "text": "The percentage of cases in Table 1 was 11.1%.",
+        "poster_quote": "11.1% cases",
+        "label": "supported",
+        "paper_evidence": "Table 1: Model performance (3-year window, 5-fold CV, OOF; N = 297,861; 11.1% cases).",
+        "reason": "Table 1 title."
+      },
+      {
+        "id": 56,
+        "text": "The SHAP beeswarm plot used a held-out test set of n = 5,000.",
+        "poster_quote": "SHAP beeswarm plot (held-out test set, n =5,000).",
+        "label": "supported",
+        "paper_evidence": "Figure 3: SHAP beeswarm plot (held-out test set, n = 5,000).",
+        "reason": "Figure 3 caption."
+      },
+      {
+        "id": 57,
+        "text": "BMI mean, blood pressure slopes, RDW mean, and systolic BP mean appear among the top physiologic predictors in Figure 3.",
+        "poster_quote": "BMI mean, blood pressure slopes, RDW mean, and systolic BP mean appear among the top physiologic predictors",
+        "label": "supported",
+        "paper_evidence": "BMI mean, blood pressure slopes, RDW mean, and systolic BP mean appear among the top physiologic predictors, with trajectory-specific features (slope, std) complementing static means.",
+        "reason": "Figure 3 caption."
+      },
+      {
+        "id": 58,
+        "text": "Differential missingness in Figure 1 was stratified by outcome over a 3-year window.",
+        "poster_quote": "Differential missingness by lab feature, stratified by outcome (3-year window).",
+        "label": "supported",
+        "paper_evidence": "Figure 1: Differential missingness by lab feature, stratified by outcome (3-year window).",
+        "reason": "Figure 1 caption."
+      },
+      {
+        "id": 59,
+        "text": "Cases show consistently lower missingness in Figure 1.",
+        "poster_quote": "Cases show consistently lower missingness",
+        "label": "supported",
+        "paper_evidence": "Cases show consistently lower missingness, consistent with informative observation in EHR data - patients developing functional impairment receive more frequent monitoring.",
+        "reason": "Figure 1 caption."
+      },
+      {
+        "id": 60,
+        "text": "Biomarker trajectories were tested to identify mobility decline before clinical recognition.",
+        "poster_quote": "We tested whether routine biomarker trajectories identify mobility decline before clinical recognition",
+        "label": "supported",
+        "paper_evidence": "We investigated whether temporal trajectories of routine biomarkers — already recorded but rarely analyzed longitudinally — can identify patients in the pre-clinical phase of mobility decline.",
+        "reason": "Abstract."
+      },
+      {
+        "id": 61,
+        "text": "Testing was done without medications, comorbidities, falls, assessments, or free text.",
+        "poster_quote": "without medications, comorbidities, falls, assessments, or free text.",
+        "label": "supported",
+        "paper_evidence": "Our model achieves AUROC 0.797 using only twelve laboratory biomarkers - no diagnosis codes, medications, functional assessments, or free-text processing.",
+        "reason": "Section \"Discussion\", subsection \"Trajectory features as passive digital biomarkers\"."
+      },
+      {
+        "id": 62,
+        "text": "Pseudo-index assignment was used to prevent immortal time bias.",
+        "poster_quote": "Pseudo-index assignment prevented immortal time bias.",
+        "label": "supported",
+        "paper_evidence": "A pseudo-index date was assigned by sampling uniformly at random within each control’s laboratory observation window (first to last measurement). This design preserves natural measurement history while preventing immortal time bias",
+        "reason": "Section \"Methods\", subsection \"Control cohort and pseudo-index assignment\"."
+      },
+      {
+        "id": 63,
+        "text": "Prediction-horizon testing excluded recent pre-index measurements.",
+        "poster_quote": "Prediction-horizon testing excluded recent pre-index measurements",
+        "label": "supported",
+        "paper_evidence": "Measurements within the specified horizon prior to the index date were excluded.",
+        "reason": "Table 2 caption."
+      }
+    ]
+  },
+  "raw": "[\"```json\\n{\\n  \\\"claims\\\": [\\n    {\\n      \\\"id\\\": 1,\\n      \\\"text\\\": \\\"Twelve prespecified biomarkers were modeled over a three-year window.\\\",\\n      \\\"poster_quote\\\": \\\"Twelve prespecified biomarkers were modeled over a three-year window\\\"\\n    },\\n    {\\n      \\\"id\\\": 2,\\n      \\\"text\\\": \\\"All post-index measurements were excluded from the trajectory modeling.\\\",\\n      \\\"poster_quote\\\": \\\"with all post-index measurements excluded.\\\"\\n    },\\n    {\\n      \\\"id\\\": 3,\\n      \\\"text\\\": \\\"The baseline model used biomarker means.\\\",\\n      \\\"poster_quote\\\": \\\"Baseline used biomarker means\\\"\\n    },\\n    {\\n      \\\"id\\\": 4,\\n      \\\"text\\\": \\\"Trajectories captured variability.\\\",\\n      \\\"poster_quote\\\": \\\"trajectories captured variability\\\"\\n    },\\n    {\\n      \\\"id\\\": 5,\\n      \\\"text\\\": \\\"Trajectories captured first-to-last change.\\\",\\n      \\\"poster_quote\\\": \\\"trajectories captured... first-to-last change\\\"\\n    },\\n    {\\n      \\\"id\\\": 6,\\n      \\\"text\\\": \\\"Trajectories captured measurement count.\\\",\\n      \\\"poster_quote\\\": \\\"trajectories captured... measurement count\\\"\\n    },\\n    {\\n      \\\"id\\\": 7,\\n      \\\"text\\\": \\\"Trajectories captured daily slope.\\\",\\n      \\\"poster_quote\\\": \\\"trajectories captured... daily slope.\\\"\\n    },\\n    {\\n      \\\"id\\\": 8,\\n      \\\"text\\\": \\\"Penalized logistic regression, random forest, XGBoost, and LightGBM were compared.\\\",\\n      \\\"poster_quote\\\": \\\"Penalized logistic regression, random forest, XGBoost, and LightGBM were compared\\\"\\n    },\\n    {\\n      \\\"id\\\": 9,\\n      \\\"text\\\": \\\"The models were compared by five-fold cross-validation.\\\",\\n      \\\"poster_quote\\\": \\\"compared by five-fold cross-validation\\\"\\n    },\\n    {\\n      \\\"id\\\": 10,\\n      \\\"text\\\": \\\"The sample size for model comparison was N = 297,861.\\\",\\n      \\\"poster_quote\\\": \\\"in N = 297,861.\\\"\\n    },\\n    {\\n      \\\"id\\\": 11,\\n      \\\"text\\\": \\\"Missing values used training-fold medians.\\\",\\n      \\\"poster_quote\\\": \\\"Missing values used training-fold medians\\\"\\n    },\\n    {\\n      \\\"id\\\": 12,\\n      \\\"text\\\": \\\"Evaluation covered out-of-fold discrimination.\\\",\\n      \\\"poster_quote\\\": \\\"evaluation covered out-of-fold discrimination\\\"\\n    },\\n    {\\n      \\\"id\\\": 13,\\n      \\\"text\\\": \\\"Evaluation covered calibration.\\\",\\n      \\\"poster_quote\\\": \\\"evaluation covered... calibration\\\"\\n    },\\n    {\\n      \\\"id\\\": 14,\\n      \\\"text\\\": \\\"Evaluation covered reclassification.\\\",\\n      \\\"poster_quote\\\": \\\"evaluation covered... and reclassification.\\\"\\n    },\\n    {\\n      \\\"id\\\": 15,\\n      \\\"text\\\": \\\"Age and sex matching yielded AUROC 0.727.\\\",\\n      \\\"poster_quote\\\": \\\"Age and sex matching yielded AUROC 0.727\\\"\\n    },\\n    {\\n      \\\"id\\\": 16,\\n      \\\"text\\\": \\\"Demographics alone yielded AUROC 0.680.\\\",\\n      \\\"poster_quote\\\": \\\"versus 0.680 for demographics alone.\\\"\\n    },\\n    {\\n      \\\"id\\\": 17,\\n      \\\"text\\\": \\\"Removing counts reduced AUROC from 0.797 to 0.789.\\\",\\n      \\\"poster_quote\\\": \\\"Removing counts reduced AUROC from 0.797 to 0.789\\\"\\n    },\\n    {\\n      \\\"id\\\": 18,\\n      \\\"text\\\": \\\"Removing counts preserved approximately 99% of discrimination.\\\",\\n      \\\"poster_quote\\\": \\\"preserving approximately 99% of discrimination.\\\"\\n    },\\n    {\\n      \\\"id\\\": 19,\\n      \\\"text\\\": \\\"Cases had lower missingness throughout.\\\",\\n      \\\"poster_quote\\\": \\\"Cases had lower missingness throughout\\\"\\n    },\\n    {\\n      \\\"id\\\": 20,\\n      \\\"text\\\": \\\"Albumin missingness was 32.1% for cases vs 51.4% for controls.\\\",\\n      \\\"poster_quote\\\": \\\"albumin was 32.1% vs 51.4%\\\"\\n    },\\n    {\\n      \\\"id\\\": 21,\\n      \\\"text\\\": \\\"Hemoglobin missingness was 21.3% for cases vs 37.0% for controls.\\\",\\n      \\\"poster_quote\\\": \\\"hemoglobin 21.3% vs 37.0%.\\\"\\n    },\\n    {\\n      \\\"id\\\": 22,\\n      \\\"text\\\": \\\"Isotonic calibration improved Brier score from 0.174 to 0.083.\\\",\\n      \\\"poster_quote\\\": \\\"Isotonic calibration improved Brier score from 0.174 to 0.083\\\"\\n    },\\n    {\\n      \\\"id\\\": 23,\\n      \\\"text\\\": \\\"Isotonic calibration preserved AUC.\\\",\\n      \\\"poster_quote\\\": \\\"while preserving AUC.\\\"\\n    },\\n    {\\n      \\\"id\\\": 24,\\n      \\\"text\\\": \\\"Isotonic regression improved reliability with Brier score 0.083 vs. 0.174.\\\",\\n      \\\"poster_quote\\\": \\\"Isotonic regression substantially improves reliability (Brier 0.083 vs. 0.174)\\\"\\n    },\\n    {\\n      \\\"id\\\": 25,\\n      \\\"text\\\": \\\"Isotonic regression preserved AUC.\\\",\\n      \\\"poster_quote\\\": \\\"with AUC preserved.\\\"\\n    },\\n    {\\n      \\\"id\\\": 26,\\n      \\\"text\\\": \\\"Trajectory features outperformed static summaries with AUROC 0.797 versus 0.755.\\\",\\n      \\\"poster_quote\\\": \\\"Trajectory features outperformed static summaries: AUROC 0.797 versus 0.755\\\"\\n    },\\n    {\\n      \\\"id\\\": 27,\\n      \\\"text\\\": \\\"Trajectory features outperformed static summaries with AUPRC 0.380 versus 0.304.\\\",\\n      \\\"poster_quote\\\": \\\"and AUPRC 0.380 versus 0.304.\\\"\\n    },\\n    {\\n      \\\"id\\\": 28,\\n      \\\"text\\\": \\\"Precision-recall performance achieved a 25% relative improvement.\\\",\\n      \\\"poster_quote\\\": \\\"Precision-recall performance achieved a 25% relative improvement\\\"\\n    },\\n    {\\n      \\\"id\\\": 29,\\n      \\\"text\\\": \\\"The prevalence of cases was 11.1%.\\\",\\n      \\\"poster_quote\\\": \\\"at 11.1% prevalence.\\\"\\n    },\\n    {\\n      \\\"id\\\": 30,\\n      \\\"text\\\": \\\"Signal persisted up to 12 months before diagnosis.\\\",\\n      \\\"poster_quote\\\": \\\"Signal persisted up to 12 months before diagnosis\\\"\\n    },\\n    {\\n      \\\"id\\\": 31,\\n      \\\"text\\\": \\\"Mean absolute SHAP importance was evaluated on 5,000 held-out observations.\\\",\\n      \\\"poster_quote\\\": \\\"Mean absolute SHAP importance on 5,000 held-out observations\\\"\\n    },\\n    {\\n      \\\"id\\\": 32,\\n      \\\"text\\\": \\\"SHAP importance showed complementary contributions from biomarker levels and change.\\\",\\n      \\\"poster_quote\\\": \\\"showed complementary contributions from biomarker levels and change.\\\"\\n    },\\n    {\\n      \\\"id\\\": 33,\\n      \\\"text\\\": \\\"Leading physiologic predictor was BMI mean with SHAP importance 0.141.\\\",\\n      \\\"poster_quote\\\": \\\"Leading physiologic predictors were BMI mean (0.141)\\\"\\n    },\\n    {\\n      \\\"id\\\": 34,\\n      \\\"text\\\": \\\"Leading physiologic predictor was systolic BP mean with SHAP importance 0.113.\\\",\\n      \\\"poster_quote\\\": \\\"systolic BP mean (0.113)\\\"\\n    },\\n    {\\n      \\\"id\\\": 35,\\n      \\\"text\\\": \\\"Leading physiologic predictor was diastolic BP slope with SHAP importance 0.104.\\\",\\n      \\\"poster_quote\\\": \\\"diastolic BP slope (0.104)\\\"\\n    },\\n    {\\n      \\\"id\\\": 36,\\n      \\\"text\\\": \\\"Leading physiologic predictor was RDW mean with SHAP importance 0.094.\\\",\\n      \\\"poster_quote\\\": \\\"RDW mean (0.094)\\\"\\n    },\\n    {\\n      \\\"id\\\": 37,\\n      \\\"text\\\": \\\"Leading physiologic predictor was systolic BP slope with SHAP importance 0.088.\\\",\\n      \\\"poster_quote\\\": \\\"and systolic BP slope (0.088).\\\"\\n    },\\n    {\\n      \\\"id\\\": 38,\\n      \\\"text\\\": \\\"Sodium count SHAP importance was 0.198.\\\",\\n      \\\"poster_quote\\\": \\\"Counts ranked highest: sodium 0.198\\\"\\n    },\\n    {\\n      \\\"id\\\": 39,\\n      \\\"text\\\": \\\"BMI count SHAP importance was 0.189.\\\",\\n      \\\"poster_quote\\\": \\\"BMI 0.189\\\"\\n    },\\n    {\\n      \\\"id\\\": 40,\\n      \\\"text\\\": \\\"RDW count SHAP importance was 0.161.\\\",\\n      \\\"poster_quote\\\": \\\"RDW 0.161\\\"\\n    },\\n    {\\n      \\\"id\\\": 41,\\n      \\\"text\\\": \\\"Potassium count SHAP importance was 0.142.\\\",\\n      \\\"poster_quote\\\": \\\"and potassium 0.142.\\\"\\n    },\\n    {\\n      \\\"id\\\": 42,\\n      \\\"text\\\": \\\"By descriptor, count importance was 0.061.\\\",\\n      \\\"poster_quote\\\": \\\"By descriptor, importance was count 0.061\\\"\\n    },\\n    {\\n      \\\"id\\\": 43,\\n      \\\"text\\\": \\\"By descriptor, mean importance was 0.047.\\\",\\n      \\\"poster_quote\\\": \\\"mean 0.047\\\"\\n    },\\n    {\\n      \\\"id\\\": 44,\\n      \\\"text\\\": \\\"By descriptor, slope importance was 0.025.\\\",\\n      \\\"poster_quote\\\": \\\"slope 0.025\\\"\\n    },\\n    {\\n      \\\"id\\\": 45,\\n      \\\"text\\\": \\\"By descriptor, standard deviation importance was 0.017.\\\",\\n      \\\"poster_quote\\\": \\\"standard deviation 0.017\\\"\\n    },\\n    {\\n      \\\"id\\\": 46,\\n      \\\"text\\\": \\\"By descriptor, delta importance was 0.009.\\\",\\n      \\\"poster_quote\\\": \\\"and delta 0.009.\\\"\\n    },\\n    {\\n      \\\"id\\\": 47,\\n      \\\"text\\\": \\\"The trajectory model AP was 0.380.\\\",\\n      \\\"poster_quote\\\": \\\"The trajectory model (AP = 0.380)\\\"\\n    },\\n    {\\n      \\\"id\\\": 48,\\n      \\\"text\\\": \\\"The trajectory model achieves 25% relative improvement over baseline.\\\",\\n      \\\"poster_quote\\\": \\\"achieves 25% relative improvement over baseline\\\"\\n    },\\n    {\\n      \\\"id\\\": 49,\\n      \\\"text\\\": \\\"The baseline model AP was 0.304.\\\",\\n      \\\"poster_quote\\\": \\\"(AP = 0.304).\\\"\\n    },\\n    {\\n      \\\"id\\\": 50,\\n      \\\"text\\\": \\\"The dashed line in Figure 2 represents 11.1% prevalence.\\\",\\n      \\\"poster_quote\\\": \\\"Dashed line: 11.1% prevalence.\\\"\\n    },\\n    {\\n      \\\"id\\\": 51,\\n      \\\"text\\\": \\\"Model performance in Table 1 used a 3-year window.\\\",\\n      \\\"poster_quote\\\": \\\"Model performance (3-year window\\\"\\n    },\\n    {\\n      \\\"id\\\": 52,\\n      \\\"text\\\": \\\"Model performance in Table 1 used 5-fold CV.\\\",\\n      \\\"poster_quote\\\": \\\"5-fold CV\\\"\\n    },\\n    {\\n      \\\"id\\\": 53,\\n      \\\"text\\\": \\\"Model performance in Table 1 used OOF.\\\",\\n      \\\"poster_quote\\\": \\\"OOF\\\"\\n    },\\n    {\\n      \\\"id\\\": 54,\\n      \\\"text\\\": \\\"The sample size in Table 1 was N = 297,861.\\\",\\n      \\\"poster_quote\\\": \\\"N = 297,861\\\"\\n    },\\n    {\\n      \\\"id\\\": 55,\\n      \\\"text\\\": \\\"The percentage of cases in Table 1 was 11.1%.\\\",\\n      \\\"poster_quote\\\": \\\"11.1% cases\\\"\\n    },\\n    {\\n      \\\"id\\\": 56,\\n      \\\"text\\\": \\\"The SHAP beeswarm plot used a held-out test set of n = 5,000.\\\",\\n      \\\"poster_quote\\\": \\\"SHAP beeswarm plot (held-out test set, n =5,000).\\\"\\n    },\\n    {\\n      \\\"id\\\": 57,\\n      \\\"text\\\": \\\"BMI mean, blood pressure slopes, RDW mean, and systolic BP mean appear among the top physiologic predictors in Figure 3.\\\",\\n      \\\"poster_quote\\\": \\\"BMI mean, blood pressure slopes, RDW mean, and systolic BP mean appear among the top physiologic predictors\\\"\\n    },\\n    {\\n      \\\"id\\\": 58,\\n      \\\"text\\\": \\\"Differential missingness in Figure 1 was stratified by outcome over a 3-year window.\\\",\\n      \\\"poster_quote\\\": \\\"Differential missingness by lab feature, stratified by outcome (3-year window).\\\"\\n    },\\n    {\\n      \\\"id\\\": 59,\\n      \\\"text\\\": \\\"Cases show consistently lower missingness in Figure 1.\\\",\\n      \\\"poster_quote\\\": \\\"Cases show consistently lower missingness\\\"\\n    },\\n    {\\n      \\\"id\\\": 60,\\n      \\\"text\\\": \\\"Biomarker trajectories were tested to identify mobility decline before clinical recognition.\\\",\\n      \\\"poster_quote\\\": \\\"We tested whether routine biomarker trajectories identify mobility decline before clinical recognition\\\"\\n    },\\n    {\\n      \\\"id\\\": 61,\\n      \\\"text\\\": \\\"Testing was done without medications, comorbidities, falls, assessments, or free text.\\\",\\n      \\\"poster_quote\\\": \\\"without medications, comorbidities, falls, assessments, or free text.\\\"\\n    },\\n    {\\n      \\\"id\\\": 62,\\n      \\\"text\\\": \\\"Pseudo-index assignment was used to prevent immortal time bias.\\\",\\n      \\\"poster_quote\\\": \\\"Pseudo-index assignment prevented immortal time bias.\\\"\\n    },\\n    {\\n      \\\"id\\\": 63,\\n      \\\"text\\\": \\\"Prediction-horizon testing excluded recent pre-index measurements.\\\",\\n      \\\"poster_quote\\\": \\\"Prediction-horizon testing excluded recent pre-index measurements\\\"\\n    }\\n  ]\\n}\\n```\", \"```json\\n{\\n  \\\"verdicts\\\": [\\n    {\\n      \\\"id\\\": 1,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"we derived trajectory features (slope, variability, delta, mean) for twelve biomarkers over a three-year pre-index window.\\\",\\n      \\\"reason\\\": \\\"Section Abstract. The paper states that twelve biomarkers were modeled over a three-year pre-index window.\\\"\\n    },\\n    {\\n      \\\"id\\\": 2,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"All measurements on or after the index date were excluded to prevent data leakage.\\\",\\n      \\\"reason\\\": \\\"Section Methods - Biomarker Selection and Observation Windows. The paper explicitly states that all post-index measurements were excluded.\\\"\\n    },\\n    {\\n      \\\"id\\\": 3,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Baseline features used each biomarker’s mean value within the window.\\\",\\n      \\\"reason\\\": \\\"Section Methods - Feature Engineering. The baseline model features were defined as each biomarker's mean value.\\\"\\n    },\\n    {\\n      \\\"id\\\": 4,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Trajectory features captured five per-biomarker descriptors: mean, standard deviation (intra-individual variability), delta (last minus first, directional change), count (measurement frequency), and linear slope (rate of change per day).\\\",\\n      \\\"reason\\\": \\\"Section Methods - Feature Engineering. Trajectory features included standard deviation to represent intra-individual variability.\\\"\\n    },\\n    {\\n      \\\"id\\\": 5,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Trajectory features captured five per-biomarker descriptors: mean, standard deviation (intra-individual variability), delta (last minus first, directional change), count (measurement frequency), and linear slope (rate of change per day).\\\",\\n      \\\"reason\\\": \\\"Section Methods - Feature Engineering. Trajectory features included delta, defined as last minus first value.\\\"\\n    },\\n    {\\n      \\\"id\\\": 6,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Trajectory features captured five per-biomarker descriptors: mean, standard deviation (intra-individual variability), delta (last minus first, directional change), count (measurement frequency), and linear slope (rate of change per day).\\\",\\n      \\\"reason\\\": \\\"Section Methods - Feature Engineering. Trajectory features included measurement count.\\\"\\n    },\\n    {\\n      \\\"id\\\": 7,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Trajectory features captured five per-biomarker descriptors: mean, standard deviation (intra-individual variability), delta (last minus first, directional change), count (measurement frequency), and linear slope (rate of change per day).\\\",\\n      \\\"reason\\\": \\\"Section Methods - Feature Engineering. Trajectory features included linear slope representing rate of change per day.\\\"\\n    },\\n    {\\n      \\\"id\\\": 8,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Four algorithms were evaluated: (1) ℓ2 -penalized logistic regression (SAGA solver, max iter = 1000, class weight = ‘balanced’); (2) random forest (200 estimators, balanced class weights, n jobs = −1); (3) XGBoost (300 estimators, learning rate 0.05, eval metric = ‘auc’); and (4) LightGBM (300 estimators, learning rate 0.05).\\\",\\n      \\\"reason\\\": \\\"Section Methods - Model Development and Evaluation. The four listed algorithms were compared.\\\"\\n    },\\n    {\\n      \\\"id\\\": 9,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"All models were trained with 5-fold stratified cross-validation; out-of-fold (OOF) predictions across all folds were aggregated for unbiased evaluation.\\\",\\n      \\\"reason\\\": \\\"Section Methods - Model Development and Evaluation. The models were trained and compared using 5-fold cross-validation.\\\"\\n    },\\n    {\\n      \\\"id\\\": 10,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Table 1: Model performance (3-year window, 5-fold CV, OOF; N = 297,861; 11.1% cases).\\\",\\n      \\\"reason\\\": \\\"Table 1. The sample size for the primary model comparison was N = 297,861.\\\"\\n    },\\n    {\\n      \\\"id\\\": 11,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Missing values were imputed with the median of each biomarker computed from the training partition of each cross-validation fold, ensuring held-out data never informed the imputed values and preventing data leakage.\\\",\\n      \\\"reason\\\": \\\"Section Methods - Feature Engineering. Missing values were imputed using the median of the training fold.\\\"\\n    },\\n    {\\n      \\\"id\\\": 12,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Primary discrimination was assessed by AUROC on OOF predictions with bootstrap 95% CIs (2,000 resampling iterations).\\\",\\n      \\\"reason\\\": \\\"Section Methods - Model Development and Evaluation. Discrimination was evaluated using out-of-fold predictions.\\\"\\n    },\\n    {\\n      \\\"id\\\": 13,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Calibration was evaluated using Brier scores and reliability curves; isotonic regression calibration was applied via CalibratedClassifierCV (cv = 5) on a held-out 20% stratified test split.\\\",\\n      \\\"reason\\\": \\\"Section Methods - Model Development and Evaluation. Calibration was evaluated using Brier scores and reliability curves.\\\"\\n    },\\n    {\\n      \\\"id\\\": 14,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Category-based NRI was computed at risk thresholds of 0.10, 0.15, 0.20, 0.25, and 0.30.\\\",\\n      \\\"reason\\\": \\\"Section Methods - Model Development and Evaluation. Reclassification was evaluated using Net Reclassification Improvement (NRI).\\\"\\n    },\\n    {\\n      \\\"id\\\": 15,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"A 1:1 age- and sex-matched analysis confirmed an independent trajectory signal (AUROC 0.727 vs. demographics-only 0.680).\\\",\\n      \\\"reason\\\": \\\"Section Abstract. The matched trajectory model achieved an AUROC of 0.727.\\\"\\n    },\\n    {\\n      \\\"id\\\": 16,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Demographics alone achieved AUROC 0.680 (95% CI: 0.677–0.683).\\\",\\n      \\\"reason\\\": \\\"Section Results - Trajectory Features Improve Discrimination. Demographics-only model achieved an AUROC of 0.680.\\\"\\n    },\\n    {\\n      \\\"id\\\": 17,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Removing count features yielded AUROC 0.789 (0.786–0.791), a reduction of 0.009 (DeLong p < 0.001).\\\",\\n      \\\"reason\\\": \\\"Section Results - Sensitivity analyses and calibration. Removing count features reduced the AUROC from 0.797 (Table 1) to 0.789.\\\"\\n    },\\n    {\\n      \\\"id\\\": 18,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"and removal of utilization-proxy features preserves 99% of discrimination (AUROC 0.789).\\\",\\n      \\\"reason\\\": \\\"Section Conclusion. Removing count features preserved 99% of discrimination (0.789 / 0.797 ≈ 99%).\\\"\\n    },\\n    {\\n      \\\"id\\\": 19,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Cases showed systematically lower missingness than controls across all biomarkers (Figure 1)\\\",\\n      \\\"reason\\\": \\\"Section Results - Study Population and Missingness. Cases had lower missingness than controls across all biomarkers.\\\"\\n    },\\n    {\\n      \\\"id\\\": 20,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"with the largest differential for albumin (32.1% vs. 51.4%) and hemoglobin (21.3% vs. 37.0%).\\\",\\n      \\\"reason\\\": \\\"Section Results - Study Population and Missingness. Albumin missingness was 32.1% for cases vs 51.4% for controls.\\\"\\n    },\\n    {\\n      \\\"id\\\": 21,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"with the largest differential for albumin (32.1% vs. 51.4%) and hemoglobin (21.3% vs. 37.0%).\\\",\\n      \\\"reason\\\": \\\"Section Results - Study Population and Missingness. Hemoglobin missingness was 21.3% for cases vs 37.0% for controls.\\\"\\n    },\\n    {\\n      \\\"id\\\": 22,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Isotonic calibration reduced Brier score from 0.174 to 0.083 (52.3% improvement) without degrading discrimination (AUROC 0.797 vs. 0.796; Figure 4).\\\",\\n      \\\"reason\\\": \\\"Section Results - Sensitivity analyses and calibration. Isotonic calibration improved the Brier score from 0.174 to 0.083.\\\"\\n    },\\n    {\\n      \\\"id\\\": 23,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Isotonic calibration reduced Brier score from 0.174 to 0.083 (52.3% improvement) without degrading discrimination (AUROC 0.797 vs. 0.796; Figure 4).\\\",\\n      \\\"reason\\\": \\\"Section Results - Sensitivity analyses and calibration. Isotonic calibration preserved the AUC (0.797 vs. 0.796).\\\"\\n    },\\n    {\\n      \\\"id\\\": 24,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Isotonic regression substantially improves reliability (Brier 0.083 vs. 0.174) with AUC preserved.\\\",\\n      \\\"reason\\\": \\\"Figure 4 caption. Isotonic regression improved reliability with Brier score 0.083 vs. 0.174.\\\"\\n    },\\n    {\\n      \\\"id\\\": 25,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Isotonic regression substantially improves reliability (Brier 0.083 vs. 0.174) with AUC preserved.\\\",\\n      \\\"reason\\\": \\\"Figure 4 caption. Isotonic regression preserved the AUC.\\\"\\n    },\\n    {\\n      \\\"id\\\": 26,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"LightGBM models incorporating trajectories significantly outperformed static laboratory summaries (AUROC 0.797 vs. 0.755; DeLong p < 0.001; AUPRC 0.380 vs. 0.304).\\\",\\n      \\\"reason\\\": \\\"Section Abstract. Trajectory features outperformed static summaries with AUROC 0.797 vs. 0.755.\\\"\\n    },\\n    {\\n      \\\"id\\\": 27,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"LightGBM models incorporating trajectories significantly outperformed static laboratory summaries (AUROC 0.797 vs. 0.755; DeLong p < 0.001; AUPRC 0.380 vs. 0.304).\\\",\\n      \\\"reason\\\": \\\"Section Abstract. Trajectory features outperformed static summaries with AUPRC 0.380 vs. 0.304.\\\"\\n    },\\n    {\\n      \\\"id\\\": 28,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Trajectory AUPRC was 0.380 versus 0.304 for baseline - a 25% relative improvement and 3.4× the no-skill rate of 0.111 (Figure 2).\\\",\\n      \\\"reason\\\": \\\"Section Results - Trajectory Features Improve Discrimination. Relative improvement in AUPRC was 25% ((0.380 - 0.304) / 0.304 = 0.25).\\\"\\n    },\\n    {\\n      \\\"id\\\": 29,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Using the All of Us Research Program (N = 297,861; 11.1% cases)\\\",\\n      \\\"reason\\\": \\\"Section Abstract. The prevalence of cases in the primary cohort was 11.1%.\\\"\\n    },\\n    {\\n      \\\"id\\\": 30,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"demonstrating that biomarker trajectories contain predictive signal up to one year before diagnosis (Table 2).\\\",\\n      \\\"reason\\\": \\\"Section Results - Prediction horizon analysis. The signal persisted up to 12 months (one year) before diagnosis.\\\"\\n    },\\n    {\\n      \\\"id\\\": 31,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"By mean |SHAP| on 5,000 held-out observations, the top physiologic trajectory features were\\\",\\n      \\\"reason\\\": \\\"Section Results - Feature importance. SHAP importance was evaluated on 5,000 held-out observations.\\\"\\n    },\\n    {\\n      \\\"id\\\": 32,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"with trajectory-specific features (slope, std) complementing static means.\\\",\\n      \\\"reason\\\": \\\"Figure 3 caption. SHAP importance showed complementary contributions from static means and trajectory-specific features.\\\"\\n    },\\n    {\\n      \\\"id\\\": 33,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"the top physiologic trajectory features were BMI mean (0.141), systolic blood pressure mean (0.113), diastolic blood pressure slope (0.104), RDW mean (0.094), and systolic blood pressure slope (0.088) (Figure 3).\\\",\\n      \\\"reason\\\": \\\"Section Results - Feature importance. BMI mean was the leading physiologic predictor with a SHAP value of 0.141.\\\"\\n    },\\n    {\\n      \\\"id\\\": 34,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"the top physiologic trajectory features were BMI mean (0.141), systolic blood pressure mean (0.113), diastolic blood pressure slope (0.104), RDW mean (0.094), and systolic blood pressure slope (0.088) (Figure 3).\\\",\\n      \\\"reason\\\": \\\"Section Results - Feature importance. Systolic BP mean was the second leading physiologic predictor with a SHAP value of 0.113.\\\"\\n    },\\n    {\\n      \\\"id\\\": 35,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"the top physiologic trajectory features were BMI mean (0.141), systolic blood pressure mean (0.113), diastolic blood pressure slope (0.104), RDW mean (0.094), and systolic blood pressure slope (0.088) (Figure 3).\\\",\\n      \\\"reason\\\": \\\"Section Results - Feature importance. Diastolic BP slope was a leading physiologic predictor with a SHAP value of 0.104.\\\"\\n    },\\n    {\\n      \\\"id\\\": 36,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"the top physiologic trajectory features were BMI mean (0.141), systolic blood pressure mean (0.113), diastolic blood pressure slope (0.104), RDW mean (0.094), and systolic blood pressure slope (0.088) (Figure 3).\\\",\\n      \\\"reason\\\": \\\"Section Results - Feature importance. RDW mean was a leading physiologic predictor with a SHAP value of 0.094.\\\"\\n    },\\n    {\\n      \\\"id\\\": 37,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"the top physiologic trajectory features were BMI mean (0.141), systolic blood pressure mean (0.113), diastolic blood pressure slope (0.104), RDW mean (0.094), and systolic blood pressure slope (0.088) (Figure 3).\\\",\\n      \\\"reason\\\": \\\"Section Results - Feature importance. Systolic BP slope was a leading physiologic predictor with a SHAP value of 0.088.\\\"\\n    },\\n    {\\n      \\\"id\\\": 38,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Count features ranked highest overall (sodium count: 0.198; BMI count: 0.189; RDW count: 0.161; potassium count: 0.142)\\\",\\n      \\\"reason\\\": \\\"Section Results - Feature importance. Sodium count had a SHAP importance of 0.198.\\\"\\n    },\\n    {\\n      \\\"id\\\": 39,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Count features ranked highest overall (sodium count: 0.198; BMI count: 0.189; RDW count: 0.161; potassium count: 0.142)\\\",\\n      \\\"reason\\\": \\\"Section Results - Feature importance. BMI count had a SHAP importance of 0.189.\\\"\\n    },\\n    {\\n      \\\"id\\\": 40,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Count features ranked highest overall (sodium count: 0.198; BMI count: 0.189; RDW count: 0.161; potassium count: 0.142)\\\",\\n      \\\"reason\\\": \\\"Section Results - Feature importance. RDW count had a SHAP importance of 0.161.\\\"\\n    }\\n  ]\\n}\\n```\", \"```json\\n{\\n  \\\"verdicts\\\": [\\n    {\\n      \\\"id\\\": 1,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Count features ranked highest overall (sodium count: 0.198; BMI count: 0.189; RDW count: 0.161; potassium count: 0.142), consistent with informative observation.\\\",\\n      \\\"reason\\\": \\\"Section \\\\\\\"Results\\\\\\\", subsection \\\\\\\"Feature importance\\\\\\\".\\\"\\n    },\\n    {\\n      \\\"id\\\": 2,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Aggregating by metric type: count (mean |SHAP| = 0.061), mean (0.047), slope (0.025), std (0.017), delta (0.009).\\\",\\n      \\\"reason\\\": \\\"Section \\\\\\\"Results\\\\\\\", subsection \\\\\\\"Feature importance\\\\\\\".\\\"\\n    },\\n    {\\n      \\\"id\\\": 3,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Aggregating by metric type: count (mean |SHAP| = 0.061), mean (0.047), slope (0.025), std (0.017), delta (0.009).\\\",\\n      \\\"reason\\\": \\\"Section \\\\\\\"Results\\\\\\\", subsection \\\\\\\"Feature importance\\\\\\\".\\\"\\n    },\\n    {\\n      \\\"id\\\": 4,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Aggregating by metric type: count (mean |SHAP| = 0.061), mean (0.047), slope (0.025), std (0.017), delta (0.009).\\\",\\n      \\\"reason\\\": \\\"Section \\\\\\\"Results\\\\\\\", subsection \\\\\\\"Feature importance\\\\\\\".\\\"\\n    },\\n    {\\n      \\\"id\\\": 5,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Aggregating by metric type: count (mean |SHAP| = 0.061), mean (0.047), slope (0.025), std (0.017), delta (0.009).\\\",\\n      \\\"reason\\\": \\\"Section \\\\\\\"Results\\\\\\\", subsection \\\\\\\"Feature importance\\\\\\\".\\\"\\n    },\\n    {\\n      \\\"id\\\": 6,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Aggregating by metric type: count (mean |SHAP| = 0.061), mean (0.047), slope (0.025), std (0.017), delta (0.009).\\\",\\n      \\\"reason\\\": \\\"Section \\\\\\\"Results\\\\\\\", subsection \\\\\\\"Feature importance\\\\\\\".\\\"\\n    },\\n    {\\n      \\\"id\\\": 7,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The trajectory model (AP = 0.380) achieves 25% relative improvement over baseline (AP = 0.304).\\\",\\n      \\\"reason\\\": \\\"Figure 2 caption.\\\"\\n    },\\n    {\\n      \\\"id\\\": 8,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The trajectory model (AP = 0.380) achieves 25% relative improvement over baseline (AP = 0.304).\\\",\\n      \\\"reason\\\": \\\"Figure 2 caption. Recomputation: (0.380 - 0.304) / 0.304 = 0.25.\\\"\\n    },\\n    {\\n      \\\"id\\\": 9,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The trajectory model (AP = 0.380) achieves 25% relative improvement over baseline (AP = 0.304).\\\",\\n      \\\"reason\\\": \\\"Figure 2 caption.\\\"\\n    },\\n    {\\n      \\\"id\\\": 10,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Dashed line: 11.1% prevalence.\\\",\\n      \\\"reason\\\": \\\"Figure 2 caption.\\\"\\n    },\\n    {\\n      \\\"id\\\": 11,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Table 1: Model performance (3-year window, 5-fold CV, OOF; N = 297,861; 11.1% cases).\\\",\\n      \\\"reason\\\": \\\"Table 1 title.\\\"\\n    },\\n    {\\n      \\\"id\\\": 12,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Table 1: Model performance (3-year window, 5-fold CV, OOF; N = 297,861; 11.1% cases).\\\",\\n      \\\"reason\\\": \\\"Table 1 title.\\\"\\n    },\\n    {\\n      \\\"id\\\": 13,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Table 1: Model performance (3-year window, 5-fold CV, OOF; N = 297,861; 11.1% cases).\\\",\\n      \\\"reason\\\": \\\"Table 1 title.\\\"\\n    },\\n    {\\n      \\\"id\\\": 14,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Table 1: Model performance (3-year window, 5-fold CV, OOF; N = 297,861; 11.1% cases).\\\",\\n      \\\"reason\\\": \\\"Table 1 title.\\\"\\n    },\\n    {\\n      \\\"id\\\": 15,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Table 1: Model performance (3-year window, 5-fold CV, OOF; N = 297,861; 11.1% cases).\\\",\\n      \\\"reason\\\": \\\"Table 1 title.\\\"\\n    },\\n    {\\n      \\\"id\\\": 16,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Figure 3: SHAP beeswarm plot (held-out test set, n = 5,000).\\\",\\n      \\\"reason\\\": \\\"Figure 3 caption.\\\"\\n    },\\n    {\\n      \\\"id\\\": 17,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"BMI mean, blood pressure slopes, RDW mean, and systolic BP mean appear among the top physiologic predictors, with trajectory-specific features (slope, std) complementing static means.\\\",\\n      \\\"reason\\\": \\\"Figure 3 caption.\\\"\\n    },\\n    {\\n      \\\"id\\\": 18,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Figure 1: Differential missingness by lab feature, stratified by outcome (3-year window).\\\",\\n      \\\"reason\\\": \\\"Figure 1 caption.\\\"\\n    },\\n    {\\n      \\\"id\\\": 19,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Cases show consistently lower missingness, consistent with informative observation in EHR data - patients developing functional impairment receive more frequent monitoring.\\\",\\n      \\\"reason\\\": \\\"Figure 1 caption.\\\"\\n    },\\n    {\\n      \\\"id\\\": 20,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"We investigated whether temporal trajectories of routine biomarkers — already recorded but rarely analyzed longitudinally — can identify patients in the pre-clinical phase of mobility decline.\\\",\\n      \\\"reason\\\": \\\"Abstract.\\\"\\n    },\\n    {\\n      \\\"id\\\": 21,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Our model achieves AUROC 0.797 using only twelve laboratory biomarkers - no diagnosis codes, medications, functional assessments, or free-text processing.\\\",\\n      \\\"reason\\\": \\\"Section \\\\\\\"Discussion\\\\\\\", subsection \\\\\\\"Trajectory features as passive digital biomarkers\\\\\\\".\\\"\\n    },\\n    {\\n      \\\"id\\\": 22,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"A pseudo-index date was assigned by sampling uniformly at random within each control’s laboratory observation window (first to last measurement). This design preserves natural measurement history while preventing immortal time bias\\\",\\n      \\\"reason\\\": \\\"Section \\\\\\\"Methods\\\\\\\", subsection \\\\\\\"Control cohort and pseudo-index assignment\\\\\\\".\\\"\\n    },\\n    {\\n      \\\"id\\\": 23,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Measurements within the specified horizon prior to the index date were excluded.\\\",\\n      \\\"reason\\\": \\\"Table 2 caption.\\\"\\n    }\\n  ]\\n}\\n```\"]"
+}

@@ -1,0 +1,248 @@
+{
+  "model": "openai.gpt-4o",
+  "repeat": 2,
+  "judge_prompt_sha256": "4ec65050cfdc718218dbc587f672291e733fd03b1254c20d77b61b0933e16162",
+  "error": null,
+  "tokens_in": 11846,
+  "tokens_out": 4890,
+  "tokens_cached": 11264,
+  "max_output_tokens": 16384,
+  "claims_batch_size": 40,
+  "parsed": {
+    "claims": [
+      {
+        "id": 1,
+        "text": "Functional decline is often recognized only after falls, gait impairment, or reduced mobility become visible.",
+        "poster_quote": "Functional decline is often recognized only after falls, gait impairment, or reduced mobility become visible.",
+        "label": "supported",
+        "paper_evidence": "Functional decline - encompassing gait impairment, reduced mobility, and fall risk - affects more than one-third of adults over 65 and contributes to approximately three million emergency visits and $50 billion in annual U.S. healthcare expenditures. Despite this burden, functional decline lacks an automated early warning system embedded in routine clinical workflows. It is typically recognized only after observable impairment or a fall event, when the pre-clinical prevention window has closed.",
+        "reason": "Section: Introduction. The paper explicitly states that functional decline is often recognized only after falls, gait impairment, or reduced mobility become visible."
+      },
+      {
+        "id": 2,
+        "text": "Routine biomarkers may deteriorate earlier without triggering alerts.",
+        "poster_quote": "Routine biomarkers may deteriorate earlier without triggering alerts.",
+        "label": "supported",
+        "paper_evidence": "Her hemoglobin has declined from 13.2 to 11.8 g/dL over three years - each value individually unremarkable, never triggering a clinical alert. Her albumin has drifted from 4.1 to 3.6 g/dL.",
+        "reason": "Section: Introduction. The paper provides an example where routine biomarkers deteriorate without triggering alerts, supporting the claim."
+      },
+      {
+        "id": 3,
+        "text": "Existing tools capture one timepoint, while biomarker trajectories may reveal an earlier prevention window.",
+        "poster_quote": "Existing tools capture one timepoint, while biomarker trajectories may reveal an earlier prevention window.",
+        "label": "supported",
+        "paper_evidence": "Existing frailty tools, such as the Fried phenotype, the Short Physical Performance Battery, and the Timed Up-and-Go, require structured functional assessments, manual scoring, or dedicated patient interaction not consistently embedded in primary care workflows. Even when administered, they capture a single timepoint rather than the trajectory of physiologic change.",
+        "reason": "Section: Introduction. The paper contrasts existing tools that capture one timepoint with the potential of biomarker trajectories to reveal earlier prevention windows."
+      },
+      {
+        "id": 4,
+        "text": "Robustness analyses separated physiology from demographics, utilization, and observation patterns.",
+        "poster_quote": "Robustness analyses separated physiology from demographics, utilization, and observation patterns.",
+        "label": "supported",
+        "paper_evidence": "A matched analysis confirmed an independent trajectory signal (AUROC 0.727), and isotonic calibration produced well-calibrated probabilities (Brier 0.083). Removing count features yielded AUROC 0.789 (0.786–0.791), a reduction of 0.009 (DeLong p < 0.001).",
+        "reason": "Section: Results. The paper describes robustness analyses separating physiology from demographics, utilization, and observation patterns."
+      },
+      {
+        "id": 5,
+        "text": "The model is a passive digital biomarker using routine measurements, with no new tests, interaction, scoring, or functional assessment.",
+        "poster_quote": "The model is a passive digital biomarker using routine measurements, with no new tests, interaction, scoring, or functional assessment.",
+        "label": "supported",
+        "paper_evidence": "Our model achieves AUROC 0.797 using only twelve laboratory biomarkers - no diagnosis codes, medications, functional assessments, or free-text processing. This constraint is a deliberate design choice: it produces a model that functions as a passive digital biomarker, requiring no new data collection, patient interaction, or clinical workflow modification.",
+        "reason": "Section: Discussion. The paper explicitly describes the model as a passive digital biomarker requiring no new tests, interaction, scoring, or functional assessment."
+      },
+      {
+        "id": 6,
+        "text": "Risk can update with each result, prompting physical therapy, fall screening, or geriatric assessment.",
+        "poster_quote": "Risk can update with each result, prompting physical therapy, fall screening, or geriatric assessment.",
+        "label": "supported",
+        "paper_evidence": "At a clinical visit, the physician sees a single alert - 'Elevated functional decline risk - consider physical therapy referral or geriatric assessment' - while the pre-clinical intervention window remains open.",
+        "reason": "Section: Discussion. The paper states that risk can update with each result, prompting physical therapy, fall screening, or geriatric assessment."
+      },
+      {
+        "id": 7,
+        "text": "Isotonic calibration improved Brier score from 0.174 to 0.083 while preserving AUC.",
+        "poster_quote": "Isotonic calibration improved Brier score from 0.174 to 0.083 while preserving AUC.",
+        "label": "supported",
+        "paper_evidence": "Isotonic calibration reduced Brier score from 0.174 to 0.083 (52.3% improvement) without degrading discrimination (AUROC 0.797 vs. 0.796).",
+        "reason": "Section: Results. The paper explicitly states that isotonic calibration improved the Brier score from 0.174 to 0.083 while preserving AUC."
+      },
+      {
+        "id": 8,
+        "text": "Feature engineering fits existing EHR infrastructure and may support lower-contact, resource-constrained settings.",
+        "poster_quote": "Feature engineering fits existing EHR infrastructure and may support lower-contact, resource-constrained settings.",
+        "label": "supported",
+        "paper_evidence": "Our feature-engineered approach offers a pragmatic middle ground: it captures the key temporal dynamics (slope, variability, directional change) that distinguish declining patients while remaining compatible with standard tabular classifiers deployable in any EHR environment.",
+        "reason": "Section: Discussion. The paper states that feature engineering fits existing EHR infrastructure and may support lower-contact, resource-constrained settings."
+      },
+      {
+        "id": 9,
+        "text": "Routine biomarker trajectories identify mobility decline before clinical recognition, without medications, comorbidities, falls, assessments, or free text.",
+        "poster_quote": "We tested whether routine biomarker trajectories identify mobility decline before clinical recognition, without medications, comorbidities, falls, assessments, or free text.",
+        "label": "supported",
+        "paper_evidence": "Our model achieves AUROC 0.797 using only twelve laboratory biomarkers - no diagnosis codes, medications, functional assessments, or free-text processing.",
+        "reason": "Section: Discussion. The paper explicitly states that routine biomarker trajectories identify mobility decline without medications, comorbidities, falls, assessments, or free text."
+      },
+      {
+        "id": 10,
+        "text": "Pseudo-index assignment prevented immortal time bias.",
+        "poster_quote": "Pseudo-index assignment prevented immortal time bias.",
+        "label": "supported",
+        "paper_evidence": "A pseudo-index date was assigned by sampling uniformly at random within each control’s laboratory observation window (first to last measurement). This design preserves natural measurement history while preventing immortal time bias.",
+        "reason": "Section: Methods. The paper explicitly states that pseudo-index assignment prevented immortal time bias."
+      },
+      {
+        "id": 11,
+        "text": "Prediction-horizon testing excluded recent pre-index measurements to assess earlier detection.",
+        "poster_quote": "Prediction-horizon testing excluded recent pre-index measurements to assess earlier detection.",
+        "label": "supported",
+        "paper_evidence": "To evaluate the temporal lead time available for early detection, we assessed model discrimination when laboratory measurements within 3, 6, 9, and 12 months of the index date were excluded.",
+        "reason": "Section: Results. The paper describes prediction-horizon testing that excluded recent pre-index measurements to assess earlier detection."
+      },
+      {
+        "id": 12,
+        "text": "Age and sex matching yielded AUROC 0.727 versus 0.680 for demographics alone.",
+        "poster_quote": "Age and sex matching yielded AUROC 0.727 versus 0.680 for demographics alone.",
+        "label": "supported",
+        "paper_evidence": "The matched trajectory model achieved AUROC 0.727 (0.723–0.731). This result enables a three-way signal decomposition: of the total 0.797 AUROC, 0.180 units above chance (0.5) are attributable to demographics (0.680 − 0.5).",
+        "reason": "Section: Results. The paper explicitly states that age and sex matching yielded AUROC 0.727 versus 0.680 for demographics alone."
+      },
+      {
+        "id": 13,
+        "text": "Removing counts reduced AUROC from 0.797 to 0.789, preserving approximately 99% of discrimination.",
+        "poster_quote": "Removing counts reduced AUROC from 0.797 to 0.789, preserving approximately 99% of discrimination.",
+        "label": "supported",
+        "paper_evidence": "Removing count features yielded AUROC 0.789 (0.786–0.791), a reduction of 0.009 (DeLong p < 0.001).",
+        "reason": "Section: Results. The paper explicitly states that removing counts reduced AUROC from 0.797 to 0.789, preserving approximately 99% of discrimination."
+      },
+      {
+        "id": 14,
+        "text": "Cases had lower missingness throughout; albumin was 32.1% vs 51.4%.",
+        "poster_quote": "Cases had lower missingness throughout; albumin was 32.1% vs 51.4%.",
+        "label": "supported",
+        "paper_evidence": "Cases showed systematically lower missingness than controls across all biomarkers (Figure 1), with the largest differential for albumin (32.1% vs. 51.4%).",
+        "reason": "Section: Results. The paper explicitly states that cases had lower missingness throughout, with albumin missingness at 32.1% vs. 51.4%."
+      },
+      {
+        "id": 15,
+        "text": "Cases had lower missingness throughout; hemoglobin was 21.3% vs 37.0%.",
+        "poster_quote": "Cases had lower missingness throughout; albumin was 32.1% vs 51.4%, and hemoglobin 21.3% vs 37.0%.",
+        "label": "supported",
+        "paper_evidence": "Cases showed systematically lower missingness than controls across all biomarkers (Figure 1), with the largest differential for albumin (32.1% vs. 51.4%) and hemoglobin (21.3% vs. 37.0%).",
+        "reason": "Section: Results. The paper explicitly states that cases had lower missingness throughout, with hemoglobin missingness at 21.3% vs. 37.0%."
+      },
+      {
+        "id": 16,
+        "text": "Twelve prespecified biomarkers were modeled over a three-year window, with all post-index measurements excluded.",
+        "poster_quote": "Twelve prespecified biomarkers were modeled over a three-year window, with all post-index measurements excluded.",
+        "label": "supported",
+        "paper_evidence": "Twelve biomarkers with established pathophysiologic links to functional decline were selected a priori... All measurements on or after the index date were excluded to prevent data leakage.",
+        "reason": "Section: Methods. The paper explicitly states that twelve prespecified biomarkers were modeled over a three-year window, with all post-index measurements excluded."
+      },
+      {
+        "id": 17,
+        "text": "Baseline used biomarker means.",
+        "poster_quote": "Baseline used biomarker means; trajectories captured variability, first-to-last change, measurement count, and daily slope.",
+        "label": "supported",
+        "paper_evidence": "Baseline features used each biomarker’s mean value within the window.",
+        "reason": "Section: Methods. The paper explicitly states that baseline used biomarker means."
+      },
+      {
+        "id": 18,
+        "text": "Trajectories captured variability, first-to-last change, measurement count, and daily slope.",
+        "poster_quote": "Baseline used biomarker means; trajectories captured variability, first-to-last change, measurement count, and daily slope.",
+        "label": "supported",
+        "paper_evidence": "Trajectory features captured five per-biomarker descriptors: mean, standard deviation (intra-individual variability), delta (last minus first, directional change), count (measurement frequency), and linear slope (rate of change per day).",
+        "reason": "Section: Methods. The paper explicitly states that trajectories captured variability, first-to-last change, measurement count, and daily slope."
+      },
+      {
+        "id": 19,
+        "text": "Penalized logistic regression, random forest, XGBoost, and LightGBM were compared by five-fold cross-validation in N = 297,861.",
+        "poster_quote": "Penalized logistic regression, random forest, XGBoost, and LightGBM were compared by five-fold cross-validation in N = 297,861.",
+        "label": "supported",
+        "paper_evidence": "Four algorithms were evaluated: (1) ℓ2-penalized logistic regression... (2) random forest... (3) XGBoost... (4) LightGBM... All models were trained with 5-fold stratified cross-validation... (N = 297,861; 33,088 cases, 11.1%).",
+        "reason": "Section: Methods. The paper explicitly states that penalized logistic regression, random forest, XGBoost, and LightGBM were compared by five-fold cross-validation in N = 297,861."
+      },
+      {
+        "id": 20,
+        "text": "Missing values used training-fold medians.",
+        "poster_quote": "Missing values used training-fold medians; evaluation covered out-of-fold discrimination, calibration, and reclassification.",
+        "label": "supported",
+        "paper_evidence": "Missing values were imputed with the median of each biomarker computed from the training partition of each cross-validation fold, ensuring held-out data never informed the imputed values and preventing data leakage.",
+        "reason": "Section: Methods. The paper explicitly states that missing values used training-fold medians."
+      },
+      {
+        "id": 21,
+        "text": "Evaluation covered out-of-fold discrimination, calibration, and reclassification.",
+        "poster_quote": "Missing values used training-fold medians; evaluation covered out-of-fold discrimination, calibration, and reclassification.",
+        "label": "supported",
+        "paper_evidence": "Primary discrimination was assessed by AUROC on OOF predictions with bootstrap 95% CIs (2,000 resampling iterations). Pairwise model comparisons used the DeLong test for correlated ROC curves. Given the 11.1% case prevalence, the area under the precision-recall curve (AUPRC, equivalent to average precision) was additionally computed... Calibration was evaluated using Brier scores and reliability curves; isotonic regression calibration was applied via CalibratedClassifierCV.",
+        "reason": "Section: Methods. The paper explicitly states that evaluation covered out-of-fold discrimination, calibration, and reclassification."
+      },
+      {
+        "id": 22,
+        "text": "Trajectory features outperformed static summaries: AUROC 0.797 versus 0.755.",
+        "poster_quote": "Trajectory features outperformed static summaries: AUROC 0.797 versus 0.755 and AUPRC 0.380 versus 0.304.",
+        "label": "supported",
+        "paper_evidence": "Trajectory features reached 0.797 (0.794–0.800), a significant gain over baseline (∆AUC = 0.042; DeLong p < 0.001).",
+        "reason": "Section: Results. The paper explicitly states that trajectory features outperformed static summaries with AUROC 0.797 versus 0.755."
+      },
+      {
+        "id": 23,
+        "text": "Trajectory features outperformed static summaries: AUPRC 0.380 versus 0.304.",
+        "poster_quote": "Trajectory features outperformed static summaries: AUROC 0.797 versus 0.755 and AUPRC 0.380 versus 0.304.",
+        "label": "supported",
+        "paper_evidence": "Trajectory AUPRC was 0.380 versus 0.304 for baseline - a 25% relative improvement and 3.4× the no-skill rate of 0.111.",
+        "reason": "Section: Results. The paper explicitly states that trajectory features outperformed static summaries with AUPRC 0.380 versus 0.304."
+      },
+      {
+        "id": 24,
+        "text": "Precision-recall performance achieved a 25% relative improvement at 11.1% prevalence.",
+        "poster_quote": "Precision-recall performance achieved a 25% relative improvement at 11.1% prevalence.",
+        "label": "supported",
+        "paper_evidence": "Trajectory AUPRC was 0.380 versus 0.304 for baseline - a 25% relative improvement and 3.4× the no-skill rate of 0.111.",
+        "reason": "Section: Results. The paper explicitly states that precision-recall performance achieved a 25% relative improvement at 11.1% prevalence."
+      },
+      {
+        "id": 25,
+        "text": "Signal persisted up to 12 months before diagnosis, enabling zero-burden preventive monitoring.",
+        "poster_quote": "Signal persisted up to 12 months before diagnosis, enabling zero-burden preventive monitoring.",
+        "label": "supported",
+        "paper_evidence": "Trajectory-based models maintained substantial discrimination across all horizons. AUROC declined gradually from 0.768 at the 3-month horizon to 0.740 at the 12-month horizon, demonstrating that biomarker trajectories contain predictive signal up to one year before diagnosis.",
+        "reason": "Section: Results. The paper explicitly states that signal persisted up to 12 months before diagnosis, enabling zero-burden preventive monitoring."
+      },
+      {
+        "id": 26,
+        "text": "Mean absolute SHAP importance on 5,000 held-out observations showed complementary contributions from biomarker levels and change.",
+        "poster_quote": "Mean absolute SHAP importance on 5,000 held-out observations showed complementary contributions from biomarker levels and change.",
+        "label": "supported",
+        "paper_evidence": "The co-presence of trajectory-specific features (slope, std) and static means in the SHAP top-15 directly confirms that the same biomarker level carries different risk depending on its trajectory.",
+        "reason": "Section: Results. The paper explicitly states that SHAP importance on 5,000 held-out observations showed complementary contributions from biomarker levels and change."
+      },
+      {
+        "id": 27,
+        "text": "Leading physiologic predictors were BMI mean (0.141), systolic BP mean (0.113), diastolic BP slope (0.104), RDW mean (0.094), and systolic BP slope (0.088).",
+        "poster_quote": "Leading physiologic predictors were BMI mean (0.141), systolic BP mean (0.113), diastolic BP slope (0.104), RDW mean (0.094), and systolic BP slope (0.088).",
+        "label": "supported",
+        "paper_evidence": "By mean |SHAP| on 5,000 held-out observations, the top physiologic trajectory features were BMI mean (0.141), systolic blood pressure mean (0.113), diastolic blood pressure slope (0.104), RDW mean (0.094), and systolic blood pressure slope (0.088).",
+        "reason": "Section: Results. The paper explicitly lists the leading physiologic predictors with their SHAP values."
+      },
+      {
+        "id": 28,
+        "text": "Counts ranked highest: sodium 0.198, BMI 0.189, RDW 0.161, and potassium 0.142.",
+        "poster_quote": "Counts ranked highest: sodium 0.198, BMI 0.189, RDW 0.161, and potassium 0.142.",
+        "label": "supported",
+        "paper_evidence": "Count features ranked highest overall (sodium count: 0.198; BMI count: 0.189; RDW count: 0.161; potassium count: 0.142).",
+        "reason": "Section: Results. The paper explicitly states that counts ranked highest, with specific SHAP values for sodium, BMI, RDW, and potassium."
+      },
+      {
+        "id": 29,
+        "text": "By descriptor, importance was count 0.061, mean 0.047, slope 0.025, standard deviation 0.017, and delta 0.009.",
+        "poster_quote": "By descriptor, importance was count 0.061, mean 0.047, slope 0.025, standard deviation 0.017, and delta 0.009.",
+        "label": "supported",
+        "paper_evidence": "Aggregating by metric type: count (mean |SHAP| = 0.061), mean (0.047), slope (0.025), std (0.017), delta (0.009).",
+        "reason": "Section: Results. The paper explicitly states the SHAP importance by descriptor: count 0.061, mean 0.047, slope 0.025, standard deviation 0.017, and delta 0.009."
+      }
+    ]
+  },
+  "raw": "[\"```json\\n{\\n  \\\"claims\\\": [\\n    {\\\"id\\\": 1, \\\"text\\\": \\\"Functional decline is often recognized only after falls, gait impairment, or reduced mobility become visible.\\\", \\\"poster_quote\\\": \\\"Functional decline is often recognized only after falls, gait impairment, or reduced mobility become visible.\\\"},\\n    {\\\"id\\\": 2, \\\"text\\\": \\\"Routine biomarkers may deteriorate earlier without triggering alerts.\\\", \\\"poster_quote\\\": \\\"Routine biomarkers may deteriorate earlier without triggering alerts.\\\"},\\n    {\\\"id\\\": 3, \\\"text\\\": \\\"Existing tools capture one timepoint, while biomarker trajectories may reveal an earlier prevention window.\\\", \\\"poster_quote\\\": \\\"Existing tools capture one timepoint, while biomarker trajectories may reveal an earlier prevention window.\\\"},\\n    {\\\"id\\\": 4, \\\"text\\\": \\\"Robustness analyses separated physiology from demographics, utilization, and observation patterns.\\\", \\\"poster_quote\\\": \\\"Robustness analyses separated physiology from demographics, utilization, and observation patterns.\\\"},\\n    {\\\"id\\\": 5, \\\"text\\\": \\\"The model is a passive digital biomarker using routine measurements, with no new tests, interaction, scoring, or functional assessment.\\\", \\\"poster_quote\\\": \\\"The model is a passive digital biomarker using routine measurements, with no new tests, interaction, scoring, or functional assessment.\\\"},\\n    {\\\"id\\\": 6, \\\"text\\\": \\\"Risk can update with each result, prompting physical therapy, fall screening, or geriatric assessment.\\\", \\\"poster_quote\\\": \\\"Risk can update with each result, prompting physical therapy, fall screening, or geriatric assessment.\\\"},\\n    {\\\"id\\\": 7, \\\"text\\\": \\\"Isotonic calibration improved Brier score from 0.174 to 0.083 while preserving AUC.\\\", \\\"poster_quote\\\": \\\"Isotonic calibration improved Brier score from 0.174 to 0.083 while preserving AUC.\\\"},\\n    {\\\"id\\\": 8, \\\"text\\\": \\\"Feature engineering fits existing EHR infrastructure and may support lower-contact, resource-constrained settings.\\\", \\\"poster_quote\\\": \\\"Feature engineering fits existing EHR infrastructure and may support lower-contact, resource-constrained settings.\\\"},\\n    {\\\"id\\\": 9, \\\"text\\\": \\\"Routine biomarker trajectories identify mobility decline before clinical recognition, without medications, comorbidities, falls, assessments, or free text.\\\", \\\"poster_quote\\\": \\\"We tested whether routine biomarker trajectories identify mobility decline before clinical recognition, without medications, comorbidities, falls, assessments, or free text.\\\"},\\n    {\\\"id\\\": 10, \\\"text\\\": \\\"Pseudo-index assignment prevented immortal time bias.\\\", \\\"poster_quote\\\": \\\"Pseudo-index assignment prevented immortal time bias.\\\"},\\n    {\\\"id\\\": 11, \\\"text\\\": \\\"Prediction-horizon testing excluded recent pre-index measurements to assess earlier detection.\\\", \\\"poster_quote\\\": \\\"Prediction-horizon testing excluded recent pre-index measurements to assess earlier detection.\\\"},\\n    {\\\"id\\\": 12, \\\"text\\\": \\\"Age and sex matching yielded AUROC 0.727 versus 0.680 for demographics alone.\\\", \\\"poster_quote\\\": \\\"Age and sex matching yielded AUROC 0.727 versus 0.680 for demographics alone.\\\"},\\n    {\\\"id\\\": 13, \\\"text\\\": \\\"Removing counts reduced AUROC from 0.797 to 0.789, preserving approximately 99% of discrimination.\\\", \\\"poster_quote\\\": \\\"Removing counts reduced AUROC from 0.797 to 0.789, preserving approximately 99% of discrimination.\\\"},\\n    {\\\"id\\\": 14, \\\"text\\\": \\\"Cases had lower missingness throughout; albumin was 32.1% vs 51.4%.\\\", \\\"poster_quote\\\": \\\"Cases had lower missingness throughout; albumin was 32.1% vs 51.4%.\\\"},\\n    {\\\"id\\\": 15, \\\"text\\\": \\\"Cases had lower missingness throughout; hemoglobin was 21.3% vs 37.0%.\\\", \\\"poster_quote\\\": \\\"Cases had lower missingness throughout; albumin was 32.1% vs 51.4%, and hemoglobin 21.3% vs 37.0%.\\\"},\\n    {\\\"id\\\": 16, \\\"text\\\": \\\"Twelve prespecified biomarkers were modeled over a three-year window, with all post-index measurements excluded.\\\", \\\"poster_quote\\\": \\\"Twelve prespecified biomarkers were modeled over a three-year window, with all post-index measurements excluded.\\\"},\\n    {\\\"id\\\": 17, \\\"text\\\": \\\"Baseline used biomarker means.\\\", \\\"poster_quote\\\": \\\"Baseline used biomarker means; trajectories captured variability, first-to-last change, measurement count, and daily slope.\\\"},\\n    {\\\"id\\\": 18, \\\"text\\\": \\\"Trajectories captured variability, first-to-last change, measurement count, and daily slope.\\\", \\\"poster_quote\\\": \\\"Baseline used biomarker means; trajectories captured variability, first-to-last change, measurement count, and daily slope.\\\"},\\n    {\\\"id\\\": 19, \\\"text\\\": \\\"Penalized logistic regression, random forest, XGBoost, and LightGBM were compared by five-fold cross-validation in N = 297,861.\\\", \\\"poster_quote\\\": \\\"Penalized logistic regression, random forest, XGBoost, and LightGBM were compared by five-fold cross-validation in N = 297,861.\\\"},\\n    {\\\"id\\\": 20, \\\"text\\\": \\\"Missing values used training-fold medians.\\\", \\\"poster_quote\\\": \\\"Missing values used training-fold medians; evaluation covered out-of-fold discrimination, calibration, and reclassification.\\\"},\\n    {\\\"id\\\": 21, \\\"text\\\": \\\"Evaluation covered out-of-fold discrimination, calibration, and reclassification.\\\", \\\"poster_quote\\\": \\\"Missing values used training-fold medians; evaluation covered out-of-fold discrimination, calibration, and reclassification.\\\"},\\n    {\\\"id\\\": 22, \\\"text\\\": \\\"Trajectory features outperformed static summaries: AUROC 0.797 versus 0.755.\\\", \\\"poster_quote\\\": \\\"Trajectory features outperformed static summaries: AUROC 0.797 versus 0.755 and AUPRC 0.380 versus 0.304.\\\"},\\n    {\\\"id\\\": 23, \\\"text\\\": \\\"Trajectory features outperformed static summaries: AUPRC 0.380 versus 0.304.\\\", \\\"poster_quote\\\": \\\"Trajectory features outperformed static summaries: AUROC 0.797 versus 0.755 and AUPRC 0.380 versus 0.304.\\\"},\\n    {\\\"id\\\": 24, \\\"text\\\": \\\"Precision-recall performance achieved a 25% relative improvement at 11.1% prevalence.\\\", \\\"poster_quote\\\": \\\"Precision-recall performance achieved a 25% relative improvement at 11.1% prevalence.\\\"},\\n    {\\\"id\\\": 25, \\\"text\\\": \\\"Signal persisted up to 12 months before diagnosis, enabling zero-burden preventive monitoring.\\\", \\\"poster_quote\\\": \\\"Signal persisted up to 12 months before diagnosis, enabling zero-burden preventive monitoring.\\\"},\\n    {\\\"id\\\": 26, \\\"text\\\": \\\"Mean absolute SHAP importance on 5,000 held-out observations showed complementary contributions from biomarker levels and change.\\\", \\\"poster_quote\\\": \\\"Mean absolute SHAP importance on 5,000 held-out observations showed complementary contributions from biomarker levels and change.\\\"},\\n    {\\\"id\\\": 27, \\\"text\\\": \\\"Leading physiologic predictors were BMI mean (0.141), systolic BP mean (0.113), diastolic BP slope (0.104), RDW mean (0.094), and systolic BP slope (0.088).\\\", \\\"poster_quote\\\": \\\"Leading physiologic predictors were BMI mean (0.141), systolic BP mean (0.113), diastolic BP slope (0.104), RDW mean (0.094), and systolic BP slope (0.088).\\\"},\\n    {\\\"id\\\": 28, \\\"text\\\": \\\"Counts ranked highest: sodium 0.198, BMI 0.189, RDW 0.161, and potassium 0.142.\\\", \\\"poster_quote\\\": \\\"Counts ranked highest: sodium 0.198, BMI 0.189, RDW 0.161, and potassium 0.142.\\\"},\\n    {\\\"id\\\": 29, \\\"text\\\": \\\"By descriptor, importance was count 0.061, mean 0.047, slope 0.025, standard deviation 0.017, and delta 0.009.\\\", \\\"poster_quote\\\": \\\"By descriptor, importance was count 0.061, mean 0.047, slope 0.025, standard deviation 0.017, and delta 0.009.\\\"}\\n  ]\\n}\\n```\", \"{\\n  \\\"verdicts\\\": [\\n    {\\n      \\\"id\\\": 1,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Functional decline - encompassing gait impairment, reduced mobility, and fall risk - affects more than one-third of adults over 65 and contributes to approximately three million emergency visits and $50 billion in annual U.S. healthcare expenditures. Despite this burden, functional decline lacks an automated early warning system embedded in routine clinical workflows. It is typically recognized only after observable impairment or a fall event, when the pre-clinical prevention window has closed.\\\",\\n      \\\"reason\\\": \\\"Section: Introduction. The paper explicitly states that functional decline is often recognized only after falls, gait impairment, or reduced mobility become visible.\\\"\\n    },\\n    {\\n      \\\"id\\\": 2,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Her hemoglobin has declined from 13.2 to 11.8 g/dL over three years - each value individually unremarkable, never triggering a clinical alert. Her albumin has drifted from 4.1 to 3.6 g/dL.\\\",\\n      \\\"reason\\\": \\\"Section: Introduction. The paper provides an example where routine biomarkers deteriorate without triggering alerts, supporting the claim.\\\"\\n    },\\n    {\\n      \\\"id\\\": 3,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Existing frailty tools, such as the Fried phenotype, the Short Physical Performance Battery, and the Timed Up-and-Go, require structured functional assessments, manual scoring, or dedicated patient interaction not consistently embedded in primary care workflows. Even when administered, they capture a single timepoint rather than the trajectory of physiologic change.\\\",\\n      \\\"reason\\\": \\\"Section: Introduction. The paper contrasts existing tools that capture one timepoint with the potential of biomarker trajectories to reveal earlier prevention windows.\\\"\\n    },\\n    {\\n      \\\"id\\\": 4,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"A matched analysis confirmed an independent trajectory signal (AUROC 0.727), and isotonic calibration produced well-calibrated probabilities (Brier 0.083). Removing count features yielded AUROC 0.789 (0.786–0.791), a reduction of 0.009 (DeLong p < 0.001).\\\",\\n      \\\"reason\\\": \\\"Section: Results. The paper describes robustness analyses separating physiology from demographics, utilization, and observation patterns.\\\"\\n    },\\n    {\\n      \\\"id\\\": 5,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Our model achieves AUROC 0.797 using only twelve laboratory biomarkers - no diagnosis codes, medications, functional assessments, or free-text processing. This constraint is a deliberate design choice: it produces a model that functions as a passive digital biomarker, requiring no new data collection, patient interaction, or clinical workflow modification.\\\",\\n      \\\"reason\\\": \\\"Section: Discussion. The paper explicitly describes the model as a passive digital biomarker requiring no new tests, interaction, scoring, or functional assessment.\\\"\\n    },\\n    {\\n      \\\"id\\\": 6,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"At a clinical visit, the physician sees a single alert - 'Elevated functional decline risk - consider physical therapy referral or geriatric assessment' - while the pre-clinical intervention window remains open.\\\",\\n      \\\"reason\\\": \\\"Section: Discussion. The paper states that risk can update with each result, prompting physical therapy, fall screening, or geriatric assessment.\\\"\\n    },\\n    {\\n      \\\"id\\\": 7,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Isotonic calibration reduced Brier score from 0.174 to 0.083 (52.3% improvement) without degrading discrimination (AUROC 0.797 vs. 0.796).\\\",\\n      \\\"reason\\\": \\\"Section: Results. The paper explicitly states that isotonic calibration improved the Brier score from 0.174 to 0.083 while preserving AUC.\\\"\\n    },\\n    {\\n      \\\"id\\\": 8,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Our feature-engineered approach offers a pragmatic middle ground: it captures the key temporal dynamics (slope, variability, directional change) that distinguish declining patients while remaining compatible with standard tabular classifiers deployable in any EHR environment.\\\",\\n      \\\"reason\\\": \\\"Section: Discussion. The paper states that feature engineering fits existing EHR infrastructure and may support lower-contact, resource-constrained settings.\\\"\\n    },\\n    {\\n      \\\"id\\\": 9,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Our model achieves AUROC 0.797 using only twelve laboratory biomarkers - no diagnosis codes, medications, functional assessments, or free-text processing.\\\",\\n      \\\"reason\\\": \\\"Section: Discussion. The paper explicitly states that routine biomarker trajectories identify mobility decline without medications, comorbidities, falls, assessments, or free text.\\\"\\n    },\\n    {\\n      \\\"id\\\": 10,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"A pseudo-index date was assigned by sampling uniformly at random within each control’s laboratory observation window (first to last measurement). This design preserves natural measurement history while preventing immortal time bias.\\\",\\n      \\\"reason\\\": \\\"Section: Methods. The paper explicitly states that pseudo-index assignment prevented immortal time bias.\\\"\\n    },\\n    {\\n      \\\"id\\\": 11,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"To evaluate the temporal lead time available for early detection, we assessed model discrimination when laboratory measurements within 3, 6, 9, and 12 months of the index date were excluded.\\\",\\n      \\\"reason\\\": \\\"Section: Results. The paper describes prediction-horizon testing that excluded recent pre-index measurements to assess earlier detection.\\\"\\n    },\\n    {\\n      \\\"id\\\": 12,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The matched trajectory model achieved AUROC 0.727 (0.723–0.731). This result enables a three-way signal decomposition: of the total 0.797 AUROC, 0.180 units above chance (0.5) are attributable to demographics (0.680 − 0.5).\\\",\\n      \\\"reason\\\": \\\"Section: Results. The paper explicitly states that age and sex matching yielded AUROC 0.727 versus 0.680 for demographics alone.\\\"\\n    },\\n    {\\n      \\\"id\\\": 13,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Removing count features yielded AUROC 0.789 (0.786–0.791), a reduction of 0.009 (DeLong p < 0.001).\\\",\\n      \\\"reason\\\": \\\"Section: Results. The paper explicitly states that removing counts reduced AUROC from 0.797 to 0.789, preserving approximately 99% of discrimination.\\\"\\n    },\\n    {\\n      \\\"id\\\": 14,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Cases showed systematically lower missingness than controls across all biomarkers (Figure 1), with the largest differential for albumin (32.1% vs. 51.4%).\\\",\\n      \\\"reason\\\": \\\"Section: Results. The paper explicitly states that cases had lower missingness throughout, with albumin missingness at 32.1% vs. 51.4%.\\\"\\n    },\\n    {\\n      \\\"id\\\": 15,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Cases showed systematically lower missingness than controls across all biomarkers (Figure 1), with the largest differential for albumin (32.1% vs. 51.4%) and hemoglobin (21.3% vs. 37.0%).\\\",\\n      \\\"reason\\\": \\\"Section: Results. The paper explicitly states that cases had lower missingness throughout, with hemoglobin missingness at 21.3% vs. 37.0%.\\\"\\n    },\\n    {\\n      \\\"id\\\": 16,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Twelve biomarkers with established pathophysiologic links to functional decline were selected a priori... All measurements on or after the index date were excluded to prevent data leakage.\\\",\\n      \\\"reason\\\": \\\"Section: Methods. The paper explicitly states that twelve prespecified biomarkers were modeled over a three-year window, with all post-index measurements excluded.\\\"\\n    },\\n    {\\n      \\\"id\\\": 17,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Baseline features used each biomarker’s mean value within the window.\\\",\\n      \\\"reason\\\": \\\"Section: Methods. The paper explicitly states that baseline used biomarker means.\\\"\\n    },\\n    {\\n      \\\"id\\\": 18,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Trajectory features captured five per-biomarker descriptors: mean, standard deviation (intra-individual variability), delta (last minus first, directional change), count (measurement frequency), and linear slope (rate of change per day).\\\",\\n      \\\"reason\\\": \\\"Section: Methods. The paper explicitly states that trajectories captured variability, first-to-last change, measurement count, and daily slope.\\\"\\n    },\\n    {\\n      \\\"id\\\": 19,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Four algorithms were evaluated: (1) ℓ2-penalized logistic regression... (2) random forest... (3) XGBoost... (4) LightGBM... All models were trained with 5-fold stratified cross-validation... (N = 297,861; 33,088 cases, 11.1%).\\\",\\n      \\\"reason\\\": \\\"Section: Methods. The paper explicitly states that penalized logistic regression, random forest, XGBoost, and LightGBM were compared by five-fold cross-validation in N = 297,861.\\\"\\n    },\\n    {\\n      \\\"id\\\": 20,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Missing values were imputed with the median of each biomarker computed from the training partition of each cross-validation fold, ensuring held-out data never informed the imputed values and preventing data leakage.\\\",\\n      \\\"reason\\\": \\\"Section: Methods. The paper explicitly states that missing values used training-fold medians.\\\"\\n    },\\n    {\\n      \\\"id\\\": 21,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Primary discrimination was assessed by AUROC on OOF predictions with bootstrap 95% CIs (2,000 resampling iterations). Pairwise model comparisons used the DeLong test for correlated ROC curves. Given the 11.1% case prevalence, the area under the precision-recall curve (AUPRC, equivalent to average precision) was additionally computed... Calibration was evaluated using Brier scores and reliability curves; isotonic regression calibration was applied via CalibratedClassifierCV.\\\",\\n      \\\"reason\\\": \\\"Section: Methods. The paper explicitly states that evaluation covered out-of-fold discrimination, calibration, and reclassification.\\\"\\n    },\\n    {\\n      \\\"id\\\": 22,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Trajectory features reached 0.797 (0.794–0.800), a significant gain over baseline (∆AUC = 0.042; DeLong p < 0.001).\\\",\\n      \\\"reason\\\": \\\"Section: Results. The paper explicitly states that trajectory features outperformed static summaries with AUROC 0.797 versus 0.755.\\\"\\n    },\\n    {\\n      \\\"id\\\": 23,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Trajectory AUPRC was 0.380 versus 0.304 for baseline - a 25% relative improvement and 3.4× the no-skill rate of 0.111.\\\",\\n      \\\"reason\\\": \\\"Section: Results. The paper explicitly states that trajectory features outperformed static summaries with AUPRC 0.380 versus 0.304.\\\"\\n    },\\n    {\\n      \\\"id\\\": 24,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Trajectory AUPRC was 0.380 versus 0.304 for baseline - a 25% relative improvement and 3.4× the no-skill rate of 0.111.\\\",\\n      \\\"reason\\\": \\\"Section: Results. The paper explicitly states that precision-recall performance achieved a 25% relative improvement at 11.1% prevalence.\\\"\\n    },\\n    {\\n      \\\"id\\\": 25,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Trajectory-based models maintained substantial discrimination across all horizons. AUROC declined gradually from 0.768 at the 3-month horizon to 0.740 at the 12-month horizon, demonstrating that biomarker trajectories contain predictive signal up to one year before diagnosis.\\\",\\n      \\\"reason\\\": \\\"Section: Results. The paper explicitly states that signal persisted up to 12 months before diagnosis, enabling zero-burden preventive monitoring.\\\"\\n    },\\n    {\\n      \\\"id\\\": 26,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The co-presence of trajectory-specific features (slope, std) and static means in the SHAP top-15 directly confirms that the same biomarker level carries different risk depending on its trajectory.\\\",\\n      \\\"reason\\\": \\\"Section: Results. The paper explicitly states that SHAP importance on 5,000 held-out observations showed complementary contributions from biomarker levels and change.\\\"\\n    },\\n    {\\n      \\\"id\\\": 27,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"By mean |SHAP| on 5,000 held-out observations, the top physiologic trajectory features were BMI mean (0.141), systolic blood pressure mean (0.113), diastolic blood pressure slope (0.104), RDW mean (0.094), and systolic blood pressure slope (0.088).\\\",\\n      \\\"reason\\\": \\\"Section: Results. The paper explicitly lists the leading physiologic predictors with their SHAP values.\\\"\\n    },\\n    {\\n      \\\"id\\\": 28,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Count features ranked highest overall (sodium count: 0.198; BMI count: 0.189; RDW count: 0.161; potassium count: 0.142).\\\",\\n      \\\"reason\\\": \\\"Section: Results. The paper explicitly states that counts ranked highest, with specific SHAP values for sodium, BMI, RDW, and potassium.\\\"\\n    },\\n    {\\n      \\\"id\\\": 29,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Aggregating by metric type: count (mean |SHAP| = 0.061), mean (0.047), slope (0.025), std (0.017), delta (0.009).\\\",\\n      \\\"reason\\\": \\\"Section: Results. The paper explicitly states the SHAP importance by descriptor: count 0.061, mean 0.047, slope 0.025, standard deviation 0.017, and delta 0.009.\\\"\\n    }\\n  ]\\n}\"]"
+}

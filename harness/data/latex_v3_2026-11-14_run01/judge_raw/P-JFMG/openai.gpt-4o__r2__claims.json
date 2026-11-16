@@ -1,0 +1,368 @@
+{
+  "model": "openai.gpt-4o",
+  "repeat": 2,
+  "judge_prompt_sha256": "4ec65050cfdc718218dbc587f672291e733fd03b1254c20d77b61b0933e16162",
+  "error": null,
+  "tokens_in": 20721,
+  "tokens_out": 6061,
+  "tokens_cached": 17920,
+  "max_output_tokens": 16384,
+  "claims_batch_size": 40,
+  "parsed": {
+    "claims": [
+      {
+        "id": 1,
+        "text": "Complete Bloom-filter updates can be delayed or dropped when communication resources vary, leaving stale state.",
+        "poster_quote": "Complete Bloom-filter updates can be delayed or dropped when communication resources vary, leaving stale state.",
+        "label": "supported",
+        "paper_evidence": "When communication resources are constrained or time varying, complete-filter updates may be delayed or dropped, leaving stale receiver state.",
+        "reason": "Section I Introduction, paragraph 2, explicitly states that complete-filter updates may be delayed or dropped when communication resources are constrained or time-varying, leading to stale receiver state."
+      },
+      {
+        "id": 2,
+        "text": "Lossless compression offers one payload size, while OR folding offers smaller queryable views with higher false-positive rates.",
+        "poster_quote": "Lossless compression offers one payload size, while OR folding offers smaller queryable views with higher false-positive rates.",
+        "label": "supported",
+        "paper_evidence": "Lossless compressed BFs reduce transmission size without changing membership behavior [6], but produce a single payload determined by the filter contents. OR folding instead produces smaller, directly queryable views with increased FPR while preserving the no-false-negative property.",
+        "reason": "Section I Introduction, paragraph 2, directly contrasts lossless compression, which offers one payload size, with OR folding, which provides smaller queryable views with higher false-positive rates."
+      },
+      {
+        "id": 3,
+        "text": "The largest qualified folded view is selected based on each communication opportunity.",
+        "poster_quote": "We select the largest qualified folded view supported by each communication opportunity.",
+        "label": "supported",
+        "paper_evidence": "The sender retains the canonical filter, constructs a catalog of FPR-qualified folded views, and selects the view with the largest retained length supported at each reporting opportunity.",
+        "reason": "Section I Introduction, paragraph 3, explicitly states that the largest qualified folded view is selected based on each communication opportunity."
+      },
+      {
+        "id": 4,
+        "text": "Paired traces compare adaptive folding with complete and compressed baselines.",
+        "poster_quote": "Paired traces compare adaptive folding with complete and compressed baselines.",
+        "label": "supported",
+        "paper_evidence": "Evaluation uses two phishing URL datasets and Five-State Markov Capacity, Gilbert–Elliott burst-error, and Rayleigh block-fading models.",
+        "reason": "Section I Introduction, paragraph 5, mentions that the evaluation compares adaptive folding with baselines across two datasets and three channel models."
+      },
+      {
+        "id": 5,
+        "text": "Adaptive folding does not universally beat lossless compression.",
+        "poster_quote": "Adaptive folding does not universally beat lossless compression; compression works when one representation is reliably deliverable.",
+        "label": "supported",
+        "paper_evidence": "These results do not show that folding universally outperforms lossless compression.",
+        "reason": "Section VI Discussion, subsection D, explicitly states that folding does not universally outperform lossless compression."
+      },
+      {
+        "id": 6,
+        "text": "Compression works when one representation is reliably deliverable.",
+        "poster_quote": "Adaptive folding does not universally beat lossless compression; compression works when one representation is reliably deliverable.",
+        "label": "supported",
+        "paper_evidence": "Fixed lossless compression is effective when a single representation can be delivered reliably.",
+        "reason": "Section VI Discussion, subsection D, explicitly states that compression works when one representation is reliably deliverable."
+      },
+      {
+        "id": 7,
+        "text": "Folding helps when varying opportunities let a smaller qualified view prevent a missed update.",
+        "poster_quote": "Folding helps when varying opportunities let a smaller qualified view prevent a missed update.",
+        "label": "supported",
+        "paper_evidence": "Folding is useful when a fixed compressed payload cannot be supported but a smaller FPR-qualified view can.",
+        "reason": "Section VI Discussion, subsection D, explicitly states that folding helps when varying opportunities allow a smaller qualified view to prevent a missed update."
+      },
+      {
+        "id": 8,
+        "text": "Candidate ratios should match false-positive tolerance and channel conditions.",
+        "poster_quote": "Candidate ratios should match false-positive tolerance and channel conditions; folding and compression could be combined.",
+        "label": "supported",
+        "paper_evidence": "Candidate ratios should reflect the application’s FPR tolerance and anticipated communication conditions, and only qualified representations should be retained.",
+        "reason": "Section VI Discussion, subsection B, explicitly states that candidate ratios should match false-positive tolerance and channel conditions."
+      },
+      {
+        "id": 9,
+        "text": "Folding and compression could be combined.",
+        "poster_quote": "Candidate ratios should match false-positive tolerance and channel conditions; folding and compression could be combined.",
+        "label": "supported",
+        "paper_evidence": "The methods could be combined, although increased occupancy may reduce compressibility; this combination was not evaluated.",
+        "reason": "Section VI Discussion, subsection B, explicitly states that folding and compression could be combined."
+      },
+      {
+        "id": 10,
+        "text": "The example shows canonical query positions mapped into OR-folded views.",
+        "poster_quote": "The example shows canonical query positions mapped into OR-folded views.",
+        "label": "supported",
+        "paper_evidence": "Figure 2 illustrates the operation for two retained lengths. The example shows how the canonical query positions for one element are mapped into each folded representation.",
+        "reason": "Section III Methods, subsection B, and Figure 2 explicitly show canonical query positions mapped into OR-folded views."
+      },
+      {
+        "id": 11,
+        "text": "The online policy selects using current communication conditions.",
+        "poster_quote": "The online policy selects using current communication conditions.",
+        "label": "supported",
+        "paper_evidence": "The sender retains the canonical filter, constructs a catalog of FPR-qualified folded views, and selects the view with the largest retained length supported at each reporting opportunity.",
+        "reason": "Section I Introduction, paragraph 3, explicitly states that the online policy selects using current communication conditions."
+      },
+      {
+        "id": 12,
+        "text": "A fine-grained catalog comes from an unchanged canonical filter.",
+        "poster_quote": "A fine-grained catalog comes from an unchanged canonical filter.",
+        "label": "supported",
+        "paper_evidence": "The sender retains the canonical filter, constructs a catalog of FPR-qualified folded views.",
+        "reason": "Section I Introduction, paragraph 3, explicitly states that a fine-grained catalog comes from an unchanged canonical filter."
+      },
+      {
+        "id": 13,
+        "text": "Retained lengths need not be integer divisors.",
+        "poster_quote": "Retained lengths need not be integer divisors.",
+        "label": "supported",
+        "paper_evidence": "This work uses the same OR-folding principle but permits fine-grained retained lengths that need not be integer divisors of the canonical filter length.",
+        "reason": "Section III Methods, subsection B, explicitly states that retained lengths need not be integer divisors."
+      },
+      {
+        "id": 14,
+        "text": "Evaluation covers two datasets and three channel models.",
+        "poster_quote": "Evaluation covers two datasets and three channel models.",
+        "label": "supported",
+        "paper_evidence": "Evaluation uses two phishing URL datasets and Five-State Markov Capacity, Gilbert–Elliott burst-error, and Rayleigh block-fading models.",
+        "reason": "Section I Introduction, paragraph 5, explicitly states that the evaluation covers two datasets and three channel models."
+      },
+      {
+        "id": 15,
+        "text": "PhiUSIIL and URL-Phish each use 5,000 malicious URLs inserted.",
+        "poster_quote": "PhiUSIIL and URL-Phish each use 5,000 malicious URLs inserted; 50,000 disjoint benign URLs provide absent queries.",
+        "label": "supported",
+        "paper_evidence": "The PhiUSIIL [14] and URL-Phish [15] datasets are evaluated using 5,000 malicious URLs for insertion.",
+        "reason": "Section IV Experimental Setup, subsection A, explicitly states that PhiUSIIL and URL-Phish each use 5,000 malicious URLs inserted."
+      },
+      {
+        "id": 16,
+        "text": "50,000 disjoint benign URLs provide absent queries.",
+        "poster_quote": "PhiUSIIL and URL-Phish each use 5,000 malicious URLs inserted; 50,000 disjoint benign URLs provide absent queries.",
+        "label": "supported",
+        "paper_evidence": "The PhiUSIIL [14] and URL-Phish [15] datasets are evaluated using 5,000 malicious URLs for insertion and 50,000 disjoint benign URLs as absent queries.",
+        "reason": "Section IV Experimental Setup, subsection A, explicitly states that 50,000 disjoint benign URLs provide absent queries."
+      },
+      {
+        "id": 17,
+        "text": "Classical targets 1% false positives.",
+        "poster_quote": "Classical targets 1% false positives; sparse targets 25% occupancy with three hashes.",
+        "label": "supported",
+        "paper_evidence": "For each dataset, the classical filter length m is selected for n = 5,000 elements and a target FPR of 1%.",
+        "reason": "Section IV Experimental Setup, subsection B, explicitly states that the classical filter targets 1% false positives."
+      },
+      {
+        "id": 18,
+        "text": "Sparse targets 25% occupancy with three hashes.",
+        "poster_quote": "Classical targets 1% false positives; sparse targets 25% occupancy with three hashes.",
+        "label": "supported",
+        "paper_evidence": "The sparse canonical filter uses the same m, with its hash count selected for a target occupancy ρ = 0.25: ksparse = round(−ln(1 − ρ) * m/n). Equation (10) produces three hash functions.",
+        "reason": "Section IV Experimental Setup, subsection B, explicitly states that the sparse filter targets 25% occupancy with three hashes."
+      },
+      {
+        "id": 19,
+        "text": "Catalog views cap empirical false positives at 10% with zero observed false negatives.",
+        "poster_quote": "Catalog views cap empirical false positives at 10% with zero observed false negatives.",
+        "label": "supported",
+        "paper_evidence": "Only representations with no observed false negatives and an empirical FPR no greater than 10% enter the adaptive catalog.",
+        "reason": "Section IV Experimental Setup, subsection B, explicitly states that catalog views cap empirical false positives at 10% with zero observed false negatives."
+      },
+      {
+        "id": 20,
+        "text": "Baselines include uncompressed and losslessly compressed filters.",
+        "poster_quote": "Baselines include uncompressed and losslessly compressed filters; payloads use 480-byte packets with 32-byte headers.",
+        "label": "supported",
+        "paper_evidence": "The sparse canonical bit array is compared with gzip [17], zlib [18], bzip2 [19], and LZMA [20]. Uncompressed classical and sparse filters are also included.",
+        "reason": "Section IV Experimental Setup, subsection C, explicitly states that baselines include uncompressed and losslessly compressed filters."
+      },
+      {
+        "id": 21,
+        "text": "Payloads use 480-byte packets with 32-byte headers.",
+        "poster_quote": "Baselines include uncompressed and losslessly compressed filters; payloads use 480-byte packets with 32-byte headers.",
+        "label": "supported",
+        "paper_evidence": "Payloads are segmented into 480-byte packets with 32-byte headers.",
+        "reason": "Section IV Experimental Setup, subsection C, explicitly states that payloads use 480-byte packets with 32-byte headers."
+      },
+      {
+        "id": 22,
+        "text": "Each trace has 500 opportunities of 10 ms.",
+        "poster_quote": "Each trace has 500 opportunities of 10 ms; results average 20 paired repetitions across Markov capacity, Gilbert-Elliott, and Rayleigh fading.",
+        "label": "supported",
+        "paper_evidence": "The Five-State Markov model uses capacity ratios... Each interval is a 10-ms transmission opportunity with a total byte budget.",
+        "reason": "Section IV Experimental Setup, subsection E, explicitly states that each trace has 500 opportunities of 10 ms."
+      },
+      {
+        "id": 23,
+        "text": "Results average 20 paired repetitions across Markov capacity, Gilbert-Elliott, and Rayleigh fading.",
+        "poster_quote": "Each trace has 500 opportunities of 10 ms; results average 20 paired repetitions across Markov capacity, Gilbert-Elliott, and Rayleigh fading.",
+        "label": "supported",
+        "paper_evidence": "Figures 4 and 5 report means and 95% confidence intervals over 20 paired traces of 500 opportunities, with all strategies using the same trace within each repetition.",
+        "reason": "Section IV Experimental Setup, subsection F, explicitly states that results average 20 paired repetitions across the three channel models."
+      },
+      {
+        "id": 24,
+        "text": "Both URL datasets show nearly identical false-positive rates.",
+        "poster_quote": "Both URL datasets show nearly identical false-positive rates, indicating that occupancy and deterministic mapping primarily govern folding.",
+        "label": "supported",
+        "paper_evidence": "The two datasets produce nearly identical false positive rates across the evaluated ratios.",
+        "reason": "Section V Experimental Results, subsection A, explicitly states that both URL datasets show nearly identical false-positive rates."
+      },
+      {
+        "id": 25,
+        "text": "Occupancy and deterministic mapping primarily govern folding.",
+        "poster_quote": "Both URL datasets show nearly identical false-positive rates, indicating that occupancy and deterministic mapping primarily govern folding.",
+        "label": "supported",
+        "paper_evidence": "Because both filters contain the same number of inserted elements and use the same construction parameters, this similarity indicates that folding behavior is governed primarily by filter occupancy and the deterministic position mapping rather than by one particular URL collection.",
+        "reason": "Section V Experimental Results, subsection A, explicitly states that occupancy and deterministic mapping primarily govern folding."
+      },
+      {
+        "id": 26,
+        "text": "False-positive rates rise gradually under moderate folding, then accelerate near saturation.",
+        "poster_quote": "Rates rise gradually under moderate folding, then accelerate near saturation.",
+        "label": "supported",
+        "paper_evidence": "The false positive rate increases gradually under moderate folding and then rises more rapidly as the reduced representation approaches saturation.",
+        "reason": "Section V Experimental Results, subsection A, explicitly states that false-positive rates rise gradually under moderate folding, then accelerate near saturation."
+      },
+      {
+        "id": 27,
+        "text": "About 50% size reduction remains near the catalog limit, providing multiple accuracy-cost operating points.",
+        "poster_quote": "About 50% size reduction remains near the catalog limit, providing multiple accuracy-cost operating points.",
+        "label": "supported",
+        "paper_evidence": "Approximately 50% size reduction remains near the 10% maximum FPR used by the adaptive policy. The resulting valid representations provide multiple communication-cost and accuracy operating points.",
+        "reason": "Section V Experimental Results, subsection A, explicitly states that about 50% size reduction remains near the catalog limit, providing multiple accuracy-cost operating points."
+      },
+      {
+        "id": 28,
+        "text": "Experiments isolate channel-driven selection but limit generality.",
+        "poster_quote": "Experiments isolate channel-driven selection but limit generality.",
+        "label": "supported",
+        "paper_evidence": "The controlled design uses two URL datasets at the same cardinality with fixed contents. This isolates channel-driven selection but does not establish generality across other workloads, cardinalities, occupancies, or changing contents.",
+        "reason": "Section VI Discussion, subsection C, explicitly states that experiments isolate channel-driven selection but limit generality."
+      },
+      {
+        "id": 29,
+        "text": "Two fixed URL datasets share one cardinality, limiting workload generality.",
+        "poster_quote": "Two fixed URL datasets share one cardinality, limiting workload generality.",
+        "label": "supported",
+        "paper_evidence": "The controlled design uses two URL datasets at the same cardinality with fixed contents.",
+        "reason": "Section VI Discussion, subsection C, explicitly states that two fixed URL datasets share one cardinality, limiting workload generality."
+      },
+      {
+        "id": 30,
+        "text": "The controller assumes timely channel state; estimation error and metadata costs are unmodeled.",
+        "poster_quote": "Controller assumes timely channel state; estimation error and metadata costs are unmodeled.",
+        "label": "supported",
+        "paper_evidence": "The controller also assumes timely communication-state information and does not model estimation error, delayed feedback, or metadata explicitly.",
+        "reason": "Section VI Discussion, subsection C, explicitly states that the controller assumes timely channel state; estimation error and metadata costs are unmodeled."
+      },
+      {
+        "id": 31,
+        "text": "No fixed-fold baseline is tested.",
+        "poster_quote": "No fixed-fold baseline is tested; one sender-receiver excludes contention, retransmission, and energy effects.",
+        "label": "supported",
+        "paper_evidence": "Fixed folded representations are not included as baselines.",
+        "reason": "Section VI Discussion, subsection C, explicitly states that no fixed-fold baseline is tested."
+      },
+      {
+        "id": 32,
+        "text": "One sender-receiver excludes contention, retransmission, and energy effects.",
+        "poster_quote": "No fixed-fold baseline is tested; one sender-receiver excludes contention, retransmission, and energy effects.",
+        "label": "supported",
+        "paper_evidence": "The single sender–receiver configuration also excludes contention, retransmission, congestion, and fairness effects.",
+        "reason": "Section VI Discussion, subsection C, explicitly states that one sender-receiver excludes contention, retransmission, and energy effects."
+      },
+      {
+        "id": 33,
+        "text": "Future work should study changing contents, measured channels, multiple senders, and combined folding/compression.",
+        "poster_quote": "Future work should study changing contents, measured channels, multiple senders, and combined folding/compression.",
+        "label": "supported",
+        "paper_evidence": "Priorities for future work are direct comparison with fixed folded baselines; integration with cardinality/FPR-driven resizing [7]; and evaluation with changing contents, measured channels, multiple senders, imperfect channel estimates, energy costs, downstream false-positive costs, and combined folding and compression.",
+        "reason": "Section VI Discussion, subsection C, explicitly states that future work should study changing contents, measured channels, multiple senders, and combined folding/compression."
+      },
+      {
+        "id": 34,
+        "text": "Channel-aware folding selects the largest qualified view per opportunity without false negatives.",
+        "poster_quote": "Channel-aware folding selects the largest qualified view per opportunity without false negatives.",
+        "label": "supported",
+        "paper_evidence": "The sender retains the canonical filter, constructs a catalog of FPR-qualified folded views, and selects the view with the largest retained length supported at each reporting opportunity. Each update carries the view length and a timestamp; the receiver installs only newer, completely delivered reports and queries the selected view directly.",
+        "reason": "Section I Introduction, paragraph 3, explicitly states that channel-aware folding selects the largest qualified view per opportunity without false negatives."
+      },
+      {
+        "id": 35,
+        "text": "Channel-aware folding improves efficiency and freshness over complete and compressed baselines under Markov capacity and Rayleigh fading.",
+        "poster_quote": "Channel-aware folding selects the largest qualified view per opportunity without false negatives. It improves efficiency and freshness over complete and compressed baselines under Markov capacity and Rayleigh fading.",
+        "label": "supported",
+        "paper_evidence": "Channel-aware folding improves communication efficiency and receiver freshness relative to complete-filter and lossless-compression baselines when communication opportunities vary substantially.",
+        "reason": "Section I Introduction, paragraph 5, explicitly states that channel-aware folding improves efficiency and freshness over complete and compressed baselines under Markov capacity and Rayleigh fading."
+      },
+      {
+        "id": 36,
+        "text": "Channel-aware folding remains competitive and yields the freshest receiver state under Gilbert-Elliott loss.",
+        "poster_quote": "Under Gilbert-Elliott loss, it remains competitive and yields the freshest receiver state.",
+        "label": "supported",
+        "paper_evidence": "Under the more favorable Gilbert–Elliott model, it remains competitive in efficiency while maintaining the freshest receiver state.",
+        "reason": "Section I Introduction, paragraph 5, explicitly states that channel-aware folding remains competitive and yields the freshest receiver state under Gilbert-Elliott loss."
+      },
+      {
+        "id": 37,
+        "text": "The sender keeps an unchanged canonical filter and excludes catalog views above the maximum false-positive rate.",
+        "poster_quote": "The sender keeps an unchanged canonical filter and excludes catalog views above the maximum false-positive rate.",
+        "label": "supported",
+        "paper_evidence": "The sender retains the canonical filter, constructs a catalog of FPR-qualified folded views... and representations exceeding the application-defined maximum FPR are excluded.",
+        "reason": "Section III Methods, subsection E, explicitly states that the sender keeps an unchanged canonical filter and excludes catalog views above the maximum false-positive rate."
+      },
+      {
+        "id": 38,
+        "text": "At each opportunity, the sender selects the largest qualified view fitting complete wire capacity.",
+        "poster_quote": "At each opportunity, it selects the largest qualified view fitting complete wire capacity; under loss, it considers whole-report delivery probability.",
+        "label": "supported",
+        "paper_evidence": "For a capacity-limited channel, this is the representation with the largest retained length whose total transmitted size, including the Bloom-filter payload and packet headers, fits within the available capacity.",
+        "reason": "Section III Methods, subsection E, explicitly states that at each opportunity, the sender selects the largest qualified view fitting complete wire capacity."
+      },
+      {
+        "id": 39,
+        "text": "Under loss, the sender considers whole-report delivery probability.",
+        "poster_quote": "At each opportunity, it selects the largest qualified view fitting complete wire capacity; under loss, it considers whole-report delivery probability.",
+        "label": "supported",
+        "paper_evidence": "For a loss-based channel without an explicit byte-capacity limit, selection instead considers the probability of complete-report delivery.",
+        "reason": "Section III Methods, subsection E, explicitly states that under loss, the sender considers whole-report delivery probability."
+      },
+      {
+        "id": 40,
+        "text": "If none can be delivered, the update is deferred.",
+        "poster_quote": "If none can be delivered, the update is deferred; otherwise, metadata carries retained length and timestamp.",
+        "label": "supported",
+        "paper_evidence": "If no qualified representation can be delivered, the update is deferred.",
+        "reason": "Section III Methods, subsection E, explicitly states that if none can be delivered, the update is deferred."
+      },
+      {
+        "id": 41,
+        "text": "Metadata carries retained length and timestamp.",
+        "poster_quote": "If none can be delivered, the update is deferred; otherwise, metadata carries retained length and timestamp.",
+        "label": "supported",
+        "paper_evidence": "Each update carries the view length and a timestamp; the receiver installs only newer, completely delivered reports and queries the selected view directly.",
+        "reason": "Section III.E, paragraph 2, explicitly states that each update includes the retained length and a timestamp."
+      },
+      {
+        "id": 42,
+        "text": "The receiver installs only complete, newer reports.",
+        "poster_quote": "The receiver installs only complete, newer reports, retains its previous valid view after failure, and never reconstructs the canonical filter.",
+        "label": "supported",
+        "paper_evidence": "Each update carries the view length and a timestamp; the receiver installs only newer, completely delivered reports and queries the selected view directly.",
+        "reason": "Section III.E, paragraph 2, explicitly states that the receiver installs only newer, completely delivered reports."
+      },
+      {
+        "id": 43,
+        "text": "The receiver retains its previous valid view after failure.",
+        "poster_quote": "The receiver installs only complete, newer reports, retains its previous valid view after failure, and never reconstructs the canonical filter.",
+        "label": "supported",
+        "paper_evidence": "Stale, duplicate, or incomplete reports are not installed; after a failed or deferred update, the receiver retains its previous valid view.",
+        "reason": "Section III.E, paragraph 2, explicitly states that after a failed or deferred update, the receiver retains its previous valid view."
+      },
+      {
+        "id": 44,
+        "text": "The receiver never reconstructs the canonical filter.",
+        "poster_quote": "The receiver installs only complete, newer reports, retains its previous valid view after failure, and never reconstructs the canonical filter.",
+        "label": "supported",
+        "paper_evidence": "Reconstruction of the canonical filter is neither required nor attempted, and the canonical filter retained by the sender is not modified by selection or transmission.",
+        "reason": "Section VI.B, paragraph 2, explicitly states that reconstruction of the canonical filter is neither required nor attempted."
+      }
+    ]
+  },
+  "raw": "[\"```json\\n{\\n  \\\"claims\\\": [\\n    {\\n      \\\"id\\\": 1,\\n      \\\"text\\\": \\\"Complete Bloom-filter updates can be delayed or dropped when communication resources vary, leaving stale state.\\\",\\n      \\\"poster_quote\\\": \\\"Complete Bloom-filter updates can be delayed or dropped when communication resources vary, leaving stale state.\\\"\\n    },\\n    {\\n      \\\"id\\\": 2,\\n      \\\"text\\\": \\\"Lossless compression offers one payload size, while OR folding offers smaller queryable views with higher false-positive rates.\\\",\\n      \\\"poster_quote\\\": \\\"Lossless compression offers one payload size, while OR folding offers smaller queryable views with higher false-positive rates.\\\"\\n    },\\n    {\\n      \\\"id\\\": 3,\\n      \\\"text\\\": \\\"The largest qualified folded view is selected based on each communication opportunity.\\\",\\n      \\\"poster_quote\\\": \\\"We select the largest qualified folded view supported by each communication opportunity.\\\"\\n    },\\n    {\\n      \\\"id\\\": 4,\\n      \\\"text\\\": \\\"Paired traces compare adaptive folding with complete and compressed baselines.\\\",\\n      \\\"poster_quote\\\": \\\"Paired traces compare adaptive folding with complete and compressed baselines.\\\"\\n    },\\n    {\\n      \\\"id\\\": 5,\\n      \\\"text\\\": \\\"Adaptive folding does not universally beat lossless compression.\\\",\\n      \\\"poster_quote\\\": \\\"Adaptive folding does not universally beat lossless compression; compression works when one representation is reliably deliverable.\\\"\\n    },\\n    {\\n      \\\"id\\\": 6,\\n      \\\"text\\\": \\\"Compression works when one representation is reliably deliverable.\\\",\\n      \\\"poster_quote\\\": \\\"Adaptive folding does not universally beat lossless compression; compression works when one representation is reliably deliverable.\\\"\\n    },\\n    {\\n      \\\"id\\\": 7,\\n      \\\"text\\\": \\\"Folding helps when varying opportunities let a smaller qualified view prevent a missed update.\\\",\\n      \\\"poster_quote\\\": \\\"Folding helps when varying opportunities let a smaller qualified view prevent a missed update.\\\"\\n    },\\n    {\\n      \\\"id\\\": 8,\\n      \\\"text\\\": \\\"Candidate ratios should match false-positive tolerance and channel conditions.\\\",\\n      \\\"poster_quote\\\": \\\"Candidate ratios should match false-positive tolerance and channel conditions; folding and compression could be combined.\\\"\\n    },\\n    {\\n      \\\"id\\\": 9,\\n      \\\"text\\\": \\\"Folding and compression could be combined.\\\",\\n      \\\"poster_quote\\\": \\\"Candidate ratios should match false-positive tolerance and channel conditions; folding and compression could be combined.\\\"\\n    },\\n    {\\n      \\\"id\\\": 10,\\n      \\\"text\\\": \\\"The example shows canonical query positions mapped into OR-folded views.\\\",\\n      \\\"poster_quote\\\": \\\"The example shows canonical query positions mapped into OR-folded views.\\\"\\n    },\\n    {\\n      \\\"id\\\": 11,\\n      \\\"text\\\": \\\"The online policy selects using current communication conditions.\\\",\\n      \\\"poster_quote\\\": \\\"The online policy selects using current communication conditions.\\\"\\n    },\\n    {\\n      \\\"id\\\": 12,\\n      \\\"text\\\": \\\"A fine-grained catalog comes from an unchanged canonical filter.\\\",\\n      \\\"poster_quote\\\": \\\"A fine-grained catalog comes from an unchanged canonical filter.\\\"\\n    },\\n    {\\n      \\\"id\\\": 13,\\n      \\\"text\\\": \\\"Retained lengths need not be integer divisors.\\\",\\n      \\\"poster_quote\\\": \\\"Retained lengths need not be integer divisors.\\\"\\n    },\\n    {\\n      \\\"id\\\": 14,\\n      \\\"text\\\": \\\"Evaluation covers two datasets and three channel models.\\\",\\n      \\\"poster_quote\\\": \\\"Evaluation covers two datasets and three channel models.\\\"\\n    },\\n    {\\n      \\\"id\\\": 15,\\n      \\\"text\\\": \\\"PhiUSIIL and URL-Phish each use 5,000 malicious URLs inserted.\\\",\\n      \\\"poster_quote\\\": \\\"PhiUSIIL and URL-Phish each use 5,000 malicious URLs inserted; 50,000 disjoint benign URLs provide absent queries.\\\"\\n    },\\n    {\\n      \\\"id\\\": 16,\\n      \\\"text\\\": \\\"50,000 disjoint benign URLs provide absent queries.\\\",\\n      \\\"poster_quote\\\": \\\"PhiUSIIL and URL-Phish each use 5,000 malicious URLs inserted; 50,000 disjoint benign URLs provide absent queries.\\\"\\n    },\\n    {\\n      \\\"id\\\": 17,\\n      \\\"text\\\": \\\"Classical targets 1% false positives.\\\",\\n      \\\"poster_quote\\\": \\\"Classical targets 1% false positives; sparse targets 25% occupancy with three hashes.\\\"\\n    },\\n    {\\n      \\\"id\\\": 18,\\n      \\\"text\\\": \\\"Sparse targets 25% occupancy with three hashes.\\\",\\n      \\\"poster_quote\\\": \\\"Classical targets 1% false positives; sparse targets 25% occupancy with three hashes.\\\"\\n    },\\n    {\\n      \\\"id\\\": 19,\\n      \\\"text\\\": \\\"Catalog views cap empirical false positives at 10% with zero observed false negatives.\\\",\\n      \\\"poster_quote\\\": \\\"Catalog views cap empirical false positives at 10% with zero observed false negatives.\\\"\\n    },\\n    {\\n      \\\"id\\\": 20,\\n      \\\"text\\\": \\\"Baselines include uncompressed and losslessly compressed filters.\\\",\\n      \\\"poster_quote\\\": \\\"Baselines include uncompressed and losslessly compressed filters; payloads use 480-byte packets with 32-byte headers.\\\"\\n    },\\n    {\\n      \\\"id\\\": 21,\\n      \\\"text\\\": \\\"Payloads use 480-byte packets with 32-byte headers.\\\",\\n      \\\"poster_quote\\\": \\\"Baselines include uncompressed and losslessly compressed filters; payloads use 480-byte packets with 32-byte headers.\\\"\\n    },\\n    {\\n      \\\"id\\\": 22,\\n      \\\"text\\\": \\\"Each trace has 500 opportunities of 10 ms.\\\",\\n      \\\"poster_quote\\\": \\\"Each trace has 500 opportunities of 10 ms; results average 20 paired repetitions across Markov capacity, Gilbert-Elliott, and Rayleigh fading.\\\"\\n    },\\n    {\\n      \\\"id\\\": 23,\\n      \\\"text\\\": \\\"Results average 20 paired repetitions across Markov capacity, Gilbert-Elliott, and Rayleigh fading.\\\",\\n      \\\"poster_quote\\\": \\\"Each trace has 500 opportunities of 10 ms; results average 20 paired repetitions across Markov capacity, Gilbert-Elliott, and Rayleigh fading.\\\"\\n    },\\n    {\\n      \\\"id\\\": 24,\\n      \\\"text\\\": \\\"Both URL datasets show nearly identical false-positive rates.\\\",\\n      \\\"poster_quote\\\": \\\"Both URL datasets show nearly identical false-positive rates, indicating that occupancy and deterministic mapping primarily govern folding.\\\"\\n    },\\n    {\\n      \\\"id\\\": 25,\\n      \\\"text\\\": \\\"Occupancy and deterministic mapping primarily govern folding.\\\",\\n      \\\"poster_quote\\\": \\\"Both URL datasets show nearly identical false-positive rates, indicating that occupancy and deterministic mapping primarily govern folding.\\\"\\n    },\\n    {\\n      \\\"id\\\": 26,\\n      \\\"text\\\": \\\"False-positive rates rise gradually under moderate folding, then accelerate near saturation.\\\",\\n      \\\"poster_quote\\\": \\\"Rates rise gradually under moderate folding, then accelerate near saturation.\\\"\\n    },\\n    {\\n      \\\"id\\\": 27,\\n      \\\"text\\\": \\\"About 50% size reduction remains near the catalog limit, providing multiple accuracy-cost operating points.\\\",\\n      \\\"poster_quote\\\": \\\"About 50% size reduction remains near the catalog limit, providing multiple accuracy-cost operating points.\\\"\\n    },\\n    {\\n      \\\"id\\\": 28,\\n      \\\"text\\\": \\\"Experiments isolate channel-driven selection but limit generality.\\\",\\n      \\\"poster_quote\\\": \\\"Experiments isolate channel-driven selection but limit generality.\\\"\\n    },\\n    {\\n      \\\"id\\\": 29,\\n      \\\"text\\\": \\\"Two fixed URL datasets share one cardinality, limiting workload generality.\\\",\\n      \\\"poster_quote\\\": \\\"Two fixed URL datasets share one cardinality, limiting workload generality.\\\"\\n    },\\n    {\\n      \\\"id\\\": 30,\\n      \\\"text\\\": \\\"The controller assumes timely channel state; estimation error and metadata costs are unmodeled.\\\",\\n      \\\"poster_quote\\\": \\\"Controller assumes timely channel state; estimation error and metadata costs are unmodeled.\\\"\\n    },\\n    {\\n      \\\"id\\\": 31,\\n      \\\"text\\\": \\\"No fixed-fold baseline is tested.\\\",\\n      \\\"poster_quote\\\": \\\"No fixed-fold baseline is tested; one sender-receiver excludes contention, retransmission, and energy effects.\\\"\\n    },\\n    {\\n      \\\"id\\\": 32,\\n      \\\"text\\\": \\\"One sender-receiver excludes contention, retransmission, and energy effects.\\\",\\n      \\\"poster_quote\\\": \\\"No fixed-fold baseline is tested; one sender-receiver excludes contention, retransmission, and energy effects.\\\"\\n    },\\n    {\\n      \\\"id\\\": 33,\\n      \\\"text\\\": \\\"Future work should study changing contents, measured channels, multiple senders, and combined folding/compression.\\\",\\n      \\\"poster_quote\\\": \\\"Future work should study changing contents, measured channels, multiple senders, and combined folding/compression.\\\"\\n    },\\n    {\\n      \\\"id\\\": 34,\\n      \\\"text\\\": \\\"Channel-aware folding selects the largest qualified view per opportunity without false negatives.\\\",\\n      \\\"poster_quote\\\": \\\"Channel-aware folding selects the largest qualified view per opportunity without false negatives.\\\"\\n    },\\n    {\\n      \\\"id\\\": 35,\\n      \\\"text\\\": \\\"Channel-aware folding improves efficiency and freshness over complete and compressed baselines under Markov capacity and Rayleigh fading.\\\",\\n      \\\"poster_quote\\\": \\\"Channel-aware folding selects the largest qualified view per opportunity without false negatives. It improves efficiency and freshness over complete and compressed baselines under Markov capacity and Rayleigh fading.\\\"\\n    },\\n    {\\n      \\\"id\\\": 36,\\n      \\\"text\\\": \\\"Channel-aware folding remains competitive and yields the freshest receiver state under Gilbert-Elliott loss.\\\",\\n      \\\"poster_quote\\\": \\\"Under Gilbert-Elliott loss, it remains competitive and yields the freshest receiver state.\\\"\\n    },\\n    {\\n      \\\"id\\\": 37,\\n      \\\"text\\\": \\\"The sender keeps an unchanged canonical filter and excludes catalog views above the maximum false-positive rate.\\\",\\n      \\\"poster_quote\\\": \\\"The sender keeps an unchanged canonical filter and excludes catalog views above the maximum false-positive rate.\\\"\\n    },\\n    {\\n      \\\"id\\\": 38,\\n      \\\"text\\\": \\\"At each opportunity, the sender selects the largest qualified view fitting complete wire capacity.\\\",\\n      \\\"poster_quote\\\": \\\"At each opportunity, it selects the largest qualified view fitting complete wire capacity; under loss, it considers whole-report delivery probability.\\\"\\n    },\\n    {\\n      \\\"id\\\": 39,\\n      \\\"text\\\": \\\"Under loss, the sender considers whole-report delivery probability.\\\",\\n      \\\"poster_quote\\\": \\\"At each opportunity, it selects the largest qualified view fitting complete wire capacity; under loss, it considers whole-report delivery probability.\\\"\\n    },\\n    {\\n      \\\"id\\\": 40,\\n      \\\"text\\\": \\\"If none can be delivered, the update is deferred.\\\",\\n      \\\"poster_quote\\\": \\\"If none can be delivered, the update is deferred; otherwise, metadata carries retained length and timestamp.\\\"\\n    },\\n    {\\n      \\\"id\\\": 41,\\n      \\\"text\\\": \\\"Metadata carries retained length and timestamp.\\\",\\n      \\\"poster_quote\\\": \\\"If none can be delivered, the update is deferred; otherwise, metadata carries retained length and timestamp.\\\"\\n    },\\n    {\\n      \\\"id\\\": 42,\\n      \\\"text\\\": \\\"The receiver installs only complete, newer reports.\\\",\\n      \\\"poster_quote\\\": \\\"The receiver installs only complete, newer reports, retains its previous valid view after failure, and never reconstructs the canonical filter.\\\"\\n    },\\n    {\\n      \\\"id\\\": 43,\\n      \\\"text\\\": \\\"The receiver retains its previous valid view after failure.\\\",\\n      \\\"poster_quote\\\": \\\"The receiver installs only complete, newer reports, retains its previous valid view after failure, and never reconstructs the canonical filter.\\\"\\n    },\\n    {\\n      \\\"id\\\": 44,\\n      \\\"text\\\": \\\"The receiver never reconstructs the canonical filter.\\\",\\n      \\\"poster_quote\\\": \\\"The receiver installs only complete, newer reports, retains its previous valid view after failure, and never reconstructs the canonical filter.\\\"\\n    }\\n  ]\\n}\\n```\", \"{\\n  \\\"verdicts\\\": [\\n    {\\n      \\\"id\\\": 1,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"When communication resources are constrained or time varying, complete-filter updates may be delayed or dropped, leaving stale receiver state.\\\",\\n      \\\"reason\\\": \\\"Section I Introduction, paragraph 2, explicitly states that complete-filter updates may be delayed or dropped when communication resources are constrained or time-varying, leading to stale receiver state.\\\"\\n    },\\n    {\\n      \\\"id\\\": 2,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Lossless compressed BFs reduce transmission size without changing membership behavior [6], but produce a single payload determined by the filter contents. OR folding instead produces smaller, directly queryable views with increased FPR while preserving the no-false-negative property.\\\",\\n      \\\"reason\\\": \\\"Section I Introduction, paragraph 2, directly contrasts lossless compression, which offers one payload size, with OR folding, which provides smaller queryable views with higher false-positive rates.\\\"\\n    },\\n    {\\n      \\\"id\\\": 3,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The sender retains the canonical filter, constructs a catalog of FPR-qualified folded views, and selects the view with the largest retained length supported at each reporting opportunity.\\\",\\n      \\\"reason\\\": \\\"Section I Introduction, paragraph 3, explicitly states that the largest qualified folded view is selected based on each communication opportunity.\\\"\\n    },\\n    {\\n      \\\"id\\\": 4,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Evaluation uses two phishing URL datasets and Five-State Markov Capacity, Gilbert–Elliott burst-error, and Rayleigh block-fading models.\\\",\\n      \\\"reason\\\": \\\"Section I Introduction, paragraph 5, mentions that the evaluation compares adaptive folding with baselines across two datasets and three channel models.\\\"\\n    },\\n    {\\n      \\\"id\\\": 5,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"These results do not show that folding universally outperforms lossless compression.\\\",\\n      \\\"reason\\\": \\\"Section VI Discussion, subsection D, explicitly states that folding does not universally outperform lossless compression.\\\"\\n    },\\n    {\\n      \\\"id\\\": 6,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Fixed lossless compression is effective when a single representation can be delivered reliably.\\\",\\n      \\\"reason\\\": \\\"Section VI Discussion, subsection D, explicitly states that compression works when one representation is reliably deliverable.\\\"\\n    },\\n    {\\n      \\\"id\\\": 7,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Folding is useful when a fixed compressed payload cannot be supported but a smaller FPR-qualified view can.\\\",\\n      \\\"reason\\\": \\\"Section VI Discussion, subsection D, explicitly states that folding helps when varying opportunities allow a smaller qualified view to prevent a missed update.\\\"\\n    },\\n    {\\n      \\\"id\\\": 8,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Candidate ratios should reflect the application’s FPR tolerance and anticipated communication conditions, and only qualified representations should be retained.\\\",\\n      \\\"reason\\\": \\\"Section VI Discussion, subsection B, explicitly states that candidate ratios should match false-positive tolerance and channel conditions.\\\"\\n    },\\n    {\\n      \\\"id\\\": 9,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The methods could be combined, although increased occupancy may reduce compressibility; this combination was not evaluated.\\\",\\n      \\\"reason\\\": \\\"Section VI Discussion, subsection B, explicitly states that folding and compression could be combined.\\\"\\n    },\\n    {\\n      \\\"id\\\": 10,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Figure 2 illustrates the operation for two retained lengths. The example shows how the canonical query positions for one element are mapped into each folded representation.\\\",\\n      \\\"reason\\\": \\\"Section III Methods, subsection B, and Figure 2 explicitly show canonical query positions mapped into OR-folded views.\\\"\\n    },\\n    {\\n      \\\"id\\\": 11,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The sender retains the canonical filter, constructs a catalog of FPR-qualified folded views, and selects the view with the largest retained length supported at each reporting opportunity.\\\",\\n      \\\"reason\\\": \\\"Section I Introduction, paragraph 3, explicitly states that the online policy selects using current communication conditions.\\\"\\n    },\\n    {\\n      \\\"id\\\": 12,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The sender retains the canonical filter, constructs a catalog of FPR-qualified folded views.\\\",\\n      \\\"reason\\\": \\\"Section I Introduction, paragraph 3, explicitly states that a fine-grained catalog comes from an unchanged canonical filter.\\\"\\n    },\\n    {\\n      \\\"id\\\": 13,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"This work uses the same OR-folding principle but permits fine-grained retained lengths that need not be integer divisors of the canonical filter length.\\\",\\n      \\\"reason\\\": \\\"Section III Methods, subsection B, explicitly states that retained lengths need not be integer divisors.\\\"\\n    },\\n    {\\n      \\\"id\\\": 14,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Evaluation uses two phishing URL datasets and Five-State Markov Capacity, Gilbert–Elliott burst-error, and Rayleigh block-fading models.\\\",\\n      \\\"reason\\\": \\\"Section I Introduction, paragraph 5, explicitly states that the evaluation covers two datasets and three channel models.\\\"\\n    },\\n    {\\n      \\\"id\\\": 15,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The PhiUSIIL [14] and URL-Phish [15] datasets are evaluated using 5,000 malicious URLs for insertion.\\\",\\n      \\\"reason\\\": \\\"Section IV Experimental Setup, subsection A, explicitly states that PhiUSIIL and URL-Phish each use 5,000 malicious URLs inserted.\\\"\\n    },\\n    {\\n      \\\"id\\\": 16,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The PhiUSIIL [14] and URL-Phish [15] datasets are evaluated using 5,000 malicious URLs for insertion and 50,000 disjoint benign URLs as absent queries.\\\",\\n      \\\"reason\\\": \\\"Section IV Experimental Setup, subsection A, explicitly states that 50,000 disjoint benign URLs provide absent queries.\\\"\\n    },\\n    {\\n      \\\"id\\\": 17,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"For each dataset, the classical filter length m is selected for n = 5,000 elements and a target FPR of 1%.\\\",\\n      \\\"reason\\\": \\\"Section IV Experimental Setup, subsection B, explicitly states that the classical filter targets 1% false positives.\\\"\\n    },\\n    {\\n      \\\"id\\\": 18,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The sparse canonical filter uses the same m, with its hash count selected for a target occupancy ρ = 0.25: ksparse = round(−ln(1 − ρ) * m/n). Equation (10) produces three hash functions.\\\",\\n      \\\"reason\\\": \\\"Section IV Experimental Setup, subsection B, explicitly states that the sparse filter targets 25% occupancy with three hashes.\\\"\\n    },\\n    {\\n      \\\"id\\\": 19,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Only representations with no observed false negatives and an empirical FPR no greater than 10% enter the adaptive catalog.\\\",\\n      \\\"reason\\\": \\\"Section IV Experimental Setup, subsection B, explicitly states that catalog views cap empirical false positives at 10% with zero observed false negatives.\\\"\\n    },\\n    {\\n      \\\"id\\\": 20,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The sparse canonical bit array is compared with gzip [17], zlib [18], bzip2 [19], and LZMA [20]. Uncompressed classical and sparse filters are also included.\\\",\\n      \\\"reason\\\": \\\"Section IV Experimental Setup, subsection C, explicitly states that baselines include uncompressed and losslessly compressed filters.\\\"\\n    },\\n    {\\n      \\\"id\\\": 21,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Payloads are segmented into 480-byte packets with 32-byte headers.\\\",\\n      \\\"reason\\\": \\\"Section IV Experimental Setup, subsection C, explicitly states that payloads use 480-byte packets with 32-byte headers.\\\"\\n    },\\n    {\\n      \\\"id\\\": 22,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The Five-State Markov model uses capacity ratios... Each interval is a 10-ms transmission opportunity with a total byte budget.\\\",\\n      \\\"reason\\\": \\\"Section IV Experimental Setup, subsection E, explicitly states that each trace has 500 opportunities of 10 ms.\\\"\\n    },\\n    {\\n      \\\"id\\\": 23,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Figures 4 and 5 report means and 95% confidence intervals over 20 paired traces of 500 opportunities, with all strategies using the same trace within each repetition.\\\",\\n      \\\"reason\\\": \\\"Section IV Experimental Setup, subsection F, explicitly states that results average 20 paired repetitions across the three channel models.\\\"\\n    },\\n    {\\n      \\\"id\\\": 24,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The two datasets produce nearly identical false positive rates across the evaluated ratios.\\\",\\n      \\\"reason\\\": \\\"Section V Experimental Results, subsection A, explicitly states that both URL datasets show nearly identical false-positive rates.\\\"\\n    },\\n    {\\n      \\\"id\\\": 25,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Because both filters contain the same number of inserted elements and use the same construction parameters, this similarity indicates that folding behavior is governed primarily by filter occupancy and the deterministic position mapping rather than by one particular URL collection.\\\",\\n      \\\"reason\\\": \\\"Section V Experimental Results, subsection A, explicitly states that occupancy and deterministic mapping primarily govern folding.\\\"\\n    },\\n    {\\n      \\\"id\\\": 26,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The false positive rate increases gradually under moderate folding and then rises more rapidly as the reduced representation approaches saturation.\\\",\\n      \\\"reason\\\": \\\"Section V Experimental Results, subsection A, explicitly states that false-positive rates rise gradually under moderate folding, then accelerate near saturation.\\\"\\n    },\\n    {\\n      \\\"id\\\": 27,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Approximately 50% size reduction remains near the 10% maximum FPR used by the adaptive policy. The resulting valid representations provide multiple communication-cost and accuracy operating points.\\\",\\n      \\\"reason\\\": \\\"Section V Experimental Results, subsection A, explicitly states that about 50% size reduction remains near the catalog limit, providing multiple accuracy-cost operating points.\\\"\\n    },\\n    {\\n      \\\"id\\\": 28,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The controlled design uses two URL datasets at the same cardinality with fixed contents. This isolates channel-driven selection but does not establish generality across other workloads, cardinalities, occupancies, or changing contents.\\\",\\n      \\\"reason\\\": \\\"Section VI Discussion, subsection C, explicitly states that experiments isolate channel-driven selection but limit generality.\\\"\\n    },\\n    {\\n      \\\"id\\\": 29,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The controlled design uses two URL datasets at the same cardinality with fixed contents.\\\",\\n      \\\"reason\\\": \\\"Section VI Discussion, subsection C, explicitly states that two fixed URL datasets share one cardinality, limiting workload generality.\\\"\\n    },\\n    {\\n      \\\"id\\\": 30,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The controller also assumes timely communication-state information and does not model estimation error, delayed feedback, or metadata explicitly.\\\",\\n      \\\"reason\\\": \\\"Section VI Discussion, subsection C, explicitly states that the controller assumes timely channel state; estimation error and metadata costs are unmodeled.\\\"\\n    },\\n    {\\n      \\\"id\\\": 31,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Fixed folded representations are not included as baselines.\\\",\\n      \\\"reason\\\": \\\"Section VI Discussion, subsection C, explicitly states that no fixed-fold baseline is tested.\\\"\\n    },\\n    {\\n      \\\"id\\\": 32,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The single sender–receiver configuration also excludes contention, retransmission, congestion, and fairness effects.\\\",\\n      \\\"reason\\\": \\\"Section VI Discussion, subsection C, explicitly states that one sender-receiver excludes contention, retransmission, and energy effects.\\\"\\n    },\\n    {\\n      \\\"id\\\": 33,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Priorities for future work are direct comparison with fixed folded baselines; integration with cardinality/FPR-driven resizing [7]; and evaluation with changing contents, measured channels, multiple senders, imperfect channel estimates, energy costs, downstream false-positive costs, and combined folding and compression.\\\",\\n      \\\"reason\\\": \\\"Section VI Discussion, subsection C, explicitly states that future work should study changing contents, measured channels, multiple senders, and combined folding/compression.\\\"\\n    },\\n    {\\n      \\\"id\\\": 34,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The sender retains the canonical filter, constructs a catalog of FPR-qualified folded views, and selects the view with the largest retained length supported at each reporting opportunity. Each update carries the view length and a timestamp; the receiver installs only newer, completely delivered reports and queries the selected view directly.\\\",\\n      \\\"reason\\\": \\\"Section I Introduction, paragraph 3, explicitly states that channel-aware folding selects the largest qualified view per opportunity without false negatives.\\\"\\n    },\\n    {\\n      \\\"id\\\": 35,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Channel-aware folding improves communication efficiency and receiver freshness relative to complete-filter and lossless-compression baselines when communication opportunities vary substantially.\\\",\\n      \\\"reason\\\": \\\"Section I Introduction, paragraph 5, explicitly states that channel-aware folding improves efficiency and freshness over complete and compressed baselines under Markov capacity and Rayleigh fading.\\\"\\n    },\\n    {\\n      \\\"id\\\": 36,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Under the more favorable Gilbert–Elliott model, it remains competitive in efficiency while maintaining the freshest receiver state.\\\",\\n      \\\"reason\\\": \\\"Section I Introduction, paragraph 5, explicitly states that channel-aware folding remains competitive and yields the freshest receiver state under Gilbert-Elliott loss.\\\"\\n    },\\n    {\\n      \\\"id\\\": 37,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The sender retains the canonical filter, constructs a catalog of FPR-qualified folded views... and representations exceeding the application-defined maximum FPR are excluded.\\\",\\n      \\\"reason\\\": \\\"Section III Methods, subsection E, explicitly states that the sender keeps an unchanged canonical filter and excludes catalog views above the maximum false-positive rate.\\\"\\n    },\\n    {\\n      \\\"id\\\": 38,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"For a capacity-limited channel, this is the representation with the largest retained length whose total transmitted size, including the Bloom-filter payload and packet headers, fits within the available capacity.\\\",\\n      \\\"reason\\\": \\\"Section III Methods, subsection E, explicitly states that at each opportunity, the sender selects the largest qualified view fitting complete wire capacity.\\\"\\n    },\\n    {\\n      \\\"id\\\": 39,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"For a loss-based channel without an explicit byte-capacity limit, selection instead considers the probability of complete-report delivery.\\\",\\n      \\\"reason\\\": \\\"Section III Methods, subsection E, explicitly states that under loss, the sender considers whole-report delivery probability.\\\"\\n    },\\n    {\\n      \\\"id\\\": 40,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"If no qualified representation can be delivered, the update is deferred.\\\",\\n      \\\"reason\\\": \\\"Section III Methods, subsection E, explicitly states that if none can be delivered, the update is deferred.\\\"\\n    }\\n  ]\\n}\", \"```json\\n{\\n  \\\"verdicts\\\": [\\n    {\\n      \\\"id\\\": 1,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Each update carries the view length and a timestamp; the receiver installs only newer, completely delivered reports and queries the selected view directly.\\\",\\n      \\\"reason\\\": \\\"Section III.E, paragraph 2, explicitly states that each update includes the retained length and a timestamp.\\\"\\n    },\\n    {\\n      \\\"id\\\": 2,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Each update carries the view length and a timestamp; the receiver installs only newer, completely delivered reports and queries the selected view directly.\\\",\\n      \\\"reason\\\": \\\"Section III.E, paragraph 2, explicitly states that the receiver installs only newer, completely delivered reports.\\\"\\n    },\\n    {\\n      \\\"id\\\": 3,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Stale, duplicate, or incomplete reports are not installed; after a failed or deferred update, the receiver retains its previous valid view.\\\",\\n      \\\"reason\\\": \\\"Section III.E, paragraph 2, explicitly states that after a failed or deferred update, the receiver retains its previous valid view.\\\"\\n    },\\n    {\\n      \\\"id\\\": 4,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Reconstruction of the canonical filter is neither required nor attempted, and the canonical filter retained by the sender is not modified by selection or transmission.\\\",\\n      \\\"reason\\\": \\\"Section VI.B, paragraph 2, explicitly states that reconstruction of the canonical filter is neither required nor attempted.\\\"\\n    }\\n  ]\\n}\\n```\"]"
+}

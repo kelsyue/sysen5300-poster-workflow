@@ -1,0 +1,60 @@
+{
+  "model": "gemini-3.5-flash",
+  "repeat": 1,
+  "judge_prompt_sha256": "4ec65050cfdc718218dbc587f672291e733fd03b1254c20d77b61b0933e16162",
+  "error": null,
+  "tokens_in": 5786,
+  "tokens_out": 3364,
+  "tokens_cached": 0,
+  "max_output_tokens": 32768,
+  "parsed": {
+    "items": {
+      "chk_problem": {
+        "label": "accurate",
+        "poster_evidence": "Disease shift may matter more than skin tone underrepresentation. Models trained on light-skinned, cancer-focused data are deployed where patients have darker skin and non-cancerous conditions like eczema or tinea.",
+        "reason": "The poster accurately describes the problem of decomposing the generalization gap into skin tone and disease-distribution shift under the 'Problem' section."
+      },
+      "chk_method": {
+        "label": "accurate",
+        "poster_evidence": "We test four frozen models on two datasets using linear probing, kNN, and few-shot adaptation. Fig. 1 shows the pipeline. Models include cancer-trained ResNet-50, dermatology foundation models (DermLIP, MONET), and general vision model DINOv3.",
+        "reason": "The poster accurately describes the evaluation of the baseline and foundation models as frozen feature extractors using linear probing, kNN, and few-shot adaptation."
+      },
+      "chk_data": {
+        "label": "accurate",
+        "poster_evidence": "Table 1. Datasets and their experimental roles. All evaluation uses patient-level splits.\nHAM10000 + ISIC 2019\nDDI\nSCIN",
+        "reason": "The poster lists all four datasets (HAM10000 + ISIC 2019, DDI, and SCIN) along with their experimental roles and sample sizes in Table 1."
+      },
+      "chk_setup": {
+        "label": "accurate",
+        "poster_evidence": "We test four frozen models on two datasets using linear probing, kNN, and few-shot adaptation. Fig. 1 shows the pipeline... Experiments use patient-level splits and bootstrap CIs on free-tier compute.",
+        "reason": "The poster describes the evaluation protocol including linear probing, kNN, few-shot adaptation, and patient-level splits, matching setup draft (b)."
+      },
+      "chk_primary_result": {
+        "label": "accurate",
+        "poster_evidence": "Table 2 shows 0.62→0.21 drop for cancer baseline on SCIN. ... DDI tone gaps: 0.10–0.18, inconsistent direction",
+        "reason": "The poster accurately reports the cancer baseline's drop from 0.62 to 0.21 on SCIN, and the smaller 0.10-0.18 skin-tone gap on DDI."
+      },
+      "chk_secondary_result": {
+        "label": "accurate",
+        "poster_evidence": "Label-free analysis reveals cancer features collapse to near-chance on unfamiliar conditions (+0.06 purity lift), while dermatology models retain transferable structure (DermLIP +0.23).",
+        "reason": "The poster accurately reports the kNN neighbor-purity lift of +0.06 for the cancer baseline and +0.23 for DermLIP on SCIN, matching both secondary result drafts."
+      },
+      "chk_baseline": {
+        "label": "accurate",
+        "poster_evidence": "Models include cancer-trained ResNet-50, dermatology foundation models (DermLIP, MONET), and general vision model DINOv3.",
+        "reason": "The poster lists the cancer-trained ResNet-50 baseline, the dermatology foundation models, and the general-purpose DINOv3 control, matching baseline draft (b)."
+      },
+      "chk_conclusion": {
+        "label": "accurate",
+        "poster_evidence": "Distribution shift causes bigger drops than tone gaps. ... Prioritize disease coverage over tone diversity for deployment\nLow-cost strategy: right model + minimal labeled data",
+        "reason": "The poster concludes that disease-distribution shift is the dominant driver of performance drops and that using the right model with minimal labeled data is an effective low-cost strategy."
+      },
+      "chk_limitation": {
+        "label": "accurate",
+        "poster_evidence": "DDI/SCIN are US proxies; tone analysis underpowered.",
+        "reason": "The poster explicitly lists that DDI and SCIN are US proxies as a limitation under the 'Limitations' section."
+      }
+    }
+  },
+  "raw": "```json\n{\n  \"items\": {\n    \"chk_problem\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Disease shift may matter more than skin tone underrepresentation. Models trained on light-skinned, cancer-focused data are deployed where patients have darker skin and non-cancerous conditions like eczema or tinea.\",\n      \"reason\": \"The poster accurately describes the problem of decomposing the generalization gap into skin tone and disease-distribution shift under the 'Problem' section.\"\n    },\n    \"chk_method\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"We test four frozen models on two datasets using linear probing, kNN, and few-shot adaptation. Fig. 1 shows the pipeline. Models include cancer-trained ResNet-50, dermatology foundation models (DermLIP, MONET), and general vision model DINOv3.\",\n      \"reason\": \"The poster accurately describes the evaluation of the baseline and foundation models as frozen feature extractors using linear probing, kNN, and few-shot adaptation.\"\n    },\n    \"chk_data\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Table 1. Datasets and their experimental roles. All evaluation uses patient-level splits.\\nHAM10000 + ISIC 2019\\nDDI\\nSCIN\",\n      \"reason\": \"The poster lists all four datasets (HAM10000 + ISIC 2019, DDI, and SCIN) along with their experimental roles and sample sizes in Table 1.\"\n    },\n    \"chk_setup\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"We test four frozen models on two datasets using linear probing, kNN, and few-shot adaptation. Fig. 1 shows the pipeline... Experiments use patient-level splits and bootstrap CIs on free-tier compute.\",\n      \"reason\": \"The poster describes the evaluation protocol including linear probing, kNN, few-shot adaptation, and patient-level splits, matching setup draft (b).\"\n    },\n    \"chk_primary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Table 2 shows 0.62→0.21 drop for cancer baseline on SCIN. ... DDI tone gaps: 0.10–0.18, inconsistent direction\",\n      \"reason\": \"The poster accurately reports the cancer baseline's drop from 0.62 to 0.21 on SCIN, and the smaller 0.10-0.18 skin-tone gap on DDI.\"\n    },\n    \"chk_secondary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Label-free analysis reveals cancer features collapse to near-chance on unfamiliar conditions (+0.06 purity lift), while dermatology models retain transferable structure (DermLIP +0.23).\",\n      \"reason\": \"The poster accurately reports the kNN neighbor-purity lift of +0.06 for the cancer baseline and +0.23 for DermLIP on SCIN, matching both secondary result drafts.\"\n    },\n    \"chk_baseline\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Models include cancer-trained ResNet-50, dermatology foundation models (DermLIP, MONET), and general vision model DINOv3.\",\n      \"reason\": \"The poster lists the cancer-trained ResNet-50 baseline, the dermatology foundation models, and the general-purpose DINOv3 control, matching baseline draft (b).\"\n    },\n    \"chk_conclusion\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Distribution shift causes bigger drops than tone gaps. ... Prioritize disease coverage over tone diversity for deployment\\nLow-cost strategy: right model + minimal labeled data\",\n      \"reason\": \"The poster concludes that disease-distribution shift is the dominant driver of performance drops and that using the right model with minimal labeled data is an effective low-cost strategy.\"\n    },\n    \"chk_limitation\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"DDI/SCIN are US proxies; tone analysis underpowered.\",\n      \"reason\": \"The poster explicitly lists that DDI and SCIN are US proxies as a limitation under the 'Limitations' section.\"\n    }\n  }\n}\n```"
+}

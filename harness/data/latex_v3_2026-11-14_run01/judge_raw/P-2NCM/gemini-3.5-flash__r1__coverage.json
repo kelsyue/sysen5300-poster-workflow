@@ -1,0 +1,60 @@
+{
+  "model": "gemini-3.5-flash",
+  "repeat": 1,
+  "judge_prompt_sha256": "4ec65050cfdc718218dbc587f672291e733fd03b1254c20d77b61b0933e16162",
+  "error": null,
+  "tokens_in": 6402,
+  "tokens_out": 2868,
+  "tokens_cached": 0,
+  "max_output_tokens": 32768,
+  "parsed": {
+    "items": {
+      "chk_problem": {
+        "label": "accurate",
+        "poster_evidence": "No large-scale study has tested whether routine lab trajectories alone predict pre-clinical decline.",
+        "reason": "The poster accurately describes the problem of predicting pre-clinical functional decline using routine lab trajectories in the 'Motivation & Gap' section."
+      },
+      "chk_method": {
+        "label": "accurate",
+        "poster_evidence": "Each biomarker gave five descriptors - mean, SD, delta, count and slope - yielding 80 trajectory features plus age and gender. Four classifiers (logistic regression, random forest, XGBoost, LightGBM) were trained",
+        "reason": "The poster accurately details the feature engineering of five descriptors from the biomarkers and the machine learning models used."
+      },
+      "chk_data": {
+        "label": "accurate",
+        "poster_evidence": "In All of Us (N = 297,861; 11.1% cases)... Cases came from ICD-10 mobility codes in All of Us (OMOP, Controlled Tier v8)",
+        "reason": "The poster accurately identifies the dataset, cohort size, and case rate from the All of Us Research Program Controlled Tier v8."
+      },
+      "chk_setup": {
+        "label": "accurate",
+        "poster_evidence": "Four classifiers (logistic regression, random forest, XGBoost, LightGBM) were trained with 5-fold cross-validation and out-of-fold evaluation.",
+        "reason": "The poster accurately describes the 5-fold cross-validation setup and the four classifiers evaluated."
+      },
+      "chk_primary_result": {
+        "label": "accurate",
+        "poster_evidence": "Demographics 0.680, baseline lab means 0.755, trajectories 0.797 (∆AUC 0.042; DeLong p < 0.001)\n• AUPRC 0.380 vs. 0.304",
+        "reason": "The poster accurately reports the primary results for the trajectory model (AUROC 0.797, AUPRC 0.380) compared to the baseline."
+      },
+      "chk_secondary_result": {
+        "label": "accurate",
+        "poster_evidence": "Signal persisted 3-12 months before onset (AUROC 0.768-0.740)",
+        "reason": "The poster accurately presents the prediction horizon analysis results in the Conclusion and Table 2."
+      },
+      "chk_baseline": {
+        "label": "accurate",
+        "poster_evidence": "baseline lab means 0.755... AUPRC 0.380 vs. 0.304",
+        "reason": "The poster accurately compares the trajectory model to the static baseline summaries (AUROC 0.755, AUPRC 0.304)."
+      },
+      "chk_conclusion": {
+        "label": "accurate",
+        "poster_evidence": "Routine biomarker trajectories outperform static lab summaries for early mobility-decline detection (AUROC 0.797 vs. 0.755). Signal persisted 3-12 months before onset (AUROC 0.768-0.740), supporting zero-burden EHR monitoring.",
+        "reason": "The poster's conclusion accurately summarizes the main findings and clinical utility of the trajectory features."
+      },
+      "chk_limitation": {
+        "label": "accurate",
+        "poster_evidence": "Limits: ICD-10 outcomes reflect documented recognition, median imputation ignores clinical context, CRP and vitamin D give little signal from selective ordering, and external validation against gait speed is still needed",
+        "reason": "The poster accurately lists the limitations, matching draft (b) of the reference."
+      }
+    }
+  },
+  "raw": "```json\n{\n  \"items\": {\n    \"chk_problem\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"No large-scale study has tested whether routine lab trajectories alone predict pre-clinical decline.\",\n      \"reason\": \"The poster accurately describes the problem of predicting pre-clinical functional decline using routine lab trajectories in the 'Motivation & Gap' section.\"\n    },\n    \"chk_method\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Each biomarker gave five descriptors - mean, SD, delta, count and slope - yielding 80 trajectory features plus age and gender. Four classifiers (logistic regression, random forest, XGBoost, LightGBM) were trained\",\n      \"reason\": \"The poster accurately details the feature engineering of five descriptors from the biomarkers and the machine learning models used.\"\n    },\n    \"chk_data\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"In All of Us (N = 297,861; 11.1% cases)... Cases came from ICD-10 mobility codes in All of Us (OMOP, Controlled Tier v8)\",\n      \"reason\": \"The poster accurately identifies the dataset, cohort size, and case rate from the All of Us Research Program Controlled Tier v8.\"\n    },\n    \"chk_setup\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Four classifiers (logistic regression, random forest, XGBoost, LightGBM) were trained with 5-fold cross-validation and out-of-fold evaluation.\",\n      \"reason\": \"The poster accurately describes the 5-fold cross-validation setup and the four classifiers evaluated.\"\n    },\n    \"chk_primary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Demographics 0.680, baseline lab means 0.755, trajectories 0.797 (∆AUC 0.042; DeLong p < 0.001)\\n• AUPRC 0.380 vs. 0.304\",\n      \"reason\": \"The poster accurately reports the primary results for the trajectory model (AUROC 0.797, AUPRC 0.380) compared to the baseline.\"\n    },\n    \"chk_secondary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Signal persisted 3-12 months before onset (AUROC 0.768-0.740)\",\n      \"reason\": \"The poster accurately presents the prediction horizon analysis results in the Conclusion and Table 2.\"\n    },\n    \"chk_baseline\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"baseline lab means 0.755... AUPRC 0.380 vs. 0.304\",\n      \"reason\": \"The poster accurately compares the trajectory model to the static baseline summaries (AUROC 0.755, AUPRC 0.304).\"\n    },\n    \"chk_conclusion\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Routine biomarker trajectories outperform static lab summaries for early mobility-decline detection (AUROC 0.797 vs. 0.755). Signal persisted 3-12 months before onset (AUROC 0.768-0.740), supporting zero-burden EHR monitoring.\",\n      \"reason\": \"The poster's conclusion accurately summarizes the main findings and clinical utility of the trajectory features.\"\n    },\n    \"chk_limitation\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Limits: ICD-10 outcomes reflect documented recognition, median imputation ignores clinical context, CRP and vitamin D give little signal from selective ordering, and external validation against gait speed is still needed\",\n      \"reason\": \"The poster accurately lists the limitations, matching draft (b) of the reference.\"\n    }\n  }\n}\n```"
+}

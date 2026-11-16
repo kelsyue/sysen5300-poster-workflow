@@ -1,0 +1,60 @@
+{
+  "model": "openai.gpt-4o",
+  "repeat": 1,
+  "judge_prompt_sha256": "4ec65050cfdc718218dbc587f672291e733fd03b1254c20d77b61b0933e16162",
+  "error": null,
+  "tokens_in": 5632,
+  "tokens_out": 975,
+  "tokens_cached": 1152,
+  "max_output_tokens": 16384,
+  "parsed": {
+    "items": {
+      "chk_problem": {
+        "label": "accurate",
+        "poster_evidence": "Periodic Bloom-filter updates burden communication-constrained systems. We select among OR-folded views that meet a maximum FPR, keeping the canonical filter unchanged. Across two phishing URL datasets and three channel models, this improves efficiency and receiver freshness. Selection is driven by time-varying communication conditions rather than cardinality, and gains are largest when communication opportunities vary substantially.",
+        "reason": "The poster accurately describes the research problem, including the challenges of periodic Bloom-filter transmission in communication-constrained systems and the motivation for channel-aware selection to improve efficiency and receiver freshness."
+      },
+      "chk_method": {
+        "label": "accurate",
+        "poster_evidence": "An online selection policy for FPR-qualified folded views. A fine-grained catalog from an unchanged canonical filter.",
+        "reason": "The poster correctly describes the method as an online selection policy for FPR-qualified folded views from a catalog of fine-grained folded representations based on time-varying communication conditions."
+      },
+      "chk_data": {
+        "label": "accurate",
+        "poster_evidence": "Two phishing datasets, PhiUSIIL and URL-Phish, insert 5,000 malicious URLs and query 50,000 benign URLs, so every positive is a false positive.",
+        "reason": "The poster accurately identifies the datasets used (PhiUSIIL and URL-Phish) and provides the required details about the study population (5,000 malicious URLs and 50,000 benign URLs)."
+      },
+      "chk_setup": {
+        "label": "accurate",
+        "poster_evidence": "Two phishing datasets, PhiUSIIL and URL-Phish, insert 5,000 malicious URLs and query 50,000 benign URLs, so every positive is a false positive. The sparse canonical filter uses three hash functions for occupancy 0.25 and SHA-256 double hashing; only views with empirical FPR under 10% enter the catalog. Baselines are uncompressed filters plus gzip, zlib, bzip2 and LZMA. Channels: Five-State Markov, Gilbert-Elliott, and Rayleigh block fading.",
+        "reason": "The poster provides sufficient details about the experimental setup, including the datasets, hash functions, FPR threshold, baselines, and channel models, matching the reference."
+      },
+      "chk_primary_result": {
+        "label": "accurate",
+        "poster_evidence": "Five-State Markov: 191.6 deliveries per MB vs 66.9 (compression) and 27.7 (classical).",
+        "reason": "The poster correctly reports the primary result of 191.6 successful deliveries per MB under the Five-State Markov Capacity model, along with the comparison to the compression baseline (66.9) and classical filter (27.7)."
+      },
+      "chk_secondary_result": {
+        "label": "accurate",
+        "poster_evidence": "Five-State Markov: 1.24 intervals vs 13.5 (compression) and 31.6 (classical).",
+        "reason": "The poster accurately reports the secondary result of reduced mean receiver age to 1.24 intervals under the Five-State Markov Capacity model, with comparisons to the compression baseline (13.5) and classical filter (31.6)."
+      },
+      "chk_baseline": {
+        "label": "accurate",
+        "poster_evidence": "Baselines are uncompressed filters plus gzip, zlib, bzip2 and LZMA.",
+        "reason": "The poster correctly identifies the baselines as classical uncompressed filters and four lossless-compression baselines (gzip, zlib, bzip2, and LZMA)."
+      },
+      "chk_conclusion": {
+        "label": "accurate",
+        "poster_evidence": "Selecting the largest FPR-qualified folded view improved communication efficiency and freshness over complete-filter and compression baselines. Smaller views trade higher FPR for fresher updates while keeping no false negatives.",
+        "reason": "The poster accurately summarizes the paper's conclusion that channel-aware folding improves communication efficiency and receiver freshness compared to complete-filter and lossless-compression baselines."
+      },
+      "chk_limitation": {
+        "label": "accurate",
+        "poster_evidence": "Limits: fixed contents, simulated channels, and no fixed-fold baselines.",
+        "reason": "The poster mentions specific limitations, including fixed contents, simulated channels, and the absence of fixed-fold baselines, which aligns with the reference."
+      }
+    }
+  },
+  "raw": "```json\n{\n  \"items\": {\n    \"chk_problem\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Periodic Bloom-filter updates burden communication-constrained systems. We select among OR-folded views that meet a maximum FPR, keeping the canonical filter unchanged. Across two phishing URL datasets and three channel models, this improves efficiency and receiver freshness. Selection is driven by time-varying communication conditions rather than cardinality, and gains are largest when communication opportunities vary substantially.\",\n      \"reason\": \"The poster accurately describes the research problem, including the challenges of periodic Bloom-filter transmission in communication-constrained systems and the motivation for channel-aware selection to improve efficiency and receiver freshness.\"\n    },\n    \"chk_method\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"An online selection policy for FPR-qualified folded views. A fine-grained catalog from an unchanged canonical filter.\",\n      \"reason\": \"The poster correctly describes the method as an online selection policy for FPR-qualified folded views from a catalog of fine-grained folded representations based on time-varying communication conditions.\"\n    },\n    \"chk_data\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Two phishing datasets, PhiUSIIL and URL-Phish, insert 5,000 malicious URLs and query 50,000 benign URLs, so every positive is a false positive.\",\n      \"reason\": \"The poster accurately identifies the datasets used (PhiUSIIL and URL-Phish) and provides the required details about the study population (5,000 malicious URLs and 50,000 benign URLs).\"\n    },\n    \"chk_setup\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Two phishing datasets, PhiUSIIL and URL-Phish, insert 5,000 malicious URLs and query 50,000 benign URLs, so every positive is a false positive. The sparse canonical filter uses three hash functions for occupancy 0.25 and SHA-256 double hashing; only views with empirical FPR under 10% enter the catalog. Baselines are uncompressed filters plus gzip, zlib, bzip2 and LZMA. Channels: Five-State Markov, Gilbert-Elliott, and Rayleigh block fading.\",\n      \"reason\": \"The poster provides sufficient details about the experimental setup, including the datasets, hash functions, FPR threshold, baselines, and channel models, matching the reference.\"\n    },\n    \"chk_primary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Five-State Markov: 191.6 deliveries per MB vs 66.9 (compression) and 27.7 (classical).\",\n      \"reason\": \"The poster correctly reports the primary result of 191.6 successful deliveries per MB under the Five-State Markov Capacity model, along with the comparison to the compression baseline (66.9) and classical filter (27.7).\"\n    },\n    \"chk_secondary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Five-State Markov: 1.24 intervals vs 13.5 (compression) and 31.6 (classical).\",\n      \"reason\": \"The poster accurately reports the secondary result of reduced mean receiver age to 1.24 intervals under the Five-State Markov Capacity model, with comparisons to the compression baseline (13.5) and classical filter (31.6).\"\n    },\n    \"chk_baseline\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Baselines are uncompressed filters plus gzip, zlib, bzip2 and LZMA.\",\n      \"reason\": \"The poster correctly identifies the baselines as classical uncompressed filters and four lossless-compression baselines (gzip, zlib, bzip2, and LZMA).\"\n    },\n    \"chk_conclusion\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Selecting the largest FPR-qualified folded view improved communication efficiency and freshness over complete-filter and compression baselines. Smaller views trade higher FPR for fresher updates while keeping no false negatives.\",\n      \"reason\": \"The poster accurately summarizes the paper's conclusion that channel-aware folding improves communication efficiency and receiver freshness compared to complete-filter and lossless-compression baselines.\"\n    },\n    \"chk_limitation\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Limits: fixed contents, simulated channels, and no fixed-fold baselines.\",\n      \"reason\": \"The poster mentions specific limitations, including fixed contents, simulated channels, and the absence of fixed-fold baselines, which aligns with the reference.\"\n    }\n  }\n}\n```"
+}

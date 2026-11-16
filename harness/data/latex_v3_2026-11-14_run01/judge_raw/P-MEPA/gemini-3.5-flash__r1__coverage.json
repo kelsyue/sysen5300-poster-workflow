@@ -1,0 +1,60 @@
+{
+  "model": "gemini-3.5-flash",
+  "repeat": 1,
+  "judge_prompt_sha256": "4ec65050cfdc718218dbc587f672291e733fd03b1254c20d77b61b0933e16162",
+  "error": null,
+  "tokens_in": 5890,
+  "tokens_out": 3112,
+  "tokens_cached": 0,
+  "max_output_tokens": 32768,
+  "parsed": {
+    "items": {
+      "chk_problem": {
+        "label": "accurate",
+        "poster_evidence": "Functional decline is often caught too late. Trajectory matters more than single lab values. We use 12 routine biomarkers to predict decline pre-clinically via EHRs.",
+        "reason": "The poster accurately describes the problem of predicting pre-clinical functional decline using longitudinal trajectories of routine biomarkers in the 'Problem & Motivation' section."
+      },
+      "chk_method": {
+        "label": "accurate",
+        "poster_evidence": "Used 12 biomarkers over 3 years; derived slope, mean, count. Evaluated with LightGBM, XGBoost, RF, LR.",
+        "reason": "The poster accurately describes the feature engineering of trajectory descriptors from 12 biomarkers and modeling with LightGBM and other ML algorithms in the 'Methods Overview' section."
+      },
+      "chk_data": {
+        "label": "accurate",
+        "poster_evidence": "We analyzed 297,861 All of Us participants aged 50–125.",
+        "reason": "The poster identifies the cohort size of 297,861 participants from the All of Us Research Program in the 'Methods Overview' section."
+      },
+      "chk_setup": {
+        "label": "accurate",
+        "poster_evidence": "Evaluated with LightGBM, XGBoost, RF, LR. ... 5-fold CV with SHAP on held-out test set. ... Table 1: Model performance (3-year window, 5-fold CV, OOF; N = 297,861; 11.1% cases).",
+        "reason": "The poster describes the 5-fold cross-validation setup with out-of-fold (OOF) predictions evaluated using AUROC (AUC) and AUPRC across the four specified algorithms."
+      },
+      "chk_primary_result": {
+        "label": "accurate",
+        "poster_evidence": "Trajectory features beat static summaries: AUROC 0.797 vs. 0.755. AUPRC 0.380 vs. 0.304.",
+        "reason": "The poster reports the primary quantitative results for the trajectory model (AUROC 0.797, AUPRC 0.380) compared to the static baseline in the 'Key Results' section."
+      },
+      "chk_secondary_result": {
+        "label": "missing",
+        "poster_evidence": "",
+        "reason": "The poster mentions 'Horizon: strong prediction 3–12 months pre-decline' under 'Discussion & Impact' but omits the quantitative AUROC values (0.768 to 0.740) required by the reference."
+      },
+      "chk_baseline": {
+        "label": "accurate",
+        "poster_evidence": "Trajectory features beat static summaries: AUROC 0.797 vs. 0.755. AUPRC 0.380 vs. 0.304.",
+        "reason": "The poster explicitly compares the trajectory model to the static laboratory summaries baseline (AUROC 0.755, AUPRC 0.304) in the 'Key Results' section and Table 1."
+      },
+      "chk_conclusion": {
+        "label": "accurate",
+        "poster_evidence": "Trajectory features predict decline better: AUROC 0.797 vs. 0.755. Uses only existing labs — enabling passive, scalable early detection in any EHR.",
+        "reason": "The poster's 'Conclusion' section accurately summarizes that trajectory features improve prediction and enable passive, zero-burden early detection."
+      },
+      "chk_limitation": {
+        "label": "missing",
+        "poster_evidence": "",
+        "reason": "The poster does not mention any limitations or specific implications matching the reference."
+      }
+    }
+  },
+  "raw": "```json\n{\n  \"items\": {\n    \"chk_problem\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Functional decline is often caught too late. Trajectory matters more than single lab values. We use 12 routine biomarkers to predict decline pre-clinically via EHRs.\",\n      \"reason\": \"The poster accurately describes the problem of predicting pre-clinical functional decline using longitudinal trajectories of routine biomarkers in the 'Problem & Motivation' section.\"\n    },\n    \"chk_method\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Used 12 biomarkers over 3 years; derived slope, mean, count. Evaluated with LightGBM, XGBoost, RF, LR.\",\n      \"reason\": \"The poster accurately describes the feature engineering of trajectory descriptors from 12 biomarkers and modeling with LightGBM and other ML algorithms in the 'Methods Overview' section.\"\n    },\n    \"chk_data\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"We analyzed 297,861 All of Us participants aged 50–125.\",\n      \"reason\": \"The poster identifies the cohort size of 297,861 participants from the All of Us Research Program in the 'Methods Overview' section.\"\n    },\n    \"chk_setup\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Evaluated with LightGBM, XGBoost, RF, LR. ... 5-fold CV with SHAP on held-out test set. ... Table 1: Model performance (3-year window, 5-fold CV, OOF; N = 297,861; 11.1% cases).\",\n      \"reason\": \"The poster describes the 5-fold cross-validation setup with out-of-fold (OOF) predictions evaluated using AUROC (AUC) and AUPRC across the four specified algorithms.\"\n    },\n    \"chk_primary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Trajectory features beat static summaries: AUROC 0.797 vs. 0.755. AUPRC 0.380 vs. 0.304.\",\n      \"reason\": \"The poster reports the primary quantitative results for the trajectory model (AUROC 0.797, AUPRC 0.380) compared to the static baseline in the 'Key Results' section.\"\n    },\n    \"chk_secondary_result\": {\n      \"label\": \"missing\",\n      \"poster_evidence\": \"\",\n      \"reason\": \"The poster mentions 'Horizon: strong prediction 3–12 months pre-decline' under 'Discussion & Impact' but omits the quantitative AUROC values (0.768 to 0.740) required by the reference.\"\n    },\n    \"chk_baseline\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Trajectory features beat static summaries: AUROC 0.797 vs. 0.755. AUPRC 0.380 vs. 0.304.\",\n      \"reason\": \"The poster explicitly compares the trajectory model to the static laboratory summaries baseline (AUROC 0.755, AUPRC 0.304) in the 'Key Results' section and Table 1.\"\n    },\n    \"chk_conclusion\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Trajectory features predict decline better: AUROC 0.797 vs. 0.755. Uses only existing labs — enabling passive, scalable early detection in any EHR.\",\n      \"reason\": \"The poster's 'Conclusion' section accurately summarizes that trajectory features improve prediction and enable passive, zero-burden early detection.\"\n    },\n    \"chk_limitation\": {\n      \"label\": \"missing\",\n      \"poster_evidence\": \"\",\n      \"reason\": \"The poster does not mention any limitations or specific implications matching the reference.\"\n    }\n  }\n}\n```"
+}

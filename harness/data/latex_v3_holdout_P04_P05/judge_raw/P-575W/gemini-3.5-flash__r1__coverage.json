@@ -1,0 +1,60 @@
+{
+  "model": "gemini-3.5-flash",
+  "repeat": 1,
+  "judge_prompt_sha256": "d68c41ba9fcb81e0b6ca71c927f15884f0e00bb0cd2d9c521934502fa8ab3e38",
+  "error": null,
+  "tokens_in": 5978,
+  "tokens_out": 2987,
+  "tokens_cached": 0,
+  "max_output_tokens": 32768,
+  "parsed": {
+    "items": {
+      "chk_problem": {
+        "label": "accurate",
+        "poster_evidence": "High aggregate accuracy hides 30-43% of errors in a rare Type 4-2 verb subtype.",
+        "reason": "The poster accurately states the problem of high aggregate accuracy concealing systematic errors in rare morphological subclasses (specifically Type 4-2 verbs in Japanese past-tense inflection) in the Abstract."
+      },
+      "chk_method": {
+        "label": "accurate",
+        "poster_evidence": "Two character-level Transformers (PGT, LST) trained over 5 seeds. Ablation tests remove verb subtypes from train and test sets. ... Error taxonomy includes 6 orthography-sensitive failure modes.",
+        "reason": "The poster describes the orthography-aware diagnosis using a 6-category error taxonomy and controlled ablation experiments to isolate the failure mode."
+      },
+      "chk_data": {
+        "label": "accurate",
+        "poster_evidence": "We use hiragana-only Japanese verb data, excluding canonical irregulars. ... All forms are converted to hiragana to eliminate kanji homography confounds.",
+        "reason": "The poster specifies the Japanese verb dataset converted to hiragana to eliminate kanji homography, with Table 1 showing the total count of 3,958 verbs."
+      },
+      "chk_setup": {
+        "label": "accurate",
+        "poster_evidence": "Two character-level Transformers (PGT, LST) trained over 5 seeds. Ablation tests remove verb subtypes from train and test sets.",
+        "reason": "The poster describes the evaluation setup using two character-level Transformer architectures (PGT and LST) trained over 5 seeds with ablation conditions, matching draft (b)."
+      },
+      "chk_primary_result": {
+        "label": "accurate",
+        "poster_evidence": "Type 4-2 verbs cause 30-43% of errors despite being 0.9% of data. ... Disparity Ratio: 34-48× its data share",
+        "reason": "The poster accurately reports that Type 4-2 verbs (0.9% of data) account for 30-43% of errors and contribute 34-48x their prevalence to total errors."
+      },
+      "chk_secondary_result": {
+        "label": "accurate",
+        "poster_evidence": "Removing only Type 4-2 boosts accuracy most: +2.02% (LST), +1.00% (PGT).",
+        "reason": "The poster reports that removing Type 4-2 alone yields larger accuracy gains (+1.00% PGT, +2.02% LST) than removing all irregulars combined (+0.97% PGT, +1.22% LST, as shown in Table 6)."
+      },
+      "chk_baseline": {
+        "label": "accurate",
+        "poster_evidence": "Both models hit ~97% accuracy. ... Table 6: Accuracy gain over full-data baseline for each ablation condition.",
+        "reason": "The poster establishes the baseline performance (~97% accuracy) and compares the ablation conditions against this full-data baseline, matching both drafts."
+      },
+      "chk_conclusion": {
+        "label": "accurate",
+        "poster_evidence": "A rare Type 4-2 subtype causes 30-43% of errors. Removing it improves accuracy more than removing all irregulars. Fine-grained evaluation is essential.",
+        "reason": "The poster's conclusion section and discussion accurately summarize that not all irregularity is equally destabilizing and that fine-grained, subgroup-aware evaluation is necessary."
+      },
+      "chk_limitation": {
+        "label": "accurate",
+        "poster_evidence": "Single-run ablations; single language, paradigm, and architectures. ... Replication across seeds needed ... Mechanism: frequency vs. structure interaction?",
+        "reason": "The poster lists the specific limitations from the paper, including single-run ablations, single language/paradigm/architectures, and the correlational nature of the frequency vs. structure mechanism."
+      }
+    }
+  },
+  "raw": "```json\n{\n  \"items\": {\n    \"chk_problem\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"High aggregate accuracy hides 30-43% of errors in a rare Type 4-2 verb subtype.\",\n      \"reason\": \"The poster accurately states the problem of high aggregate accuracy concealing systematic errors in rare morphological subclasses (specifically Type 4-2 verbs in Japanese past-tense inflection) in the Abstract.\"\n    },\n    \"chk_method\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Two character-level Transformers (PGT, LST) trained over 5 seeds. Ablation tests remove verb subtypes from train and test sets. ... Error taxonomy includes 6 orthography-sensitive failure modes.\",\n      \"reason\": \"The poster describes the orthography-aware diagnosis using a 6-category error taxonomy and controlled ablation experiments to isolate the failure mode.\"\n    },\n    \"chk_data\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"We use hiragana-only Japanese verb data, excluding canonical irregulars. ... All forms are converted to hiragana to eliminate kanji homography confounds.\",\n      \"reason\": \"The poster specifies the Japanese verb dataset converted to hiragana to eliminate kanji homography, with Table 1 showing the total count of 3,958 verbs.\"\n    },\n    \"chk_setup\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Two character-level Transformers (PGT, LST) trained over 5 seeds. Ablation tests remove verb subtypes from train and test sets.\",\n      \"reason\": \"The poster describes the evaluation setup using two character-level Transformer architectures (PGT and LST) trained over 5 seeds with ablation conditions, matching draft (b).\"\n    },\n    \"chk_primary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Type 4-2 verbs cause 30-43% of errors despite being 0.9% of data. ... Disparity Ratio: 34-48× its data share\",\n      \"reason\": \"The poster accurately reports that Type 4-2 verbs (0.9% of data) account for 30-43% of errors and contribute 34-48x their prevalence to total errors.\"\n    },\n    \"chk_secondary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Removing only Type 4-2 boosts accuracy most: +2.02% (LST), +1.00% (PGT).\",\n      \"reason\": \"The poster reports that removing Type 4-2 alone yields larger accuracy gains (+1.00% PGT, +2.02% LST) than removing all irregulars combined (+0.97% PGT, +1.22% LST, as shown in Table 6).\"\n    },\n    \"chk_baseline\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Both models hit ~97% accuracy. ... Table 6: Accuracy gain over full-data baseline for each ablation condition.\",\n      \"reason\": \"The poster establishes the baseline performance (~97% accuracy) and compares the ablation conditions against this full-data baseline, matching both drafts.\"\n    },\n    \"chk_conclusion\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"A rare Type 4-2 subtype causes 30-43% of errors. Removing it improves accuracy more than removing all irregulars. Fine-grained evaluation is essential.\",\n      \"reason\": \"The poster's conclusion section and discussion accurately summarize that not all irregularity is equally destabilizing and that fine-grained, subgroup-aware evaluation is necessary.\"\n    },\n    \"chk_limitation\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Single-run ablations; single language, paradigm, and architectures. ... Replication across seeds needed ... Mechanism: frequency vs. structure interaction?\",\n      \"reason\": \"The poster lists the specific limitations from the paper, including single-run ablations, single language/paradigm/architectures, and the correlational nature of the frequency vs. structure mechanism.\"\n    }\n  }\n}\n```"
+}

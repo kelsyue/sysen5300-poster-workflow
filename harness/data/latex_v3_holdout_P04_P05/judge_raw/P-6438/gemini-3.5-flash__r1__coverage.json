@@ -1,0 +1,60 @@
+{
+  "model": "gemini-3.5-flash",
+  "repeat": 1,
+  "judge_prompt_sha256": "d68c41ba9fcb81e0b6ca71c927f15884f0e00bb0cd2d9c521934502fa8ab3e38",
+  "error": null,
+  "tokens_in": 8949,
+  "tokens_out": 3835,
+  "tokens_cached": 0,
+  "max_output_tokens": 32768,
+  "parsed": {
+    "items": {
+      "chk_problem": {
+        "label": "accurate",
+        "poster_evidence": "Edge video detection wastes energy on redundant frames. FixedSkip hurts accuracy during motion.",
+        "reason": "Located in the 'Problem & Motivation' section, this accurately describes the high energy consumption and accuracy loss of naive frame-skipping on edge devices."
+      },
+      "chk_method": {
+        "label": "accurate",
+        "poster_evidence": "ALBIREO wraps detectors with three mechanisms: uncertainty trigger, flicker rescue, and empty-scene screen. All run online, no detector changes needed.",
+        "reason": "Located in the 'ALBIREO Design' section, this accurately describes the framework and its three core mechanisms."
+      },
+      "chk_data": {
+        "label": "accurate",
+        "poster_evidence": "BDD100K MOT validation split",
+        "reason": "Located in the caption of Figure 2, this correctly identifies the dataset split used for evaluation."
+      },
+      "chk_setup": {
+        "label": "missing",
+        "poster_evidence": "",
+        "reason": "The poster mentions YOLO26x and 'across detectors' but fails to identify the other two specific detectors (YOLO11x and RF-DETR-Large) evaluated in the paper's setup."
+      },
+      "chk_primary_result": {
+        "label": "accurate",
+        "poster_evidence": "It maintains AP@50 within ±1.2 pp of per-frame inference across detectors while reducing energy 12.1–17.6%.",
+        "reason": "Located in the 'Evaluation Results' section, this matches the primary result (a) from the reference."
+      },
+      "chk_secondary_result": {
+        "label": "accurate",
+        "poster_evidence": "ALBIREO's threshold sweep ( u = 3 × 10 -4 to 1 × 10 -3 ) forms the upper Pareto frontier among the evaluated systems in the AP@50 ≥ 0 . 50 operating region on both Jetson platforms.",
+        "reason": "Located in the caption of Figure 2, this matches the secondary result (b) from the reference."
+      },
+      "chk_baseline": {
+        "label": "missing",
+        "poster_evidence": "",
+        "reason": "The poster compares against FixedSkip-N, CTD, and Statues in Figure 2, but completely omits the ERD-only baseline required by the reference."
+      },
+      "chk_conclusion": {
+        "label": "accurate",
+        "poster_evidence": "ALBIREO targets the gap with a software wrapper that uses per-object uncertainty to gate off-the-shelf detectors without fixed-camera or codec assumptions.",
+        "reason": "Located in the 'Problem & Motivation' section, this accurately states the take-home conclusion of ALBIREO serving as a drop-in software wrapper."
+      },
+      "chk_limitation": {
+        "label": "accurate",
+        "poster_evidence": "Limitations: drift under erratic motion, domain-dependent empty-scene classifier",
+        "reason": "Located in the 'Key Insights' section, this matches the limitation (b) from the reference."
+      }
+    }
+  },
+  "raw": "```json\n{\n  \"items\": {\n    \"chk_problem\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Edge video detection wastes energy on redundant frames. FixedSkip hurts accuracy during motion.\",\n      \"reason\": \"Located in the 'Problem & Motivation' section, this accurately describes the high energy consumption and accuracy loss of naive frame-skipping on edge devices.\"\n    },\n    \"chk_method\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"ALBIREO wraps detectors with three mechanisms: uncertainty trigger, flicker rescue, and empty-scene screen. All run online, no detector changes needed.\",\n      \"reason\": \"Located in the 'ALBIREO Design' section, this accurately describes the framework and its three core mechanisms.\"\n    },\n    \"chk_data\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"BDD100K MOT validation split\",\n      \"reason\": \"Located in the caption of Figure 2, this correctly identifies the dataset split used for evaluation.\"\n    },\n    \"chk_setup\": {\n      \"label\": \"missing\",\n      \"poster_evidence\": \"\",\n      \"reason\": \"The poster mentions YOLO26x and 'across detectors' but fails to identify the other two specific detectors (YOLO11x and RF-DETR-Large) evaluated in the paper's setup.\"\n    },\n    \"chk_primary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"It maintains AP@50 within ±1.2 pp of per-frame inference across detectors while reducing energy 12.1–17.6%.\",\n      \"reason\": \"Located in the 'Evaluation Results' section, this matches the primary result (a) from the reference.\"\n    },\n    \"chk_secondary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"ALBIREO's threshold sweep ( u = 3 × 10 -4 to 1 × 10 -3 ) forms the upper Pareto frontier among the evaluated systems in the AP@50 ≥ 0 . 50 operating region on both Jetson platforms.\",\n      \"reason\": \"Located in the caption of Figure 2, this matches the secondary result (b) from the reference.\"\n    },\n    \"chk_baseline\": {\n      \"label\": \"missing\",\n      \"poster_evidence\": \"\",\n      \"reason\": \"The poster compares against FixedSkip-N, CTD, and Statues in Figure 2, but completely omits the ERD-only baseline required by the reference.\"\n    },\n    \"chk_conclusion\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"ALBIREO targets the gap with a software wrapper that uses per-object uncertainty to gate off-the-shelf detectors without fixed-camera or codec assumptions.\",\n      \"reason\": \"Located in the 'Problem & Motivation' section, this accurately states the take-home conclusion of ALBIREO serving as a drop-in software wrapper.\"\n    },\n    \"chk_limitation\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Limitations: drift under erratic motion, domain-dependent empty-scene classifier\",\n      \"reason\": \"Located in the 'Key Insights' section, this matches the limitation (b) from the reference.\"\n    }\n  }\n}\n```"
+}

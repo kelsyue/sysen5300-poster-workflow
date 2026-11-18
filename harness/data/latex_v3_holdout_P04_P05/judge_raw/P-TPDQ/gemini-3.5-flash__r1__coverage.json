@@ -1,0 +1,60 @@
+{
+  "model": "gemini-3.5-flash",
+  "repeat": 1,
+  "judge_prompt_sha256": "d68c41ba9fcb81e0b6ca71c927f15884f0e00bb0cd2d9c521934502fa8ab3e38",
+  "error": null,
+  "tokens_in": 6029,
+  "tokens_out": 3925,
+  "tokens_cached": 0,
+  "max_output_tokens": 32768,
+  "parsed": {
+    "items": {
+      "chk_problem": {
+        "label": "accurate",
+        "poster_evidence": "High aggregate accuracy can hide systematic errors in rare subclasses. We study Japanese past-tense inflection in hiragana, which explicitly marks morphophonology such as gemination.",
+        "reason": "The poster accurately states the research problem under the 'Research Problem' section, matching the reference."
+      },
+      "chk_method": {
+        "label": "accurate",
+        "poster_evidence": "We compare character-level Transformer encoder-decoders over hiragana... Table 3: Quantitative error distribution by error type... Removing Type 4-2 yields the largest single-subtype accuracy gain in both systems.",
+        "reason": "The poster describes the orthography-aware diagnosis (using hiragana), the fine-grained error taxonomy (Table 3), and the causal ablation experiments."
+      },
+      "chk_data": {
+        "label": "accurate",
+        "poster_evidence": "We study Japanese past-tense inflection in hiragana... Table 1: Dataset statistics by verb type. ... All verbs 3,958",
+        "reason": "The poster identifies the Japanese verb inflection dataset, the hiragana representation, and the size of 3,958 verbs."
+      },
+      "chk_setup": {
+        "label": "accurate",
+        "poster_evidence": "We compare character-level Transformer encoder-decoders over hiragana. The Pointer-Generator Transformer (PGT)... The Lemma-Split Transformer (LST)... Across five seeds, both models make 104 errors... Each ablation ran once",
+        "reason": "The poster describes the two Transformer architectures (PGT and LST), the five random seeds, and the ablation conditions, matching draft (b) of the reference."
+      },
+      "chk_primary_result": {
+        "label": "accurate",
+        "poster_evidence": "Type 4-2 is 0.9% of data, yet causes 30.2% and 43.1% of PGT and LST errors, respectively. ... Disparity Ratios reach 33.6 and 47.9",
+        "reason": "The poster accurately reports that Type 4-2 (<1% of data) accounts for 30-43% of errors and has a 34-48x disparity ratio."
+      },
+      "chk_secondary_result": {
+        "label": "accurate",
+        "poster_evidence": "Removing Type 4-2 yields the largest single-subtype accuracy gain in both systems. LST rises from 97.73% to 99.75%: a 2.02-point gain and approximately 89% error reduction, versus a 1.22-point gain after removing all irregulars.",
+        "reason": "The poster explicitly states that removing Type 4-2 alone produces larger accuracy gains than removing all irregulars combined."
+      },
+      "chk_baseline": {
+        "label": "accurate",
+        "poster_evidence": "LST rises from 97.73% to 99.75%... PGT rises from 97.98% to 98.98%",
+        "reason": "The poster provides the baseline accuracies of 97.98% (PGT) and 97.73% (LST) on the full dataset, matching draft (b) of the reference."
+      },
+      "chk_conclusion": {
+        "label": "accurate",
+        "poster_evidence": "Not All Irregularity Is Equal... Removing it beats removing all irregular verbs, so evaluation should report subgroup performance and error concentration.",
+        "reason": "The poster's title and main conclusion section match draft (b) of the reference, emphasizing that not all irregularity is equally destabilizing and subgroup-aware evaluation is necessary."
+      },
+      "chk_limitation": {
+        "label": "accurate",
+        "poster_evidence": "Each ablation ran once; multi-seed replication is needed. Evidence covers Japanese only, one paradigm, and two Transformers. Ablations identify Type 4-2’s causal role but cannot separate frequency from structural complexity.",
+        "reason": "The poster lists all three limitations specified in draft (a) of the reference under the 'Limitations' section."
+      }
+    }
+  },
+  "raw": "```json\n{\n  \"items\": {\n    \"chk_problem\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"High aggregate accuracy can hide systematic errors in rare subclasses. We study Japanese past-tense inflection in hiragana, which explicitly marks morphophonology such as gemination.\",\n      \"reason\": \"The poster accurately states the research problem under the 'Research Problem' section, matching the reference.\"\n    },\n    \"chk_method\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"We compare character-level Transformer encoder-decoders over hiragana... Table 3: Quantitative error distribution by error type... Removing Type 4-2 yields the largest single-subtype accuracy gain in both systems.\",\n      \"reason\": \"The poster describes the orthography-aware diagnosis (using hiragana), the fine-grained error taxonomy (Table 3), and the causal ablation experiments.\"\n    },\n    \"chk_data\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"We study Japanese past-tense inflection in hiragana... Table 1: Dataset statistics by verb type. ... All verbs 3,958\",\n      \"reason\": \"The poster identifies the Japanese verb inflection dataset, the hiragana representation, and the size of 3,958 verbs.\"\n    },\n    \"chk_setup\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"We compare character-level Transformer encoder-decoders over hiragana. The Pointer-Generator Transformer (PGT)... The Lemma-Split Transformer (LST)... Across five seeds, both models make 104 errors... Each ablation ran once\",\n      \"reason\": \"The poster describes the two Transformer architectures (PGT and LST), the five random seeds, and the ablation conditions, matching draft (b) of the reference.\"\n    },\n    \"chk_primary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Type 4-2 is 0.9% of data, yet causes 30.2% and 43.1% of PGT and LST errors, respectively. ... Disparity Ratios reach 33.6 and 47.9\",\n      \"reason\": \"The poster accurately reports that Type 4-2 (<1% of data) accounts for 30-43% of errors and has a 34-48x disparity ratio.\"\n    },\n    \"chk_secondary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Removing Type 4-2 yields the largest single-subtype accuracy gain in both systems. LST rises from 97.73% to 99.75%: a 2.02-point gain and approximately 89% error reduction, versus a 1.22-point gain after removing all irregulars.\",\n      \"reason\": \"The poster explicitly states that removing Type 4-2 alone produces larger accuracy gains than removing all irregulars combined.\"\n    },\n    \"chk_baseline\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"LST rises from 97.73% to 99.75%... PGT rises from 97.98% to 98.98%\",\n      \"reason\": \"The poster provides the baseline accuracies of 97.98% (PGT) and 97.73% (LST) on the full dataset, matching draft (b) of the reference.\"\n    },\n    \"chk_conclusion\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Not All Irregularity Is Equal... Removing it beats removing all irregular verbs, so evaluation should report subgroup performance and error concentration.\",\n      \"reason\": \"The poster's title and main conclusion section match draft (b) of the reference, emphasizing that not all irregularity is equally destabilizing and subgroup-aware evaluation is necessary.\"\n    },\n    \"chk_limitation\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Each ablation ran once; multi-seed replication is needed. Evidence covers Japanese only, one paradigm, and two Transformers. Ablations identify Type 4-2’s causal role but cannot separate frequency from structural complexity.\",\n      \"reason\": \"The poster lists all three limitations specified in draft (a) of the reference under the 'Limitations' section.\"\n    }\n  }\n}\n```"
+}

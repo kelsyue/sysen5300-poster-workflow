@@ -1,0 +1,48 @@
+{
+  "model": "openai.gpt-4o",
+  "reference_prompt_sha256": "a63f2a103bd381061f0d6560fdaf2e1bd28c503af09ee38a529d0648f4594fd3",
+  "error": null,
+  "tokens_in": 978,
+  "tokens_out": 422,
+  "parsed": {
+    "items": {
+      "chk_problem": {
+        "same": true,
+        "reason": "Both describe the limitation of the transformer KV cache due to prefix entanglement, preventing exact reuse and deletion."
+      },
+      "chk_method": {
+        "same": true,
+        "reason": "Both describe SMem as using block-local encoding and a cross-attention reader for generation."
+      },
+      "chk_data": {
+        "same": false,
+        "reason": "A only mentions the FineWeb-Edu dataset, while B provides specific details about token counts and scales."
+      },
+      "chk_setup": {
+        "same": false,
+        "reason": "A describes pretraining on FineWeb-Edu at specific parameter scales and training recipes, while B focuses on matched parameters, token budgets, and validation on held-out data."
+      },
+      "chk_primary_result": {
+        "same": true,
+        "reason": "Both describe SMem achieving exact-match accuracy of 0.14–0.28 at distances of 31 and 63 blocks at 4× trained length."
+      },
+      "chk_secondary_result": {
+        "same": false,
+        "reason": "A discusses a perplexity gap compared to transformers, while B highlights reduced TTFT and near-constant cost for cached contexts."
+      },
+      "chk_baseline": {
+        "same": false,
+        "reason": "A lists a parameter-matched pre-LN transformer and additional variants, while B lists learned-position transformer, RoPE transformer, and Block-Attention arm."
+      },
+      "chk_conclusion": {
+        "same": true,
+        "reason": "Both state that SMem achieves comparable perplexity to transformers and enables exact memory operations, though A adds details about long-range retrieval and editing."
+      },
+      "chk_limitation": {
+        "same": false,
+        "reason": "A mentions pretraining choice and perplexity gap, while B mentions pretraining requirement and recipe sensitivity with weakened retrieval signal."
+      }
+    }
+  },
+  "raw": "{\n  \"items\": {\n    \"chk_problem\": {\n      \"same\": true,\n      \"reason\": \"Both describe the limitation of the transformer KV cache due to prefix entanglement, preventing exact reuse and deletion.\"\n    },\n    \"chk_method\": {\n      \"same\": true,\n      \"reason\": \"Both describe SMem as using block-local encoding and a cross-attention reader for generation.\"\n    },\n    \"chk_data\": {\n      \"same\": false,\n      \"reason\": \"A only mentions the FineWeb-Edu dataset, while B provides specific details about token counts and scales.\"\n    },\n    \"chk_setup\": {\n      \"same\": false,\n      \"reason\": \"A describes pretraining on FineWeb-Edu at specific parameter scales and training recipes, while B focuses on matched parameters, token budgets, and validation on held-out data.\"\n    },\n    \"chk_primary_result\": {\n      \"same\": true,\n      \"reason\": \"Both describe SMem achieving exact-match accuracy of 0.14–0.28 at distances of 31 and 63 blocks at 4× trained length.\"\n    },\n    \"chk_secondary_result\": {\n      \"same\": false,\n      \"reason\": \"A discusses a perplexity gap compared to transformers, while B highlights reduced TTFT and near-constant cost for cached contexts.\"\n    },\n    \"chk_baseline\": {\n      \"same\": false,\n      \"reason\": \"A lists a parameter-matched pre-LN transformer and additional variants, while B lists learned-position transformer, RoPE transformer, and Block-Attention arm.\"\n    },\n    \"chk_conclusion\": {\n      \"same\": true,\n      \"reason\": \"Both state that SMem achieves comparable perplexity to transformers and enables exact memory operations, though A adds details about long-range retrieval and editing.\"\n    },\n    \"chk_limitation\": {\n      \"same\": false,\n      \"reason\": \"A mentions pretraining choice and perplexity gap, while B mentions pretraining requirement and recipe sensitivity with weakened retrieval signal.\"\n    }\n  }\n}"
+}

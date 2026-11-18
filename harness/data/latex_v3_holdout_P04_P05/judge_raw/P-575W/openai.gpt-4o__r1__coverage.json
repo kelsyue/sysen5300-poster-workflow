@@ -1,0 +1,60 @@
+{
+  "model": "openai.gpt-4o",
+  "repeat": 1,
+  "judge_prompt_sha256": "d68c41ba9fcb81e0b6ca71c927f15884f0e00bb0cd2d9c521934502fa8ab3e38",
+  "error": null,
+  "tokens_in": 5625,
+  "tokens_out": 1008,
+  "tokens_cached": 3584,
+  "max_output_tokens": 16384,
+  "parsed": {
+    "items": {
+      "chk_problem": {
+        "label": "accurate",
+        "poster_evidence": "High aggregate accuracy hides 30-43% of errors in a rare Type 4-2 verb subtype. Removing it boosts accuracy more than removing all irregulars. Gemination-related errors dominate residual failures, and Type 4-2 contributes 34-48× its proportional share to total errors, revealing that error concentration stems from low-frequency patterns interacting with orthography.",
+        "reason": "The poster accurately describes the research problem, emphasizing systematic errors in rare morphological subclasses and their interaction with orthography."
+      },
+      "chk_method": {
+        "label": "accurate",
+        "poster_evidence": "Two character-level Transformers (PGT, LST) trained over 5 seeds. Ablation tests remove verb subtypes from train and test sets. PGT uses pointer-generator copying with input attention; LST uses lemma-split regime to improve generalization. Both use cross-entropy loss, teacher forcing, Adam, and standard Transformer scheduling. Error taxonomy includes 6 orthography-sensitive failure modes.",
+        "reason": "The poster outlines the orthography-aware diagnosis, subgroup-level analysis, and ablation experiments, matching the paper's described method."
+      },
+      "chk_data": {
+        "label": "accurate",
+        "poster_evidence": "We use hiragana-only Japanese verb data, excluding canonical irregulars. Type 4-2 verbs are 0.9% of data but structurally distinct. The dataset includes Type 4-1 (119 verbs, stem-final /i/ + gemination) and Type 4-3 (1 verb, ��→���), with Type 4-2 being the smallest coherent subclass. All forms are converted to hiragana to eliminate kanji homography confounds.",
+        "reason": "The poster specifies the dataset as Japanese verb inflection data in hiragana format, excluding canonical irregulars, consistent with the paper."
+      },
+      "chk_setup": {
+        "label": "accurate",
+        "poster_evidence": "Two character-level Transformers (PGT, LST) trained over 5 seeds. Ablation tests remove verb subtypes from train and test sets. PGT uses pointer-generator copying with input attention; LST uses lemma-split regime to improve generalization. Both use cross-entropy loss, teacher forcing, Adam, and standard Transformer scheduling.",
+        "reason": "The poster describes the training regime, evaluation setup, and ablation conditions, aligning with the paper's description."
+      },
+      "chk_primary_result": {
+        "label": "accurate",
+        "poster_evidence": "High aggregate accuracy hides 30-43% of errors in a rare Type 4-2 verb subtype. Removing it boosts accuracy more than removing all irregulars. Gemination-related errors dominate residual failures, and Type 4-2 contributes 34-48× its proportional share to total errors.",
+        "reason": "The poster correctly reports the primary result, including the error concentration in Type 4-2 and its disproportionate contribution to total errors."
+      },
+      "chk_secondary_result": {
+        "label": "accurate",
+        "poster_evidence": "Removing only Type 4-2 boosts accuracy most: +2.02% (LST), +1.00% (PGT). Irregularity alone isn’t the problem — structure is.",
+        "reason": "The poster accurately states the secondary finding that removing Type 4-2 improves accuracy more than removing all irregular verbs combined."
+      },
+      "chk_baseline": {
+        "label": "accurate",
+        "poster_evidence": "Both models hit ~97% accuracy. Type 4-2 verbs cause 30-43% of errors despite being 0.9% of data.",
+        "reason": "The poster provides baseline accuracy (~97%) for both models, consistent with the paper's reported values."
+      },
+      "chk_conclusion": {
+        "label": "accurate",
+        "poster_evidence": "A rare Type 4-2 subtype causes 30-43% of errors. Removing it improves accuracy more than removing all irregulars. Fine-grained evaluation is essential.",
+        "reason": "The poster summarizes the conclusion that error concentration stems from structural factors and highlights the need for fine-grained evaluation, matching the paper."
+      },
+      "chk_limitation": {
+        "label": "accurate",
+        "poster_evidence": "Single-run ablations; single language, paradigm, and architectures. No sensitive data. Future work: cross-linguistic, frequency-matched, IPA/romanization tests.",
+        "reason": "The poster lists limitations such as single-run ablations and the focus on one language and paradigm, consistent with the paper."
+      }
+    }
+  },
+  "raw": "```json\n{\n  \"items\": {\n    \"chk_problem\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"High aggregate accuracy hides 30-43% of errors in a rare Type 4-2 verb subtype. Removing it boosts accuracy more than removing all irregulars. Gemination-related errors dominate residual failures, and Type 4-2 contributes 34-48× its proportional share to total errors, revealing that error concentration stems from low-frequency patterns interacting with orthography.\",\n      \"reason\": \"The poster accurately describes the research problem, emphasizing systematic errors in rare morphological subclasses and their interaction with orthography.\"\n    },\n    \"chk_method\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Two character-level Transformers (PGT, LST) trained over 5 seeds. Ablation tests remove verb subtypes from train and test sets. PGT uses pointer-generator copying with input attention; LST uses lemma-split regime to improve generalization. Both use cross-entropy loss, teacher forcing, Adam, and standard Transformer scheduling. Error taxonomy includes 6 orthography-sensitive failure modes.\",\n      \"reason\": \"The poster outlines the orthography-aware diagnosis, subgroup-level analysis, and ablation experiments, matching the paper's described method.\"\n    },\n    \"chk_data\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"We use hiragana-only Japanese verb data, excluding canonical irregulars. Type 4-2 verbs are 0.9% of data but structurally distinct. The dataset includes Type 4-1 (119 verbs, stem-final /i/ + gemination) and Type 4-3 (1 verb, ��→���), with Type 4-2 being the smallest coherent subclass. All forms are converted to hiragana to eliminate kanji homography confounds.\",\n      \"reason\": \"The poster specifies the dataset as Japanese verb inflection data in hiragana format, excluding canonical irregulars, consistent with the paper.\"\n    },\n    \"chk_setup\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Two character-level Transformers (PGT, LST) trained over 5 seeds. Ablation tests remove verb subtypes from train and test sets. PGT uses pointer-generator copying with input attention; LST uses lemma-split regime to improve generalization. Both use cross-entropy loss, teacher forcing, Adam, and standard Transformer scheduling.\",\n      \"reason\": \"The poster describes the training regime, evaluation setup, and ablation conditions, aligning with the paper's description.\"\n    },\n    \"chk_primary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"High aggregate accuracy hides 30-43% of errors in a rare Type 4-2 verb subtype. Removing it boosts accuracy more than removing all irregulars. Gemination-related errors dominate residual failures, and Type 4-2 contributes 34-48× its proportional share to total errors.\",\n      \"reason\": \"The poster correctly reports the primary result, including the error concentration in Type 4-2 and its disproportionate contribution to total errors.\"\n    },\n    \"chk_secondary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Removing only Type 4-2 boosts accuracy most: +2.02% (LST), +1.00% (PGT). Irregularity alone isn’t the problem — structure is.\",\n      \"reason\": \"The poster accurately states the secondary finding that removing Type 4-2 improves accuracy more than removing all irregular verbs combined.\"\n    },\n    \"chk_baseline\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Both models hit ~97% accuracy. Type 4-2 verbs cause 30-43% of errors despite being 0.9% of data.\",\n      \"reason\": \"The poster provides baseline accuracy (~97%) for both models, consistent with the paper's reported values.\"\n    },\n    \"chk_conclusion\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"A rare Type 4-2 subtype causes 30-43% of errors. Removing it improves accuracy more than removing all irregulars. Fine-grained evaluation is essential.\",\n      \"reason\": \"The poster summarizes the conclusion that error concentration stems from structural factors and highlights the need for fine-grained evaluation, matching the paper.\"\n    },\n    \"chk_limitation\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Single-run ablations; single language, paradigm, and architectures. No sensitive data. Future work: cross-linguistic, frequency-matched, IPA/romanization tests.\",\n      \"reason\": \"The poster lists limitations such as single-run ablations and the focus on one language and paradigm, consistent with the paper.\"\n    }\n  }\n}\n```"
+}

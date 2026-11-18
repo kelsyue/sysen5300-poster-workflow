@@ -1,0 +1,104 @@
+{
+  "model": "openai.gpt-4o",
+  "repeat": 1,
+  "judge_prompt_sha256": "d68c41ba9fcb81e0b6ca71c927f15884f0e00bb0cd2d9c521934502fa8ab3e38",
+  "error": null,
+  "tokens_in": 24967,
+  "tokens_out": 2101,
+  "tokens_cached": 0,
+  "max_output_tokens": 16384,
+  "claims_batch_size": 40,
+  "parsed": {
+    "claims": [
+      {
+        "id": 1,
+        "text": "ALBIREO is a detector-agnostic framework that skips detector invocation based on scene content and object state.",
+        "poster_quote": "ALBIREO is a detector-agnostic framework that skips detector invocation based on scene content and object state.",
+        "label": "supported",
+        "paper_evidence": "We present ALBIREO, a detector-agnostic, codec-free, adaptive inference framework that wraps off-the-shelf object detectors and decides when detector invocation can be safely skipped based on scene content and per-object temporal state.",
+        "reason": "Section I explicitly describes ALBIREO as detector-agnostic and skipping based on scene content and object state."
+      },
+      {
+        "id": 2,
+        "text": "ALBIREO improves AP@50 by +0.8 pp while reducing energy by 17.6% on Thor.",
+        "poster_quote": "ALBIREO improves AP@50 by +0.8 pp while reducing energy by 17.6% on Thor.",
+        "label": "supported",
+        "paper_evidence": "On the primary YOLO26x configuration, ALBIREO improves AP@50 by +0.8 pp while reducing energy by 17.6% on Thor.",
+        "reason": "Section IV-B and Table III confirm the +0.8 pp AP@50 improvement and 17.6% energy reduction on Thor for YOLO26x."
+      },
+      {
+        "id": 3,
+        "text": "Edge video object detection is costly due to per-frame detector invocation, drawing 70 W on Jetson AGX Thor.",
+        "poster_quote": "Edge video object detection is costly due to per-frame detector invocation, drawing 70 W on Jetson AGX Thor.",
+        "label": "supported",
+        "paper_evidence": "Running YOLO26x on every frame draws 70 W of total board power on Jetson AGX Thor (Blackwell, 130 W TDP), of which 34 W (49%) is the GPU power.",
+        "reason": "Section I and Section IV-G explicitly state that per-frame detector invocation draws 70 W on Jetson AGX Thor."
+      },
+      {
+        "id": 4,
+        "text": "ALBIREO’s threshold sweep (u = 3 × 10^-4 to 1 × 10^-3) forms the upper Pareto frontier among the evaluated systems in the AP@50 ≥ 0.50 operating region on both Jetson platforms.",
+        "poster_quote": "ALBIREO’s threshold sweep ( u = 3 × 10 -4 to 1 × 10 -3 ) forms the upper Pareto frontier among the evaluated systems in the AP@50 ≥ 0 . 50 operating region on both Jetson platforms.",
+        "label": "supported",
+        "paper_evidence": "Sweeping the primary uncertainty threshold on YOLO26x traces an AP@50–EDP Pareto frontier that dominates the evaluated frame-skipping baselines (FixedSkip-N, CTD, Statues) within the target operating region (AP@50 ≥ 0.50).",
+        "reason": "Section IV-B and Figure 2 confirm that ALBIREO's threshold sweep forms the upper Pareto frontier in the AP@50 ≥ 0.50 region on both platforms."
+      },
+      {
+        "id": 5,
+        "text": "ALBIREO reduces energy by 12.1-17.6% while keeping AP@50 within 1.2 pp of per-frame inference.",
+        "poster_quote": "ALBIREO reduces energy by 12.1-17.6% while keeping AP@50 within 1.2 pp of per-frame inference.",
+        "label": "supported",
+        "paper_evidence": "Across all evaluated detectors and platforms, ALBIREO keeps AP@50 within 1.2 pp of Vanilla per-frame inference while reducing energy by 12.1–17.6%.",
+        "reason": "Section I and Table IV confirm the energy reduction range and AP@50 consistency across detectors and platforms."
+      },
+      {
+        "id": 6,
+        "text": "Per-clip power traces (Total, GPU, CPU, IO/MEM) are shown for two representative BDD100K clips on Thor with YOLO26x.",
+        "poster_quote": "Fig. 7. Per-clip power traces (Total, GPU, CPU, IO/MEM) for two representative BDD100K clips on Thor with YOLO26x.",
+        "label": "supported",
+        "paper_evidence": "Figure 7 highlights the two operating modes on representative clips. On a dense urban clip (no empty frames; 96% AI rate), ALBIREO and Vanilla draw similar power because the detector runs on most frames; rescue primarily preserves AP@50 rather than reducing energy. On a sparse highway clip (69% E, 4% AI), ALBIREO’s GPU power drops sharply during long ERD-only stretches, while Vanilla continues running full detector inference.",
+        "reason": "Figure 7 explicitly shows per-clip power traces for two representative BDD100K clips on Thor with YOLO26x."
+      },
+      {
+        "id": 7,
+        "text": "In dense urban traffic (0% E, 96% AI), detector invocations dominate, and rescue preserves AP@50.",
+        "poster_quote": "Left: dense urban traffic ( 0% E, 96% AI), where detector invocations dominate, and rescue preserves AP@50.",
+        "label": "supported",
+        "paper_evidence": "On a dense urban clip (no empty frames; 96% AI rate), ALBIREO and Vanilla draw similar power because the detector runs on most frames; rescue primarily preserves AP@50 rather than reducing energy.",
+        "reason": "Figure 7 and Section IV-H describe dense urban traffic with 0% E and 96% AI, where rescue preserves AP@50."
+      },
+      {
+        "id": 8,
+        "text": "In sparse highway (69% E, 4% AI), long ERD-only stretches sharply reduce GPU power.",
+        "poster_quote": "Right: sparse highway ( 69% E, 4% AI), where long ERD-only stretches sharply reduce GPU power.",
+        "label": "supported",
+        "paper_evidence": "On a sparse highway clip (69% E, 4% AI), ALBIREO’s GPU power drops sharply during long ERD-only stretches, while Vanilla continues running full detector inference.",
+        "reason": "Figure 7 and Section IV-H describe sparse highway scenes with 69% E and 4% AI, where GPU power drops during ERD-only stretches."
+      },
+      {
+        "id": 9,
+        "text": "Frame-state transitions across consecutive frames are shown, with edges representing events that move execution between ERD skipping, prediction-only, normal inference, and rescue-augmented inference states.",
+        "poster_quote": "Fig. 1. Frame-state transitions across consecutive frames. Edges show the events that move execution between ERD skipping, prediction-only, normal inference, and rescue-augmented inference states.",
+        "label": "supported",
+        "paper_evidence": "Figure 1 illustrates how execution moves between these states across consecutive frames as scenes become empty or non-empty, uncertainty triggers fire, detections match, or rescue is needed.",
+        "reason": "Figure 1 explicitly shows frame-state transitions across consecutive frames, with edges representing events."
+      },
+      {
+        "id": 10,
+        "text": "AI follows the same next-frame routing as I; self-loops are omitted.",
+        "poster_quote": "AI follows the same nextframe routing as I; self-loops are omitted.",
+        "label": "supported",
+        "paper_evidence": "AI follows the same next-frame routing as I; self-loops are omitted.",
+        "reason": "Section III-D and Figure 1 confirm that AI follows the same next-frame routing as I, with self-loops omitted."
+      },
+      {
+        "id": 11,
+        "text": "Default ALBIREO relative to vanilla across detectors and platforms shows values as changes from per-frame inference, averaged over 200 BDD100K MOT validation clips.",
+        "poster_quote": "DEFAULT ALBIREO RELATIVE TO VANILLA ACROSS DETECTORS AND PLATFORMS. VALUES ARE CHANGES FROM PER-FRAME INFERENCE, AVERAGED OVER 200 BDD100K MOT VALIDATION CLIPS.",
+        "label": "supported",
+        "paper_evidence": "Table IV evaluates ALBIREO’s detector-agnostic design across three off-the-shelf detectors and two Jetson platforms. Across the evaluated detectors, AP@50 remains within ±1.2 pp of Vanilla while energy savings range from 12.1% on RF-DETR-Large/Orin to 17.6% on YOLO26x/Thor.",
+        "reason": "Table IV explicitly shows default ALBIREO relative to Vanilla across detectors and platforms, averaged over 200 BDD100K MOT validation clips."
+      }
+    ]
+  },
+  "raw": "[\"{\\n  \\\"claims\\\": [\\n    {\\n      \\\"id\\\": 1,\\n      \\\"text\\\": \\\"ALBIREO is a detector-agnostic framework that skips detector invocation based on scene content and object state.\\\",\\n      \\\"poster_quote\\\": \\\"ALBIREO is a detector-agnostic framework that skips detector invocation based on scene content and object state.\\\"\\n    },\\n    {\\n      \\\"id\\\": 2,\\n      \\\"text\\\": \\\"ALBIREO improves AP@50 by +0.8 pp while reducing energy by 17.6% on Thor.\\\",\\n      \\\"poster_quote\\\": \\\"ALBIREO improves AP@50 by +0.8 pp while reducing energy by 17.6% on Thor.\\\"\\n    },\\n    {\\n      \\\"id\\\": 3,\\n      \\\"text\\\": \\\"Edge video object detection is costly due to per-frame detector invocation, drawing 70 W on Jetson AGX Thor.\\\",\\n      \\\"poster_quote\\\": \\\"Edge video object detection is costly due to per-frame detector invocation, drawing 70 W on Jetson AGX Thor.\\\"\\n    },\\n    {\\n      \\\"id\\\": 4,\\n      \\\"text\\\": \\\"ALBIREO’s threshold sweep (u = 3 × 10^-4 to 1 × 10^-3) forms the upper Pareto frontier among the evaluated systems in the AP@50 ≥ 0.50 operating region on both Jetson platforms.\\\",\\n      \\\"poster_quote\\\": \\\"ALBIREO’s threshold sweep ( u = 3 × 10 -4 to 1 × 10 -3 ) forms the upper Pareto frontier among the evaluated systems in the AP@50 ≥ 0 . 50 operating region on both Jetson platforms.\\\"\\n    },\\n    {\\n      \\\"id\\\": 5,\\n      \\\"text\\\": \\\"ALBIREO reduces energy by 12.1-17.6% while keeping AP@50 within 1.2 pp of per-frame inference.\\\",\\n      \\\"poster_quote\\\": \\\"ALBIREO reduces energy by 12.1-17.6% while keeping AP@50 within 1.2 pp of per-frame inference.\\\"\\n    },\\n    {\\n      \\\"id\\\": 6,\\n      \\\"text\\\": \\\"Per-clip power traces (Total, GPU, CPU, IO/MEM) are shown for two representative BDD100K clips on Thor with YOLO26x.\\\",\\n      \\\"poster_quote\\\": \\\"Fig. 7. Per-clip power traces (Total, GPU, CPU, IO/MEM) for two representative BDD100K clips on Thor with YOLO26x.\\\"\\n    },\\n    {\\n      \\\"id\\\": 7,\\n      \\\"text\\\": \\\"In dense urban traffic (0% E, 96% AI), detector invocations dominate, and rescue preserves AP@50.\\\",\\n      \\\"poster_quote\\\": \\\"Left: dense urban traffic ( 0% E, 96% AI), where detector invocations dominate, and rescue preserves AP@50.\\\"\\n    },\\n    {\\n      \\\"id\\\": 8,\\n      \\\"text\\\": \\\"In sparse highway (69% E, 4% AI), long ERD-only stretches sharply reduce GPU power.\\\",\\n      \\\"poster_quote\\\": \\\"Right: sparse highway ( 69% E, 4% AI), where long ERD-only stretches sharply reduce GPU power.\\\"\\n    },\\n    {\\n      \\\"id\\\": 9,\\n      \\\"text\\\": \\\"Frame-state transitions across consecutive frames are shown, with edges representing events that move execution between ERD skipping, prediction-only, normal inference, and rescue-augmented inference states.\\\",\\n      \\\"poster_quote\\\": \\\"Fig. 1. Frame-state transitions across consecutive frames. Edges show the events that move execution between ERD skipping, prediction-only, normal inference, and rescue-augmented inference states.\\\"\\n    },\\n    {\\n      \\\"id\\\": 10,\\n      \\\"text\\\": \\\"AI follows the same next-frame routing as I; self-loops are omitted.\\\",\\n      \\\"poster_quote\\\": \\\"AI follows the same nextframe routing as I; self-loops are omitted.\\\"\\n    },\\n    {\\n      \\\"id\\\": 11,\\n      \\\"text\\\": \\\"Default ALBIREO relative to vanilla across detectors and platforms shows values as changes from per-frame inference, averaged over 200 BDD100K MOT validation clips.\\\",\\n      \\\"poster_quote\\\": \\\"DEFAULT ALBIREO RELATIVE TO VANILLA ACROSS DETECTORS AND PLATFORMS. VALUES ARE CHANGES FROM PER-FRAME INFERENCE, AVERAGED OVER 200 BDD100K MOT VALIDATION CLIPS.\\\"\\n    }\\n  ]\\n}\", \"```json\\n{\\n  \\\"verdicts\\\": [\\n    {\\n      \\\"id\\\": 1,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"We present ALBIREO, a detector-agnostic, codec-free, adaptive inference framework that wraps off-the-shelf object detectors and decides when detector invocation can be safely skipped based on scene content and per-object temporal state.\\\",\\n      \\\"reason\\\": \\\"Section I explicitly describes ALBIREO as detector-agnostic and skipping based on scene content and object state.\\\"\\n    },\\n    {\\n      \\\"id\\\": 2,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"On the primary YOLO26x configuration, ALBIREO improves AP@50 by +0.8 pp while reducing energy by 17.6% on Thor.\\\",\\n      \\\"reason\\\": \\\"Section IV-B and Table III confirm the +0.8 pp AP@50 improvement and 17.6% energy reduction on Thor for YOLO26x.\\\"\\n    },\\n    {\\n      \\\"id\\\": 3,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Running YOLO26x on every frame draws 70 W of total board power on Jetson AGX Thor (Blackwell, 130 W TDP), of which 34 W (49%) is the GPU power.\\\",\\n      \\\"reason\\\": \\\"Section I and Section IV-G explicitly state that per-frame detector invocation draws 70 W on Jetson AGX Thor.\\\"\\n    },\\n    {\\n      \\\"id\\\": 4,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Sweeping the primary uncertainty threshold on YOLO26x traces an AP@50–EDP Pareto frontier that dominates the evaluated frame-skipping baselines (FixedSkip-N, CTD, Statues) within the target operating region (AP@50 ≥ 0.50).\\\",\\n      \\\"reason\\\": \\\"Section IV-B and Figure 2 confirm that ALBIREO's threshold sweep forms the upper Pareto frontier in the AP@50 ≥ 0.50 region on both platforms.\\\"\\n    },\\n    {\\n      \\\"id\\\": 5,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Across all evaluated detectors and platforms, ALBIREO keeps AP@50 within 1.2 pp of Vanilla per-frame inference while reducing energy by 12.1–17.6%.\\\",\\n      \\\"reason\\\": \\\"Section I and Table IV confirm the energy reduction range and AP@50 consistency across detectors and platforms.\\\"\\n    },\\n    {\\n      \\\"id\\\": 6,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Figure 7 highlights the two operating modes on representative clips. On a dense urban clip (no empty frames; 96% AI rate), ALBIREO and Vanilla draw similar power because the detector runs on most frames; rescue primarily preserves AP@50 rather than reducing energy. On a sparse highway clip (69% E, 4% AI), ALBIREO’s GPU power drops sharply during long ERD-only stretches, while Vanilla continues running full detector inference.\\\",\\n      \\\"reason\\\": \\\"Figure 7 explicitly shows per-clip power traces for two representative BDD100K clips on Thor with YOLO26x.\\\"\\n    },\\n    {\\n      \\\"id\\\": 7,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"On a dense urban clip (no empty frames; 96% AI rate), ALBIREO and Vanilla draw similar power because the detector runs on most frames; rescue primarily preserves AP@50 rather than reducing energy.\\\",\\n      \\\"reason\\\": \\\"Figure 7 and Section IV-H describe dense urban traffic with 0% E and 96% AI, where rescue preserves AP@50.\\\"\\n    },\\n    {\\n      \\\"id\\\": 8,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"On a sparse highway clip (69% E, 4% AI), ALBIREO’s GPU power drops sharply during long ERD-only stretches, while Vanilla continues running full detector inference.\\\",\\n      \\\"reason\\\": \\\"Figure 7 and Section IV-H describe sparse highway scenes with 69% E and 4% AI, where GPU power drops during ERD-only stretches.\\\"\\n    },\\n    {\\n      \\\"id\\\": 9,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Figure 1 illustrates how execution moves between these states across consecutive frames as scenes become empty or non-empty, uncertainty triggers fire, detections match, or rescue is needed.\\\",\\n      \\\"reason\\\": \\\"Figure 1 explicitly shows frame-state transitions across consecutive frames, with edges representing events.\\\"\\n    },\\n    {\\n      \\\"id\\\": 10,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"AI follows the same next-frame routing as I; self-loops are omitted.\\\",\\n      \\\"reason\\\": \\\"Section III-D and Figure 1 confirm that AI follows the same next-frame routing as I, with self-loops omitted.\\\"\\n    },\\n    {\\n      \\\"id\\\": 11,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Table IV evaluates ALBIREO’s detector-agnostic design across three off-the-shelf detectors and two Jetson platforms. Across the evaluated detectors, AP@50 remains within ±1.2 pp of Vanilla while energy savings range from 12.1% on RF-DETR-Large/Orin to 17.6% on YOLO26x/Thor.\\\",\\n      \\\"reason\\\": \\\"Table IV explicitly shows default ALBIREO relative to Vanilla across detectors and platforms, averaged over 200 BDD100K MOT validation clips.\\\"\\n    }\\n  ]\\n}\\n```\"]"
+}

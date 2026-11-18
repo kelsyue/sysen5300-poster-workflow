@@ -1,0 +1,152 @@
+{
+  "model": "openai.gpt-4o",
+  "repeat": 1,
+  "judge_prompt_sha256": "7629fca9f8c558ca4ae975249c62febbce60a383f74c20f33f01a38d20d7e4fe",
+  "error": null,
+  "tokens_in": 10736,
+  "tokens_out": 2303,
+  "tokens_cached": 0,
+  "max_output_tokens": 16384,
+  "claims_batch_size": 40,
+  "parsed": {
+    "claims": [
+      {
+        "id": 1,
+        "text": "This paper investigates channel-aware selection among OR-folded Bloom filter representations.",
+        "poster_quote": "This paper investigates channel-aware selection among OR-folded Bloom filter representations.",
+        "label": "supported",
+        "paper_evidence": "This paper investigates channel-aware selection among OR-folded representations.",
+        "reason": "Abstract, first sentence. The claim matches the stated research focus."
+      },
+      {
+        "id": 2,
+        "text": "The sender retains a canonical filter and selects the FPR-qualified representation with the largest retained length supported by the communication resources available at each reporting opportunity.",
+        "poster_quote": "The sender retains a canonical filter and selects the FPR-qualified representation with the largest retained length supported by the communication resources available at each reporting opportunity.",
+        "label": "supported",
+        "paper_evidence": "The sender retains an unchanged canonical filter, constructs a catalog satisfying a maximum FPR, and selects the FPR-qualified representation with the largest retained length supported by the communication resources available at each reporting opportunity.",
+        "reason": "Abstract, second paragraph. The claim aligns with the described sender behavior."
+      },
+      {
+        "id": 3,
+        "text": "Bloom filters provide efficient insertion and queries with no false negatives and a controllable false-positive rate.",
+        "poster_quote": "Bloom filters provide efficient insertion and queries with no false negatives and a controllable false-positive rate.",
+        "label": "supported",
+        "paper_evidence": "Bloom filters (BFs) are compact probabilistic structures for approximate set membership, providing efficient insertion and queries with no false negatives and a controllable false-positive rate.",
+        "reason": "Section I, Introduction. The claim directly matches the description of Bloom filters."
+      },
+      {
+        "id": 4,
+        "text": "The framework uses OR-based Bloom filter folding, permitting fine-grained retained lengths.",
+        "poster_quote": "The framework uses OR-based Bloom filter folding, permitting fine-grained retained lengths.",
+        "label": "supported",
+        "paper_evidence": "This work uses the same OR-folding principle but permits fine-grained retained lengths that need not be integer divisors of the canonical filter length.",
+        "reason": "Section III.B, OR-Based Bloom Filter Folding. The claim is consistent with the described folding method."
+      },
+      {
+        "id": 5,
+        "text": "The sender retains a complete canonical Bloom filter and generates a catalog of representations.",
+        "poster_quote": "The sender retains a complete canonical Bloom filter and generates a catalog of representations.",
+        "label": "supported",
+        "paper_evidence": "Each sender retains a complete canonical Bloom filter and generates or caches a catalog of representations at the retained-length ratios supported by the system.",
+        "reason": "Section IV.E, Channel-Adaptive Transmission. The claim matches the sender's described behavior."
+      },
+      {
+        "id": 6,
+        "text": "The experiments hold the inserted set, canonical filter length, hash count, and candidate catalog constant.",
+        "poster_quote": "The experiments hold the inserted set, canonical filter length, hash count, and candidate catalog constant.",
+        "label": "supported",
+        "paper_evidence": "The experiments hold the inserted set, canonical filter length, hash count, and candidate catalog constant.",
+        "reason": "Section IV, Experimental Setup. The claim matches the experimental design."
+      },
+      {
+        "id": 7,
+        "text": "Adaptive folding improved communication efficiency and receiver freshness under various channel models.",
+        "poster_quote": "Adaptive folding improved communication efficiency and receiver freshness under various channel models.",
+        "label": "supported",
+        "paper_evidence": "Channel-aware folding improves communication efficiency and receiver freshness relative to complete-filter and lossless-compression baselines when communication opportunities vary substantially.",
+        "reason": "Abstract, last paragraph. The claim aligns with the stated results."
+      },
+      {
+        "id": 8,
+        "text": "Improved efficiency under Five-State and Rayleigh models.",
+        "poster_quote": "Improved efficiency under Five-State and Rayleigh models.",
+        "label": "supported",
+        "paper_evidence": "Under the Five-State Markov Capacity model, adaptive folding achieves 191.6 successful deliveries per MB... Under Rayleigh block fading, adaptive folding achieves 174.9 deliveries per MB...",
+        "reason": "Section V.B, Communication Efficiency. The claim is supported by the results under these models."
+      },
+      {
+        "id": 9,
+        "text": "Remained competitive under Gilbert-Elliott model.",
+        "poster_quote": "Remained competitive under Gilbert-Elliott model.",
+        "label": "supported",
+        "paper_evidence": "Under Gilbert–Elliott packet loss, adaptive folding and the strongest compression baseline achieve similar efficiencies of 140.5 and 141.8 deliveries per MB, respectively.",
+        "reason": "Section V.B, Communication Efficiency. The claim matches the described competitive performance."
+      },
+      {
+        "id": 10,
+        "text": "OR-based folding of a 16-bit canonical Bloom filter at r = 0.50.",
+        "poster_quote": "OR-based folding of a 16-bit canonical Bloom filter at r = 0 . 50 and r = 0 . 75 .",
+        "label": "unsupported",
+        "paper_evidence": "",
+        "reason": "The paper does not describe OR-based folding of a 16-bit canonical Bloom filter at r = 0.50. The example in Figure 2 uses a 16-bit filter but does not specify this ratio."
+      },
+      {
+        "id": 11,
+        "text": "OR-based folding of a 16-bit canonical Bloom filter at r = 0.75.",
+        "poster_quote": "OR-based folding of a 16-bit canonical Bloom filter at r = 0 . 50 and r = 0 . 75 .",
+        "label": "unsupported",
+        "paper_evidence": "",
+        "reason": "The paper does not describe OR-based folding of a 16-bit canonical Bloom filter at r = 0.75. The example in Figure 2 uses a 16-bit filter but does not specify this ratio."
+      },
+      {
+        "id": 12,
+        "text": "Canonical query positions for one element are mapped into each folded representation.",
+        "poster_quote": "The example shows how the canonical query positions for one element are mapped into each folded representation.",
+        "label": "supported",
+        "paper_evidence": "Figure 2 illustrates the operation for two retained lengths. The example shows how the canonical query positions for one element are mapped into each folded representation.",
+        "reason": "Section III.C, Membership Queries After Folding. The claim matches the example provided."
+      },
+      {
+        "id": 13,
+        "text": "Empirical false-positive rate versus Bloom-filter size reduction, 100(1 - r), where r = m’ / m.",
+        "poster_quote": "Empirical false-positive rate versus Bloom-filter size reduction, 100(1 -r ) , where r = m ’ /m .",
+        "label": "supported",
+        "paper_evidence": "Figure 3 shows the empirical false positive rate as the retained-length ratio r = m′ /m decreases.",
+        "reason": "Section V.A, Bloom Filter Folding Tradeoff. The claim matches the description of Figure 3."
+      },
+      {
+        "id": 14,
+        "text": "Each curve represents one canonical-filter realization for its dataset using the fixed random seed of 42.",
+        "poster_quote": "Each curve represents one canonical-filter realization for its dataset using the fixed random seed of 42; no averaging across filter-construction seeds was performed.",
+        "label": "supported",
+        "paper_evidence": "Figure 3 characterizes the exact canonical-filter realizations used in the subsequent channel experiments; because each dataset uses one fixed-seed realization, no across-seed error bars are shown.",
+        "reason": "Section V.A, Bloom Filter Folding Tradeoff. The claim matches the description of the experimental setup."
+      },
+      {
+        "id": 15,
+        "text": "No averaging across filter-construction seeds was performed.",
+        "poster_quote": "Each curve represents one canonical-filter realization for its dataset using the fixed random seed of 42; no averaging across filter-construction seeds was performed.",
+        "label": "supported",
+        "paper_evidence": "Figure 3 characterizes the exact canonical-filter realizations used in the subsequent channel experiments; because each dataset uses one fixed-seed realization, no across-seed error bars are shown.",
+        "reason": "Section V.A, Bloom Filter Folding Tradeoff. The claim matches the description of the experimental setup."
+      },
+      {
+        "id": 16,
+        "text": "This paper evaluated a channel-aware framework that selects the largest FPR-qualified OR-folded view.",
+        "poster_quote": "This paper evaluated a channel-aware framework that selects the largest FPR-qualified OR-folded view.",
+        "label": "supported",
+        "paper_evidence": "This paper evaluated a channel-aware framework that selects the largest FPR-qualified OR-folded view supported at each reporting opportunity while retaining the canonical Bloom filter.",
+        "reason": "Section VII, Conclusion. The claim matches the stated evaluation focus."
+      },
+      {
+        "id": 17,
+        "text": "The results show that channel-aware selection is useful when communication opportunities vary.",
+        "poster_quote": "The results show that channel-aware selection is useful when communication opportunities vary.",
+        "label": "supported",
+        "paper_evidence": "These results show that FPR-qualified folded views provide useful transmission operating points when a recent lower-fidelity update is preferable to delaying a larger representation.",
+        "reason": "Abstract, last paragraph. The claim aligns with the described utility of channel-aware selection."
+      }
+    ]
+  },
+  "raw": "[\"{\\n  \\\"claims\\\": [\\n    {\\n      \\\"id\\\": 1,\\n      \\\"text\\\": \\\"This paper investigates channel-aware selection among OR-folded Bloom filter representations.\\\",\\n      \\\"poster_quote\\\": \\\"This paper investigates channel-aware selection among OR-folded Bloom filter representations.\\\"\\n    },\\n    {\\n      \\\"id\\\": 2,\\n      \\\"text\\\": \\\"The sender retains a canonical filter and selects the FPR-qualified representation with the largest retained length supported by the communication resources available at each reporting opportunity.\\\",\\n      \\\"poster_quote\\\": \\\"The sender retains a canonical filter and selects the FPR-qualified representation with the largest retained length supported by the communication resources available at each reporting opportunity.\\\"\\n    },\\n    {\\n      \\\"id\\\": 3,\\n      \\\"text\\\": \\\"Bloom filters provide efficient insertion and queries with no false negatives and a controllable false-positive rate.\\\",\\n      \\\"poster_quote\\\": \\\"Bloom filters provide efficient insertion and queries with no false negatives and a controllable false-positive rate.\\\"\\n    },\\n    {\\n      \\\"id\\\": 4,\\n      \\\"text\\\": \\\"The framework uses OR-based Bloom filter folding, permitting fine-grained retained lengths.\\\",\\n      \\\"poster_quote\\\": \\\"The framework uses OR-based Bloom filter folding, permitting fine-grained retained lengths.\\\"\\n    },\\n    {\\n      \\\"id\\\": 5,\\n      \\\"text\\\": \\\"The sender retains a complete canonical Bloom filter and generates a catalog of representations.\\\",\\n      \\\"poster_quote\\\": \\\"The sender retains a complete canonical Bloom filter and generates a catalog of representations.\\\"\\n    },\\n    {\\n      \\\"id\\\": 6,\\n      \\\"text\\\": \\\"The experiments hold the inserted set, canonical filter length, hash count, and candidate catalog constant.\\\",\\n      \\\"poster_quote\\\": \\\"The experiments hold the inserted set, canonical filter length, hash count, and candidate catalog constant.\\\"\\n    },\\n    {\\n      \\\"id\\\": 7,\\n      \\\"text\\\": \\\"Adaptive folding improved communication efficiency and receiver freshness under various channel models.\\\",\\n      \\\"poster_quote\\\": \\\"Adaptive folding improved communication efficiency and receiver freshness under various channel models.\\\"\\n    },\\n    {\\n      \\\"id\\\": 8,\\n      \\\"text\\\": \\\"Improved efficiency under Five-State and Rayleigh models.\\\",\\n      \\\"poster_quote\\\": \\\"Improved efficiency under Five-State and Rayleigh models.\\\"\\n    },\\n    {\\n      \\\"id\\\": 9,\\n      \\\"text\\\": \\\"Remained competitive under Gilbert-Elliott model.\\\",\\n      \\\"poster_quote\\\": \\\"Remained competitive under Gilbert-Elliott model.\\\"\\n    },\\n    {\\n      \\\"id\\\": 10,\\n      \\\"text\\\": \\\"OR-based folding of a 16-bit canonical Bloom filter at r = 0.50.\\\",\\n      \\\"poster_quote\\\": \\\"OR-based folding of a 16-bit canonical Bloom filter at r = 0 . 50 and r = 0 . 75 .\\\"\\n    },\\n    {\\n      \\\"id\\\": 11,\\n      \\\"text\\\": \\\"OR-based folding of a 16-bit canonical Bloom filter at r = 0.75.\\\",\\n      \\\"poster_quote\\\": \\\"OR-based folding of a 16-bit canonical Bloom filter at r = 0 . 50 and r = 0 . 75 .\\\"\\n    },\\n    {\\n      \\\"id\\\": 12,\\n      \\\"text\\\": \\\"Canonical query positions for one element are mapped into each folded representation.\\\",\\n      \\\"poster_quote\\\": \\\"The example shows how the canonical query positions for one element are mapped into each folded representation.\\\"\\n    },\\n    {\\n      \\\"id\\\": 13,\\n      \\\"text\\\": \\\"Empirical false-positive rate versus Bloom-filter size reduction, 100(1 - r), where r = m’ / m.\\\",\\n      \\\"poster_quote\\\": \\\"Empirical false-positive rate versus Bloom-filter size reduction, 100(1 -r ) , where r = m ’ /m .\\\"\\n    },\\n    {\\n      \\\"id\\\": 14,\\n      \\\"text\\\": \\\"Each curve represents one canonical-filter realization for its dataset using the fixed random seed of 42.\\\",\\n      \\\"poster_quote\\\": \\\"Each curve represents one canonical-filter realization for its dataset using the fixed random seed of 42; no averaging across filter-construction seeds was performed.\\\"\\n    },\\n    {\\n      \\\"id\\\": 15,\\n      \\\"text\\\": \\\"No averaging across filter-construction seeds was performed.\\\",\\n      \\\"poster_quote\\\": \\\"Each curve represents one canonical-filter realization for its dataset using the fixed random seed of 42; no averaging across filter-construction seeds was performed.\\\"\\n    },\\n    {\\n      \\\"id\\\": 16,\\n      \\\"text\\\": \\\"This paper evaluated a channel-aware framework that selects the largest FPR-qualified OR-folded view.\\\",\\n      \\\"poster_quote\\\": \\\"This paper evaluated a channel-aware framework that selects the largest FPR-qualified OR-folded view.\\\"\\n    },\\n    {\\n      \\\"id\\\": 17,\\n      \\\"text\\\": \\\"The results show that channel-aware selection is useful when communication opportunities vary.\\\",\\n      \\\"poster_quote\\\": \\\"The results show that channel-aware selection is useful when communication opportunities vary.\\\"\\n    }\\n  ]\\n}\", \"{\\n  \\\"verdicts\\\": [\\n    {\\n      \\\"id\\\": 1,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"This paper investigates channel-aware selection among OR-folded representations.\\\",\\n      \\\"reason\\\": \\\"Abstract, first sentence. The claim matches the stated research focus.\\\"\\n    },\\n    {\\n      \\\"id\\\": 2,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The sender retains an unchanged canonical filter, constructs a catalog satisfying a maximum FPR, and selects the FPR-qualified representation with the largest retained length supported by the communication resources available at each reporting opportunity.\\\",\\n      \\\"reason\\\": \\\"Abstract, second paragraph. The claim aligns with the described sender behavior.\\\"\\n    },\\n    {\\n      \\\"id\\\": 3,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Bloom filters (BFs) are compact probabilistic structures for approximate set membership, providing efficient insertion and queries with no false negatives and a controllable false-positive rate.\\\",\\n      \\\"reason\\\": \\\"Section I, Introduction. The claim directly matches the description of Bloom filters.\\\"\\n    },\\n    {\\n      \\\"id\\\": 4,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"This work uses the same OR-folding principle but permits fine-grained retained lengths that need not be integer divisors of the canonical filter length.\\\",\\n      \\\"reason\\\": \\\"Section III.B, OR-Based Bloom Filter Folding. The claim is consistent with the described folding method.\\\"\\n    },\\n    {\\n      \\\"id\\\": 5,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Each sender retains a complete canonical Bloom filter and generates or caches a catalog of representations at the retained-length ratios supported by the system.\\\",\\n      \\\"reason\\\": \\\"Section IV.E, Channel-Adaptive Transmission. The claim matches the sender's described behavior.\\\"\\n    },\\n    {\\n      \\\"id\\\": 6,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The experiments hold the inserted set, canonical filter length, hash count, and candidate catalog constant.\\\",\\n      \\\"reason\\\": \\\"Section IV, Experimental Setup. The claim matches the experimental design.\\\"\\n    },\\n    {\\n      \\\"id\\\": 7,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Channel-aware folding improves communication efficiency and receiver freshness relative to complete-filter and lossless-compression baselines when communication opportunities vary substantially.\\\",\\n      \\\"reason\\\": \\\"Abstract, last paragraph. The claim aligns with the stated results.\\\"\\n    },\\n    {\\n      \\\"id\\\": 8,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Under the Five-State Markov Capacity model, adaptive folding achieves 191.6 successful deliveries per MB... Under Rayleigh block fading, adaptive folding achieves 174.9 deliveries per MB...\\\",\\n      \\\"reason\\\": \\\"Section V.B, Communication Efficiency. The claim is supported by the results under these models.\\\"\\n    },\\n    {\\n      \\\"id\\\": 9,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Under Gilbert–Elliott packet loss, adaptive folding and the strongest compression baseline achieve similar efficiencies of 140.5 and 141.8 deliveries per MB, respectively.\\\",\\n      \\\"reason\\\": \\\"Section V.B, Communication Efficiency. The claim matches the described competitive performance.\\\"\\n    },\\n    {\\n      \\\"id\\\": 10,\\n      \\\"label\\\": \\\"unsupported\\\",\\n      \\\"paper_evidence\\\": \\\"\\\",\\n      \\\"reason\\\": \\\"The paper does not describe OR-based folding of a 16-bit canonical Bloom filter at r = 0.50. The example in Figure 2 uses a 16-bit filter but does not specify this ratio.\\\"\\n    },\\n    {\\n      \\\"id\\\": 11,\\n      \\\"label\\\": \\\"unsupported\\\",\\n      \\\"paper_evidence\\\": \\\"\\\",\\n      \\\"reason\\\": \\\"The paper does not describe OR-based folding of a 16-bit canonical Bloom filter at r = 0.75. The example in Figure 2 uses a 16-bit filter but does not specify this ratio.\\\"\\n    },\\n    {\\n      \\\"id\\\": 12,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Figure 2 illustrates the operation for two retained lengths. The example shows how the canonical query positions for one element are mapped into each folded representation.\\\",\\n      \\\"reason\\\": \\\"Section III.C, Membership Queries After Folding. The claim matches the example provided.\\\"\\n    },\\n    {\\n      \\\"id\\\": 13,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Figure 3 shows the empirical false positive rate as the retained-length ratio r = m′ /m decreases.\\\",\\n      \\\"reason\\\": \\\"Section V.A, Bloom Filter Folding Tradeoff. The claim matches the description of Figure 3.\\\"\\n    },\\n    {\\n      \\\"id\\\": 14,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Figure 3 characterizes the exact canonical-filter realizations used in the subsequent channel experiments; because each dataset uses one fixed-seed realization, no across-seed error bars are shown.\\\",\\n      \\\"reason\\\": \\\"Section V.A, Bloom Filter Folding Tradeoff. The claim matches the description of the experimental setup.\\\"\\n    },\\n    {\\n      \\\"id\\\": 15,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Figure 3 characterizes the exact canonical-filter realizations used in the subsequent channel experiments; because each dataset uses one fixed-seed realization, no across-seed error bars are shown.\\\",\\n      \\\"reason\\\": \\\"Section V.A, Bloom Filter Folding Tradeoff. The claim matches the description of the experimental setup.\\\"\\n    },\\n    {\\n      \\\"id\\\": 16,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"This paper evaluated a channel-aware framework that selects the largest FPR-qualified OR-folded view supported at each reporting opportunity while retaining the canonical Bloom filter.\\\",\\n      \\\"reason\\\": \\\"Section VII, Conclusion. The claim matches the stated evaluation focus.\\\"\\n    },\\n    {\\n      \\\"id\\\": 17,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"These results show that FPR-qualified folded views provide useful transmission operating points when a recent lower-fidelity update is preferable to delaying a larger representation.\\\",\\n      \\\"reason\\\": \\\"Abstract, last paragraph. The claim aligns with the described utility of channel-aware selection.\\\"\\n    }\\n  ]\\n}\"]"
+}

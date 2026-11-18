@@ -1,0 +1,60 @@
+{
+  "model": "openai.gpt-4o",
+  "repeat": 1,
+  "judge_prompt_sha256": "d68c41ba9fcb81e0b6ca71c927f15884f0e00bb0cd2d9c521934502fa8ab3e38",
+  "error": null,
+  "tokens_in": 8839,
+  "tokens_out": 759,
+  "tokens_cached": 6400,
+  "max_output_tokens": 16384,
+  "parsed": {
+    "items": {
+      "chk_problem": {
+        "label": "accurate",
+        "poster_evidence": "Per-frame YOLO26x draws 70 W on Thor and 43 W on Orin, limiting battery-powered edge vision.",
+        "reason": "The poster accurately describes the high energy consumption and sustained GPU utilization of video object detectors on edge devices, matching the reference."
+      },
+      "chk_method": {
+        "label": "accurate",
+        "poster_evidence": "ALBIREO is a codec-free, detector-agnostic wrapper requiring no detector modification or retraining.",
+        "reason": "The poster correctly describes ALBIREO as a detector-agnostic, codec-free adaptive inference framework, including its key mechanisms like the Kalman filter and rescue mechanism."
+      },
+      "chk_data": {
+        "label": "accurate",
+        "poster_evidence": "Evaluation uses 200 BDD100K dashcam clips, with about 40,000 annotated frames per configuration.",
+        "reason": "The poster specifies the BDD100K dataset's MOT validation split, consistent with the reference."
+      },
+      "chk_setup": {
+        "label": "accurate",
+        "poster_evidence": "Unchanged YOLO11x, YOLO26x, and RF-DETR-Large detectors run through PyTorch on AGX Thor and AGX Orin.",
+        "reason": "The poster describes the evaluation setup, including the detectors and platforms used, matching the reference."
+      },
+      "chk_primary_result": {
+        "label": "accurate",
+        "poster_evidence": "With YOLO26x, default ALBIREO strictly Pareto-dominates per-frame Vanilla. Thor: AP@50 rises from 0.609 to 0.617; energy falls 17.6%, frame time 8.8%, and EDP 24.9%. Orin: the same AP gain accompanies 14.4% lower energy, 13.7% lower frame time, and 26.1% lower EDP.",
+        "reason": "The poster provides the primary result, including AP@50 and energy reduction metrics, consistent with the reference."
+      },
+      "chk_secondary_result": {
+        "label": "accurate",
+        "poster_evidence": "Threshold sweeping forms the upper Pareto frontier at AP@50 ≥ 0.50 on both platforms.",
+        "reason": "The poster describes ALBIREO forming the upper Pareto frontier in the AP@50 ≥ 0.50 region, matching the reference."
+      },
+      "chk_baseline": {
+        "label": "accurate",
+        "poster_evidence": "Comparisons include Vanilla, three fixed-skip settings, CTD, Statues, and ERD-only.",
+        "reason": "The poster lists the baselines used for comparison, consistent with the reference."
+      },
+      "chk_conclusion": {
+        "label": "accurate",
+        "poster_evidence": "ALBIREO is a detector-agnostic wrapper using temporal state to skip calls.",
+        "reason": "The poster concludes that ALBIREO serves as a practical efficiency layer for edge video detection pipelines, matching the reference."
+      },
+      "chk_limitation": {
+        "label": "accurate",
+        "poster_evidence": "Constant-acceleration dynamics can drift during erratic motion. The empty-scene classifier needs domain-specific fine-tuning.",
+        "reason": "The poster identifies limitations such as Kalman dynamics drift and domain-specific classifier tuning, consistent with the reference."
+      }
+    }
+  },
+  "raw": "```json\n{\n  \"items\": {\n    \"chk_problem\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Per-frame YOLO26x draws 70 W on Thor and 43 W on Orin, limiting battery-powered edge vision.\",\n      \"reason\": \"The poster accurately describes the high energy consumption and sustained GPU utilization of video object detectors on edge devices, matching the reference.\"\n    },\n    \"chk_method\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"ALBIREO is a codec-free, detector-agnostic wrapper requiring no detector modification or retraining.\",\n      \"reason\": \"The poster correctly describes ALBIREO as a detector-agnostic, codec-free adaptive inference framework, including its key mechanisms like the Kalman filter and rescue mechanism.\"\n    },\n    \"chk_data\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Evaluation uses 200 BDD100K dashcam clips, with about 40,000 annotated frames per configuration.\",\n      \"reason\": \"The poster specifies the BDD100K dataset's MOT validation split, consistent with the reference.\"\n    },\n    \"chk_setup\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Unchanged YOLO11x, YOLO26x, and RF-DETR-Large detectors run through PyTorch on AGX Thor and AGX Orin.\",\n      \"reason\": \"The poster describes the evaluation setup, including the detectors and platforms used, matching the reference.\"\n    },\n    \"chk_primary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"With YOLO26x, default ALBIREO strictly Pareto-dominates per-frame Vanilla. Thor: AP@50 rises from 0.609 to 0.617; energy falls 17.6%, frame time 8.8%, and EDP 24.9%. Orin: the same AP gain accompanies 14.4% lower energy, 13.7% lower frame time, and 26.1% lower EDP.\",\n      \"reason\": \"The poster provides the primary result, including AP@50 and energy reduction metrics, consistent with the reference.\"\n    },\n    \"chk_secondary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Threshold sweeping forms the upper Pareto frontier at AP@50 ≥ 0.50 on both platforms.\",\n      \"reason\": \"The poster describes ALBIREO forming the upper Pareto frontier in the AP@50 ≥ 0.50 region, matching the reference.\"\n    },\n    \"chk_baseline\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Comparisons include Vanilla, three fixed-skip settings, CTD, Statues, and ERD-only.\",\n      \"reason\": \"The poster lists the baselines used for comparison, consistent with the reference.\"\n    },\n    \"chk_conclusion\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"ALBIREO is a detector-agnostic wrapper using temporal state to skip calls.\",\n      \"reason\": \"The poster concludes that ALBIREO serves as a practical efficiency layer for edge video detection pipelines, matching the reference.\"\n    },\n    \"chk_limitation\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Constant-acceleration dynamics can drift during erratic motion. The empty-scene classifier needs domain-specific fine-tuning.\",\n      \"reason\": \"The poster identifies limitations such as Kalman dynamics drift and domain-specific classifier tuning, consistent with the reference.\"\n    }\n  }\n}\n```"
+}

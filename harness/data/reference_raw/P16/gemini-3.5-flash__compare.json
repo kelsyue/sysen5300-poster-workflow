@@ -1,0 +1,48 @@
+{
+  "model": "gemini-3.5-flash",
+  "reference_prompt_sha256": "a63f2a103bd381061f0d6560fdaf2e1bd28c503af09ee38a529d0648f4594fd3",
+  "error": null,
+  "tokens_in": 1041,
+  "tokens_out": 1696,
+  "parsed": {
+    "items": {
+      "chk_problem": {
+        "same": true,
+        "reason": "Both drafts identify prefix entanglement in the transformer KV cache as the problem, which prevents exact context reuse and deletion."
+      },
+      "chk_method": {
+        "same": true,
+        "reason": "Both drafts describe the SMem architecture, highlighting block-local/independent encoding and a cross-attention reader."
+      },
+      "chk_data": {
+        "same": true,
+        "reason": "Both drafts identify the FineWeb-Edu dataset, with Draft B providing additional details on token counts and model scales."
+      },
+      "chk_setup": {
+        "same": true,
+        "reason": "Both drafts describe the pretraining setup on FineWeb-Edu with matched parameters."
+      },
+      "chk_primary_result": {
+        "same": true,
+        "reason": "Both drafts report the same needle retrieval accuracy of 0.14–0.28 at 4× training length (distances of 31 and 63 blocks)."
+      },
+      "chk_secondary_result": {
+        "same": false,
+        "reason": "Draft A focuses on the perplexity gap compared to standard transformers, while Draft B focuses on the reduction in Time-to-First-Token (TTFT) and serving costs."
+      },
+      "chk_baseline": {
+        "same": true,
+        "reason": "Both drafts list the same baselines, including standard/learned-position transformers, RoPE transformers, and Block-Attention variants."
+      },
+      "chk_conclusion": {
+        "same": true,
+        "reason": "Both drafts conclude that SMem achieves comparable perplexity to transformers while enabling exact memory operations."
+      },
+      "chk_limitation": {
+        "same": true,
+        "reason": "Both drafts identify that SMem requires pretraining (cannot be retrofitted) and has sensitivity/gaps in performance depending on the recipe."
+      }
+    }
+  },
+  "raw": "```json\n{\n  \"items\": {\n    \"chk_problem\": {\n      \"same\": true,\n      \"reason\": \"Both drafts identify prefix entanglement in the transformer KV cache as the problem, which prevents exact context reuse and deletion.\"\n    },\n    \"chk_method\": {\n      \"same\": true,\n      \"reason\": \"Both drafts describe the SMem architecture, highlighting block-local/independent encoding and a cross-attention reader.\"\n    },\n    \"chk_data\": {\n      \"same\": true,\n      \"reason\": \"Both drafts identify the FineWeb-Edu dataset, with Draft B providing additional details on token counts and model scales.\"\n    },\n    \"chk_setup\": {\n      \"same\": true,\n      \"reason\": \"Both drafts describe the pretraining setup on FineWeb-Edu with matched parameters.\"\n    },\n    \"chk_primary_result\": {\n      \"same\": true,\n      \"reason\": \"Both drafts report the same needle retrieval accuracy of 0.14–0.28 at 4× training length (distances of 31 and 63 blocks).\"\n    },\n    \"chk_secondary_result\": {\n      \"same\": false,\n      \"reason\": \"Draft A focuses on the perplexity gap compared to standard transformers, while Draft B focuses on the reduction in Time-to-First-Token (TTFT) and serving costs.\"\n    },\n    \"chk_baseline\": {\n      \"same\": true,\n      \"reason\": \"Both drafts list the same baselines, including standard/learned-position transformers, RoPE transformers, and Block-Attention variants.\"\n    },\n    \"chk_conclusion\": {\n      \"same\": true,\n      \"reason\": \"Both drafts conclude that SMem achieves comparable perplexity to transformers while enabling exact memory operations.\"\n    },\n    \"chk_limitation\": {\n      \"same\": true,\n      \"reason\": \"Both drafts identify that SMem requires pretraining (cannot be retrofitted) and has sensitivity/gaps in performance depending on the recipe.\"\n    }\n  }\n}\n```"
+}

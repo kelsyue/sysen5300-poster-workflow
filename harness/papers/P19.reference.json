@@ -1,0 +1,202 @@
+{
+  "paper_id": "P19",
+  "created_at": "2026-11-18T03:41:07+00:00",
+  "models": [
+    "gemini-3.5-flash",
+    "openai.gpt-4o"
+  ],
+  "reference_prompt_sha256": "a63f2a103bd381061f0d6560fdaf2e1bd28c503af09ee38a529d0648f4594fd3",
+  "paper_text_sha256": "c53195ad5d24421adedfca1052ecf822a24aef103bce81906f69f04367237c26",
+  "summary": "This paper investigates whether the internal representations of large reasoning models encode information about the relative long-horizon value of alternative next-token candidates. The authors construct the Reasoning Candidate-Token Value (RCTV) dataset and show that relative candidate value is linearly decodable from hidden states, MLP outputs, and attention outputs. Furthermore, they demonstrate that using these decoded signals to guide token selection during generation improves the chances of eventual success in online interventions.",
+  "items": {
+    "chk_problem": {
+      "status": "accepted",
+      "value": "Investigating whether the internal representations of large reasoning models reflect differences in relative long-horizon candidate value among alternative next-token choices.",
+      "paper_quote": "Whether these differences are reflected in internal representations remains unclear.",
+      "drafts": [
+        {
+          "value": "Investigating whether the internal representations of large reasoning models reflect differences in relative long-horizon candidate value among alternative next-token choices.",
+          "paper_quote": "Whether these differences are reflected in internal representations remains unclear.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "Investigating whether reasoning models' internal representations distinguish plausible next-token candidates by their relative chances of eventual success.",
+          "paper_quote": "Do reasoning models’ internal representations distinguish plausible next-token candidates by their relative chances of eventual success?",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ]
+    },
+    "chk_method": {
+      "status": "accepted",
+      "value": "Applying sparse linear probes (correlation-ranked top-k ridge-regularized linear probes) to decode relative long-horizon candidate value from hidden states, MLP outputs, and attention outputs.",
+      "paper_quote": "Using RCTV, we apply sparse linear probes to test whether relative long-horizon candidate value is decodable from candidate-position representations.",
+      "drafts": [
+        {
+          "value": "Applying sparse linear probes (correlation-ranked top-k ridge-regularized linear probes) to decode relative long-horizon candidate value from hidden states, MLP outputs, and attention outputs.",
+          "paper_quote": "Using RCTV, we apply sparse linear probes to test whether relative long-horizon candidate value is decodable from candidate-position representations.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "Sparse linear probes applied to hidden states, MLP outputs, and attention outputs to decode relative long-horizon candidate value.",
+          "paper_quote": "Using RCTV, we apply sparse linear probes to test whether relative long-horizon candidate value is decodable from candidate-position representations.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ]
+    },
+    "chk_data": {
+      "status": "accepted",
+      "value": "The Reasoning Candidate-Token Value (RCTV) dataset, which pairs mathematical reasoning prefixes with plausible next-token candidates and their empirical long-horizon candidate values.",
+      "paper_quote": "To study this question, we define relative long-horizon candidate value to quantify within-prefix differences and construct the Reasoning Candidate-Token Value (RCTV) dataset, pairing mathematical reasoning prefixes with plausible next-token candidates and their empirical long-horizon candidate values.",
+      "drafts": [
+        {
+          "value": "The Reasoning Candidate-Token Value (RCTV) dataset, which pairs mathematical reasoning prefixes with plausible next-token candidates and their empirical long-horizon candidate values.",
+          "paper_quote": "To study this question, we define relative long-horizon candidate value to quantify within-prefix differences and construct the Reasoning Candidate-Token Value (RCTV) dataset, pairing mathematical reasoning prefixes with plausible next-token candidates and their empirical long-horizon candidate values.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "Reasoning Candidate-Token Value (RCTV) dataset constructed from mathematical reasoning problems with verifiable answers.",
+          "paper_quote": "We then construct the Reasoning Candidate-Token Value (RCTV) dataset from mathematical reasoning problems with verifiable answers.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ]
+    },
+    "chk_setup": {
+      "status": "uncertain",
+      "why": "drafts differ",
+      "drafts": [
+        {
+          "value": "Evaluating the probes using five-fold cross-validation with ten problem-level fold seeds across different layers and selected dimensions on Qwen3-1.7B, Qwen3-8B, and DS-Llama-3.1-8B.",
+          "paper_quote": "We repeat five-fold cross-validation with ten problem-level fold seeds and examine hidden state, MLP output, and self-attention output representations across layers and numbers of selected dimensions.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "Experiments conducted on RCTV dataset using three reasoning models (Qwen3-1.7B, Qwen3-8B, DS-Llama-3.1-8B) and two entropy regimes.",
+          "paper_quote": "We construct four variants of RCTV, covering two entropy thresholds and three models across two model families.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ],
+      "paper_excerpt": "4.1\n\nSummary statistics. We construct four variants of RCTV, covering two entropy thresholds and\nthree models across two model families. RCTVCore serves as our primary dataset for our main\nexperiments. RCTV-InterEnt varies the entropy\nrange, while RCTV-Qwen8B and RCTV-Llama8B\nvary the generation model. In total, the dataset\ncomprises 1,400 samples across all variants. Full\nstatistics for each variant are reported in Table 1.\nWe further quantify the within-prefix value gaps in\nRCTV-Core. For each problem, the value gap is defined as the difference between the maximum and\nminimum long-horizon value among its candidate\n4\n\nDecoding Candidate Value from\nInternal Representations\n\nLinear Decodability of Candidate Value\n\nWe evaluate candidate-value readout from representations at the candidate-token position. We repeat\nfive-fold cross-validation with ten problem-level\nfold seeds and examine hidden state, MLP output,\nand self-attention output representations across layers and numbers of selected dimensions.\nCandidate-value signal is unevenly distributed across layers and dimensions, with different patterns across representation families.\nFigure 2 shows the mean pairwise AUC over ten\nproblem-level fold seeds for each layer and number\nof selected dimensions. Hidden states show higher\npairwise AUC mainly in middle-to-late layers, with\na weaker signal in early layers at high dimensionality. MLP outputs exhibit peaks with very few\nselected dimensions, particularly near layers 9 and\n17. Attention outputs show more scattered regions\nof higher pairwise AUC. Appendix G further shows\nheatmaps of standard deviation and above-chance\nfrequency across fold seeds.\nCandidate-value readout can outperform\nprobability-, rank- and embedding-based baselines. Table 2 reports the strongest observed configuration in each representation family according\nto mean pairwise AUC. All three families achieve\nhigher pairwise and tier AUC and lower Regret@1\nthan the probability, rank, and embedding baselines.\nThe MLP readout achieves the highest pairwise\nAUC and lowest Regret@1, while the hidden-state\nreadout achieves the highest tier AUC. The MLP\nreadout also outperforms its matched activationnorm baseline across all three metrics. Taken together, the heatmaps and results across the three\nmetrics provide evidence that candidate value is\n\nCandidate-value readouts\nHidden (H20 ) 32 56.6 ± 2.3 57.0 ± 2.0 0.0339 ±0.0010\nMLP (M9 )\n4 58.7 ± 2.6 56.3 ± 2.5 0.0323 ± 0.0011\nAttn (A11 )\n32 56.8 ± 2.3 53.2 ± 2.1 0.0335 ± 0.0013"
+    },
+    "chk_primary_result": {
+      "status": "accepted",
+      "value": "Probe-guided online token interventions at a budget of 64 achieved a 4.30 percentage point gain in continuation accuracy over standard sampling (95% CI: [+0.60, +8.28]).",
+      "paper_quote": "As shown in Table 5, this represents a gain of 4.30 percentage points over standard sampling, with a paired 95% bootstrap confidence interval of [+0.60, +8.28].",
+      "drafts": [
+        {
+          "value": "Probe-guided online token interventions at a budget of 64 achieved a 4.30 percentage point gain in continuation accuracy over standard sampling (95% CI: [+0.60, +8.28]).",
+          "paper_quote": "As shown in Table 5, this represents a gain of 4.30 percentage points over standard sampling, with a paired 95% bootstrap confidence interval of [+0.60, +8.28].",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "Probe-guided interventions improve continuation accuracy by 4.30 percentage points over standard sampling at B=64.",
+          "paper_quote": "Intervention results. Figure 4 shows that probe-guided continuation accuracy increases with the intervention budget, reaching 54.51% at B = 64. As shown in Table 5, this represents a gain of 4.30 percentage points over standard sampling, with a paired 95% bootstrap confidence interval of [+0.60, +8.28].",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ]
+    },
+    "chk_secondary_result": {
+      "status": "uncertain",
+      "why": "drafts differ",
+      "drafts": [
+        {
+          "value": "Above-chance probing performance was also observed in two additional reasoning models (Qwen3-8B and DS-Llama-3.1-8B) and in an intermediate-entropy regime.",
+          "paper_quote": "We also observe above-chance probing performance in two additional reasoning models and in a different range of next-token entropy for the primary model.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "Candidate-value readout can outperform probability-, rank-, and embedding-based baselines in pairwise AUC and tier AUC metrics.",
+          "paper_quote": "Candidate-value readout can outperform probability-, rank- and embedding-based baselines.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ],
+      "paper_excerpt": "Figure 1: Illustration of our candidate-level analysis of long-horizon reasoning outcomes. Three plausible candidates\nat a shared reasoning prefix are shown. pp denotes percentage points. In this example, the pairwise ordering\nproduced by the probe matches the empirical ordering of candidates by relative long-horizon value.\n\nnext-token candidates with their empirical longhorizon values. Using RCTV, we apply sparse linear probes to test whether relative long-horizon candidate value is decodable from candidate-position\nrepresentations. We probe hidden states, selfattention outputs, and multilayer perceptron (MLP)\noutputs at every model layer. Finally, we use the\ntrained probes to guide online token interventions\nas a functional test.\nExperiments show that relative long-horizon candidate value is linearly decodable from internal\nrepresentations. Probes on hidden states achieve\nhigher pairwise AUC mainly in middle-to-late layers, and probes on MLP outputs achieve high pairwise AUC with only a few selected dimensions. We\nalso find that sparse linear probes can outperform\nprobability-, rank- and embedding-based baselines.\nFurther analysis of MLP outputs shows that certain dimensions are repeatedly selected and exhibit consistent correlation signs across training\nfolds. We also observe above-chance probing performance in two additional reasoning models and\nin a different range of next-token entropy for the\nprimary model. Finally, controlled online interventions show gains in both continuation accuracy and\nprefix-conditioned Pass@k under probe guidance.\nIn summary, our contributions are as follows:\n\nof probe-guided online token interventions,\nshowing that such guidance can improve the\nchances of eventual success.\n\nLinear Decodability of Candidate Value\n\nWe evaluate candidate-value readout from representations at the candidate-token position. We repeat\nfive-fold cross-validation with ten problem-level\nfold seeds and examine hidden state, MLP output,\nand self-attention output representations across layers and numbers of selected dimensions.\nCandidate-value signal is unevenly distributed across layers and dimensions, with different patterns across representation families.\nFigure 2 shows the mean pairwise AUC over ten\nproblem-level fold seeds for each layer and number\nof selected dimensions. Hidden states show higher\npairwise AUC mainly in middle-to-late layers, with\na weaker signal in early layers at high dimensionality. MLP outputs exhibit peaks with very few\nselected dimensions, particularly near layers 9 and\n17. Attention outputs show more scattered regions\nof higher pairwise AUC. Appendix G further shows\nheatmaps of standard deviation and above-chance\nfrequency across fold seeds.\nCandidate-value readout can outperform\nprobability-, rank- and embedding-based baselines. Table 2 reports the strongest observed configuration in each representation family according\nto mean pairwise AUC. All three families achieve\nhigher pairwise and tier AUC and lower Regret@1\nthan the probability, rank, and embedding baselines.\nThe MLP readout achieves the highest pairwise\nAUC and lowest Regret@1, while the hidden-state\nreadout achieves the highest tier AUC. The MLP\nreadout also outperforms its matched activationnorm baseline across all three metrics. Taken together, the heatmaps and results across the three\nmetrics provide evidence that candidate value is\n\nCandidate-value readouts\nHidden (H20 ) 32 56.6 ± 2.3 57.0 ± 2.0 0.0339 ±0.0010\nMLP (M9 )\n4 58.7 ± 2.6 56.3 ± 2.5 0.0323 ± 0.0011\nAttn (A11 )\n32 56.8 ± 2.3 53.2 ± 2.1 0.0335 ± 0.0013"
+    },
+    "chk_baseline": {
+      "status": "accepted",
+      "value": "The proposed probes are compared against five baselines: uniform random, next-token log-probability, probability rank, token embedding, and activation norm.",
+      "paper_quote": "We compare candidate-value readouts from internal representations with five baselines.",
+      "drafts": [
+        {
+          "value": "The proposed probes are compared against five baselines: uniform random, next-token log-probability, probability rank, token embedding, and activation norm.",
+          "paper_quote": "We compare candidate-value readouts from internal representations with five baselines.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "Probability-, rank-, embedding-based baselines, and uniform random selection.",
+          "paper_quote": "We compare candidate-value readouts from internal representations with five baselines.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ]
+    },
+    "chk_conclusion": {
+      "status": "accepted",
+      "value": "Internal representations of reasoning models encode relative long-horizon candidate value, linking local candidate-level representations to eventual reasoning outcomes.",
+      "paper_quote": "Our findings provide evidence that internal representations encode information about relative long-horizon candidate value, offering insights into how local candidate-level representations relate to long-horizon reasoning outcomes.",
+      "drafts": [
+        {
+          "value": "Internal representations of reasoning models encode relative long-horizon candidate value, linking local candidate-level representations to eventual reasoning outcomes.",
+          "paper_quote": "Our findings provide evidence that internal representations encode information about relative long-horizon candidate value, offering insights into how local candidate-level representations relate to long-horizon reasoning outcomes.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "Internal representations encode relative long-horizon candidate value, which can inform token selection to improve reasoning outcomes.",
+          "paper_quote": "Overall, our findings link candidate-level signals in internal representations to eventual reasoning outcomes.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ]
+    },
+    "chk_limitation": {
+      "status": "accepted",
+      "value": "The experiments are limited to mathematical reasoning problems with verifiable answers.",
+      "paper_quote": "Our experiments focus on mathematical reasoning problems with verifiable answers.",
+      "drafts": [
+        {
+          "value": "The experiments are limited to mathematical reasoning problems with verifiable answers.",
+          "paper_quote": "Our experiments focus on mathematical reasoning problems with verifiable answers.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "Focus on mathematical reasoning problems; extension to other domains and systematic study of decoding efficiency are future directions.",
+          "paper_quote": "Our experiments focus on mathematical reasoning problems with verifiable answers. Extending the analysis to other reasoning domains remains a direction for future work.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ]
+    }
+  }
+}

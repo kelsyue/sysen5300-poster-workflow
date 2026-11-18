@@ -1,0 +1,60 @@
+{
+  "model": "gemini-3.5-flash",
+  "repeat": 1,
+  "judge_prompt_sha256": "7629fca9f8c558ca4ae975249c62febbce60a383f74c20f33f01a38d20d7e4fe",
+  "error": null,
+  "tokens_in": 6264,
+  "tokens_out": 3366,
+  "tokens_cached": 0,
+  "max_output_tokens": 32768,
+  "parsed": {
+    "items": {
+      "chk_problem": {
+        "label": "accurate",
+        "poster_evidence": "Functional decline is often recognized only after falls, gait impairment, or reduced mobility become visible. Routine biomarkers may deteriorate earlier without triggering alerts. Existing tools capture one timepoint, while biomarker trajectories may reveal an earlier prevention window.",
+        "reason": "The poster describes the problem of late recognition of functional decline and the potential of biomarker trajectories to identify an earlier prevention window under the 'Clinical Need' section."
+      },
+      "chk_method": {
+        "label": "accurate",
+        "poster_evidence": "Twelve prespecified biomarkers were modeled over a three-year window, with all post-index measurements excluded.\nBaseline used biomarker means; trajectories captured variability, first-to-last change, measurement count, and daily slope.\nPenalized logistic regression, random forest, XGBoost, and LightGBM were compared by five-fold cross-validation in N = 297,861.",
+        "reason": "The poster describes the feature engineering of trajectory descriptors (variability, first-to-last change, count, daily slope) and the machine learning models compared under 'Trajectory Modeling'."
+      },
+      "chk_data": {
+        "label": "accurate",
+        "poster_evidence": "Table 1: Model performance (3-year window, 5-fold CV, OOF; N = 297,861; 11.1% cases).",
+        "reason": "The poster identifies the cohort size (N = 297,861) and case prevalence (11.1%, which corresponds to 33,088 cases) from the All of Us Research Program."
+      },
+      "chk_setup": {
+        "label": "accurate",
+        "poster_evidence": "Penalized logistic regression, random forest, XGBoost, and LightGBM were compared by five-fold cross-validation in N = 297,861.\nMissing values used training-fold medians; evaluation covered out-of-fold discrimination, calibration, and reclassification.",
+        "reason": "The poster details the five-fold cross-validation setup, out-of-fold evaluation, and comparison of the four machine learning algorithms."
+      },
+      "chk_primary_result": {
+        "label": "accurate",
+        "poster_evidence": "Trajectory features outperformed static summaries: AUROC 0.797 versus 0.755 and AUPRC 0.380 versus 0.304.",
+        "reason": "The poster reports the primary quantitative findings (AUROC of 0.797 and AUPRC of 0.380) for the trajectory model compared to the static baseline summaries."
+      },
+      "chk_secondary_result": {
+        "label": "accurate",
+        "poster_evidence": "Table 2: Prediction horizon performance using trajectory features. Measurements within the specified horizon prior to the index date were excluded.\n3 months: 0.768\n6 months: 0.756\n9 months: 0.748\n12 months: 0.740",
+        "reason": "The poster presents the prediction horizon analysis in Table 2, showing sustained prediction of mobility decline 3 to 12 months before onset with AUROCs ranging from 0.768 to 0.740."
+      },
+      "chk_baseline": {
+        "label": "accurate",
+        "poster_evidence": "Trajectory features outperformed static summaries: AUROC 0.797 versus 0.755 and AUPRC 0.380 versus 0.304.\nAge and sex matching yielded AUROC 0.727 versus 0.680 for demographics alone.",
+        "reason": "The poster compares the trajectory model against both the static laboratory summaries (AUROC 0.755, AUPRC 0.304) and the demographics-only baseline (AUROC 0.680)."
+      },
+      "chk_conclusion": {
+        "label": "accurate",
+        "poster_evidence": "Trajectory features outperformed static summaries: AUROC 0.797 versus 0.755 and AUPRC 0.380 versus 0.304. Precision-recall performance achieved a 25% relative improvement at 11.1% prevalence. Signal persisted up to 12 months before diagnosis, enabling zero-burden preventive monitoring.",
+        "reason": "The poster concludes that trajectory features significantly improve prediction and can enable zero-burden preventive monitoring."
+      },
+      "chk_limitation": {
+        "label": "missing",
+        "poster_evidence": "",
+        "reason": "The poster does not mention any limitations of the study, such as the use of ICD-10 codes, missingness limitations, or the need for external validation."
+      }
+    }
+  },
+  "raw": "```json\n{\n  \"items\": {\n    \"chk_problem\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Functional decline is often recognized only after falls, gait impairment, or reduced mobility become visible. Routine biomarkers may deteriorate earlier without triggering alerts. Existing tools capture one timepoint, while biomarker trajectories may reveal an earlier prevention window.\",\n      \"reason\": \"The poster describes the problem of late recognition of functional decline and the potential of biomarker trajectories to identify an earlier prevention window under the 'Clinical Need' section.\"\n    },\n    \"chk_method\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Twelve prespecified biomarkers were modeled over a three-year window, with all post-index measurements excluded.\\nBaseline used biomarker means; trajectories captured variability, first-to-last change, measurement count, and daily slope.\\nPenalized logistic regression, random forest, XGBoost, and LightGBM were compared by five-fold cross-validation in N = 297,861.\",\n      \"reason\": \"The poster describes the feature engineering of trajectory descriptors (variability, first-to-last change, count, daily slope) and the machine learning models compared under 'Trajectory Modeling'.\"\n    },\n    \"chk_data\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Table 1: Model performance (3-year window, 5-fold CV, OOF; N = 297,861; 11.1% cases).\",\n      \"reason\": \"The poster identifies the cohort size (N = 297,861) and case prevalence (11.1%, which corresponds to 33,088 cases) from the All of Us Research Program.\"\n    },\n    \"chk_setup\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Penalized logistic regression, random forest, XGBoost, and LightGBM were compared by five-fold cross-validation in N = 297,861.\\nMissing values used training-fold medians; evaluation covered out-of-fold discrimination, calibration, and reclassification.\",\n      \"reason\": \"The poster details the five-fold cross-validation setup, out-of-fold evaluation, and comparison of the four machine learning algorithms.\"\n    },\n    \"chk_primary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Trajectory features outperformed static summaries: AUROC 0.797 versus 0.755 and AUPRC 0.380 versus 0.304.\",\n      \"reason\": \"The poster reports the primary quantitative findings (AUROC of 0.797 and AUPRC of 0.380) for the trajectory model compared to the static baseline summaries.\"\n    },\n    \"chk_secondary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Table 2: Prediction horizon performance using trajectory features. Measurements within the specified horizon prior to the index date were excluded.\\n3 months: 0.768\\n6 months: 0.756\\n9 months: 0.748\\n12 months: 0.740\",\n      \"reason\": \"The poster presents the prediction horizon analysis in Table 2, showing sustained prediction of mobility decline 3 to 12 months before onset with AUROCs ranging from 0.768 to 0.740.\"\n    },\n    \"chk_baseline\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Trajectory features outperformed static summaries: AUROC 0.797 versus 0.755 and AUPRC 0.380 versus 0.304.\\nAge and sex matching yielded AUROC 0.727 versus 0.680 for demographics alone.\",\n      \"reason\": \"The poster compares the trajectory model against both the static laboratory summaries (AUROC 0.755, AUPRC 0.304) and the demographics-only baseline (AUROC 0.680).\"\n    },\n    \"chk_conclusion\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Trajectory features outperformed static summaries: AUROC 0.797 versus 0.755 and AUPRC 0.380 versus 0.304. Precision-recall performance achieved a 25% relative improvement at 11.1% prevalence. Signal persisted up to 12 months before diagnosis, enabling zero-burden preventive monitoring.\",\n      \"reason\": \"The poster concludes that trajectory features significantly improve prediction and can enable zero-burden preventive monitoring.\"\n    },\n    \"chk_limitation\": {\n      \"label\": \"missing\",\n      \"poster_evidence\": \"\",\n      \"reason\": \"The poster does not mention any limitations of the study, such as the use of ICD-10 codes, missingness limitations, or the need for external validation.\"\n    }\n  }\n}\n```"
+}

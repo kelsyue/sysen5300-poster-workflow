@@ -1,0 +1,60 @@
+{
+  "model": "gemini-3.5-flash",
+  "repeat": 1,
+  "judge_prompt_sha256": "d68c41ba9fcb81e0b6ca71c927f15884f0e00bb0cd2d9c521934502fa8ab3e38",
+  "error": null,
+  "tokens_in": 8669,
+  "tokens_out": 2560,
+  "tokens_cached": 0,
+  "max_output_tokens": 32768,
+  "parsed": {
+    "items": {
+      "chk_problem": {
+        "label": "accurate",
+        "poster_evidence": "Edge video object detection is costly due to per-frame detector invocation, drawing 70 W on Jetson AGX Thor.",
+        "reason": "Located in the 'Intro' section, this accurately describes the high cost and energy consumption of per-frame detector invocation on edge devices."
+      },
+      "chk_method": {
+        "label": "accurate",
+        "poster_evidence": "ALBIREO is a detector-agnostic framework that skips detector invocation based on scene content and object state.",
+        "reason": "Located in the 'Method' section, this describes the framework and its approach of skipping detector calls based on scene content and object state, supported by the state transition diagram in Fig. 1."
+      },
+      "chk_data": {
+        "label": "accurate",
+        "poster_evidence": "AVERAGED OVER 200 BDD100K MOT VALIDATION CLIPS.",
+        "reason": "Located in the table caption, this correctly identifies the BDD100K MOT validation split and the sample size of 200 clips."
+      },
+      "chk_setup": {
+        "label": "accurate",
+        "poster_evidence": "Plat. Detector\nThor YOLO11x\nThor YOLO26x\nThor RF-DETR-Large\nOrin YOLO11x\nOrin YOLO26x\nOrin RF-DETR-Large",
+        "reason": "The table lists the evaluation setup consisting of three detectors (YOLO11x, YOLO26x, RF-DETR-Large) across two Jetson platforms (Thor and Orin)."
+      },
+      "chk_primary_result": {
+        "label": "accurate",
+        "poster_evidence": "ALBIREO reduces energy by 12.1-17.6% while keeping AP@50 within 1.2 pp of per-frame inference.",
+        "reason": "Located in the 'Conclusion' section, this matches the primary quantitative finding (uncertainty draft a) exactly."
+      },
+      "chk_secondary_result": {
+        "label": "accurate",
+        "poster_evidence": "ALBIREO’s threshold sweep ( u = 3 × 10 -4 to 1 × 10 -3 ) forms the upper Pareto frontier among the evaluated systems in the AP@50 ≥ 0 . 50 operating region on both Jetson platforms.",
+        "reason": "Located in the caption of Fig. 2, this matches the secondary finding (uncertainty draft b) regarding the Pareto frontier."
+      },
+      "chk_baseline": {
+        "label": "accurate",
+        "poster_evidence": "Vanilla\nALBIREO sweep ( u = 3 × 10 -4 → 1 × 10 -3 )\nFixedSkip-N (N=2,3,5)\nCTD threshold (0.30 - 0.90)\nStatues threshold (25 - 500)",
+        "reason": "Located in the legend of Fig. 2, which lists the compared frame-skipping baselines including Vanilla, FixedSkip-N, CTD, and Statues."
+      },
+      "chk_conclusion": {
+        "label": "missing",
+        "poster_evidence": "",
+        "reason": "The poster's 'Conclusion' section only repeats the primary quantitative results and does not state the substantive take-home conclusion about using object-level temporal state as a practical drop-in efficiency layer."
+      },
+      "chk_limitation": {
+        "label": "missing",
+        "poster_evidence": "",
+        "reason": "The poster does not mention any limitations, such as Kalman filter drift under erratic motion, or deployment implications like CPU bookkeeping overhead."
+      }
+    }
+  },
+  "raw": "```json\n{\n  \"items\": {\n    \"chk_problem\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Edge video object detection is costly due to per-frame detector invocation, drawing 70 W on Jetson AGX Thor.\",\n      \"reason\": \"Located in the 'Intro' section, this accurately describes the high cost and energy consumption of per-frame detector invocation on edge devices.\"\n    },\n    \"chk_method\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"ALBIREO is a detector-agnostic framework that skips detector invocation based on scene content and object state.\",\n      \"reason\": \"Located in the 'Method' section, this describes the framework and its approach of skipping detector calls based on scene content and object state, supported by the state transition diagram in Fig. 1.\"\n    },\n    \"chk_data\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"AVERAGED OVER 200 BDD100K MOT VALIDATION CLIPS.\",\n      \"reason\": \"Located in the table caption, this correctly identifies the BDD100K MOT validation split and the sample size of 200 clips.\"\n    },\n    \"chk_setup\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Plat. Detector\\nThor YOLO11x\\nThor YOLO26x\\nThor RF-DETR-Large\\nOrin YOLO11x\\nOrin YOLO26x\\nOrin RF-DETR-Large\",\n      \"reason\": \"The table lists the evaluation setup consisting of three detectors (YOLO11x, YOLO26x, RF-DETR-Large) across two Jetson platforms (Thor and Orin).\"\n    },\n    \"chk_primary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"ALBIREO reduces energy by 12.1-17.6% while keeping AP@50 within 1.2 pp of per-frame inference.\",\n      \"reason\": \"Located in the 'Conclusion' section, this matches the primary quantitative finding (uncertainty draft a) exactly.\"\n    },\n    \"chk_secondary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"ALBIREO’s threshold sweep ( u = 3 × 10 -4 to 1 × 10 -3 ) forms the upper Pareto frontier among the evaluated systems in the AP@50 ≥ 0 . 50 operating region on both Jetson platforms.\",\n      \"reason\": \"Located in the caption of Fig. 2, this matches the secondary finding (uncertainty draft b) regarding the Pareto frontier.\"\n    },\n    \"chk_baseline\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Vanilla\\nALBIREO sweep ( u = 3 × 10 -4 → 1 × 10 -3 )\\nFixedSkip-N (N=2,3,5)\\nCTD threshold (0.30 - 0.90)\\nStatues threshold (25 - 500)\",\n      \"reason\": \"Located in the legend of Fig. 2, which lists the compared frame-skipping baselines including Vanilla, FixedSkip-N, CTD, and Statues.\"\n    },\n    \"chk_conclusion\": {\n      \"label\": \"missing\",\n      \"poster_evidence\": \"\",\n      \"reason\": \"The poster's 'Conclusion' section only repeats the primary quantitative results and does not state the substantive take-home conclusion about using object-level temporal state as a practical drop-in efficiency layer.\"\n    },\n    \"chk_limitation\": {\n      \"label\": \"missing\",\n      \"poster_evidence\": \"\",\n      \"reason\": \"The poster does not mention any limitations, such as Kalman filter drift under erratic motion, or deployment implications like CPU bookkeeping overhead.\"\n    }\n  }\n}\n```"
+}

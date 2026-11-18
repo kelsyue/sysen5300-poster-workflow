@@ -1,0 +1,49 @@
+{
+  "model": "openai.gpt-4o",
+  "reference_prompt_sha256": "a63f2a103bd381061f0d6560fdaf2e1bd28c503af09ee38a529d0648f4594fd3",
+  "error": null,
+  "tokens_in": 21868,
+  "tokens_out": 729,
+  "parsed": {
+    "summary": "This paper investigates whether reasoning models' internal representations encode relative long-horizon candidate value, a measure of the likelihood of success for plausible next-token candidates. Using the Reasoning Candidate-Token Value (RCTV) dataset, the authors demonstrate that relative candidate value is linearly decodable from model representations and that probe-guided token selection during generation improves reasoning outcomes. The study provides insights into how local candidate-level signals relate to long-horizon reasoning outcomes.",
+    "items": {
+      "chk_problem": {
+        "value": "Investigating whether reasoning models' internal representations distinguish plausible next-token candidates by their relative chances of eventual success.",
+        "paper_quote": "Do reasoning models’ internal representations distinguish plausible next-token candidates by their relative chances of eventual success?"
+      },
+      "chk_method": {
+        "value": "Sparse linear probes applied to hidden states, MLP outputs, and attention outputs to decode relative long-horizon candidate value.",
+        "paper_quote": "Using RCTV, we apply sparse linear probes to test whether relative long-horizon candidate value is decodable from candidate-position representations."
+      },
+      "chk_data": {
+        "value": "Reasoning Candidate-Token Value (RCTV) dataset constructed from mathematical reasoning problems with verifiable answers.",
+        "paper_quote": "We then construct the Reasoning Candidate-Token Value (RCTV) dataset from mathematical reasoning problems with verifiable answers."
+      },
+      "chk_setup": {
+        "value": "Experiments conducted on RCTV dataset using three reasoning models (Qwen3-1.7B, Qwen3-8B, DS-Llama-3.1-8B) and two entropy regimes.",
+        "paper_quote": "We construct four variants of RCTV, covering two entropy thresholds and three models across two model families."
+      },
+      "chk_primary_result": {
+        "value": "Probe-guided interventions improve continuation accuracy by 4.30 percentage points over standard sampling at B=64.",
+        "paper_quote": "Intervention results. Figure 4 shows that probe-guided continuation accuracy increases with the intervention budget, reaching 54.51% at B = 64. As shown in Table 5, this represents a gain of 4.30 percentage points over standard sampling, with a paired 95% bootstrap confidence interval of [+0.60, +8.28]."
+      },
+      "chk_secondary_result": {
+        "value": "Candidate-value readout can outperform probability-, rank-, and embedding-based baselines in pairwise AUC and tier AUC metrics.",
+        "paper_quote": "Candidate-value readout can outperform probability-, rank- and embedding-based baselines."
+      },
+      "chk_baseline": {
+        "value": "Probability-, rank-, embedding-based baselines, and uniform random selection.",
+        "paper_quote": "We compare candidate-value readouts from internal representations with five baselines."
+      },
+      "chk_conclusion": {
+        "value": "Internal representations encode relative long-horizon candidate value, which can inform token selection to improve reasoning outcomes.",
+        "paper_quote": "Overall, our findings link candidate-level signals in internal representations to eventual reasoning outcomes."
+      },
+      "chk_limitation": {
+        "value": "Focus on mathematical reasoning problems; extension to other domains and systematic study of decoding efficiency are future directions.",
+        "paper_quote": "Our experiments focus on mathematical reasoning problems with verifiable answers. Extending the analysis to other reasoning domains remains a direction for future work."
+      }
+    }
+  },
+  "raw": "{\n  \"summary\": \"This paper investigates whether reasoning models' internal representations encode relative long-horizon candidate value, a measure of the likelihood of success for plausible next-token candidates. Using the Reasoning Candidate-Token Value (RCTV) dataset, the authors demonstrate that relative candidate value is linearly decodable from model representations and that probe-guided token selection during generation improves reasoning outcomes. The study provides insights into how local candidate-level signals relate to long-horizon reasoning outcomes.\",\n  \"items\": {\n    \"chk_problem\": {\n      \"value\": \"Investigating whether reasoning models' internal representations distinguish plausible next-token candidates by their relative chances of eventual success.\",\n      \"paper_quote\": \"Do reasoning models’ internal representations distinguish plausible next-token candidates by their relative chances of eventual success?\"\n    },\n    \"chk_method\": {\n      \"value\": \"Sparse linear probes applied to hidden states, MLP outputs, and attention outputs to decode relative long-horizon candidate value.\",\n      \"paper_quote\": \"Using RCTV, we apply sparse linear probes to test whether relative long-horizon candidate value is decodable from candidate-position representations.\"\n    },\n    \"chk_data\": {\n      \"value\": \"Reasoning Candidate-Token Value (RCTV) dataset constructed from mathematical reasoning problems with verifiable answers.\",\n      \"paper_quote\": \"We then construct the Reasoning Candidate-Token Value (RCTV) dataset from mathematical reasoning problems with verifiable answers.\"\n    },\n    \"chk_setup\": {\n      \"value\": \"Experiments conducted on RCTV dataset using three reasoning models (Qwen3-1.7B, Qwen3-8B, DS-Llama-3.1-8B) and two entropy regimes.\",\n      \"paper_quote\": \"We construct four variants of RCTV, covering two entropy thresholds and three models across two model families.\"\n    },\n    \"chk_primary_result\": {\n      \"value\": \"Probe-guided interventions improve continuation accuracy by 4.30 percentage points over standard sampling at B=64.\",\n      \"paper_quote\": \"Intervention results. Figure 4 shows that probe-guided continuation accuracy increases with the intervention budget, reaching 54.51% at B = 64. As shown in Table 5, this represents a gain of 4.30 percentage points over standard sampling, with a paired 95% bootstrap confidence interval of [+0.60, +8.28].\"\n    },\n    \"chk_secondary_result\": {\n      \"value\": \"Candidate-value readout can outperform probability-, rank-, and embedding-based baselines in pairwise AUC and tier AUC metrics.\",\n      \"paper_quote\": \"Candidate-value readout can outperform probability-, rank- and embedding-based baselines.\"\n    },\n    \"chk_baseline\": {\n      \"value\": \"Probability-, rank-, embedding-based baselines, and uniform random selection.\",\n      \"paper_quote\": \"We compare candidate-value readouts from internal representations with five baselines.\"\n    },\n    \"chk_conclusion\": {\n      \"value\": \"Internal representations encode relative long-horizon candidate value, which can inform token selection to improve reasoning outcomes.\",\n      \"paper_quote\": \"Overall, our findings link candidate-level signals in internal representations to eventual reasoning outcomes.\"\n    },\n    \"chk_limitation\": {\n      \"value\": \"Focus on mathematical reasoning problems; extension to other domains and systematic study of decoding efficiency are future directions.\",\n      \"paper_quote\": \"Our experiments focus on mathematical reasoning problems with verifiable answers. Extending the analysis to other reasoning domains remains a direction for future work.\"\n    }\n  }\n}"
+}

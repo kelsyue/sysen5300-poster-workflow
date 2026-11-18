@@ -1,0 +1,58 @@
+{
+  "model": "openai.gpt-4o",
+  "reference_prompt_sha256": "a63f2a103bd381061f0d6560fdaf2e1bd28c503af09ee38a529d0648f4594fd3",
+  "error": null,
+  "tokens_in": 17070,
+  "tokens_out": 932,
+  "parsed": {
+    "summary": "The paper investigates the use of natural, functionality-preserving code transformations derived from real-world software development as a defense against AI agents performing vulnerability analysis. It demonstrates that these transformations significantly reduce the success rates of frontier agents and explores their composition and resistance to adaptive attackers.",
+    "items": {
+      "chk_problem": {
+        "value": "AI agents' vulnerability analysis results vary significantly across code commits with the same functionality and vulnerability.",
+        "paper_quote": "More specifically, within a single repository, the agent’s success rate in vulnerability analysis fluctuates significantly across adjacent code commits that carry the same functionality and the same vulnerability (Figure 1).",
+        "reason": null
+      },
+      "chk_method": {
+        "value": "Mining natural code transformations from real-world commits and applying them to confuse AI agents.",
+        "paper_quote": "We build a corpus of natural transformations by mining recurring development patterns from real-world code commits, and apply them to evaluate impact on agentic vulnerability analysis.",
+        "reason": null
+      },
+      "chk_data": {
+        "value": "CommitPackFT dataset with 702,062 real-world commits across 14 software development tasks.",
+        "paper_quote": "Specifically, we use CommitPackFT (Muennighoff et al., 2024), which contains 702,062 real-world commits across 14 major software development tasks (e.g., refactoring, cleanup, etc.) paired with instruction-like commit messages.",
+        "reason": null
+      },
+      "chk_setup": {
+        "value": "Evaluation on CyberGym tasks using six state-of-the-art LLMs and three agent harnesses.",
+        "paper_quote": "We evaluate six state-of-the-art LLMs spanning both open-weights and proprietary models: DeepSeek-V4.1-Flash (DeepSeek-AI, 2026), GPT-5.6 Sol (OpenAI, 2026b), GPT-6 Sol (OpenAI, 2026c), Claude Opus 5 (Anthropic, 2026b), Claude Sonnet 5 (Anthropic, 2026c), and GLM-5.3 (GLM-5-Team, 2026).",
+        "reason": null
+      },
+      "chk_primary_result": {
+        "value": "Natural transformations reduce GPT-5.6 Sol with Codex's success rate from 63.3% to 36.8%.",
+        "paper_quote": "For GPT-5.6 Sol with Codex, the agent’s mean success rate falls from 63.3% to 36.8% (−42%) under natural transformations, compared with 49.7% (−21%) under synthetic obfuscations.",
+        "reason": null
+      },
+      "chk_secondary_result": {
+        "value": "Composing transformations reduces GPT-5.6 Sol with Codex's success rate further to 20.0%.",
+        "paper_quote": "For GPT-5.6 Sol with Codex, combining two or three transformations reduces agent success by up to an additional 40% relative to the best single-transformation condition (Table 2). The agent’s success rate even drops to 20.0%, compared with 63.3% without transformation.",
+        "reason": null
+      },
+      "chk_baseline": {
+        "value": "Comparison against synthetic obfuscations like identifier renaming and loop-to-recursive transformations.",
+        "paper_quote": "We find that on average, these transformations decrease the agent success rate from 63.3% to 49.7%, whereas our transformations decrease it to 36.8%.",
+        "reason": null
+      },
+      "chk_conclusion": {
+        "value": "Natural code transformations are effective in reducing AI agents' success in vulnerability analysis.",
+        "paper_quote": "Our work validates the feasibility of mining real-world coding activities to identify rich and diverse code transformations that can protect source code against AI agents scanning for vulnerabilities.",
+        "reason": null
+      },
+      "chk_limitation": {
+        "value": "Limited interpretability and reliance on a single dataset; future work should expand datasets and settings.",
+        "paper_quote": "First, our work uses code agents to extract transformation patterns from existing code and to apply them to target code. While effective, this limits interpretability, which can be significantly improved by incorporating humans in the loop.",
+        "reason": null
+      }
+    }
+  },
+  "raw": "{\n  \"summary\": \"The paper investigates the use of natural, functionality-preserving code transformations derived from real-world software development as a defense against AI agents performing vulnerability analysis. It demonstrates that these transformations significantly reduce the success rates of frontier agents and explores their composition and resistance to adaptive attackers.\",\n  \"items\": {\n    \"chk_problem\": {\n      \"value\": \"AI agents' vulnerability analysis results vary significantly across code commits with the same functionality and vulnerability.\",\n      \"paper_quote\": \"More specifically, within a single repository, the agent’s success rate in vulnerability analysis fluctuates significantly across adjacent code commits that carry the same functionality and the same vulnerability (Figure 1).\",\n      \"reason\": null\n    },\n    \"chk_method\": {\n      \"value\": \"Mining natural code transformations from real-world commits and applying them to confuse AI agents.\",\n      \"paper_quote\": \"We build a corpus of natural transformations by mining recurring development patterns from real-world code commits, and apply them to evaluate impact on agentic vulnerability analysis.\",\n      \"reason\": null\n    },\n    \"chk_data\": {\n      \"value\": \"CommitPackFT dataset with 702,062 real-world commits across 14 software development tasks.\",\n      \"paper_quote\": \"Specifically, we use CommitPackFT (Muennighoff et al., 2024), which contains 702,062 real-world commits across 14 major software development tasks (e.g., refactoring, cleanup, etc.) paired with instruction-like commit messages.\",\n      \"reason\": null\n    },\n    \"chk_setup\": {\n      \"value\": \"Evaluation on CyberGym tasks using six state-of-the-art LLMs and three agent harnesses.\",\n      \"paper_quote\": \"We evaluate six state-of-the-art LLMs spanning both open-weights and proprietary models: DeepSeek-V4.1-Flash (DeepSeek-AI, 2026), GPT-5.6 Sol (OpenAI, 2026b), GPT-6 Sol (OpenAI, 2026c), Claude Opus 5 (Anthropic, 2026b), Claude Sonnet 5 (Anthropic, 2026c), and GLM-5.3 (GLM-5-Team, 2026).\",\n      \"reason\": null\n    },\n    \"chk_primary_result\": {\n      \"value\": \"Natural transformations reduce GPT-5.6 Sol with Codex's success rate from 63.3% to 36.8%.\",\n      \"paper_quote\": \"For GPT-5.6 Sol with Codex, the agent’s mean success rate falls from 63.3% to 36.8% (−42%) under natural transformations, compared with 49.7% (−21%) under synthetic obfuscations.\",\n      \"reason\": null\n    },\n    \"chk_secondary_result\": {\n      \"value\": \"Composing transformations reduces GPT-5.6 Sol with Codex's success rate further to 20.0%.\",\n      \"paper_quote\": \"For GPT-5.6 Sol with Codex, combining two or three transformations reduces agent success by up to an additional 40% relative to the best single-transformation condition (Table 2). The agent’s success rate even drops to 20.0%, compared with 63.3% without transformation.\",\n      \"reason\": null\n    },\n    \"chk_baseline\": {\n      \"value\": \"Comparison against synthetic obfuscations like identifier renaming and loop-to-recursive transformations.\",\n      \"paper_quote\": \"We find that on average, these transformations decrease the agent success rate from 63.3% to 49.7%, whereas our transformations decrease it to 36.8%.\",\n      \"reason\": null\n    },\n    \"chk_conclusion\": {\n      \"value\": \"Natural code transformations are effective in reducing AI agents' success in vulnerability analysis.\",\n      \"paper_quote\": \"Our work validates the feasibility of mining real-world coding activities to identify rich and diverse code transformations that can protect source code against AI agents scanning for vulnerabilities.\",\n      \"reason\": null\n    },\n    \"chk_limitation\": {\n      \"value\": \"Limited interpretability and reliance on a single dataset; future work should expand datasets and settings.\",\n      \"paper_quote\": \"First, our work uses code agents to extract transformation patterns from existing code and to apply them to target code. While effective, this limits interpretability, which can be significantly improved by incorporating humans in the loop.\",\n      \"reason\": null\n    }\n  }\n}"
+}

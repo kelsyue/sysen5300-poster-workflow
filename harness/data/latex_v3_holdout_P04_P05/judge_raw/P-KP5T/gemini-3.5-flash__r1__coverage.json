@@ -1,0 +1,60 @@
+{
+  "model": "gemini-3.5-flash",
+  "repeat": 1,
+  "judge_prompt_sha256": "d68c41ba9fcb81e0b6ca71c927f15884f0e00bb0cd2d9c521934502fa8ab3e38",
+  "error": null,
+  "tokens_in": 9572,
+  "tokens_out": 2807,
+  "tokens_cached": 0,
+  "max_output_tokens": 32768,
+  "parsed": {
+    "items": {
+      "chk_problem": {
+        "label": "accurate",
+        "poster_evidence": "Per-frame YOLO26x draws 70 W on Thor and 43 W on Orin, limiting battery-powered edge vision.",
+        "reason": "The poster accurately describes the problem of high power/energy consumption of running detectors on edge devices under the Motivation section."
+      },
+      "chk_method": {
+        "label": "accurate",
+        "poster_evidence": "ALBIREO is a codec-free, detector-agnostic wrapper requiring no detector modification or retraining. ... A per-object Kalman filter skips detection only while every projected covariance trace stays below threshold u. Flicker rescue emits bounded predicted boxes for recent confident misses, without updating state. With no active states, an approximately 14,000-parameter classifier screens frames in 1.3 ms on GPU.",
+        "reason": "The poster accurately describes the ALBIREO framework and its three core components (Kalman filter uncertainty trigger, flicker rescue, and empty-scene classifier)."
+      },
+      "chk_data": {
+        "label": "accurate",
+        "poster_evidence": "Evaluation uses 200 BDD100K dashcam clips, with about 40,000 annotated frames per configuration.",
+        "reason": "The poster accurately identifies the BDD100K dataset and the 200 clips used for evaluation."
+      },
+      "chk_setup": {
+        "label": "accurate",
+        "poster_evidence": "Unchanged YOLO11x, YOLO26x, and RF-DETR-Large detectors run through PyTorch on AGX Thor and AGX Orin.",
+        "reason": "The poster accurately describes the evaluation setup involving three detectors on two NVIDIA Jetson platforms."
+      },
+      "chk_primary_result": {
+        "label": "accurate",
+        "poster_evidence": "Across detectors and Jetsons, default ALBIREO stays within 1.2 AP@50 points while reducing energy.",
+        "reason": "The poster accurately reports that ALBIREO keeps AP@50 within 1.2 points across configurations while reducing energy, matching option (a) of the reference."
+      },
+      "chk_secondary_result": {
+        "label": "accurate",
+        "poster_evidence": "Threshold sweeping forms the upper Pareto frontier at AP@50 ≥ 0.50 on both platforms.",
+        "reason": "The poster accurately reports that ALBIREO forms the upper AP@50-EDP Pareto frontier in the target operating region, matching option (b) of the reference."
+      },
+      "chk_baseline": {
+        "label": "accurate",
+        "poster_evidence": "Comparisons include Vanilla, three fixed-skip settings, CTD, Statues, and ERD-only.",
+        "reason": "The poster accurately lists the baselines compared against, matching option (a) of the reference."
+      },
+      "chk_conclusion": {
+        "label": "accurate",
+        "poster_evidence": "ALBIREO is a detector-agnostic wrapper using temporal state to skip calls.",
+        "reason": "The poster's conclusion accurately summarizes the take-home message that ALBIREO is a detector-agnostic wrapper using temporal state to skip calls."
+      },
+      "chk_limitation": {
+        "label": "accurate",
+        "poster_evidence": "Constant-acceleration dynamics can drift during erratic motion.\n• The empty-scene classifier needs domain-specific fine-tuning.",
+        "reason": "The poster accurately lists these limitations, matching option (b) of the reference."
+      }
+    }
+  },
+  "raw": "```json\n{\n  \"items\": {\n    \"chk_problem\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Per-frame YOLO26x draws 70 W on Thor and 43 W on Orin, limiting battery-powered edge vision.\",\n      \"reason\": \"The poster accurately describes the problem of high power/energy consumption of running detectors on edge devices under the Motivation section.\"\n    },\n    \"chk_method\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"ALBIREO is a codec-free, detector-agnostic wrapper requiring no detector modification or retraining. ... A per-object Kalman filter skips detection only while every projected covariance trace stays below threshold u. Flicker rescue emits bounded predicted boxes for recent confident misses, without updating state. With no active states, an approximately 14,000-parameter classifier screens frames in 1.3 ms on GPU.\",\n      \"reason\": \"The poster accurately describes the ALBIREO framework and its three core components (Kalman filter uncertainty trigger, flicker rescue, and empty-scene classifier).\"\n    },\n    \"chk_data\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Evaluation uses 200 BDD100K dashcam clips, with about 40,000 annotated frames per configuration.\",\n      \"reason\": \"The poster accurately identifies the BDD100K dataset and the 200 clips used for evaluation.\"\n    },\n    \"chk_setup\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Unchanged YOLO11x, YOLO26x, and RF-DETR-Large detectors run through PyTorch on AGX Thor and AGX Orin.\",\n      \"reason\": \"The poster accurately describes the evaluation setup involving three detectors on two NVIDIA Jetson platforms.\"\n    },\n    \"chk_primary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Across detectors and Jetsons, default ALBIREO stays within 1.2 AP@50 points while reducing energy.\",\n      \"reason\": \"The poster accurately reports that ALBIREO keeps AP@50 within 1.2 points across configurations while reducing energy, matching option (a) of the reference.\"\n    },\n    \"chk_secondary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Threshold sweeping forms the upper Pareto frontier at AP@50 ≥ 0.50 on both platforms.\",\n      \"reason\": \"The poster accurately reports that ALBIREO forms the upper AP@50-EDP Pareto frontier in the target operating region, matching option (b) of the reference.\"\n    },\n    \"chk_baseline\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Comparisons include Vanilla, three fixed-skip settings, CTD, Statues, and ERD-only.\",\n      \"reason\": \"The poster accurately lists the baselines compared against, matching option (a) of the reference.\"\n    },\n    \"chk_conclusion\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"ALBIREO is a detector-agnostic wrapper using temporal state to skip calls.\",\n      \"reason\": \"The poster's conclusion accurately summarizes the take-home message that ALBIREO is a detector-agnostic wrapper using temporal state to skip calls.\"\n    },\n    \"chk_limitation\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Constant-acceleration dynamics can drift during erratic motion.\\n• The empty-scene classifier needs domain-specific fine-tuning.\",\n      \"reason\": \"The poster accurately lists these limitations, matching option (b) of the reference.\"\n    }\n  }\n}\n```"
+}

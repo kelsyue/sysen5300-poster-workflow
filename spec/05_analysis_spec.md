@@ -15,7 +15,7 @@ One row per paper × candidate (`results/latex/analysis/dataset.csv`), from `dat
 | `latency`, `token_usage`, `input_tokens`, `output_tokens`, `generation_cost` | Summed over every attempt of the poster: a recovery reuses the paper summary made in the earlier attempt, so this is the full cost of getting the poster (recovery rows hold only new usage) |
 | `coverage_pct__<source>`, `halluc_pct__<source>`, `quality_score__<source>` | Per score source (each judge; `human`): mean over repeats / evaluators. A failed judge task empties only its own measure |
 | `halluc_pct` | 100 × `n_claims_unsupported` / `n_claims_total` (% of claims; SR-2) |
-| `split` | `calibration` for `analysis.calibration_papers` (P06, P11, P13), else `main` |
+| `split` | `calibration` for `analysis.calibration_papers` (latex-v3: P01–P05, judge calibration P01–P03 and holdout validation P04–P05; v2: P06, P11, P13), else `main` |
 
 A judge with more than one prompt version on the analysed posters must be pinned (`--judge-prompt JUDGE=SHA256`); the script refuses to mix versions.
 

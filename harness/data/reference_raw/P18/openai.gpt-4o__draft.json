@@ -1,0 +1,58 @@
+{
+  "model": "openai.gpt-4o",
+  "reference_prompt_sha256": "a63f2a103bd381061f0d6560fdaf2e1bd28c503af09ee38a529d0648f4594fd3",
+  "error": null,
+  "tokens_in": 25951,
+  "tokens_out": 908,
+  "parsed": {
+    "summary": "This paper introduces a topological framework for analyzing and steering large language models (LLMs) in handling ill-posed questions. By treating prompt-token hidden states as point clouds and analyzing their topology using persistent homology, the authors derive seven descriptors to classify ill-posedness and guide model responses. Empirical evaluations demonstrate improved classification and steering performance across multiple datasets and LLM families.",
+    "items": {
+      "chk_problem": {
+        "value": "Ill-posed questions pose challenges for LLMs due to ambiguity, under-specification, or conflicting statements.",
+        "paper_quote": "Ill-posed questions, including those involving ambiguity, under-specification, or conflicting statements, may admit no valid answer or multiple plausible answers, posing a significant challenge for large language models (LLMs) despite their otherwise strong performance.",
+        "reason": null
+      },
+      "chk_method": {
+        "value": "A topology-based framework using persistent homology to analyze and steer LLM responses to ill-posed questions.",
+        "paper_quote": "We propose a topology-based framework for analyzing ill-posed questions and steering LLM responses.",
+        "reason": null
+      },
+      "chk_data": {
+        "value": "AmbigQA for binary detection and CLAMBER for nine-way classification of ill-posedness.",
+        "paper_quote": "Evaluation on AmbigQA for binary ill-posedness detection, and on CLAMBER for fine-grained 9-way ill-posedness classification demonstrates the effectiveness of the proposed topological representation.",
+        "reason": null
+      },
+      "chk_setup": {
+        "value": "Evaluation on eight open-weight models from four families using five split seeds and 70/10/20 train/validation/test splits.",
+        "paper_quote": "We evaluate eight models from four families using five split seeds (0–4), with 70/10/20 train/validation/test splits.",
+        "reason": null
+      },
+      "chk_primary_result": {
+        "value": "78.60% macro-F1 on AmbigQA binary detection and 39.44% macro-F1 on CLAMBER nine-way classification.",
+        "paper_quote": "Across eight open-weight models from the Llama, Qwen, Gemma, and Ministral families, our seven H0 and H1 descriptors from a single selected layer improve average macro-F1 score over the strongest baselines from 75.51% to 78.60% on AmbigQA, and from 36.64% to 39.44% on CLAMBER 9-way classification.",
+        "reason": null
+      },
+      "chk_secondary_result": {
+        "value": "Topology-conditioned steering improved steered abstention response rate from 27.43% to 51.15%.",
+        "paper_quote": "Averaged across the four dataset–model settings, topology-conditioned steering improves steered abstention response rate from 27.43% to 51.15%.",
+        "reason": null
+      },
+      "chk_baseline": {
+        "value": "Compared against AEN and prompt-based baselines like few-shot and chain-of-thought prompting.",
+        "paper_quote": "We compare against AEN (Zhang et al., 2025), a probing baseline that selects ambiguity-predictive neurons and trains a classifier on their activations. Prompt-based comparisons include CLAMBER zero-shot (Zhang et al., 2024), CLAM few-shot (Kuhn et al., 2022), CLAMBER few-shot chain-of-thought (Zhang et al., 2024; Wei et al., 2022), and InfoGain prompting (Kim et al., 2024).",
+        "reason": null
+      },
+      "chk_conclusion": {
+        "value": "Compact token-cloud topology provides an effective representation and steering signal for ill-posed problems.",
+        "paper_quote": "Together, these results demonstrate that compact token-cloud topology provides an effective, unified representation and steering signal for ill-posed problems.",
+        "reason": null
+      },
+      "chk_limitation": {
+        "value": "Incorrect detection or steering may cause unnecessary abstention or degraded responses.",
+        "paper_quote": "Incorrect detection or steering may cause unnecessary abstention or degraded responses.",
+        "reason": null
+      }
+    }
+  },
+  "raw": "{\n  \"summary\": \"This paper introduces a topological framework for analyzing and steering large language models (LLMs) in handling ill-posed questions. By treating prompt-token hidden states as point clouds and analyzing their topology using persistent homology, the authors derive seven descriptors to classify ill-posedness and guide model responses. Empirical evaluations demonstrate improved classification and steering performance across multiple datasets and LLM families.\",\n  \"items\": {\n    \"chk_problem\": {\n      \"value\": \"Ill-posed questions pose challenges for LLMs due to ambiguity, under-specification, or conflicting statements.\",\n      \"paper_quote\": \"Ill-posed questions, including those involving ambiguity, under-specification, or conflicting statements, may admit no valid answer or multiple plausible answers, posing a significant challenge for large language models (LLMs) despite their otherwise strong performance.\",\n      \"reason\": null\n    },\n    \"chk_method\": {\n      \"value\": \"A topology-based framework using persistent homology to analyze and steer LLM responses to ill-posed questions.\",\n      \"paper_quote\": \"We propose a topology-based framework for analyzing ill-posed questions and steering LLM responses.\",\n      \"reason\": null\n    },\n    \"chk_data\": {\n      \"value\": \"AmbigQA for binary detection and CLAMBER for nine-way classification of ill-posedness.\",\n      \"paper_quote\": \"Evaluation on AmbigQA for binary ill-posedness detection, and on CLAMBER for fine-grained 9-way ill-posedness classification demonstrates the effectiveness of the proposed topological representation.\",\n      \"reason\": null\n    },\n    \"chk_setup\": {\n      \"value\": \"Evaluation on eight open-weight models from four families using five split seeds and 70/10/20 train/validation/test splits.\",\n      \"paper_quote\": \"We evaluate eight models from four families using five split seeds (0–4), with 70/10/20 train/validation/test splits.\",\n      \"reason\": null\n    },\n    \"chk_primary_result\": {\n      \"value\": \"78.60% macro-F1 on AmbigQA binary detection and 39.44% macro-F1 on CLAMBER nine-way classification.\",\n      \"paper_quote\": \"Across eight open-weight models from the Llama, Qwen, Gemma, and Ministral families, our seven H0 and H1 descriptors from a single selected layer improve average macro-F1 score over the strongest baselines from 75.51% to 78.60% on AmbigQA, and from 36.64% to 39.44% on CLAMBER 9-way classification.\",\n      \"reason\": null\n    },\n    \"chk_secondary_result\": {\n      \"value\": \"Topology-conditioned steering improved steered abstention response rate from 27.43% to 51.15%.\",\n      \"paper_quote\": \"Averaged across the four dataset–model settings, topology-conditioned steering improves steered abstention response rate from 27.43% to 51.15%.\",\n      \"reason\": null\n    },\n    \"chk_baseline\": {\n      \"value\": \"Compared against AEN and prompt-based baselines like few-shot and chain-of-thought prompting.\",\n      \"paper_quote\": \"We compare against AEN (Zhang et al., 2025), a probing baseline that selects ambiguity-predictive neurons and trains a classifier on their activations. Prompt-based comparisons include CLAMBER zero-shot (Zhang et al., 2024), CLAM few-shot (Kuhn et al., 2022), CLAMBER few-shot chain-of-thought (Zhang et al., 2024; Wei et al., 2022), and InfoGain prompting (Kim et al., 2024).\",\n      \"reason\": null\n    },\n    \"chk_conclusion\": {\n      \"value\": \"Compact token-cloud topology provides an effective representation and steering signal for ill-posed problems.\",\n      \"paper_quote\": \"Together, these results demonstrate that compact token-cloud topology provides an effective, unified representation and steering signal for ill-posed problems.\",\n      \"reason\": null\n    },\n    \"chk_limitation\": {\n      \"value\": \"Incorrect detection or steering may cause unnecessary abstention or degraded responses.\",\n      \"paper_quote\": \"Incorrect detection or steering may cause unnecessary abstention or degraded responses.\",\n      \"reason\": null\n    }\n  }\n}"
+}

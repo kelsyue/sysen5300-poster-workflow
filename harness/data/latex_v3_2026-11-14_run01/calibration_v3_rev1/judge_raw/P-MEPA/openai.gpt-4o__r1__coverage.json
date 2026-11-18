@@ -1,0 +1,60 @@
+{
+  "model": "openai.gpt-4o",
+  "repeat": 1,
+  "judge_prompt_sha256": "7629fca9f8c558ca4ae975249c62febbce60a383f74c20f33f01a38d20d7e4fe",
+  "error": null,
+  "tokens_in": 5479,
+  "tokens_out": 873,
+  "tokens_cached": 0,
+  "max_output_tokens": 16384,
+  "parsed": {
+    "items": {
+      "chk_problem": {
+        "label": "accurate",
+        "poster_evidence": "Functional decline is often caught too late. Trajectory matters more than single lab values. We use 12 routine biomarkers to predict decline pre-clinically via EHRs. A hemoglobin of 11.5 g/dL that declined from 13.5 over 3 years signals higher risk than a stable 11.5 — existing tools miss this. Goal: passive, zero-burden integration using only existing lab data.",
+        "reason": "The poster accurately describes the research problem as predicting pre-clinical functional mobility decline in older adults using longitudinal trajectories of routine biomarkers before observable impairment or falls occur."
+      },
+      "chk_method": {
+        "label": "accurate",
+        "poster_evidence": "We analyzed 297,861 All of Us participants aged 50–125. Used 12 biomarkers over 3 years; derived slope, mean, count. Evaluated with LightGBM, XGBoost, RF, LR. Cases defined by ICD-10 codes (e.g., R26.2); controls assigned pseudo-index dates to avoid immortal time bias. Features derived over 3-year pre-index window; 5-fold CV with SHAP on held-out test set.",
+        "reason": "The poster correctly describes the feature engineering of trajectory descriptors and the use of LightGBM and other machine learning algorithms, matching the reference."
+      },
+      "chk_data": {
+        "label": "accurate",
+        "poster_evidence": "We analyzed 297,861 All of Us participants aged 50–125.",
+        "reason": "The poster specifies the dataset as 297,861 participants from the All of Us Research Program, consistent with the reference."
+      },
+      "chk_setup": {
+        "label": "accurate",
+        "poster_evidence": "Features derived over 3-year pre-index window; 5-fold CV with SHAP on held-out test set.",
+        "reason": "The poster describes the evaluation setup as five-fold cross-validation with out-of-fold predictions, matching the reference."
+      },
+      "chk_primary_result": {
+        "label": "accurate",
+        "poster_evidence": "Trajectory features beat static summaries: AUROC 0.797 vs. 0.755. AUPRC 0.380 vs. 0.304.",
+        "reason": "The poster reports the primary result of LightGBM achieving AUROC 0.797 and AUPRC 0.380, consistent with the reference."
+      },
+      "chk_secondary_result": {
+        "label": "missing",
+        "poster_evidence": "",
+        "reason": "The poster does not mention the prediction horizon analysis or the sustained prediction of mobility decline 3 to 12 months before onset, as described in the reference."
+      },
+      "chk_baseline": {
+        "label": "accurate",
+        "poster_evidence": "Trajectory features beat static summaries: AUROC 0.797 vs. 0.755. AUPRC 0.380 vs. 0.304.",
+        "reason": "The poster correctly identifies static laboratory summaries as the baseline and reports their AUROC and AUPRC values, consistent with the reference."
+      },
+      "chk_conclusion": {
+        "label": "accurate",
+        "poster_evidence": "Trajectory features predict decline better: AUROC 0.797 vs. 0.755. Uses only existing labs — enabling passive, scalable early detection in any EHR. Independent trajectory signal beyond demographics (AUROC 0.727), and model retains strong performance without utilization proxies (AUROC 0.789), supporting equitable deployment.",
+        "reason": "The poster concludes that longitudinal trajectory features improve prediction and enable passive, scalable early detection, consistent with the reference."
+      },
+      "chk_limitation": {
+        "label": "missing",
+        "poster_evidence": "",
+        "reason": "The poster does not mention any specific limitations or implications, such as the use of ICD-10 codes or missingness in certain biomarkers, as described in the reference."
+      }
+    }
+  },
+  "raw": "```json\n{\n  \"items\": {\n    \"chk_problem\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Functional decline is often caught too late. Trajectory matters more than single lab values. We use 12 routine biomarkers to predict decline pre-clinically via EHRs. A hemoglobin of 11.5 g/dL that declined from 13.5 over 3 years signals higher risk than a stable 11.5 — existing tools miss this. Goal: passive, zero-burden integration using only existing lab data.\",\n      \"reason\": \"The poster accurately describes the research problem as predicting pre-clinical functional mobility decline in older adults using longitudinal trajectories of routine biomarkers before observable impairment or falls occur.\"\n    },\n    \"chk_method\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"We analyzed 297,861 All of Us participants aged 50–125. Used 12 biomarkers over 3 years; derived slope, mean, count. Evaluated with LightGBM, XGBoost, RF, LR. Cases defined by ICD-10 codes (e.g., R26.2); controls assigned pseudo-index dates to avoid immortal time bias. Features derived over 3-year pre-index window; 5-fold CV with SHAP on held-out test set.\",\n      \"reason\": \"The poster correctly describes the feature engineering of trajectory descriptors and the use of LightGBM and other machine learning algorithms, matching the reference.\"\n    },\n    \"chk_data\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"We analyzed 297,861 All of Us participants aged 50–125.\",\n      \"reason\": \"The poster specifies the dataset as 297,861 participants from the All of Us Research Program, consistent with the reference.\"\n    },\n    \"chk_setup\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Features derived over 3-year pre-index window; 5-fold CV with SHAP on held-out test set.\",\n      \"reason\": \"The poster describes the evaluation setup as five-fold cross-validation with out-of-fold predictions, matching the reference.\"\n    },\n    \"chk_primary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Trajectory features beat static summaries: AUROC 0.797 vs. 0.755. AUPRC 0.380 vs. 0.304.\",\n      \"reason\": \"The poster reports the primary result of LightGBM achieving AUROC 0.797 and AUPRC 0.380, consistent with the reference.\"\n    },\n    \"chk_secondary_result\": {\n      \"label\": \"missing\",\n      \"poster_evidence\": \"\",\n      \"reason\": \"The poster does not mention the prediction horizon analysis or the sustained prediction of mobility decline 3 to 12 months before onset, as described in the reference.\"\n    },\n    \"chk_baseline\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Trajectory features beat static summaries: AUROC 0.797 vs. 0.755. AUPRC 0.380 vs. 0.304.\",\n      \"reason\": \"The poster correctly identifies static laboratory summaries as the baseline and reports their AUROC and AUPRC values, consistent with the reference.\"\n    },\n    \"chk_conclusion\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Trajectory features predict decline better: AUROC 0.797 vs. 0.755. Uses only existing labs — enabling passive, scalable early detection in any EHR. Independent trajectory signal beyond demographics (AUROC 0.727), and model retains strong performance without utilization proxies (AUROC 0.789), supporting equitable deployment.\",\n      \"reason\": \"The poster concludes that longitudinal trajectory features improve prediction and enable passive, scalable early detection, consistent with the reference.\"\n    },\n    \"chk_limitation\": {\n      \"label\": \"missing\",\n      \"poster_evidence\": \"\",\n      \"reason\": \"The poster does not mention any specific limitations or implications, such as the use of ICD-10 codes or missingness in certain biomarkers, as described in the reference.\"\n    }\n  }\n}\n```"
+}

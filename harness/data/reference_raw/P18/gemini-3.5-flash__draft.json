@@ -1,0 +1,49 @@
+{
+  "model": "gemini-3.5-flash",
+  "reference_prompt_sha256": "a63f2a103bd381061f0d6560fdaf2e1bd28c503af09ee38a529d0648f4594fd3",
+  "error": null,
+  "tokens_in": 27748,
+  "tokens_out": 5476,
+  "parsed": {
+    "summary": "This paper introduces TIPS, a topological framework that treats the contextual hidden states of prompt tokens in large language models as a point cloud to analyze and steer responses to ill-posed questions. By extracting seven descriptors from zero- and one-dimensional persistent homology, the method achieves improved performance in both binary and fine-grained ill-posedness classification. Furthermore, topology-conditioned activation steering significantly increases the rate of appropriate clarification or abstention responses.",
+    "items": {
+      "chk_problem": {
+        "value": "Large language models struggle with ill-posed questions (such as those involving ambiguity, under-specification, or conflicting statements) because existing work treats LLM reasoning as a black box.",
+        "paper_quote": "Ill-posed questions, including those involving ambiguity, under-specification, or conflicting statements, may admit no valid answer or multiple plausible answers, posing a significant challenge for large language models (LLMs) despite their otherwise strong performance."
+      },
+      "chk_method": {
+        "value": "TIPS, which treats contextual hidden states of prompt tokens as a point cloud and uses persistent homology to extract topological descriptors of ill-posedness and steer model reasoning.",
+        "paper_quote": "To this end, we study the internal state from a topological perspective by treating the contextual hidden states of its prompt tokens at a single transformer layer as a point cloud, capturing the input problem’s relational structure as encoded by the model."
+      },
+      "chk_data": {
+        "value": "AmbigQA for binary ill-posedness detection and CLAMBER for fine-grained 9-way ill-posedness classification, evaluated across eight open-weight models.",
+        "paper_quote": "Evaluation on AmbigQA for binary ill-posedness detection, and on CLAMBER for fine-grained 9-way ill-posedness classification demonstrates the effectiveness of the proposed topological representation."
+      },
+      "chk_setup": {
+        "value": "Evaluating eight models from four families using five split seeds with 70/10/20 train/validation/test splits.",
+        "paper_quote": "We evaluate eight models from four families using five split seeds (0–4), with 70/10/20 train/validation/test splits."
+      },
+      "chk_primary_result": {
+        "value": "TIPS improved average macro-F1 from 75.51% to 78.60% on AmbigQA, and from 36.64% to 39.44% on CLAMBER 9-way classification.",
+        "paper_quote": "Across eight open-weight models from the Llama, Qwen, Gemma, and Ministral families, our seven H0 and H1 descriptors from a single selected layer improve average macro-F1 score over the strongest baselines from 75.51% to 78.60% on AmbigQA, and from 36.64% to 39.44% on CLAMBER 9-way classification."
+      },
+      "chk_secondary_result": {
+        "value": "Topology-conditioned steering improved the steered abstention response rate from 27.43% to 51.15% on average across four dataset-model settings.",
+        "paper_quote": "Averaged across the four dataset–model settings, topology-conditioned steering improves steered abstention response rate from 27.43% to 51.15%."
+      },
+      "chk_baseline": {
+        "value": "The method is compared against AEN, a probing baseline that selects ambiguity-predictive neurons and trains a classifier on their activations.",
+        "paper_quote": "We compare against AEN (Zhang et al., 2025), a probing baseline that selects ambiguity-predictive neurons and trains a classifier on their activations."
+      },
+      "chk_conclusion": {
+        "value": "Compact token-cloud topology provides an effective, unified representation and steering signal for identifying and handling ill-posed problems in large language models.",
+        "paper_quote": "Together, these results demonstrate that compact token-cloud topology provides an effective, unified representation and steering signal for ill-posed problems."
+      },
+      "chk_limitation": {
+        "value": "Incorrect detection or steering may cause unnecessary abstention or degraded responses.",
+        "paper_quote": "Incorrect detection or steering may cause unnecessary abstention or degraded responses."
+      }
+    }
+  },
+  "raw": "```json\n{\n  \"summary\": \"This paper introduces TIPS, a topological framework that treats the contextual hidden states of prompt tokens in large language models as a point cloud to analyze and steer responses to ill-posed questions. By extracting seven descriptors from zero- and one-dimensional persistent homology, the method achieves improved performance in both binary and fine-grained ill-posedness classification. Furthermore, topology-conditioned activation steering significantly increases the rate of appropriate clarification or abstention responses.\",\n  \"items\": {\n    \"chk_problem\": {\n      \"value\": \"Large language models struggle with ill-posed questions (such as those involving ambiguity, under-specification, or conflicting statements) because existing work treats LLM reasoning as a black box.\",\n      \"paper_quote\": \"Ill-posed questions, including those involving ambiguity, under-specification, or conflicting statements, may admit no valid answer or multiple plausible answers, posing a significant challenge for large language models (LLMs) despite their otherwise strong performance.\"\n    },\n    \"chk_method\": {\n      \"value\": \"TIPS, which treats contextual hidden states of prompt tokens as a point cloud and uses persistent homology to extract topological descriptors of ill-posedness and steer model reasoning.\",\n      \"paper_quote\": \"To this end, we study the internal state from a topological perspective by treating the contextual hidden states of its prompt tokens at a single transformer layer as a point cloud, capturing the input problem’s relational structure as encoded by the model.\"\n    },\n    \"chk_data\": {\n      \"value\": \"AmbigQA for binary ill-posedness detection and CLAMBER for fine-grained 9-way ill-posedness classification, evaluated across eight open-weight models.\",\n      \"paper_quote\": \"Evaluation on AmbigQA for binary ill-posedness detection, and on CLAMBER for fine-grained 9-way ill-posedness classification demonstrates the effectiveness of the proposed topological representation.\"\n    },\n    \"chk_setup\": {\n      \"value\": \"Evaluating eight models from four families using five split seeds with 70/10/20 train/validation/test splits.\",\n      \"paper_quote\": \"We evaluate eight models from four families using five split seeds (0–4), with 70/10/20 train/validation/test splits.\"\n    },\n    \"chk_primary_result\": {\n      \"value\": \"TIPS improved average macro-F1 from 75.51% to 78.60% on AmbigQA, and from 36.64% to 39.44% on CLAMBER 9-way classification.\",\n      \"paper_quote\": \"Across eight open-weight models from the Llama, Qwen, Gemma, and Ministral families, our seven H0 and H1 descriptors from a single selected layer improve average macro-F1 score over the strongest baselines from 75.51% to 78.60% on AmbigQA, and from 36.64% to 39.44% on CLAMBER 9-way classification.\"\n    },\n    \"chk_secondary_result\": {\n      \"value\": \"Topology-conditioned steering improved the steered abstention response rate from 27.43% to 51.15% on average across four dataset-model settings.\",\n      \"paper_quote\": \"Averaged across the four dataset–model settings, topology-conditioned steering improves steered abstention response rate from 27.43% to 51.15%.\"\n    },\n    \"chk_baseline\": {\n      \"value\": \"The method is compared against AEN, a probing baseline that selects ambiguity-predictive neurons and trains a classifier on their activations.\",\n      \"paper_quote\": \"We compare against AEN (Zhang et al., 2025), a probing baseline that selects ambiguity-predictive neurons and trains a classifier on their activations.\"\n    },\n    \"chk_conclusion\": {\n      \"value\": \"Compact token-cloud topology provides an effective, unified representation and steering signal for identifying and handling ill-posed problems in large language models.\",\n      \"paper_quote\": \"Together, these results demonstrate that compact token-cloud topology provides an effective, unified representation and steering signal for ill-posed problems.\"\n    },\n    \"chk_limitation\": {\n      \"value\": \"Incorrect detection or steering may cause unnecessary abstention or degraded responses.\",\n      \"paper_quote\": \"Incorrect detection or steering may cause unnecessary abstention or degraded responses.\"\n    }\n  }\n}\n```"
+}

@@ -1,0 +1,202 @@
+{
+  "paper_id": "P16",
+  "created_at": "2026-11-18T03:39:30+00:00",
+  "models": [
+    "gemini-3.5-flash",
+    "openai.gpt-4o"
+  ],
+  "reference_prompt_sha256": "a63f2a103bd381061f0d6560fdaf2e1bd28c503af09ee38a529d0648f4594fd3",
+  "paper_text_sha256": "82e4435ab37dc3e710f9028f1a8834a02434b7d2e61fbc165343660f6289f29c",
+  "summary": "The paper introduces SMem (static memory), an architecture that decouples context representation from prefix entanglement by encoding blocks independently and using cross-attention in the reader. SMem achieves exact context composition, deletion, and path-independent editing by construction, while maintaining comparable perplexity to standard transformers. It also demonstrates superior long-range needle retrieval at 4× the training context length and significantly faster serving and deletion speeds.",
+  "items": {
+    "chk_problem": {
+      "status": "accepted",
+      "value": "The KV cache of transformers entangles token representations with their entire prefix, preventing exact context reuse under different prefixes and exact deletion without recomputing subsequent tokens.",
+      "paper_quote": "The KV cache of a transformer entangles every token’s representation with its entire prefix: a passage encoded once cannot be reused under a different prefix, and cannot be removed without recomputing everything after it.",
+      "drafts": [
+        {
+          "value": "The KV cache of transformers entangles token representations with their entire prefix, preventing exact context reuse under different prefixes and exact deletion without recomputing subsequent tokens.",
+          "paper_quote": "The KV cache of a transformer entangles every token’s representation with its entire prefix: a passage encoded once cannot be reused under a different prefix, and cannot be removed without recomputing everything after it.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "Transformer KV cache limits exact reuse and deletion due to prefix entanglement.",
+          "paper_quote": "The KV cache of a transformer entangles every token’s representation with its entire prefix: a passage encoded once cannot be reused under a different prefix, and cannot be removed without recomputing everything after it.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ]
+    },
+    "chk_method": {
+      "status": "accepted",
+      "value": "SMem (static memory), which encodes blocks of tokens independently into memory rows and uses a reader to condition generation on these rows via cross-attention.",
+      "paper_quote": "A block-local encoder maps each block of tokens to memory rows independently of all other blocks; a reader conditions generation on the union of those rows through cross-attention.",
+      "drafts": [
+        {
+          "value": "SMem (static memory), which encodes blocks of tokens independently into memory rows and uses a reader to condition generation on these rows via cross-attention.",
+          "paper_quote": "A block-local encoder maps each block of tokens to memory rows independently of all other blocks; a reader conditions generation on the union of those rows through cross-attention.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "SMem architecture with block-local encoding and cross-attention reader.",
+          "paper_quote": "We propose SMem (static memory: a block’s rows never change once encoded). Context is split into blocks; an encoder with block-local attention maps each block to memory rows independently of every other block; generation conditions on the union of memory rows through cross-attention (Figure 1).",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ]
+    },
+    "chk_data": {
+      "status": "uncertain",
+      "why": "drafts differ",
+      "drafts": [
+        {
+          "value": "The FineWeb-Edu dataset used for pretraining the models.",
+          "paper_quote": "SMem and a standard pre-LN transformer are pretrained from scratch on FineWeb-Edu (Penedo et al., 2024) (GPT-2 tokenizer, T =1024, b=64, B=16) at ≈20:1 token budgets (Hoffmann et al., 2022): 160M/3.2B tokens (3 seeds per arm), 410M/8.2B (2 seeds), 1.4B/30B (1 seed; we write “1.5B” for the 1.42B-parameter scale).",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "FineWeb-Edu dataset, 3.2B tokens at 160M scale, 8.2B tokens at 410M scale, 30B tokens at 1.5B scale.",
+          "paper_quote": "SMem and a standard pre-LN transformer are pretrained from scratch on FineWeb-Edu (Penedo et al., 2024) (GPT-2 tokenizer, T =1024, b=64, B=16) at ≈20:1 token budgets (Hoffmann et al., 2022): 160M/3.2B tokens (3 seeds per arm), 410M/8.2B (2 seeds), 1.4B/30B (1 seed; we write “1.5B” for the 1.42B-parameter scale).",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ],
+      "paper_excerpt": "What the move costs: matched-parameter pretraining and a recipe–\narchitecture interaction\n\nWe ran the matched comparison under two training recipes: the one our pilots selected (Regime 1) and one\nre-tuned on the transformer arm after a registered control on the recipe axis exceeded its decision threshold\n(Regime 2).\nSetup. SMem and a standard pre-LN transformer are pretrained from scratch on FineWeb-Edu (Penedo et al.,\n2024) (GPT-2 tokenizer, T =1024, b=64, B=16) at ≈20:1 token budgets (Hoffmann et al., 2022): 160M/3.2B\ntokens (3 seeds per arm), 410M/8.2B (2 seeds), 1.4B/30B (1 seed; we write “1.5B” for the 1.42B-parameter\nscale). The seed fixes the data order and the evaluation stream for both arms, so per-seed paired differences\nare the estimand (streams differ across seeds; displayed means average them). Parameters match within\n1.5%/0.01%/0.00% at the three scales (SMem higher) and analytic FLOPs/token within 4.4%/4.6%/2.5%\n\n7"
+    },
+    "chk_setup": {
+      "status": "uncertain",
+      "why": "drafts differ",
+      "drafts": [
+        {
+          "value": "Pretraining SMem and standard pre-LN transformers from scratch on FineWeb-Edu at 160M, 410M, and 1.5B parameter scales under two training recipes (Regime 1 and Regime 2).",
+          "paper_quote": "SMem and a standard pre-LN transformer are pretrained from scratch on FineWeb-Edu (Penedo et al., 2024) (GPT-2 tokenizer, T =1024, b=64, B=16) at ≈20:1 token budgets (Hoffmann et al., 2022): 160M/3.2B tokens (3 seeds per arm), 410M/8.2B (2 seeds), 1.4B/30B (1 seed; we write “1.5B” for the 1.42B-parameter scale).",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "Pretraining with matched parameters and token budgets, validation on held-out FineWeb-Edu data.",
+          "paper_quote": "Validation: the last 200M tokens of the deterministic corpus stream, held out from training; each seed evaluates a fixed 0.5M-token sample of it shared across arms.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ],
+      "paper_excerpt": "What the move costs: matched-parameter pretraining and a recipe–\narchitecture interaction\n\nWe ran the matched comparison under two training recipes: the one our pilots selected (Regime 1) and one\nre-tuned on the transformer arm after a registered control on the recipe axis exceeded its decision threshold\n(Regime 2).\nSetup. SMem and a standard pre-LN transformer are pretrained from scratch on FineWeb-Edu (Penedo et al.,\n2024) (GPT-2 tokenizer, T =1024, b=64, B=16) at ≈20:1 token budgets (Hoffmann et al., 2022): 160M/3.2B\ntokens (3 seeds per arm), 410M/8.2B (2 seeds), 1.4B/30B (1 seed; we write “1.5B” for the 1.42B-parameter\nscale). The seed fixes the data order and the evaluation stream for both arms, so per-seed paired differences\nare the estimand (streams differ across seeds; displayed means average them). Parameters match within\n1.5%/0.01%/0.00% at the three scales (SMem higher) and analytic FLOPs/token within 4.4%/4.6%/2.5%\n\n7\n\n6 × 10−4\n3 × 10−4\n2 × 10−4\n\nAdamW β = (0.9, 0.95), weight decay 0.1 (matrices only), gradient clip 1.0, cosine decay to 0.1× peak,\nglobal batch 219 tokens (160M/410M; at 1.5B 220 for the transformer on 4 GPUs and 1,032,192 for SMem\non 3 GPUs, 28,611 vs 29,065 steps to the same 30B tokens), bf16 training with fp32 evaluation (TF32\nmatmuls; exactness gates in strict fp32), documents packed with an end-of-text separator. Regime 1: no\nwarmup. Regime 2: linear warmup of 2000/15641 steps at 410M and 800/6104 at 160M (≈12.8%/13.1%\nof the horizon), identical otherwise. The depth splits follow the pilot ablation of Appendix O. Validation:\nthe last 200M tokens of the deterministic corpus stream, held out from training; each seed evaluates a fixed\n0.5M-token sample of it shared across arms. Training hardware: 7×H200 (single-GPU runs at 160M/410M;\ndistributed data parallel over 4 and 3 GPUs at 1.5B).\n\nB"
+    },
+    "chk_primary_result": {
+      "status": "accepted",
+      "value": "SMem retrieves planted needles at 4× the training context with an exact-match accuracy of 0.14–0.28 at distances of 31 and 63 blocks, while transformer variants score at most 0.02.",
+      "paper_quote": "At 4× the training context, under the shared training recipe, SMem still retrieves planted needles beyond any window of the trained length (exact-match accuracy 0.14–0.28 at distances 31 and 63 blocks) where a learned-position transformer, a RoPE transformer, a Block-Attention-style two-stream arm, and windowed or saturated readings of the transformers all score at most 0.02; with two identical keys it returns the nearer one’s value.",
+      "drafts": [
+        {
+          "value": "SMem retrieves planted needles at 4× the training context with an exact-match accuracy of 0.14–0.28 at distances of 31 and 63 blocks, while transformer variants score at most 0.02.",
+          "paper_quote": "At 4× the training context, under the shared training recipe, SMem still retrieves planted needles beyond any window of the trained length (exact-match accuracy 0.14–0.28 at distances 31 and 63 blocks) where a learned-position transformer, a RoPE transformer, a Block-Attention-style two-stream arm, and windowed or saturated readings of the transformers all score at most 0.02; with two identical keys it returns the nearer one’s value.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "SMem retrieves exact-match accuracy 0.14–0.28 at distances 31 and 63 blocks at 4× trained length.",
+          "paper_quote": "At 4× the training length, SMem retrieves with exact-match accuracy 0.14–0.28 at distances 31 and 63 blocks across scales, beyond any window of the trained length (0.13–0.26 at distance 15, which a window reaches; primary harness; Figure 3 shows the conditional-gain view), while the learned-position transformer reads 0.00–0.02.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ]
+    },
+    "chk_secondary_result": {
+      "status": "uncertain",
+      "why": "drafts differ",
+      "drafts": [
+        {
+          "value": "SMem achieves a perplexity gap of -4.7% to +2.8% compared to a parameter-matched transformer on FineWeb-Edu across two training recipes and a learning-rate search.",
+          "paper_quote": "What it costs is a perplexity gap of −4.7% to +2.8% (negative favors SMem) against a parameter-matched transformer with the same positional scheme, at 160M–1.5B on FineWeb-Edu across two training recipes and a learning-rate search; the band’s lower endpoint is set by the recipe and its upper by the learning-rate search, and the recipe’s change moves the transformer twice as far as it moves SMem at 160M.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "SMem serves cached contexts at near-constant cost, reducing TTFT by 67–69% at training length.",
+          "paper_quote": "Its cost is near-constant at 3.1–6.2 ms per request across context lengths (the pass is O(bn) in cross-attention, linear in context, against the full pass’s O(n2 ); the flatness is the launch-bound regime), while the model’s own cold prefill grows with context (Figure 2b): a 67–69% time-to-first-token (TTFT) reduction at training length and, mechanically, more at longer contexts (88–94% at 4–8×).",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ],
+      "paper_excerpt": "arXiv:2609.32395v1 [cs.AI] 26 Sep 2026\n\nAbstract\nThe KV cache of a transformer entangles every token’s representation with its entire prefix: a passage\nencoded once cannot be reused under a different prefix, and cannot be removed without recomputing\neverything after it. Exact cache reuse in serving is therefore limited to shared prefixes, and systems\nthat reuse more must approximate. We present SMem (static memory), an architecture whose context\nrepresentation is a cache by construction. A block-local encoder maps each block of tokens to memory\nrows independently of all other blocks; a reader conditions generation on the union of those rows through\ncross-attention. Three properties then hold for every parameter setting: memory composes exactly at\nfixed block indices, deleting a block is exact and is an O(b) memory update for b-token blocks, and the\nmemory state is independent of the edit path. What the cache buys is measured directly. At 4× the training\ncontext, under the shared training recipe, SMem still retrieves planted needles beyond any window of the\ntrained length (exact-match accuracy 0.14–0.28 at distances 31 and 63 blocks) where a learned-position\ntransformer, a RoPE transformer, a Block-Attention-style two-stream arm, and windowed or saturated\nreadings of the transformers all score at most 0.02; with two identical keys it returns the nearer one’s value.\nBecause reader computation is block-local, a fully cached context is served by computing one block alone\n(exact up to floating-point rounding) at a near-constant 3.1–6.2 ms against the same model’s cold prefill,\nwhich grows with context; batched decode holds 34–38% fewer KV rows and runs 1.4–1.7× faster than\nthe transformer where decode is bandwidth-bound, and end-to-end deletion beats suffix recomputation by\n8.5× at 512 blocks, rising to 452× at 4096 blocks; both are 32–256× the trained length and probe the\ncost model rather than a served regime. What it costs is a perplexity gap of −4.7% to +2.8% (negative\nfavors SMem) against a parameter-matched transformer with the same positional scheme, at 160M–1.5B\non FineWeb-Edu across two training recipes and a learning-rate search; the band’s lower endpoint is set\nby the recipe and its upper by the learning-rate search, and the recipe’s change moves the transformer\ntwice as far as it moves SMem at 160M. SMem also composes with RoPE: at 160M and 410M the\ncomposite leads SMem on every seed pair and matches or leads the matched transformer, closing 29–59%\nof SMem’s distance to a RoPE transformer, which leads SMem by 7.4–8.5%. Context representation\nentangled with the full prefix is a design choice; an architecture that drops that entanglement reaches\ncomparable perplexity and gains a cache that composes, deletes, and edits exactly and, under the shared\nrecipe, retrieves at range where every transformer variant we test does not.\n\n1\n\nReuse: an exact fast path for cached contexts\n\nComposition (Proposition 1) makes reuse exact, and the reader’s block-locality makes it cheap to serve: a\nposition’s reader state depends only on its own block’s tokens and the (cached) memory, so a fully cached\ncontext is served by running the reader on the final block alone. This block-skip path is not an approximation—\nits final-block logits equal the full reader pass up to floating-point rounding (max abs 4.7 × 10−5 , argmax\nagreement 100%, all scales and lengths tested). Its cost is near-constant at 3.1–6.2 ms per request across\ncontext lengths (the pass is O(bn) in cross-attention, linear in context, against the full pass’s O(n2 ); the\nflatness is the launch-bound regime), while the model’s own cold prefill grows with context (Figure 2b): a\n67–69% time-to-first-token (TTFT) reduction at training length and, mechanically, more at longer contexts\n(88–94% at 4–8×). The encoder is 15–22% of prefill FLOPs; under partial reuse the reader runs from the\nfirst uncached block.\nDecode inherits the KV economics. For a served context of n tokens, the reader holds cross-attention\nK/V over the memory plus only b rows of block-local self-attention KV per layer, across D < L layers:\nD(n+b) vs L · n rows, i.e. 34–38% fewer KV rows, hence bytes (head dimension and dtype match), than the\nlearned-position transformer at our depth splits (the driver is D < L, a depth split a transformer could take\nat a quality cost, Appendix G; grouped-query attention composes with it; Appendix D). Where decode is\nbandwidth-bound (batch 16–64, both arms at ≥590 GB/s on an L40S), the fewer bytes convert to 1.4–1.7×\nhigher throughput at 4–18% lower peak memory, in line with the row ratio; at batch 1 both arms are launchbound and within 1.21× (exactness-gated, contiguous layout; Appendix K). Recomputing K/V from the\nmemory rows instead of storing it cuts peak memory further at 0.1–0.2× the throughput (Appendix K).\nPrefix caching saves prefill only for prefix-identical requests (8% in the production study above); SMem’s\nsaving applies to any repeated block under any surrounding"
+    },
+    "chk_baseline": {
+      "status": "uncertain",
+      "why": "drafts differ",
+      "drafts": [
+        {
+          "value": "A parameter-matched standard pre-LN transformer, along with other variants like RoPE transformers, Block-Attention-style arms, and windowed or saturated transformer readings.",
+          "paper_quote": "SMem and a standard pre-LN transformer are pretrained from scratch on FineWeb-Edu (Penedo et al., 2024) (GPT-2 tokenizer, T =1024, b=64, B=16) at ≈20:1 token budgets (Hoffmann et al., 2022): 160M/3.2B tokens (3 seeds per arm), 410M/8.2B (2 seeds), 1.4B/30B (1 seed; we write “1.5B” for the 1.42B-parameter scale).",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "Compared against learned-position transformer, RoPE transformer, and Block-Attention arm.",
+          "paper_quote": "At 4× the training length, SMem retrieves with exact-match accuracy 0.14–0.28 at distances 31 and 63 blocks across scales, beyond any window of the trained length (0.13–0.26 at distance 15, which a window reaches; primary harness; Figure 3 shows the conditional-gain view), while the learned-position transformer reads 0.00–0.02.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ],
+      "paper_excerpt": ".00\n.00\n.00\n.00\n.00\n.00\n\n3.2 Retrieval that survives length under the shared recipe, unlike every transformer variant\ntested\nExtending the context appends memory rows under the slot scheme rather than stretching a positional pattern.\nWe test with a needle design under paired controls: plant an 8-token key with a 1-token value in FineWeb-Edu\nvalidation text at a controlled block distance from a query at the end. We measure exact-match accuracy\n(argmax at the answer position) and conditional gain (matched-key minus mismatched-key log-probability of\nthe value, canceling presence bias); n=384 or 1024 per cell, by harness; protocol in Appendix J.\nAt 4× the training length, SMem retrieves with exact-match accuracy 0.14–0.28 at distances 31 and 63\nblocks across scales, beyond any window of the trained length (0.13–0.26 at distance 15, which a window\nreaches; primary harness; Figure 3 shows the conditional-gain view), while the learned-position transformer\nreads 0.00–0.02. In distribution, at the training length and distance 15 (160M, primary harness): SMem 0.52,\nlearned-position transformer 0.15, RoPE transformer 0.00; the RoPE zero reflects our 3.2B-token budget\n(four runs; distance-1 control 0.57–0.64): a pretrained Pythia-410M reads 0.64 in distribution on the same\nprobe and 0.00 at 2× its context under direct extension (Appendix J). Block-locality alone does not explain\nit: the Block-Attention-style arm reads 0.00 everywhere at 4× (conditional gain ≤ 0.35 nats) while matching\nthe learned-position baseline in distribution. Extensions of the transformer arms’ own (RoPE offsets clamped;\nposition interpolation, NTK-aware scaling, and YaRN at inference time; learned positions clipped) recover\nat most part of the near range and nothing beyond 15 blocks, and a sliding window over the last T tokens,\nwith or without attention-sink tokens, keeps in-distribution accuracy up to 15 blocks and reads 0.00 beyond\n(Table 1; Appendix J).\nTwo alternative explanations fail. The recipe: on tuned-recipe checkpoints it replicates (0.13–0.74 at\ndistances ≤ 7 vs ≈0.00 for the transformer), with accuracy beyond the window (d≥31) of 0.00–0.11 across\nseeds and scales, near the floor at 410M, against 0.12–0.13 for the shared-recipe 160M seed in that harness,\nwhile the margin in conditional gain stays at 1.2–3.2 nats against ≤ 0.5: the tuned recipe buys perplexity\nand thins the far-range signal. The positional scheme: an SMem variant whose positions come from rotary\nphases rather than a table (§4) also retrieves at range once its block offsets are capped at the trained range, as\nthe slot scheme caps indices (0.65–0.75 at distance 1, 0.03–0.14 at ≥ 15 blocks over six 160M runs and one\n410M run; at 410M under the tuned recipe it reads 0.14 at distances 31 and 63 against SMem’s 0.00–0.04),\nat a near-range cost against a windowed reading of the same model (0.09–0.11 vs 0.33–0.34 at distance 15\non the same two seeds; Appendix J). Retrieval is also structured rather than bag-of-keys: with two identical\nkeys at different distances, SMem returns the nearer key’s value (0.65 vs 0.01 at 160M; 0.50/0.11 at 1.5B;\n6\n\n(b) 4× extrapolation (4096 tokens)\n\nWhat the move costs: matched-parameter pretraining and a recipe–\narchitecture interaction\n\nWe ran the matched comparison under two training recipes: the one our pilots selected (Regime 1) and one\nre-tuned on the transformer arm after a registered control on the recipe axis exceeded its decision threshold\n(Regime 2).\nSetup. SMem and a standard pre-LN transformer are pretrained from scratch on FineWeb-Edu (Penedo et al.,\n2024) (GPT-2 tokenizer, T =1024, b=64, B=16) at ≈20:1 token budgets (Hoffmann et al., 2022): 160M/3.2B\ntokens (3 seeds per arm), 410M/8.2B (2 seeds), 1.4B/30B (1 seed; we write “1.5B” for the 1.42B-parameter\nscale). The seed fixes the data order and the evaluation stream for both arms, so per-seed paired differences\nare the estimand (streams differ across seeds; displayed means average them). Parameters match within\n1.5%/0.01%/0.00% at the three scales (SMem higher) and analytic FLOPs/token within 4.4%/4.6%/2.5%\n\n7"
+    },
+    "chk_conclusion": {
+      "status": "accepted",
+      "value": "Dropping prefix entanglement in context representation allows SMem to achieve comparable perplexity to transformers while gaining exact context composition, deletion, and editing, plus superior long-range retrieval.",
+      "paper_quote": "Context representation entangled with the full prefix is a design choice; an architecture that drops that entanglement reaches comparable perplexity and gains a cache that composes, deletes, and edits exactly and, under the shared recipe, retrieves at range where every transformer variant we test does not.",
+      "drafts": [
+        {
+          "value": "Dropping prefix entanglement in context representation allows SMem to achieve comparable perplexity to transformers while gaining exact context composition, deletion, and editing, plus superior long-range retrieval.",
+          "paper_quote": "Context representation entangled with the full prefix is a design choice; an architecture that drops that entanglement reaches comparable perplexity and gains a cache that composes, deletes, and edits exactly and, under the shared recipe, retrieves at range where every transformer variant we test does not.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "SMem achieves comparable perplexity to transformers and enables exact memory operations.",
+          "paper_quote": "An architecture that encodes blocks independently and pays for cross-block conditioning at read time reaches perplexity comparable to a parameter-matched transformer’s at every scale-and-recipe pair we ran, and gains a cache that composes and deletes exactly, serves cached contexts at near-constant cost, and, under the shared recipe, retrieves beyond the trained length where our transformer variants do not; reuse carries no approximation error to bound.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ]
+    },
+    "chk_limitation": {
+      "status": "uncertain",
+      "why": "drafts differ",
+      "drafts": [
+        {
+          "value": "SMem must be chosen at pretraining time rather than being retrofitted, and it exhibits a perplexity gap of -4.7% to +2.8% compared to standard transformers.",
+          "paper_quote": "SMem is a pretraining-time choice, not a retrofit.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "SMem requires pretraining and has recipe sensitivity; retrieval signal weakens under tuned recipe.",
+          "paper_quote": "SMem is a pretraining-time choice, not a retrofit. The perplexity gap to the matched transformer spans −4.7% to +2.8%; the RoPE transformer leads all arms, and the composite that closes 29–59% of the distance to it has a single seed at 410M and none at 1.5B; evidence at 1.5B is a single seed pair under Regime 1, and under the tuned recipe the far-range exact-match signal sits near the floor (§3.2), so a deployment that tunes for perplexity should not assume it.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ],
+      "paper_excerpt": "Limitations\n\nSMem is a pretraining-time choice, not a retrofit. The perplexity gap to the matched transformer spans\n−4.7% to +2.8%; the RoPE transformer leads all arms, and the composite that closes 29–59% of the distance\nto it has a single seed at 410M and none at 1.5B; evidence at 1.5B is a single seed pair under Regime 1,\nand under the tuned recipe the far-range exact-match signal sits near the floor (§3.2), so a deployment that\ntunes for perplexity should not assume it. Pretraining uses T =1024 with 16 blocks; beyond that, appends\nre-encode B−1 blocks, and the decode gain and the flat deletion curve are measured in different memory\nlayouts (Appendix K). The retrieval margin rests on needle, duplicate-key, and natural-text probes; open-book\nQA is harness-sensitive (Appendix J). Deletion is exact for context held in memory and says nothing about\nthe weights, and our training implementation runs 15–24% slower per GPU than the baseline (Appendix D).\n\n7"
+    }
+  }
+}

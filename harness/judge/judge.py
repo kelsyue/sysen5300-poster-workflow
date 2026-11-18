@@ -409,9 +409,9 @@ def task_claims(j: JudgeClient, poster_text, paper_text, batch_size):
     return merged, claims, ext
 
 
-def task_quality(j: JudgeClient, png, ref_text, size_in):
+def task_quality(j: JudgeClient, png, ref_text, size_in, words=0):
     blank, lines = canvas_map(png)
-    res = j.ask(load_prompt("quality", reference=ref_text,
+    res = j.ask(load_prompt("quality", reference=ref_text, word_count=str(words),
                             width_in=f"{size_in[0]:g}", height_in=f"{size_in[1]:g}",
                             canvas_map="\n".join(lines), blank_pct=f"{100 * blank:.0f}",
                             cell_in=f"{size_in[0] / CANVAS_GRID[0]:g} × {size_in[1] / CANVAS_GRID[1]:g}"), [png])
@@ -506,7 +506,7 @@ def judge_poster(j: JudgeClient, row: dict, repeat: int, cfg: dict, paths: dict)
         q_res, qual = quality_from(kept["quality"])
     else:
         q_res, qual = task_quality(j, png, reference_text(ref, paper_text, fallback, excerpts=bool(not ref)),
-                                   cfg["poster_size_in"])
+                                   cfg["poster_size_in"], words)
         save("quality", q_res)
 
     # evidence check: do the judge's quotes actually exist in the poster / paper?

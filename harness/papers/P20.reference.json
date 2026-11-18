@@ -1,0 +1,202 @@
+{
+  "paper_id": "P20",
+  "created_at": "2026-11-18T03:41:43+00:00",
+  "models": [
+    "gemini-3.5-flash",
+    "openai.gpt-4o"
+  ],
+  "reference_prompt_sha256": "a63f2a103bd381061f0d6560fdaf2e1bd28c503af09ee38a529d0648f4594fd3",
+  "paper_text_sha256": "94174b435fe7a63109657205e0f3e2484254461df4a746f29c6a329e19ced19a",
+  "summary": "This paper proposes a unified energy decomposition framework for self-supervised visual representation learning based on three non-overlapping principles: observation, prediction, and regularization. By pre-training a ViT-Tiny encoder on STL-10, the authors demonstrate that all three principles are necessary to prevent collapse and learn high-quality semantic and spatial representations.",
+  "items": {
+    "chk_problem": {
+      "status": "uncertain",
+      "why": "drafts differ",
+      "drafts": [
+        {
+          "value": "Understanding the necessary principles for self-supervised visual representation learning and preventing representational collapse.",
+          "paper_quote": "We argue that learning visual representations without labels requires a training signal jointly complete across three non-overlapping objectives: semantic invariance across augmented views, patch-level spatial prediction, and representational non-degeneracy.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "Learning visual representations without labels requires a complete training signal across three non-overlapping objectives: semantic invariance, spatial prediction, and representational non-degeneracy.",
+          "paper_quote": "We argue that learning visual representations without labels requires a training signal jointly complete across three non-overlapping objectives: semantic invariance across augmented views, patch-level spatial prediction, and representational non-degeneracy.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ],
+      "paper_excerpt": "1\n\nAbstract. We argue that learning visual representations without labels\nrequires a training signal jointly complete across three non-overlapping\nobjectives: semantic invariance across augmented views, patch-level spatial prediction, and representational non-degeneracy. We formalize these\nas the observation, prediction, and regularization principles and prove\n(i) that combining observation and prediction without regularization\nadmits the constant encoder as a global minimizer under negative-free\nalignment; (ii) that the two objectives are gradient-complementary and\nstructurally non-conflicting at the encoder output; and (iii) that the\nmomentum encoder converges to the same fixed point as the online encoder and provides no collapse guarantee at convergence. Contrastive\nalignment provides only self-limiting collapse resistance, formalized via\nan explicit gradient-decay argument. Dropping prediction withholds the\nspatial training signal by construction; dropping observation forfeits crossview semantic invariance by construction; at the scale we study, no pair\nsubstitutes for the third. Every major self-supervised method is a special\ncase of a single unified energy decomposition. We pair every theoretical\nclaim with a controlled experiment, including a patch-retrieval evaluation\nfor the spatial consequence of prediction.\nKeywords: Self-supervised learning · Representation learning · Energybased models · Collapse · JEPA\n\n1"
+    },
+    "chk_method": {
+      "status": "accepted",
+      "value": "A unified energy decomposition framework that instantiates three jointly trained objectives: invariance (observation), predictive (prediction), and regularization.",
+      "paper_quote": "We instantiate Equation (3) as three jointly trained objectives, Ltotal = αLinv + βLpred + γLreg .",
+      "drafts": [
+        {
+          "value": "A unified energy decomposition framework that instantiates three jointly trained objectives: invariance (observation), predictive (prediction), and regularization.",
+          "paper_quote": "We instantiate Equation (3) as three jointly trained objectives, Ltotal = αLinv + βLpred + γLreg .",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "Unified energy decomposition with three principles: observation, prediction, and regularization.",
+          "paper_quote": "We formalize these as the observation, prediction, and regularization principles and prove (i) that combining observation and prediction without regularization admits the constant encoder as a global minimizer under negative-free alignment.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ]
+    },
+    "chk_data": {
+      "status": "accepted",
+      "value": "The unlabeled split of the STL-10 dataset.",
+      "paper_quote": "We pre-train a ViT-Tiny encoder (embedding dimension 192, depth 12, patch size 8) on the unlabeled split of STL-10 [12] at 96×96, giving 144 patch tokens.",
+      "drafts": [
+        {
+          "value": "The unlabeled split of the STL-10 dataset.",
+          "paper_quote": "We pre-train a ViT-Tiny encoder (embedding dimension 192, depth 12, patch size 8) on the unlabeled split of STL-10 [12] at 96×96, giving 144 patch tokens.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "STL-10 dataset, unlabeled split, 96x96 resolution.",
+          "paper_quote": "We pre-train a ViT-Tiny encoder (embedding dimension 192, depth 12, patch size 8) on the unlabeled split of STL-10 [12] at 96×96, giving 144 patch tokens.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ]
+    },
+    "chk_setup": {
+      "status": "uncertain",
+      "why": "drafts differ",
+      "drafts": [
+        {
+          "value": "Pre-training a ViT-Tiny encoder on STL-10 for 200 epochs using AdamW, evaluated via linear probing and patch-level retrieval.",
+          "paper_quote": "We train 200 epochs with AdamW, batch size 512, and a cosine-decayed peak learning rate 5×10−4 , evaluating by linear probe and patch-level retrieval (Section 6).",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "ViT-Tiny encoder, 200 epochs, batch size 512, AdamW optimizer, cosine-decayed learning rate.",
+          "paper_quote": "We train 200 epochs with AdamW, batch size 512, and a cosine-decayed peak learning rate 5×10−4, evaluating by linear probe and patch-level retrieval (Section 6).",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ],
+      "paper_excerpt": "Experiments\n\nSetup. We pre-train a ViT-Tiny encoder (embedding dimension 192, depth 12,\npatch size 8) on the unlabeled split of STL-10 [12] at 96×96, giving 144 patch\ntokens. The projector maps the pooled representation through width 1024 to\ndimension 256; the predictor is a narrow ViT (embedding dimension 96, depth 4).\nMasking follows I-JEPA [2]: one context block (scale [0.85, 1.0]) and four target\nblocks (scale [0.15, 0.2]). We train 200 epochs with AdamW, batch size 512, and a\ncosine-decayed peak learning rate 5×10−4 , evaluating by linear probe and patchlevel retrieval (Section 6). We report the effective rank of the projector-output\ncovariance as a scalar measure of non-degeneracy. All results are means over 5\nrandom seeds; full hyperparameters appear in Appendix E.\n\n10"
+    },
+    "chk_primary_result": {
+      "status": "uncertain",
+      "why": "drafts differ",
+      "drafts": [
+        {
+          "value": "The full contrastive model with SIGReg achieves 55.0% linear probe accuracy, while removing regularization, prediction, or observation drops accuracy to 51.6%, 49.5%, and 41.6% respectively.",
+          "paper_quote": "Against our proposed model (row J, 55.0%), removing regularization (row H) costs 3.4 points, removing prediction (row F) 5.5 points, and removing observation (row E) 13.4 points, the largest single drop.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "Linear probe accuracy of 55.0% on STL-10 test split with NT-Xent+Pred+SIGReg configuration.",
+          "paper_quote": "Our proposed model (row J) is the full contrastive configuration and serves as the reference.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ],
+      "paper_excerpt": "N. Giakoumoglou et al.\n\nTable 1: Subset ablation isolating the contribution of each principle. Each\nrow instantiates a strict subset of {Linv , Lpred , Lreg }, verifying Propositions 7, 10, and\n11 and Theorem 8 and Remark 9. Our proposed model (row J) is the full contrastive\nconfiguration and serves as the reference. Row G (MSE + JEPA, no regularizer) collapses\nto low effective rank despite satisfying two principles, directly verifying Theorem 8; the\nlow effective rank of row I despite explicit regularization is discussed in Section 6.\nLinv\n\nLpred Lreg\n\nCollapse without regularization (Theo16\nrem 8). The direct signature of Theorem 8\n+13.4\n14\nis a degenerate representation spectrum (Fig12\nure 1). With the negative-free alignment and\n10\nno regularizer, the projector-output covariance\n8\nis dominated by a few leading eigenvalues (di+5.5\n6\nmensional collapse), while adding an explicit\n+3.4\n4\nregularizer flattens it. The contrastive align2\n0\nment without a regularizer sits between the\n+Obs\n+Pred\n+Reg\ntwo, reflecting the self-limiting partial resistance of Remark 9: the NT-Xent term raises Fig. 2: Marginal gain in lineareffective rank above the collapsed baseline but probe accuracy from adding\nprinciple,\nverifying\ndoes not stabilize it to the level achieved by each\nan explicit Lreg . The linear-probe consequence Propositions 7, 10, and 11.\nis read from Table 1: the negative-free configu- Each bar is the accuracy gained\nration without regularization (row G) reaches by adding one principle to the\npair that omits it, relative to our\nonly 38.7%, over ten points below the reguproposed model (row J, 55.0%).\nlarized version (row I, 49.2%), while the con- No principle is redundant at this\ntrastive variant (row H) retains 51.6%, the im- scale, and observation contributes\nplicit resistance of the contrastive term stand- the largest gain.\ning in for an explicit regularizer at this scale.\nThe same separation holds dynamically in effective rank (Appendix H).\nBaseline: pair without the added condition\nFull model: NT-Xent+Pred+SIGReg (55.0%)\n\nNecessity of each principle (Propositions 7, 10, and 11). Against our\nproposed model (row J, 55.0%), removing regularization (row H) costs 3.4 points,\nremoving prediction (row F) 5.5 points, and removing observation (row E) 13.4\n\nThree Necessary Principles for SSL"
+    },
+    "chk_secondary_result": {
+      "status": "uncertain",
+      "why": "drafts differ",
+      "drafts": [
+        {
+          "value": "Removing prediction causes a 3.1-point drop in spatial recall@5 for patch-level nearest-neighbour retrieval, confirming its role in learning spatial structure.",
+          "paper_quote": "Removing prediction (row F) causes a 3.1-point drop in spatial recall@5 relative to the full model (row J), directly confirming the structural argument of Proposition 10: without a spatial training signal the encoder does not learn to distinguish patch positions.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "Patch-level spatial recall@5 of 93.0% with NT-Xent+Pred+SIGReg configuration.",
+          "paper_quote": "The full model (row J) achieves the best spatial recall across all k.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ],
+      "paper_excerpt": "98.2\n98.0\n98.9\n\npoints, the largest single drop. Every single-principle configuration (rows A–\nD) lands between 17.3% and 42.1%; at this scale no pair substitutes for the\nthird, and the ordering matches the structural argument: observation, which\nalone carries augmentation invariance, is the most costly to remove. Row C\n(prediction only) achieves 42.1% despite low effective rank (15.9), illustrating\nthe distinction between dimensional collapse and semantic impoverishment from\nSection 1: prediction alone yields non-trivial semantic content through latent\ntarget learning, but the low effective rank signals an impoverished representation\ngeometry that limits transfer. The smallest gap (removing regularization) is\nconsistent with Remark 9: contrastive repulsion partially compensates for absent\nexplicit Lreg at this scale. Per-principle gains and linear-probe trajectories appear\nin Appendix I.\nPatch-level retrieval (Proposition 10). To directly test the spatial consequence of the prediction principle, we evaluate patch-level nearest-neighbour\nretrieval. For each test image we extract the 144 patch tokens from the frozen\nencoder, identify the k nearest-neighbour patches in the training set by cosine\nsimilarity, and measure the proportion of retrieved patches falling within the\nsame spatial quadrant as the query patch (spatial recall@k ). The results are\nshown in Table 2. Removing prediction (row F) causes a 3.1-point drop in spatial\nrecall@5 relative to the full model (row J), directly confirming the structural\nargument of Proposition 10: without a spatial training signal the encoder does\nnot learn to distinguish patch positions. Removing observation (row E) causes\na smaller drop of 0.6 points at recall@5, consistent with prediction being the\nprimary driver of spatial structure and observation playing a complementary\nrather than conflicting role. The full model (row J) achieves the best spatial\nrecall across all k.\nInvariance objective and regularizer interaction. Row I achieves 49.2% at\neffective rank 9.4, far below row J (87.5) despite both having an explicit regularizer.\nWe attribute this to a gradient-magnitude imbalance: the MSE loss collapses\nmore aggressively than SIGReg can counteract at γ = 0.05. The regularizer is\nstrictly positive at the collapsed solution (Lemma 25) and prevents optimization\ncollapse per Theorem 8, but the effective rank trajectory (Appendix H) shows\n\n12"
+    },
+    "chk_baseline": {
+      "status": "uncertain",
+      "why": "drafts differ",
+      "drafts": [
+        {
+          "value": "Strict subsets of the three principles (omitting one or more of invariance, prediction, or regularization) and prior self-supervised methods.",
+          "paper_quote": "Each row instantiates a strict subset of {Linv , Lpred , Lreg }, verifying Propositions 7, 10, and 11 and Theorem 8 and Remark 9.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "Contrastive-only configuration (NT-Xent without regularization) achieving 51.6% linear probe accuracy.",
+          "paper_quote": "Row H retains 51.6% without explicit regularization but never matches row J (55.0%) with it.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ],
+      "paper_excerpt": "5\n\nLinv = LMSE , the constant encoder is a global minimizer achieving zero loss\n(Theorem 8). Under Linv = LNT-Xent , the contrastive term acts as an implicit\nregularizer whose resistance is batch-size-dependent and self-limiting: as representations homogenize, all pairwise similarities converge and the NT-Xent gradient\nwith respect to the encoder approaches zero (Remark 9), so the contrastive term\ncannot substitute for an explicit Lreg that maintains a positive gradient at every\nstep.\nTheorem 8 (Collapse under observation and prediction without regularization).\nLet γ = 0 and Linv = LMSE . Then the constant encoder fθ (x) = c 1⊤\nN for\nall x, with a predictor satisfying gϕ (c 1⊤\n|C| , mt ) = c, is a global minimizer of\nαLMSE + βLpred achieving value zero, for any α, β > 0.\nProof sketch. With fθ constant both views map to the same point, so LMSE =\n0; a predictor with output bias c drives Lpred = 0, attainable through the\ncontext branch alone since the stop-gradient blocks the target branch. Both terms\nbeing non-negative and zero, the solution is a global minimizer. Full proof in\nAppendix F.1.\nRemark 9 (Self-limiting collapse resistance of the contrastive loss). Theorem 8\ndoes not extend to Linv = LNT-Xent ; with in-batch negatives the constant encoder is\nnot a global minimizer. However, as representations homogenize toward a common\ndirection, all pairwise cosine similarities converge to 1, the softmax denominator\nsaturates at K · e1/τ , and the gradient contribution from each negative shrinks as\nO(1/K). The total repulsive signal therefore scales as O(1) in the fully-collapsed\nlimit rather than growing to prevent it; the contrastive term cannot guarantee a\npositive gradient sufficient to prevent gradual dimensional collapse at every step,\nunlike an explicit Lreg whose gradient is strictly positive at every Dirac mass\n(Appendix F.3). Intuitively, once all negatives are equally hard the contrastive\nloss has no preferred direction in which to push representations apart, and the\nimplicit anti-collapse signal stalls. Empirically, Table 1 row H retains 51.6%\nwithout explicit regularization but never matches row J (55.0%) with it, and the\neffective rank in row H is batch-size-sensitive (Appendix G).\nProposition 10 (Structural necessity of prediction). Under the studied protocol,\nsatisfying Definitions 4 and 6 without Definition 5 yields representations that\nencode semantic content but receive no spatial training signal by construction: no\nterm in αFwproj + γΩ depends on the relative positions of patches, so the encoder\nis never required to make gϕ (fθ (x)|C , mt ) approximate fθ (y)(t) . This structural\nomission manifests as degraded patch retrieval accuracy (Table 2) and lower\nlinear-probe accuracy (Table 1, row F vs. row J).\nProposition 11 (Structural necessity of observation). Under the studied protocol,\nsatisfying Definitions 5 and 6 without Definition 4 yields representations that are\nspatially consistent within an image but receive no cross-view semantic alignment\nsignal by construction: no term in βFwpred + γΩ enforces that sx and sy be close\nacross augmented views. This structural omission manifests as the largest single\naccuracy drop in the ablation (Table 1, row E vs. row J, a gap of 13.4 points).\n\n6\n\nN. Giakoumoglou et al.\n\nTable 1: Subset ablation isolating the contribution of each principle. Each\nrow instantiates a strict subset of {Linv , Lpred , Lreg }, verifying Propositions 7, 10, and\n11 and Theorem 8 and Remark 9. Our proposed model (row J) is the full contrastive\nconfiguration and serves as the reference. Row G (MSE + JEPA, no regularizer) collapses\nto low effective rank despite satisfying two principles, directly verifying Theorem 8; the\nlow effective rank of row I despite explicit regularization is discussed in Section 6.\nLinv\n\nLpred Lreg"
+    },
+    "chk_conclusion": {
+      "status": "accepted",
+      "value": "Self-supervised representation learning can be unified and successfully trained using three modular, non-overlapping principles: observation, prediction, and regularization, without relying on implicit collapse-prevention mechanisms.",
+      "paper_quote": "We formalized self-supervised representation learning as energy minimization over three non-overlapping principles: observation, prediction, and regularization.",
+      "drafts": [
+        {
+          "value": "Self-supervised representation learning can be unified and successfully trained using three modular, non-overlapping principles: observation, prediction, and regularization, without relying on implicit collapse-prevention mechanisms.",
+          "paper_quote": "We formalized self-supervised representation learning as energy minimization over three non-overlapping principles: observation, prediction, and regularization.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "Observation, prediction, and regularization are necessary and modular principles for self-supervised learning.",
+          "paper_quote": "We formalized self-supervised representation learning as energy minimization over three non-overlapping principles: observation, prediction, and regularization.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ]
+    },
+    "chk_limitation": {
+      "status": "accepted",
+      "value": "The empirical validation is limited to a single small scale (ViT-Tiny on STL-10), leaving open whether these findings scale to larger models.",
+      "paper_quote": "Our empirical validation is at a single small scale (Section 6); whether a larger encoder could acquire spatial structure from observation alone, or cross-view invariance from prediction alone, remains open.",
+      "drafts": [
+        {
+          "value": "The empirical validation is limited to a single small scale (ViT-Tiny on STL-10), leaving open whether these findings scale to larger models.",
+          "paper_quote": "Our empirical validation is at a single small scale (Section 6); whether a larger encoder could acquire spatial structure from observation alone, or cross-view invariance from prediction alone, remains open.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "Validation is at a single small scale; applicability to larger models remains open.",
+          "paper_quote": "Our validation is at a single small scale, so the practical claims should be read as hypotheses about larger models rather than guarantees.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ]
+    }
+  }
+}

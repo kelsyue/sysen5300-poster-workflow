@@ -1,0 +1,49 @@
+{
+  "model": "openai.gpt-4o",
+  "reference_prompt_sha256": "a63f2a103bd381061f0d6560fdaf2e1bd28c503af09ee38a529d0648f4594fd3",
+  "error": null,
+  "tokens_in": 18627,
+  "tokens_out": 741,
+  "parsed": {
+    "summary": "This paper formalizes self-supervised visual representation learning as energy minimization across three principles: observation, prediction, and regularization. It proves regularization necessary to prevent collapse, shows prediction and observation are structurally complementary, and demonstrates that prior methods are special cases of this unified framework. Experiments validate the necessity of each principle and the modularity of the approach.",
+    "items": {
+      "chk_problem": {
+        "value": "Learning visual representations without labels requires a complete training signal across three non-overlapping objectives: semantic invariance, spatial prediction, and representational non-degeneracy.",
+        "paper_quote": "We argue that learning visual representations without labels requires a training signal jointly complete across three non-overlapping objectives: semantic invariance across augmented views, patch-level spatial prediction, and representational non-degeneracy."
+      },
+      "chk_method": {
+        "value": "Unified energy decomposition with three principles: observation, prediction, and regularization.",
+        "paper_quote": "We formalize these as the observation, prediction, and regularization principles and prove (i) that combining observation and prediction without regularization admits the constant encoder as a global minimizer under negative-free alignment."
+      },
+      "chk_data": {
+        "value": "STL-10 dataset, unlabeled split, 96x96 resolution.",
+        "paper_quote": "We pre-train a ViT-Tiny encoder (embedding dimension 192, depth 12, patch size 8) on the unlabeled split of STL-10 [12] at 96×96, giving 144 patch tokens."
+      },
+      "chk_setup": {
+        "value": "ViT-Tiny encoder, 200 epochs, batch size 512, AdamW optimizer, cosine-decayed learning rate.",
+        "paper_quote": "We train 200 epochs with AdamW, batch size 512, and a cosine-decayed peak learning rate 5×10−4, evaluating by linear probe and patch-level retrieval (Section 6)."
+      },
+      "chk_primary_result": {
+        "value": "Linear probe accuracy of 55.0% on STL-10 test split with NT-Xent+Pred+SIGReg configuration.",
+        "paper_quote": "Our proposed model (row J) is the full contrastive configuration and serves as the reference."
+      },
+      "chk_secondary_result": {
+        "value": "Patch-level spatial recall@5 of 93.0% with NT-Xent+Pred+SIGReg configuration.",
+        "paper_quote": "The full model (row J) achieves the best spatial recall across all k."
+      },
+      "chk_baseline": {
+        "value": "Contrastive-only configuration (NT-Xent without regularization) achieving 51.6% linear probe accuracy.",
+        "paper_quote": "Row H retains 51.6% without explicit regularization but never matches row J (55.0%) with it."
+      },
+      "chk_conclusion": {
+        "value": "Observation, prediction, and regularization are necessary and modular principles for self-supervised learning.",
+        "paper_quote": "We formalized self-supervised representation learning as energy minimization over three non-overlapping principles: observation, prediction, and regularization."
+      },
+      "chk_limitation": {
+        "value": "Validation is at a single small scale; applicability to larger models remains open.",
+        "paper_quote": "Our validation is at a single small scale, so the practical claims should be read as hypotheses about larger models rather than guarantees."
+      }
+    }
+  },
+  "raw": "{\n  \"summary\": \"This paper formalizes self-supervised visual representation learning as energy minimization across three principles: observation, prediction, and regularization. It proves regularization necessary to prevent collapse, shows prediction and observation are structurally complementary, and demonstrates that prior methods are special cases of this unified framework. Experiments validate the necessity of each principle and the modularity of the approach.\",\n  \"items\": {\n    \"chk_problem\": {\n      \"value\": \"Learning visual representations without labels requires a complete training signal across three non-overlapping objectives: semantic invariance, spatial prediction, and representational non-degeneracy.\",\n      \"paper_quote\": \"We argue that learning visual representations without labels requires a training signal jointly complete across three non-overlapping objectives: semantic invariance across augmented views, patch-level spatial prediction, and representational non-degeneracy.\"\n    },\n    \"chk_method\": {\n      \"value\": \"Unified energy decomposition with three principles: observation, prediction, and regularization.\",\n      \"paper_quote\": \"We formalize these as the observation, prediction, and regularization principles and prove (i) that combining observation and prediction without regularization admits the constant encoder as a global minimizer under negative-free alignment.\"\n    },\n    \"chk_data\": {\n      \"value\": \"STL-10 dataset, unlabeled split, 96x96 resolution.\",\n      \"paper_quote\": \"We pre-train a ViT-Tiny encoder (embedding dimension 192, depth 12, patch size 8) on the unlabeled split of STL-10 [12] at 96×96, giving 144 patch tokens.\"\n    },\n    \"chk_setup\": {\n      \"value\": \"ViT-Tiny encoder, 200 epochs, batch size 512, AdamW optimizer, cosine-decayed learning rate.\",\n      \"paper_quote\": \"We train 200 epochs with AdamW, batch size 512, and a cosine-decayed peak learning rate 5×10−4, evaluating by linear probe and patch-level retrieval (Section 6).\"\n    },\n    \"chk_primary_result\": {\n      \"value\": \"Linear probe accuracy of 55.0% on STL-10 test split with NT-Xent+Pred+SIGReg configuration.\",\n      \"paper_quote\": \"Our proposed model (row J) is the full contrastive configuration and serves as the reference.\"\n    },\n    \"chk_secondary_result\": {\n      \"value\": \"Patch-level spatial recall@5 of 93.0% with NT-Xent+Pred+SIGReg configuration.\",\n      \"paper_quote\": \"The full model (row J) achieves the best spatial recall across all k.\"\n    },\n    \"chk_baseline\": {\n      \"value\": \"Contrastive-only configuration (NT-Xent without regularization) achieving 51.6% linear probe accuracy.\",\n      \"paper_quote\": \"Row H retains 51.6% without explicit regularization but never matches row J (55.0%) with it.\"\n    },\n    \"chk_conclusion\": {\n      \"value\": \"Observation, prediction, and regularization are necessary and modular principles for self-supervised learning.\",\n      \"paper_quote\": \"We formalized self-supervised representation learning as energy minimization over three non-overlapping principles: observation, prediction, and regularization.\"\n    },\n    \"chk_limitation\": {\n      \"value\": \"Validation is at a single small scale; applicability to larger models remains open.\",\n      \"paper_quote\": \"Our validation is at a single small scale, so the practical claims should be read as hypotheses about larger models rather than guarantees.\"\n    }\n  }\n}"
+}

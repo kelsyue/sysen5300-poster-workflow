@@ -320,3 +320,136 @@ caffeinate -i python judge/judge.py --judges openai.gpt-4o --manifest data/latex
   --only-codes P-9C6K,P-A4AR,P-BZ7R,P-C2FT,P-K9BT,P-KXPT,P-PST6,P-QQS9,P-SH4A,P-YB63,P-Z35D,P-Z8KP \
   --data-dir data/latex/gpt4o_calibration_revision_2
 ```
+
+## latex-v3 calibration, revision 1 (2026-11-17)
+
+New, separate calibration for the latex-painter-v3 experiment. The v2 preliminary run
+(revisions 1-2 above) is not counted toward this one; its frozen prompt (`4ec65050…`) is
+this calibration's starting point.
+
+Prompt hash: `7629fca9f8c558ca4ae975249c62febbce60a383f74c20f33f01a38d20d7e4fe` (was `4ec65050…`).
+Only `quality.md` changed. Coverage and claims prompts unchanged.
+
+Evidence (calibration set: the 8 P01-P03 posters in `data/latex_v3_2026-11-14_run01/`, one
+blind human scorer E01; report in `reports/latex_v3_calibration_P01_P03/`):
+- Coverage passed for both judges (item kappa 0.62 / 0.67, coverage ICC 0.94 / 0.97).
+- Quality failed: human mean 2.6, Gemini 4.1, GPT-4o 3.6; weighted kappa 0.18 / 0.27.
+- The human's reasons for low quality were mainly missing expected sections and sections too
+  thin to explain the research; the old prompt did not mention sections and told the judge not
+  to penalize short posters.
+
+What changed (`quality.md`):
+1. Layout now covers structure and completeness: expected sections (introduction/background,
+   methods, results, discussion/conclusion) and sections developed enough to explain the
+   research without the paper. "A short poster is not penalized" replaced by: do not reward
+   length for its own sake, but penalize sections too thin to explain the research.
+2. Holistic anchors aligned with the human anchors in `spec/04_experiment_protocol.md`; 4 =
+   only a couple of minor issues, 3 = several minor issues in a usable draft (the human anchor
+   for 4 was relaxed from "one small issue" at the same time, by the human scorer).
+3. Two observations added to the raw JSON only: `missing_sections`, `thin_sections`.
+
+Not changed: no worked examples or poster-specific content in any prompt; no CSV column or
+formula; table-caption placement and a canvas-share cap were considered and not adopted.
+
+Holdout: P04 and P05 (all four candidates each; drawn with seed 5300 from P04, P05, P12
+before any of their judge output was seen). Only the holdout result counts.
+
+### Hallucination gate for the latex-v3 validation (decided 2026-11-17, before the holdout was judged)
+
+Hallucination ICC is not used as a gate: with nearly every poster at 0-2% unsupported claims
+(calibration set: human 0-1.67%), ICC is driven by single disagreements and is uninformative.
+Judges also split claims more coarsely than the human (fewer claims per poster), so the
+percentages have different denominators.
+
+Gate instead on **pass/fail agreement at the spec limit** (`spec_limits.hallucination_rate.usl`,
+5%): for each holdout poster, judge verdict = pass if 100 x n_claims_unsupported /
+n_claims_total < 5, else fail; same for the human. A judge passes if its verdict matches the
+human's on at least 90% of holdout posters with a completed claims audit (the same 0.90 level
+as `quality_within1_min`). Posters whose claims task failed are excluded, never counted as 0%.
+
+Reported, not gated: hallucination ICC (descriptive), each side's claim counts, and the
+flagged claims. Limitation: if every holdout poster passes for the human, this shows the judge
+raises no false alarms but cannot show it detects real failures (no failing poster to detect).
+
+Calibration-set values (prompt 4ec65050…, for reference): GPT-4o 8/8 agreement, Gemini 7/8
+(87.5%; it failed P-XF8C at 9.1%, human 1.0%).
+
+## latex-v3 calibration, revision 2 (2026-11-17)
+
+Prompt hash: `d68c41ba9fcb81e0b6ca71c927f15884f0e00bb0cd2d9c521934502fa8ab3e38` (revision 1 was `7629fca9…`). Files: `quality.md`, and `judge.py`
+passes the poster's word count (already in the manifest) to the quality prompt as
+`{{word_count}}`. Holdout P04/P05 still not judged.
+
+Revision 1 result on P01-P03 (report `reports/latex_v3_calibration_P01_P03_after/`):
+quality weighted kappa Gemini 0.26 -> 0.36, GPT-4o 0.33 -> 0.20; neither passed. The
+`missing_sections` observation never fired: the prompt accepted any heading playing a section's
+role, while the human required conventional names.
+
+Evidence from the human's own notes and the posters (8 calibration posters):
+- Conventional headings separate 3 from 4, not 2 from 3: a poster without Abstract,
+  Introduction and Discussion headings was scored 4; one with Introduction/Methods/Results/
+  Conclusion headings was scored 2.
+- Every poster scored 2 was described as having minimal text that does not explain the research;
+  those posters have 273-391 words, the 3s and 4s 607-726.
+
+Changes:
+1. Sections: conventional headings (Abstract, Introduction, Methods incl. Methodology /
+   Experimental Setup / Experimental Design, Results, Discussion, Conclusion); a heading counts
+   if it contains the word; each missing one is a minor issue and never by itself a 2.
+2. Development: sections too thin to explain the research are a major weakness (2). The judge
+   gets the code-measured word count, with guidance that well under about 500 words on a
+   48 x 36 in poster is rarely enough unless the judge can point to where each part is explained.
+   The 500 figure is set from the calibration posters' gap (391 vs 607); the holdout tests it.
+3. Anchor 3 lists several missing conventional headings as an example of several minor issues.
+
+### Revision 2 result and freeze (2026-11-17)
+
+P01-P03 (report `reports/latex_v3_calibration_P01_P03_rev2/`), before / rev 1 / rev 2:
+- GPT-4o quality weighted kappa 0.33 / 0.20 / 0.68, within +-1 88% / 75% / 100%, detection
+  0.50 / 0.33 / 1.00 (passes all quality checks).
+- Gemini quality weighted kappa 0.26 / 0.36 / 0.56, within +-1 75% / 75% / 88%, detection
+  0.33 / 0.50 / 0.50 (still fails, narrowly on kappa and within +-1).
+- Hallucination pass/fail agreement at 5%: both 8/8. Coverage unchanged and passing.
+
+**Frozen:** `d68c41ba9fcb81e0b6ca71c927f15884f0e00bb0cd2d9c521934502fa8ab3e38`. No further
+edits before the holdout result. Holdout P04/P05 judged with this hash, one repeat, in
+`data/latex_v3_holdout_P04_P05/`. Human holdout scores were recorded before any holdout judge
+output existed.
+
+## latex-v3 validation result: holdout P04/P05 (2026-11-17)
+
+Frozen prompt `d68c41ba…`, 8 holdout posters (P04, P05 x 4 candidates), one human scorer (E01,
+blind, scored before any holdout judge output existed), one judge repeat. Report:
+`reports/latex_v3_holdout_P04_P05_validation/` (`pilot_agreement.py`); hallucination gate is
+pass/fail agreement at 5% (decided above).
+
+| Check (threshold) | Gemini | GPT-4o |
+|---|---|---|
+| Quality weighted kappa (0.60) | 0.455 fail | 0.647 pass |
+| Quality within +-1 (0.90) | 0.875 fail | 1.000 pass |
+| Quality detection (0.80) | 0.833 pass | 1.000 pass |
+| Hallucination pass/fail agreement at 5% (0.90) | 6/8 fail (flags P-TPDQ 5.8%, P-RTBM 6.0%) | 8/8 pass |
+| Coverage ICC (0.75) | 0.818 pass | 0.872 pass |
+| Coverage item kappa (0.60) | 0.080 fail | 0.319 fail |
+| Coverage detection (0.80) | 0.750 fail | 0.500 fail |
+| Evidence found (0.90) | 0.972 pass | 0.989 pass |
+
+Hallucination ICC reported only (Gemini -0.06, GPT-4o 0.22). Test-retest not re-measured on the
+holdout (one repeat); calibration-set retest ICCs were 0.97-1.0.
+
+Coverage item disagreements concentrate on two posters (P-5FKJ, P-6438). Several follow from a
+human rule stated during holdout scoring, "information only in captions counts as 0" (and a
+conclusion under a non-"Conclusion" heading scored 0), while `coverage.md` credits captions,
+legends and any heading. The same human credited captions-only setup on calibration poster
+P-ZXKB. The coverage prompt was not changed after seeing holdout output; adopting the
+captions rule would need a coverage prompt revision and a new, unseen validation paper
+(P12 is the reserved spare).
+
+Human-score consistency fix (2026-11-17, after validation): the scorer's rule "information only
+in captions = 0" was applied to calibration poster P-ZXKB (chk_setup 1 -> 0). Calibration reports
+regenerated; coverage still passes for both judges at rev 2 (item kappa Gemini 0.60, GPT-4o 0.74;
+coverage ICC 0.90 / 0.97). Quality and hallucination unaffected. Holdout results unchanged.
+
+Two-judge combination checked on the holdout (not a gate, for the judge-choice decision): the
+mean of both judges gives quality within +-1 7/8 (fails 0.90), hallucination pass/fail 7/8
+(fails), coverage MAE 2.8 points (GPT-4o alone 5.6).

@@ -1,0 +1,202 @@
+{
+  "paper_id": "P18",
+  "created_at": "2026-11-18T03:40:40+00:00",
+  "models": [
+    "gemini-3.5-flash",
+    "openai.gpt-4o"
+  ],
+  "reference_prompt_sha256": "a63f2a103bd381061f0d6560fdaf2e1bd28c503af09ee38a529d0648f4594fd3",
+  "paper_text_sha256": "c9c4a964812ce9c846aabf5332daa63ff5f5206ff64fbe740f84950443bb8eaf",
+  "summary": "This paper introduces TIPS, a topological framework that treats the contextual hidden states of prompt tokens in large language models as a point cloud to analyze and steer responses to ill-posed questions. By extracting seven descriptors from zero- and one-dimensional persistent homology, the method achieves improved performance in both binary and fine-grained ill-posedness classification. Furthermore, topology-conditioned activation steering significantly increases the rate of appropriate clarification or abstention responses.",
+  "items": {
+    "chk_problem": {
+      "status": "accepted",
+      "value": "Large language models struggle with ill-posed questions (such as those involving ambiguity, under-specification, or conflicting statements) because existing work treats LLM reasoning as a black box.",
+      "paper_quote": "Ill-posed questions, including those involving ambiguity, under-specification, or conflicting statements, may admit no valid answer or multiple plausible answers, posing a significant challenge for large language models (LLMs) despite their otherwise strong performance.",
+      "drafts": [
+        {
+          "value": "Large language models struggle with ill-posed questions (such as those involving ambiguity, under-specification, or conflicting statements) because existing work treats LLM reasoning as a black box.",
+          "paper_quote": "Ill-posed questions, including those involving ambiguity, under-specification, or conflicting statements, may admit no valid answer or multiple plausible answers, posing a significant challenge for large language models (LLMs) despite their otherwise strong performance.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "Ill-posed questions pose challenges for LLMs due to ambiguity, under-specification, or conflicting statements.",
+          "paper_quote": "Ill-posed questions, including those involving ambiguity, under-specification, or conflicting statements, may admit no valid answer or multiple plausible answers, posing a significant challenge for large language models (LLMs) despite their otherwise strong performance.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ]
+    },
+    "chk_method": {
+      "status": "accepted",
+      "value": "TIPS, which treats contextual hidden states of prompt tokens as a point cloud and uses persistent homology to extract topological descriptors of ill-posedness and steer model reasoning.",
+      "paper_quote": "To this end, we study the internal state from a topological perspective by treating the contextual hidden states of its prompt tokens at a single transformer layer as a point cloud, capturing the input problem’s relational structure as encoded by the model.",
+      "drafts": [
+        {
+          "value": "TIPS, which treats contextual hidden states of prompt tokens as a point cloud and uses persistent homology to extract topological descriptors of ill-posedness and steer model reasoning.",
+          "paper_quote": "To this end, we study the internal state from a topological perspective by treating the contextual hidden states of its prompt tokens at a single transformer layer as a point cloud, capturing the input problem’s relational structure as encoded by the model.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "A topology-based framework using persistent homology to analyze and steer LLM responses to ill-posed questions.",
+          "paper_quote": "We propose a topology-based framework for analyzing ill-posed questions and steering LLM responses.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ]
+    },
+    "chk_data": {
+      "status": "accepted",
+      "value": "AmbigQA for binary ill-posedness detection and CLAMBER for fine-grained 9-way ill-posedness classification, evaluated across eight open-weight models.",
+      "paper_quote": "Evaluation on AmbigQA for binary ill-posedness detection, and on CLAMBER for fine-grained 9-way ill-posedness classification demonstrates the effectiveness of the proposed topological representation.",
+      "drafts": [
+        {
+          "value": "AmbigQA for binary ill-posedness detection and CLAMBER for fine-grained 9-way ill-posedness classification, evaluated across eight open-weight models.",
+          "paper_quote": "Evaluation on AmbigQA for binary ill-posedness detection, and on CLAMBER for fine-grained 9-way ill-posedness classification demonstrates the effectiveness of the proposed topological representation.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "AmbigQA for binary detection and CLAMBER for nine-way classification of ill-posedness.",
+          "paper_quote": "Evaluation on AmbigQA for binary ill-posedness detection, and on CLAMBER for fine-grained 9-way ill-posedness classification demonstrates the effectiveness of the proposed topological representation.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ]
+    },
+    "chk_setup": {
+      "status": "accepted",
+      "value": "Evaluating eight models from four families using five split seeds with 70/10/20 train/validation/test splits.",
+      "paper_quote": "We evaluate eight models from four families using five split seeds (0–4), with 70/10/20 train/validation/test splits.",
+      "drafts": [
+        {
+          "value": "Evaluating eight models from four families using five split seeds with 70/10/20 train/validation/test splits.",
+          "paper_quote": "We evaluate eight models from four families using five split seeds (0–4), with 70/10/20 train/validation/test splits.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "Evaluation on eight open-weight models from four families using five split seeds and 70/10/20 train/validation/test splits.",
+          "paper_quote": "We evaluate eight models from four families using five split seeds (0–4), with 70/10/20 train/validation/test splits.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ]
+    },
+    "chk_primary_result": {
+      "status": "accepted",
+      "value": "TIPS improved average macro-F1 from 75.51% to 78.60% on AmbigQA, and from 36.64% to 39.44% on CLAMBER 9-way classification.",
+      "paper_quote": "Across eight open-weight models from the Llama, Qwen, Gemma, and Ministral families, our seven H0 and H1 descriptors from a single selected layer improve average macro-F1 score over the strongest baselines from 75.51% to 78.60% on AmbigQA, and from 36.64% to 39.44% on CLAMBER 9-way classification.",
+      "drafts": [
+        {
+          "value": "TIPS improved average macro-F1 from 75.51% to 78.60% on AmbigQA, and from 36.64% to 39.44% on CLAMBER 9-way classification.",
+          "paper_quote": "Across eight open-weight models from the Llama, Qwen, Gemma, and Ministral families, our seven H0 and H1 descriptors from a single selected layer improve average macro-F1 score over the strongest baselines from 75.51% to 78.60% on AmbigQA, and from 36.64% to 39.44% on CLAMBER 9-way classification.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "78.60% macro-F1 on AmbigQA binary detection and 39.44% macro-F1 on CLAMBER nine-way classification.",
+          "paper_quote": "Across eight open-weight models from the Llama, Qwen, Gemma, and Ministral families, our seven H0 and H1 descriptors from a single selected layer improve average macro-F1 score over the strongest baselines from 75.51% to 78.60% on AmbigQA, and from 36.64% to 39.44% on CLAMBER 9-way classification.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ]
+    },
+    "chk_secondary_result": {
+      "status": "accepted",
+      "value": "Topology-conditioned steering improved the steered abstention response rate from 27.43% to 51.15% on average across four dataset-model settings.",
+      "paper_quote": "Averaged across the four dataset–model settings, topology-conditioned steering improves steered abstention response rate from 27.43% to 51.15%.",
+      "drafts": [
+        {
+          "value": "Topology-conditioned steering improved the steered abstention response rate from 27.43% to 51.15% on average across four dataset-model settings.",
+          "paper_quote": "Averaged across the four dataset–model settings, topology-conditioned steering improves steered abstention response rate from 27.43% to 51.15%.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "Topology-conditioned steering improved steered abstention response rate from 27.43% to 51.15%.",
+          "paper_quote": "Averaged across the four dataset–model settings, topology-conditioned steering improves steered abstention response rate from 27.43% to 51.15%.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ]
+    },
+    "chk_baseline": {
+      "status": "uncertain",
+      "why": "drafts differ",
+      "drafts": [
+        {
+          "value": "The method is compared against AEN, a probing baseline that selects ambiguity-predictive neurons and trains a classifier on their activations.",
+          "paper_quote": "We compare against AEN (Zhang et al., 2025), a probing baseline that selects ambiguity-predictive neurons and trains a classifier on their activations.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "Compared against AEN and prompt-based baselines like few-shot and chain-of-thought prompting.",
+          "paper_quote": "We compare against AEN (Zhang et al., 2025), a probing baseline that selects ambiguity-predictive neurons and trains a classifier on their activations. Prompt-based comparisons include CLAMBER zero-shot (Zhang et al., 2024), CLAM few-shot (Kuhn et al., 2022), CLAMBER few-shot chain-of-thought (Zhang et al., 2024; Wei et al., 2022), and InfoGain prompting (Kim et al., 2024).",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ],
+      "paper_excerpt": "Polysemy\n\nFigure 2: Two-dimensional PCA projections of the seven H0 and H1 descriptors at selected layer\nfrom Llama-3.1-8B-Instruct on (a) AmbigQA and (b) CLAMBER. Each point represents a question;\ncolors indicate the binary labels in AmbigQA and the nine class labels in CLAMBER. The first two\nprincipal components explain 64.7% and 69.3% of the feature variance in the respective panels. The\nprojections illustrate class-dependent structure with overlapping distributions.\nsification on CLAMBER (Zhang et al., 2024). For each question, we construct a seven-dimensional\ntopology vector from a single transformer layer selected using validation-set classification performance. We train a logistic regression classifier on the standardized representation ze(q), with feature\nstandardization fitted on the training split.\nWe compare against AEN (Zhang et al., 2025), a probing baseline that selects ambiguity-predictive\nneurons and trains a classifier on their activations. We use k = 7 neurons, to make its dimensionality to align with our topological features. Prompt-based comparisons include CLAMBER\nzero-shot (Zhang et al., 2024), CLAM few-shot (Kuhn et al., 2022), CLAMBER few-shot chain-ofthought (Zhang et al., 2024; Wei et al., 2022), and InfoGain prompting (Kim et al., 2024).\nWe evaluate eight models from four families using five split seeds (0–4), with 70/10/20\ntrain/validation/test splits. Layer selection is performed separately for each split using validation\ndata. Table 1 reports macro-F1 as mean ± sample standard deviation across the five splits.\nTable 1 shows that the seven selected-layer H0 and H1 descriptors achieve higher average macroF1 than AEN and the strongest single prompt-based baseline on both classification tasks, although\nperformance varies across models. On the binary AmbigQA task, averaged equally across eight\nmodels, our topology-based classifier achieves 78.60% macro-F1, compared with 75.51% for AEN\nand 54.06% for few-shot prompting, the strongest prompt-based baseline on average. On CLAMBER nine-way classification, our method achieves an average macro-F1 of 39.44%, compared with\n36.64% for AEN and 35.81% for few-shot prompting. These results suggest that a compact, sevendimensional topological representation captures ill-posedness-relevant structure in internal question\nrepresentations, including information useful for fine-grained subtype classification beyond binary\ndetection.\n4.4\n\nT OPOLOGY- CONDITIONED STEERING"
+    },
+    "chk_conclusion": {
+      "status": "accepted",
+      "value": "Compact token-cloud topology provides an effective, unified representation and steering signal for identifying and handling ill-posed problems in large language models.",
+      "paper_quote": "Together, these results demonstrate that compact token-cloud topology provides an effective, unified representation and steering signal for ill-posed problems.",
+      "drafts": [
+        {
+          "value": "Compact token-cloud topology provides an effective, unified representation and steering signal for identifying and handling ill-posed problems in large language models.",
+          "paper_quote": "Together, these results demonstrate that compact token-cloud topology provides an effective, unified representation and steering signal for ill-posed problems.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "Compact token-cloud topology provides an effective representation and steering signal for ill-posed problems.",
+          "paper_quote": "Together, these results demonstrate that compact token-cloud topology provides an effective, unified representation and steering signal for ill-posed problems.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ]
+    },
+    "chk_limitation": {
+      "status": "accepted",
+      "value": "Incorrect detection or steering may cause unnecessary abstention or degraded responses.",
+      "paper_quote": "Incorrect detection or steering may cause unnecessary abstention or degraded responses.",
+      "drafts": [
+        {
+          "value": "Incorrect detection or steering may cause unnecessary abstention or degraded responses.",
+          "paper_quote": "Incorrect detection or steering may cause unnecessary abstention or degraded responses.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "Incorrect detection or steering may cause unnecessary abstention or degraded responses.",
+          "paper_quote": "Incorrect detection or steering may cause unnecessary abstention or degraded responses.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ]
+    }
+  }
+}

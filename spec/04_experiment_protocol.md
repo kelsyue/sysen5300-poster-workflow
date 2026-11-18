@@ -69,9 +69,11 @@ Based on Watson (2015) poster criteria and the codebook definition (layout, read
 | Score | Anchor |
 |---|---|
 | 5 | Ready to present. Logical flow, efficient use of space, readable text, labeled figures that carry the main findings, content faithful to the paper |
-| 4 | Presentable with minor edits. One small issue in layout, readability, or emphasis |
-| 3 | Usable draft. Several issues or one major issue (e.g., key result under-emphasized, crowded text block) |
-| 2 | Needs substantial rework. Poor structure or misleading representation of the paper |
+| 4 | Presentable with minor edits. Only a couple of minor issues in layout, readability, or emphasis |
+| 3 | Usable draft. Several minor issues or one major issue (e.g., key result under-emphasized, crowded text block) |
+| 2 | Needs substantial rework. Poor structure, sections too thin to explain the research without the paper, a large share of unused canvas, or misleading representation of the paper |
+
+Sections: Abstract, Introduction, Methods (or Methodology / Experimental Setup / Experimental Design), Results, Discussion, Conclusion are expected as headings containing those words ("Discussion & Impact" counts; "Motivation" or "Implications" does not). Each missing one is a minor issue, never by itself a 2. A section is too thin when a reader who has not read the paper cannot understand that part of the research from it; that is a major issue. Length is not rewarded for its own sake. Revised 2026-11-17 (latex-v3 judge calibration, revisions 1-2).
 | 1 | Not usable. Unreadable, missing core content, or misrepresents the work |
 
 ## 5. Judge validation pilot (before the full experiment)

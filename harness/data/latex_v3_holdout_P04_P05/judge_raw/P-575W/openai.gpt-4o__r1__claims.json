@@ -1,0 +1,368 @@
+{
+  "model": "openai.gpt-4o",
+  "repeat": 1,
+  "judge_prompt_sha256": "d68c41ba9fcb81e0b6ca71c927f15884f0e00bb0cd2d9c521934502fa8ab3e38",
+  "error": null,
+  "tokens_in": 22915,
+  "tokens_out": 5852,
+  "tokens_cached": 10112,
+  "max_output_tokens": 16384,
+  "claims_batch_size": 40,
+  "parsed": {
+    "claims": [
+      {
+        "id": 1,
+        "text": "High aggregate accuracy hides 30-43% of errors in a rare Type 4-2 verb subtype.",
+        "poster_quote": "High aggregate accuracy hides 30-43% of errors in a rare Type 4-2 verb subtype.",
+        "label": "supported",
+        "paper_evidence": "a single structurally specific irregular subtype, verbs whose stems end in /e/ and require gemination before the past-tense suffix and make up fewer than 1% of the data, accounts for a disproportionate 30–43% share of residual errors",
+        "reason": "Section 6.4, Table 4, and Figure 1 confirm that Type 4-2 verbs, which are 0.9% of the data, account for 30-43% of residual errors."
+      },
+      {
+        "id": 2,
+        "text": "Removing Type 4-2 boosts accuracy more than removing all irregulars.",
+        "poster_quote": "Removing it boosts accuracy more than removing all irregulars.",
+        "label": "supported",
+        "paper_evidence": "removing only Type 4-2 yields the largest observed gain: 97.73% → 99.75% (+2.02), corresponding to an approximately 89% reduction in error rate. The gain is substantially larger than removing all irregular verbs (+1.22).",
+        "reason": "Section 6.7 and Table 6 show that removing Type 4-2 alone results in the largest accuracy gain for LST and PGT compared to removing all irregular verbs."
+      },
+      {
+        "id": 3,
+        "text": "Gemination-related errors dominate residual failures.",
+        "poster_quote": "Gemination-related errors dominate residual failures.",
+        "label": "supported",
+        "paper_evidence": "Gemination-related errors (omission and insertion combined) dominate residual failures, accounting for 75.5% (PGT) and 80.3% (LST) of all errors.",
+        "reason": "Section 6.3 and Table 3 confirm that gemination-related errors are the most frequent type of residual failure in both models."
+      },
+      {
+        "id": 4,
+        "text": "Type 4-2 contributes 34-48× its proportional share to total errors.",
+        "poster_quote": "Type 4-2 contributes 34-48× its proportional share to total errors.",
+        "label": "supported",
+        "paper_evidence": "Type 4-2 contributes 34–48× its proportional representation to total errors, as visualized in Figure 2, the largest disparity of any subclass in either system.",
+        "reason": "Section 6.4 and Table 5 confirm that Type 4-2 contributes 34–48× its proportional share to total errors."
+      },
+      {
+        "id": 5,
+        "text": "Error concentration stems from low-frequency patterns interacting with orthography.",
+        "poster_quote": "Error concentration stems from low-frequency patterns interacting with orthography.",
+        "label": "supported",
+        "paper_evidence": "error concentration in neural morphological learning is not driven by irregularity per se, but by the interaction between extreme low-frequency morphological patterns and specific orthographic processes.",
+        "reason": "The abstract and Section 7 explicitly state that error concentration is due to the interaction between low-frequency patterns and orthography."
+      },
+      {
+        "id": 6,
+        "text": "Both models hit ~97% accuracy.",
+        "poster_quote": "Both models hit ~97% accuracy.",
+        "label": "supported",
+        "paper_evidence": "On the primary run, both systems achieve high aggregate accuracy on the full dataset: 97.98% (PGT) and 97.73% (LST).",
+        "reason": "Section 6.1 confirms that both models achieve approximately 97% accuracy."
+      },
+      {
+        "id": 7,
+        "text": "Type 4-2 verbs cause 30-43% of errors despite being 0.9% of data.",
+        "poster_quote": "Type 4-2 verbs cause 30-43% of errors despite being 0.9% of data.",
+        "label": "supported",
+        "paper_evidence": "Type 4-2 verbs are massively overrepresented, accounting for 30.2% (PGT) and 43.1% (LST) of all errors while comprising just 0.9% of the dataset.",
+        "reason": "Section 6.4 and Table 4 confirm that Type 4-2 verbs cause 30-43% of errors despite being 0.9% of the data."
+      },
+      {
+        "id": 8,
+        "text": "Gemination errors dominate.",
+        "poster_quote": "Gemination errors dominate.",
+        "label": "supported",
+        "paper_evidence": "Gemination-related errors (omission and insertion combined) dominate residual failures, accounting for 75.5% (PGT) and 80.3% (LST) of all errors.",
+        "reason": "Section 6.3 and Table 3 confirm that gemination errors dominate residual failures."
+      },
+      {
+        "id": 9,
+        "text": "Aggregate scores mask structural failure.",
+        "poster_quote": "Aggregate scores mask structural failure.",
+        "label": "supported",
+        "paper_evidence": "high aggregate accuracy is a stable property of both architectures. Despite this overall stability, errors cluster in specific low-frequency subclasses.",
+        "reason": "Section 6.1 and 6.4 discuss how high aggregate accuracy masks structural failures in low-frequency subclasses."
+      },
+      {
+        "id": 10,
+        "text": "Use Disparity Ratio to evaluate subclasses.",
+        "poster_quote": "Use Disparity Ratio to evaluate subclasses.",
+        "label": "supported",
+        "paper_evidence": "Per-item predictions can be regrouped by structural subclass and scored with the Disparity Ratio metric introduced in §5.4.",
+        "reason": "Section 7 explicitly recommends using the Disparity Ratio to evaluate subclasses."
+      },
+      {
+        "id": 11,
+        "text": "Not all irregularity harms generalization — only specific low-frequency patterns.",
+        "poster_quote": "Not all irregularity harms generalization — only specific low-frequency patterns.",
+        "label": "supported",
+        "paper_evidence": "Irregularity is not uniformly detrimental to neural morphological learning. A single low-frequency subtype, verbs requiring gemination after a stem-final /e/, is structurally distinct from other irregulars.",
+        "reason": "Section 7 explicitly states that not all irregularity harms generalization, but specific low-frequency patterns do."
+      },
+      {
+        "id": 12,
+        "text": "Type 4-2 error rate is 43% for PGT.",
+        "poster_quote": "Type 4-2 error rate: 43% (PGT)",
+        "label": "supported",
+        "paper_evidence": "Type 4-2 shows an error rate of 43% (PGT).",
+        "reason": "Figure 1 confirms that the Type 4-2 error rate is 43% for PGT."
+      },
+      {
+        "id": 13,
+        "text": "Type 4-2 error rate is 60% for LST.",
+        "poster_quote": "Type 4-2 error rate: 60% (LST)",
+        "label": "supported",
+        "paper_evidence": "Type 4-2 shows an error rate of 43% (PGT) and 60% (LST).",
+        "reason": "Figure 1 confirms that the Type 4-2 error rate is 60% for LST."
+      },
+      {
+        "id": 14,
+        "text": "Disparity Ratio is 34-48× its data share.",
+        "poster_quote": "Disparity Ratio: 34-48× its data share",
+        "label": "supported",
+        "paper_evidence": "Type 4-2 contributes 34–48× its proportional representation to total errors, as visualized in Figure 2, the largest disparity of any subclass in either system.",
+        "reason": "Section 6.4 and Table 5 confirm the Disparity Ratio for Type 4-2 is 34-48× its data share."
+      },
+      {
+        "id": 15,
+        "text": "Errors are stable across seeds and architectures.",
+        "poster_quote": "Errors stable across seeds and architectures",
+        "label": "supported",
+        "paper_evidence": "This consistency, together with the seed-level stability reported in §6.1, suggests the failures reflect systematic properties of orthographic representation rather than idiosyncrasies of a single model.",
+        "reason": "Section 6.5 confirms that errors are stable across seeds and architectures."
+      },
+      {
+        "id": 16,
+        "text": "Evaluation should subgroup by morphology.",
+        "poster_quote": "Evaluation should subgroup by morphology",
+        "label": "supported",
+        "paper_evidence": "Evaluation protocols for data-efficient pretraining may therefore benefit from subgroup-aware diagnostics of the kind proposed here, and not aggregate accuracy alone.",
+        "reason": "Section 7 explicitly recommends subgrouping by morphology for evaluation."
+      },
+      {
+        "id": 17,
+        "text": "Type 4-2 sensitivity may persist in LLMs.",
+        "poster_quote": "Type 4-2 sensitivity may persist in LLMs",
+        "label": "unsupported",
+        "paper_evidence": "",
+        "reason": "The paper does not provide evidence or explicitly state that Type 4-2 sensitivity may persist in large language models (LLMs)."
+      },
+      {
+        "id": 18,
+        "text": "Metric generalizes to other morphologically rich languages.",
+        "poster_quote": "Metric generalizes to other morphologically rich languages",
+        "label": "unsupported",
+        "paper_evidence": "",
+        "reason": "The paper does not provide evidence or explicitly state that the metric generalizes to other morphologically rich languages."
+      },
+      {
+        "id": 19,
+        "text": "Hiragana-only Japanese verb data is used, excluding canonical irregulars.",
+        "poster_quote": "We use hiragana-only Japanese verb data, excluding canonical irregulars.",
+        "label": "supported",
+        "paper_evidence": "All forms are converted to hiragana to maintain orthographic consistency and eliminate confounds introduced by kanji homography.",
+        "reason": "Section 3 confirms that the dataset uses hiragana-only Japanese verb data and excludes canonical irregulars."
+      },
+      {
+        "id": 20,
+        "text": "Type 4-2 verbs are 0.9% of data but structurally distinct.",
+        "poster_quote": "Type 4-2 verbs are 0.9% of data but structurally distinct.",
+        "label": "supported",
+        "paper_evidence": "Type 4-2 is the smallest structurally coherent subclass, comprising only 0.9% of the data.",
+        "reason": "Section 3.1 and Table 1 confirm that Type 4-2 verbs are 0.9% of the data and are structurally distinct."
+      },
+      {
+        "id": 21,
+        "text": "The dataset includes Type 4-1 (119 verbs, stem-final /i/ + gemination).",
+        "poster_quote": "The dataset includes Type 4-1 (119 verbs, stem-final /i/ + gemination)",
+        "label": "supported",
+        "paper_evidence": "Type 4-1: stem-final /i/ + gemination, e.g. まじる majiru → まじった majitta. Count: 119.",
+        "reason": "Section 3.1 confirms the dataset includes Type 4-1 with 119 verbs."
+      },
+      {
+        "id": 22,
+        "text": "The dataset includes Type 4-3 (1 verb, ��→���).",
+        "poster_quote": "The dataset includes Type 4-3 (1 verb, ��→���)",
+        "label": "supported",
+        "paper_evidence": "Type 4-3: localized idiosyncratic deviations, e.g. いく iku → いった itta. Count: 1.",
+        "reason": "Section 3.1 confirms the dataset includes Type 4-3 with 1 verb."
+      },
+      {
+        "id": 23,
+        "text": "Type 4-2 is the smallest coherent subclass.",
+        "poster_quote": "Type 4-2 being the smallest coherent subclass.",
+        "label": "supported",
+        "paper_evidence": "Type 4-2 is the smallest structurally coherent subclass, comprising only 0.9% of the data.",
+        "reason": "Section 3.1 confirms that Type 4-2 is the smallest coherent subclass."
+      },
+      {
+        "id": 24,
+        "text": "All forms are converted to hiragana to eliminate kanji homography confounds.",
+        "poster_quote": "All forms are converted to hiragana to eliminate kanji homography confounds.",
+        "label": "supported",
+        "paper_evidence": "All forms are converted to hiragana to maintain orthographic consistency and eliminate confounds introduced by kanji homography.",
+        "reason": "Section 3 confirms that all forms are converted to hiragana to eliminate kanji homography confounds."
+      },
+      {
+        "id": 25,
+        "text": "Type 1 includes 2,503 Godan verbs.",
+        "poster_quote": "Type 1: 2,503 Godan verbs",
+        "label": "supported",
+        "paper_evidence": "Type 1 (Godan): regular u-verbs, e.g. かく kaku → かいた kaita. Count: 2,503.",
+        "reason": "Section 3.1 and Table 1 confirm that Type 1 includes 2,503 Godan verbs."
+      },
+      {
+        "id": 26,
+        "text": "Type 2 includes 1,298 Ichidan verbs.",
+        "poster_quote": "Type 2: 1,298 Ichidan verbs",
+        "label": "supported",
+        "paper_evidence": "Type 2 (Ichidan): regular ru-verbs, e.g. たべる taberu → たべた tabeta. Count: 1,298.",
+        "reason": "Section 3.1 and Table 1 confirm that Type 2 includes 1,298 Ichidan verbs."
+      },
+      {
+        "id": 27,
+        "text": "Type 4-2 includes 37 verbs requiring /e/ + gemination.",
+        "poster_quote": "Type 4-2: 37 verbs requiring /e/ + gemination",
+        "label": "supported",
+        "paper_evidence": "Type 4-2: stem-final /e/ + gemination, e.g. あきれかえる akirekaeru → あきれかえった akirekaetta. Count: 37.",
+        "reason": "Section 3.1 and Table 1 confirm that Type 4-2 includes 37 verbs requiring /e/ + gemination."
+      },
+      {
+        "id": 28,
+        "text": "Removing only Type 4-2 boosts accuracy most: +2.02% for LST.",
+        "poster_quote": "Removing only Type 4-2 boosts accuracy most: +2.02% (LST)",
+        "label": "supported",
+        "paper_evidence": "removing only Type 4-2 yields the largest observed gain: 97.73% → 99.75% (+2.02), corresponding to an approximately 89% reduction in error rate.",
+        "reason": "Section 6.7 and Table 6 confirm that removing only Type 4-2 boosts accuracy most for LST (+2.02%)."
+      },
+      {
+        "id": 29,
+        "text": "Removing only Type 4-2 boosts accuracy most: +1.00% for PGT.",
+        "poster_quote": "Removing only Type 4-2 boosts accuracy most: +1.00% (PGT)",
+        "label": "supported",
+        "paper_evidence": "For the PGT system, removing Type 4-2 alone is still the single best condition (97.98% → 98.98%, +1.00).",
+        "reason": "Section 6.7 and Table 6 confirm that removing only Type 4-2 boosts accuracy most for PGT (+1.00%)."
+      },
+      {
+        "id": 30,
+        "text": "Irregularity alone isn’t the problem — structure is.",
+        "poster_quote": "Irregularity alone isn’t the problem — structure is.",
+        "label": "supported",
+        "paper_evidence": "error concentration in neural morphological learning is not driven by irregularity per se, but by the interaction between extreme low-frequency morphological patterns and specific orthographic processes.",
+        "reason": "The abstract and Section 7 explicitly state that irregularity alone isn’t the problem, but structure is."
+      },
+      {
+        "id": 31,
+        "text": "PGT uses pointer-generator copying with input attention.",
+        "poster_quote": "PGT uses pointer-generator copying with input attention",
+        "label": "supported",
+        "paper_evidence": "The first is a Pointer-Generator Transformer (henceforth PGT), incorporating a pointer-generator copying mechanism (See et al., 2017) with attention over the input lemma.",
+        "reason": "Section 4 confirms that PGT uses a pointer-generator copying mechanism with input attention."
+      },
+      {
+        "id": 32,
+        "text": "LST uses lemma-split regime to improve generalization.",
+        "poster_quote": "LST uses lemma-split regime to improve generalization",
+        "label": "supported",
+        "paper_evidence": "The second follows the architecture of Goldman et al. (2023), a Lemma-Split Transformer (henceforth LST) that additionally uses a lemma-split training and evaluation regime, preventing a lemma from appearing in both training and test data and improving generalization to unseen lemmas.",
+        "reason": "Section 4 confirms that LST uses a lemma-split regime to improve generalization."
+      },
+      {
+        "id": 33,
+        "text": "Both models use cross-entropy loss, teacher forcing, Adam, and standard Transformer scheduling.",
+        "poster_quote": "Both use cross-entropy loss, teacher forcing, Adam, and standard Transformer scheduling.",
+        "label": "supported",
+        "paper_evidence": "Both models are trained with cross-entropy loss and teacher forcing, using the default hyperparameter configurations from their respective shared-task baselines (Vylomova et al., 2020; Goldman et al., 2023), optimized with Adam (Kingma and Ba, 2015) and standard Transformer learning-rate scheduling (Vaswani et al., 2017).",
+        "reason": "Section 5.1 confirms that both models use cross-entropy loss, teacher forcing, Adam, and standard Transformer scheduling."
+      },
+      {
+        "id": 34,
+        "text": "Error taxonomy includes 6 orthography-sensitive failure modes.",
+        "poster_quote": "Error taxonomy includes 6 orthography-sensitive failure modes.",
+        "label": "supported",
+        "paper_evidence": "We defined a taxonomy of six orthography- and morphophonology-sensitive failure modes (Table 2): gemination omission, gemination insertion, phonological substitution, morpheme boundary errors, character recognition (UNK) errors, and compound verb structural errors.",
+        "reason": "Section 6.2 and Table 2 confirm that the error taxonomy includes six orthography-sensitive failure modes."
+      },
+      {
+        "id": 35,
+        "text": "LST achieves 99.75% accuracy after removing Type 4-2.",
+        "poster_quote": "LST: 99.75% accuracy after -4-2",
+        "label": "supported",
+        "paper_evidence": "For the LST system, removing only Type 4-2 yields the largest observed gain: 97.73% → 99.75% (+2.02).",
+        "reason": "Section 6.7 and Table 7 confirm that LST achieves 99.75% accuracy after removing Type 4-2."
+      },
+      {
+        "id": 36,
+        "text": "PGT’s best single ablation is still removing Type 4-2.",
+        "poster_quote": "PGT: best single ablation is still -4-2",
+        "label": "supported",
+        "paper_evidence": "For the PGT system, removing Type 4-2 alone is still the single best condition (97.98% → 98.98%, +1.00).",
+        "reason": "Section 6.7 and Table 7 confirm that PGT’s best single ablation is still removing Type 4-2."
+      },
+      {
+        "id": 37,
+        "text": "Retaining Type 4-1/4-3 costs little — structure matters.",
+        "poster_quote": "Retaining 4-1/4-3 costs little — structure matters",
+        "label": "supported",
+        "paper_evidence": "Some irregular subtypes (4-1, 4-3) can be retained without cost: in the LST system, removing only Type 4-2 while retaining 4-1 and 4-3 (condition −4-2) achieves 99.75%.",
+        "reason": "Section 6.7 confirms that retaining Type 4-1/4-3 costs little and that structure matters."
+      },
+      {
+        "id": 38,
+        "text": "Single-run ablations were performed.",
+        "poster_quote": "Single-run ablations; single language, paradigm, and architectures.",
+        "label": "supported",
+        "paper_evidence": "Our ablation experiments were each run once per condition; replication across multiple training runs would strengthen the causal claim.",
+        "reason": "The Limitations section explicitly states that single-run ablations were performed."
+      },
+      {
+        "id": 39,
+        "text": "Single language, paradigm, and architectures were used.",
+        "poster_quote": "Single-run ablations; single language, paradigm, and architectures.",
+        "label": "supported",
+        "paper_evidence": "our study focuses on a single language, a single morphological paradigm, and two Transformer-based architectures.",
+        "reason": "The Limitations section confirms that a single language, paradigm, and architectures were used."
+      },
+      {
+        "id": 40,
+        "text": "No sensitive data was used.",
+        "poster_quote": "No sensitive data.",
+        "label": "supported",
+        "paper_evidence": "This work involves no sensitive data, human subjects, or personally identifiable information.",
+        "reason": "The Ethics Statement confirms that no sensitive data was used."
+      },
+      {
+        "id": 41,
+        "text": "Future work includes cross-linguistic, frequency-matched, IPA/romanization tests.",
+        "poster_quote": "Future work: cross-linguistic, frequency-matched, IPA/romanization tests.",
+        "label": "supported",
+        "paper_evidence": "Future Directions. The structural confusability effect identified here raises two natural extensions. First, whether the same effect appears when models are evaluated zero-shot at scale, testing whether frontier language models show the same Type 4-2 sensitivity or whether scale eliminates the inductive bias. Second, whether the Disparity Ratio metric generalizes beyond Japanese to other morphologically rich languages, testing whether structural confusability constitutes a domain-general constraint on morphological learning.",
+        "reason": "Section 'Future Directions' explicitly mentions cross-linguistic validation and evaluation under alternative input representations (e.g., IPA or romanization)."
+      },
+      {
+        "id": 42,
+        "text": "Replication across seeds is needed.",
+        "poster_quote": "Replication across seeds needed",
+        "label": "supported",
+        "paper_evidence": "Limitations. First, our ablation experiments were each run once per condition; replication across multiple training runs would strengthen the causal claim.",
+        "reason": "The 'Limitations' section explicitly states that replication across multiple training runs is needed to strengthen the causal claim."
+      },
+      {
+        "id": 43,
+        "text": "Test scale: do LLMs overcome this bias?",
+        "poster_quote": "Test scale: do LLMs overcome this bias?",
+        "label": "supported",
+        "paper_evidence": "Future Directions. First, whether the same effect appears when models are evaluated zero-shot at scale, testing whether frontier language models show the same Type 4-2 sensitivity or whether scale eliminates the inductive bias.",
+        "reason": "The 'Future Directions' section explicitly proposes testing whether large language models overcome the identified bias."
+      },
+      {
+        "id": 44,
+        "text": "Mechanism: frequency vs. structure interaction?",
+        "poster_quote": "Mechanism: frequency vs. structure interaction?",
+        "label": "supported",
+        "paper_evidence": "Limitations. Our analysis is correlational with respect to the specific mechanism (frequency vs. structural complexity vs. their interaction) underlying Type 4-2’s distinctiveness; the ablation results support a causal role for this subtype’s presence in training data, but do not isolate frequency from structural complexity as independent factors.",
+        "reason": "The 'Limitations' section explicitly discusses the need to isolate frequency and structural complexity as independent factors."
+      }
+    ]
+  },
+  "raw": "[\"{\\n  \\\"claims\\\": [\\n    {\\\"id\\\": 1, \\\"text\\\": \\\"High aggregate accuracy hides 30-43% of errors in a rare Type 4-2 verb subtype.\\\", \\\"poster_quote\\\": \\\"High aggregate accuracy hides 30-43% of errors in a rare Type 4-2 verb subtype.\\\"},\\n    {\\\"id\\\": 2, \\\"text\\\": \\\"Removing Type 4-2 boosts accuracy more than removing all irregulars.\\\", \\\"poster_quote\\\": \\\"Removing it boosts accuracy more than removing all irregulars.\\\"},\\n    {\\\"id\\\": 3, \\\"text\\\": \\\"Gemination-related errors dominate residual failures.\\\", \\\"poster_quote\\\": \\\"Gemination-related errors dominate residual failures.\\\"},\\n    {\\\"id\\\": 4, \\\"text\\\": \\\"Type 4-2 contributes 34-48× its proportional share to total errors.\\\", \\\"poster_quote\\\": \\\"Type 4-2 contributes 34-48× its proportional share to total errors.\\\"},\\n    {\\\"id\\\": 5, \\\"text\\\": \\\"Error concentration stems from low-frequency patterns interacting with orthography.\\\", \\\"poster_quote\\\": \\\"Error concentration stems from low-frequency patterns interacting with orthography.\\\"},\\n    {\\\"id\\\": 6, \\\"text\\\": \\\"Both models hit ~97% accuracy.\\\", \\\"poster_quote\\\": \\\"Both models hit ~97% accuracy.\\\"},\\n    {\\\"id\\\": 7, \\\"text\\\": \\\"Type 4-2 verbs cause 30-43% of errors despite being 0.9% of data.\\\", \\\"poster_quote\\\": \\\"Type 4-2 verbs cause 30-43% of errors despite being 0.9% of data.\\\"},\\n    {\\\"id\\\": 8, \\\"text\\\": \\\"Gemination errors dominate.\\\", \\\"poster_quote\\\": \\\"Gemination errors dominate.\\\"},\\n    {\\\"id\\\": 9, \\\"text\\\": \\\"Aggregate scores mask structural failure.\\\", \\\"poster_quote\\\": \\\"Aggregate scores mask structural failure.\\\"},\\n    {\\\"id\\\": 10, \\\"text\\\": \\\"Use Disparity Ratio to evaluate subclasses.\\\", \\\"poster_quote\\\": \\\"Use Disparity Ratio to evaluate subclasses.\\\"},\\n    {\\\"id\\\": 11, \\\"text\\\": \\\"Not all irregularity harms generalization — only specific low-frequency patterns.\\\", \\\"poster_quote\\\": \\\"Not all irregularity harms generalization — only specific low-frequency patterns.\\\"},\\n    {\\\"id\\\": 12, \\\"text\\\": \\\"Type 4-2 error rate is 43% for PGT.\\\", \\\"poster_quote\\\": \\\"Type 4-2 error rate: 43% (PGT)\\\"},\\n    {\\\"id\\\": 13, \\\"text\\\": \\\"Type 4-2 error rate is 60% for LST.\\\", \\\"poster_quote\\\": \\\"Type 4-2 error rate: 60% (LST)\\\"},\\n    {\\\"id\\\": 14, \\\"text\\\": \\\"Disparity Ratio is 34-48× its data share.\\\", \\\"poster_quote\\\": \\\"Disparity Ratio: 34-48× its data share\\\"},\\n    {\\\"id\\\": 15, \\\"text\\\": \\\"Errors are stable across seeds and architectures.\\\", \\\"poster_quote\\\": \\\"Errors stable across seeds and architectures\\\"},\\n    {\\\"id\\\": 16, \\\"text\\\": \\\"Evaluation should subgroup by morphology.\\\", \\\"poster_quote\\\": \\\"Evaluation should subgroup by morphology\\\"},\\n    {\\\"id\\\": 17, \\\"text\\\": \\\"Type 4-2 sensitivity may persist in LLMs.\\\", \\\"poster_quote\\\": \\\"Type 4-2 sensitivity may persist in LLMs\\\"},\\n    {\\\"id\\\": 18, \\\"text\\\": \\\"Metric generalizes to other morphologically rich languages.\\\", \\\"poster_quote\\\": \\\"Metric generalizes to other morphologically rich languages\\\"},\\n    {\\\"id\\\": 19, \\\"text\\\": \\\"Hiragana-only Japanese verb data is used, excluding canonical irregulars.\\\", \\\"poster_quote\\\": \\\"We use hiragana-only Japanese verb data, excluding canonical irregulars.\\\"},\\n    {\\\"id\\\": 20, \\\"text\\\": \\\"Type 4-2 verbs are 0.9% of data but structurally distinct.\\\", \\\"poster_quote\\\": \\\"Type 4-2 verbs are 0.9% of data but structurally distinct.\\\"},\\n    {\\\"id\\\": 21, \\\"text\\\": \\\"The dataset includes Type 4-1 (119 verbs, stem-final /i/ + gemination).\\\", \\\"poster_quote\\\": \\\"The dataset includes Type 4-1 (119 verbs, stem-final /i/ + gemination)\\\"},\\n    {\\\"id\\\": 22, \\\"text\\\": \\\"The dataset includes Type 4-3 (1 verb, ��→���).\\\", \\\"poster_quote\\\": \\\"The dataset includes Type 4-3 (1 verb, ��→���)\\\"},\\n    {\\\"id\\\": 23, \\\"text\\\": \\\"Type 4-2 is the smallest coherent subclass.\\\", \\\"poster_quote\\\": \\\"Type 4-2 being the smallest coherent subclass.\\\"},\\n    {\\\"id\\\": 24, \\\"text\\\": \\\"All forms are converted to hiragana to eliminate kanji homography confounds.\\\", \\\"poster_quote\\\": \\\"All forms are converted to hiragana to eliminate kanji homography confounds.\\\"},\\n    {\\\"id\\\": 25, \\\"text\\\": \\\"Type 1 includes 2,503 Godan verbs.\\\", \\\"poster_quote\\\": \\\"Type 1: 2,503 Godan verbs\\\"},\\n    {\\\"id\\\": 26, \\\"text\\\": \\\"Type 2 includes 1,298 Ichidan verbs.\\\", \\\"poster_quote\\\": \\\"Type 2: 1,298 Ichidan verbs\\\"},\\n    {\\\"id\\\": 27, \\\"text\\\": \\\"Type 4-2 includes 37 verbs requiring /e/ + gemination.\\\", \\\"poster_quote\\\": \\\"Type 4-2: 37 verbs requiring /e/ + gemination\\\"},\\n    {\\\"id\\\": 28, \\\"text\\\": \\\"Removing only Type 4-2 boosts accuracy most: +2.02% for LST.\\\", \\\"poster_quote\\\": \\\"Removing only Type 4-2 boosts accuracy most: +2.02% (LST)\\\"},\\n    {\\\"id\\\": 29, \\\"text\\\": \\\"Removing only Type 4-2 boosts accuracy most: +1.00% for PGT.\\\", \\\"poster_quote\\\": \\\"Removing only Type 4-2 boosts accuracy most: +1.00% (PGT)\\\"},\\n    {\\\"id\\\": 30, \\\"text\\\": \\\"Irregularity alone isn’t the problem — structure is.\\\", \\\"poster_quote\\\": \\\"Irregularity alone isn’t the problem — structure is.\\\"},\\n    {\\\"id\\\": 31, \\\"text\\\": \\\"PGT uses pointer-generator copying with input attention.\\\", \\\"poster_quote\\\": \\\"PGT uses pointer-generator copying with input attention\\\"},\\n    {\\\"id\\\": 32, \\\"text\\\": \\\"LST uses lemma-split regime to improve generalization.\\\", \\\"poster_quote\\\": \\\"LST uses lemma-split regime to improve generalization\\\"},\\n    {\\\"id\\\": 33, \\\"text\\\": \\\"Both models use cross-entropy loss, teacher forcing, Adam, and standard Transformer scheduling.\\\", \\\"poster_quote\\\": \\\"Both use cross-entropy loss, teacher forcing, Adam, and standard Transformer scheduling.\\\"},\\n    {\\\"id\\\": 34, \\\"text\\\": \\\"Error taxonomy includes 6 orthography-sensitive failure modes.\\\", \\\"poster_quote\\\": \\\"Error taxonomy includes 6 orthography-sensitive failure modes.\\\"},\\n    {\\\"id\\\": 35, \\\"text\\\": \\\"LST achieves 99.75% accuracy after removing Type 4-2.\\\", \\\"poster_quote\\\": \\\"LST: 99.75% accuracy after -4-2\\\"},\\n    {\\\"id\\\": 36, \\\"text\\\": \\\"PGT’s best single ablation is still removing Type 4-2.\\\", \\\"poster_quote\\\": \\\"PGT: best single ablation is still -4-2\\\"},\\n    {\\\"id\\\": 37, \\\"text\\\": \\\"Retaining Type 4-1/4-3 costs little — structure matters.\\\", \\\"poster_quote\\\": \\\"Retaining 4-1/4-3 costs little — structure matters\\\"},\\n    {\\\"id\\\": 38, \\\"text\\\": \\\"Single-run ablations were performed.\\\", \\\"poster_quote\\\": \\\"Single-run ablations; single language, paradigm, and architectures.\\\"},\\n    {\\\"id\\\": 39, \\\"text\\\": \\\"Single language, paradigm, and architectures were used.\\\", \\\"poster_quote\\\": \\\"Single-run ablations; single language, paradigm, and architectures.\\\"},\\n    {\\\"id\\\": 40, \\\"text\\\": \\\"No sensitive data was used.\\\", \\\"poster_quote\\\": \\\"No sensitive data.\\\"},\\n    {\\\"id\\\": 41, \\\"text\\\": \\\"Future work includes cross-linguistic, frequency-matched, IPA/romanization tests.\\\", \\\"poster_quote\\\": \\\"Future work: cross-linguistic, frequency-matched, IPA/romanization tests.\\\"},\\n    {\\\"id\\\": 42, \\\"text\\\": \\\"Replication across seeds is needed.\\\", \\\"poster_quote\\\": \\\"Replication across seeds needed\\\"},\\n    {\\\"id\\\": 43, \\\"text\\\": \\\"Test scale: do LLMs overcome this bias?\\\", \\\"poster_quote\\\": \\\"Test scale: do LLMs overcome this bias?\\\"},\\n    {\\\"id\\\": 44, \\\"text\\\": \\\"Mechanism: frequency vs. structure interaction?\\\", \\\"poster_quote\\\": \\\"Mechanism: frequency vs. structure interaction?\\\"}\\n  ]\\n}\", \"{\\n  \\\"verdicts\\\": [\\n    {\\n      \\\"id\\\": 1,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"a single structurally specific irregular subtype, verbs whose stems end in /e/ and require gemination before the past-tense suffix and make up fewer than 1% of the data, accounts for a disproportionate 30–43% share of residual errors\\\",\\n      \\\"reason\\\": \\\"Section 6.4, Table 4, and Figure 1 confirm that Type 4-2 verbs, which are 0.9% of the data, account for 30-43% of residual errors.\\\"\\n    },\\n    {\\n      \\\"id\\\": 2,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"removing only Type 4-2 yields the largest observed gain: 97.73% → 99.75% (+2.02), corresponding to an approximately 89% reduction in error rate. The gain is substantially larger than removing all irregular verbs (+1.22).\\\",\\n      \\\"reason\\\": \\\"Section 6.7 and Table 6 show that removing Type 4-2 alone results in the largest accuracy gain for LST and PGT compared to removing all irregular verbs.\\\"\\n    },\\n    {\\n      \\\"id\\\": 3,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Gemination-related errors (omission and insertion combined) dominate residual failures, accounting for 75.5% (PGT) and 80.3% (LST) of all errors.\\\",\\n      \\\"reason\\\": \\\"Section 6.3 and Table 3 confirm that gemination-related errors are the most frequent type of residual failure in both models.\\\"\\n    },\\n    {\\n      \\\"id\\\": 4,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Type 4-2 contributes 34–48× its proportional representation to total errors, as visualized in Figure 2, the largest disparity of any subclass in either system.\\\",\\n      \\\"reason\\\": \\\"Section 6.4 and Table 5 confirm that Type 4-2 contributes 34–48× its proportional share to total errors.\\\"\\n    },\\n    {\\n      \\\"id\\\": 5,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"error concentration in neural morphological learning is not driven by irregularity per se, but by the interaction between extreme low-frequency morphological patterns and specific orthographic processes.\\\",\\n      \\\"reason\\\": \\\"The abstract and Section 7 explicitly state that error concentration is due to the interaction between low-frequency patterns and orthography.\\\"\\n    },\\n    {\\n      \\\"id\\\": 6,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"On the primary run, both systems achieve high aggregate accuracy on the full dataset: 97.98% (PGT) and 97.73% (LST).\\\",\\n      \\\"reason\\\": \\\"Section 6.1 confirms that both models achieve approximately 97% accuracy.\\\"\\n    },\\n    {\\n      \\\"id\\\": 7,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Type 4-2 verbs are massively overrepresented, accounting for 30.2% (PGT) and 43.1% (LST) of all errors while comprising just 0.9% of the dataset.\\\",\\n      \\\"reason\\\": \\\"Section 6.4 and Table 4 confirm that Type 4-2 verbs cause 30-43% of errors despite being 0.9% of the data.\\\"\\n    },\\n    {\\n      \\\"id\\\": 8,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Gemination-related errors (omission and insertion combined) dominate residual failures, accounting for 75.5% (PGT) and 80.3% (LST) of all errors.\\\",\\n      \\\"reason\\\": \\\"Section 6.3 and Table 3 confirm that gemination errors dominate residual failures.\\\"\\n    },\\n    {\\n      \\\"id\\\": 9,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"high aggregate accuracy is a stable property of both architectures. Despite this overall stability, errors cluster in specific low-frequency subclasses.\\\",\\n      \\\"reason\\\": \\\"Section 6.1 and 6.4 discuss how high aggregate accuracy masks structural failures in low-frequency subclasses.\\\"\\n    },\\n    {\\n      \\\"id\\\": 10,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Per-item predictions can be regrouped by structural subclass and scored with the Disparity Ratio metric introduced in §5.4.\\\",\\n      \\\"reason\\\": \\\"Section 7 explicitly recommends using the Disparity Ratio to evaluate subclasses.\\\"\\n    },\\n    {\\n      \\\"id\\\": 11,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Irregularity is not uniformly detrimental to neural morphological learning. A single low-frequency subtype, verbs requiring gemination after a stem-final /e/, is structurally distinct from other irregulars.\\\",\\n      \\\"reason\\\": \\\"Section 7 explicitly states that not all irregularity harms generalization, but specific low-frequency patterns do.\\\"\\n    },\\n    {\\n      \\\"id\\\": 12,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Type 4-2 shows an error rate of 43% (PGT).\\\",\\n      \\\"reason\\\": \\\"Figure 1 confirms that the Type 4-2 error rate is 43% for PGT.\\\"\\n    },\\n    {\\n      \\\"id\\\": 13,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Type 4-2 shows an error rate of 43% (PGT) and 60% (LST).\\\",\\n      \\\"reason\\\": \\\"Figure 1 confirms that the Type 4-2 error rate is 60% for LST.\\\"\\n    },\\n    {\\n      \\\"id\\\": 14,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Type 4-2 contributes 34–48× its proportional representation to total errors, as visualized in Figure 2, the largest disparity of any subclass in either system.\\\",\\n      \\\"reason\\\": \\\"Section 6.4 and Table 5 confirm the Disparity Ratio for Type 4-2 is 34-48× its data share.\\\"\\n    },\\n    {\\n      \\\"id\\\": 15,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"This consistency, together with the seed-level stability reported in §6.1, suggests the failures reflect systematic properties of orthographic representation rather than idiosyncrasies of a single model.\\\",\\n      \\\"reason\\\": \\\"Section 6.5 confirms that errors are stable across seeds and architectures.\\\"\\n    },\\n    {\\n      \\\"id\\\": 16,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Evaluation protocols for data-efficient pretraining may therefore benefit from subgroup-aware diagnostics of the kind proposed here, and not aggregate accuracy alone.\\\",\\n      \\\"reason\\\": \\\"Section 7 explicitly recommends subgrouping by morphology for evaluation.\\\"\\n    },\\n    {\\n      \\\"id\\\": 17,\\n      \\\"label\\\": \\\"unsupported\\\",\\n      \\\"paper_evidence\\\": \\\"\\\",\\n      \\\"reason\\\": \\\"The paper does not provide evidence or explicitly state that Type 4-2 sensitivity may persist in large language models (LLMs).\\\"\\n    },\\n    {\\n      \\\"id\\\": 18,\\n      \\\"label\\\": \\\"unsupported\\\",\\n      \\\"paper_evidence\\\": \\\"\\\",\\n      \\\"reason\\\": \\\"The paper does not provide evidence or explicitly state that the metric generalizes to other morphologically rich languages.\\\"\\n    },\\n    {\\n      \\\"id\\\": 19,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"All forms are converted to hiragana to maintain orthographic consistency and eliminate confounds introduced by kanji homography.\\\",\\n      \\\"reason\\\": \\\"Section 3 confirms that the dataset uses hiragana-only Japanese verb data and excludes canonical irregulars.\\\"\\n    },\\n    {\\n      \\\"id\\\": 20,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Type 4-2 is the smallest structurally coherent subclass, comprising only 0.9% of the data.\\\",\\n      \\\"reason\\\": \\\"Section 3.1 and Table 1 confirm that Type 4-2 verbs are 0.9% of the data and are structurally distinct.\\\"\\n    },\\n    {\\n      \\\"id\\\": 21,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Type 4-1: stem-final /i/ + gemination, e.g. まじる majiru → まじった majitta. Count: 119.\\\",\\n      \\\"reason\\\": \\\"Section 3.1 confirms the dataset includes Type 4-1 with 119 verbs.\\\"\\n    },\\n    {\\n      \\\"id\\\": 22,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Type 4-3: localized idiosyncratic deviations, e.g. いく iku → いった itta. Count: 1.\\\",\\n      \\\"reason\\\": \\\"Section 3.1 confirms the dataset includes Type 4-3 with 1 verb.\\\"\\n    },\\n    {\\n      \\\"id\\\": 23,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Type 4-2 is the smallest structurally coherent subclass, comprising only 0.9% of the data.\\\",\\n      \\\"reason\\\": \\\"Section 3.1 confirms that Type 4-2 is the smallest coherent subclass.\\\"\\n    },\\n    {\\n      \\\"id\\\": 24,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"All forms are converted to hiragana to maintain orthographic consistency and eliminate confounds introduced by kanji homography.\\\",\\n      \\\"reason\\\": \\\"Section 3 confirms that all forms are converted to hiragana to eliminate kanji homography confounds.\\\"\\n    },\\n    {\\n      \\\"id\\\": 25,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Type 1 (Godan): regular u-verbs, e.g. かく kaku → かいた kaita. Count: 2,503.\\\",\\n      \\\"reason\\\": \\\"Section 3.1 and Table 1 confirm that Type 1 includes 2,503 Godan verbs.\\\"\\n    },\\n    {\\n      \\\"id\\\": 26,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Type 2 (Ichidan): regular ru-verbs, e.g. たべる taberu → たべた tabeta. Count: 1,298.\\\",\\n      \\\"reason\\\": \\\"Section 3.1 and Table 1 confirm that Type 2 includes 1,298 Ichidan verbs.\\\"\\n    },\\n    {\\n      \\\"id\\\": 27,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Type 4-2: stem-final /e/ + gemination, e.g. あきれかえる akirekaeru → あきれかえった akirekaetta. Count: 37.\\\",\\n      \\\"reason\\\": \\\"Section 3.1 and Table 1 confirm that Type 4-2 includes 37 verbs requiring /e/ + gemination.\\\"\\n    },\\n    {\\n      \\\"id\\\": 28,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"removing only Type 4-2 yields the largest observed gain: 97.73% → 99.75% (+2.02), corresponding to an approximately 89% reduction in error rate.\\\",\\n      \\\"reason\\\": \\\"Section 6.7 and Table 6 confirm that removing only Type 4-2 boosts accuracy most for LST (+2.02%).\\\"\\n    },\\n    {\\n      \\\"id\\\": 29,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"For the PGT system, removing Type 4-2 alone is still the single best condition (97.98% → 98.98%, +1.00).\\\",\\n      \\\"reason\\\": \\\"Section 6.7 and Table 6 confirm that removing only Type 4-2 boosts accuracy most for PGT (+1.00%).\\\"\\n    },\\n    {\\n      \\\"id\\\": 30,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"error concentration in neural morphological learning is not driven by irregularity per se, but by the interaction between extreme low-frequency morphological patterns and specific orthographic processes.\\\",\\n      \\\"reason\\\": \\\"The abstract and Section 7 explicitly state that irregularity alone isn’t the problem, but structure is.\\\"\\n    },\\n    {\\n      \\\"id\\\": 31,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The first is a Pointer-Generator Transformer (henceforth PGT), incorporating a pointer-generator copying mechanism (See et al., 2017) with attention over the input lemma.\\\",\\n      \\\"reason\\\": \\\"Section 4 confirms that PGT uses a pointer-generator copying mechanism with input attention.\\\"\\n    },\\n    {\\n      \\\"id\\\": 32,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The second follows the architecture of Goldman et al. (2023), a Lemma-Split Transformer (henceforth LST) that additionally uses a lemma-split training and evaluation regime, preventing a lemma from appearing in both training and test data and improving generalization to unseen lemmas.\\\",\\n      \\\"reason\\\": \\\"Section 4 confirms that LST uses a lemma-split regime to improve generalization.\\\"\\n    },\\n    {\\n      \\\"id\\\": 33,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Both models are trained with cross-entropy loss and teacher forcing, using the default hyperparameter configurations from their respective shared-task baselines (Vylomova et al., 2020; Goldman et al., 2023), optimized with Adam (Kingma and Ba, 2015) and standard Transformer learning-rate scheduling (Vaswani et al., 2017).\\\",\\n      \\\"reason\\\": \\\"Section 5.1 confirms that both models use cross-entropy loss, teacher forcing, Adam, and standard Transformer scheduling.\\\"\\n    },\\n    {\\n      \\\"id\\\": 34,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"We defined a taxonomy of six orthography- and morphophonology-sensitive failure modes (Table 2): gemination omission, gemination insertion, phonological substitution, morpheme boundary errors, character recognition (UNK) errors, and compound verb structural errors.\\\",\\n      \\\"reason\\\": \\\"Section 6.2 and Table 2 confirm that the error taxonomy includes six orthography-sensitive failure modes.\\\"\\n    },\\n    {\\n      \\\"id\\\": 35,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"For the LST system, removing only Type 4-2 yields the largest observed gain: 97.73% → 99.75% (+2.02).\\\",\\n      \\\"reason\\\": \\\"Section 6.7 and Table 7 confirm that LST achieves 99.75% accuracy after removing Type 4-2.\\\"\\n    },\\n    {\\n      \\\"id\\\": 36,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"For the PGT system, removing Type 4-2 alone is still the single best condition (97.98% → 98.98%, +1.00).\\\",\\n      \\\"reason\\\": \\\"Section 6.7 and Table 7 confirm that PGT’s best single ablation is still removing Type 4-2.\\\"\\n    },\\n    {\\n      \\\"id\\\": 37,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Some irregular subtypes (4-1, 4-3) can be retained without cost: in the LST system, removing only Type 4-2 while retaining 4-1 and 4-3 (condition −4-2) achieves 99.75%.\\\",\\n      \\\"reason\\\": \\\"Section 6.7 confirms that retaining Type 4-1/4-3 costs little and that structure matters.\\\"\\n    },\\n    {\\n      \\\"id\\\": 38,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Our ablation experiments were each run once per condition; replication across multiple training runs would strengthen the causal claim.\\\",\\n      \\\"reason\\\": \\\"The Limitations section explicitly states that single-run ablations were performed.\\\"\\n    },\\n    {\\n      \\\"id\\\": 39,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"our study focuses on a single language, a single morphological paradigm, and two Transformer-based architectures.\\\",\\n      \\\"reason\\\": \\\"The Limitations section confirms that a single language, paradigm, and architectures were used.\\\"\\n    },\\n    {\\n      \\\"id\\\": 40,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"This work involves no sensitive data, human subjects, or personally identifiable information.\\\",\\n      \\\"reason\\\": \\\"The Ethics Statement confirms that no sensitive data was used.\\\"\\n    }\\n  ]\\n}\", \"{\\n  \\\"verdicts\\\": [\\n    {\\n      \\\"id\\\": 1,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Future Directions. The structural confusability effect identified here raises two natural extensions. First, whether the same effect appears when models are evaluated zero-shot at scale, testing whether frontier language models show the same Type 4-2 sensitivity or whether scale eliminates the inductive bias. Second, whether the Disparity Ratio metric generalizes beyond Japanese to other morphologically rich languages, testing whether structural confusability constitutes a domain-general constraint on morphological learning.\\\",\\n      \\\"reason\\\": \\\"Section 'Future Directions' explicitly mentions cross-linguistic validation and evaluation under alternative input representations (e.g., IPA or romanization).\\\"\\n    },\\n    {\\n      \\\"id\\\": 2,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Limitations. First, our ablation experiments were each run once per condition; replication across multiple training runs would strengthen the causal claim.\\\",\\n      \\\"reason\\\": \\\"The 'Limitations' section explicitly states that replication across multiple training runs is needed to strengthen the causal claim.\\\"\\n    },\\n    {\\n      \\\"id\\\": 3,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Future Directions. First, whether the same effect appears when models are evaluated zero-shot at scale, testing whether frontier language models show the same Type 4-2 sensitivity or whether scale eliminates the inductive bias.\\\",\\n      \\\"reason\\\": \\\"The 'Future Directions' section explicitly proposes testing whether large language models overcome the identified bias.\\\"\\n    },\\n    {\\n      \\\"id\\\": 4,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Limitations. Our analysis is correlational with respect to the specific mechanism (frequency vs. structural complexity vs. their interaction) underlying Type 4-2’s distinctiveness; the ablation results support a causal role for this subtype’s presence in training data, but do not isolate frequency from structural complexity as independent factors.\\\",\\n      \\\"reason\\\": \\\"The 'Limitations' section explicitly discusses the need to isolate frequency and structural complexity as independent factors.\\\"\\n    }\\n  ]\\n}\"]"
+}

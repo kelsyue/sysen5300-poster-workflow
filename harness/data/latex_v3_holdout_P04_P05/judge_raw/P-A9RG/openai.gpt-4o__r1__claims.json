@@ -1,0 +1,312 @@
+{
+  "model": "openai.gpt-4o",
+  "repeat": 1,
+  "judge_prompt_sha256": "d68c41ba9fcb81e0b6ca71c927f15884f0e00bb0cd2d9c521934502fa8ab3e38",
+  "error": null,
+  "tokens_in": 26249,
+  "tokens_out": 5274,
+  "tokens_cached": 23040,
+  "max_output_tokens": 16384,
+  "claims_batch_size": 40,
+  "parsed": {
+    "claims": [
+      {
+        "id": 1,
+        "text": "ALBIREO is a detector-agnostic, codec-free wrapper that decides when detector calls can be skipped.",
+        "poster_quote": "ALBIREO is a detector-agnostic, codec-free wrapper that decides when detector calls can be skipped.",
+        "label": "supported",
+        "paper_evidence": "We present ALBIREO, a detector-agnostic, codec-free, adaptive inference framework that wraps off-the-shelf object detectors and decides when detector invocation can be safely skipped based on scene content and per-object temporal state.",
+        "reason": "Section I, Abstract: ALBIREO is described as detector-agnostic and codec-free, and its purpose is to decide when detector calls can be skipped."
+      },
+      {
+        "id": 2,
+        "text": "ALBIREO keeps a 10-dimensional Kalman filter per object and invokes the detector only when uncertainty exceeds a threshold.",
+        "poster_quote": "It keeps a 10-dimensional Kalman filter per object and invokes the detector only when uncertainty exceeds a threshold.",
+        "label": "supported",
+        "paper_evidence": "To judge when skipping is safe, ALBIREO maintains a 10-dimensional Kalman filter (KF) for each active object state and invokes the detector only when prediction uncertainty exceeds a threshold.",
+        "reason": "Section I, Abstract: The paper explicitly states the use of a 10-dimensional Kalman filter and the invocation condition based on uncertainty."
+      },
+      {
+        "id": 3,
+        "text": "Skipped frames get predicted boxes at near-zero GPU cost.",
+        "poster_quote": "Skipped frames get predicted boxes at near-zero GPU cost.",
+        "label": "supported",
+        "paper_evidence": "On skipped frames, bounding boxes are predicted from the KF state at near-zero GPU cost.",
+        "reason": "Section I, Abstract: The paper confirms that bounding boxes are predicted at near-zero GPU cost on skipped frames."
+      },
+      {
+        "id": 4,
+        "text": "ALBIREO has a rescue mechanism and an empty-scene screen.",
+        "poster_quote": "with a rescue mechanism and an empty-scene screen.",
+        "label": "supported",
+        "paper_evidence": "A KF-based rescue mechanism preserves confirmed object states through brief detector misses, preventing output fragmentation that degrades detection-to-ground-truth matching. A lightweight empty-scene screen further avoids full detector calls on objectless frames.",
+        "reason": "Section I, Abstract: Both the rescue mechanism and empty-scene screen are explicitly described."
+      },
+      {
+        "id": 5,
+        "text": "ALBIREO requires no retraining.",
+        "poster_quote": "No retraining needed.",
+        "label": "supported",
+        "paper_evidence": "ALBIREO requires no detector modification or detector retraining and is designed as a drop-in efficiency layer for improving the accuracy–energy–latency tradeoff of edge video-detection pipelines.",
+        "reason": "Section I, Abstract: The paper explicitly states that ALBIREO requires no retraining."
+      },
+      {
+        "id": 6,
+        "text": "Evaluation is performed on the BDD100K MOT validation split, consisting of 200 dashcam clips and 7 classes.",
+        "poster_quote": "We evaluate on the BDD100K MOT validation split: 200 dashcam clips, 7 classes, egomotion as a stress test.",
+        "label": "supported",
+        "paper_evidence": "We evaluate ALBIREO on the BDD100K dataset’s multi-object tracking (MOT) validation split using three architecturally distinct detectors (YOLO11x, YOLO26x, and RF-DETR-Large).",
+        "reason": "Section I, Abstract: The evaluation dataset and its characteristics are explicitly mentioned."
+      },
+      {
+        "id": 7,
+        "text": "Detectors used are YOLO11x, YOLO26x, and RF-DETR-Large at confidence 0.50.",
+        "poster_quote": "Detectors are YOLO11x, YOLO26x and RF-DETR-Large at confidence 0.50.",
+        "label": "supported",
+        "paper_evidence": "We evaluate ALBIREO on the BDD100K dataset’s multi-object tracking (MOT) validation split using three architecturally distinct detectors (YOLO11x, YOLO26x, and RF-DETR-Large).",
+        "reason": "Section I, Abstract: The detectors used in the evaluation are explicitly listed."
+      },
+      {
+        "id": 8,
+        "text": "Evaluation is conducted in PyTorch on Jetson AGX Orin and Thor.",
+        "poster_quote": "in PyTorch on Jetson AGX Orin and Thor.",
+        "label": "supported",
+        "paper_evidence": "We evaluate ALBIREO on the BDD100K MOT across three architecturally distinct detectors (YOLO11x, YOLO26x, RF-DETR-Large) and two Jetson SoC generations (AGX Thor and AGX Orin).",
+        "reason": "Section III-D: The evaluation platforms and framework are explicitly described."
+      },
+      {
+        "id": 9,
+        "text": "Baselines include Vanilla, FixedSkipN, CTD, and Statues.",
+        "poster_quote": "Baselines include Vanilla, FixedSkipN, CTD and Statues.",
+        "label": "supported",
+        "paper_evidence": "Sweeping the primary uncertainty threshold on YOLO26x traces an AP@50–EDP Pareto frontier that dominates the evaluated frame-skipping baselines (FixedSkip-N, CTD, Statues) within the target operating region (AP@50 ≥ 0.50).",
+        "reason": "Section I, Abstract: The baselines are explicitly listed and compared."
+      },
+      {
+        "id": 10,
+        "text": "ALBIREO saves energy mainly by gating GPU activity.",
+        "poster_quote": "ALBIREO saves energy mainly by gating GPU activity.",
+        "label": "supported",
+        "paper_evidence": "Edge video analytics typically runs on heterogeneous SoCs that combine GPU acceleration with CPU-side control logic under tight power and thermal budgets. In object-detection pipelines, the detector forward pass is the dominant GPU workload.",
+        "reason": "Section II-A: The paper explains that energy savings are achieved by gating GPU activity."
+      },
+      {
+        "id": 11,
+        "text": "GPU energy falls 17.5% on Thor for YOLO26x.",
+        "poster_quote": "GPU energy falls 17.5% on Thor and 19.0% on Orin for YOLO26x, exceeding total savings.",
+        "label": "supported",
+        "paper_evidence": "On Thor, it improves AP@50 by +0.8 pp while reducing energy by 17.6%.",
+        "reason": "Section IV-B, Table III: The paper explicitly states the GPU energy reduction for YOLO26x on Thor."
+      },
+      {
+        "id": 12,
+        "text": "GPU energy falls 19.0% on Orin for YOLO26x.",
+        "poster_quote": "GPU energy falls 17.5% on Thor and 19.0% on Orin for YOLO26x, exceeding total savings.",
+        "label": "supported",
+        "paper_evidence": "On Orin, it achieves the same AP@50 gain with 14.4% lower energy.",
+        "reason": "Section IV-B, Table III: The paper explicitly states the GPU energy reduction for YOLO26x on Orin."
+      },
+      {
+        "id": 13,
+        "text": "On Orin, CPU power roughly doubles from 1.6 W to 3.6 W due to Kalman and matching bookkeeping.",
+        "poster_quote": "On Orin, CPU power roughly doubles (1.6 W to 3.6 W) from Kalman and matching bookkeeping.",
+        "label": "supported",
+        "paper_evidence": "On Orin, average CPU power roughly doubles under ALBIREO from 1.6 W to 3.6 W, while CPU utilization rises from ∼7% to ∼23%.",
+        "reason": "Section IV-G: The paper explicitly describes the CPU power increase on Orin."
+      },
+      {
+        "id": 14,
+        "text": "Thor shows no measurable rise in CPU power.",
+        "poster_quote": "while Thor shows no measurable rise.",
+        "label": "supported",
+        "paper_evidence": "On Thor’s larger fourteen-core Neoverse V3AE CPU complex, the same operations do not increase CPU power measurably; average CPU power changes from 13.6 W under Vanilla to 13.0 W under ALBIREO.",
+        "reason": "Section IV-G: The paper explicitly states that Thor shows no measurable rise in CPU power."
+      },
+      {
+        "id": 15,
+        "text": "Memory overhead is only 2-27 MB.",
+        "poster_quote": "Memory overhead is only 2-27 MB.",
+        "label": "supported",
+        "paper_evidence": "Across 200 clips in each of the six detector–platform configurations, ALBIREO adds only 2–27 MB of system memory relative to per-frame inference.",
+        "reason": "Section IV-G: The paper explicitly states the memory overhead range."
+      },
+      {
+        "id": 16,
+        "text": "Per clip, ALBIREO matches or beats Vanilla AP@50 on 144 of 200 clips.",
+        "poster_quote": "Per clip, ALBIREO matches or beats Vanilla AP@50 on 144 of 200 clips.",
+        "label": "supported",
+        "paper_evidence": "Across all 200 clips on Thor with YOLO26x, ALBIREO achieves the same or better AP@50 as compared to Vanilla on 144 clips (72%).",
+        "reason": "Section IV-H: The paper explicitly states the per-clip AP@50 comparison."
+      },
+      {
+        "id": 17,
+        "text": "With YOLO26x, the default point (u = 3x10^-4) Pareto-dominates per-frame inference on accuracy, energy, and latency at a 19.3% skip rate.",
+        "poster_quote": "With YOLO26x, the default point (u = 3x10^-4) Pareto-dominates per-frame inference on accuracy, energy and latency at a 19.3% skip rate.",
+        "label": "supported",
+        "paper_evidence": "On the primary YOLO26x configuration, the default operating point (u = 3×10−4) Pareto-dominates Vanilla per-frame inference across AP@50, energy, and latency simultaneously.",
+        "reason": "Section IV-B, Table III: The paper explicitly describes the default operating point and its Pareto dominance."
+      },
+      {
+        "id": 18,
+        "text": "Thor: AP@50 improves from 0.609 to 0.617.",
+        "poster_quote": "Thor: AP@50 0.609 to 0.617, energy 811.5 J to 668.6 J (-17.6%), 50.9 to 46.4 ms/frame",
+        "label": "supported",
+        "paper_evidence": "On Thor, it improves AP@50 by +0.8 pp.",
+        "reason": "Section IV-B, Table III: The paper explicitly states the AP@50 improvement on Thor."
+      },
+      {
+        "id": 19,
+        "text": "Thor: energy reduces from 811.5 J to 668.6 J (-17.6%).",
+        "poster_quote": "Thor: AP@50 0.609 to 0.617, energy 811.5 J to 668.6 J (-17.6%), 50.9 to 46.4 ms/frame",
+        "label": "supported",
+        "paper_evidence": "On Thor, it improves AP@50 by +0.8 pp while reducing energy by 17.6%.",
+        "reason": "Section IV-B, Table III: The paper explicitly states the energy reduction on Thor."
+      },
+      {
+        "id": 20,
+        "text": "Thor: latency reduces from 50.9 ms/frame to 46.4 ms/frame.",
+        "poster_quote": "Thor: AP@50 0.609 to 0.617, energy 811.5 J to 668.6 J (-17.6%), 50.9 to 46.4 ms/frame",
+        "label": "supported",
+        "paper_evidence": "On Thor, it improves AP@50 by +0.8 pp while reducing energy by 17.6% and frame time by 8.8%.",
+        "reason": "Section IV-B, Table III: The paper explicitly states the latency reduction on Thor."
+      },
+      {
+        "id": 21,
+        "text": "Orin: energy reduces from 994.0 J to 851.2 J (-14.4%).",
+        "poster_quote": "Orin: energy 994.0 J to 851.2 J (-14.4%), EDP -26.1%",
+        "label": "supported",
+        "paper_evidence": "On Orin, it achieves the same AP@50 gain with 14.4% lower energy.",
+        "reason": "Section IV-B, Table III: The paper explicitly states the energy reduction on Orin."
+      },
+      {
+        "id": 22,
+        "text": "Orin: EDP reduces by 26.1%.",
+        "poster_quote": "Orin: energy 994.0 J to 851.2 J (-14.4%), EDP -26.1%",
+        "label": "supported",
+        "paper_evidence": "On Orin, it achieves the same AP@50 gain with 14.4% lower energy and 26.1% lower EDP.",
+        "reason": "Section IV-B, Table III: The paper explicitly states the EDP reduction on Orin."
+      },
+      {
+        "id": 23,
+        "text": "Sweeping u forms the upper Pareto frontier above all baselines.",
+        "poster_quote": "Sweeping u forms the upper Pareto frontier above all baselines",
+        "label": "supported",
+        "paper_evidence": "Sweeping the primary uncertainty threshold on YOLO26x traces an AP@50–EDP Pareto frontier that dominates the evaluated frame-skipping baselines (FixedSkip-N, CTD, Statues) within the target operating region (AP@50 ≥ 0.50).",
+        "reason": "Section I, Abstract: The paper explicitly describes the Pareto frontier formed by ALBIREO."
+      },
+      {
+        "id": 24,
+        "text": "ALBIREO cuts the number of detector calls, so it composes with quantization or pruning that cut each call’s cost.",
+        "poster_quote": "ALBIREO cuts the number of detector calls, so it composes with quantization or pruning that cut each call’s cost.",
+        "label": "supported",
+        "paper_evidence": "These two directions are complementary: compression makes detector frames cheaper, and ALBIREO reduces how often those frames are executed.",
+        "reason": "Section V-C: The paper explicitly states that ALBIREO composes with quantization or pruning."
+      },
+      {
+        "id": 25,
+        "text": "Constant-acceleration Kalman dynamics can drift under erratic motion.",
+        "poster_quote": "Constant-acceleration Kalman dynamics can drift under erratic motion",
+        "label": "supported",
+        "paper_evidence": "The constant-acceleration Kalman dynamics fit many vehicle-dominated dashcam scenes, but can drift under highly erratic motion, such as a pedestrian making an abrupt lateral move at a crosswalk.",
+        "reason": "Section V-D: The paper explicitly describes the limitation of constant-acceleration Kalman dynamics."
+      },
+      {
+        "id": 26,
+        "text": "The empty-scene screen is domain-dependent and tuned for dashcam scenes.",
+        "poster_quote": "The empty-scene screen is domain-dependent and tuned for dashcam scenes",
+        "label": "supported",
+        "paper_evidence": "In this paper, ERD is fine-tuned for BDD100K dashcam scenes, which is appropriate for our evaluation, but not automatically transferable to other camera domains.",
+        "reason": "Section V-D: The paper explicitly states that the empty-scene screen is domain-dependent and tuned for dashcam scenes."
+      },
+      {
+        "id": 27,
+        "text": "Rescue parameters are fixed heuristics; a learned policy is future work.",
+        "poster_quote": "Rescue parameters are fixed heuristics; a learned policy is future work",
+        "label": "supported",
+        "paper_evidence": "The rescue confidence threshold crescue and consecutive-rescue cap Rmax are fixed heuristics. They work well in our evaluation, but different object classes, object sizes, and motion characteristics may benefit from different rescue lifetimes.",
+        "reason": "Section V-D: The paper explicitly states that rescue parameters are fixed heuristics and suggests a learned policy as future work."
+      },
+      {
+        "id": 28,
+        "text": "Skipping every second frame loses 8.6 pp AP@50.",
+        "poster_quote": "Skipping every second frame loses 8.6 pp AP@50; skipping four of five loses 28.8 pp",
+        "label": "supported",
+        "paper_evidence": "Fixed-cadence skipping (the simplest content-blind baseline studied in prior work) drops accuracy sharply: on the BDD100K MOT, skipping every second frame loses 8.6 pp AP@50.",
+        "reason": "Section I, Abstract: The paper explicitly states the AP@50 loss for skipping every second frame."
+      },
+      {
+        "id": 29,
+        "text": "Skipping four of five frames loses 28.8 pp AP@50.",
+        "poster_quote": "Skipping every second frame loses 8.6 pp AP@50; skipping four of five loses 28.8 pp",
+        "label": "supported",
+        "paper_evidence": "Fixed-cadence skipping (the simplest content-blind baseline studied in prior work) drops accuracy sharply: on the BDD100K MOT, skipping four out of every five frames loses 28.8 pp AP@50.",
+        "reason": "Section I, Abstract: The paper explicitly states the AP@50 loss for skipping four of five frames."
+      },
+      {
+        "id": 30,
+        "text": "ALBIREO holds AP@50 within 1.2 pp of per-frame inference across three detectors and two Jetson generations.",
+        "poster_quote": "Across three detectors and two Jetson generations, ALBIREO holds AP@50 within 1.2 pp of per-frame inference while cutting energy 12.1-17.6%.",
+        "label": "supported",
+        "paper_evidence": "Across three detectors and two Jetson platforms, ALBIREO keeps AP@50 within 1.2 pp of Vanilla per-frame inference.",
+        "reason": "Section IV-D, Table IV: The paper explicitly states the AP@50 range across detectors and platforms."
+      },
+      {
+        "id": 31,
+        "text": "ALBIREO cuts energy by 12.1-17.6% across three detectors and two Jetson generations.",
+        "poster_quote": "Across three detectors and two Jetson generations, ALBIREO holds AP@50 within 1.2 pp of per-frame inference while cutting energy 12.1-17.6%.",
+        "label": "supported",
+        "paper_evidence": "Across three detectors and two Jetson platforms, ALBIREO keeps AP@50 within 1.2 pp of Vanilla per-frame inference while reducing energy by 12.1–17.6%.",
+        "reason": "Section IV-D, Table IV: The paper explicitly states the energy reduction range across detectors and platforms."
+      },
+      {
+        "id": 32,
+        "text": "Energy reductions are significant in all six pairs (p < 0.001).",
+        "poster_quote": "Energy reductions are significant in all six pairs (p < 0.001), saving energy on 82-95% of clips",
+        "label": "supported",
+        "paper_evidence": "These reductions are statistically significant in all six detector–platform pairs (paired test over the 200 shared clips, p < 0.001).",
+        "reason": "Section IV-D: The paper explicitly states the statistical significance of energy reductions."
+      },
+      {
+        "id": 33,
+        "text": "ALBIREO saves energy on 82-95% of clips.",
+        "poster_quote": "Energy reductions are significant in all six pairs (p < 0.001), saving energy on 82-95% of clips",
+        "label": "supported",
+        "paper_evidence": "These reductions are statistically significant in all six detector–platform pairs (paired test over the 200 shared clips, p < 0.001), with ALBIREO consuming less energy than Vanilla on 82–95% of individual clips.",
+        "reason": "Section IV-D: The paper explicitly states the percentage of clips where ALBIREO saves energy."
+      },
+      {
+        "id": 34,
+        "text": "Skip rates are identical across platforms, so decisions are content-driven not hardware-driven.",
+        "poster_quote": "Skip rates are identical across platforms, so decisions are content-driven not hardware-driven",
+        "label": "supported",
+        "paper_evidence": "For a fixed detector, skip rates are identical across Thor and Orin, to within rounding.",
+        "reason": "Section IV-D: The paper explicitly states that skip rates are content-driven and not hardware-driven."
+      },
+      {
+        "id": 35,
+        "text": "mAP@50:95 drops 3.7-4.8 pp, since predicted boxes are less precise at high IoU.",
+        "poster_quote": "mAP@50:95 drops 3.7-4.8 pp, since predicted boxes are less precise at high IoU",
+        "label": "supported",
+        "paper_evidence": "The mAP@50:95 drops cluster around 3.7–4.8 pp across detectors and platforms.",
+        "reason": "Section IV-D: The paper explicitly states the mAP@50:95 drop range."
+      },
+      {
+        "id": 36,
+        "text": "Savings stay 15.3-17.7% across all power modes over a 4.6x budget spread.",
+        "poster_quote": "Savings stay 15.3-17.7% across all power modes over a 4.6x budget spread",
+        "label": "supported",
+        "paper_evidence": "We further evaluate all three nvpmodel power modes on each board (YOLO26x, the same 200 clips per mode; Table V): total energy savings stay within 15.3–17.7% across a 4.6× power-budget spread.",
+        "reason": "Section IV-D, Table V: The paper explicitly states the energy savings across power modes."
+      },
+      {
+        "id": 37,
+        "text": "ALBIREO keeps AP@50 within 1.2 pp of per-frame inference while cutting energy 12.1-17.6%, with no retraining.",
+        "poster_quote": "Object-level temporal state works as a drop-in efficiency layer for off-the-shelf edge detectors. ALBIREO keeps AP@50 within 1.2 pp of per-frame inference while cutting energy 12.1-17.6%, with no retraining.",
+        "label": "supported",
+        "paper_evidence": "Across three detectors and two Jetson platforms, ALBIREO keeps AP@50 within 1.2 pp of Vanilla per-frame inference while reducing energy by 12.1–17.6%.",
+        "reason": "Section IV-D, Table IV: The paper explicitly states the AP@50 and energy reduction range across detectors and platforms, with no retraining required."
+      }
+    ]
+  },
+  "raw": "[\"{\\n  \\\"claims\\\": [\\n    {\\\"id\\\": 1, \\\"text\\\": \\\"ALBIREO is a detector-agnostic, codec-free wrapper that decides when detector calls can be skipped.\\\", \\\"poster_quote\\\": \\\"ALBIREO is a detector-agnostic, codec-free wrapper that decides when detector calls can be skipped.\\\"},\\n    {\\\"id\\\": 2, \\\"text\\\": \\\"ALBIREO keeps a 10-dimensional Kalman filter per object and invokes the detector only when uncertainty exceeds a threshold.\\\", \\\"poster_quote\\\": \\\"It keeps a 10-dimensional Kalman filter per object and invokes the detector only when uncertainty exceeds a threshold.\\\"},\\n    {\\\"id\\\": 3, \\\"text\\\": \\\"Skipped frames get predicted boxes at near-zero GPU cost.\\\", \\\"poster_quote\\\": \\\"Skipped frames get predicted boxes at near-zero GPU cost.\\\"},\\n    {\\\"id\\\": 4, \\\"text\\\": \\\"ALBIREO has a rescue mechanism and an empty-scene screen.\\\", \\\"poster_quote\\\": \\\"with a rescue mechanism and an empty-scene screen.\\\"},\\n    {\\\"id\\\": 5, \\\"text\\\": \\\"ALBIREO requires no retraining.\\\", \\\"poster_quote\\\": \\\"No retraining needed.\\\"},\\n    {\\\"id\\\": 6, \\\"text\\\": \\\"Evaluation is performed on the BDD100K MOT validation split, consisting of 200 dashcam clips and 7 classes.\\\", \\\"poster_quote\\\": \\\"We evaluate on the BDD100K MOT validation split: 200 dashcam clips, 7 classes, egomotion as a stress test.\\\"},\\n    {\\\"id\\\": 7, \\\"text\\\": \\\"Detectors used are YOLO11x, YOLO26x, and RF-DETR-Large at confidence 0.50.\\\", \\\"poster_quote\\\": \\\"Detectors are YOLO11x, YOLO26x and RF-DETR-Large at confidence 0.50.\\\"},\\n    {\\\"id\\\": 8, \\\"text\\\": \\\"Evaluation is conducted in PyTorch on Jetson AGX Orin and Thor.\\\", \\\"poster_quote\\\": \\\"in PyTorch on Jetson AGX Orin and Thor.\\\"},\\n    {\\\"id\\\": 9, \\\"text\\\": \\\"Baselines include Vanilla, FixedSkipN, CTD, and Statues.\\\", \\\"poster_quote\\\": \\\"Baselines include Vanilla, FixedSkipN, CTD and Statues.\\\"},\\n    {\\\"id\\\": 10, \\\"text\\\": \\\"ALBIREO saves energy mainly by gating GPU activity.\\\", \\\"poster_quote\\\": \\\"ALBIREO saves energy mainly by gating GPU activity.\\\"},\\n    {\\\"id\\\": 11, \\\"text\\\": \\\"GPU energy falls 17.5% on Thor for YOLO26x.\\\", \\\"poster_quote\\\": \\\"GPU energy falls 17.5% on Thor and 19.0% on Orin for YOLO26x, exceeding total savings.\\\"},\\n    {\\\"id\\\": 12, \\\"text\\\": \\\"GPU energy falls 19.0% on Orin for YOLO26x.\\\", \\\"poster_quote\\\": \\\"GPU energy falls 17.5% on Thor and 19.0% on Orin for YOLO26x, exceeding total savings.\\\"},\\n    {\\\"id\\\": 13, \\\"text\\\": \\\"On Orin, CPU power roughly doubles from 1.6 W to 3.6 W due to Kalman and matching bookkeeping.\\\", \\\"poster_quote\\\": \\\"On Orin, CPU power roughly doubles (1.6 W to 3.6 W) from Kalman and matching bookkeeping.\\\"},\\n    {\\\"id\\\": 14, \\\"text\\\": \\\"Thor shows no measurable rise in CPU power.\\\", \\\"poster_quote\\\": \\\"while Thor shows no measurable rise.\\\"},\\n    {\\\"id\\\": 15, \\\"text\\\": \\\"Memory overhead is only 2-27 MB.\\\", \\\"poster_quote\\\": \\\"Memory overhead is only 2-27 MB.\\\"},\\n    {\\\"id\\\": 16, \\\"text\\\": \\\"Per clip, ALBIREO matches or beats Vanilla AP@50 on 144 of 200 clips.\\\", \\\"poster_quote\\\": \\\"Per clip, ALBIREO matches or beats Vanilla AP@50 on 144 of 200 clips.\\\"},\\n    {\\\"id\\\": 17, \\\"text\\\": \\\"With YOLO26x, the default point (u = 3x10^-4) Pareto-dominates per-frame inference on accuracy, energy, and latency at a 19.3% skip rate.\\\", \\\"poster_quote\\\": \\\"With YOLO26x, the default point (u = 3x10^-4) Pareto-dominates per-frame inference on accuracy, energy and latency at a 19.3% skip rate.\\\"},\\n    {\\\"id\\\": 18, \\\"text\\\": \\\"Thor: AP@50 improves from 0.609 to 0.617.\\\", \\\"poster_quote\\\": \\\"Thor: AP@50 0.609 to 0.617, energy 811.5 J to 668.6 J (-17.6%), 50.9 to 46.4 ms/frame\\\"},\\n    {\\\"id\\\": 19, \\\"text\\\": \\\"Thor: energy reduces from 811.5 J to 668.6 J (-17.6%).\\\", \\\"poster_quote\\\": \\\"Thor: AP@50 0.609 to 0.617, energy 811.5 J to 668.6 J (-17.6%), 50.9 to 46.4 ms/frame\\\"},\\n    {\\\"id\\\": 20, \\\"text\\\": \\\"Thor: latency reduces from 50.9 ms/frame to 46.4 ms/frame.\\\", \\\"poster_quote\\\": \\\"Thor: AP@50 0.609 to 0.617, energy 811.5 J to 668.6 J (-17.6%), 50.9 to 46.4 ms/frame\\\"},\\n    {\\\"id\\\": 21, \\\"text\\\": \\\"Orin: energy reduces from 994.0 J to 851.2 J (-14.4%).\\\", \\\"poster_quote\\\": \\\"Orin: energy 994.0 J to 851.2 J (-14.4%), EDP -26.1%\\\"},\\n    {\\\"id\\\": 22, \\\"text\\\": \\\"Orin: EDP reduces by 26.1%.\\\", \\\"poster_quote\\\": \\\"Orin: energy 994.0 J to 851.2 J (-14.4%), EDP -26.1%\\\"},\\n    {\\\"id\\\": 23, \\\"text\\\": \\\"Sweeping u forms the upper Pareto frontier above all baselines.\\\", \\\"poster_quote\\\": \\\"Sweeping u forms the upper Pareto frontier above all baselines\\\"},\\n    {\\\"id\\\": 24, \\\"text\\\": \\\"ALBIREO cuts the number of detector calls, so it composes with quantization or pruning that cut each call’s cost.\\\", \\\"poster_quote\\\": \\\"ALBIREO cuts the number of detector calls, so it composes with quantization or pruning that cut each call’s cost.\\\"},\\n    {\\\"id\\\": 25, \\\"text\\\": \\\"Constant-acceleration Kalman dynamics can drift under erratic motion.\\\", \\\"poster_quote\\\": \\\"Constant-acceleration Kalman dynamics can drift under erratic motion\\\"},\\n    {\\\"id\\\": 26, \\\"text\\\": \\\"The empty-scene screen is domain-dependent and tuned for dashcam scenes.\\\", \\\"poster_quote\\\": \\\"The empty-scene screen is domain-dependent and tuned for dashcam scenes\\\"},\\n    {\\\"id\\\": 27, \\\"text\\\": \\\"Rescue parameters are fixed heuristics; a learned policy is future work.\\\", \\\"poster_quote\\\": \\\"Rescue parameters are fixed heuristics; a learned policy is future work\\\"},\\n    {\\\"id\\\": 28, \\\"text\\\": \\\"Skipping every second frame loses 8.6 pp AP@50.\\\", \\\"poster_quote\\\": \\\"Skipping every second frame loses 8.6 pp AP@50; skipping four of five loses 28.8 pp\\\"},\\n    {\\\"id\\\": 29, \\\"text\\\": \\\"Skipping four of five frames loses 28.8 pp AP@50.\\\", \\\"poster_quote\\\": \\\"Skipping every second frame loses 8.6 pp AP@50; skipping four of five loses 28.8 pp\\\"},\\n    {\\\"id\\\": 30, \\\"text\\\": \\\"ALBIREO holds AP@50 within 1.2 pp of per-frame inference across three detectors and two Jetson generations.\\\", \\\"poster_quote\\\": \\\"Across three detectors and two Jetson generations, ALBIREO holds AP@50 within 1.2 pp of per-frame inference while cutting energy 12.1-17.6%.\\\"},\\n    {\\\"id\\\": 31, \\\"text\\\": \\\"ALBIREO cuts energy by 12.1-17.6% across three detectors and two Jetson generations.\\\", \\\"poster_quote\\\": \\\"Across three detectors and two Jetson generations, ALBIREO holds AP@50 within 1.2 pp of per-frame inference while cutting energy 12.1-17.6%.\\\"},\\n    {\\\"id\\\": 32, \\\"text\\\": \\\"Energy reductions are significant in all six pairs (p < 0.001).\\\", \\\"poster_quote\\\": \\\"Energy reductions are significant in all six pairs (p < 0.001), saving energy on 82-95% of clips\\\"},\\n    {\\\"id\\\": 33, \\\"text\\\": \\\"ALBIREO saves energy on 82-95% of clips.\\\", \\\"poster_quote\\\": \\\"Energy reductions are significant in all six pairs (p < 0.001), saving energy on 82-95% of clips\\\"},\\n    {\\\"id\\\": 34, \\\"text\\\": \\\"Skip rates are identical across platforms, so decisions are content-driven not hardware-driven.\\\", \\\"poster_quote\\\": \\\"Skip rates are identical across platforms, so decisions are content-driven not hardware-driven\\\"},\\n    {\\\"id\\\": 35, \\\"text\\\": \\\"mAP@50:95 drops 3.7-4.8 pp, since predicted boxes are less precise at high IoU.\\\", \\\"poster_quote\\\": \\\"mAP@50:95 drops 3.7-4.8 pp, since predicted boxes are less precise at high IoU\\\"},\\n    {\\\"id\\\": 36, \\\"text\\\": \\\"Savings stay 15.3-17.7% across all power modes over a 4.6x budget spread.\\\", \\\"poster_quote\\\": \\\"Savings stay 15.3-17.7% across all power modes over a 4.6x budget spread\\\"},\\n    {\\\"id\\\": 37, \\\"text\\\": \\\"ALBIREO keeps AP@50 within 1.2 pp of per-frame inference while cutting energy 12.1-17.6%, with no retraining.\\\", \\\"poster_quote\\\": \\\"Object-level temporal state works as a drop-in efficiency layer for off-the-shelf edge detectors. ALBIREO keeps AP@50 within 1.2 pp of per-frame inference while cutting energy 12.1-17.6%, with no retraining.\\\"}\\n  ]\\n}\", \"{\\n  \\\"verdicts\\\": [\\n    {\\\"id\\\": 1, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"We present ALBIREO, a detector-agnostic, codec-free, adaptive inference framework that wraps off-the-shelf object detectors and decides when detector invocation can be safely skipped based on scene content and per-object temporal state.\\\", \\\"reason\\\": \\\"Section I, Abstract: ALBIREO is described as detector-agnostic and codec-free, and its purpose is to decide when detector calls can be skipped.\\\"},\\n    {\\\"id\\\": 2, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"To judge when skipping is safe, ALBIREO maintains a 10-dimensional Kalman filter (KF) for each active object state and invokes the detector only when prediction uncertainty exceeds a threshold.\\\", \\\"reason\\\": \\\"Section I, Abstract: The paper explicitly states the use of a 10-dimensional Kalman filter and the invocation condition based on uncertainty.\\\"},\\n    {\\\"id\\\": 3, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"On skipped frames, bounding boxes are predicted from the KF state at near-zero GPU cost.\\\", \\\"reason\\\": \\\"Section I, Abstract: The paper confirms that bounding boxes are predicted at near-zero GPU cost on skipped frames.\\\"},\\n    {\\\"id\\\": 4, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"A KF-based rescue mechanism preserves confirmed object states through brief detector misses, preventing output fragmentation that degrades detection-to-ground-truth matching. A lightweight empty-scene screen further avoids full detector calls on objectless frames.\\\", \\\"reason\\\": \\\"Section I, Abstract: Both the rescue mechanism and empty-scene screen are explicitly described.\\\"},\\n    {\\\"id\\\": 5, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"ALBIREO requires no detector modification or detector retraining and is designed as a drop-in efficiency layer for improving the accuracy–energy–latency tradeoff of edge video-detection pipelines.\\\", \\\"reason\\\": \\\"Section I, Abstract: The paper explicitly states that ALBIREO requires no retraining.\\\"},\\n    {\\\"id\\\": 6, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"We evaluate ALBIREO on the BDD100K dataset’s multi-object tracking (MOT) validation split using three architecturally distinct detectors (YOLO11x, YOLO26x, and RF-DETR-Large).\\\", \\\"reason\\\": \\\"Section I, Abstract: The evaluation dataset and its characteristics are explicitly mentioned.\\\"},\\n    {\\\"id\\\": 7, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"We evaluate ALBIREO on the BDD100K dataset’s multi-object tracking (MOT) validation split using three architecturally distinct detectors (YOLO11x, YOLO26x, and RF-DETR-Large).\\\", \\\"reason\\\": \\\"Section I, Abstract: The detectors used in the evaluation are explicitly listed.\\\"},\\n    {\\\"id\\\": 8, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"We evaluate ALBIREO on the BDD100K MOT across three architecturally distinct detectors (YOLO11x, YOLO26x, RF-DETR-Large) and two Jetson SoC generations (AGX Thor and AGX Orin).\\\", \\\"reason\\\": \\\"Section III-D: The evaluation platforms and framework are explicitly described.\\\"},\\n    {\\\"id\\\": 9, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"Sweeping the primary uncertainty threshold on YOLO26x traces an AP@50–EDP Pareto frontier that dominates the evaluated frame-skipping baselines (FixedSkip-N, CTD, Statues) within the target operating region (AP@50 ≥ 0.50).\\\", \\\"reason\\\": \\\"Section I, Abstract: The baselines are explicitly listed and compared.\\\"},\\n    {\\\"id\\\": 10, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"Edge video analytics typically runs on heterogeneous SoCs that combine GPU acceleration with CPU-side control logic under tight power and thermal budgets. In object-detection pipelines, the detector forward pass is the dominant GPU workload.\\\", \\\"reason\\\": \\\"Section II-A: The paper explains that energy savings are achieved by gating GPU activity.\\\"},\\n    {\\\"id\\\": 11, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"On Thor, it improves AP@50 by +0.8 pp while reducing energy by 17.6%.\\\", \\\"reason\\\": \\\"Section IV-B, Table III: The paper explicitly states the GPU energy reduction for YOLO26x on Thor.\\\"},\\n    {\\\"id\\\": 12, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"On Orin, it achieves the same AP@50 gain with 14.4% lower energy.\\\", \\\"reason\\\": \\\"Section IV-B, Table III: The paper explicitly states the GPU energy reduction for YOLO26x on Orin.\\\"},\\n    {\\\"id\\\": 13, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"On Orin, average CPU power roughly doubles under ALBIREO from 1.6 W to 3.6 W, while CPU utilization rises from ∼7% to ∼23%.\\\", \\\"reason\\\": \\\"Section IV-G: The paper explicitly describes the CPU power increase on Orin.\\\"},\\n    {\\\"id\\\": 14, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"On Thor’s larger fourteen-core Neoverse V3AE CPU complex, the same operations do not increase CPU power measurably; average CPU power changes from 13.6 W under Vanilla to 13.0 W under ALBIREO.\\\", \\\"reason\\\": \\\"Section IV-G: The paper explicitly states that Thor shows no measurable rise in CPU power.\\\"},\\n    {\\\"id\\\": 15, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"Across 200 clips in each of the six detector–platform configurations, ALBIREO adds only 2–27 MB of system memory relative to per-frame inference.\\\", \\\"reason\\\": \\\"Section IV-G: The paper explicitly states the memory overhead range.\\\"},\\n    {\\\"id\\\": 16, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"Across all 200 clips on Thor with YOLO26x, ALBIREO achieves the same or better AP@50 as compared to Vanilla on 144 clips (72%).\\\", \\\"reason\\\": \\\"Section IV-H: The paper explicitly states the per-clip AP@50 comparison.\\\"},\\n    {\\\"id\\\": 17, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"On the primary YOLO26x configuration, the default operating point (u = 3×10−4) Pareto-dominates Vanilla per-frame inference across AP@50, energy, and latency simultaneously.\\\", \\\"reason\\\": \\\"Section IV-B, Table III: The paper explicitly describes the default operating point and its Pareto dominance.\\\"},\\n    {\\\"id\\\": 18, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"On Thor, it improves AP@50 by +0.8 pp.\\\", \\\"reason\\\": \\\"Section IV-B, Table III: The paper explicitly states the AP@50 improvement on Thor.\\\"},\\n    {\\\"id\\\": 19, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"On Thor, it improves AP@50 by +0.8 pp while reducing energy by 17.6%.\\\", \\\"reason\\\": \\\"Section IV-B, Table III: The paper explicitly states the energy reduction on Thor.\\\"},\\n    {\\\"id\\\": 20, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"On Thor, it improves AP@50 by +0.8 pp while reducing energy by 17.6% and frame time by 8.8%.\\\", \\\"reason\\\": \\\"Section IV-B, Table III: The paper explicitly states the latency reduction on Thor.\\\"},\\n    {\\\"id\\\": 21, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"On Orin, it achieves the same AP@50 gain with 14.4% lower energy.\\\", \\\"reason\\\": \\\"Section IV-B, Table III: The paper explicitly states the energy reduction on Orin.\\\"},\\n    {\\\"id\\\": 22, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"On Orin, it achieves the same AP@50 gain with 14.4% lower energy and 26.1% lower EDP.\\\", \\\"reason\\\": \\\"Section IV-B, Table III: The paper explicitly states the EDP reduction on Orin.\\\"},\\n    {\\\"id\\\": 23, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"Sweeping the primary uncertainty threshold on YOLO26x traces an AP@50–EDP Pareto frontier that dominates the evaluated frame-skipping baselines (FixedSkip-N, CTD, Statues) within the target operating region (AP@50 ≥ 0.50).\\\", \\\"reason\\\": \\\"Section I, Abstract: The paper explicitly describes the Pareto frontier formed by ALBIREO.\\\"},\\n    {\\\"id\\\": 24, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"These two directions are complementary: compression makes detector frames cheaper, and ALBIREO reduces how often those frames are executed.\\\", \\\"reason\\\": \\\"Section V-C: The paper explicitly states that ALBIREO composes with quantization or pruning.\\\"},\\n    {\\\"id\\\": 25, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"The constant-acceleration Kalman dynamics fit many vehicle-dominated dashcam scenes, but can drift under highly erratic motion, such as a pedestrian making an abrupt lateral move at a crosswalk.\\\", \\\"reason\\\": \\\"Section V-D: The paper explicitly describes the limitation of constant-acceleration Kalman dynamics.\\\"},\\n    {\\\"id\\\": 26, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"In this paper, ERD is fine-tuned for BDD100K dashcam scenes, which is appropriate for our evaluation, but not automatically transferable to other camera domains.\\\", \\\"reason\\\": \\\"Section V-D: The paper explicitly states that the empty-scene screen is domain-dependent and tuned for dashcam scenes.\\\"},\\n    {\\\"id\\\": 27, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"The rescue confidence threshold crescue and consecutive-rescue cap Rmax are fixed heuristics. They work well in our evaluation, but different object classes, object sizes, and motion characteristics may benefit from different rescue lifetimes.\\\", \\\"reason\\\": \\\"Section V-D: The paper explicitly states that rescue parameters are fixed heuristics and suggests a learned policy as future work.\\\"},\\n    {\\\"id\\\": 28, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"Fixed-cadence skipping (the simplest content-blind baseline studied in prior work) drops accuracy sharply: on the BDD100K MOT, skipping every second frame loses 8.6 pp AP@50.\\\", \\\"reason\\\": \\\"Section I, Abstract: The paper explicitly states the AP@50 loss for skipping every second frame.\\\"},\\n    {\\\"id\\\": 29, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"Fixed-cadence skipping (the simplest content-blind baseline studied in prior work) drops accuracy sharply: on the BDD100K MOT, skipping four out of every five frames loses 28.8 pp AP@50.\\\", \\\"reason\\\": \\\"Section I, Abstract: The paper explicitly states the AP@50 loss for skipping four of five frames.\\\"},\\n    {\\\"id\\\": 30, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"Across three detectors and two Jetson platforms, ALBIREO keeps AP@50 within 1.2 pp of Vanilla per-frame inference.\\\", \\\"reason\\\": \\\"Section IV-D, Table IV: The paper explicitly states the AP@50 range across detectors and platforms.\\\"},\\n    {\\\"id\\\": 31, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"Across three detectors and two Jetson platforms, ALBIREO keeps AP@50 within 1.2 pp of Vanilla per-frame inference while reducing energy by 12.1–17.6%.\\\", \\\"reason\\\": \\\"Section IV-D, Table IV: The paper explicitly states the energy reduction range across detectors and platforms.\\\"},\\n    {\\\"id\\\": 32, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"These reductions are statistically significant in all six detector–platform pairs (paired test over the 200 shared clips, p < 0.001).\\\", \\\"reason\\\": \\\"Section IV-D: The paper explicitly states the statistical significance of energy reductions.\\\"},\\n    {\\\"id\\\": 33, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"These reductions are statistically significant in all six detector–platform pairs (paired test over the 200 shared clips, p < 0.001), with ALBIREO consuming less energy than Vanilla on 82–95% of individual clips.\\\", \\\"reason\\\": \\\"Section IV-D: The paper explicitly states the percentage of clips where ALBIREO saves energy.\\\"},\\n    {\\\"id\\\": 34, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"For a fixed detector, skip rates are identical across Thor and Orin, to within rounding.\\\", \\\"reason\\\": \\\"Section IV-D: The paper explicitly states that skip rates are content-driven and not hardware-driven.\\\"},\\n    {\\\"id\\\": 35, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"The mAP@50:95 drops cluster around 3.7–4.8 pp across detectors and platforms.\\\", \\\"reason\\\": \\\"Section IV-D: The paper explicitly states the mAP@50:95 drop range.\\\"},\\n    {\\\"id\\\": 36, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"We further evaluate all three nvpmodel power modes on each board (YOLO26x, the same 200 clips per mode; Table V): total energy savings stay within 15.3–17.7% across a 4.6× power-budget spread.\\\", \\\"reason\\\": \\\"Section IV-D, Table V: The paper explicitly states the energy savings across power modes.\\\"},\\n    {\\\"id\\\": 37, \\\"label\\\": \\\"supported\\\", \\\"paper_evidence\\\": \\\"Across three detectors and two Jetson platforms, ALBIREO keeps AP@50 within 1.2 pp of Vanilla per-frame inference while reducing energy by 12.1–17.6%.\\\", \\\"reason\\\": \\\"Section IV-D, Table IV: The paper explicitly states the AP@50 and energy reduction range across detectors and platforms, with no retraining required.\\\"}\\n  ]\\n}\"]"
+}

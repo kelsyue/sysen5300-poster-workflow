@@ -1,0 +1,60 @@
+{
+  "model": "gemini-3.5-flash",
+  "repeat": 1,
+  "judge_prompt_sha256": "d68c41ba9fcb81e0b6ca71c927f15884f0e00bb0cd2d9c521934502fa8ab3e38",
+  "error": null,
+  "tokens_in": 6264,
+  "tokens_out": 3102,
+  "tokens_cached": 0,
+  "max_output_tokens": 32768,
+  "parsed": {
+    "items": {
+      "chk_problem": {
+        "label": "accurate",
+        "poster_evidence": "Functional decline is often recognized only after falls, gait impairment, or reduced mobility become visible. Routine biomarkers may deteriorate earlier without triggering alerts. Existing tools capture one timepoint, while biomarker trajectories may reveal an earlier prevention window.",
+        "reason": "The poster clearly describes the problem of late recognition of functional decline and the potential of using biomarker trajectories for earlier detection."
+      },
+      "chk_method": {
+        "label": "accurate",
+        "poster_evidence": "Baseline used biomarker means; trajectories captured variability, first-to-last change, measurement count, and daily slope. Penalized logistic regression, random forest, XGBoost, and LightGBM were compared by five-fold cross-validation",
+        "reason": "The poster describes the feature engineering of trajectory descriptors from twelve biomarkers and the machine learning models used."
+      },
+      "chk_data": {
+        "label": "accurate",
+        "poster_evidence": "A Large-Scale Study Using the All of Us Research Program\n... N = 297,861; 11.1% cases",
+        "reason": "The poster identifies the All of Us Research Program and the cohort size of 297,861 participants with 11.1% cases."
+      },
+      "chk_setup": {
+        "label": "accurate",
+        "poster_evidence": "Penalized logistic regression, random forest, XGBoost, and LightGBM were compared by five-fold cross-validation in N = 297,861. Missing values used training-fold medians; evaluation covered out-of-fold discrimination, calibration, and reclassification.",
+        "reason": "The poster details the five-fold cross-validation setup, out-of-fold evaluation, and the compared algorithms."
+      },
+      "chk_primary_result": {
+        "label": "accurate",
+        "poster_evidence": "Trajectory features outperformed static summaries: AUROC 0.797 versus 0.755 and AUPRC 0.380 versus 0.304.",
+        "reason": "The poster reports the primary LightGBM trajectory model results (AUROC 0.797, AUPRC 0.380) and compares them to the baseline."
+      },
+      "chk_secondary_result": {
+        "label": "accurate",
+        "poster_evidence": "Table 2: Prediction horizon performance using trajectory features. Measurements within the specified horizon prior to the index date were excluded.\n3 months 0.768\n12 months 0.740",
+        "reason": "The poster includes Table 2 showing the prediction horizon analysis with AUROCs ranging from 0.768 (3 months) to 0.740 (12 months)."
+      },
+      "chk_baseline": {
+        "label": "accurate",
+        "poster_evidence": "Trajectory features outperformed static summaries: AUROC 0.797 versus 0.755 and AUPRC 0.380 versus 0.304. ... Age and sex matching yielded AUROC 0.727 versus 0.680 for demographics alone.",
+        "reason": "The poster compares the trajectory model against both the static laboratory summaries (0.755 AUROC, 0.304 AUPRC) and the demographics-only baseline (0.680 AUROC)."
+      },
+      "chk_conclusion": {
+        "label": "accurate",
+        "poster_evidence": "The model is a passive digital biomarker using routine measurements, with no new tests, interaction, scoring, or functional assessment. ... Trajectory features outperformed static summaries ... enabling zero-burden preventive monitoring.",
+        "reason": "The poster concludes that trajectory features significantly improve prediction and can serve as a passive, zero-burden digital biomarker."
+      },
+      "chk_limitation": {
+        "label": "missing",
+        "poster_evidence": "",
+        "reason": "The poster does not mention any limitations of the study, such as ICD-10 outcome definition, high missingness in specific biomarkers, or the need for external validation."
+      }
+    }
+  },
+  "raw": "```json\n{\n  \"items\": {\n    \"chk_problem\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Functional decline is often recognized only after falls, gait impairment, or reduced mobility become visible. Routine biomarkers may deteriorate earlier without triggering alerts. Existing tools capture one timepoint, while biomarker trajectories may reveal an earlier prevention window.\",\n      \"reason\": \"The poster clearly describes the problem of late recognition of functional decline and the potential of using biomarker trajectories for earlier detection.\"\n    },\n    \"chk_method\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Baseline used biomarker means; trajectories captured variability, first-to-last change, measurement count, and daily slope. Penalized logistic regression, random forest, XGBoost, and LightGBM were compared by five-fold cross-validation\",\n      \"reason\": \"The poster describes the feature engineering of trajectory descriptors from twelve biomarkers and the machine learning models used.\"\n    },\n    \"chk_data\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"A Large-Scale Study Using the All of Us Research Program\\n... N = 297,861; 11.1% cases\",\n      \"reason\": \"The poster identifies the All of Us Research Program and the cohort size of 297,861 participants with 11.1% cases.\"\n    },\n    \"chk_setup\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Penalized logistic regression, random forest, XGBoost, and LightGBM were compared by five-fold cross-validation in N = 297,861. Missing values used training-fold medians; evaluation covered out-of-fold discrimination, calibration, and reclassification.\",\n      \"reason\": \"The poster details the five-fold cross-validation setup, out-of-fold evaluation, and the compared algorithms.\"\n    },\n    \"chk_primary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Trajectory features outperformed static summaries: AUROC 0.797 versus 0.755 and AUPRC 0.380 versus 0.304.\",\n      \"reason\": \"The poster reports the primary LightGBM trajectory model results (AUROC 0.797, AUPRC 0.380) and compares them to the baseline.\"\n    },\n    \"chk_secondary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Table 2: Prediction horizon performance using trajectory features. Measurements within the specified horizon prior to the index date were excluded.\\n3 months 0.768\\n12 months 0.740\",\n      \"reason\": \"The poster includes Table 2 showing the prediction horizon analysis with AUROCs ranging from 0.768 (3 months) to 0.740 (12 months).\"\n    },\n    \"chk_baseline\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Trajectory features outperformed static summaries: AUROC 0.797 versus 0.755 and AUPRC 0.380 versus 0.304. ... Age and sex matching yielded AUROC 0.727 versus 0.680 for demographics alone.\",\n      \"reason\": \"The poster compares the trajectory model against both the static laboratory summaries (0.755 AUROC, 0.304 AUPRC) and the demographics-only baseline (0.680 AUROC).\"\n    },\n    \"chk_conclusion\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"The model is a passive digital biomarker using routine measurements, with no new tests, interaction, scoring, or functional assessment. ... Trajectory features outperformed static summaries ... enabling zero-burden preventive monitoring.\",\n      \"reason\": \"The poster concludes that trajectory features significantly improve prediction and can serve as a passive, zero-burden digital biomarker.\"\n    },\n    \"chk_limitation\": {\n      \"label\": \"missing\",\n      \"poster_evidence\": \"\",\n      \"reason\": \"The poster does not mention any limitations of the study, such as ICD-10 outcome definition, high missingness in specific biomarkers, or the need for external validation.\"\n    }\n  }\n}\n```"
+}

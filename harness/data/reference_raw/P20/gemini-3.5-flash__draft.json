@@ -1,0 +1,49 @@
+{
+  "model": "gemini-3.5-flash",
+  "reference_prompt_sha256": "a63f2a103bd381061f0d6560fdaf2e1bd28c503af09ee38a529d0648f4594fd3",
+  "error": null,
+  "tokens_in": 19330,
+  "tokens_out": 6425,
+  "parsed": {
+    "summary": "This paper proposes a unified energy decomposition framework for self-supervised visual representation learning based on three non-overlapping principles: observation, prediction, and regularization. By pre-training a ViT-Tiny encoder on STL-10, the authors demonstrate that all three principles are necessary to prevent collapse and learn high-quality semantic and spatial representations.",
+    "items": {
+      "chk_problem": {
+        "value": "Understanding the necessary principles for self-supervised visual representation learning and preventing representational collapse.",
+        "paper_quote": "We argue that learning visual representations without labels requires a training signal jointly complete across three non-overlapping objectives: semantic invariance across augmented views, patch-level spatial prediction, and representational non-degeneracy."
+      },
+      "chk_method": {
+        "value": "A unified energy decomposition framework that instantiates three jointly trained objectives: invariance (observation), predictive (prediction), and regularization.",
+        "paper_quote": "We instantiate Equation (3) as three jointly trained objectives, Ltotal = αLinv + βLpred + γLreg ."
+      },
+      "chk_data": {
+        "value": "The unlabeled split of the STL-10 dataset.",
+        "paper_quote": "We pre-train a ViT-Tiny encoder (embedding dimension 192, depth 12, patch size 8) on the unlabeled split of STL-10 [12] at 96×96, giving 144 patch tokens."
+      },
+      "chk_setup": {
+        "value": "Pre-training a ViT-Tiny encoder on STL-10 for 200 epochs using AdamW, evaluated via linear probing and patch-level retrieval.",
+        "paper_quote": "We train 200 epochs with AdamW, batch size 512, and a cosine-decayed peak learning rate 5×10−4 , evaluating by linear probe and patch-level retrieval (Section 6)."
+      },
+      "chk_primary_result": {
+        "value": "The full contrastive model with SIGReg achieves 55.0% linear probe accuracy, while removing regularization, prediction, or observation drops accuracy to 51.6%, 49.5%, and 41.6% respectively.",
+        "paper_quote": "Against our proposed model (row J, 55.0%), removing regularization (row H) costs 3.4 points, removing prediction (row F) 5.5 points, and removing observation (row E) 13.4 points, the largest single drop."
+      },
+      "chk_secondary_result": {
+        "value": "Removing prediction causes a 3.1-point drop in spatial recall@5 for patch-level nearest-neighbour retrieval, confirming its role in learning spatial structure.",
+        "paper_quote": "Removing prediction (row F) causes a 3.1-point drop in spatial recall@5 relative to the full model (row J), directly confirming the structural argument of Proposition 10: without a spatial training signal the encoder does not learn to distinguish patch positions."
+      },
+      "chk_baseline": {
+        "value": "Strict subsets of the three principles (omitting one or more of invariance, prediction, or regularization) and prior self-supervised methods.",
+        "paper_quote": "Each row instantiates a strict subset of {Linv , Lpred , Lreg }, verifying Propositions 7, 10, and 11 and Theorem 8 and Remark 9."
+      },
+      "chk_conclusion": {
+        "value": "Self-supervised representation learning can be unified and successfully trained using three modular, non-overlapping principles: observation, prediction, and regularization, without relying on implicit collapse-prevention mechanisms.",
+        "paper_quote": "We formalized self-supervised representation learning as energy minimization over three non-overlapping principles: observation, prediction, and regularization."
+      },
+      "chk_limitation": {
+        "value": "The empirical validation is limited to a single small scale (ViT-Tiny on STL-10), leaving open whether these findings scale to larger models.",
+        "paper_quote": "Our empirical validation is at a single small scale (Section 6); whether a larger encoder could acquire spatial structure from observation alone, or cross-view invariance from prediction alone, remains open."
+      }
+    }
+  },
+  "raw": "{\n  \"summary\": \"This paper proposes a unified energy decomposition framework for self-supervised visual representation learning based on three non-overlapping principles: observation, prediction, and regularization. By pre-training a ViT-Tiny encoder on STL-10, the authors demonstrate that all three principles are necessary to prevent collapse and learn high-quality semantic and spatial representations.\",\n  \"items\": {\n    \"chk_problem\": {\n      \"value\": \"Understanding the necessary principles for self-supervised visual representation learning and preventing representational collapse.\",\n      \"paper_quote\": \"We argue that learning visual representations without labels requires a training signal jointly complete across three non-overlapping objectives: semantic invariance across augmented views, patch-level spatial prediction, and representational non-degeneracy.\"\n    },\n    \"chk_method\": {\n      \"value\": \"A unified energy decomposition framework that instantiates three jointly trained objectives: invariance (observation), predictive (prediction), and regularization.\",\n      \"paper_quote\": \"We instantiate Equation (3) as three jointly trained objectives, Ltotal = αLinv + βLpred + γLreg .\"\n    },\n    \"chk_data\": {\n      \"value\": \"The unlabeled split of the STL-10 dataset.\",\n      \"paper_quote\": \"We pre-train a ViT-Tiny encoder (embedding dimension 192, depth 12, patch size 8) on the unlabeled split of STL-10 [12] at 96×96, giving 144 patch tokens.\"\n    },\n    \"chk_setup\": {\n      \"value\": \"Pre-training a ViT-Tiny encoder on STL-10 for 200 epochs using AdamW, evaluated via linear probing and patch-level retrieval.\",\n      \"paper_quote\": \"We train 200 epochs with AdamW, batch size 512, and a cosine-decayed peak learning rate 5×10−4 , evaluating by linear probe and patch-level retrieval (Section 6).\"\n    },\n    \"chk_primary_result\": {\n      \"value\": \"The full contrastive model with SIGReg achieves 55.0% linear probe accuracy, while removing regularization, prediction, or observation drops accuracy to 51.6%, 49.5%, and 41.6% respectively.\",\n      \"paper_quote\": \"Against our proposed model (row J, 55.0%), removing regularization (row H) costs 3.4 points, removing prediction (row F) 5.5 points, and removing observation (row E) 13.4 points, the largest single drop.\"\n    },\n    \"chk_secondary_result\": {\n      \"value\": \"Removing prediction causes a 3.1-point drop in spatial recall@5 for patch-level nearest-neighbour retrieval, confirming its role in learning spatial structure.\",\n      \"paper_quote\": \"Removing prediction (row F) causes a 3.1-point drop in spatial recall@5 relative to the full model (row J), directly confirming the structural argument of Proposition 10: without a spatial training signal the encoder does not learn to distinguish patch positions.\"\n    },\n    \"chk_baseline\": {\n      \"value\": \"Strict subsets of the three principles (omitting one or more of invariance, prediction, or regularization) and prior self-supervised methods.\",\n      \"paper_quote\": \"Each row instantiates a strict subset of {Linv , Lpred , Lreg }, verifying Propositions 7, 10, and 11 and Theorem 8 and Remark 9.\"\n    },\n    \"chk_conclusion\": {\n      \"value\": \"Self-supervised representation learning can be unified and successfully trained using three modular, non-overlapping principles: observation, prediction, and regularization, without relying on implicit collapse-prevention mechanisms.\",\n      \"paper_quote\": \"We formalized self-supervised representation learning as energy minimization over three non-overlapping principles: observation, prediction, and regularization.\"\n    },\n    \"chk_limitation\": {\n      \"value\": \"The empirical validation is limited to a single small scale (ViT-Tiny on STL-10), leaving open whether these findings scale to larger models.\",\n      \"paper_quote\": \"Our empirical validation is at a single small scale (Section 6); whether a larger encoder could acquire spatial structure from observation alone, or cross-view invariance from prediction alone, remains open.\"\n    }\n  }\n}"
+}

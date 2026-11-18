@@ -1,0 +1,202 @@
+{
+  "paper_id": "P17",
+  "created_at": "2026-11-18T03:40:03+00:00",
+  "models": [
+    "gemini-3.5-flash",
+    "openai.gpt-4o"
+  ],
+  "reference_prompt_sha256": "a63f2a103bd381061f0d6560fdaf2e1bd28c503af09ee38a529d0648f4594fd3",
+  "paper_text_sha256": "1c3a93e9eb903df9b0af59723378cc7957a3cdb9b914977c5b8b8e2e58217463",
+  "summary": "This paper investigates the impact of natural, functionality-preserving code transformations mined from real-world commits on the performance of AI agents performing vulnerability analysis. The authors find that applying these transformations significantly reduces the success rates of frontier agents (such as GPT-5.6 Sol with Codex) from 63.3% to 36.8%, and composing multiple transformations reduces it further to 20.0%. The study demonstrates that natural code transformations can serve as an effective defense to protect source code against malicious agentic scanning.",
+  "items": {
+    "chk_problem": {
+      "status": "uncertain",
+      "why": "drafts differ",
+      "drafts": [
+        {
+          "value": "AI agents can automate vulnerability discovery and attack software at scale, creating a need for defenses that slow down these attacks.",
+          "paper_quote": "Having demonstrated a strong potential for automating vulnerability discovery, AI agents can also be used to attack software systems at scale.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "AI agents' vulnerability analysis results vary significantly across code commits with the same functionality and vulnerability.",
+          "paper_quote": "More specifically, within a single repository, the agent’s success rate in vulnerability analysis fluctuates significantly across adjacent code commits that carry the same functionality and the same vulnerability (Figure 1).",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ],
+      "paper_excerpt": "arXiv:2610.14350v1 [cs.CR] 9 Oct 2026\n\nA BSTRACT\nHaving demonstrated a strong potential for automating vulnerability discovery, AI\nagents can also be used to attack software systems at scale. Today’s software systems need mechanisms to level the playing field by slowing down potential attacks,\ngiving them time to patch vulnerabilities and strengthen software. Along this line,\nour study of agent trajectories in vulnerability analysis shows a surprising finding:\nagents produce dramatically different results across real-world code commits that\ncarry the same functionality and the same vulnerability. This phenomenon appears\nconsistently in multiple code domains and vulnerability categories.\nIt motivates us to study natural and functionality-preserving code transformations\nderived from real-world software development, and their potential as a defense\nagainst attacker agents. We build a corpus of natural transformations by mining\nrecurring development patterns from real-world code commits, and apply them to\nevaluate impact on agentic vulnerability analysis. Our results show that even a single form of transformation can effectively “confuse” frontier agents, e.g., Codex\nwith GPT-6 Sol, reducing successes in vulnerability discovery. We also study different agent failures, whether transformations can be composed to provide stronger\nprotection, and adaptive attackers who seek to reverse them. Overall, our study of\nnatural code transformation significantly expands the research space of using code\ntransformations to defend against malicious agents.\n\n1\n\nI NTRODUCTION\n\nFrontier AI agents can now analyze large volumes of software code to identify vulnerabilities (Wang\net al., 2026b; Lee et al., 2026). Bad actors can use them as powerful tools to discover and subsequently\nexploit zero-day vulnerabilities in widely used software (Carlini et al., 2026; Wang et al., 2026a;\nLee & Brumley, 2026). Yet many companies and institutions lack the computational resources to\nscan their own software using advanced agents, leaving them vulnerable to attackers wielding more\npowerful ones. Less resource-rich stakeholders need a way to level the playing field, a way to slow\ndown attackers long enough to give themselves time to identify and repair their own software.\nIn our analysis of agent trajectories in CyberGym (Wang et al., 2026b), we make surprising observations that different versions of the same codebase often exhibit varying levels of resilience to AI\nagents scanning for vulnerabilities (Section 2.2). More specifically, within a single repository, the\nagent’s success rate in vulnerability analysis fluctuates significantly across adjacent code commits\nthat carry the same functionality and the same vulnerability (Figure 1). In many cases, the agent either\nfails to identify the vulnerability after exhausting the budget or generates false positives in which the\nproof-of-concept (PoC) input cannot trigger the vulnerability. Such a pattern is consistently observed\nacross multiple code domains and vulnerability categories.\nThis finding suggests that agents’ ability to identify software vulnerabilities is highly dependent on the\ncode representation (i.e., syntax and structure) used in real-world software development. It further\nprompts us to consider the concept of natural and functionality-preserving code transformations,\nand their potential as a defense to slow down or even stall attacker agents. Conceptually, natural,\nfunctionality-preserving code transformations are like “imperceptible adversarial perturbations” in\nthe image domain (Szegedy et al., 2013), which are intentional content modifications that preserve the\noriginal content’s primary utility while manipulating how it gets interpreted and used by AI models.\n1\n\nSuccess: find valid PoC"
+    },
+    "chk_method": {
+      "status": "accepted",
+      "value": "Mining natural, functionality-preserving code transformations from real-world commits and applying them to codebases to defend against agentic vulnerability analysis.",
+      "paper_quote": "We build a corpus of natural transformations by mining recurring development patterns from real-world code commits, and apply them to evaluate impact on agentic vulnerability analysis.",
+      "drafts": [
+        {
+          "value": "Mining natural, functionality-preserving code transformations from real-world commits and applying them to codebases to defend against agentic vulnerability analysis.",
+          "paper_quote": "We build a corpus of natural transformations by mining recurring development patterns from real-world code commits, and apply them to evaluate impact on agentic vulnerability analysis.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "Mining natural code transformations from real-world commits and applying them to confuse AI agents.",
+          "paper_quote": "We build a corpus of natural transformations by mining recurring development patterns from real-world code commits, and apply them to evaluate impact on agentic vulnerability analysis.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ]
+    },
+    "chk_data": {
+      "status": "uncertain",
+      "why": "drafts differ",
+      "drafts": [
+        {
+          "value": "A subset of 186 tasks from the CyberGym benchmark, covering 186 projects and 26 crash types, and 1,196 C and 851 C++ commits from CommitPackFT.",
+          "paper_quote": "This gave us 186 tasks from the 186 projects covering 26 crash types, and the numerical feature distributions are visualized in Figure 7.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "CommitPackFT dataset with 702,062 real-world commits across 14 software development tasks.",
+          "paper_quote": "Specifically, we use CommitPackFT (Muennighoff et al., 2024), which contains 702,062 real-world commits across 14 major software development tasks (e.g., refactoring, cleanup, etc.) paired with instruction-like commit messages.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ],
+      "paper_excerpt": "M INING AND A PPLYING NATURAL C ODE T RANSFORMATIONS\n\nHaving established the potential benefits of natural code transformations, we now explore how to\nmine them from real-world development activities while keeping them broadly applicable to diverse\ncodebases. First, we mine recurring development patterns, e.g., refactoring activities, from code commits and organize them into base transformations represented as agent skills. We then use a coding\nagent to localize applicable program points and implement these skills as concrete transformations.\nWe evaluate their efficacy as a potential defense against vulnerability analysis agents in Section 4.\nMining transformation categories from existing codebases We group recurring development\npatterns into transformation categories, e.g., extracting duplicated cleanup code into a shared utility\nfunction. The categories abstract away commit-specific names and locations so the same transformation can be applied to other repositories. Specifically, we use CommitPackFT (Muennighoff et al.,\n2024), which contains 702,062 real-world commits across 14 major software development tasks (e.g.,\nrefactoring, cleanup, etc.) paired with instruction-like commit messages. Given that existing agentic\nvulnerability analysis targets primarily memory-unsafe languages, we focus on C and C++ commits.\nAfter removing duplicate commits and those with fewer than ten changed lines, we retain 1,196 C\ncommits and 851 C++ commits for mining base transformations.\nWe iteratively apply DeepSeek-V4.1-Flash (DeepSeek-AI, 2026) to extract up to three atomic transformations per commit. Each action follows the form action + concrete code element + purpose, e.g.,\nextract into a helper + duplicated cleanup statements + to centralize resource release. The transformation is described independently of the particular functions and variables modified by the commit.\n4\n\nS1\n\nDATA S AMPLING S TATS\n\nWe selected our tasks from the popular CyberGym benchmark (Wang et al., 2026b), which contains 1,507 repo-level vulnerability detection tasks with ground-truth PoCs from 188 real-world\nopen-source projects, covering 28 crash types. We construct a smaller subset that still preserves\nthe distribution of the original benchmark and covers diverse characteristics. Since there are 188\nsource projects used in CyberGym, we made sure to get exactly one task from each project. However, there were 151 tasks with zero-byte PoCs or repeated crash-site reports. After excluding these,\nwe were left with 186 projects.\nRepresentative subset. We wanted our subset to be representative of the CyberGym dataset, so\nwe focused on balancing the project source, codebase size (lines of code), the crash type, PoC size\n(in bytes), crash stack depth, and the SCARINESS (sanitizer) score used in CyberGym’s original\nsampling method (Wang et al., 2026b). This gave us 186 tasks from the 186 projects covering 26\ncrash types, and the numerical feature distributions are visualized in Figure 7. As a minor difference,\nour subset reduces the share of heap-buffer-overflow tasks from 38.8% to 25.3% and increases the\nshare of UndefinedBehaviorSanitizer reports from 6.6% to 13.4%. Given that balance is useful in\nthis kind of sampling, and there were only three sanitizers used, this is a reasonable change.\n\nB"
+    },
+    "chk_setup": {
+      "status": "accepted",
+      "value": "Evaluating six frontier LLMs (such as GPT-5.6 Sol, GPT-6 Sol, Claude Opus 5) paired with three agent harnesses (Claude Code, Codex, DeepSeek Harness) on CyberGym level 0 tasks.",
+      "paper_quote": "In our evaluation, we use level 0 as our primary setting, where agents receive the codebase and are tasked with generating PoC input that crashes the vulnerable version and passes the patched version.",
+      "drafts": [
+        {
+          "value": "Evaluating six frontier LLMs (such as GPT-5.6 Sol, GPT-6 Sol, Claude Opus 5) paired with three agent harnesses (Claude Code, Codex, DeepSeek Harness) on CyberGym level 0 tasks.",
+          "paper_quote": "In our evaluation, we use level 0 as our primary setting, where agents receive the codebase and are tasked with generating PoC input that crashes the vulnerable version and passes the patched version.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "Evaluation on CyberGym tasks using six state-of-the-art LLMs and three agent harnesses.",
+          "paper_quote": "We evaluate six state-of-the-art LLMs spanning both open-weights and proprietary models: DeepSeek-V4.1-Flash (DeepSeek-AI, 2026), GPT-5.6 Sol (OpenAI, 2026b), GPT-6 Sol (OpenAI, 2026c), Claude Opus 5 (Anthropic, 2026b), Claude Sonnet 5 (Anthropic, 2026c), and GLM-5.3 (GLM-5-Team, 2026).",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ]
+    },
+    "chk_primary_result": {
+      "status": "accepted",
+      "value": "Natural transformations reduced the mean success rate of GPT-5.6 Sol with Codex from 63.3% to 36.8%.",
+      "paper_quote": "For GPT-5.6 Sol with Codex, the agent’s mean success rate falls from 63.3% to 36.8% (−42%) under natural transformations, compared with 49.7% (−21%) under synthetic obfuscations.",
+      "drafts": [
+        {
+          "value": "Natural transformations reduced the mean success rate of GPT-5.6 Sol with Codex from 63.3% to 36.8%.",
+          "paper_quote": "For GPT-5.6 Sol with Codex, the agent’s mean success rate falls from 63.3% to 36.8% (−42%) under natural transformations, compared with 49.7% (−21%) under synthetic obfuscations.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "Natural transformations reduce GPT-5.6 Sol with Codex's success rate from 63.3% to 36.8%.",
+          "paper_quote": "For GPT-5.6 Sol with Codex, the agent’s mean success rate falls from 63.3% to 36.8% (−42%) under natural transformations, compared with 49.7% (−21%) under synthetic obfuscations.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ]
+    },
+    "chk_secondary_result": {
+      "status": "accepted",
+      "value": "Composing multiple transformations further reduces the agent's success rate to 20.0%.",
+      "paper_quote": "The agent’s success rate even drops to 20.0%, compared with 63.3% without transformation.",
+      "drafts": [
+        {
+          "value": "Composing multiple transformations further reduces the agent's success rate to 20.0%.",
+          "paper_quote": "The agent’s success rate even drops to 20.0%, compared with 63.3% without transformation.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "Composing transformations reduces GPT-5.6 Sol with Codex's success rate further to 20.0%.",
+          "paper_quote": "For GPT-5.6 Sol with Codex, combining two or three transformations reduces agent success by up to an additional 40% relative to the best single-transformation condition (Table 2). The agent’s success rate even drops to 20.0%, compared with 63.3% without transformation.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ]
+    },
+    "chk_baseline": {
+      "status": "accepted",
+      "value": "Six synthetic obfuscations (such as identifier renaming, loop-to-recursive, inserting dead code, etc.) extensively adopted in prior robustness evaluations.",
+      "paper_quote": "Table 1 compares our transformations mined from code development activities with six synthetic obfuscations extensively adopted in prior robustness evaluation of code models (Li et al., 2025b; Mahmud et al., 2026).",
+      "drafts": [
+        {
+          "value": "Six synthetic obfuscations (such as identifier renaming, loop-to-recursive, inserting dead code, etc.) extensively adopted in prior robustness evaluations.",
+          "paper_quote": "Table 1 compares our transformations mined from code development activities with six synthetic obfuscations extensively adopted in prior robustness evaluation of code models (Li et al., 2025b; Mahmud et al., 2026).",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "Comparison against synthetic obfuscations like identifier renaming and loop-to-recursive transformations.",
+          "paper_quote": "We find that on average, these transformations decrease the agent success rate from 63.3% to 49.7%, whereas our transformations decrease it to 36.8%.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ]
+    },
+    "chk_conclusion": {
+      "status": "accepted",
+      "value": "Natural code transformations mined from real-world development activities are highly effective at defending source code against AI agents scanning for vulnerabilities.",
+      "paper_quote": "Our work validates the feasibility of mining real-world coding activities to identify rich and diverse code transformations that can protect source code against AI agents scanning for vulnerabilities.",
+      "drafts": [
+        {
+          "value": "Natural code transformations mined from real-world development activities are highly effective at defending source code against AI agents scanning for vulnerabilities.",
+          "paper_quote": "Our work validates the feasibility of mining real-world coding activities to identify rich and diverse code transformations that can protect source code against AI agents scanning for vulnerabilities.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "Natural code transformations are effective in reducing AI agents' success in vulnerability analysis.",
+          "paper_quote": "Our work validates the feasibility of mining real-world coding activities to identify rich and diverse code transformations that can protect source code against AI agents scanning for vulnerabilities.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ]
+    },
+    "chk_limitation": {
+      "status": "accepted",
+      "value": "The approach currently relies on code agents for applying transformations, which limits interpretability, and has been evaluated on a single dataset of commits and the hardest CyberGym setting.",
+      "paper_quote": "First, our work uses code agents to extract transformation patterns from existing code and to apply them to target code. While effective, this limits interpretability, which can be significantly improved by incorporating humans in the loop.",
+      "drafts": [
+        {
+          "value": "The approach currently relies on code agents for applying transformations, which limits interpretability, and has been evaluated on a single dataset of commits and the hardest CyberGym setting.",
+          "paper_quote": "First, our work uses code agents to extract transformation patterns from existing code and to apply them to target code. While effective, this limits interpretability, which can be significantly improved by incorporating humans in the loop.",
+          "reason": "",
+          "quote_found": true,
+          "model": "gemini-3.5-flash"
+        },
+        {
+          "value": "Limited interpretability and reliance on a single dataset; future work should expand datasets and settings.",
+          "paper_quote": "First, our work uses code agents to extract transformation patterns from existing code and to apply them to target code. While effective, this limits interpretability, which can be significantly improved by incorporating humans in the loop.",
+          "reason": "",
+          "quote_found": true,
+          "model": "openai.gpt-4o"
+        }
+      ]
+    }
+  }
+}

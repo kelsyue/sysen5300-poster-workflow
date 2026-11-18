@@ -1,0 +1,416 @@
+{
+  "model": "gemini-3.5-flash",
+  "repeat": 1,
+  "judge_prompt_sha256": "d68c41ba9fcb81e0b6ca71c927f15884f0e00bb0cd2d9c521934502fa8ab3e38",
+  "error": null,
+  "tokens_in": 24145,
+  "tokens_out": 23841,
+  "tokens_cached": 0,
+  "max_output_tokens": 32768,
+  "claims_batch_size": 40,
+  "parsed": {
+    "claims": [
+      {
+        "id": 1,
+        "text": "Both character-level Transformers exceed 97% aggregate accuracy.",
+        "poster_quote": "Both character-level Transformers exceed 97% aggregate accuracy",
+        "label": "supported",
+        "paper_evidence": "although both systems exceed 97% aggregate accuracy",
+        "reason": "Abstract. The paper states that both systems exceed 97% aggregate accuracy."
+      },
+      {
+        "id": 2,
+        "text": "Stem-final /e/ verbs needing gemination fail at 43% for PGT.",
+        "poster_quote": "stem-final /e/ verbs needing gemination fail at 43% and 60% — over 70 times the Type 1 rate.",
+        "label": "supported",
+        "paper_evidence": "Type 4-2 shows an error rate of 43% (PGT) and 60% (LST)",
+        "reason": "Figure 1 caption. Type 4-2 represents verbs with stem-final /e/ requiring gemination."
+      },
+      {
+        "id": 3,
+        "text": "Stem-final /e/ verbs needing gemination fail at 60% for LST.",
+        "poster_quote": "stem-final /e/ verbs needing gemination fail at 43% and 60% — over 70 times the Type 1 rate.",
+        "label": "supported",
+        "paper_evidence": "Type 4-2 shows an error rate of 43% (PGT) and 60% (LST)",
+        "reason": "Figure 1 caption. Type 4-2 represents verbs with stem-final /e/ requiring gemination."
+      },
+      {
+        "id": 4,
+        "text": "Stem-final /e/ verbs needing gemination fail at over 70 times the Type 1 rate.",
+        "poster_quote": "stem-final /e/ verbs needing gemination fail at 43% and 60% — over 70 times the Type 1 rate.",
+        "label": "supported",
+        "paper_evidence": "more than 70 times the rate of Type 1 verbs.",
+        "reason": "Figure 1 caption. Type 4-2 represents verbs with stem-final /e/ requiring gemination."
+      },
+      {
+        "id": 5,
+        "text": "Two character-level Transformers inflect hiragana strings.",
+        "poster_quote": "Two character-level Transformers inflect hiragana strings",
+        "label": "supported",
+        "paper_evidence": "We evaluate two character-level Transformer encoder–decoder architectures for Japanese past-tense inflection, both operating over hiragana strings and generating inflected forms autoregressively.",
+        "reason": "Section 4."
+      },
+      {
+        "id": 6,
+        "text": "PGT adds pointer-generator copying.",
+        "poster_quote": "PGT adds pointergenerator copying",
+        "label": "supported",
+        "paper_evidence": "incorporating a pointer-generator copying mechanism (See et al., 2017) with attention over the input lemma",
+        "reason": "Section 4."
+      },
+      {
+        "id": 7,
+        "text": "LST adds a lemma-split regime for unseen lemmas.",
+        "poster_quote": "LST adds a lemma-split regime for unseen lemmas.",
+        "label": "supported",
+        "paper_evidence": "additionally uses a lemma-split training and evaluation regime, preventing a lemma from appearing in both training and test data and improving generalization to unseen lemmas.",
+        "reason": "Section 4."
+      },
+      {
+        "id": 8,
+        "text": "Each system trains with five seeds.",
+        "poster_quote": "Each trains with five seeds",
+        "label": "supported",
+        "paper_evidence": "we train each model on the full dataset five times with different random seeds",
+        "reason": "Section 5.2."
+      },
+      {
+        "id": 9,
+        "text": "There are eight ablation conditions removing subtypes from both train and test.",
+        "poster_quote": "plus eight ablation conditions removing subtypes from both train and test.",
+        "label": "supported",
+        "paper_evidence": "we train both architectures under eight controlled data conditions: the full dataset; regular verbs only (Types 1–2); the full dataset minus one irregular subtype (removing 4-1, 4-2, or 4-3 individually); and the full dataset minus each pairwise combination of subtypes. For every condition, the same verb types are removed from both training and test data.",
+        "reason": "Section 5.3."
+      },
+      {
+        "id": 10,
+        "text": "Errors get a hiragana-specific taxonomy.",
+        "poster_quote": "Errors get a hiragana-specific taxonomy",
+        "label": "supported",
+        "paper_evidence": "Error taxonomy for hiragana-based inflection.",
+        "reason": "Table 2 title."
+      },
+      {
+        "id": 11,
+        "text": "Errors get a Disparity Ratio (error share / data share).",
+        "poster_quote": "and a Disparity Ratio (error share / data share).",
+        "label": "supported",
+        "paper_evidence": "the Disparity Ratio for a subgroup g, DRg = Error Shareg / Data Shareg",
+        "reason": "Section 5.4."
+      },
+      {
+        "id": 12,
+        "text": "Structural configuration matters more than irregular status.",
+        "poster_quote": "Irregularity is not uniformly harmful; structural configuration matters more than irregular status",
+        "label": "supported",
+        "paper_evidence": "This indicates that the relevant factor is not irregular status per se, but the specific structural configuration instantiated by Type 4-2.",
+        "reason": "Section 6.7."
+      },
+      {
+        "id": 13,
+        "text": "For PGT, the margin of structural configuration over other ablations is small.",
+        "poster_quote": "though for PGT the margin over other ablations is small.",
+        "label": "supported",
+        "paper_evidence": "Type 4-2 removal is directionally consistent with the LST result, remaining the best single condition, but the margin over alternative ablations is small.",
+        "reason": "Section 7."
+      },
+      {
+        "id": 14,
+        "text": "Gemination adds a mora explicitly written in hiragana, which must be generated in exactly the right context.",
+        "poster_quote": "Gemination adds a mora explicitly written in hiragana, which must be generated in exactly the right context",
+        "label": "supported",
+        "paper_evidence": "consonant gemination (small っ) introduces an additional mora explicitly represented in hiragana, altering a word’s rhythmic structure in a way character-level models must generate in the correct context",
+        "reason": "Section 7."
+      },
+      {
+        "id": 15,
+        "text": "Hiragana alone omits conditioning factors such as lexical frequency.",
+        "poster_quote": "Hiragana alone omits conditioning factors such as lexical frequency",
+        "label": "supported",
+        "paper_evidence": "orthographic form alone does not encode all conditioning factors (e.g., lexical frequency)",
+        "reason": "Section 7. The orthographic form used is hiragana."
+      },
+      {
+        "id": 16,
+        "text": "Type 4-3's single instance yields zero errors.",
+        "poster_quote": "Type 4-3’s single instance yields zero errors",
+        "label": "supported",
+        "paper_evidence": "This contrasts with Type 4-3, whose single instance produces zero errors in both systems",
+        "reason": "Section 7."
+      },
+      {
+        "id": 17,
+        "text": "Near-98% aggregate accuracy hides the effect.",
+        "poster_quote": "Near-98% aggregate accuracy hides the effect",
+        "label": "supported",
+        "paper_evidence": "Aggregate accuracy near 98% in both our systems obscures an effect visible only under subtype-level analysis",
+        "reason": "Section 7."
+      },
+      {
+        "id": 18,
+        "text": "Type 4-2's error burden towers over every other subtype in both systems.",
+        "poster_quote": "Type 4-2’s error burden towers over every other subtype in both systems.",
+        "label": "supported",
+        "paper_evidence": "Type 4-2 shows a dramatically higher disparity ratio than all other subtypes",
+        "reason": "Figure 2 caption."
+      },
+      {
+        "id": 19,
+        "text": "Type 4-2 shows an error rate of 43% for PGT.",
+        "poster_quote": "Type 4-2 shows an error rate of 43% (PGT) and 60% (LST), more than 70 times the rate of Type 1 verbs.",
+        "label": "supported",
+        "paper_evidence": "Type 4-2 shows an error rate of 43% (PGT) and 60% (LST)",
+        "reason": "Figure 1 caption."
+      },
+      {
+        "id": 20,
+        "text": "Type 4-2 shows an error rate of 60% for LST.",
+        "poster_quote": "Type 4-2 shows an error rate of 43% (PGT) and 60% (LST), more than 70 times the rate of Type 1 verbs.",
+        "label": "supported",
+        "paper_evidence": "Type 4-2 shows an error rate of 43% (PGT) and 60% (LST)",
+        "reason": "Figure 1 caption."
+      },
+      {
+        "id": 21,
+        "text": "Type 4-2 shows an error rate more than 70 times the rate of Type 1 verbs.",
+        "poster_quote": "Type 4-2 shows an error rate of 43% (PGT) and 60% (LST), more than 70 times the rate of Type 1 verbs.",
+        "label": "supported",
+        "paper_evidence": "more than 70 times the rate of Type 1 verbs.",
+        "reason": "Figure 1 caption."
+      },
+      {
+        "id": 22,
+        "text": "Disparity Ratio reaches 33.6 for PGT.",
+        "poster_quote": "Disparity Ratio reaches 33.6 (PGT) and 47.9 (LST), far above all other subtypes",
+        "label": "supported",
+        "paper_evidence": "33.6",
+        "reason": "Table 5, row 'Type 4-2', column 'DR (PGT)'."
+      },
+      {
+        "id": 23,
+        "text": "Disparity Ratio reaches 47.9 for LST.",
+        "poster_quote": "Disparity Ratio reaches 33.6 (PGT) and 47.9 (LST), far above all other subtypes",
+        "label": "supported",
+        "paper_evidence": "47.9",
+        "reason": "Table 5, row 'Type 4-2', column 'DR (LST)'."
+      },
+      {
+        "id": 24,
+        "text": "Disparity Ratio for Type 4-2 is far above all other subtypes.",
+        "poster_quote": "Disparity Ratio reaches 33.6 (PGT) and 47.9 (LST), far above all other subtypes",
+        "label": "supported",
+        "paper_evidence": "Type 4-2 shows a dramatically higher disparity ratio than all other subtypes",
+        "reason": "Figure 2 caption."
+      },
+      {
+        "id": 25,
+        "text": "Proportional-error null is rejected for PGT with p = 3.6×10².",
+        "poster_quote": "Proportional-error null rejected: p = 3.6×10² (PGT)",
+        "label": "contradicted",
+        "paper_evidence": "p = 3.6 \\times 10^{-20}",
+        "reason": "Section 6.4. The claim states a positive exponent of 2 (3.6 x 10^2), which contradicts the extremely small p-value of 3.6 x 10^-20 reported in the paper."
+      },
+      {
+        "id": 26,
+        "text": "Proportional-error null is rejected for LST with p = 2.7×10³¹.",
+        "poster_quote": "p = 2.7×10³¹ (LST)",
+        "label": "contradicted",
+        "paper_evidence": "p = 2.7 \\times 10^{-31}",
+        "reason": "Section 6.4. The claim states a positive exponent of 31 (2.7 x 10^31), which contradicts the extremely small p-value of 2.7 x 10^-31 reported in the paper."
+      },
+      {
+        "id": 27,
+        "text": "Gemination failures make up 75.5% of all errors in PGT.",
+        "poster_quote": "Gemination failures make up 75.5% / 80.3% of all errors in the two systems",
+        "label": "supported",
+        "paper_evidence": "accounting for 75.5% (PGT) and 80.3% (LST) of all errors",
+        "reason": "Section 6.3."
+      },
+      {
+        "id": 28,
+        "text": "Gemination failures make up 80.3% of all errors in LST.",
+        "poster_quote": "Gemination failures make up 75.5% / 80.3% of all errors in the two systems",
+        "label": "supported",
+        "paper_evidence": "accounting for 75.5% (PGT) and 80.3% (LST) of all errors",
+        "reason": "Section 6.3."
+      },
+      {
+        "id": 29,
+        "text": "Typical failure is omitted gemination,  → .",
+        "poster_quote": "Typical failure is omitted gemination,  → ",
+        "label": "unsupported",
+        "paper_evidence": "",
+        "reason": "Section 6.6. The claim contains empty placeholders ' → ' instead of the actual Japanese verb examples provided in the paper ('あきれかえった akirekaetta → あきれかえた akirekaeta')."
+      },
+      {
+        "id": 30,
+        "text": "An identical UNK error appears in both models.",
+        "poster_quote": "an identical UNK error appears in both models",
+        "label": "supported",
+        "paper_evidence": "an identical single UNK error appears in both systems’ outputs (つっぷした → っ<UNK>した).",
+        "reason": "Section 6.5."
+      },
+      {
+        "id": 31,
+        "text": "Subgroup framework consists of an orthographic error taxonomy plus a Disparity Ratio metric.",
+        "poster_quote": "Subgroup framework: orthographic error taxonomy plus a Disparity Ratio metric",
+        "label": "supported",
+        "paper_evidence": "A structural subgroup evaluation framework for Japanese morphological inflection, combining a six-category orthography-aware error taxonomy with a Disparity Ratio metric for quantifying subgroup-level error concentration.",
+        "reason": "Section 1."
+      },
+      {
+        "id": 32,
+        "text": "One subtype under 1% of data gives 30-43% of errors.",
+        "poster_quote": "One subtype under 1% of data gives 30-43% of errors",
+        "label": "supported",
+        "paper_evidence": "a single structurally specific irregular subtype, verbs whose stems end in /e/ and require gemination before the past-tense suﬀix and make up fewer than 1% of the data, accounts for a disproportionate 30–43% share of residual errors",
+        "reason": "Abstract."
+      },
+      {
+        "id": 33,
+        "text": "Ablation shows structural position, not frequency alone, drives the error rate.",
+        "poster_quote": "Ablation shows structural position, not frequency alone, drives it",
+        "label": "supported",
+        "paper_evidence": "Controlled ablation experiments showing that selective removal of this subtype alone produces larger accuracy gains than removing all irregular verbs combined, suggesting that structural position, not frequency alone, is the primary driver of the effect.",
+        "reason": "Section 1."
+      },
+      {
+        "id": 34,
+        "text": "A subtype under 1% of data causes 30-43% of residual errors.",
+        "poster_quote": "A subtype under 1% of data causes 30-43% of residual errors",
+        "label": "supported",
+        "paper_evidence": "a single structurally specific irregular subtype, verbs whose stems end in /e/ and require gemination before the past-tense suﬀix and make up fewer than 1% of the data, accounts for a disproportionate 30–43% share of residual errors",
+        "reason": "Abstract."
+      },
+      {
+        "id": 35,
+        "text": "Removing the subtype under 1% of data alone beats removing all irregular verbs.",
+        "poster_quote": "removing it alone beats removing all irregular verbs.",
+        "label": "supported",
+        "paper_evidence": "Controlled ablation experiments show that removing this subtype alone produces larger accuracy gains than removing all irregular verbs combined.",
+        "reason": "Abstract."
+      },
+      {
+        "id": 36,
+        "text": "Type 4-2 shows a dramatically higher disparity ratio than all other subtypes, contributing 34-48 × its proportional share to total errors.",
+        "poster_quote": "Type 4-2 shows a dramatically higher disparity ratio than all other subtypes, contributing 34-48 × its proportional share to total errors.",
+        "label": "supported",
+        "paper_evidence": "Type 4-2 shows a dramatically higher disparity ratio than all other subtypes, contributing 34–48× its proportional share to total errors.",
+        "reason": "Figure 2 caption."
+      },
+      {
+        "id": 37,
+        "text": "Each ablation condition ran once.",
+        "poster_quote": "Each ablation condition ran once",
+        "label": "supported",
+        "paper_evidence": "our ablation experiments were each run once per condition",
+        "reason": "Limitations."
+      },
+      {
+        "id": 38,
+        "text": "The study uses one language, one paradigm, and two architectures.",
+        "poster_quote": "One language, one paradigm, two architectures",
+        "label": "supported",
+        "paper_evidence": "our study focuses on a single language, a single morphological paradigm, and two Transformer-based architectures.",
+        "reason": "Limitations."
+      },
+      {
+        "id": 39,
+        "text": "The mechanism remains correlational.",
+        "poster_quote": "Mechanism remains correlational",
+        "label": "supported",
+        "paper_evidence": "our analysis is correlational with respect to the specific mechanism (frequency vs. structural complexity vs. their interaction) underlying Type 4-2’s distinctiveness",
+        "reason": "Limitations."
+      },
+      {
+        "id": 40,
+        "text": "The dataset contains 3,958 Japanese verbs written in hiragana, avoiding kanji homography.",
+        "poster_quote": "We use 3,958 Japanese verbs written in hiragana, avoiding kanji homography",
+        "label": "supported",
+        "paper_evidence": "All forms are converted to hiragana to maintain orthographic consistency and eliminate confounds introduced by kanji homography",
+        "reason": "Section 3 and Table 1 (which lists the total count as 3,958)."
+      },
+      {
+        "id": 41,
+        "text": "Canonical irregulars are excluded.",
+        "poster_quote": "canonical irregulars are excluded.",
+        "label": "supported",
+        "paper_evidence": "Canonical irregular verbs (する, くる; Type 3) and polysemous lemmas with multiple inflected forms are excluded to maintain a one-to-one lemma–form mapping.",
+        "reason": "Section 3.1. The paper explicitly states that canonical irregulars are excluded."
+      },
+      {
+        "id": 42,
+        "text": "Regular Godan and Ichidan forms dominate, with 157 irregulars.",
+        "poster_quote": "Regular Godan and Ichidan forms dominate, with 157 irregulars.",
+        "label": "supported",
+        "paper_evidence": "Type 1 (Godan) 2,503 63.2\nType 2 (Ichidan) 1,298 32.8\nType 4 (irregular) 157 4.0",
+        "reason": "Table 1. The counts show regular Godan (2,503) and Ichidan (1,298) dominate, with 157 irregulars."
+      },
+      {
+        "id": 43,
+        "text": "Type 4-2, stem-final /e/ plus gemination, is the smallest coherent subclass at 0.9%.",
+        "poster_quote": "Type 4-2, stem-final /e/ plus gemination, is the smallest coherent subclass at 0.9%.",
+        "label": "supported",
+        "paper_evidence": "Type 4-2 is the smallest structurally coherent subclass, comprising only 0.9% of the data",
+        "reason": "Section 3.1. The paper explicitly states that Type 4-2 is the smallest structurally coherent subclass at 0.9%."
+      },
+      {
+        "id": 44,
+        "text": "Removing subtypes from both training and test isolates which patterns destabilise learning.",
+        "poster_quote": "Removing subtypes from both training and test isolates which patterns destabilise learning.",
+        "label": "supported",
+        "paper_evidence": "Because the same verb types are removed from both training and test across all conditions, accuracy differences between conditions reflect differences in which subtypes destabilize learning of the remaining vocabulary, not differences in test set composition.",
+        "reason": "Section 6.7. The paper explains that removing subtypes from both training and test isolates which patterns destabilize learning."
+      },
+      {
+        "id": 45,
+        "text": "For LST, dropping only Type 4-2 lifts accuracy from 97.73% to 99.75% (+2.02).",
+        "poster_quote": "For LST, dropping only Type 4-2 lifts accuracy from 97.73% to 99.75% (+2.02)",
+        "label": "supported",
+        "paper_evidence": "For the LST system, removing only Type 4-2 yields the largest observed gain: 97.73% → 99.75% (+2.02)",
+        "reason": "Section 6.7. The paper reports that for LST, removing Type 4-2 lifts accuracy from 97.73% to 99.75% (+2.02)."
+      },
+      {
+        "id": 46,
+        "text": "Dropping only Type 4-2 leads to about an 89% error reduction for LST.",
+        "poster_quote": "about an 89% error reduction",
+        "label": "supported",
+        "paper_evidence": "For the LST system, removing only Type 4-2 yields the largest observed gain: 97.73% → 99.75% (+2.02), corresponding to an approximately 89% reduction in error rate.",
+        "reason": "Section 6.7. The paper explicitly states that this corresponds to an approximately 89% reduction in error rate."
+      },
+      {
+        "id": 47,
+        "text": "Dropping only Type 4-2 lifts accuracy versus +1.22 for removing all irregulars for LST.",
+        "poster_quote": "versus +1.22 for removing all irregulars.",
+        "label": "supported",
+        "paper_evidence": "The gain is substantially larger than removing all irregular verbs (+1.22) and matches or exceeds every other single- or paired-subtype removal.",
+        "reason": "Section 6.7. The paper compares the gain of removing Type 4-2 (+2.02) to removing all irregulars (+1.22) for LST."
+      },
+      {
+        "id": 48,
+        "text": "For PGT, dropping only Type 4-2 is also the best single condition, lifting accuracy from 97.98% to 98.98% (+1.00).",
+        "poster_quote": "For PGT it is also the best single condition, 97.98% to 98.98% (+1.00).",
+        "label": "supported",
+        "paper_evidence": "For the PGT system, removing Type 4-2 alone is still the single best condition (97.98% → 98.98%, +1.00).",
+        "reason": "Section 6.7. The paper reports that for PGT, removing Type 4-2 alone is the best single condition, lifting accuracy from 97.98% to 98.98% (+1.00)."
+      },
+      {
+        "id": 49,
+        "text": "The -4-2 condition stands out clearly in both systems.",
+        "poster_quote": "The -4-2 condition stands out clearly in both systems.",
+        "label": "supported",
+        "paper_evidence": "Accuracy gains from Table 6 visualized. The −4-2 condition stands out clearly in both systems.",
+        "reason": "Figure 3 caption. The caption explicitly states that the -4-2 condition stands out clearly in both systems."
+      },
+      {
+        "id": 50,
+        "text": "Canonical irregulars (Type 3) are excluded.",
+        "poster_quote": "Canonical irregulars (  ,  ; Type 3) are excluded, as described in §3.1.",
+        "label": "supported",
+        "paper_evidence": "Canonical irregulars (する, くる; Type 3) are excluded, as described in §3.1.",
+        "reason": "Table 1 caption. The caption explicitly states that canonical irregulars (Type 3) are excluded."
+      }
+    ]
+  },
+  "raw": "[\"```json\\n{\\n  \\\"claims\\\": [\\n    {\\n      \\\"id\\\": 1,\\n      \\\"text\\\": \\\"Both character-level Transformers exceed 97% aggregate accuracy.\\\",\\n      \\\"poster_quote\\\": \\\"Both character-level Transformers exceed 97% aggregate accuracy\\\"\\n    },\\n    {\\n      \\\"id\\\": 2,\\n      \\\"text\\\": \\\"Stem-final /e/ verbs needing gemination fail at 43% for PGT.\\\",\\n      \\\"poster_quote\\\": \\\"stem-final /e/ verbs needing gemination fail at 43% and 60% — over 70 times the Type 1 rate.\\\"\\n    },\\n    {\\n      \\\"id\\\": 3,\\n      \\\"text\\\": \\\"Stem-final /e/ verbs needing gemination fail at 60% for LST.\\\",\\n      \\\"poster_quote\\\": \\\"stem-final /e/ verbs needing gemination fail at 43% and 60% — over 70 times the Type 1 rate.\\\"\\n    },\\n    {\\n      \\\"id\\\": 4,\\n      \\\"text\\\": \\\"Stem-final /e/ verbs needing gemination fail at over 70 times the Type 1 rate.\\\",\\n      \\\"poster_quote\\\": \\\"stem-final /e/ verbs needing gemination fail at 43% and 60% — over 70 times the Type 1 rate.\\\"\\n    },\\n    {\\n      \\\"id\\\": 5,\\n      \\\"text\\\": \\\"Two character-level Transformers inflect hiragana strings.\\\",\\n      \\\"poster_quote\\\": \\\"Two character-level Transformers inflect hiragana strings\\\"\\n    },\\n    {\\n      \\\"id\\\": 6,\\n      \\\"text\\\": \\\"PGT adds pointer-generator copying.\\\",\\n      \\\"poster_quote\\\": \\\"PGT adds pointergenerator copying\\\"\\n    },\\n    {\\n      \\\"id\\\": 7,\\n      \\\"text\\\": \\\"LST adds a lemma-split regime for unseen lemmas.\\\",\\n      \\\"poster_quote\\\": \\\"LST adds a lemma-split regime for unseen lemmas.\\\"\\n    },\\n    {\\n      \\\"id\\\": 8,\\n      \\\"text\\\": \\\"Each system trains with five seeds.\\\",\\n      \\\"poster_quote\\\": \\\"Each trains with five seeds\\\"\\n    },\\n    {\\n      \\\"id\\\": 9,\\n      \\\"text\\\": \\\"There are eight ablation conditions removing subtypes from both train and test.\\\",\\n      \\\"poster_quote\\\": \\\"plus eight ablation conditions removing subtypes from both train and test.\\\"\\n    },\\n    {\\n      \\\"id\\\": 10,\\n      \\\"text\\\": \\\"Errors get a hiragana-specific taxonomy.\\\",\\n      \\\"poster_quote\\\": \\\"Errors get a hiragana-specific taxonomy\\\"\\n    },\\n    {\\n      \\\"id\\\": 11,\\n      \\\"text\\\": \\\"Errors get a Disparity Ratio (error share / data share).\\\",\\n      \\\"poster_quote\\\": \\\"and a Disparity Ratio (error share / data share).\\\"\\n    },\\n    {\\n      \\\"id\\\": 12,\\n      \\\"text\\\": \\\"Structural configuration matters more than irregular status.\\\",\\n      \\\"poster_quote\\\": \\\"Irregularity is not uniformly harmful; structural configuration matters more than irregular status\\\"\\n    },\\n    {\\n      \\\"id\\\": 13,\\n      \\\"text\\\": \\\"For PGT, the margin of structural configuration over other ablations is small.\\\",\\n      \\\"poster_quote\\\": \\\"though for PGT the margin over other ablations is small.\\\"\\n    },\\n    {\\n      \\\"id\\\": 14,\\n      \\\"text\\\": \\\"Gemination adds a mora explicitly written in hiragana, which must be generated in exactly the right context.\\\",\\n      \\\"poster_quote\\\": \\\"Gemination adds a mora explicitly written in hiragana, which must be generated in exactly the right context\\\"\\n    },\\n    {\\n      \\\"id\\\": 15,\\n      \\\"text\\\": \\\"Hiragana alone omits conditioning factors such as lexical frequency.\\\",\\n      \\\"poster_quote\\\": \\\"Hiragana alone omits conditioning factors such as lexical frequency\\\"\\n    },\\n    {\\n      \\\"id\\\": 16,\\n      \\\"text\\\": \\\"Type 4-3's single instance yields zero errors.\\\",\\n      \\\"poster_quote\\\": \\\"Type 4-3’s single instance yields zero errors\\\"\\n    },\\n    {\\n      \\\"id\\\": 17,\\n      \\\"text\\\": \\\"Near-98% aggregate accuracy hides the effect.\\\",\\n      \\\"poster_quote\\\": \\\"Near-98% aggregate accuracy hides the effect\\\"\\n    },\\n    {\\n      \\\"id\\\": 18,\\n      \\\"text\\\": \\\"Type 4-2's error burden towers over every other subtype in both systems.\\\",\\n      \\\"poster_quote\\\": \\\"Type 4-2’s error burden towers over every other subtype in both systems.\\\"\\n    },\\n    {\\n      \\\"id\\\": 19,\\n      \\\"text\\\": \\\"Type 4-2 shows an error rate of 43% for PGT.\\\",\\n      \\\"poster_quote\\\": \\\"Type 4-2 shows an error rate of 43% (PGT) and 60% (LST), more than 70 times the rate of Type 1 verbs.\\\"\\n    },\\n    {\\n      \\\"id\\\": 20,\\n      \\\"text\\\": \\\"Type 4-2 shows an error rate of 60% for LST.\\\",\\n      \\\"poster_quote\\\": \\\"Type 4-2 shows an error rate of 43% (PGT) and 60% (LST), more than 70 times the rate of Type 1 verbs.\\\"\\n    },\\n    {\\n      \\\"id\\\": 21,\\n      \\\"text\\\": \\\"Type 4-2 shows an error rate more than 70 times the rate of Type 1 verbs.\\\",\\n      \\\"poster_quote\\\": \\\"Type 4-2 shows an error rate of 43% (PGT) and 60% (LST), more than 70 times the rate of Type 1 verbs.\\\"\\n    },\\n    {\\n      \\\"id\\\": 22,\\n      \\\"text\\\": \\\"Disparity Ratio reaches 33.6 for PGT.\\\",\\n      \\\"poster_quote\\\": \\\"Disparity Ratio reaches 33.6 (PGT) and 47.9 (LST), far above all other subtypes\\\"\\n    },\\n    {\\n      \\\"id\\\": 23,\\n      \\\"text\\\": \\\"Disparity Ratio reaches 47.9 for LST.\\\",\\n      \\\"poster_quote\\\": \\\"Disparity Ratio reaches 33.6 (PGT) and 47.9 (LST), far above all other subtypes\\\"\\n    },\\n    {\\n      \\\"id\\\": 24,\\n      \\\"text\\\": \\\"Disparity Ratio for Type 4-2 is far above all other subtypes.\\\",\\n      \\\"poster_quote\\\": \\\"Disparity Ratio reaches 33.6 (PGT) and 47.9 (LST), far above all other subtypes\\\"\\n    },\\n    {\\n      \\\"id\\\": 25,\\n      \\\"text\\\": \\\"Proportional-error null is rejected for PGT with p = 3.6×10².\\\",\\n      \\\"poster_quote\\\": \\\"Proportional-error null rejected: p = 3.6×10² (PGT)\\\"\\n    },\\n    {\\n      \\\"id\\\": 26,\\n      \\\"text\\\": \\\"Proportional-error null is rejected for LST with p = 2.7×10³¹.\\\",\\n      \\\"poster_quote\\\": \\\"p = 2.7×10³¹ (LST)\\\"\\n    },\\n    {\\n      \\\"id\\\": 27,\\n      \\\"text\\\": \\\"Gemination failures make up 75.5% of all errors in PGT.\\\",\\n      \\\"poster_quote\\\": \\\"Gemination failures make up 75.5% / 80.3% of all errors in the two systems\\\"\\n    },\\n    {\\n      \\\"id\\\": 28,\\n      \\\"text\\\": \\\"Gemination failures make up 80.3% of all errors in LST.\\\",\\n      \\\"poster_quote\\\": \\\"Gemination failures make up 75.5% / 80.3% of all errors in the two systems\\\"\\n    },\\n    {\\n      \\\"id\\\": 29,\\n      \\\"text\\\": \\\"Typical failure is omitted gemination,  → .\\\",\\n      \\\"poster_quote\\\": \\\"Typical failure is omitted gemination,  → \\\"\\n    },\\n    {\\n      \\\"id\\\": 30,\\n      \\\"text\\\": \\\"An identical UNK error appears in both models.\\\",\\n      \\\"poster_quote\\\": \\\"an identical UNK error appears in both models\\\"\\n    },\\n    {\\n      \\\"id\\\": 31,\\n      \\\"text\\\": \\\"Subgroup framework consists of an orthographic error taxonomy plus a Disparity Ratio metric.\\\",\\n      \\\"poster_quote\\\": \\\"Subgroup framework: orthographic error taxonomy plus a Disparity Ratio metric\\\"\\n    },\\n    {\\n      \\\"id\\\": 32,\\n      \\\"text\\\": \\\"One subtype under 1% of data gives 30-43% of errors.\\\",\\n      \\\"poster_quote\\\": \\\"One subtype under 1% of data gives 30-43% of errors\\\"\\n    },\\n    {\\n      \\\"id\\\": 33,\\n      \\\"text\\\": \\\"Ablation shows structural position, not frequency alone, drives the error rate.\\\",\\n      \\\"poster_quote\\\": \\\"Ablation shows structural position, not frequency alone, drives it\\\"\\n    },\\n    {\\n      \\\"id\\\": 34,\\n      \\\"text\\\": \\\"A subtype under 1% of data causes 30-43% of residual errors.\\\",\\n      \\\"poster_quote\\\": \\\"A subtype under 1% of data causes 30-43% of residual errors\\\"\\n    },\\n    {\\n      \\\"id\\\": 35,\\n      \\\"text\\\": \\\"Removing the subtype under 1% of data alone beats removing all irregular verbs.\\\",\\n      \\\"poster_quote\\\": \\\"removing it alone beats removing all irregular verbs.\\\"\\n    },\\n    {\\n      \\\"id\\\": 36,\\n      \\\"text\\\": \\\"Type 4-2 shows a dramatically higher disparity ratio than all other subtypes, contributing 34-48 × its proportional share to total errors.\\\",\\n      \\\"poster_quote\\\": \\\"Type 4-2 shows a dramatically higher disparity ratio than all other subtypes, contributing 34-48 × its proportional share to total errors.\\\"\\n    },\\n    {\\n      \\\"id\\\": 37,\\n      \\\"text\\\": \\\"Each ablation condition ran once.\\\",\\n      \\\"poster_quote\\\": \\\"Each ablation condition ran once\\\"\\n    },\\n    {\\n      \\\"id\\\": 38,\\n      \\\"text\\\": \\\"The study uses one language, one paradigm, and two architectures.\\\",\\n      \\\"poster_quote\\\": \\\"One language, one paradigm, two architectures\\\"\\n    },\\n    {\\n      \\\"id\\\": 39,\\n      \\\"text\\\": \\\"The mechanism remains correlational.\\\",\\n      \\\"poster_quote\\\": \\\"Mechanism remains correlational\\\"\\n    },\\n    {\\n      \\\"id\\\": 40,\\n      \\\"text\\\": \\\"The dataset contains 3,958 Japanese verbs written in hiragana, avoiding kanji homography.\\\",\\n      \\\"poster_quote\\\": \\\"We use 3,958 Japanese verbs written in hiragana, avoiding kanji homography\\\"\\n    },\\n    {\\n      \\\"id\\\": 41,\\n      \\\"text\\\": \\\"Canonical irregulars are excluded.\\\",\\n      \\\"poster_quote\\\": \\\"canonical irregulars are excluded.\\\"\\n    },\\n    {\\n      \\\"id\\\": 42,\\n      \\\"text\\\": \\\"Regular Godan and Ichidan forms dominate, with 157 irregulars.\\\",\\n      \\\"poster_quote\\\": \\\"Regular Godan and Ichidan forms dominate, with 157 irregulars.\\\"\\n    },\\n    {\\n      \\\"id\\\": 43,\\n      \\\"text\\\": \\\"Type 4-2, stem-final /e/ plus gemination, is the smallest coherent subclass at 0.9%.\\\",\\n      \\\"poster_quote\\\": \\\"Type 4-2, stem-final /e/ plus gemination, is the smallest coherent subclass at 0.9%.\\\"\\n    },\\n    {\\n      \\\"id\\\": 44,\\n      \\\"text\\\": \\\"Removing subtypes from both training and test isolates which patterns destabilise learning.\\\",\\n      \\\"poster_quote\\\": \\\"Removing subtypes from both training and test isolates which patterns destabilise learning.\\\"\\n    },\\n    {\\n      \\\"id\\\": 45,\\n      \\\"text\\\": \\\"For LST, dropping only Type 4-2 lifts accuracy from 97.73% to 99.75% (+2.02).\\\",\\n      \\\"poster_quote\\\": \\\"For LST, dropping only Type 4-2 lifts accuracy from 97.73% to 99.75% (+2.02)\\\"\\n    },\\n    {\\n      \\\"id\\\": 46,\\n      \\\"text\\\": \\\"Dropping only Type 4-2 leads to about an 89% error reduction for LST.\\\",\\n      \\\"poster_quote\\\": \\\"about an 89% error reduction\\\"\\n    },\\n    {\\n      \\\"id\\\": 47,\\n      \\\"text\\\": \\\"Dropping only Type 4-2 lifts accuracy versus +1.22 for removing all irregulars for LST.\\\",\\n      \\\"poster_quote\\\": \\\"versus +1.22 for removing all irregulars.\\\"\\n    },\\n    {\\n      \\\"id\\\": 48,\\n      \\\"text\\\": \\\"For PGT, dropping only Type 4-2 is also the best single condition, lifting accuracy from 97.98% to 98.98% (+1.00).\\\",\\n      \\\"poster_quote\\\": \\\"For PGT it is also the best single condition, 97.98% to 98.98% (+1.00).\\\"\\n    },\\n    {\\n      \\\"id\\\": 49,\\n      \\\"text\\\": \\\"The -4-2 condition stands out clearly in both systems.\\\",\\n      \\\"poster_quote\\\": \\\"The -4-2 condition stands out clearly in both systems.\\\"\\n    },\\n    {\\n      \\\"id\\\": 50,\\n      \\\"text\\\": \\\"Canonical irregulars (Type 3) are excluded.\\\",\\n      \\\"poster_quote\\\": \\\"Canonical irregulars (  ,  ; Type 3) are excluded, as described in §3.1.\\\"\\n    }\\n  ]\\n}\\n```\", \"```json\\n{\\n  \\\"verdicts\\\": [\\n    {\\n      \\\"id\\\": 1,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"although both systems exceed 97% aggregate accuracy\\\",\\n      \\\"reason\\\": \\\"Abstract. The paper states that both systems exceed 97% aggregate accuracy.\\\"\\n    },\\n    {\\n      \\\"id\\\": 2,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Type 4-2 shows an error rate of 43% (PGT) and 60% (LST)\\\",\\n      \\\"reason\\\": \\\"Figure 1 caption. Type 4-2 represents verbs with stem-final /e/ requiring gemination.\\\"\\n    },\\n    {\\n      \\\"id\\\": 3,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Type 4-2 shows an error rate of 43% (PGT) and 60% (LST)\\\",\\n      \\\"reason\\\": \\\"Figure 1 caption. Type 4-2 represents verbs with stem-final /e/ requiring gemination.\\\"\\n    },\\n    {\\n      \\\"id\\\": 4,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"more than 70 times the rate of Type 1 verbs.\\\",\\n      \\\"reason\\\": \\\"Figure 1 caption. Type 4-2 represents verbs with stem-final /e/ requiring gemination.\\\"\\n    },\\n    {\\n      \\\"id\\\": 5,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"We evaluate two character-level Transformer encoder–decoder architectures for Japanese past-tense inflection, both operating over hiragana strings and generating inflected forms autoregressively.\\\",\\n      \\\"reason\\\": \\\"Section 4.\\\"\\n    },\\n    {\\n      \\\"id\\\": 6,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"incorporating a pointer-generator copying mechanism (See et al., 2017) with attention over the input lemma\\\",\\n      \\\"reason\\\": \\\"Section 4.\\\"\\n    },\\n    {\\n      \\\"id\\\": 7,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"additionally uses a lemma-split training and evaluation regime, preventing a lemma from appearing in both training and test data and improving generalization to unseen lemmas.\\\",\\n      \\\"reason\\\": \\\"Section 4.\\\"\\n    },\\n    {\\n      \\\"id\\\": 8,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"we train each model on the full dataset five times with different random seeds\\\",\\n      \\\"reason\\\": \\\"Section 5.2.\\\"\\n    },\\n    {\\n      \\\"id\\\": 9,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"we train both architectures under eight controlled data conditions: the full dataset; regular verbs only (Types 1–2); the full dataset minus one irregular subtype (removing 4-1, 4-2, or 4-3 individually); and the full dataset minus each pairwise combination of subtypes. For every condition, the same verb types are removed from both training and test data.\\\",\\n      \\\"reason\\\": \\\"Section 5.3.\\\"\\n    },\\n    {\\n      \\\"id\\\": 10,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Error taxonomy for hiragana-based inflection.\\\",\\n      \\\"reason\\\": \\\"Table 2 title.\\\"\\n    },\\n    {\\n      \\\"id\\\": 11,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"the Disparity Ratio for a subgroup g, DRg = Error Shareg / Data Shareg\\\",\\n      \\\"reason\\\": \\\"Section 5.4.\\\"\\n    },\\n    {\\n      \\\"id\\\": 12,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"This indicates that the relevant factor is not irregular status per se, but the specific structural configuration instantiated by Type 4-2.\\\",\\n      \\\"reason\\\": \\\"Section 6.7.\\\"\\n    },\\n    {\\n      \\\"id\\\": 13,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Type 4-2 removal is directionally consistent with the LST result, remaining the best single condition, but the margin over alternative ablations is small.\\\",\\n      \\\"reason\\\": \\\"Section 7.\\\"\\n    },\\n    {\\n      \\\"id\\\": 14,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"consonant gemination (small っ) introduces an additional mora explicitly represented in hiragana, altering a word’s rhythmic structure in a way character-level models must generate in the correct context\\\",\\n      \\\"reason\\\": \\\"Section 7.\\\"\\n    },\\n    {\\n      \\\"id\\\": 15,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"orthographic form alone does not encode all conditioning factors (e.g., lexical frequency)\\\",\\n      \\\"reason\\\": \\\"Section 7. The orthographic form used is hiragana.\\\"\\n    },\\n    {\\n      \\\"id\\\": 16,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"This contrasts with Type 4-3, whose single instance produces zero errors in both systems\\\",\\n      \\\"reason\\\": \\\"Section 7.\\\"\\n    },\\n    {\\n      \\\"id\\\": 17,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Aggregate accuracy near 98% in both our systems obscures an effect visible only under subtype-level analysis\\\",\\n      \\\"reason\\\": \\\"Section 7.\\\"\\n    },\\n    {\\n      \\\"id\\\": 18,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Type 4-2 shows a dramatically higher disparity ratio than all other subtypes\\\",\\n      \\\"reason\\\": \\\"Figure 2 caption.\\\"\\n    },\\n    {\\n      \\\"id\\\": 19,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Type 4-2 shows an error rate of 43% (PGT) and 60% (LST)\\\",\\n      \\\"reason\\\": \\\"Figure 1 caption.\\\"\\n    },\\n    {\\n      \\\"id\\\": 20,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Type 4-2 shows an error rate of 43% (PGT) and 60% (LST)\\\",\\n      \\\"reason\\\": \\\"Figure 1 caption.\\\"\\n    },\\n    {\\n      \\\"id\\\": 21,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"more than 70 times the rate of Type 1 verbs.\\\",\\n      \\\"reason\\\": \\\"Figure 1 caption.\\\"\\n    },\\n    {\\n      \\\"id\\\": 22,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"33.6\\\",\\n      \\\"reason\\\": \\\"Table 5, row 'Type 4-2', column 'DR (PGT)'.\\\"\\n    },\\n    {\\n      \\\"id\\\": 23,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"47.9\\\",\\n      \\\"reason\\\": \\\"Table 5, row 'Type 4-2', column 'DR (LST)'.\\\"\\n    },\\n    {\\n      \\\"id\\\": 24,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Type 4-2 shows a dramatically higher disparity ratio than all other subtypes\\\",\\n      \\\"reason\\\": \\\"Figure 2 caption.\\\"\\n    },\\n    {\\n      \\\"id\\\": 25,\\n      \\\"label\\\": \\\"contradicted\\\",\\n      \\\"paper_evidence\\\": \\\"p = 3.6 \\\\\\\\times 10^{-20}\\\",\\n      \\\"reason\\\": \\\"Section 6.4. The claim states a positive exponent of 2 (3.6 x 10^2), which contradicts the extremely small p-value of 3.6 x 10^-20 reported in the paper.\\\"\\n    },\\n    {\\n      \\\"id\\\": 26,\\n      \\\"label\\\": \\\"contradicted\\\",\\n      \\\"paper_evidence\\\": \\\"p = 2.7 \\\\\\\\times 10^{-31}\\\",\\n      \\\"reason\\\": \\\"Section 6.4. The claim states a positive exponent of 31 (2.7 x 10^31), which contradicts the extremely small p-value of 2.7 x 10^-31 reported in the paper.\\\"\\n    },\\n    {\\n      \\\"id\\\": 27,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"accounting for 75.5% (PGT) and 80.3% (LST) of all errors\\\",\\n      \\\"reason\\\": \\\"Section 6.3.\\\"\\n    },\\n    {\\n      \\\"id\\\": 28,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"accounting for 75.5% (PGT) and 80.3% (LST) of all errors\\\",\\n      \\\"reason\\\": \\\"Section 6.3.\\\"\\n    },\\n    {\\n      \\\"id\\\": 29,\\n      \\\"label\\\": \\\"unsupported\\\",\\n      \\\"paper_evidence\\\": \\\"\\\",\\n      \\\"reason\\\": \\\"Section 6.6. The claim contains empty placeholders ' → ' instead of the actual Japanese verb examples provided in the paper ('あきれかえった akirekaetta → あきれかえた akirekaeta').\\\"\\n    },\\n    {\\n      \\\"id\\\": 30,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"an identical single UNK error appears in both systems’ outputs (つっぷした → っ<UNK>した).\\\",\\n      \\\"reason\\\": \\\"Section 6.5.\\\"\\n    },\\n    {\\n      \\\"id\\\": 31,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"A structural subgroup evaluation framework for Japanese morphological inflection, combining a six-category orthography-aware error taxonomy with a Disparity Ratio metric for quantifying subgroup-level error concentration.\\\",\\n      \\\"reason\\\": \\\"Section 1.\\\"\\n    },\\n    {\\n      \\\"id\\\": 32,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"a single structurally specific irregular subtype, verbs whose stems end in /e/ and require gemination before the past-tense suﬀix and make up fewer than 1% of the data, accounts for a disproportionate 30–43% share of residual errors\\\",\\n      \\\"reason\\\": \\\"Abstract.\\\"\\n    },\\n    {\\n      \\\"id\\\": 33,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Controlled ablation experiments showing that selective removal of this subtype alone produces larger accuracy gains than removing all irregular verbs combined, suggesting that structural position, not frequency alone, is the primary driver of the effect.\\\",\\n      \\\"reason\\\": \\\"Section 1.\\\"\\n    },\\n    {\\n      \\\"id\\\": 34,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"a single structurally specific irregular subtype, verbs whose stems end in /e/ and require gemination before the past-tense suﬀix and make up fewer than 1% of the data, accounts for a disproportionate 30–43% share of residual errors\\\",\\n      \\\"reason\\\": \\\"Abstract.\\\"\\n    },\\n    {\\n      \\\"id\\\": 35,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Controlled ablation experiments show that removing this subtype alone produces larger accuracy gains than removing all irregular verbs combined.\\\",\\n      \\\"reason\\\": \\\"Abstract.\\\"\\n    },\\n    {\\n      \\\"id\\\": 36,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Type 4-2 shows a dramatically higher disparity ratio than all other subtypes, contributing 34–48× its proportional share to total errors.\\\",\\n      \\\"reason\\\": \\\"Figure 2 caption.\\\"\\n    },\\n    {\\n      \\\"id\\\": 37,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"our ablation experiments were each run once per condition\\\",\\n      \\\"reason\\\": \\\"Limitations.\\\"\\n    },\\n    {\\n      \\\"id\\\": 38,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"our study focuses on a single language, a single morphological paradigm, and two Transformer-based architectures.\\\",\\n      \\\"reason\\\": \\\"Limitations.\\\"\\n    },\\n    {\\n      \\\"id\\\": 39,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"our analysis is correlational with respect to the specific mechanism (frequency vs. structural complexity vs. their interaction) underlying Type 4-2’s distinctiveness\\\",\\n      \\\"reason\\\": \\\"Limitations.\\\"\\n    },\\n    {\\n      \\\"id\\\": 40,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"All forms are converted to hiragana to maintain orthographic consistency and eliminate confounds introduced by kanji homography\\\",\\n      \\\"reason\\\": \\\"Section 3 and Table 1 (which lists the total count as 3,958).\\\"\\n    }\\n  ]\\n}\\n```\", \"```json\\n{\\n  \\\"verdicts\\\": [\\n    {\\n      \\\"id\\\": 1,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Canonical irregular verbs (する, くる; Type 3) and polysemous lemmas with multiple inflected forms are excluded to maintain a one-to-one lemma–form mapping.\\\",\\n      \\\"reason\\\": \\\"Section 3.1. The paper explicitly states that canonical irregulars are excluded.\\\"\\n    },\\n    {\\n      \\\"id\\\": 2,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Type 1 (Godan) 2,503 63.2\\\\nType 2 (Ichidan) 1,298 32.8\\\\nType 4 (irregular) 157 4.0\\\",\\n      \\\"reason\\\": \\\"Table 1. The counts show regular Godan (2,503) and Ichidan (1,298) dominate, with 157 irregulars.\\\"\\n    },\\n    {\\n      \\\"id\\\": 3,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Type 4-2 is the smallest structurally coherent subclass, comprising only 0.9% of the data\\\",\\n      \\\"reason\\\": \\\"Section 3.1. The paper explicitly states that Type 4-2 is the smallest structurally coherent subclass at 0.9%.\\\"\\n    },\\n    {\\n      \\\"id\\\": 4,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Because the same verb types are removed from both training and test across all conditions, accuracy differences between conditions reflect differences in which subtypes destabilize learning of the remaining vocabulary, not differences in test set composition.\\\",\\n      \\\"reason\\\": \\\"Section 6.7. The paper explains that removing subtypes from both training and test isolates which patterns destabilize learning.\\\"\\n    },\\n    {\\n      \\\"id\\\": 5,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"For the LST system, removing only Type 4-2 yields the largest observed gain: 97.73% → 99.75% (+2.02)\\\",\\n      \\\"reason\\\": \\\"Section 6.7. The paper reports that for LST, removing Type 4-2 lifts accuracy from 97.73% to 99.75% (+2.02).\\\"\\n    },\\n    {\\n      \\\"id\\\": 6,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"For the LST system, removing only Type 4-2 yields the largest observed gain: 97.73% → 99.75% (+2.02), corresponding to an approximately 89% reduction in error rate.\\\",\\n      \\\"reason\\\": \\\"Section 6.7. The paper explicitly states that this corresponds to an approximately 89% reduction in error rate.\\\"\\n    },\\n    {\\n      \\\"id\\\": 7,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"The gain is substantially larger than removing all irregular verbs (+1.22) and matches or exceeds every other single- or paired-subtype removal.\\\",\\n      \\\"reason\\\": \\\"Section 6.7. The paper compares the gain of removing Type 4-2 (+2.02) to removing all irregulars (+1.22) for LST.\\\"\\n    },\\n    {\\n      \\\"id\\\": 8,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"For the PGT system, removing Type 4-2 alone is still the single best condition (97.98% → 98.98%, +1.00).\\\",\\n      \\\"reason\\\": \\\"Section 6.7. The paper reports that for PGT, removing Type 4-2 alone is the best single condition, lifting accuracy from 97.98% to 98.98% (+1.00).\\\"\\n    },\\n    {\\n      \\\"id\\\": 9,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Accuracy gains from Table 6 visualized. The −4-2 condition stands out clearly in both systems.\\\",\\n      \\\"reason\\\": \\\"Figure 3 caption. The caption explicitly states that the -4-2 condition stands out clearly in both systems.\\\"\\n    },\\n    {\\n      \\\"id\\\": 10,\\n      \\\"label\\\": \\\"supported\\\",\\n      \\\"paper_evidence\\\": \\\"Canonical irregulars (する, くる; Type 3) are excluded, as described in §3.1.\\\",\\n      \\\"reason\\\": \\\"Table 1 caption. The caption explicitly states that canonical irregulars (Type 3) are excluded.\\\"\\n    }\\n  ]\\n}\\n```\"]"
+}

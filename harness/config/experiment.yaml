@@ -66,6 +66,10 @@ candidates:                       # run order = list order (alphabetical)
   - id: qwen.qwen3-vl-235b-a22b
 
 judges:
+  # Option A (team decision 2026-11-17): both judges run and are reported; GPT-4o is the primary
+  # result for quality and hallucination (it passed the P04/P05 holdout validation), Gemini is a
+  # secondary check. See judge/calibration_revision_note.md.
+  primary_judge: openai.gpt-4o
   models:
     - id: gemini-3.5-flash         # Gemini Flash
       max_output_tokens: 32768     # thinking counts toward the cap: 8,192 truncated 14 claim checks (2026-11-02)
@@ -105,7 +109,7 @@ spec_limits:
   bootstrap_reps: 2000
 
 analysis:                         # analysis/build_dataset.py, analysis/analyze.py; see spec/05_analysis_spec.md
-  calibration_papers: [P06, P11, P13]   # used to tune and check the judge prompts; out of the main comparison
+  calibration_papers: [P01, P02, P03, P04, P05]   # latex-v3: P01-P03 tuned the judge, P04-P05 validated it; out of the main comparison (v2 used P06, P11, P13)
   decision_basis: mean            # mean: 95% CI of the model mean vs the limit; share: CI of the share of posters meeting it
   target_share: 0.75              # used only with decision_basis: share
   min_scored: 5                   # fewer scored posters than this -> inconclusive

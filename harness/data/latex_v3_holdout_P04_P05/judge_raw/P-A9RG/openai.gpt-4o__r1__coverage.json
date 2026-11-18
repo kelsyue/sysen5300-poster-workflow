@@ -1,0 +1,60 @@
+{
+  "model": "openai.gpt-4o",
+  "repeat": 1,
+  "judge_prompt_sha256": "d68c41ba9fcb81e0b6ca71c927f15884f0e00bb0cd2d9c521934502fa8ab3e38",
+  "error": null,
+  "tokens_in": 8846,
+  "tokens_out": 876,
+  "tokens_cached": 6400,
+  "max_output_tokens": 16384,
+  "parsed": {
+    "items": {
+      "chk_problem": {
+        "label": "accurate",
+        "poster_evidence": "Per-frame detector passes dominate edge cost, and blind skipping breaks accuracy on BDD100K MOT dashcam video.",
+        "reason": "The poster correctly identifies the high energy consumption and sustained GPU utilization of video object detectors on edge devices as the research problem."
+      },
+      "chk_method": {
+        "label": "accurate",
+        "poster_evidence": "ALBIREO is a detector-agnostic, codec-free wrapper that decides when detector calls can be skipped. It keeps a 10-dimensional Kalman filter per object and invokes the detector only when uncertainty exceeds a threshold. Skipped frames get predicted boxes at near-zero GPU cost, with a rescue mechanism and an empty-scene screen. No retraining needed.",
+        "reason": "The poster accurately describes ALBIREO as a detector-agnostic, codec-free adaptive inference framework using Kalman filter uncertainty, rescue mechanisms, and empty-scene screening."
+      },
+      "chk_data": {
+        "label": "accurate",
+        "poster_evidence": "We evaluate on the BDD100K MOT validation split: 200 dashcam clips, 7 classes, ego-motion as a stress test.",
+        "reason": "The poster specifies the BDD100K dataset's multi-object tracking validation split, including the number of clips and object classes, matching the reference."
+      },
+      "chk_setup": {
+        "label": "accurate",
+        "poster_evidence": "Detectors are YOLO11x, YOLO26x and RF-DETR-Large at confidence 0.50, in PyTorch on Jetson AGX Orin and Thor. Baselines include Vanilla, FixedSkipN, CTD and Statues.",
+        "reason": "The poster describes the evaluation setup, including the detectors, platforms, and baseline comparisons, consistent with the reference."
+      },
+      "chk_primary_result": {
+        "label": "accurate",
+        "poster_evidence": "Thor: AP@50 0.609 to 0.617, energy 811.5 J to 668.6 J (-17.6%), 50.9 to 46.4 ms/frame. Orin: energy 994.0 J to 851.2 J (-14.4%), EDP -26.1%.",
+        "reason": "The poster provides quantitative results showing ALBIREO's energy savings and AP@50 performance within ±1.2 pp of per-frame inference, matching the reference."
+      },
+      "chk_secondary_result": {
+        "label": "accurate",
+        "poster_evidence": "Sweeping u forms the upper Pareto frontier above all baselines.",
+        "reason": "The poster highlights ALBIREO's Pareto dominance in the AP@50 ≥ 0.50 operating region, consistent with the reference's secondary result."
+      },
+      "chk_baseline": {
+        "label": "accurate",
+        "poster_evidence": "Baselines include Vanilla, FixedSkipN, CTD and Statues.",
+        "reason": "The poster lists the baseline methods used for comparison, aligning with the reference."
+      },
+      "chk_conclusion": {
+        "label": "accurate",
+        "poster_evidence": "Object-level temporal state works as a drop-in efficiency layer for off-the-shelf edge detectors. ALBIREO keeps AP@50 within 1.2 pp of per-frame inference while cutting energy 12.1-17.6%, with no retraining.",
+        "reason": "The poster accurately conveys the paper's conclusion about ALBIREO's practical benefits as a drop-in efficiency layer."
+      },
+      "chk_limitation": {
+        "label": "accurate",
+        "poster_evidence": "Constant-acceleration Kalman dynamics can drift under erratic motion. The empty-scene screen is domain-dependent and tuned for dashcam scenes.",
+        "reason": "The poster identifies specific limitations of ALBIREO, including Kalman dynamics drift and domain dependency of the empty-scene screen, consistent with the reference."
+      }
+    }
+  },
+  "raw": "```json\n{\n  \"items\": {\n    \"chk_problem\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Per-frame detector passes dominate edge cost, and blind skipping breaks accuracy on BDD100K MOT dashcam video.\",\n      \"reason\": \"The poster correctly identifies the high energy consumption and sustained GPU utilization of video object detectors on edge devices as the research problem.\"\n    },\n    \"chk_method\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"ALBIREO is a detector-agnostic, codec-free wrapper that decides when detector calls can be skipped. It keeps a 10-dimensional Kalman filter per object and invokes the detector only when uncertainty exceeds a threshold. Skipped frames get predicted boxes at near-zero GPU cost, with a rescue mechanism and an empty-scene screen. No retraining needed.\",\n      \"reason\": \"The poster accurately describes ALBIREO as a detector-agnostic, codec-free adaptive inference framework using Kalman filter uncertainty, rescue mechanisms, and empty-scene screening.\"\n    },\n    \"chk_data\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"We evaluate on the BDD100K MOT validation split: 200 dashcam clips, 7 classes, ego-motion as a stress test.\",\n      \"reason\": \"The poster specifies the BDD100K dataset's multi-object tracking validation split, including the number of clips and object classes, matching the reference.\"\n    },\n    \"chk_setup\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Detectors are YOLO11x, YOLO26x and RF-DETR-Large at confidence 0.50, in PyTorch on Jetson AGX Orin and Thor. Baselines include Vanilla, FixedSkipN, CTD and Statues.\",\n      \"reason\": \"The poster describes the evaluation setup, including the detectors, platforms, and baseline comparisons, consistent with the reference.\"\n    },\n    \"chk_primary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Thor: AP@50 0.609 to 0.617, energy 811.5 J to 668.6 J (-17.6%), 50.9 to 46.4 ms/frame. Orin: energy 994.0 J to 851.2 J (-14.4%), EDP -26.1%.\",\n      \"reason\": \"The poster provides quantitative results showing ALBIREO's energy savings and AP@50 performance within ±1.2 pp of per-frame inference, matching the reference.\"\n    },\n    \"chk_secondary_result\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Sweeping u forms the upper Pareto frontier above all baselines.\",\n      \"reason\": \"The poster highlights ALBIREO's Pareto dominance in the AP@50 ≥ 0.50 operating region, consistent with the reference's secondary result.\"\n    },\n    \"chk_baseline\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Baselines include Vanilla, FixedSkipN, CTD and Statues.\",\n      \"reason\": \"The poster lists the baseline methods used for comparison, aligning with the reference.\"\n    },\n    \"chk_conclusion\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Object-level temporal state works as a drop-in efficiency layer for off-the-shelf edge detectors. ALBIREO keeps AP@50 within 1.2 pp of per-frame inference while cutting energy 12.1-17.6%, with no retraining.\",\n      \"reason\": \"The poster accurately conveys the paper's conclusion about ALBIREO's practical benefits as a drop-in efficiency layer.\"\n    },\n    \"chk_limitation\": {\n      \"label\": \"accurate\",\n      \"poster_evidence\": \"Constant-acceleration Kalman dynamics can drift under erratic motion. The empty-scene screen is domain-dependent and tuned for dashcam scenes.\",\n      \"reason\": \"The poster identifies specific limitations of ALBIREO, including Kalman dynamics drift and domain dependency of the empty-scene screen, consistent with the reference.\"\n    }\n  }\n}\n```"
+}
